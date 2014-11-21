@@ -1,0 +1,1 @@
+class ArmorMedium extends ArmorDefault;

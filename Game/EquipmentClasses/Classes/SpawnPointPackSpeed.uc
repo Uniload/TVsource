@@ -1,0 +1,1 @@
+class SpawnPointPackSpeed extends SpawnPointPack;

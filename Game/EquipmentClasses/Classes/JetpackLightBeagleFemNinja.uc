@@ -1,0 +1,1 @@
+class JetpackLightBeagleFemNinja extends JetpackLightBeagleFem;

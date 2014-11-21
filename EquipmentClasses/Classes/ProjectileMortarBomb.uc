@@ -1,0 +1,1 @@
+class ProjectileMortarBomb extends ProjectileMortar;

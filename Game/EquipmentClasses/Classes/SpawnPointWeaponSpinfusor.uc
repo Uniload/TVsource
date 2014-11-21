@@ -1,0 +1,1 @@
+class SpawnPointWeaponSpinfusor extends SpawnPointWeapon;

@@ -1,0 +1,1 @@
+class WeaponBlaster extends Gameplay.Blaster;

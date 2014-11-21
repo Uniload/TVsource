@@ -1,0 +1,1 @@
+class WeaponChaingun extends Gameplay.Chaingun;

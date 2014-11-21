@@ -1,0 +1,1 @@
+class CaptureFlagBeagle extends GameClasses.CaptureFlag;

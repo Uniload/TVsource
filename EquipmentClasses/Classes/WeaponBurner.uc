@@ -1,0 +1,1 @@
+class WeaponBurner extends Gameplay.Burner;

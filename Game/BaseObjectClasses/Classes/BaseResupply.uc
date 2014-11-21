@@ -1,0 +1,1 @@
+class BaseResupply extends Gameplay.ResupplyStation;

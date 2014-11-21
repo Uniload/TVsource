@@ -1,0 +1,23 @@
+class promodDeployedInventoryStation extends Gameplay.DeployedInventoryStation;
+
+defaultproperties
+{
+localizedName="Deployed Inventory Station"
+damagedHealthThreshold=0.750000
+functionalHealthThreshold=0.050000
+Health=400
+destroyedExplosionClass=Class'ExplosionClasses.ExplosionSmall'
+personalShieldClass=None
+Mesh=SkeletalMesh'Deployables.DepInvStation'
+accessRadius=150
+accessHeight=150
+accessClass=Class'deployableclasses.deployedInventoryStationAccess'
+bWasDeployed=true
+bNoDelete=false
+bIgnoreEncroachers=true
+bIsDetectableByEnemies=false
+bCanBeSensed=true
+CollisionHeight=50.000000
+CollisionRadius=50.000000
+radarinfoClass=Class'HudClasses.RadarInfoDeployableInventory'
+}

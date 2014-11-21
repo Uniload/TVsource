@@ -1,0 +1,1 @@
+class WeaponTurretAntiAircraft extends Gameplay.TurretAntiAircraftWeapon;

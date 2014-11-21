@@ -1,0 +1,1 @@
+class BaseObjectExplosionSmall extends BaseExplosion;

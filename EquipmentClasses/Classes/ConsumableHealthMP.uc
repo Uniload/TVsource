@@ -1,0 +1,1 @@
+class ConsumableHealthMP extends ConsumableHealth;

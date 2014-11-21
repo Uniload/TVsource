@@ -1,0 +1,1 @@
+class BasePowerSource extends Gameplay.PowerGenerator;

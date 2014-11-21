@@ -1,0 +1,1 @@
+class BasePowerGenerator16War extends BasePowerGenerator;

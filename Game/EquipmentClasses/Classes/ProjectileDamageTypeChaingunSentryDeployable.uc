@@ -1,0 +1,1 @@
+class ProjectileDamageTypeChaingunSentryDeployable extends ProjectileDamageTypeChaingun;

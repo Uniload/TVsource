@@ -1,0 +1,1 @@
+class ScreenDefault extends Gameplay.Shield;

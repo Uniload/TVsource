@@ -1,0 +1,1 @@
+class ProjectileDamageTypeBurner extends ProjectileDamageTypeDefault;

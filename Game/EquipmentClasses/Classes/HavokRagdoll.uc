@@ -1,0 +1,1 @@
+class HavokRagdoll extends Engine.HavokSkeletalSystem;

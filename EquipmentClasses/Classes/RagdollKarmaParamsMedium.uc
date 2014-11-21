@@ -1,0 +1,1 @@
+class RagdollKarmaParamsMedium extends RagdollKarmaParamsDefault;

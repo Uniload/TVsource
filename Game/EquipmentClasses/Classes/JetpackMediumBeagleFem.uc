@@ -1,0 +1,1 @@
+class JetpackMediumBeagleFem extends JetpackMedium;

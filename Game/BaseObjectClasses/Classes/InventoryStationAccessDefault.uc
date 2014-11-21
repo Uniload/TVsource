@@ -1,0 +1,1 @@
+class InventoryStationAccessDefault extends Gameplay.InventoryStationAccess;

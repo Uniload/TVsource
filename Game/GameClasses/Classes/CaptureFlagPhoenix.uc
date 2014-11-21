@@ -1,0 +1,1 @@
+class CaptureFlagPhoenix extends GameClasses.CaptureFlag;

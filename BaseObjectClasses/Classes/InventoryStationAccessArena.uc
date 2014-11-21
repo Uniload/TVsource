@@ -1,0 +1,1 @@
+class InventoryStationAccessArena extends InventoryStationAccessDefault;

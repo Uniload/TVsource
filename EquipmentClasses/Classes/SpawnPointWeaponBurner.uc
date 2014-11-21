@@ -1,0 +1,1 @@
+class SpawnPointWeaponBurner extends SpawnPointWeapon;

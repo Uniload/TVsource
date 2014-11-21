@@ -1,0 +1,1 @@
+class RagdollKarmaParamsHeavy extends RagdollKarmaParamsDefault;

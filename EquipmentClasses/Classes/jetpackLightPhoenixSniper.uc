@@ -1,0 +1,1 @@
+class jetpackLightPhoenixSniper extends JetpackLightPhoenix;

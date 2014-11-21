@@ -1,0 +1,1 @@
+class TurretBaseImperial extends StaticMeshRemovable;

@@ -1,0 +1,1 @@
+class ProjectileSpinfusor extends Gameplay.SpinfusorProjectile;

@@ -1,0 +1,1 @@
+class ArmourMediumDanielRescue extends ArmorMedium;

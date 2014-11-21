@@ -1,0 +1,1 @@
+class ProjectileDamageTypeAssaultShipAntiAirTurret extends ProjectileDamageTypeAntiAirTurret;

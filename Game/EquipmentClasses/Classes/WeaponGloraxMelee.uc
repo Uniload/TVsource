@@ -1,0 +1,1 @@
+class WeaponGloraxMelee extends Gameplay.GloraxMeleeWeapon;

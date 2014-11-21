@@ -1,0 +1,1 @@
+class BaseDeployableSpawn extends Gameplay.ObjectSpawnPoint;

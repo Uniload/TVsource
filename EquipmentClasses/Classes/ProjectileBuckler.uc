@@ -1,0 +1,1 @@
+class ProjectileBuckler extends Gameplay.BucklerProjectile;

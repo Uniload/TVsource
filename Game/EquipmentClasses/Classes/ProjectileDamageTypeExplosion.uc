@@ -1,0 +1,1 @@
+class ProjectileDamageTypeExplosion extends ProjectileDamageTypeDefault;

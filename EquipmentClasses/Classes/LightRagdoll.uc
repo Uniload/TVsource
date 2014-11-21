@@ -1,0 +1,1 @@
+class LightRagdoll extends HavokRagdoll;

@@ -1,0 +1,1 @@
+class JetpackMediumDaniel extends JetpackMedium;

@@ -1,0 +1,1 @@
+class JetpackMediumPhoenix extends JetpackMedium;

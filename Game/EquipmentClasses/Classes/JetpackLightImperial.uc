@@ -1,0 +1,1 @@
+class JetpackLightImperial extends JetpackLight;

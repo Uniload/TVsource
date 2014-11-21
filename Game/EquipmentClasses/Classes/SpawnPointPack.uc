@@ -1,0 +1,1 @@
+class SpawnPointPack extends SpawnPointEquipment;

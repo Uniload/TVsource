@@ -1,0 +1,1 @@
+class RoundInfoDefault extends Gameplay.RoundInfo;

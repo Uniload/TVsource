@@ -1,0 +1,1 @@
+class LightRagdoll_WithJetpack extends LightRagdoll;

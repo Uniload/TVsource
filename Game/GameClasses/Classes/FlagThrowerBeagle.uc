@@ -1,0 +1,1 @@
+class FlagThrowerBeagle extends GameClasses.FlagThrower;

@@ -1,0 +1,1 @@
+class CivilianRagdoll extends HavokRagdoll;

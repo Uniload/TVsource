@@ -1,0 +1,1 @@
+class ProjectileDamageTypeSpinfusor extends ProjectileDamageTypeExplosion;

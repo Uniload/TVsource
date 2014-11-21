@@ -1,0 +1,1 @@
+class DeployedInventoryStation extends Gameplay.DeployedInventoryStation;

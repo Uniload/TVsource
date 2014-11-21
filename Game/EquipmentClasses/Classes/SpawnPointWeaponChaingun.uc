@@ -1,0 +1,1 @@
+class SpawnPointWeaponChaingun extends SpawnPointWeapon;

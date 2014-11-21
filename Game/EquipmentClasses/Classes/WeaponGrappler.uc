@@ -1,0 +1,1 @@
+class WeaponGrappler extends Gameplay.Grappler;

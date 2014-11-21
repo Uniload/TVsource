@@ -1,0 +1,1 @@
+class AssaultShipMotor extends AircraftMotor;

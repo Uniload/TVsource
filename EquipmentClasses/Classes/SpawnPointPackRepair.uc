@@ -1,0 +1,1 @@
+class SpawnPointPackRepair extends SpawnPointPack;

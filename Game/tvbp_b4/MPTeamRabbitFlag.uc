@@ -1,0 +1,72 @@
+
+
+defaultproperties
+{
+     potatoTimeLimit=20
+     potatoWarning=5
+     potatoDamagePercent=0.200000
+     teamTimeLimit=90
+     updateTimeSlice=1
+     minFlagMove=5
+     bonusFlagTimeout=22
+     shuffleScoreDifference=25
+     pointsPerTimeSlice=1
+     scoreTimer=5
+     repeatedGrabRestriction=6
+     minimumClientsForRecords=8
+     rulesDelay=10
+     FlagReturnTime=9
+     FriendlyFlaggerKill=Class'FriendlyFlaggerKill'
+     OutOfBounds=Class'OutOfBounds'
+     FlagReturn=Class'FlagReturn'
+     Interception=Class'Interception'
+     Natural=Class'Natural'
+     UnNatural=Class'UnNatural'
+     SuperNatural=Class'SuperNatural'
+     NothingLeftToProve=Class'NothingLeftToProve'
+     Kilo=Class'Kilo'
+     Mega=Class'Mega'
+     Giga=Class'Giga'
+     Tera=Class'Tera'
+     ClamberingGrab=Class'ClamberingGrab'
+     DynamoGrab=Class'DynamoGrab'
+     SpeedyGrab=Class'SpeedyGrab'
+     DauntingGrab=Class'DauntingGrab'
+     AlluringReversal=Class'AlluringReversal'
+     SexyReversal=Class'SexyReversal'
+     RavishingReversal=Class'RavishingReversal'
+     SlightAirGrab=Class'SlightAirGrab'
+     GoodAirGrab=Class'GoodAirGrab'
+     HugeAirGrab=Class'HugeAirGrab'
+     TopOfTheWorld=Class'TopOfTheWorld'
+     TurnoverBonus=Class'TurnoverBonus'
+     InterceptionBonus=Class'InterceptionBonus'
+     double=Class'double'
+     Triple=Class'Triple'
+     Quadruple=Class'Quadruple'
+     Quintuple=Class'Quintuple'
+     CrazyFlag=Class'CrazyFlag'
+     hudIcon=Texture'HUD.MPTabs'
+     hudIconCoords=(U=102.000000,V=216.000000)
+     selfPickupTimeout=6.000000
+     Elasticity=0.050000
+     bIsWeaponType=True
+     meshWhileCarried=SkeletalMesh'MPGameObjects.Flag'
+     carriedAnimation="Idle"
+     bCanBeGrappledInField=False
+     carriedObjectClass=Class'TRFlagThrower'
+     localizedName="Flag"
+     primaryFriendlyObjectiveDesc="Defend your team's rabbit flag"
+     primaryEnemyObjectiveDesc="Get the enemy rabbit flag"
+     primaryNeutralObjectiveDesc="Get the flag and keep it"
+     idleAnim="Idle"
+     secondaryMessageClass=Class'GameClasses.MPSecondaryFlagMessages'
+     bAlwaysMarked=True
+     radarInfoClass=Class'RadarInfoTR'
+     DrawType=DT_Mesh
+     StaticMesh=None
+     Mesh=SkeletalMesh'MPGameObjects.Flag'
+     Skins(1)=Shader'TRFlag.trflagshader'
+     CollisionRadius=70.000000
+     CollisionHeight=120.000000
+}

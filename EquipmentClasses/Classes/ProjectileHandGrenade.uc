@@ -1,0 +1,1 @@
+class ProjectileHandGrenade extends Gameplay.HandGrenadeProjectile;

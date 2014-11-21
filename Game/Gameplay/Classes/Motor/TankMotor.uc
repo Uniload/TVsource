@@ -1,0 +1,1 @@
+class TankMotor extends CarMotor;

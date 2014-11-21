@@ -1,0 +1,1 @@
+class BaseObjectVehicleSpawnFighter extends BaseObjectVehicleSpawn;

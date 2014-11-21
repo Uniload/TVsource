@@ -1,0 +1,1 @@
+class ProjectileRocketPod extends Gameplay.RocketPodProjectile;

@@ -1,0 +1,1 @@
+class ModeRace extends GamePlay.Modeinfo;

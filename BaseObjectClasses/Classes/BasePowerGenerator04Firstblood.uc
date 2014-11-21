@@ -1,0 +1,1 @@
+class BasePowerGenerator04Firstblood extends BasePowerGenerator;

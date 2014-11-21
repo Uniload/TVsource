@@ -1,0 +1,1 @@
+class StaticMeshRemovable extends Engine.RemovableStaticMesh;

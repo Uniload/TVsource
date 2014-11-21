@@ -1,0 +1,95 @@
+// Anti-Rape - I'm not quite sure why you desire to have this as a server actor. This can be accomplished
+// without the need for additional server actors by extending a mutator class. Not only is this the intent of the mutator
+// class, but you'll have better performance, and a clean way to load the mutator.
+
+// Now, with that said, notice the config(AntiRape). This simply looks for config variables in the file AntiRape.ini.
+// This is all that is required. The notplaceable you asked of restricts the class from being added to a map through TVEd.
+
+class AntiRape extends Gameplay.Mutator config(AntiRape);
+
+// No need for parenthesis on var, really. This is used for organization of properties in design mode of the editor.
+// For example var(Movement) would place the variable under the Movement category in TVEd.
+
+var bool CanRape; // Can we rape? This is not a configurable variable. Instead, it will track the internal state.
+// Player limit is rather confusing. I changed this because it made sense to me that this was the minimum number of players
+// before rape was enabled. I found limit misleading.
+var config int PlayerMin; // Minimum number of players before rape is enabled.
+// Again, a bit more desciptive:
+var config int TimerInterval; // How often to check the number of players in the server.
+
+// Our entry point.
+function PostBeginPlay()
+{
+	// Call super to make sure the parent classes do their thing.
+	Super.PostBeginPlay();
+    
+    // If not tourney mode, update the devices and start the timer.
+    if(!MultiplayerGameInfo(Level.Game).bTournamentMode)
+    {
+		// We update the base devices because they will likely be able to take damage at start.
+		// Clearly, we would start with rape turned off because we always begin with 0 players.
+		// Therefore, let's update the devices to make sure we are in sync.
+		UpdateDevices();
+		
+		// Set the timer, true because it should repeat.
+		// No need for a local time variable too.
+		// Just user your global variable.
+		SetTimer(TimerInterval, true);
+	}
+		
+	// No need to save the config. A config'ed class always references its config on load.
+	// We aren't changing config variables in this class, so why save?
+}
+
+function Timer()
+{
+	// If the number of players is less than minimum, we can't rape.
+	// The check to see if CanRape is true prevents the updating of the devices every time the timer is triggered.
+	// That is, you only need to update devices when the current condition does not match the previous state.
+	// This will boost performance tremendously. Why set all the device damage to false when they already are?
+	if(Level.Game.numPlayers < PlayerMin && CanRape)
+	{
+		CanRape = false; // Disable rape.
+		UpdateDevices(); // Update the base devices.
+		
+		// Notify the players.
+		Level.Game.BroadcastLocalized(self, class'AntiRapeGameMessage', 100);
+	}
+	// If the number of players is at least minimum, we can rape.
+	// The check to see if CanRape is false prevents the updating of the devices every time the timer is triggered.
+	// That is, you only need to update devices when the current condition does not match the previous state.
+	// This will boost performance tremendously. Why set all the device damage to true when they already are?
+	else if(Level.Game.numPlayers >= PlayerMin && !CanRape)
+	{
+		CanRape = true; // Enable rape.
+		UpdateDevices(); // Update the base devices
+		
+		//Notify the players.
+		Level.Game.BroadcastLocalized(self, class'AntiRapeGameMessage', 101);
+	}
+	
+	// Note that numPlayers tracks the total number of players on a team. The active players you were using
+	// tracked the number of players on a team. Also, given the context of the function, it wouldn't have even worked!		
+}
+
+// Updates base devices.
+function UpdateDevices()
+{
+	// BaseDevice includes all objects in the BaseObjectClasses package.
+	// It is their parent. =)
+	// So:
+	
+	local BaseDevice device;
+	
+	// ForEach can go pretty much anywhere.
+	ForEach AllActors(Class'BaseDevice', device)
+		if(device != None) // Always a good check!
+			device.bCanBeDamaged = CanRape;
+}
+
+defaultproperties
+{
+	CanRape = false // You can never rape to begin with. We always start with 0 players!
+	PlayerMin = 12 // Minimum number of players before you can rape.
+	TimerInterval = 15 // (In seconds)
+}

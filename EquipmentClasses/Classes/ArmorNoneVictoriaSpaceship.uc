@@ -1,0 +1,1 @@
+class ArmorNoneVictoriaSpaceship extends ArmorNone;

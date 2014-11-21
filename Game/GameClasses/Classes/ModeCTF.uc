@@ -1,0 +1,1 @@
+class ModeCTF extends Gameplay.ModeInfo;

@@ -1,0 +1,1 @@
+class BaseDeployableSpawnTurret extends BaseDeployableSpawn;

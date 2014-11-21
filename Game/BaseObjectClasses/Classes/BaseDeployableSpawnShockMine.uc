@@ -1,0 +1,1 @@
+class BaseDeployableSpawnShockMine extends BaseDeployableSpawn;

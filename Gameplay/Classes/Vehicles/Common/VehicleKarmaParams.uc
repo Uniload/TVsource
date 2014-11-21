@@ -1,0 +1,1 @@
+class VehicleKarmaParams extends Engine.KarmaParamsRBFull;

@@ -1,0 +1,1 @@
+class ProjectileDamageTypeDefault extends Gameplay.ProjectileDamageType;

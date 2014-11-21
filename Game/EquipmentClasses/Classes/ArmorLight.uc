@@ -1,0 +1,1 @@
+class ArmorLight extends ArmorDefault;

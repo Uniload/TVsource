@@ -1,0 +1,1 @@
+class JetpackMediumImperialDuelist extends JetpackMediumImperial;

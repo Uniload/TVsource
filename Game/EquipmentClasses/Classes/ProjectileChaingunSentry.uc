@@ -1,0 +1,1 @@
+class ProjectileChaingunSentry extends ProjectileChaingun;

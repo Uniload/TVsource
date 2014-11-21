@@ -1,0 +1,1 @@
+class ProjectileMortarTurret extends ProjectileMortar;

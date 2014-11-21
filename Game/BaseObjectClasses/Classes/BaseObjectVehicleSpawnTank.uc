@@ -1,0 +1,1 @@
+class BaseObjectVehicleSpawnTank extends BaseObjectVehicleSpawn;

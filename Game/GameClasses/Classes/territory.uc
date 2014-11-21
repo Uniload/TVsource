@@ -1,0 +1,1 @@
+class territory extends Gameplay.MPTerritory;

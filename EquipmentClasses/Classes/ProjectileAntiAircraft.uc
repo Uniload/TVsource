@@ -1,0 +1,1 @@
+class ProjectileAntiAircraft extends Gameplay.AntiAircraftProjectile;

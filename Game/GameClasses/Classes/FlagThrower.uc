@@ -1,0 +1,1 @@
+class FlagThrower extends GameClasses.CarryableThrowerDefault;

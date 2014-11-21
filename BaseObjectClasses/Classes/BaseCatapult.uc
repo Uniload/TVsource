@@ -1,0 +1,1 @@
+class BaseCatapult extends Gameplay.Catapult;

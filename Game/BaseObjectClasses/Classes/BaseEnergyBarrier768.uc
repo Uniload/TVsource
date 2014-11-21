@@ -1,0 +1,1 @@
+class BaseEnergyBarrier768 extends BaseEnergyBarrier;

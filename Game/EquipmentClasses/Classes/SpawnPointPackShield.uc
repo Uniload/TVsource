@@ -1,0 +1,1 @@
+class SpawnPointPackShield extends SpawnPointPack;

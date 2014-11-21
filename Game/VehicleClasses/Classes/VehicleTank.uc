@@ -1,0 +1,1 @@
+class VehicleTank extends Gameplay.Tank;

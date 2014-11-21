@@ -1,0 +1,1 @@
+class Stun extends CharacterState;

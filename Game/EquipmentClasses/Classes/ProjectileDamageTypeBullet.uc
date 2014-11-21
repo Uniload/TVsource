@@ -1,0 +1,1 @@
+class ProjectileDamageTypeBullet extends ProjectileDamageTypeDefault;

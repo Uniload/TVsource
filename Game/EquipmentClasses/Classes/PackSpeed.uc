@@ -1,0 +1,1 @@
+class PackSpeed extends Gameplay.SpeedPack;

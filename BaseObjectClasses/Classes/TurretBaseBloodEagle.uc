@@ -1,0 +1,1 @@
+class TurretBaseBloodEagle extends StaticMeshRemovable;

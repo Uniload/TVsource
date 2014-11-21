@@ -1,0 +1,1 @@
+class BaseObjectExplosionMedium extends BaseExplosion;

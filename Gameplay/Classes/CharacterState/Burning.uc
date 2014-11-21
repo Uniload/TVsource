@@ -1,0 +1,1 @@
+class Burning extends CharacterState;

@@ -1,0 +1,1 @@
+class WeaponVehicleBuggy extends Gameplay.AntiAircraftWeapon;

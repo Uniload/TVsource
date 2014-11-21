@@ -1,0 +1,1 @@
+class ProjectileDamageTypeBlaster extends ProjectileDamageTypeBullet;

@@ -1,0 +1,1 @@
+class JetpackMediumSeti extends JetpackMedium;

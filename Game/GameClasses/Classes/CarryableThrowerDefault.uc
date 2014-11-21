@@ -1,0 +1,1 @@
+class CarryableThrowerDefault extends Gameplay.MPCarryableThrower;

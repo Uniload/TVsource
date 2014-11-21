@@ -1,0 +1,1 @@
+class JetpackLightPhoenixFem extends JetpackLight;

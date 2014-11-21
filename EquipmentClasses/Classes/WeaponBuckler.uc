@@ -1,0 +1,1 @@
+class WeaponBuckler extends Gameplay.Buckler;

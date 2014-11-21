@@ -1,0 +1,1 @@
+class WeaponGrenadeLauncher extends Gameplay.GrenadeLauncher;

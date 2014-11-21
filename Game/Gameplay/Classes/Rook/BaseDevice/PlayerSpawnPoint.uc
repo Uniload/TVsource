@@ -1,0 +1,1 @@
+class PlayerSpawnPoint extends BaseDevice;

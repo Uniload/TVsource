@@ -1,0 +1,1 @@
+class BaseObjectVehicleSpawn extends Gameplay.VehicleSpawnPoint;

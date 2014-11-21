@@ -1,0 +1,1 @@
+class BaseDeployableSpawnCatapult extends BaseDeployableSpawn;

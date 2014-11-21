@@ -1,0 +1,1 @@
+class WeaponGlorax extends Gameplay.GloraxWeapon;

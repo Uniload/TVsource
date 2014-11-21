@@ -1,0 +1,1 @@
+class WeaponTurretBurner extends Gameplay.TurretBurnerWeapon;

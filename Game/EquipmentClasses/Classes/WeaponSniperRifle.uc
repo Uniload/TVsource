@@ -1,0 +1,1 @@
+class WeaponSniperRifle extends Gameplay.SniperRifle;

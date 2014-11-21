@@ -1,0 +1,1 @@
+class FlagThrowerImperial extends GameClasses.FlagThrower;

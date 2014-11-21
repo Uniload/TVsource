@@ -1,0 +1,1 @@
+class BaseSpawnTower extends Gameplay.SpawnArray;

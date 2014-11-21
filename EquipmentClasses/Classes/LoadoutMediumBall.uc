@@ -1,0 +1,1 @@
+class LoadoutMediumBall extends LoadoutDefault;

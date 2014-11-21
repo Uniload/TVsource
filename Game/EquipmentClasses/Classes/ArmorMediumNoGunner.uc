@@ -1,0 +1,1 @@
+class ArmorMediumNoGunner extends ArmorMedium;

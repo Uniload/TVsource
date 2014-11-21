@@ -1,0 +1,1 @@
+class CharacterState extends Engine.Actor;

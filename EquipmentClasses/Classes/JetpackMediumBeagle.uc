@@ -1,0 +1,1 @@
+class JetpackMediumBeagle extends JetpackMedium;

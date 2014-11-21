@@ -1,0 +1,1 @@
+class AssaultShipHavokData extends VehicleHavokData;

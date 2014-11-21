@@ -1,0 +1,33 @@
+class FailArmorLight extends EquipmentClasses.ArmorLight;
+
+defaultproperties
+{
+     AllowedWeapons(0)=(typeClass=Class'EquipmentClasses.WeaponBlaster')
+     AllowedWeapons(1)=(typeClass=Class'EquipmentClasses.WeaponChaingun',quantity=150)
+     AllowedWeapons(2)=(typeClass=Class'EquipmentClasses.WeaponEnergyBlade')
+     AllowedWeapons(3)=(typeClass=Class'EquipmentClasses.WeaponGrappler',quantity=15)
+     AllowedWeapons(4)=(typeClass=Class'EquipmentClasses.WeaponGrenadeLauncher',quantity=10)
+     AllowedWeapons(5)=(typeClass=Class'EquipmentClasses.WeaponSpinfusor',quantity=15)
+     AllowedWeapons(6)=(typeClass=Class'EquipmentClasses.WeaponSniperRifle',quantity=10)
+     AllowedWeapons(7)=(typeClass=Class'EquipmentClasses.WeaponRocketPod',quantity=42)
+     AllowedWeapons(8)=(typeClass=Class'EquipmentClasses.WeaponBurner')
+     AllowedPacks(0)=Class'EquipmentClasses.PackSpeed'
+     AllowedPacks(1)=Class'EquipmentClasses.PackEnergy'
+     AllowedPacks(2)=Class'EquipmentClasses.PackRepair'
+     AllowedPacks(3)=Class'EquipmentClasses.PackShield'
+     AllowedDeployables(0)=(typeClass=Class'DeployableClasses.DeployableInventoryStation',quantity=1)
+     AllowedDeployables(1)=(typeClass=Class'DeployableClasses.DeployableShockMine',quantity=1)
+     AllowedDeployables(2)=(typeClass=Class'DeployableClasses.DeployableCatapult',quantity=1)
+     AllowedDeployables(3)=(typeClass=Class'DeployableClasses.DeployableRepairer',quantity=1)
+     AllowedDeployables(4)=(typeClass=Class'DeployableClasses.DeployableTurret',quantity=1)
+     AllowedConsumables(0)=(typeClass=Class'EquipmentClasses.KitHealth')
+     AllowedDriver(0)=Class'VehicleClasses.VehicleBuggy'
+     AllowedDriver(1)=Class'VehicleClasses.VehiclePod'
+     AllowedDriver(2)=Class'VehicleClasses.VehicleAssaultShip'
+     AllowedDriver(3)=Class'VehicleClasses.VehicleTank'
+     AllowedDriver(4)=Class'VehicleClassesASOld.VehicleASOld'
+     AllowedPassenger(0)=Class'VehicleClasses.VehicleBuggy'
+     AllowedPassenger(1)=Class'VehicleClasses.VehicleAssaultShip'
+     AllowedPassenger(2)=Class'VehicleClasses.VehicleTank'
+     AllowedPassenger(3)=Class'VehicleClassesASOld.VehicleASOld'
+}

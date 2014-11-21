@@ -1,0 +1,1 @@
+class JetpackMediumImperial extends JetpackMedium;

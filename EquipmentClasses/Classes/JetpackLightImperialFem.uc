@@ -1,0 +1,1 @@
+class JetpackLightImperialFem extends JetpackLight;

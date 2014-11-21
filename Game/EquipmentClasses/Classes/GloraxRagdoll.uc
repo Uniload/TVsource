@@ -1,0 +1,1 @@
+class GloraxRagdoll extends HavokRagdoll;

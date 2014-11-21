@@ -1,0 +1,1 @@
+class ProjectileBlaster extends Gameplay.BlasterProjectile;

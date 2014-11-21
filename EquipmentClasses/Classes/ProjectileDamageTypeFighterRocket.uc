@@ -1,0 +1,1 @@
+class ProjectileDamageTypeFighterRocket extends ProjectileDamageTypeDefault;

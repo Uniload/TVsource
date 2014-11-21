@@ -1,0 +1,1 @@
+class CombatRoleLight extends Gameplay.CombatRole;

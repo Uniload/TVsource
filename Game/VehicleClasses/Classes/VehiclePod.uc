@@ -1,0 +1,1 @@
+class VehiclePod extends Gameplay.Pod;

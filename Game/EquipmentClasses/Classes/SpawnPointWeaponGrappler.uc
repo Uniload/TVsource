@@ -1,0 +1,1 @@
+class SpawnPointWeaponGrappler extends SpawnPointWeapon;

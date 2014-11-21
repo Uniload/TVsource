@@ -1,0 +1,1 @@
+class ProjectileChaingunCutscene extends ProjectileChaingun;

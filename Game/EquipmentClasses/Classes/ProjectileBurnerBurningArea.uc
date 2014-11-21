@@ -1,0 +1,1 @@
+class ProjectileBurnerBurningArea extends Gameplay.BurningArea;

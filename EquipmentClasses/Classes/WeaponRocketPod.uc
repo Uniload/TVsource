@@ -1,0 +1,1 @@
+class WeaponRocketPod extends Gameplay.RocketPod;

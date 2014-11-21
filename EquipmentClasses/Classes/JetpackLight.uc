@@ -1,0 +1,1 @@
+class JetpackLight extends JetpackDefault;

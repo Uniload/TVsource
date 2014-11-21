@@ -1,0 +1,1 @@
+class DamageTypeMovement extends Gameplay.MovementCollisionDamageType;

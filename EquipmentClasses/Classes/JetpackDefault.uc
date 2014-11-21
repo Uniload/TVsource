@@ -1,0 +1,1 @@
+class JetpackDefault extends Gameplay.jetpack;

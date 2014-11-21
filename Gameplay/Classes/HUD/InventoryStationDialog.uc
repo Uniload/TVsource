@@ -1,0 +1,1 @@
+class InventoryStationDialog extends UWindow.UWindowDialogClientWindow;

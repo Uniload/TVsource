@@ -1,0 +1,1 @@
+class BaseInventoryStationTriple extends BaseInventoryStation;

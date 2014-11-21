@@ -1,0 +1,1 @@
+class PodHavokData extends VehicleHavokData;

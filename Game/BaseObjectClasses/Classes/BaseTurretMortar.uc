@@ -1,0 +1,1 @@
+class BaseTurretMortar extends BaseTurret;

@@ -1,0 +1,1 @@
+class BaseEnergyBarrier1536 extends BaseEnergyBarrier;

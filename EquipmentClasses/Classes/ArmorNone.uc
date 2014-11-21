@@ -1,0 +1,1 @@
+class ArmorNone extends Gameplay.Armor;

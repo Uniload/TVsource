@@ -1,0 +1,1 @@
+class ProjectileDamageTypeBuckler extends ProjectileDamageTypeDefault;

@@ -1,0 +1,1 @@
+class RagdollKarmaParamsLight extends RagdollKarmaParamsDefault;

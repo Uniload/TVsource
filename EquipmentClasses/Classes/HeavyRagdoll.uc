@@ -1,0 +1,1 @@
+class HeavyRagdoll extends HavokRagdoll;

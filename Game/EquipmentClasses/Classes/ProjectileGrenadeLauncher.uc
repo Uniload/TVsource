@@ -1,0 +1,1 @@
+class ProjectileGrenadeLauncher extends Gameplay.GrenadeLauncherProjectile;

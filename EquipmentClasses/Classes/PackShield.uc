@@ -1,0 +1,1 @@
+class PackShield extends Gameplay.ShieldPack;

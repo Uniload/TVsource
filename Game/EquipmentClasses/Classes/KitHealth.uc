@@ -1,0 +1,1 @@
+class KitHealth extends Gameplay.HealthKit;

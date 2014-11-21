@@ -1,0 +1,1 @@
+class MediumRagdoll extends HavokRagdoll;

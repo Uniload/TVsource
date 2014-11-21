@@ -1,0 +1,1 @@
+class WeaponEnergyBladeNinja extends WeaponEnergyBlade;

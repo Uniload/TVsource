@@ -1,0 +1,1 @@
+class CombatRoleMedium extends Gameplay.CombatRole;

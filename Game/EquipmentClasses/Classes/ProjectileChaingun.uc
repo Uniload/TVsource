@@ -1,0 +1,1 @@
+class ProjectileChaingun extends Gameplay.ChaingunProjectile;

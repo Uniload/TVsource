@@ -1,0 +1,1 @@
+class ProjectileBurnerTurretBurningArea extends ProjectileBurnerBurningArea;

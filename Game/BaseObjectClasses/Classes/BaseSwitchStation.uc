@@ -1,0 +1,1 @@
+class BaseSwitchStation extends Gameplay.SwitchStation;

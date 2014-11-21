@@ -1,0 +1,1 @@
+class ProjectileDamageTypeGrenadeLauncher extends ProjectileDamageTypeExplosion;

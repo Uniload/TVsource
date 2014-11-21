@@ -1,0 +1,1 @@
+class SpawnPointEquipment extends Gameplay.EquipmentSpawnPoint;

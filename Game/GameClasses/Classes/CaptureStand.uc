@@ -1,0 +1,1 @@
+class CaptureStand extends Gameplay.MPFlagCapturePoint;

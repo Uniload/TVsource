@@ -1,0 +1,1 @@
+class SpawnPointWeaponGrenadeLauncher extends SpawnPointWeapon;

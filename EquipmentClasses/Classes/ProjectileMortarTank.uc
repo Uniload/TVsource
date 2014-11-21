@@ -1,0 +1,1 @@
+class ProjectileMortarTank extends ProjectileMortar;

@@ -1,0 +1,1 @@
+class combatroleM extends EquipmentClasses.CombatRoleMedium;

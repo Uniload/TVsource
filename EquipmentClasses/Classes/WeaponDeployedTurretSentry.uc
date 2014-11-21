@@ -1,0 +1,1 @@
+class WeaponDeployedTurretSentry extends Gameplay.DeployedTurretSentryWeapon;

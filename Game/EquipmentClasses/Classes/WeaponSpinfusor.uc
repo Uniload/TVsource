@@ -1,0 +1,1 @@
+class WeaponSpinfusor extends Gameplay.Spinfusor;

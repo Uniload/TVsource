@@ -1,0 +1,1 @@
+class ConsumableHealth extends Gameplay.HealthKitConsumable;

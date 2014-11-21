@@ -1,0 +1,1 @@
+class JetpackMedium extends JetpackDefault;

@@ -1,0 +1,1 @@
+class SpawnPointWeaponBuckler extends SpawnPointWeapon;

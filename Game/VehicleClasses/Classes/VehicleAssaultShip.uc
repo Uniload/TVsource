@@ -1,0 +1,1 @@
+class VehicleAssaultShip extends Gameplay.AssaultShip;

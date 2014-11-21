@@ -1,0 +1,1 @@
+class BaseDeployableSpawnRepairer extends BaseDeployableSpawn;

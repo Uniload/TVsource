@@ -1,0 +1,1 @@
+class BaseInfoDefault extends Gameplay.BaseInfo;

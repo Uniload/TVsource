@@ -1,0 +1,1 @@
+class CombatRoleHeavy extends Gameplay.CombatRole;

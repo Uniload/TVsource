@@ -1,0 +1,1 @@
+class EnergyDrain extends CharacterState;

@@ -1,0 +1,1 @@
+class ProjectileDamageTypeMortar extends ProjectileDamageTypeExplosion;

@@ -1,0 +1,1 @@
+class BaseAccessTerminal extends Gameplay.AccessTerminal;

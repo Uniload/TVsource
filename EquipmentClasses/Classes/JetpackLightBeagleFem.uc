@@ -1,0 +1,1 @@
+class JetpackLightBeagleFem extends JetpackLight;

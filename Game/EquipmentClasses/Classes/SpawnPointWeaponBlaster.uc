@@ -1,0 +1,1 @@
+class SpawnPointWeaponBlaster extends SpawnPointWeapon;

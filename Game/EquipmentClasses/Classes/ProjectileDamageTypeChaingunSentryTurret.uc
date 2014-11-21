@@ -1,0 +1,1 @@
+class ProjectileDamageTypeChaingunSentryTurret extends ProjectileDamageTypeChaingun;

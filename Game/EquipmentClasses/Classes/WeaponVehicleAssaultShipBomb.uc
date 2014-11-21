@@ -1,0 +1,1 @@
+class WeaponVehicleAssaultShipBomb extends Gameplay.AssaultShipWeapon;

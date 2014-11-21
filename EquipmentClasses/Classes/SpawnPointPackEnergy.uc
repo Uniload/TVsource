@@ -1,0 +1,1 @@
+class SpawnPointPackEnergy extends SpawnPointPack;

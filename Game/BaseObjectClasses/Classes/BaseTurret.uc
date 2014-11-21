@@ -1,0 +1,1 @@
+class BaseTurret extends Gameplay.Turret;

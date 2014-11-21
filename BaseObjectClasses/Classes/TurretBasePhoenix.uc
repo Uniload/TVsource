@@ -1,0 +1,1 @@
+class TurretBasePhoenix extends StaticMeshRemovable;

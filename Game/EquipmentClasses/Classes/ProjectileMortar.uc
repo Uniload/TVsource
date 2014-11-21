@@ -1,0 +1,1 @@
+class ProjectileMortar extends Gameplay.MortarProjectile;

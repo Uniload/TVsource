@@ -1,0 +1,1 @@
+class RagdollKarmaParams extends RagdollParameters; 

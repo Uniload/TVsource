@@ -1,0 +1,1 @@
+class BaseTurretAntiAir extends BaseTurret;

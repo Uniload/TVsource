@@ -1,0 +1,6 @@
+
+
+defaultproperties
+{
+     bAlwaysTick=True
+}

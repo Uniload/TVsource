@@ -1,0 +1,1 @@
+class BaseTurretBurner extends BaseTurret;

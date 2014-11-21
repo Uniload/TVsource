@@ -1,0 +1,1 @@
+class WeaponVehicleFighterRocket extends Gameplay.PodWeapon;

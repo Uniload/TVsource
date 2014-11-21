@@ -1,0 +1,1 @@
+class BaseInventoryStationQuad extends BaseInventoryStation;

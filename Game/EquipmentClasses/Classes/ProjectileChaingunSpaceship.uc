@@ -1,0 +1,1 @@
+class ProjectileChaingunSpaceship extends ProjectileChaingun;

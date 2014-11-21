@@ -1,0 +1,1 @@
+class Pain extends CharacterState;

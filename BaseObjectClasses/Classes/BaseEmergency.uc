@@ -1,0 +1,1 @@
+class BaseEmergency extends Gameplay.EmergencyStation;

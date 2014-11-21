@@ -1,0 +1,1 @@
+class ScreenWeak extends ScreenDefault;

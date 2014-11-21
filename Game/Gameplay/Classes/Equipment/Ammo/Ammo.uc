@@ -1,0 +1,1 @@
+class Ammo extends Equipment;

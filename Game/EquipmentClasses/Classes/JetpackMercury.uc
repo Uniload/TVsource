@@ -1,0 +1,1 @@
+class JetpackMercury extends JetpackLight;

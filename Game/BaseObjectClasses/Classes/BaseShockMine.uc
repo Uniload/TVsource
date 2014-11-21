@@ -1,0 +1,1 @@
+class BaseShockMine extends Gameplay.ShockMine;

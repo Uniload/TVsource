@@ -1,0 +1,1 @@
+class ProjectileGlorax extends Gameplay.ArcProjectile;

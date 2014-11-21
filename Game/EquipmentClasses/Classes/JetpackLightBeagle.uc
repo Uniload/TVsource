@@ -1,0 +1,1 @@
+class JetpackLightBeagle extends JetpackLight;
