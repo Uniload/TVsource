@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: IGSoundEffectsSubsystem.NormalSoundEffectSpecification</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/igsoundeffectssubsystem-overview.html">Package</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/normalsoundeffectspecification.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#NormalSoundEffectSpecification">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_igsoundeffectssubsystem/actorbank.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_igsoundeffectssubsystem/normalsoundref.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_igsoundeffectssubsystem/normalsoundeffectspecification.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../igsoundeffectssubsystem/igsoundeffectssubsystem-overview.html">IGSoundEffectsSubsystem</a>.<a href="../igsoundeffectssubsystem/normalsoundeffectspecification.html">NormalSoundEffectSpecification</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../igsoundeffectssubsystem/normalsoundeffectspecification.html" class="source">NormalSoundEffectSpecification</a></span> extends <span class="source_type"><a href="../igsoundeffectssubsystem/soundeffectspecification.html" class="source">SoundEffectSpecification</a></span>
+<a name="2"></a>    within <span class="source_type"><a href="../igsoundeffectssubsystem/soundeffectssubsystem.html" class="source">SoundEffectsSubsystem</a></span>
+<a name="3"></a>    PerObjectConfig;
+<a name="4"></a>
+<a name="5"></a><span class="source_comment">// ============================================================================
+</span><a name="6"></a><span class="source_comment">// NormalSoundEffectSpecification
+</span><a name="7"></a><span class="source_comment">//  
+</span><a name="8"></a><span class="source_comment">// A NormalSoundEffectSpecification is an SoundEffectSpecification that handles creation
+</span><a name="9"></a><span class="source_comment">// of normal unreal USound objects, and the data the sound designer needs to edit for their creation.
+</span><a name="10"></a><span class="source_comment">//
+</span><a name="11"></a><span class="source_comment">// ============================================================================
+</span><a name="12"></a>
+<a name="13"></a><span class="source_comment">// FlaggedSound is a struct that encapsulates a USound with a flag the sound plays for.  The flag is 
+</span><a name="14"></a><span class="source_comment">// set to the sound designer's preference to match the flag that a material would have.  When a sound
+</span><a name="15"></a><span class="source_comment">// is requested to be played based on a material, the FlaggedSound with the matching flag will play.
+</span><a name="16"></a><span class="source_comment">// If set to 0, the sound will play if no other flagged sound matches material wise, or if no flag for
+</span><a name="17"></a><span class="source_comment">// the material will play.  
+</span><a name="18"></a>struct <span class="source_type"><a href="../igsoundeffectssubsystem/normalsoundeffectspecification.html#FlaggedSound" class="source">FlaggedSound</a></span>
+<a name="19"></a>{
+<a name="20"></a>    var config <span class="source_type">Sound</span> SoundToPlay;
+<a name="21"></a>    var config <span class="source_type">int</span>   Flag;
+<a name="22"></a>};
+<a name="23"></a><span class="source_comment">// As will all SoundEffectSpecifications, the sound is picked randomly from this list.
+</span><a name="24"></a>var config array&lt;<span class="source_type"><a href="../igsoundeffectssubsystem/normalsoundeffectspecification.html#FlaggedSound" class="source">FlaggedSound</a></span>&gt; FlaggedSounds;
+<a name="25"></a>
+<a name="26"></a><span class="source_comment">// This overriden hook function sets up the flags to be used for the engine call to PlaySound
+</span><a name="27"></a>simulated protected event SetNativeFlagsHook()
+<a name="28"></a>{
+<a name="29"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="30"></a>    if (IsSeamlessLoop)
+<a name="31"></a>    {
+<a name="32"></a>        NativeFlags += SF_Looping;
+<a name="33"></a>
+<a name="34"></a><span class="source_comment">//        if (Outer.bDebugSounds)
+</span><a name="35"></a><span class="source_comment">//			Log("[SeamlessLoop] "$Self);
+</span><a name="36"></a>        <span class="source_comment">// Set native looping on all samples
+</span><a name="37"></a>        for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; FlaggedSounds.Length; <span class="source_type">i</span>++)
+<a name="38"></a>        {
+<a name="39"></a>            <span class="source_comment">//Log(" - [SeamlessLoop] "$FlaggedSounds[i].SoundToPlay);
+</span><a name="40"></a>            if (FlaggedSounds[<span class="source_type">i</span>].SoundToPlay != None)
+<a name="41"></a>                <span class="source_type">class</span><span class="source_name">'SoundEffectsSubsystem'</span>.static.SetNativeLooping (XLevel, FlaggedSounds[<span class="source_type">i</span>].SoundToPlay);
+<a name="42"></a>        }
+<a name="43"></a>    }
+<a name="44"></a>}
+<a name="45"></a>
+<a name="46"></a><span class="source_comment">// Initialize hook...
+</span><a name="47"></a>simulated protected event InitHook()
+<a name="48"></a>{
+<a name="49"></a>    <span class="source_comment">// Sanity checks
+</span><a name="50"></a>    if ((NoRepeat || NeverRepeat) && !(FlaggedSounds.Length &gt; <span class="source_int">1</span>))
+<a name="51"></a>    {
+<a name="52"></a>      Log (<span class="source_string">"[SOUND] WARNING!: Schema &lt;"</span>$<span class="source_string">":"</span>$<span class="source_type">name</span>$<span class="source_string">"&gt; has NoRepeat/NeverRepeat but only has 1 sound!"</span>);
+<a name="53"></a>        NoRepeat = false;
+<a name="54"></a>        NeverRepeat = false;
+<a name="55"></a>    }
+<a name="56"></a>}
+<a name="57"></a>
+<a name="58"></a><span class="source_comment">// Add all the flagged sounds to the soundsets array from a normal SoundEffectSpecification.  Note, sounds are added
+</span><a name="59"></a><span class="source_comment">// to a soundset based on their flag, which is also their index into the soundsets array.
+</span><a name="60"></a>simulated protected event PopulateSoundsHook()
+<a name="61"></a>{
+<a name="62"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="63"></a>    local <span class="source_type">int</span> iSetToInsert;
+<a name="64"></a>    local <span class="source_type"><a href="../igsoundeffectssubsystem/normalsoundref.html" class="source">NormalSoundRef</a></span> newNormalRef;
+<a name="65"></a>
+<a name="66"></a>    if (FlaggedSounds.Length == <span class="source_int">0</span>)
+<a name="67"></a>    {
+<a name="68"></a>        assertWithDescription(false, <span class="source_string">"NormalSoundEffectSpecification "</span>$<span class="source_type">Name</span>$<span class="source_string">" has no FlaggedSounds specified. This will cause a crash if ignored."</span>);
+<a name="69"></a>        assert(false);
+<a name="70"></a>    }
+<a name="71"></a>
+<a name="72"></a>    for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; FlaggedSounds.Length; <span class="source_type">i</span>++)
+<a name="73"></a>    {
+<a name="74"></a>        <span class="source_comment">// glenn: commented out because it spams too much
+</span><a name="75"></a>    
+<a name="76"></a>        <span class="source_comment">//assertWithDescription(FlaggedSounds[i].SoundToPlay != None, "The sound at index "$i$" in SoundEffectSpecification '"$name$"' was not found.");
+</span><a name="77"></a>
+<a name="78"></a>        iSetToInsert = FlaggedSounds[<span class="source_type">i</span>].Flag;
+<a name="79"></a>
+<a name="80"></a>        <span class="source_comment">// Make sure the SoundSets array is long enough to at least hold the sounds for this flag 
+</span><a name="81"></a>        if ( SoundSets.Length &lt;= iSetToInsert )
+<a name="82"></a>            SoundSets.Length = iSetToInsert + <span class="source_int">1</span>;
+<a name="83"></a>
+<a name="84"></a>        <span class="source_comment">// Create a new sound ref if necessary
+</span><a name="85"></a>        if ( SoundSets[iSetToInsert] == None ) 
+<a name="86"></a>            SoundSets[iSetToInsert] = new <span class="source_type">class</span><span class="source_name">'SoundSet'</span>;
+<a name="87"></a>
+<a name="88"></a>        newNormalRef = new <span class="source_type">class</span><span class="source_name">'NormalSoundRef'</span>;
+<a name="89"></a>        newNormalRef.<span class="source_type">Sound</span> = FlaggedSounds[<span class="source_type">i</span>].SoundToPlay;
+<a name="90"></a>
+<a name="91"></a>        SoundSets[iSetToInsert].AddSoundRef (newNormalRef);
+<a name="92"></a>    }
+<a name="93"></a>}
+<a name="94"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/igsoundeffectssubsystem-overview.html">Package</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/normalsoundeffectspecification.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#NormalSoundEffectSpecification">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_igsoundeffectssubsystem/actorbank.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_igsoundeffectssubsystem/normalsoundref.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:12.000 - Creation time: st 23.5.2018 00:10:46.103 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

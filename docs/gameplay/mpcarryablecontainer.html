@@ -1,0 +1,864 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.MPCarryableContainer</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/mpcarryablecontainer.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MPCarryableContainer">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/mpcarryable.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mpcarryablemessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/mpcarryablecontainer.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.MPCarryableContainer</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/mparea.html">MPArea</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpcarryablecontainer.html">MPCarryableContainer</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDepositEffect" name="bDepositEffect" title="go to the details">bDepositEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFull" name="bFull" title="go to the details">bFull</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFullEffect" name="bFullEffect" title="go to the details">bFullEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInactiveEffect" name="bInactiveEffect" title="go to the details">bInactiveEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalDepositEffect" name="bLocalDepositEffect" title="go to the details">bLocalDepositEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalFullEffect" name="bLocalFullEffect" title="go to the details">bLocalFullEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalInactiveEffect" name="bLocalInactiveEffect" title="go to the details">bLocalInactiveEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalWithdrawEffect" name="bLocalWithdrawEffect" title="go to the details">bLocalWithdrawEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bWithdrawEffect" name="bWithdrawEffect" title="go to the details">bWithdrawEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/shader.html">Shader</a></td><td width="66%"><a href="#_fuelShader" name="fuelShader" title="go to the details">fuelShader</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/controllabletexturepanner.html">ControllableTexturePanner</a></td><td width="66%"><a href="#_fuelTexPanner" name="fuelTexPanner" title="go to the details">fuelTexPanner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/shader.html">Shader</a></td><td width="66%"><a href="#_innerFuelShader" name="innerFuelShader" title="go to the details">innerFuelShader</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/controllabletexturepanner.html">ControllableTexturePanner</a></td><td width="66%"><a href="#_innerFuelTexPanner" name="innerFuelTexPanner" title="go to the details">innerFuelTexPanner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_lastWithdrawAnnouncementTime" name="lastWithdrawAnnouncementTime" title="go to the details">lastWithdrawAnnouncementTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/mpcarryable.html">MPCarryable</a>&gt;</td><td width="66%"><a href="#_storedCarryables" name="storedCarryables" title="go to the details">storedCarryables</a></td></tr>
+<tr><th colspan="2" class="small">EffectEvents</th></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_activatedEffectEvent" name="activatedEffectEvent" title="go to the details">activatedEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_activeEffectEvent" name="activeEffectEvent" title="go to the details">activeEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_deactivatedEffectEvent" name="deactivatedEffectEvent" title="go to the details">deactivatedEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_depositedEffectEvent" name="depositedEffectEvent" title="go to the details">depositedEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_fullEffectEvent" name="fullEffectEvent" title="go to the details">fullEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_withdrawnEffectEvent" name="withdrawnEffectEvent" title="go to the details">withdrawnEffectEvent</a></td></tr>
+<tr><th colspan="2" class="small">LocalMessage</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/localmessage.html">Engine.Localmessage</a>&gt;</td><td width="66%"><a href="#_ContainerMessageClass" name="ContainerMessageClass" title="go to the details">ContainerMessageClass</a></td></tr>
+<tr><th colspan="2" class="small">MPCarryableContainer</th></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_activatedAnimation" name="activatedAnimation" title="go to the details">activatedAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAcceptThrownCarryables" name="bAcceptThrownCarryables" title="go to the details">bAcceptThrownCarryables</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/mpcarryable.html">MPCarryable</a>&gt;</td><td width="66%"><a href="#_carryableClass" name="carryableClass" title="go to the details">carryableClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_carryablesPerTeamPoint" name="carryablesPerTeamPoint" title="go to the details">carryablesPerTeamPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_deactivatedAnimation" name="deactivatedAnimation" title="go to the details">deactivatedAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_depositedAnimation" name="depositedAnimation" title="go to the details">depositedAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_fuelMaterialIndex" name="fuelMaterialIndex" title="go to the details">fuelMaterialIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_fullAnimation" name="fullAnimation" title="go to the details">fullAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_halfFullWithdrawScale" name="halfFullWithdrawScale" title="go to the details">halfFullWithdrawScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_innerFuelMaterialIndex" name="innerFuelMaterialIndex" title="go to the details">innerFuelMaterialIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_maxCarryables" name="maxCarryables" title="go to the details">maxCarryables</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_nearlyEmptyWithdrawScale" name="nearlyEmptyWithdrawScale" title="go to the details">nearlyEmptyWithdrawScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_nearlyFullWithdrawScale" name="nearlyFullWithdrawScale" title="go to the details">nearlyFullWithdrawScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numCarryables" name="numCarryables" title="go to the details">numCarryables</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numWithdrawnPerSpawn" name="numWithdrawnPerSpawn" title="go to the details">numWithdrawnPerSpawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_timeBetweenWithdrawals" name="timeBetweenWithdrawals" title="go to the details">timeBetweenWithdrawals</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_timeBetweenWithdrawAnnouncements" name="timeBetweenWithdrawAnnouncements" title="go to the details">timeBetweenWithdrawAnnouncements</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_withdrawnAnimation" name="withdrawnAnimation" title="go to the details">withdrawnAnimation</a></td></tr>
+<tr><th colspan="2" class="small">Stats</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/stat.html">Stat</a>&gt;</td><td width="66%"><a href="#_depositStat" name="depositStat" title="go to the details">depositStat</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mparea.html#areaOffset">areaOffset</a>, <a href="../gameplay/mparea.html#areaTrigger">areaTrigger</a>, <a href="../gameplay/mparea.html#areaTriggerClass">areaTriggerClass</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mpactor.html#attackRadius">attackRadius</a>, <a href="../gameplay/mpactor.html#attackStat">attackStat</a>, <a href="../gameplay/mpactor.html#bAllowSpectators">bAllowSpectators</a>, <a href="../gameplay/mpactor.html#defendRadius">defendRadius</a>, <a href="../gameplay/mpactor.html#defendStat">defendStat</a>, <a href="../gameplay/mpactor.html#idleAnim">idleAnim</a>, <a href="../gameplay/mpactor.html#localizedName">localizedName</a>, <a href="../gameplay/mpactor.html#primaryEnemyObjectiveDesc">primaryEnemyObjectiveDesc</a>, <a href="../gameplay/mpactor.html#primaryFriendlyObjectiveDesc">primaryFriendlyObjectiveDesc</a>, <a href="../gameplay/mpactor.html#primaryNeutralObjectiveDesc">primaryNeutralObjectiveDesc</a>, <a href="../gameplay/mpactor.html#secondaryMessageClass">secondaryMessageClass</a>, <a href="../gameplay/mpactor.html#spectatorList">spectatorList</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EContainerObjectiveState" name="EContainerObjectiveState" title="go to the details">EContainerObjectiveState</a><br /><span class="small">COS_Empty,
+COS_HalfFull,
+COS_Full</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_addCarryable-" name="addCarryable" title="go to the details">addCarryable</a> (<a href="../gameplay/mpcarryable.html">MPCarryable</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_addCarryable-Inactive" name="addCarryable" title="go to the details">addCarryable</a> (<a href="../gameplay/mpcarryable.html">MPCarryable</a> c))<br /><span class="function_state">Inactive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_addMetaCarryable-" name="addMetaCarryable" title="go to the details">addMetaCarryable</a> (<a href="../gameplay/mpmetacarryable.html">MPMetaCarryable</a> meta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_addNewCarryables-" name="addNewCarryables" title="go to the details">addNewCarryables</a> (int numToAdd))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_allowSpawn-" name="allowSpawn" title="go to the details">allowSpawn</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Active" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Full" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Full</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Inactive" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Inactive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_buildControllableSkin-" name="buildControllableSkin" title="go to the details">buildControllableSkin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_calcFuelPannerScale-" name="calcFuelPannerScale" title="go to the details">calcFuelPannerScale</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_cleanup-" name="cleanup" title="go to the details">cleanup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_deposit-" name="deposit" title="go to the details">deposit</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_deposit-Full" name="deposit" title="go to the details">deposit</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Full</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Full" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Full</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Inactive" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Inactive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_evaluateContents-" name="evaluateContents" title="go to the details">evaluateContents</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_evaluateObjectiveState-" name="evaluateObjectiveState" title="go to the details">evaluateObjectiveState</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_evaluatePercentageContents-" name="evaluatePercentageContents" title="go to the details">evaluatePercentageContents</a> (int numAdded))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onAreaEntered-" name="onAreaEntered" title="go to the details">onAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onAreaEntered-Active" name="onAreaEntered" title="go to the details">onAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onAreaExited-" name="onAreaExited" title="go to the details">onAreaExited</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onAreaExited-Active" name="onAreaExited" title="go to the details">onAreaExited</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onAreaTick-" name="onAreaTick" title="go to the details">onAreaTick</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onAreaTick-Active" name="onAreaTick" title="go to the details">onAreaTick</a> ()))<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onPlayerSpawned-" name="onPlayerSpawned" title="go to the details">onPlayerSpawned</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetReceive-" name="PostNetReceive" title="go to the details">PostNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_registerStats-" name="registerStats" title="go to the details">registerStats</a> (<a href="../gameplay/stattracker.html">StatTracker</a> tracker))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/mpcarryable.html">MPCarryable</a>&nbsp;</td><td><a href="#_removeCarryable-" name="removeCarryable" title="go to the details">removeCarryable</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_reset-" name="reset" title="go to the details">reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-Active" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateContainerEffects-" name="updateContainerEffects" title="go to the details">updateContainerEffects</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_withdraw-" name="withdraw" title="go to the details">withdraw</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_withdraw-Full" name="withdraw" title="go to the details">withdraw</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Full</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mparea.html#cleanup">cleanup</a>, <a href="../gameplay/mparea.html#OnAreaEntered">OnAreaEntered</a>, <a href="../gameplay/mparea.html#OnAreaEnteredByActor">OnAreaEnteredByActor</a>, <a href="../gameplay/mparea.html#OnAreaExited">OnAreaExited</a>, <a href="../gameplay/mparea.html#OnAreaExitedByActor">OnAreaExitedByActor</a>, <a href="../gameplay/mparea.html#OnAreaTick">OnAreaTick</a>, <a href="../gameplay/mparea.html#PostBeginPlay">PostBeginPlay</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mpactor.html#addDefaultObjectives">addDefaultObjectives</a>, <a href="../gameplay/mpactor.html#addEnemyObjective">addEnemyObjective</a>, <a href="../gameplay/mpactor.html#addFriendlyObjective">addFriendlyObjective</a>, <a href="../gameplay/mpactor.html#addNeutralObjective">addNeutralObjective</a>, <a href="../gameplay/mpactor.html#addSpectator">addSpectator</a>, <a href="../gameplay/mpactor.html#awardStat">awardStat</a>, <a href="../gameplay/mpactor.html#cleanup">cleanup</a>, <a href="../gameplay/mpactor.html#contractLattice">contractLattice</a>, <a href="../gameplay/mpactor.html#evaluateObjectiveState">evaluateObjectiveState</a>, <a href="../gameplay/mpactor.html#expandLattice">expandLattice</a>, <a href="../gameplay/mpactor.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/mpactor.html#getNearest">getNearest</a>, <a href="../gameplay/mpactor.html#getPersonalObjectiveName">getPersonalObjectiveName</a>, <a href="../gameplay/mpactor.html#getUniqueObjectiveName">getUniqueObjectiveName</a>, <a href="../gameplay/mpactor.html#getViewTarget">getViewTarget</a>, <a href="../gameplay/mpactor.html#incrementStatAttempt">incrementStatAttempt</a>, <a href="../gameplay/mpactor.html#onAvailableToLattice">onAvailableToLattice</a>, <a href="../gameplay/mpactor.html#onPlayerKilled">onPlayerKilled</a>, <a href="../gameplay/mpactor.html#onUnavailableToLattice">onUnavailableToLattice</a>, <a href="../gameplay/mpactor.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/mpactor.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/mpactor.html#registerStats">registerStats</a>, <a href="../gameplay/mpactor.html#removeDefaultObjectives">removeDefaultObjectives</a>, <a href="../gameplay/mpactor.html#removePersonalObjective">removePersonalObjective</a>, <a href="../gameplay/mpactor.html#removeSpectator">removeSpectator</a>, <a href="../gameplay/mpactor.html#resetSpectatorViewTarget">resetSpectatorViewTarget</a>, <a href="../gameplay/mpactor.html#scoreIndividual">scoreIndividual</a>, <a href="../gameplay/mpactor.html#scoreTeam">scoreTeam</a>, <a href="../gameplay/mpactor.html#setObjectiveState">setObjectiveState</a>, <a href="../gameplay/mpactor.html#setObjectiveTally">setObjectiveTally</a>, <a href="../gameplay/mpactor.html#setPersonalObjective">setPersonalObjective</a>, <a href="../gameplay/mpactor.html#setSpectatorViewTarget">setSpectatorViewTarget</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Active <a href="../Source_gameplay/mpcarryablecontainer.html#531" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">auto simulated state</span> Active <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Active">BeginState</a>, <a href="#_onAreaEntered+Active">onAreaEntered</a>, <a href="#_onAreaExited+Active">onAreaExited</a>, <a href="#_onAreaTick+Active">onAreaTick</a>, <a href="#_Tick+Active">Tick</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Full <a href="../Source_gameplay/mpcarryablecontainer.html#710" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Full <span class="us_keyw">extends</span> Inactive</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Full">BeginState</a>, <a href="#_deposit+Full">deposit</a>, <a href="#_EndState+Full">EndState</a>, <a href="#_withdraw+Full">withdraw</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Inactive <a href="../Source_gameplay/mpcarryablecontainer.html#683" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Inactive <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_addCarryable+Inactive">addCarryable</a>, <a href="#_BeginState+Inactive">BeginState</a>, <a href="#_EndState+Inactive">EndState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Paused <a href="../Source_gameplay/mpcarryablecontainer.html#753" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Paused <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bDepositEffect" class="hidden"></a>bDepositEffect <a href="../Source_gameplay/mpcarryablecontainer.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDepositEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFull" class="hidden"></a>bFull <a href="../Source_gameplay/mpcarryablecontainer.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bFull;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFullEffect" class="hidden"></a>bFullEffect <a href="../Source_gameplay/mpcarryablecontainer.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bFullEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bInactiveEffect" class="hidden"></a>bInactiveEffect <a href="../Source_gameplay/mpcarryablecontainer.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bInactiveEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalDepositEffect" class="hidden"></a>bLocalDepositEffect <a href="../Source_gameplay/mpcarryablecontainer.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalDepositEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalFullEffect" class="hidden"></a>bLocalFullEffect <a href="../Source_gameplay/mpcarryablecontainer.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalFullEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalInactiveEffect" class="hidden"></a>bLocalInactiveEffect <a href="../Source_gameplay/mpcarryablecontainer.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalInactiveEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalWithdrawEffect" class="hidden"></a>bLocalWithdrawEffect <a href="../Source_gameplay/mpcarryablecontainer.html#56" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalWithdrawEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bWithdrawEffect" class="hidden"></a>bWithdrawEffect <a href="../Source_gameplay/mpcarryablecontainer.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bWithdrawEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fuelShader" class="hidden"></a>fuelShader <a href="../Source_gameplay/mpcarryablecontainer.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span> fuelShader;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fuelTexPanner" class="hidden"></a>fuelTexPanner <a href="../Source_gameplay/mpcarryablecontainer.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/controllabletexturepanner.html" class="source">ControllableTexturePanner</a></span> fuelTexPanner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_innerFuelShader" class="hidden"></a>innerFuelShader <a href="../Source_gameplay/mpcarryablecontainer.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span> innerFuelShader;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_innerFuelTexPanner" class="hidden"></a>innerFuelTexPanner <a href="../Source_gameplay/mpcarryablecontainer.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/controllabletexturepanner.html" class="source">ControllableTexturePanner</a></span> innerFuelTexPanner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastWithdrawAnnouncementTime" class="hidden"></a>lastWithdrawAnnouncementTime <a href="../Source_gameplay/mpcarryablecontainer.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> lastWithdrawAnnouncementTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_storedCarryables" class="hidden"></a>storedCarryables <a href="../Source_gameplay/mpcarryablecontainer.html#44" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span>&gt; storedCarryables;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">EffectEvents</h3>
+<h4><a name="_activatedEffectEvent" class="hidden"></a>activatedEffectEvent <a href="../Source_gameplay/mpcarryablecontainer.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> activatedEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once when the container becomes active
+</blockquote>
+<hr class="small" />
+<h4><a name="_activeEffectEvent" class="hidden"></a>activeEffectEvent <a href="../Source_gameplay/mpcarryablecontainer.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> activeEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that loops while the container is active
+</blockquote>
+<hr class="small" />
+<h4><a name="_deactivatedEffectEvent" class="hidden"></a>deactivatedEffectEvent <a href="../Source_gameplay/mpcarryablecontainer.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> deactivatedEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once when the container becomes inactive
+</blockquote>
+<hr class="small" />
+<h4><a name="_depositedEffectEvent" class="hidden"></a>depositedEffectEvent <a href="../Source_gameplay/mpcarryablecontainer.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> depositedEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once when the container accepts a deposit
+</blockquote>
+<hr class="small" />
+<h4><a name="_fullEffectEvent" class="hidden"></a>fullEffectEvent <a href="../Source_gameplay/mpcarryablecontainer.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> fullEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once when the container becomes full
+</blockquote>
+<hr class="small" />
+<h4><a name="_withdrawnEffectEvent" class="hidden"></a>withdrawnEffectEvent <a href="../Source_gameplay/mpcarryablecontainer.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> withdrawnEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once when the container accepts a withdrawal
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">LocalMessage</h3>
+<h4><a name="_ContainerMessageClass" class="hidden"></a>ContainerMessageClass <a href="../Source_gameplay/mpcarryablecontainer.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/localmessage.html" class="source">Localmessage</a></span>&gt; ContainerMessageClass;</div>
+<blockquote class="comment">
+The class used for playing effects and displaying messages
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">MPCarryableContainer</h3>
+<h4><a name="_activatedAnimation" class="hidden"></a>activatedAnimation <a href="../Source_gameplay/mpcarryablecontainer.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">Name</span> activatedAnimation;</div>
+<blockquote class="comment">
+The looping animation to play while the container is active
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAcceptThrownCarryables" class="hidden"></a>bAcceptThrownCarryables <a href="../Source_gameplay/mpcarryablecontainer.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">bool</span> bAcceptThrownCarryables;</div>
+<blockquote class="comment">
+Does this container allow carryables to be thrown into it?
+</blockquote>
+<hr class="small" />
+<h4><a name="_carryableClass" class="hidden"></a>carryableClass <a href="../Source_gameplay/mpcarryablecontainer.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span>&gt; carryableClass;</div>
+<blockquote class="comment">
+The class which is stored in this container
+</blockquote>
+<hr class="small" />
+<h4><a name="_carryablesPerTeamPoint" class="hidden"></a>carryablesPerTeamPoint <a href="../Source_gameplay/mpcarryablecontainer.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">int</span> carryablesPerTeamPoint;</div>
+<blockquote class="comment">
+The number of carryables needed to score a team point
+</blockquote>
+<hr class="small" />
+<h4><a name="_deactivatedAnimation" class="hidden"></a>deactivatedAnimation <a href="../Source_gameplay/mpcarryablecontainer.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">Name</span> deactivatedAnimation;</div>
+<blockquote class="comment">
+The animation to play when the container becomes inactive
+</blockquote>
+<hr class="small" />
+<h4><a name="_depositedAnimation" class="hidden"></a>depositedAnimation <a href="../Source_gameplay/mpcarryablecontainer.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">Name</span> depositedAnimation;</div>
+<blockquote class="comment">
+The animation to play when the container accepts a deposit
+</blockquote>
+<hr class="small" />
+<h4><a name="_fuelMaterialIndex" class="hidden"></a>fuelMaterialIndex <a href="../Source_gameplay/mpcarryablecontainer.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">int</span> fuelMaterialIndex;</div>
+<blockquote class="comment">
+The index at which the fuel material resides
+</blockquote>
+<hr class="small" />
+<h4><a name="_fullAnimation" class="hidden"></a>fullAnimation <a href="../Source_gameplay/mpcarryablecontainer.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">Name</span> fullAnimation;</div>
+<blockquote class="comment">
+The animation to play when the container becomes full
+</blockquote>
+<hr class="small" />
+<h4><a name="_halfFullWithdrawScale" class="hidden"></a>halfFullWithdrawScale <a href="../Source_gameplay/mpcarryablecontainer.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">float</span> halfFullWithdrawScale;</div>
+<blockquote class="comment">
+When the container is between 25% and 75% full, time between withdrawals will be scaled by this amount
+</blockquote>
+<hr class="small" />
+<h4><a name="_innerFuelMaterialIndex" class="hidden"></a>innerFuelMaterialIndex <a href="../Source_gameplay/mpcarryablecontainer.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">int</span> innerFuelMaterialIndex;</div>
+<blockquote class="comment">
+The index at which the inner fuel material resides
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxCarryables" class="hidden"></a>maxCarryables <a href="../Source_gameplay/mpcarryablecontainer.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">int</span> maxCarryables;</div>
+<blockquote class="comment">
+The maximum number of carryables this container can hold before becoming full
+</blockquote>
+<hr class="small" />
+<h4><a name="_nearlyEmptyWithdrawScale" class="hidden"></a>nearlyEmptyWithdrawScale <a href="../Source_gameplay/mpcarryablecontainer.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">float</span> nearlyEmptyWithdrawScale;</div>
+<blockquote class="comment">
+When the container is less than 25% full, time between withdrawals will be scaled by this amount
+</blockquote>
+<hr class="small" />
+<h4><a name="_nearlyFullWithdrawScale" class="hidden"></a>nearlyFullWithdrawScale <a href="../Source_gameplay/mpcarryablecontainer.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">float</span> nearlyFullWithdrawScale;</div>
+<blockquote class="comment">
+When the container is more than 75% full, time between withdrawals will be scaled by this amount
+</blockquote>
+<hr class="small" />
+<h4><a name="_numCarryables" class="hidden"></a>numCarryables <a href="../Source_gameplay/mpcarryablecontainer.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">int</span> numCarryables;</div>
+<blockquote class="comment">
+The number of carryables this container starts with
+</blockquote>
+<hr class="small" />
+<h4><a name="_numWithdrawnPerSpawn" class="hidden"></a>numWithdrawnPerSpawn <a href="../Source_gameplay/mpcarryablecontainer.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">int</span> numWithdrawnPerSpawn;</div>
+<blockquote class="comment">
+The number of carryables to withdraw from the container and give to a player each time the player spawns.
+</blockquote>
+<hr class="small" />
+<h4><a name="_timeBetweenWithdrawals" class="hidden"></a>timeBetweenWithdrawals <a href="../Source_gameplay/mpcarryablecontainer.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">float</span> timeBetweenWithdrawals;</div>
+<blockquote class="comment">
+The number of seconds you must wait in between each carryable withdrawal
+</blockquote>
+<hr class="small" />
+<h4><a name="_timeBetweenWithdrawAnnouncements" class="hidden"></a>timeBetweenWithdrawAnnouncements <a href="../Source_gameplay/mpcarryablecontainer.html#48" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">int</span> timeBetweenWithdrawAnnouncements;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_withdrawnAnimation" class="hidden"></a>withdrawnAnimation <a href="../Source_gameplay/mpcarryablecontainer.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span>) <span class="source_type">Name</span> withdrawnAnimation;</div>
+<blockquote class="comment">
+The animation to play when the container accepts a withdrawal
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Stats</h3>
+<h4><a name="_depositStat" class="hidden"></a>depositStat <a href="../Source_gameplay/mpcarryablecontainer.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(Stats) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/stat.html" class="source">Stat</a></span>&gt; depositStat;</div>
+<blockquote class="comment">
+The stat awarded for depositing each carryable in this container.
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EContainerObjectiveState" class="hidden"></a>EContainerObjectiveState <a href="../Source_gameplay/mpcarryablecontainer.html#3" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/mpcarryablecontainer.html#EContainerObjectiveState" class="source">EContainerObjectiveState</a></span><br />
+{<blockquote>COS_Empty,
+COS_HalfFull,
+COS_Full</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_addCarryable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addCarryable <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#319" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  addCarryable ( <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_addCarryable-Inactive" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addCarryable <span class="function_state">Inactive</span> <a href="../Source_gameplay/mpcarryablecontainer.html#687" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  addCarryable ( <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_addMetaCarryable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addMetaCarryable <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#347" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  addMetaCarryable ( <span class="source_type"><a href="../gameplay/mpmetacarryable.html" class="source">MPMetaCarryable</a></span> meta) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_addNewCarryables-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addNewCarryables <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#89" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  addNewCarryables ( <span class="source_type">int</span> numToAdd) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_allowSpawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> allowSpawn <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#463" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> allowSpawn ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Active</span> <a href="../Source_gameplay/mpcarryablecontainer.html#533" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Full" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Full</span> <a href="../Source_gameplay/mpcarryablecontainer.html#712" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Inactive" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Inactive</span> <a href="../Source_gameplay/mpcarryablecontainer.html#694" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_buildControllableSkin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> buildControllableSkin <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#117" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  buildControllableSkin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_calcFuelPannerScale-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> calcFuelPannerScale <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#153" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  calcFuelPannerScale ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cleanup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> cleanup <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#295" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  cleanup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deposit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> deposit <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#383" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> deposit ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deposit-Full" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> deposit <span class="function_state">Full</span> <a href="../Source_gameplay/mpcarryablecontainer.html#742" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> deposit ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Full" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Full</span> <a href="../Source_gameplay/mpcarryablecontainer.html#731" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Inactive" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Inactive</span> <a href="../Source_gameplay/mpcarryablecontainer.html#702" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_evaluateContents-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> evaluateContents <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#471" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  evaluateContents ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_evaluateObjectiveState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> evaluateObjectiveState <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#269" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  evaluateObjectiveState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_evaluatePercentageContents-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> evaluatePercentageContents <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#231" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  evaluatePercentageContents ( <span class="source_type">int</span> numAdded) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onAreaEntered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onAreaEntered <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#483" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onAreaEntered-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onAreaEntered <span class="function_state">Active</span> <a href="../Source_gameplay/mpcarryablecontainer.html#540" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onAreaExited-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onAreaExited <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#488" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onAreaExited ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onAreaExited-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onAreaExited <span class="function_state">Active</span> <a href="../Source_gameplay/mpcarryablecontainer.html#569" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onAreaExited ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onAreaTick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onAreaTick <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#493" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onAreaTick ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onAreaTick-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onAreaTick <span class="function_state">Active</span> <a href="../Source_gameplay/mpcarryablecontainer.html#581" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onAreaTick ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onPlayerSpawned-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onPlayerSpawned <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#512" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onPlayerSpawned ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#67" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#109" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetReceive <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#160" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_registerStats-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> registerStats <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#311" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  registerStats ( <span class="source_type"><a href="../gameplay/stattracker.html" class="source">StatTracker</a></span> tracker) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_removeCarryable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> removeCarryable <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#363" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> removeCarryable ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_reset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> reset <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#497" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type">reset</span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state">Active</span> <a href="../Source_gameplay/mpcarryablecontainer.html#645" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateContainerEffects-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateContainerEffects <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#167" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  updateContainerEffects ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_withdraw-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> withdraw <span class="function_state"></span> <a href="../Source_gameplay/mpcarryablecontainer.html#426" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  withdraw ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_withdraw-Full" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> withdraw <span class="function_state">Full</span> <a href="../Source_gameplay/mpcarryablecontainer.html#747" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  withdraw ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DrawType				= DT_StaticMesh
+	<span class="source_type">StaticMesh</span>				= <span class="source_type">StaticMesh</span><span class="source_name">'Editor_res.TexPropCube'</span>
+	bCollideActors			= true
+	bCollideWorld			= true
+
+	bMovable				= false
+	bUseCylinderCollision	= false
+	bBlockPlayers			= false
+	bNetNotify				= true
+	carryablesPerTeamPoint		= <span class="source_int">10</span>
+	carryableClass				= <span class="source_type">class</span><span class="source_name">'MPCarryable'</span>
+	maxCarryables				= <span class="source_int">10</span>
+	bAcceptThrownCarryables		= true
+	timeBetweenWithdrawals	= <span class="source_int">2</span>
+	fuelMaterialIndex		= <span class="source_int">2</span>
+	ContainerMessageClass	= <span class="source_type">class</span><span class="source_name">'MPContainerMessages'</span>
+	timeBetweenWithdrawAnnouncements = <span class="source_int">10</span>
+	bAlwaysRelevant			= true
+
+	nearlyEmptyWithdrawScale = <span class="source_int">1.5</span>	
+	nearlyFullWithdrawScale	= <span class="source_int">0.5</span>
+	halfFullWithdrawScale	= <span class="source_int">1.0</span>	
+
+
+	deactivatedEffectEvent	= Deactivated
+	activatedEffectEvent	= Activated
+	fullEffectEvent			= Full
+	depositedEffectEvent	= Deposited
+	withdrawnEffectEvent	= Withdrawn
+	activeEffectEvent		= Active
+
+	NetUpdateFrequency		= <span class="source_int">4</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/mpcarryablecontainer.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MPCarryableContainer">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/mpcarryable.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mpcarryablemessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:32.892 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

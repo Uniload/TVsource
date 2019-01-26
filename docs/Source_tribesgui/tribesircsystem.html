@@ -1,0 +1,1185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: TribesGUI.TribesIRCSystem</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesircsystem.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesIRCSystem">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesircprivate.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribeskeymappingpopup.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tribesgui/tribesircsystem.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesircsystem.html">TribesIRCSystem</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//====================================================================
+</span><a name="2"></a><span class="source_comment">//  This class implements the "Status" window of the UT2004 IRC client
+</span><a name="3"></a><span class="source_comment">//
+</span><a name="4"></a><span class="source_comment">//  Updated by Ron Prestenback
+</span><a name="5"></a><span class="source_comment">//  (c) 2003, Epic Games, Inc.  All Rights Reserved
+</span><a name="6"></a><span class="source_comment">// ====================================================================
+</span><a name="7"></a><span class="source_type">class</span> <span class="source_type"><a href="../tribesgui/tribesircsystem.html" class="source">TribesIRCSystem</a></span> extends <span class="source_type"><a href="../tribesgui/tribesircpage.html" class="source">TribesIRCPage</a></span>;
+<a name="8"></a>
+<a name="9"></a>var   array&lt;<span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span>&gt;		Channels;
+<a name="10"></a>
+<a name="11"></a>var         <span class="source_type">string</span>              LinkClassName;
+<a name="12"></a>var			<span class="source_type"><a href="../tribesgui/tribesirclink.html" class="source">TribesIRCLink</a></span>        Link;
+<a name="13"></a>
+<a name="14"></a>var(TribesGui) private EditInline Config         <span class="source_type"><a href="../tribesgui/tribesmpcommunitypanel.html" class="source">TribesMPCommunityPanel</a></span>   tp_Main;
+<a name="15"></a>var(TribesGui) private EditInline Config			<span class="source_type"><a href="../tribesgui/tribesircpanel.html" class="source">TribesIRCPanel</a></span>        p_IRC;
+<a name="16"></a>
+<a name="17"></a>var			<span class="source_type">string</span>				TestIRCString, LastServer;
+<a name="18"></a>var 		<span class="source_type">int</span> 				CurChannel, PrevChannel;
+<a name="19"></a>var	private <span class="source_type">bool</span>                bConnected, bAway,
+<a name="20"></a>								bSysInitialized;
+<a name="21"></a>
+<a name="22"></a>var   config       <span class="source_type">string</span>       NewNickMenu;
+<a name="23"></a>var() globalconfig <span class="source_type">string</span>		OldPlayerName, <span class="source_type">NickName</span>,
+<a name="24"></a>								<span class="source_type">FullName</span>, UserIdent, DefaultChannel;
+<a name="25"></a>var	  config       <span class="source_type">string</span>       ChanKeyMenu;
+<a name="26"></a>
+<a name="27"></a>var localized <span class="source_type">string</span> 			NotInAChannelText;
+<a name="28"></a>var localized <span class="source_type">string</span> 			KickedFromText;
+<a name="29"></a>var localized <span class="source_type">string</span> 			ByText;
+<a name="30"></a>var localized <span class="source_type">string</span> 			IsAwayText;
+<a name="31"></a>var localized <span class="source_type">string</span>            ChooseNewNickText;
+<a name="32"></a>var localized <span class="source_type">string</span>            NickInUseText;
+<a name="33"></a>var localized <span class="source_type">string</span>            NickInvalidText;
+<a name="34"></a>var localized <span class="source_type">string</span> 	        LeavePrivateText;
+<a name="35"></a>var localized <span class="source_type">string</span>            CloseWindowCaption;
+<a name="36"></a>var localized <span class="source_type">string</span>            DisconnectCaption;
+<a name="37"></a>var localized <span class="source_type">string</span>            ChangeNickCaption;
+<a name="38"></a>var localized <span class="source_type">string</span>            InvalidModeText, InvalidKickText;
+<a name="39"></a>var localized <span class="source_type">string</span>			NewNickString;
+<a name="40"></a>
+<a name="41"></a>var enum <span class="source_type"><a href="../tribesgui/tribesircsystem.html#EAwayMode" class="source">EAwayMode</a></span>
+<a name="42"></a>{
+<a name="43"></a>	AM_None,
+<a name="44"></a>	AM_Server,
+<a name="45"></a>	AM_InstantAction,
+<a name="46"></a>	AM_Menus
+<a name="47"></a>}   AwayMode;
+<a name="48"></a>
+<a name="49"></a>delegate OnConnect();
+<a name="50"></a>delegate OnDisconnect();
+<a name="51"></a>delegate NewChannelSelected( <span class="source_type">int</span> CurrentChannel );
+<a name="52"></a>
+<a name="53"></a><span class="source_comment">// GUI functions
+</span><a name="54"></a><span class="source_type">function</span> InitComponent(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner)
+<a name="55"></a>{
+<a name="56"></a>	local <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">C</span>;
+<a name="57"></a>
+<a name="58"></a>	Super.InitComponent(MyOwner);
+<a name="59"></a>
+<a name="60"></a>	<span class="source_comment">//sp_Main.bDrawSplitter = false; // Dont draw this splitter
+</span><a name="61"></a>	<span class="source_comment">//p_IRC.UpdateConnectionStatus( IsConnected() );
+</span><a name="62"></a>
+<a name="63"></a>	for ( <span class="source_type">C</span> = MenuOwner; <span class="source_type">C</span> != None; <span class="source_type">C</span> = <span class="source_type">C</span>.MenuOwner )
+<a name="64"></a>	{
+<a name="65"></a>		if ( <span class="source_type"><a href="../tribesgui/tribesmpcommunitypanel.html" class="source">TribesMPCommunityPanel</a></span>(<span class="source_type">C</span>) != None )
+<a name="66"></a>		{
+<a name="67"></a>			tp_Main = <span class="source_type"><a href="../tribesgui/tribesmpcommunitypanel.html" class="source">TribesMPCommunityPanel</a></span>(<span class="source_type">C</span>);
+<a name="68"></a>			<span class="source_comment">//Log("IRC:  "$self$" set tp_Main to "$tp_Main);
+</span><a name="69"></a>			break;
+<a name="70"></a>		}
+<a name="71"></a>	}
+<a name="72"></a>
+<a name="73"></a>	Assert(tp_Main != None);
+<a name="74"></a>}
+<a name="75"></a>
+<a name="76"></a><span class="source_type">function</span> <span class="source_type">bool</span> CanShowPanel()
+<a name="77"></a>{
+<a name="78"></a><span class="source_comment">// MJ: No concept of menu init in our GUI system
+</span><a name="79"></a>	return true;
+<a name="80"></a><span class="source_comment">//	return Controller.bCurMenuInitialized;
+</span><a name="81"></a>}
+<a name="82"></a>
+<a name="83"></a><span class="source_type">function</span> ShowPanel(<span class="source_type">bool</span> bShow)
+<a name="84"></a>{
+<a name="85"></a><span class="source_comment">// MJ:  We don't have ShowPanel
+</span><a name="86"></a><span class="source_comment">//	Super.ShowPanel(bShow);
+</span><a name="87"></a>
+<a name="88"></a>	<span class="source_comment">//if ( bShow )
+</span><a name="89"></a>	<span class="source_comment">//{
+</span><a name="90"></a>	<span class="source_comment">//	if ( bInit )
+</span><a name="91"></a>	<span class="source_comment">//		sp_Main.SplitterUpdatePositions();
+</span><a name="92"></a>
+<a name="93"></a>	<span class="source_comment">//	bInit = False;
+</span><a name="94"></a>	<span class="source_comment">//}
+</span><a name="95"></a>}
+<a name="96"></a>
+<a name="97"></a>event <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span>()
+<a name="98"></a>{
+<a name="99"></a>	<span class="source_comment">// michaelj:  Hack?  Not needed (it was setting your nickname to Player)
+</span><a name="100"></a>	<span class="source_comment">//if(bConnected && PlayerOwner() != None && PlayerOwner().PlayerReplicationInfo != None && PlayerOwner().PlayerReplicationInfo.PlayerName != OldPlayerName)
+</span><a name="101"></a>	<span class="source_comment">//{
+</span><a name="102"></a>	<span class="source_comment">//	OldPlayerName = PlayerOwner().PlayerReplicationInfo.PlayerName;
+</span><a name="103"></a>	<span class="source_comment">//	Link.SetNick(OldPlayerName);
+</span><a name="104"></a>	<span class="source_comment">//	SystemText("SetNick: "$OldPlayerName);
+</span><a name="105"></a>	<span class="source_comment">//}
+</span><a name="106"></a>}
+<a name="107"></a>
+<a name="108"></a><span class="source_comment">// Whether the 'close window/leave channel' button is available
+</span><a name="109"></a><span class="source_type">function</span> <span class="source_type">bool</span> LeaveAvailable( out <span class="source_type">string</span> <span class="source_type">ButtonCaption</span> )
+<a name="110"></a>{
+<a name="111"></a>	if ( !ValidChannelIndex(CurChannel) )
+<a name="112"></a>	{
+<a name="113"></a>		<span class="source_type">ButtonCaption</span> = CloseWindowCaption;
+<a name="114"></a>		return false;
+<a name="115"></a>	}
+<a name="116"></a>	else if ( Channels[CurChannel].IsPrivate )
+<a name="117"></a>	{
+<a name="118"></a>		<span class="source_type">ButtonCaption</span> = Repl(LeavePrivateText, <span class="source_string">"%ChanName%"</span>, GetCurrentChannelName());
+<a name="119"></a>		return true;
+<a name="120"></a>	}
+<a name="121"></a>	else
+<a name="122"></a>	{
+<a name="123"></a>		<span class="source_type">ButtonCaption</span> = CloseWindowCaption;
+<a name="124"></a>		return true;
+<a name="125"></a>	}
+<a name="126"></a>}
+<a name="127"></a>
+<a name="128"></a><span class="source_comment">// whether the 'disconnect' button is available
+</span><a name="129"></a><span class="source_type">function</span> <span class="source_type">bool</span> DisconnectAvailable( out <span class="source_type">string</span> <span class="source_type">ButtonCaption</span> )
+<a name="130"></a>{
+<a name="131"></a>	<span class="source_type">ButtonCaption</span> = DisconnectCaption;
+<a name="132"></a>	return IsConnected();
+<a name="133"></a>}
+<a name="134"></a>
+<a name="135"></a><span class="source_comment">// Whether the 'set nick' button is available
+</span><a name="136"></a><span class="source_type">function</span> <span class="source_type">bool</span> SetNickAvailable( out <span class="source_type">string</span> <span class="source_type">ButtonCaption</span> )
+<a name="137"></a>{
+<a name="138"></a>	<span class="source_type">ButtonCaption</span> = ChangeNickCaption;
+<a name="139"></a>	return true;
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="143"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="144"></a><span class="source_comment">//  Local Player
+</span><a name="145"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="146"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="147"></a>
+<a name="148"></a><span class="source_type">function</span> <span class="source_type">bool</span> InGame()
+<a name="149"></a>{
+<a name="150"></a>	return !<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.bActive;
+<a name="151"></a>}
+<a name="152"></a>
+<a name="153"></a><span class="source_type">function</span> <span class="source_type">bool</span> InMenus()
+<a name="154"></a>{
+<a name="155"></a>	if ( InGame() )
+<a name="156"></a>		return false;
+<a name="157"></a>
+<a name="158"></a>	<span class="source_comment">//if (UT2K4ServerBrowser(Controller.ActivePage) != None &&
+</span><a name="159"></a>	<span class="source_comment">//	UT2K4ServerBrowser(Controller.ActivePage).c_Tabs != None &&
+</span><a name="160"></a>	<span class="source_comment">//	UT2K4ServerBrowser(Controller.ActivePage).c_Tabs.ActiveTab != None &&
+</span><a name="161"></a>	<span class="source_comment">//	UT2K4Browser_IRC(UT2K4ServerBrowser(Controller.ActivePage).c_Tabs.ActiveTab.MyPanel) != None)
+</span><a name="162"></a>		return false;
+<a name="163"></a>
+<a name="164"></a>	return true;
+<a name="165"></a>}
+<a name="166"></a>
+<a name="167"></a>
+<a name="168"></a><span class="source_type">function</span> UpdateIdent()
+<a name="169"></a>{
+<a name="170"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="171"></a>
+<a name="172"></a>	if(UserIdent == <span class="source_string">""</span>)
+<a name="173"></a>	{
+<a name="174"></a>		UserIdent = <span class="source_string">"u"</span>;
+<a name="175"></a>		for(<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;<span class="source_int">7</span>;<span class="source_type">i</span>++)
+<a name="176"></a>			UserIdent = UserIdent $ Chr((Rand(<span class="source_int">10</span>)+<span class="source_int">48</span>));
+<a name="177"></a>
+<a name="178"></a>		Log(<span class="source_string">"Created new UserIdent: "</span>$UserIdent,<span class="source_name">'IRC'</span>);
+<a name="179"></a>		SaveConfig();
+<a name="180"></a>	}
+<a name="181"></a>}
+<a name="182"></a>
+<a name="183"></a><span class="source_type">function</span> <span class="source_type">bool</span> IsMe( <span class="source_type">string</span> <span class="source_type">Test</span> )
+<a name="184"></a>{
+<a name="185"></a>	return <span class="source_type">Test</span> ~= <span class="source_type">NickName</span>;
+<a name="186"></a>}
+<a name="187"></a>
+<a name="188"></a><span class="source_type">function</span> <span class="source_type">bool</span> IsConnected()
+<a name="189"></a>{
+<a name="190"></a>	return bConnected && Link != None;
+<a name="191"></a>}
+<a name="192"></a>
+<a name="193"></a><span class="source_type">function</span> <span class="source_type">bool</span> IsAway()
+<a name="194"></a>{
+<a name="195"></a>	return bAway;
+<a name="196"></a>}
+<a name="197"></a>
+<a name="198"></a><span class="source_type">function</span> NotifyQuitUnreal() <span class="source_comment">// !! todo hook this up?
+</span><a name="199"></a>{
+<a name="200"></a>	CloseLink(Link,False,<span class="source_string">"Exit Game"</span>);
+<a name="201"></a>}
+<a name="202"></a>
+<a name="203"></a><span class="source_type">function</span> ChangeConnectStatus( <span class="source_type">bool</span> <span class="source_type">NewStatus</span> )
+<a name="204"></a>{
+<a name="205"></a>	bConnected = <span class="source_type">NewStatus</span>;
+<a name="206"></a>	<span class="source_comment">//p_IRC.UpdateConnectionStatus( bConnected );
+</span><a name="207"></a><span class="source_comment">//	tp_Main.CheckRefreshButton(bConnected);
+</span><a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a><span class="source_type">function</span> ChangeAwayStatus( <span class="source_type">bool</span> <span class="source_type">NewStatus</span> )
+<a name="211"></a>{
+<a name="212"></a>	local <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>;
+<a name="213"></a>
+<a name="214"></a>	bAway = <span class="source_type">NewStatus</span>;
+<a name="215"></a>	if ( PlayerOwner() == None || PlayerOwner().<span class="source_type">Level</span> == None )
+<a name="216"></a>		return;
+<a name="217"></a>
+<a name="218"></a>	if ( IsConnected() )
+<a name="219"></a>	{
+<a name="220"></a>		if ( IsAway() )
+<a name="221"></a>		{
+<a name="222"></a>			<span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span> = PlayerOwner().<span class="source_type">Level</span>.GetAddressURL();
+<a name="223"></a>			if( InStr(<span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, <span class="source_string">":"</span>) &gt; <span class="source_int">0</span> && (AwayMode != AM_Server || LastServer != <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>) )
+<a name="224"></a>			{
+<a name="225"></a>				LastServer = <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>;
+<a name="226"></a>				Link.SetAway( PlayerOwner().GetURLProtocol()$<span class="source_string">"://"</span>$<span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span> );
+<a name="227"></a>				AwayMode = AM_Server;
+<a name="228"></a>			}
+<a name="229"></a>
+<a name="230"></a>			else if( InGame() && AwayMode != AM_InstantAction )
+<a name="231"></a>			{
+<a name="232"></a>				AwayMode = AM_InstantAction;
+<a name="233"></a>				Link.SetAway(<span class="source_string">"local game"</span>);
+<a name="234"></a>			}
+<a name="235"></a>
+<a name="236"></a>			else if ( AwayMode != AM_Menus )
+<a name="237"></a>			{
+<a name="238"></a>				Link.SetAway(<span class="source_string">"in menus"</span>);
+<a name="239"></a>				AwayMode = AM_Menus;
+<a name="240"></a>			}
+<a name="241"></a>		}
+<a name="242"></a>
+<a name="243"></a>		else if ( AwayMode != AM_None )
+<a name="244"></a>		{
+<a name="245"></a>			Link.SetAway(<span class="source_string">""</span>);
+<a name="246"></a>			AwayMode = AM_None;
+<a name="247"></a>		}
+<a name="248"></a>	}
+<a name="249"></a>}
+<a name="250"></a>
+<a name="251"></a><span class="source_type">function</span> NewNickPageClosed( <span class="source_type">bool</span> <span class="source_type">bCancelled</span> )
+<a name="252"></a>{
+<a name="253"></a>	local <span class="source_type">string</span> NewNick;
+<a name="254"></a>
+<a name="255"></a>	if ( !<span class="source_type">bCancelled</span> )
+<a name="256"></a>	{
+<a name="257"></a><span class="source_comment">//		NewNick = Controller.ActivePage.GetDataString();
+</span><a name="258"></a>		if ( NewNick != <span class="source_string">""</span> )
+<a name="259"></a>		{
+<a name="260"></a>			if ( Link != None )
+<a name="261"></a>				Link.SetNick( NewNick );
+<a name="262"></a>
+<a name="263"></a>			else ChangedNick(<span class="source_type">NickName</span>, NewNick);
+<a name="264"></a>		}
+<a name="265"></a>	}
+<a name="266"></a>}
+<a name="267"></a>
+<a name="268"></a><span class="source_type">function</span> ChanKeyPageClosed( <span class="source_type">bool</span> <span class="source_type">bCancelled</span> )
+<a name="269"></a>{
+<a name="270"></a>	local <span class="source_type">string</span> JoinReq;
+<a name="271"></a>	if ( !<span class="source_type">bCancelled</span> )
+<a name="272"></a>	{
+<a name="273"></a><span class="source_comment">//		JoinReq = Controller.ActivePage.GetDataString();
+</span><a name="274"></a>		if ( JoinReq != <span class="source_string">""</span> )
+<a name="275"></a>		{
+<a name="276"></a>			if ( Link != None )	Link.JoinChannel(JoinReq);
+<a name="277"></a>		}
+<a name="278"></a>	}
+<a name="279"></a>}
+<a name="280"></a>
+<a name="281"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="282"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="283"></a><span class="source_comment">//  Commands
+</span><a name="284"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="285"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="286"></a>
+<a name="287"></a><span class="source_type">function</span> <span class="source_type">bool</span> Connect(<span class="source_type">string</span> NewServer)
+<a name="288"></a>{
+<a name="289"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> PC;
+<a name="290"></a>	local <span class="source_type"><a href="../tribesgui/tribesirclink.html" class="source">TribesIRCLink</a></span> NewLink;
+<a name="291"></a>	local <span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span> <span class="source_type">p</span>;
+<a name="292"></a>
+<a name="293"></a>    PC = PlayerOwner();
+<a name="294"></a>
+<a name="295"></a>    if (NewServer == <span class="source_string">""</span>)
+<a name="296"></a>    	return false;
+<a name="297"></a>
+<a name="298"></a>	NewLink = CreateNewLink();
+<a name="299"></a>	if ( NewLink == None )
+<a name="300"></a>		return false;
+<a name="301"></a>
+<a name="302"></a><span class="source_comment">//    if( PC.PlayerReplicationInfo != None )
+</span><a name="303"></a><span class="source_comment">//    {
+</span><a name="304"></a><span class="source_comment">//	    if( PC.PlayerReplicationInfo.PlayerName != OldPlayerName)
+</span><a name="305"></a><span class="source_comment">//	    {
+</span><a name="306"></a><span class="source_comment">//		    NickName = PC.PlayerReplicationInfo.PlayerName;
+</span><a name="307"></a>
+<a name="308"></a>	<span class="source_comment">// michaelj:  Use active Tribes profile name
+</span><a name="309"></a>	<span class="source_type">p</span> = <span class="source_type"><a href="../tribesgui/tribesguicontroller.html" class="source">TribesGUIController</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>).<span class="source_type"><a href="../tribesgui/profilemanager.html" class="source">profileManager</a></span>.GetActiveProfile();
+<a name="310"></a>	<span class="source_type">NickName</span> = <span class="source_type">p</span>.<span class="source_type">playerName</span>;
+<a name="311"></a>	OldPlayerName = <span class="source_type">NickName</span>;
+<a name="312"></a>	if( <span class="source_type">FullName</span> == <span class="source_string">""</span> )
+<a name="313"></a>		<span class="source_type">FullName</span> = <span class="source_type">NickName</span>;
+<a name="314"></a>	SaveConfig();
+<a name="315"></a>  <span class="source_comment">//	}
+</span><a name="316"></a>  <span class="source_comment">//  }
+</span><a name="317"></a>  <span class="source_comment">//  else
+</span><a name="318"></a>  <span class="source_comment">//  {
+</span><a name="319"></a>  <span class="source_comment">//      NickName = PC.GetUrlOption( "Name" );
+</span><a name="320"></a>		<span class="source_comment">//OldPlayerName = NickName;
+</span><a name="321"></a>		<span class="source_comment">//if(FullName == "")
+</span><a name="322"></a>		<span class="source_comment">//	FullName = NickName;
+</span><a name="323"></a>		<span class="source_comment">//SaveConfig();
+</span><a name="324"></a>  <span class="source_comment">//  }
+</span><a name="325"></a>
+<a name="326"></a>	UpdateIdent();
+<a name="327"></a>
+<a name="328"></a>	<span class="source_comment">// Implement perform buffer here - use delegate OnConnect()
+</span><a name="329"></a>	NewLink.Connect( Self, NewServer, <span class="source_type">NickName</span>, UserIdent, <span class="source_type">FullName</span>, GetDefaultChannel() );
+<a name="330"></a>	ChangeConnectStatus( True );
+<a name="331"></a>
+<a name="332"></a>	SetTimer( <span class="source_int">1.0</span>, True );
+<a name="333"></a>	return true;
+<a name="334"></a>}
+<a name="335"></a>
+<a name="336"></a><span class="source_type">function</span> Disconnect()
+<a name="337"></a>{
+<a name="338"></a>	CloseLink(Link,False);
+<a name="339"></a>}
+<a name="340"></a>
+<a name="341"></a><span class="source_type">function</span> CloseLink( <span class="source_type"><a href="../tribesgui/tribesirclink.html" class="source">TribesIRCLink</a></span> OldLink, <span class="source_type">bool</span> bSwitchingServers, optional <span class="source_type">string</span> <span class="source_type">Reason</span> )
+<a name="342"></a>{
+<a name="343"></a>	local <span class="source_type">string</span> <span class="source_type">ServerName</span>;
+<a name="344"></a>
+<a name="345"></a>	<span class="source_type">ServerName</span> = OldLink.<span class="source_type">ServerAddress</span>;
+<a name="346"></a>
+<a name="347"></a>	if ( <span class="source_type">Reason</span> == <span class="source_string">""</span> )
+<a name="348"></a>		<span class="source_type">Reason</span> = <span class="source_string">"Disconnected"</span>;
+<a name="349"></a>
+<a name="350"></a>	if ( Link != None )
+<a name="351"></a>	{
+<a name="352"></a>		if ( Link != OldLink )
+<a name="353"></a>		{
+<a name="354"></a>			OldLink.DestroyLink();
+<a name="355"></a>			return;
+<a name="356"></a>		}
+<a name="357"></a>
+<a name="358"></a>		Link.DisconnectReason = <span class="source_type">Reason</span>;
+<a name="359"></a>		Link.DestroyLink();
+<a name="360"></a>	}
+<a name="361"></a>
+<a name="362"></a>	Link = None;
+<a name="363"></a>
+<a name="364"></a>	Channels.Remove(<span class="source_int">0</span>, Channels.Length);
+<a name="365"></a>	OnDisconnect();
+<a name="366"></a>
+<a name="367"></a>	SystemText( <span class="source_string">"Disconnected from server"</span>@<span class="source_type">ServerName</span> );
+<a name="368"></a>	ChangeConnectStatus( bSwitchingServers );
+<a name="369"></a>
+<a name="370"></a>	<span class="source_comment">// Make system tab active (if not already)
+</span><a name="371"></a>	SetCurrentChannel(-<span class="source_int">1</span>);
+<a name="372"></a>	KillTimer();
+<a name="373"></a>}
+<a name="374"></a>
+<a name="375"></a><span class="source_type">function</span> ProcessInput(<span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="376"></a>{
+<a name="377"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="378"></a>
+<a name="379"></a>    if( CurChannel &gt; -<span class="source_int">1</span> )
+<a name="380"></a>        Channels[CurChannel].ProcessInput(<span class="source_type">Text</span>);
+<a name="381"></a>
+<a name="382"></a>    else
+<a name="383"></a>    {
+<a name="384"></a>	    if(Left(<span class="source_type">Text</span>, <span class="source_int">1</span>) != <span class="source_string">"/"</span>)
+<a name="385"></a>		    SystemText(<span class="source_string">"*** "</span>$NotInAChannelText);
+<a name="386"></a>
+<a name="387"></a>	    else
+<a name="388"></a>		{
+<a name="389"></a>			<span class="source_type">Text</span> = Mid(<span class="source_type">Text</span>,<span class="source_int">1</span>);
+<a name="390"></a>
+<a name="391"></a>			if ( Left(<span class="source_type">Text</span>, <span class="source_int">7</span>) ~= <span class="source_string">"connect"</span> || Left(<span class="source_type">Text</span>,<span class="source_int">6</span>) ~= <span class="source_string">"server"</span> )
+<a name="392"></a>			{
+<a name="393"></a>				<span class="source_type">i</span> = InStr(<span class="source_type">Text</span>, <span class="source_string">" "</span>);
+<a name="394"></a>				if ( <span class="source_type">i</span> != -<span class="source_int">1</span> )
+<a name="395"></a>					Connect( Mid(<span class="source_type">Text</span>,<span class="source_type">i</span>+<span class="source_int">1</span>) );
+<a name="396"></a>			}
+<a name="397"></a>
+<a name="398"></a>			else if ( Left(<span class="source_type">Text</span>,<span class="source_int">4</span>) ~= <span class="source_string">"echo"</span> )
+<a name="399"></a>			{
+<a name="400"></a>				<span class="source_type">i</span> = InStr(<span class="source_type">Text</span>, <span class="source_string">" "</span>);
+<a name="401"></a>				if ( <span class="source_type">i</span> != -<span class="source_int">1</span> )
+<a name="402"></a>					SystemText( Mid(<span class="source_type">Text</span>,<span class="source_type">i</span>+<span class="source_int">1</span>) );
+<a name="403"></a>			}
+<a name="404"></a>
+<a name="405"></a>			else if (Link != None)
+<a name="406"></a>				Link.SendCommandText(<span class="source_type">Text</span>);
+<a name="407"></a>		}
+<a name="408"></a>    }
+<a name="409"></a>}
+<a name="410"></a>
+<a name="411"></a><span class="source_type">function</span> JoinChannel(<span class="source_type">string</span> <span class="source_type">ChannelName</span>)
+<a name="412"></a>{
+<a name="413"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> <span class="source_type">P</span>;
+<a name="414"></a>
+<a name="415"></a>	<span class="source_type">P</span> = FindChannelWindow(<span class="source_type">ChannelName</span>);
+<a name="416"></a>
+<a name="417"></a>	if(<span class="source_type">P</span> == None)
+<a name="418"></a>		Link.JoinChannel(<span class="source_type">ChannelName</span>);
+<a name="419"></a>	else
+<a name="420"></a>        SetCurrentChannel(FindPublicChannelIndex(<span class="source_type">ChannelName</span>));
+<a name="421"></a>}
+<a name="422"></a>
+<a name="423"></a><span class="source_comment">// Leave the currently active channel
+</span><a name="424"></a><span class="source_type">function</span> PartCurrentChannel()
+<a name="425"></a>{
+<a name="426"></a>	<span class="source_comment">//log("Attempting to part current channel:"$CurChannel@Channels[CurChannel].ChannelName);
+</span><a name="427"></a>	if ( !ValidChannelIndex(CurChannel) )
+<a name="428"></a>		return;
+<a name="429"></a>
+<a name="430"></a>	PartChannel(Channels[CurChannel].<span class="source_type">ChannelName</span>);
+<a name="431"></a>}
+<a name="432"></a>
+<a name="433"></a><span class="source_type">function</span> PartChannel(<span class="source_type">string</span> <span class="source_type">ChannelName</span>)
+<a name="434"></a>{
+<a name="435"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> <span class="source_type">P</span>;
+<a name="436"></a>
+<a name="437"></a>	<span class="source_type">P</span> = FindChannelWindow(<span class="source_type">ChannelName</span>, True);
+<a name="438"></a>	if( <span class="source_type">P</span> != None )
+<a name="439"></a>	{
+<a name="440"></a>		if ( <span class="source_type">P</span>.IsPrivate )
+<a name="441"></a>			RemoveChannel(<span class="source_type">ChannelName</span>);
+<a name="442"></a>		else Link.PartChannel(<span class="source_type">ChannelName</span>);
+<a name="443"></a>	}
+<a name="444"></a>}
+<a name="445"></a>
+<a name="446"></a><span class="source_type">function</span> ChangeCurrentNick()
+<a name="447"></a>{
+<a name="448"></a>	<span class="source_comment">//if ( Controller.OpenMenu(NewNickMenu, ChooseNewNickText, NickName) )
+</span><a name="449"></a>	<span class="source_comment">//	Controller.ActivePage.OnClose = NewNickPageClosed;
+</span><a name="450"></a>}
+<a name="451"></a>
+<a name="452"></a><span class="source_type">function</span> Whois( <span class="source_type">string</span> <span class="source_type">Nick</span> )
+<a name="453"></a>{
+<a name="454"></a>	if ( Link == None )
+<a name="455"></a>		return;
+<a name="456"></a>
+<a name="457"></a>	Link.SendCommandText( <span class="source_string">"WHOIS"</span> @ <span class="source_type">Nick</span> );
+<a name="458"></a>}
+<a name="459"></a>
+<a name="460"></a><span class="source_type">function</span> Op( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="461"></a>{
+<a name="462"></a>	if ( Link == None )
+<a name="463"></a>		return;
+<a name="464"></a>
+<a name="465"></a>	SetMode( <span class="source_string">"o"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), True, <span class="source_type">Nick</span> );
+<a name="466"></a>}
+<a name="467"></a>
+<a name="468"></a><span class="source_type">function</span> Deop( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="469"></a>{
+<a name="470"></a>	if ( Link == None )
+<a name="471"></a>		return;
+<a name="472"></a>
+<a name="473"></a>	SetMode( <span class="source_string">"o"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), False, <span class="source_type">Nick</span> );
+<a name="474"></a>}
+<a name="475"></a>
+<a name="476"></a><span class="source_type">function</span> Voice( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="477"></a>{
+<a name="478"></a>	if ( Link == None )
+<a name="479"></a>		return;
+<a name="480"></a>
+<a name="481"></a>	SetMode( <span class="source_string">"v"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), True, <span class="source_type">Nick</span> );
+<a name="482"></a>}
+<a name="483"></a>
+<a name="484"></a><span class="source_type">function</span> DeVoice( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="485"></a>{
+<a name="486"></a>	if ( Link == None )
+<a name="487"></a>		return;
+<a name="488"></a>
+<a name="489"></a>	SetMode( <span class="source_string">"v"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), False, <span class="source_type">Nick</span> );
+<a name="490"></a>}
+<a name="491"></a>
+<a name="492"></a><span class="source_type">function</span> Help( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="493"></a>{
+<a name="494"></a>	if ( Link == None )
+<a name="495"></a>		return;
+<a name="496"></a>
+<a name="497"></a>	SetMode( <span class="source_string">"h"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), True, <span class="source_type">Nick</span> );
+<a name="498"></a>}
+<a name="499"></a>
+<a name="500"></a><span class="source_type">function</span> DeHelp( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="501"></a>{
+<a name="502"></a>	if ( Link == None )
+<a name="503"></a>		return;
+<a name="504"></a>
+<a name="505"></a>	SetMode( <span class="source_string">"h"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), False, <span class="source_type">Nick</span> );
+<a name="506"></a>}
+<a name="507"></a>
+<a name="508"></a><span class="source_type">function</span> Kick( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span>, optional <span class="source_type">string</span> <span class="source_type">Reason</span> )
+<a name="509"></a>{
+<a name="510"></a>	if ( Link == None )
+<a name="511"></a>	{
+<a name="512"></a>		SystemText(NotInAChannelText);
+<a name="513"></a>		return;
+<a name="514"></a>	}
+<a name="515"></a>
+<a name="516"></a>	if ( <span class="source_type">Nick</span> == <span class="source_string">""</span> || <span class="source_type">ChannelName</span> == <span class="source_string">""</span> )
+<a name="517"></a>	{
+<a name="518"></a>		SystemText(Repl(InvalidKickText, <span class="source_string">"%Cmd%"</span>, <span class="source_string">"KICK"</span>));
+<a name="519"></a>		return;
+<a name="520"></a>	}
+<a name="521"></a>
+<a name="522"></a>	Link.SendCommandText( <span class="source_string">"KICK"</span> @ <span class="source_type">Nick</span> $ Eval(<span class="source_type">Reason</span> != <span class="source_string">""</span>, <span class="source_string">" :"</span> $ <span class="source_type">Reason</span>, <span class="source_string">""</span>) );
+<a name="523"></a>}
+<a name="524"></a>
+<a name="525"></a><span class="source_type">function</span> Ban( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span>, optional <span class="source_type">string</span> <span class="source_type">Reason</span> )
+<a name="526"></a>{
+<a name="527"></a>	SetMode( <span class="source_string">"b"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), True, <span class="source_type">Nick</span> );
+<a name="528"></a>	Kick(<span class="source_type">Nick</span>, <span class="source_type">ChannelName</span>, <span class="source_type">Reason</span>);
+<a name="529"></a>}
+<a name="530"></a>
+<a name="531"></a><span class="source_type">function</span> Unban( <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="532"></a>{
+<a name="533"></a>	SetMode( <span class="source_string">"b"</span>, Eval(Left(<span class="source_type">ChannelName</span>,<span class="source_int">1</span>) == <span class="source_string">"#"</span>, <span class="source_type">ChannelName</span>, <span class="source_string">"#"</span> $ <span class="source_type">ChannelName</span>), False, <span class="source_type">Nick</span> );
+<a name="534"></a>}
+<a name="535"></a>
+<a name="536"></a><span class="source_type">function</span> SetMode( <span class="source_type">string</span> Modes, <span class="source_type">string</span> <span class="source_type">Target</span>, <span class="source_type">bool</span> On, optional <span class="source_type">string</span> <span class="source_type">Extra</span> )
+<a name="537"></a>{
+<a name="538"></a>	if ( Link == None )
+<a name="539"></a>	{
+<a name="540"></a>		SystemText(NotInAChannelText);
+<a name="541"></a>		return;
+<a name="542"></a>	}
+<a name="543"></a>
+<a name="544"></a>	if ( Modes == <span class="source_string">""</span> || <span class="source_type">Target</span> == <span class="source_string">""</span> )
+<a name="545"></a>	{
+<a name="546"></a>		SystemText(InvalidModeText);
+<a name="547"></a>		return;
+<a name="548"></a>	}
+<a name="549"></a>
+<a name="550"></a>	if ( Link != None )
+<a name="551"></a>		Link.SendCommandText( <span class="source_string">"MODE"</span> @ <span class="source_type">Target</span> @ Eval(On, <span class="source_string">"+"</span>, <span class="source_string">"-"</span>) $ Modes $ Eval(<span class="source_type">Extra</span> != <span class="source_string">""</span>, <span class="source_string">" "</span> $ <span class="source_type">Extra</span>, <span class="source_string">""</span>) );
+<a name="552"></a>}
+<a name="553"></a>
+<a name="554"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="555"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="556"></a><span class="source_comment">//  Events
+</span><a name="557"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="558"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="559"></a>
+<a name="560"></a><span class="source_type">function</span> SystemText(<span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="561"></a>{
+<a name="562"></a>	<span class="source_comment">// FIXME!! should do something better with this
+</span><a name="563"></a>	if(<span class="source_type">Text</span> != <span class="source_string">"You have been marked as being away"</span> && <span class="source_type">Text</span> != <span class="source_string">"You are no longer marked as being away"</span>)
+<a name="564"></a>	{
+<a name="565"></a>		InterpretColorCodes(<span class="source_type">Text</span>);
+<a name="566"></a>        lb_TextDisplay.AddText( MakeColorCode(IRCTextColor)$ColorizeLinks(<span class="source_type">Text</span>) );
+<a name="567"></a>
+<a name="568"></a>		<span class="source_comment">//if(!MyButton.bActive)
+</span><a name="569"></a>		<span class="source_comment">//	MyButton.bForceFlash = true;
+</span><a name="570"></a>	}
+<a name="571"></a>}
+<a name="572"></a>
+<a name="573"></a><span class="source_type">function</span> ChannelText(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="574"></a>{
+<a name="575"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> <span class="source_type">P</span>;
+<a name="576"></a>
+<a name="577"></a>	<span class="source_type">P</span> = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="578"></a>	if(<span class="source_type">P</span> != None)
+<a name="579"></a>		<span class="source_type">P</span>.ChannelText(<span class="source_type">Nick</span>, <span class="source_type">Text</span>);
+<a name="580"></a>}
+<a name="581"></a>
+<a name="582"></a><span class="source_type">function</span> PrivateText(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="583"></a>{
+<a name="584"></a>    FindPrivateWindow(<span class="source_type">Nick</span>).PrivateText(<span class="source_type">Nick</span>, <span class="source_type">Text</span>);
+<a name="585"></a>}
+<a name="586"></a>
+<a name="587"></a><span class="source_type">function</span> ChannelAction(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="588"></a>{
+<a name="589"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> <span class="source_type">P</span>;
+<a name="590"></a>
+<a name="591"></a>	<span class="source_type">P</span> = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="592"></a>	if(<span class="source_type">P</span> != None)
+<a name="593"></a>		<span class="source_type">P</span>.ChannelAction(<span class="source_type">Nick</span>, <span class="source_type">Text</span>);
+<a name="594"></a>}
+<a name="595"></a>
+<a name="596"></a><span class="source_type">function</span> PrivateAction(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="597"></a>{
+<a name="598"></a>    FindPrivateWindow(<span class="source_type">Nick</span>).PrivateAction(<span class="source_type">Nick</span>, <span class="source_type">Text</span>);
+<a name="599"></a>}
+<a name="600"></a>
+<a name="601"></a><span class="source_type">function</span> JoinedChannel(<span class="source_type">string</span> <span class="source_type">Channel</span>, optional <span class="source_type">string</span> <span class="source_type">Nick</span>)
+<a name="602"></a>{
+<a name="603"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> NewCh;
+<a name="604"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="605"></a>
+<a name="606"></a>    log(<span class="source_type">Nick</span>@<span class="source_string">"JoinedChannel "</span>$<span class="source_type">Channel</span>,<span class="source_name">'IRC'</span>);
+<a name="607"></a>
+<a name="608"></a>	if(<span class="source_type">Nick</span> == <span class="source_string">""</span>)	<span class="source_comment">// We joined a new channel
+</span><a name="609"></a>	{
+<a name="610"></a>		NewCh = AddChannel( <span class="source_type">Channel</span> );
+<a name="611"></a>		if ( NewCh != None )
+<a name="612"></a>	        SetCurrentChannelPage(NewCh);
+<a name="613"></a>	}
+<a name="614"></a>
+<a name="615"></a>	if(<span class="source_type">Nick</span> == <span class="source_string">""</span>)
+<a name="616"></a>		<span class="source_type">Nick</span> = <span class="source_type">NickName</span>;
+<a name="617"></a>
+<a name="618"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="619"></a>	Log(<span class="source_string">"FindChannelWindow = "</span>$W);
+<a name="620"></a>	if(W != None)
+<a name="621"></a>		W.JoinedChannel(<span class="source_type">Nick</span>);
+<a name="622"></a>}
+<a name="623"></a>
+<a name="624"></a><span class="source_type">function</span> PartedChannel(<span class="source_type">string</span> <span class="source_type">Channel</span>, optional <span class="source_type">string</span> <span class="source_type">Nick</span>)
+<a name="625"></a>{
+<a name="626"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="627"></a>
+<a name="628"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="629"></a>
+<a name="630"></a>	if(<span class="source_type">Nick</span> == <span class="source_string">""</span>)
+<a name="631"></a>	{
+<a name="632"></a>        RemoveChannel(<span class="source_type">Channel</span>);
+<a name="633"></a>	}
+<a name="634"></a>	else
+<a name="635"></a>	{
+<a name="636"></a>		if(W != None)
+<a name="637"></a>			W.PartedChannel(<span class="source_type">Nick</span>);
+<a name="638"></a>	}
+<a name="639"></a>}
+<a name="640"></a>
+<a name="641"></a><span class="source_type">function</span> KickUser(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> KickedNick, <span class="source_type">string</span> Kicker, <span class="source_type">string</span> <span class="source_type">Reason</span>)
+<a name="642"></a>{
+<a name="643"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="644"></a>	local <span class="source_type">string</span> <span class="source_type">S</span>;
+<a name="645"></a>
+<a name="646"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="647"></a>
+<a name="648"></a>	if(KickedNick == <span class="source_type">NickName</span>)
+<a name="649"></a>	{
+<a name="650"></a>        RemoveChannel(<span class="source_type">Channel</span>);
+<a name="651"></a>		<span class="source_type">S</span> = repl(KickedFromText, <span class="source_string">"%channel%"</span>, <span class="source_type">Channel</span>);
+<a name="652"></a>		<span class="source_type">S</span> = repl(<span class="source_type">S</span>, <span class="source_string">"%kicker%"</span>, Kicker) $<span class="source_string">" ("</span>$<span class="source_type">Reason</span>$<span class="source_string">")"</span>;
+<a name="653"></a>		SystemText(<span class="source_string">"*** "</span>$<span class="source_type">S</span>);
+<a name="654"></a>	}
+<a name="655"></a>	else
+<a name="656"></a>	{
+<a name="657"></a>		if(W != None)
+<a name="658"></a>			W.KickUser(KickedNick, Kicker, <span class="source_type">Reason</span>);
+<a name="659"></a>	}
+<a name="660"></a>}
+<a name="661"></a>
+<a name="662"></a><span class="source_type">function</span> UserInChannel(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>)
+<a name="663"></a>{
+<a name="664"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="665"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="666"></a>	if(W != None)
+<a name="667"></a>		W.UserInChannel(<span class="source_type">Nick</span>);
+<a name="668"></a>}
+<a name="669"></a>
+<a name="670"></a><span class="source_type">function</span> NotifyNickInUse()
+<a name="671"></a>{
+<a name="672"></a>	<span class="source_comment">// If we dont have it up already..
+</span><a name="673"></a>	if ( <span class="source_type"><a href="../tribesgui/tribesircnewnick.html" class="source">TribesIRCNewNick</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.ActivePage) == None )
+<a name="674"></a>	{
+<a name="675"></a>		<span class="source_comment">//if ( Controller.OpenMenu( NewNickMenu, NickInUseText, NickName ) )
+</span><a name="676"></a>		<span class="source_comment">//	Controller.ActivePage.OnClose = NewNickPageClosed;
+</span><a name="677"></a>	}
+<a name="678"></a>}
+<a name="679"></a>
+<a name="680"></a><span class="source_type">function</span> NotifyInvalidNick()
+<a name="681"></a>{
+<a name="682"></a>	<span class="source_comment">// If we dont have it up already..
+</span><a name="683"></a>	if ( <span class="source_type"><a href="../tribesgui/tribesircnewnick.html" class="source">TribesIRCNewNick</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.ActivePage) == None )
+<a name="684"></a>	{
+<a name="685"></a>		<span class="source_comment">//if ( Controller.OpenMenu( NewNickMenu, NickInvalidText, NickName ) )
+</span><a name="686"></a>		<span class="source_comment">//	Controller.ActivePage.OnClose = NewNickPageClosed;
+</span><a name="687"></a>	}
+<a name="688"></a>}
+<a name="689"></a>
+<a name="690"></a><span class="source_type">function</span> NotifyChannelKey(<span class="source_type">string</span> chan)
+<a name="691"></a>{
+<a name="692"></a>	<span class="source_comment">// If we dont have it up already..
+</span><a name="693"></a>	if ( <span class="source_type"><a href="../tribesgui/tribesircchankey.html" class="source">TribesIRCChanKey</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.ActivePage) == None )
+<a name="694"></a>	{
+<a name="695"></a>		<span class="source_comment">//if ( Controller.OpenMenu( ChanKeyMenu, chan ) )
+</span><a name="696"></a>		<span class="source_comment">//	Controller.ActivePage.OnClose = ChanKeyPageClosed;
+</span><a name="697"></a>	}
+<a name="698"></a>}
+<a name="699"></a>
+<a name="700"></a><span class="source_type">function</span> ChangedNick(<span class="source_type">string</span> OldNick, <span class="source_type">string</span> NewNick)
+<a name="701"></a>{
+<a name="702"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="703"></a>
+<a name="704"></a>	if(OldNick == <span class="source_type">NickName</span>)
+<a name="705"></a>	{
+<a name="706"></a>		<span class="source_type">NickName</span> = NewNick;
+<a name="707"></a>
+<a name="708"></a>		if ( Link != None )
+<a name="709"></a>			Link.<span class="source_type">NickName</span> = NewNick;
+<a name="710"></a>
+<a name="711"></a>		SaveConfig();
+<a name="712"></a>	}
+<a name="713"></a>	SystemText(NewNickString@NewNick);
+<a name="714"></a>
+<a name="715"></a>    for( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; Channels.Length; <span class="source_type">i</span>++ )
+<a name="716"></a>        if( Channels[<span class="source_type">i</span>].FindNick(OldNick) )
+<a name="717"></a>            Channels[<span class="source_type">i</span>].ChangedNick(OldNick, NewNick);
+<a name="718"></a>
+<a name="719"></a>	<span class="source_comment">// If this was the active channel, then change the 'close window' caption
+</span><a name="720"></a>	if ( GetCurrentChannelName() ~= NewNick )
+<a name="721"></a>		tp_Main.SetCloseCaption(NewNick);
+<a name="722"></a>}
+<a name="723"></a>
+<a name="724"></a><span class="source_type">function</span> UserQuit(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">Reason</span>)
+<a name="725"></a>{
+<a name="726"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="727"></a>
+<a name="728"></a>    for( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; Channels.Length; <span class="source_type">i</span>++ )
+<a name="729"></a>        if( Channels[<span class="source_type">i</span>].FindNick(<span class="source_type">Nick</span>) )
+<a name="730"></a>            Channels[<span class="source_type">i</span>].UserQuit(<span class="source_type">Nick</span>, <span class="source_type">Reason</span>);
+<a name="731"></a>}
+<a name="732"></a>
+<a name="733"></a><span class="source_type">function</span> UserNotice(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="734"></a>{
+<a name="735"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="736"></a>
+<a name="737"></a>    for( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; Channels.Length; <span class="source_type">i</span>++ )
+<a name="738"></a>        if( Channels[<span class="source_type">i</span>].FindNick(<span class="source_type">Nick</span>) )
+<a name="739"></a>            Channels[<span class="source_type">i</span>].UserNotice(<span class="source_type">Nick</span>, <span class="source_type">Text</span>);
+<a name="740"></a>}
+<a name="741"></a>
+<a name="742"></a><span class="source_type">function</span> ChangeMode(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type">Mode</span>)
+<a name="743"></a>{
+<a name="744"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="745"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="746"></a>	if(W != None)
+<a name="747"></a>		W.ChangeMode(<span class="source_type">Nick</span>, <span class="source_type">Mode</span>);
+<a name="748"></a>}
+<a name="749"></a>
+<a name="750"></a><span class="source_type">function</span> ChangeOp(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">bool</span> bOp)
+<a name="751"></a>{
+<a name="752"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="753"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="754"></a>	if(W != None)
+<a name="755"></a>		W.ChangeOp(<span class="source_type">Nick</span>, bOp);
+<a name="756"></a>}
+<a name="757"></a>
+<a name="758"></a><span class="source_type">function</span> ChangeHalfOp(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">bool</span> bHalfOp)
+<a name="759"></a>{
+<a name="760"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="761"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="762"></a>	if(W != None)
+<a name="763"></a>		W.ChangeHalfOp(<span class="source_type">Nick</span>, bHalfOp);
+<a name="764"></a>}
+<a name="765"></a>
+<a name="766"></a><span class="source_type">function</span> ChangeVoice(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">bool</span> bVoice)
+<a name="767"></a>{
+<a name="768"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="769"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="770"></a>	if(W != None)
+<a name="771"></a>		W.ChangeVoice(<span class="source_type">Nick</span>, bVoice);
+<a name="772"></a>}
+<a name="773"></a>
+<a name="774"></a><span class="source_type">function</span> ChangeTopic(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">NewTopic</span>)
+<a name="775"></a>{
+<a name="776"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> W;
+<a name="777"></a>	W = FindChannelWindow(<span class="source_type">Channel</span>);
+<a name="778"></a>	if(W != None)
+<a name="779"></a>	{
+<a name="780"></a>		Log(<span class="source_string">"Topic (Channel: "</span>$<span class="source_type">Channel</span>$<span class="source_string">") : "</span>$<span class="source_type">NewTopic</span>,<span class="source_name">'IRC'</span>);
+<a name="781"></a>		W.ChangeTopic(<span class="source_type">NewTopic</span>);
+<a name="782"></a>	}
+<a name="783"></a>}
+<a name="784"></a>
+<a name="785"></a><span class="source_type">function</span> CTCP(<span class="source_type">string</span> <span class="source_type">Channel</span>, <span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>)
+<a name="786"></a>{
+<a name="787"></a>	if(<span class="source_type">Channel</span> == <span class="source_string">""</span> || <span class="source_type">Channel</span> == <span class="source_type">NickName</span>)
+<a name="788"></a>		SystemText(<span class="source_string">"["</span>$<span class="source_type">Nick</span>$<span class="source_string">": "</span>$<span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>$<span class="source_string">"]"</span>);
+<a name="789"></a>	else
+<a name="790"></a>		SystemText(<span class="source_string">"["</span>$<span class="source_type">Nick</span>$<span class="source_string">":"</span>$<span class="source_type">Channel</span>$<span class="source_string">" "</span>$<span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>$<span class="source_string">"]"</span>);
+<a name="791"></a>}
+<a name="792"></a>
+<a name="793"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="794"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="795"></a><span class="source_comment">//  Channel Interface
+</span><a name="796"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="797"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="798"></a><span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesircpage.html" class="source">TribesIRCPage</a></span> GetCurrentChannel()
+<a name="799"></a>{
+<a name="800"></a>    if( CurChannel != -<span class="source_int">1</span> )
+<a name="801"></a>        return Channels[CurChannel];
+<a name="802"></a>
+<a name="803"></a>    return self;
+<a name="804"></a>}
+<a name="805"></a>
+<a name="806"></a><span class="source_type">function</span> <span class="source_type">string</span> GetCurrentChannelName()
+<a name="807"></a>{
+<a name="808"></a>	<span class="source_comment">// MJ HACK:  return defaultChannel's name for now
+</span><a name="809"></a>	<span class="source_comment">//return tp_Main.defaultChannel.ChannelName;
+</span><a name="810"></a>
+<a name="811"></a>	if (CurChannel != -<span class="source_int">1</span>)
+<a name="812"></a>		return Channels[CurChannel].<span class="source_type">ChannelName</span>;
+<a name="813"></a>
+<a name="814"></a>	return <span class="source_string">""</span>;
+<a name="815"></a>}
+<a name="816"></a>
+<a name="817"></a><span class="source_type">function</span> <span class="source_type">string</span> GetDefaultChannel()
+<a name="818"></a>{
+<a name="819"></a>	<span class="source_comment">//Log("Returning DefaultChannel "$DefaultChannel);
+</span><a name="820"></a>	return DefaultChannel;
+<a name="821"></a>}
+<a name="822"></a>
+<a name="823"></a><span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> FindChannelWindow(<span class="source_type">string</span> <span class="source_type">Channel</span>, optional <span class="source_type">bool</span> <span class="source_type">bIncludePrivate</span>)
+<a name="824"></a>{
+<a name="825"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="826"></a>
+<a name="827"></a>	<span class="source_comment">// MJ HACK:  return defaultChannel for now
+</span><a name="828"></a>	<span class="source_comment">//return tp_Main.defaultChannel;
+</span><a name="829"></a>
+<a name="830"></a>	<span class="source_type">i</span> = FindPublicChannelIndex(<span class="source_type">Channel</span>,<span class="source_type">bIncludePrivate</span>);
+<a name="831"></a>	if ( <span class="source_type">i</span> != -<span class="source_int">1</span> )
+<a name="832"></a>		return Channels[<span class="source_type">i</span>];
+<a name="833"></a>
+<a name="834"></a>	return None;
+<a name="835"></a>}
+<a name="836"></a>
+<a name="837"></a><span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesircprivate.html" class="source">TribesIRCPrivate</a></span> FindPrivateWindow(<span class="source_type">string</span> <span class="source_type">Nick</span>)
+<a name="838"></a>{
+<a name="839"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="840"></a>
+<a name="841"></a>	<span class="source_type">i</span> = FindPrivateChannelIndex(<span class="source_type">Nick</span>);
+<a name="842"></a>	if ( <span class="source_type">i</span> != -<span class="source_int">1</span> )
+<a name="843"></a>  		return <span class="source_type"><a href="../tribesgui/tribesircprivate.html" class="source">TribesIRCPrivate</a></span>(Channels[<span class="source_type">i</span>]);
+<a name="844"></a>
+<a name="845"></a>	return <span class="source_type"><a href="../tribesgui/tribesircprivate.html" class="source">TribesIRCPrivate</a></span>(AddChannel(<span class="source_type">Nick</span>,True));
+<a name="846"></a>}
+<a name="847"></a>
+<a name="848"></a><span class="source_type">function</span> <span class="source_type">int</span> FindPublicChannelIndex( <span class="source_type">string</span> <span class="source_type">ChannelName</span>, optional <span class="source_type">bool</span> <span class="source_type">bIncludePrivate</span> )
+<a name="849"></a>{
+<a name="850"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="851"></a>
+<a name="852"></a>    for( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; Channels.Length; <span class="source_type">i</span>++ )
+<a name="853"></a>    {
+<a name="854"></a>    	if ( Channels[<span class="source_type">i</span>].<span class="source_type">ChannelName</span> ~= <span class="source_type">ChannelName</span> )
+<a name="855"></a>    	{
+<a name="856"></a>    		if ( !Channels[<span class="source_type">i</span>].IsPrivate || <span class="source_type">bIncludePrivate</span> )
+<a name="857"></a>   				return <span class="source_type">i</span>;
+<a name="858"></a>    	}
+<a name="859"></a>    }
+<a name="860"></a>
+<a name="861"></a>    return -<span class="source_int">1</span>;
+<a name="862"></a>}
+<a name="863"></a>
+<a name="864"></a><span class="source_type">function</span> <span class="source_type">int</span> FindPrivateChannelIndex( <span class="source_type">string</span> <span class="source_type">ChannelName</span> )
+<a name="865"></a>{
+<a name="866"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="867"></a>
+<a name="868"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; Channels.Length; <span class="source_type">i</span>++ )
+<a name="869"></a>		if ( Channels[<span class="source_type">i</span>].IsPrivate && <span class="source_type">ChannelName</span> ~= Channels[<span class="source_type">i</span>].<span class="source_type">ChannelName</span> )
+<a name="870"></a>			return <span class="source_type">i</span>;
+<a name="871"></a>
+<a name="872"></a>	return -<span class="source_int">1</span>;
+<a name="873"></a>}
+<a name="874"></a>
+<a name="875"></a>
+<a name="876"></a><span class="source_type">function</span> SetCurrentChannelPage( <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> <span class="source_type">ChannelPage</span> )
+<a name="877"></a>{
+<a name="878"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="879"></a>
+<a name="880"></a>	for( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; Channels.Length; <span class="source_type">i</span>++)
+<a name="881"></a>	{
+<a name="882"></a>		if(Channels[<span class="source_type">i</span>] == <span class="source_type">ChannelPage</span>)
+<a name="883"></a>		{
+<a name="884"></a>			SetCurrentChannel(<span class="source_type">i</span>);
+<a name="885"></a>			return;
+<a name="886"></a>		}
+<a name="887"></a>	}
+<a name="888"></a>}
+<a name="889"></a>
+<a name="890"></a><span class="source_type">function</span> SetCurrentChannel( <span class="source_type">int</span> <span class="source_type">idx</span> )
+<a name="891"></a>{
+<a name="892"></a>	if ( <span class="source_type">idx</span> == CurChannel )
+<a name="893"></a>		return;
+<a name="894"></a>
+<a name="895"></a>	<span class="source_type">idx</span> = Clamp( <span class="source_type">idx</span>, -<span class="source_int">1</span>, Channels.Length - <span class="source_int">1</span> );
+<a name="896"></a>
+<a name="897"></a>	<span class="source_comment">// Make the current channel the active tab (if its not already).
+</span><a name="898"></a>	NewChannelSelected( <span class="source_type">idx</span> );
+<a name="899"></a>	UpdateCurrentChannel( <span class="source_type">idx</span> );
+<a name="900"></a>}
+<a name="901"></a>
+<a name="902"></a><span class="source_type">function</span> UpdateCurrentChannel( <span class="source_type">int</span> <span class="source_type">NewCurrent</span> )
+<a name="903"></a>{
+<a name="904"></a>	<span class="source_comment">//Log("UpdateCurrentChannel called with new index "$NewCurrent);
+</span><a name="905"></a>    PrevChannel = CurChannel;
+<a name="906"></a>    CurChannel = <span class="source_type">NewCurrent</span>;
+<a name="907"></a>
+<a name="908"></a>    <span class="source_comment">//if ( !ValidChannelIndex(CurChannel) || !Channels[CurChannel].IsPrivate )
+</span><a name="909"></a>    <span class="source_comment">//	tp_Main.SetCloseCaption();
+</span><a name="910"></a>    <span class="source_comment">//else tp_Main.SetCloseCaption(GetCurrentChannelName());
+</span><a name="911"></a>
+<a name="912"></a>	if (CurChannel &gt;= <span class="source_int">0</span>)
+<a name="913"></a>		Channels[CurChannel].ed_TextEntry.Focus();
+<a name="914"></a>	tp_Main.leaveButton.SetEnabled(<span class="source_type">NewCurrent</span> &gt;= <span class="source_int">0</span>);
+<a name="915"></a>}
+<a name="916"></a>
+<a name="917"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="918"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="919"></a><span class="source_comment">//  Query / Utility / Internal
+</span><a name="920"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="921"></a><span class="source_comment">// =====================================================================================================================
+</span><a name="922"></a>
+<a name="923"></a><span class="source_comment">// Update the clients 'away' string
+</span><a name="924"></a><span class="source_type">function</span> UpdateAway()
+<a name="925"></a>{
+<a name="926"></a>	if( IsConnected() )
+<a name="927"></a>	{
+<a name="928"></a>		if( InGame() || InMenus() )
+<a name="929"></a>			ChangeAwayStatus(True);
+<a name="930"></a>
+<a name="931"></a>		else if ( IsAway() )
+<a name="932"></a>			ChangeAwayStatus(False);
+<a name="933"></a>	}
+<a name="934"></a>}
+<a name="935"></a>
+<a name="936"></a><span class="source_type">function</span> PrintAwayMessage(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>)
+<a name="937"></a>{
+<a name="938"></a>	local <span class="source_type"><a href="../tribesgui/tribesircprivate.html" class="source">TribesIRCPrivate</a></span> W;
+<a name="939"></a>
+<a name="940"></a>	W = FindPrivateWindow(<span class="source_type">Nick</span>);
+<a name="941"></a>
+<a name="942"></a>	if(W != None)
+<a name="943"></a>		W.PrintAwayMessage(<span class="source_type">Nick</span>, <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>);
+<a name="944"></a>	else
+<a name="945"></a>		SystemText(repl(IsAwayText, <span class="source_string">"%name%"</span>, <span class="source_type">Nick</span>) $ <span class="source_string">": "</span> $ <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>);
+<a name="946"></a>}
+<a name="947"></a>
+<a name="948"></a><span class="source_type">function</span> IRCClosed()
+<a name="949"></a>{
+<a name="950"></a>	UpdateAway();
+<a name="951"></a>}
+<a name="952"></a>
+<a name="953"></a>protected <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesirclink.html" class="source">TribesIRCLink</a></span> CreateNewLink()
+<a name="954"></a>{
+<a name="955"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tribesgui/tribesirclink.html" class="source">TribesIRCLink</a></span>&gt; NewLinkClass;
+<a name="956"></a>	local <span class="source_type"><a href="../tribesgui/tribesirclink.html" class="source">TribesIRCLink</a></span> NewLink;
+<a name="957"></a>
+<a name="958"></a>	if ( PlayerOwner() == None )
+<a name="959"></a>		return None;
+<a name="960"></a>
+<a name="961"></a>	if ( LinkClassName != <span class="source_string">""</span> )
+<a name="962"></a>		NewLinkClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tribesgui/tribesirclink.html" class="source">TribesIRCLink</a></span>&gt;(DynamicLoadObject( LinkClassName, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="963"></a>
+<a name="964"></a>	if ( NewLinkClass != None )
+<a name="965"></a>	    NewLink = PlayerOwner().Spawn( NewLinkClass );
+<a name="966"></a>
+<a name="967"></a>    return NewLink;
+<a name="968"></a>}
+<a name="969"></a>
+<a name="970"></a><span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> AddChannel( <span class="source_type">string</span> <span class="source_type">ChannelName</span>, optional <span class="source_type">bool</span> <span class="source_type">bPrivate</span>, optional <span class="source_type">bool</span> <span class="source_type">bActivate</span> )
+<a name="971"></a>{
+<a name="972"></a>	local <span class="source_type"><a href="../tribesgui/tribesircchannel.html" class="source">TribesIRCChannel</a></span> NewCh;
+<a name="973"></a>
+<a name="974"></a>	NewCh = tp_Main.AddChannel( <span class="source_type">ChannelName</span>, <span class="source_type">bPrivate</span> );
+<a name="975"></a>	if ( NewCh != None )
+<a name="976"></a>	{
+<a name="977"></a>		NewCh.tp_System = self;
+<a name="978"></a>
+<a name="979"></a>        NewCh.IsPrivate = <span class="source_type">bPrivate</span>;
+<a name="980"></a>        NewCh.<span class="source_type">ChannelName</span> = <span class="source_type">ChannelName</span>;
+<a name="981"></a>
+<a name="982"></a>        Channels[Channels.Length] = NewCh;
+<a name="983"></a>        if ( <span class="source_type">bActivate</span> )
+<a name="984"></a>        	SetCurrentChannel( Channels.Length - <span class="source_int">1</span> );
+<a name="985"></a>    }
+<a name="986"></a>
+<a name="987"></a>    return NewCh;
+<a name="988"></a>}
+<a name="989"></a>
+<a name="990"></a><span class="source_type">function</span> <span class="source_type">bool</span> RemoveChannelAt( <span class="source_type">int</span> <span class="source_type">Index</span> )
+<a name="991"></a>{
+<a name="992"></a>	if ( !ValidChannelIndex(<span class="source_type">Index</span>) )
+<a name="993"></a>		return false;
+<a name="994"></a>
+<a name="995"></a>	if ( <span class="source_type">Index</span> == CurChannel )
+<a name="996"></a>		SetCurrentChannel(PrevChannel);    <span class="source_comment">// Set current channel to previous channel
+</span><a name="997"></a>
+<a name="998"></a>	tp_Main.RemoveChannel( Channels[<span class="source_type">Index</span>].<span class="source_type">ChannelName</span> );
+<a name="999"></a>	Channels.Remove(<span class="source_type">Index</span>,<span class="source_int">1</span>);          <span class="source_comment">// remove from channels list
+</span><a name="1000"></a>
+<a name="1001"></a>	return true;
+<a name="1002"></a>}
+<a name="1003"></a>
+<a name="1004"></a><span class="source_type">function</span> RemoveChannel( <span class="source_type">string</span> <span class="source_type">Channel</span> )
+<a name="1005"></a>{
+<a name="1006"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1007"></a>
+<a name="1008"></a>	<span class="source_comment">// Find channel in channel array
+</span><a name="1009"></a>	<span class="source_type">i</span> = FindPublicChannelIndex(<span class="source_type">Channel</span>,True);
+<a name="1010"></a>	if ( <span class="source_type">i</span> != -<span class="source_int">1</span> )
+<a name="1011"></a>		RemoveChannelAt(<span class="source_type">i</span>);
+<a name="1012"></a>}
+<a name="1013"></a>
+<a name="1014"></a><span class="source_type">function</span> <span class="source_type">bool</span> ValidChannelIndex(<span class="source_type">int</span> <span class="source_type">Index</span>)
+<a name="1015"></a>{
+<a name="1016"></a>	if ( <span class="source_type">Index</span> &lt; <span class="source_int">0</span> || <span class="source_type">Index</span> &gt;= Channels.Length )
+<a name="1017"></a>		return false;
+<a name="1018"></a>
+<a name="1019"></a>	return true;
+<a name="1020"></a>}
+<a name="1021"></a>
+<a name="1022"></a><span class="source_type">function</span> InternalOnCreateComponent(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> NewComp, <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="1023"></a>{
+<a name="1024"></a>	if ( <span class="source_type"><a href="../tribesgui/tribesircpanel.html" class="source">TribesIRCPanel</a></span>(NewComp) != None )
+<a name="1025"></a>		p_IRC = <span class="source_type"><a href="../tribesgui/tribesircpanel.html" class="source">TribesIRCPanel</a></span>(NewComp);
+<a name="1026"></a>
+<a name="1027"></a>	Super.InternalOnCreateComponent(NewComp, <span class="source_type">Sender</span>);
+<a name="1028"></a>}
+<a name="1029"></a>
+<a name="1030"></a>defaultproperties
+<a name="1031"></a>{
+<a name="1032"></a>    <span class="source_comment">// Splitter to divide main window in two: chat window & entry box
+</span><a name="1033"></a>    <span class="source_comment">//Begin Object Class=GUISplitter Name=SplitterA
+</span><a name="1034"></a>    <span class="source_comment">//    WinWidth=1.0
+</span><a name="1035"></a>    <span class="source_comment">//    WinHeight=0.95
+</span><a name="1036"></a>    <span class="source_comment">//    WinTop=0
+</span><a name="1037"></a>    <span class="source_comment">//    WinLeft=0
+</span><a name="1038"></a>    <span class="source_comment">//    //OnCreateComponent=InternalOnCreateComponent
+</span><a name="1039"></a>    <span class="source_comment">//    DefaultPanels(0)="XInterface.GUIScrollTextBox"
+</span><a name="1040"></a>    <span class="source_comment">//    DefaultPanels(1)="TribesGUI.TribesIRCPanel"
+</span><a name="1041"></a>    <span class="source_comment">//    SplitOrientation=SPLIT_Vertical
+</span><a name="1042"></a>    <span class="source_comment">//    SplitPosition=0.8
+</span><a name="1043"></a>    <span class="source_comment">//    bFixedSplitter=true
+</span><a name="1044"></a>    <span class="source_comment">//    TabOrder=1
+</span><a name="1045"></a>    <span class="source_comment">//End Object
+</span><a name="1046"></a>    <span class="source_comment">//sp_Main=SplitterA
+</span><a name="1047"></a>
+<a name="1048"></a>    MainSplitterPosition=<span class="source_int">0.5</span>
+<a name="1049"></a>	NotInAChannelText=<span class="source_string">"Not in a channel!"</span>
+<a name="1050"></a>	KickedFromText=<span class="source_string">"You were kicked from %channel% by %kicker%"</span>
+<a name="1051"></a>	InvalidModeText=<span class="source_string">"Invalid parameters for MODE - Syntax: /MODE [#]target [[+|-]modes [Extra Params]]"</span>
+<a name="1052"></a>	InvalidKickText=<span class="source_string">"Invalid parameters for %Cmd% - Syntax: /%Cmd% #ChannelName Nick :[Reason]"</span>
+<a name="1053"></a>	ChooseNewNickText=<span class="source_string">"Choose A New IRC Nickname"</span>
+<a name="1054"></a>	NickInUseText=<span class="source_string">"Nickname Already In Use"</span>
+<a name="1055"></a>	NickInvalidText=<span class="source_string">"Nickname Is Invalid"</span>
+<a name="1056"></a>	NewNickMenu=<span class="source_string">"TribesGUI.TribesIRCNewNick"</span>
+<a name="1057"></a>	ChanKeyMenu=<span class="source_string">"TribesGUI.TribesIRCChanKey"</span>
+<a name="1058"></a>
+<a name="1059"></a>	ByText=<span class="source_string">"by"</span>
+<a name="1060"></a>	IsAwayText=<span class="source_string">"%name% is away"</span>
+<a name="1061"></a>    CurChannel=-<span class="source_int">2</span>
+<a name="1062"></a>    PrevChannel=-<span class="source_int">1</span>
+<a name="1063"></a>
+<a name="1064"></a>	LinkClassName=<span class="source_string">"TribesGUI.TribesIRCLink"</span>
+<a name="1065"></a>	LeavePrivateText=<span class="source_string">"CLOSE %ChanName% "</span>
+<a name="1066"></a>	ChangeNickCaption=<span class="source_string">"CHANGE NICK"</span>
+<a name="1067"></a>	CloseWindowCaption=<span class="source_string">"LEAVE CHANNEL"</span>
+<a name="1068"></a>	DisconnectCaption=<span class="source_string">"DISCONNECT"</span>
+<a name="1069"></a>
+<a name="1070"></a>	DefaultChannel=<span class="source_string">"#tribes"</span>
+<a name="1071"></a>	NewNickString=<span class="source_string">"* Your nick is now"</span>
+<a name="1072"></a>}
+<a name="1073"></a>
+<a name="1074"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesircsystem.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesIRCSystem">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesircprivate.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribeskeymappingpopup.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: st 16.4.2014 10:20:44.000 - Creation time: st 23.5.2018 00:10:48.507 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

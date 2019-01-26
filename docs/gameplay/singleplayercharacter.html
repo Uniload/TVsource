@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.SingleplayerCharacter</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/singleplayercharacter.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#SingleplayerCharacter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/shockmineproximity.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/singleplayergameinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/singleplayercharacter.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.SingleplayerCharacter</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/playercharacter.html">PlayerCharacter</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/ragdoll.html">Ragdoll</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/character.html">Character</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/playercharacter.html">PlayerCharacter</a>
+                  |   
+                  +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/singleplayercharacter.html">SingleplayerCharacter</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/animationtestcharacter.html">AnimationTestCharacter</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/character.html">Character</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/character.html#DAMAGE_LARGE">DAMAGE_LARGE</a>, <a href="../gameplay/character.html#GM_Any_Int">GM_Any_Int</a>, <a href="../gameplay/character.html#GM_Run_Int">GM_Run_Int</a>, <a href="../gameplay/character.html#GM_Sprint_Int">GM_Sprint_Int</a>, <a href="../gameplay/character.html#GM_Walk_Int">GM_Walk_Int</a>, <a href="../gameplay/character.html#NUM_WEAPON_SLOTS">NUM_WEAPON_SLOTS</a>, <a href="../gameplay/character.html#ROPE_MESH_LENGTH">ROPE_MESH_LENGTH</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><th colspan="2" class="small">SingleplayerCharacter</th></tr>
+<tr><td nowrap="nowrap" width="33%">Mesh</td><td width="66%"><a href="#_armsMesh" name="armsMesh" title="go to the details">armsMesh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_healthModifier" name="healthModifier" title="go to the details">healthModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/jetpack.html">Jetpack</a>&gt;</td><td width="66%"><a href="#_jetpackClass" name="jetpackClass" title="go to the details">jetpackClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_loadoutAmmoMultiplier" name="loadoutAmmoMultiplier" title="go to the details">loadoutAmmoMultiplier</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/character.html">Character</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/character.html#alertAimAnimationRootBone">alertAimAnimationRootBone</a>, <a href="../gameplay/character.html#altWeapon">altWeapon</a>, <a href="../gameplay/character.html#animationChannels">animationChannels</a>, <a href="../gameplay/character.html#animationHeightSpring">animationHeightSpring</a>, <a href="../gameplay/character.html#animationManager">animationManager</a>, <a href="../gameplay/character.html#animationStates">animationStates</a>, <a href="../gameplay/character.html#animationVelocitySpring">animationVelocitySpring</a>, <a href="../gameplay/character.html#armAnimationRootBone">armAnimationRootBone</a>, <a href="../gameplay/character.html#armorClass">armorClass</a>, <a href="../gameplay/character.html#arms">arms</a>, <a href="../gameplay/character.html#bActivatingEffect">bActivatingEffect</a>, <a href="../gameplay/character.html#bActivatingEffectStarted">bActivatingEffectStarted</a>, <a href="../gameplay/character.html#bActiveEffect">bActiveEffect</a>, <a href="../gameplay/character.html#bActiveEffectStarted">bActiveEffectStarted</a>, <a href="../gameplay/character.html#bApplyHealthFilter">bApplyHealthFilter</a>, <a href="../gameplay/character.html#bAttached">bAttached</a>, <a href="../gameplay/character.html#bCanZoom">bCanZoom</a>, <a href="../gameplay/character.html#bDeactivatingEffect">bDeactivatingEffect</a>, <a href="../gameplay/character.html#bDisableJetting">bDisableJetting</a>, <a href="../gameplay/character.html#bDisableSkiing">bDisableSkiing</a>, <a href="../gameplay/character.html#bDisallowEquipmentDropOnDeath">bDisallowEquipmentDropOnDeath</a>, <a href="../gameplay/character.html#bDontAllowCarryablePickups">bDontAllowCarryablePickups</a>, <a href="../gameplay/character.html#bDontAllowCommandScreen">bDontAllowCommandScreen</a>, <a href="../gameplay/character.html#bDontInteractWithTerritories">bDontInteractWithTerritories</a>, <a href="../gameplay/character.html#bGodMode">bGodMode</a>, <a href="../gameplay/character.html#bHiddenVehicleOccupant">bHiddenVehicleOccupant</a>, <a href="../gameplay/character.html#bHitRegistered">bHitRegistered</a>, <a href="../gameplay/character.html#bIsLocalCharacter">bIsLocalCharacter</a>, <a href="../gameplay/character.html#bLocalActivatingEffect">bLocalActivatingEffect</a>, <a href="../gameplay/character.html#bLocalActivatingEffectStarted">bLocalActivatingEffectStarted</a>, <a href="../gameplay/character.html#bLocalActiveEffect">bLocalActiveEffect</a>, <a href="../gameplay/character.html#bLocalActiveEffectStarted">bLocalActiveEffectStarted</a>, <a href="../gameplay/character.html#bLocalAttached">bLocalAttached</a>, <a href="../gameplay/character.html#bLocalDeactivatingEffect">bLocalDeactivatingEffect</a>, <a href="../gameplay/character.html#bLocalObjectHit">bLocalObjectHit</a>, <a href="../gameplay/character.html#bLocalTempInvincible">bLocalTempInvincible</a>, <a href="../gameplay/character.html#bLocalUnactivatingEffect">bLocalUnactivatingEffect</a>, <a href="../gameplay/character.html#bLocalUnactivatingEffectStarted">bLocalUnactivatingEffectStarted</a>, <a href="../gameplay/character.html#bLocalUnactiveEffect">bLocalUnactiveEffect</a>, <a href="../gameplay/character.html#bLocalUnactiveEffectStarted">bLocalUnactiveEffectStarted</a>, <a href="../gameplay/character.html#bLocalUndeactivatingEffect">bLocalUndeactivatingEffect</a>, <a href="../gameplay/character.html#blockMovementDamage">blockMovementDamage</a>, <a href="../gameplay/character.html#bObjectHit">bObjectHit</a>, <a href="../gameplay/character.html#bReelIn">bReelIn</a>, <a href="../gameplay/character.html#bSpawningAtVehicle">bSpawningAtVehicle</a>, <a href="../gameplay/character.html#bTempInvincible">bTempInvincible</a>, <a href="../gameplay/character.html#bUnactivatingEffect">bUnactivatingEffect</a>, <a href="../gameplay/character.html#bUnactivatingEffectStarted">bUnactivatingEffectStarted</a>, <a href="../gameplay/character.html#bUnactiveEffect">bUnactiveEffect</a>, <a href="../gameplay/character.html#bUnactiveEffectStarted">bUnactiveEffectStarted</a>, <a href="../gameplay/character.html#bUndeactivatingEffect">bUndeactivatingEffect</a>, <a href="../gameplay/character.html#bZoomed">bZoomed</a>, <a href="../gameplay/character.html#bZoomOutOnSpawn">bZoomOutOnSpawn</a>, <a href="../gameplay/character.html#carryableReference">carryableReference</a>, <a href="../gameplay/character.html#carryables">carryables</a>, <a href="../gameplay/character.html#CharacterName">CharacterName</a>, <a href="../gameplay/character.html#CharacterNameLocalisationTag">CharacterNameLocalisationTag</a>, <a href="../gameplay/character.html#clientPainType">clientPainType</a>, <a href="../gameplay/character.html#collisionMaterialObject">collisionMaterialObject</a>, <a href="../gameplay/character.html#combatAimAnimationRootBone">combatAimAnimationRootBone</a>, <a href="../gameplay/character.html#combatRole">combatRole</a>, <a href="../gameplay/character.html#deployable">deployable</a>, <a href="../gameplay/character.html#dummy[4]">dummy[4]</a>, <a href="../gameplay/character.html#energy">energy</a>, <a href="../gameplay/character.html#energyMaximum">energyMaximum</a>, <a href="../gameplay/character.html#energyMinimum">energyMinimum</a>, <a href="../gameplay/character.html#energyRechargeRate">energyRechargeRate</a>, <a href="../gameplay/character.html#energyRechargeScale">energyRechargeScale</a>, <a href="../gameplay/character.html#energyWeaponDepleted">energyWeaponDepleted</a>, <a href="../gameplay/character.html#eyeBoneIndex">eyeBoneIndex</a>, <a href="../gameplay/character.html#eyeBoneName">eyeBoneName</a>, <a href="../gameplay/character.html#eyeBoneOffset">eyeBoneOffset</a>, <a href="../gameplay/character.html#fallbackWeapon">fallbackWeapon</a>, <a href="../gameplay/character.html#grapplerCharacters">grapplerCharacters</a>, <a href="../gameplay/character.html#grapplerClass">grapplerClass</a>, <a href="../gameplay/character.html#HeadHeight">HeadHeight</a>, <a href="../gameplay/character.html#healthInjectionAmount">healthInjectionAmount</a>, <a href="../gameplay/character.html#healthInjectionRatePerSecond">healthInjectionRatePerSecond</a>, <a href="../gameplay/character.html#heldPackClass">heldPackClass</a>, <a href="../gameplay/character.html#invicibilityMaterial">invicibilityMaterial</a>, <a href="../gameplay/character.html#jetCompetency">jetCompetency</a>, <a href="../gameplay/character.html#jetpack">jetpack</a>, <a href="../gameplay/character.html#jetpackBone">jetpackBone</a>, <a href="../gameplay/character.html#lastCarryableNumber">lastCarryableNumber</a>, <a href="../gameplay/character.html#lastHitObject">lastHitObject</a>, <a href="../gameplay/character.html#lastMovementCollisionTime">lastMovementCollisionTime</a>, <a href="../gameplay/character.html#lastMovementDamageTime">lastMovementDamageTime</a>, <a href="../gameplay/character.html#lastPossessor">lastPossessor</a>, <a href="../gameplay/character.html#leftPack">leftPack</a>, <a href="../gameplay/character.html#loadout">loadout</a>, <a href="../gameplay/character.html#loadoutClass">loadoutClass</a>, <a href="../gameplay/character.html#localCombatRole">localCombatRole</a>, <a href="../gameplay/character.html#localHealth">localHealth</a>, <a href="../gameplay/character.html#localPackClass">localPackClass</a>, <a href="../gameplay/character.html#LocalQCAnimData">LocalQCAnimData</a>, <a href="../gameplay/character.html#LocalQCTalkData">LocalQCTalkData</a>, <a href="../gameplay/character.html#motor">motor</a>, <a href="../gameplay/character.html#movementAirborne">movementAirborne</a>, <a href="../gameplay/character.html#movementAltitude">movementAltitude</a>, <a href="../gameplay/character.html#movementClose">movementClose</a>, <a href="../gameplay/character.html#movementCollided">movementCollided</a>, <a href="../gameplay/character.html#movementCollisionMaterial">movementCollisionMaterial</a>, <a href="../gameplay/character.html#movementConfiguration">movementConfiguration</a>, <a href="../gameplay/character.html#movementDirectionalSpeed">movementDirectionalSpeed</a>, <a href="../gameplay/character.html#movementDisplacement">movementDisplacement</a>, <a href="../gameplay/character.html#movementDisplacementRate">movementDisplacementRate</a>, <a href="../gameplay/character.html#movementDynamic">movementDynamic</a>, <a href="../gameplay/character.html#movementElevator">movementElevator</a>, <a href="../gameplay/character.html#movementExtraMass">movementExtraMass</a>, <a href="../gameplay/character.html#movementFrozen">movementFrozen</a>, <a href="../gameplay/character.html#movementGrounded">movementGrounded</a>, <a href="../gameplay/character.html#movementGroundState">movementGroundState</a>, <a href="../gameplay/character.html#movementHorizontalSpeed">movementHorizontalSpeed</a>, <a href="../gameplay/character.html#movementImpulseChaos">movementImpulseChaos</a>, <a href="../gameplay/character.html#movementKnockbackScale">movementKnockbackScale</a>, <a href="../gameplay/character.html#movementNormal">movementNormal</a>, <a href="../gameplay/character.html#movementOldThrusting">movementOldThrusting</a>, <a href="../gameplay/character.html#movementOldVelocity">movementOldVelocity</a>, <a href="../gameplay/character.html#movementPushing">movementPushing</a>, <a href="../gameplay/character.html#movementResting">movementResting</a>, <a href="../gameplay/character.html#movementSimProxyInputJump">movementSimProxyInputJump</a>, <a href="../gameplay/character.html#movementSimProxyInputSki">movementSimProxyInputSki</a>, <a href="../gameplay/character.html#movementSimProxyInputThrust">movementSimProxyInputThrust</a>, <a href="../gameplay/character.html#movementSimProxyInputX">movementSimProxyInputX</a>, <a href="../gameplay/character.html#movementSimProxyInputY">movementSimProxyInputY</a>, <a href="../gameplay/character.html#movementSimProxyPitch">movementSimProxyPitch</a>, <a href="../gameplay/character.html#movementSkiInput">movementSkiInput</a>, <a href="../gameplay/character.html#movementSpeed">movementSpeed</a>, <a href="../gameplay/character.html#movementSphereRadius">movementSphereRadius</a>, <a href="../gameplay/character.html#movementSphyllHalfHeight">movementSphyllHalfHeight</a>, <a href="../gameplay/character.html#movementSphyllRadius">movementSphyllRadius</a>, <a href="../gameplay/character.html#movementSplashChaos">movementSplashChaos</a>, <a href="../gameplay/character.html#movementStrafe">movementStrafe</a>, <a href="../gameplay/character.html#movementTangentialSpeed">movementTangentialSpeed</a>, <a href="../gameplay/character.html#movementThrusting">movementThrusting</a>, <a href="../gameplay/character.html#movementTouching">movementTouching</a>, <a href="../gameplay/character.html#movementUnderWater">movementUnderWater</a>, <a href="../gameplay/character.html#movementVerticalSpeed">movementVerticalSpeed</a>, <a href="../gameplay/character.html#movementWater">movementWater</a>, <a href="../gameplay/character.html#movementWaterPenetration">movementWaterPenetration</a>, <a href="../gameplay/character.html#movementZeroGravity">movementZeroGravity</a>, <a href="../gameplay/character.html#m_bManualAnimation">m_bManualAnimation</a>, <a href="../gameplay/character.html#m_bOldManualAnimation">m_bOldManualAnimation</a>, <a href="../gameplay/character.html#m_equipmentHead">m_equipmentHead</a>, <a href="../gameplay/character.html#needToPlayArmAnim">needToPlayArmAnim</a>, <a href="../gameplay/character.html#neutralAimAnimationRootBone">neutralAimAnimationRootBone</a>, <a href="../gameplay/character.html#numCarryables">numCarryables</a>, <a href="../gameplay/character.html#numPermanentCarryables">numPermanentCarryables</a>, <a href="../gameplay/character.html#pack">pack</a>, <a href="../gameplay/character.html#packDrawScale">packDrawScale</a>, <a href="../gameplay/character.html#packLeftBone">packLeftBone</a>, <a href="../gameplay/character.html#packRightBone">packRightBone</a>, <a href="../gameplay/character.html#playerNameMP">playerNameMP</a>, <a href="../gameplay/character.html#potentialEquipment">potentialEquipment</a>, <a href="../gameplay/character.html#previousPhysics">previousPhysics</a>, <a href="../gameplay/character.html#primaryAnimationLayer">primaryAnimationLayer</a>, <a href="../gameplay/character.html#proj">proj</a>, <a href="../gameplay/character.html#pseudoWeapon">pseudoWeapon</a>, <a href="../gameplay/character.html#QCAnimData">QCAnimData</a>, <a href="../gameplay/character.html#QCTalkData">QCTalkData</a>, <a href="../gameplay/character.html#regenerationActive">regenerationActive</a>, <a href="../gameplay/character.html#regenerationRateHealthPerSecond">regenerationRateHealthPerSecond</a>, <a href="../gameplay/character.html#rightPack">rightPack</a>, <a href="../gameplay/character.html#rope">rope</a>, <a href="../gameplay/character.html#ropeNaturalLength">ropeNaturalLength</a>, <a href="../gameplay/character.html#runAnimationSpeed">runAnimationSpeed</a>, <a href="../gameplay/character.html#secondaryAnimationLayer">secondaryAnimationLayer</a>, <a href="../gameplay/character.html#shieldActive">shieldActive</a>, <a href="../gameplay/character.html#shieldFractionDamageBlocked">shieldFractionDamageBlocked</a>, <a href="../gameplay/character.html#skiCompetency">skiCompetency</a>, <a href="../gameplay/character.html#sprintAnimationSpeed">sprintAnimationSpeed</a>, <a href="../gameplay/character.html#tribesReplicationInfo">tribesReplicationInfo</a>, <a href="../gameplay/character.html#upperBodyAnimationRootBone">upperBodyAnimationRootBone</a>, <a href="../gameplay/character.html#userSkinClass">userSkinClass</a>, <a href="../gameplay/character.html#vehicleTeamCrushingDamageModifier">vehicleTeamCrushingDamageModifier</a>, <a href="../gameplay/character.html#visualisation">visualisation</a>, <a href="../gameplay/character.html#VoiceSetPackageName">VoiceSetPackageName</a>, <a href="../gameplay/character.html#walkAnimationSpeed">walkAnimationSpeed</a>, <a href="../gameplay/character.html#weapon">weapon</a>, <a href="../gameplay/character.html#weaponBone">weaponBone</a>, <a href="../gameplay/character.html#weaponNotHeldTime">weaponNotHeldTime</a>, <a href="../gameplay/character.html#weaponPlayingArmAnimation">weaponPlayingArmAnimation</a>, <a href="../gameplay/character.html#weaponSlots[NUM_WEAPON_SLOTS]">weaponSlots[NUM_WEAPON_SLOTS]</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/character.html">Character</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/character.html#AnimationStateEnum">AnimationStateEnum</a>, <a href="../gameplay/character.html#EClientPainType">EClientPainType</a>, <a href="../gameplay/character.html#GroundMovementLevels">GroundMovementLevels</a>, <a href="../gameplay/character.html#HitPosition">HitPosition</a>, <a href="../gameplay/character.html#JetCompetencyLevels">JetCompetencyLevels</a>, <a href="../gameplay/character.html#MovementDirectionalInput">MovementDirectionalInput</a>, <a href="../gameplay/character.html#SkiCompetencyLevels">SkiCompetencyLevels</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/character.html">Character</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/character.html#QuickChatInfo">QuickChatInfo</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_getModifiedAmmo-" name="getModifiedAmmo" title="go to the details">getModifiedAmmo</a> (int baseAmmo))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_giveJetpack-" name="giveJetpack" title="go to the details">giveJetpack</a> (class&lt;<a href="../gameplay/jetpack.html">Jetpack</a>&gt; jpClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/playercharacter.html">PlayerCharacter</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/playercharacter.html#PostBeginPlay">PostBeginPlay</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/character.html">Character</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/character.html#activatePack">activatePack</a>, <a href="../gameplay/character.html#addEquipment">addEquipment</a>, <a href="../gameplay/character.html#addGrapplerCharacter">addGrapplerCharacter</a>, <a href="../gameplay/character.html#addGrenades">addGrenades</a>, <a href="../gameplay/character.html#addImpulse">addImpulse</a>, <a href="../gameplay/character.html#addPack">addPack</a>, <a href="../gameplay/character.html#allocateAnimationChannels">allocateAnimationChannels</a>, <a href="../gameplay/character.html#allocateAnimationStates">allocateAnimationStates</a>, <a href="../gameplay/character.html#attachGrapple">attachGrapple</a>, <a href="../gameplay/character.html#BaseChange">BaseChange</a>, <a href="../gameplay/character.html#bIsInMount">bIsInMount</a>, <a href="../gameplay/character.html#BreakGrapple">BreakGrapple</a>, <a href="../gameplay/character.html#Bump">Bump</a>, <a href="../gameplay/character.html#calculateExtents">calculateExtents</a>, <a href="../gameplay/character.html#CalculateHitPosition">CalculateHitPosition</a>, <a href="../gameplay/character.html#canBeSensed">canBeSensed</a>, <a href="../gameplay/character.html#changeEnergy">changeEnergy</a>, <a href="../gameplay/character.html#changeHealth">changeHealth</a>, <a href="../gameplay/character.html#CheckBob">CheckBob</a>, <a href="../gameplay/character.html#checkManualAnimation">checkManualAnimation</a>, <a href="../gameplay/character.html#clampHealthInjection">clampHealthInjection</a>, <a href="../gameplay/character.html#clearCarryables">clearCarryables</a>, <a href="../gameplay/character.html#clientWeaponUseEnergy">clientWeaponUseEnergy</a>, <a href="../gameplay/character.html#composeCarryables">composeCarryables</a>, <a href="../gameplay/character.html#createRope">createRope</a>, <a href="../gameplay/character.html#createThirdPersonMesh">createThirdPersonMesh</a>, <a href="../gameplay/character.html#DamageTag">DamageTag</a>, <a href="../gameplay/character.html#debugMovement">debugMovement</a>, <a href="../gameplay/character.html#destroyAnimationSystem">destroyAnimationSystem</a>, <a href="../gameplay/character.html#Destroyed">Destroyed</a>, <a href="../gameplay/character.html#destroyEquipment">destroyEquipment</a>, <a href="../gameplay/character.html#destroyFallbackWeapon">destroyFallbackWeapon</a>, <a href="../gameplay/character.html#destroyThirdPersonMesh">destroyThirdPersonMesh</a>, <a href="../gameplay/character.html#detachGrapple">detachGrapple</a>, <a href="../gameplay/character.html#Died">Died</a>, <a href="../gameplay/character.html#DisplayDebug">DisplayDebug</a>, <a href="../gameplay/character.html#dropCarryables">dropCarryables</a>, <a href="../gameplay/character.html#dropEquipment">dropEquipment</a>, <a href="../gameplay/character.html#dropWeapon">dropWeapon</a>, <a href="../gameplay/character.html#energyRequiredToJet">energyRequiredToJet</a>, <a href="../gameplay/character.html#enterManualAnimationState">enterManualAnimationState</a>, <a href="../gameplay/character.html#equipFallbackWeapon">equipFallbackWeapon</a>, <a href="../gameplay/character.html#equipmentHead">equipmentHead</a>, <a href="../gameplay/character.html#equipmentTail">equipmentTail</a>, <a href="../gameplay/character.html#exitManualAnimationState">exitManualAnimationState</a>, <a href="../gameplay/character.html#exitMount">exitMount</a>, <a href="../gameplay/character.html#firingMotor">firingMotor</a>, <a href="../gameplay/character.html#forceMovement">forceMovement</a>, <a href="../gameplay/character.html#forceMovementState">forceMovementState</a>, <a href="../gameplay/character.html#getAirSpace">getAirSpace</a>, <a href="../gameplay/character.html#GetAltWeapon">GetAltWeapon</a>, <a href="../gameplay/character.html#getArmAnimation">getArmAnimation</a>, <a href="../gameplay/character.html#getControllingCharacter">getControllingCharacter</a>, <a href="../gameplay/character.html#getDrivenVehicle">getDrivenVehicle</a>, <a href="../gameplay/character.html#GetGrappleData">GetGrappleData</a>, <a href="../gameplay/character.html#getHealthInjectionAmount">getHealthInjectionAmount</a>, <a href="../gameplay/character.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/character.html#GetKillerController">GetKillerController</a>, <a href="../gameplay/character.html#getMaxAmmo">getMaxAmmo</a>, <a href="../gameplay/character.html#getModifiedAmmo">getModifiedAmmo</a>, <a href="../gameplay/character.html#getMount">getMount</a>, <a href="../gameplay/character.html#GetOtherGrappleCount">GetOtherGrappleCount</a>, <a href="../gameplay/character.html#GetOtherGrappleData">GetOtherGrappleData</a>, <a href="../gameplay/character.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/character.html#GetRadarInfoClass">GetRadarInfoClass</a>, <a href="../gameplay/character.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/character.html#giveDefaultWeapon">giveDefaultWeapon</a>, <a href="../gameplay/character.html#gravity">gravity</a>, <a href="../gameplay/character.html#healthInjection">healthInjection</a>, <a href="../gameplay/character.html#hideJetpack">hideJetpack</a>, <a href="../gameplay/character.html#InGodMode">InGodMode</a>, <a href="../gameplay/character.html#initialiseEquipment">initialiseEquipment</a>, <a href="../gameplay/character.html#initializeAnimationSystem">initializeAnimationSystem</a>, <a href="../gameplay/character.html#isFemale">isFemale</a>, <a href="../gameplay/character.html#isInAir">isInAir</a>, <a href="../gameplay/character.html#isLoopingAnimation">isLoopingAnimation</a>, <a href="../gameplay/character.html#isLoopingArmAnimation">isLoopingArmAnimation</a>, <a href="../gameplay/character.html#isLoopingUpperBodyAnimation">isLoopingUpperBodyAnimation</a>, <a href="../gameplay/character.html#isPlayingAnimation">isPlayingAnimation</a>, <a href="../gameplay/character.html#isPlayingUpperBodyAnimation">isPlayingUpperBodyAnimation</a>, <a href="../gameplay/character.html#isTouchingEnergyBarrier">isTouchingEnergyBarrier</a>, <a href="../gameplay/character.html#isZoomed">isZoomed</a>, <a href="../gameplay/character.html#KilledBy">KilledBy</a>, <a href="../gameplay/character.html#loopAnimation">loopAnimation</a>, <a href="../gameplay/character.html#loopArmAnimation">loopArmAnimation</a>, <a href="../gameplay/character.html#loopUpperBodyAnimation">loopUpperBodyAnimation</a>, <a href="../gameplay/character.html#newEquipment">newEquipment</a>, <a href="../gameplay/character.html#newGrenades">newGrenades</a>, <a href="../gameplay/character.html#newPack">newPack</a>, <a href="../gameplay/character.html#nextEquipment">nextEquipment</a>, <a href="../gameplay/character.html#numDroppableCarryables">numDroppableCarryables</a>, <a href="../gameplay/character.html#numHealthKitsCarried">numHealthKitsCarried</a>, <a href="../gameplay/character.html#numWeaponsCarried">numWeaponsCarried</a>, <a href="../gameplay/character.html#OnChangeAirborne">OnChangeAirborne</a>, <a href="../gameplay/character.html#OnChangeCollisionMaterial">OnChangeCollisionMaterial</a>, <a href="../gameplay/character.html#OnChangeEffects">OnChangeEffects</a>, <a href="../gameplay/character.html#OnChangeMovement">OnChangeMovement</a>, <a href="../gameplay/character.html#OnChangeSkiInput">OnChangeSkiInput</a>, <a href="../gameplay/character.html#OnChangeUnderwater">OnChangeUnderwater</a>, <a href="../gameplay/character.html#OnChangeWater">OnChangeWater</a>, <a href="../gameplay/character.html#OnHitObject">OnHitObject</a>, <a href="../gameplay/character.html#OnMovementCollision">OnMovementCollision</a>, <a href="../gameplay/character.html#OnMovementCollisionDamage">OnMovementCollisionDamage</a>, <a href="../gameplay/character.html#OnMovementCrushingDamage">OnMovementCrushingDamage</a>, <a href="../gameplay/character.html#OnMovementJump">OnMovementJump</a>, <a href="../gameplay/character.html#OnViewerLostPawn">OnViewerLostPawn</a>, <a href="../gameplay/character.html#OnViewerSawPawn">OnViewerSawPawn</a>, <a href="../gameplay/character.html#pickupCarryable">pickupCarryable</a>, <a href="../gameplay/character.html#playAnimation">playAnimation</a>, <a href="../gameplay/character.html#playAttachedAnim">playAttachedAnim</a>, <a href="../gameplay/character.html#PlayDeathSound">PlayDeathSound</a>, <a href="../gameplay/character.html#PlayDying">PlayDying</a>, <a href="../gameplay/character.html#playDynamicSpeech">playDynamicSpeech</a>, <a href="../gameplay/character.html#playFireAnimation">playFireAnimation</a>, <a href="../gameplay/character.html#playFlinchAnimation">playFlinchAnimation</a>, <a href="../gameplay/character.html#PlayHurtSound">PlayHurtSound</a>, <a href="../gameplay/character.html#PlayMovementSpeech">PlayMovementSpeech</a>, <a href="../gameplay/character.html#playPackEffect">playPackEffect</a>, <a href="../gameplay/character.html#playPlayerScriptedSpeech">playPlayerScriptedSpeech</a>, <a href="../gameplay/character.html#PlayQCAnimation">PlayQCAnimation</a>, <a href="../gameplay/character.html#PlayQCSpeech">PlayQCSpeech</a>, <a href="../gameplay/character.html#playQuickChatSpeech">playQuickChatSpeech</a>, <a href="../gameplay/character.html#playScriptedSpeech">playScriptedSpeech</a>, <a href="../gameplay/character.html#playUpperBodyAnimation">playUpperBodyAnimation</a>, <a href="../gameplay/character.html#PossessedBy">PossessedBy</a>, <a href="../gameplay/character.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/character.html#PostLoadGame">PostLoadGame</a>, <a href="../gameplay/character.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/character.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/character.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/character.html#PrecacheSpeech">PrecacheSpeech</a>, <a href="../gameplay/character.html#prefixMovement">prefixMovement</a>, <a href="../gameplay/character.html#prevEquipment">prevEquipment</a>, <a href="../gameplay/character.html#putInWeaponSlot">putInWeaponSlot</a>, <a href="../gameplay/character.html#removeEquipment">removeEquipment</a>, <a href="../gameplay/character.html#removeFromWeaponSlot">removeFromWeaponSlot</a>, <a href="../gameplay/character.html#removeGrapplerCharacter">removeGrapplerCharacter</a>, <a href="../gameplay/character.html#removeTempInvincibility">removeTempInvincibility</a>, <a href="../gameplay/character.html#resetMovementAnimations">resetMovementAnimations</a>, <a href="../gameplay/character.html#ropeObstructionTrace">ropeObstructionTrace</a>, <a href="../gameplay/character.html#serverDoInventoryRefill">serverDoInventoryRefill</a>, <a href="../gameplay/character.html#setAnimationState">setAnimationState</a>, <a href="../gameplay/character.html#setArmsMesh">setArmsMesh</a>, <a href="../gameplay/character.html#setJetpack">setJetpack</a>, <a href="../gameplay/character.html#SetNaturalRopeLength">SetNaturalRopeLength</a>, <a href="../gameplay/character.html#setTeam">setTeam</a>, <a href="../gameplay/character.html#setupAnimationChannels">setupAnimationChannels</a>, <a href="../gameplay/character.html#setupAnimationLayers">setupAnimationLayers</a>, <a href="../gameplay/character.html#setupAnimationManager">setupAnimationManager</a>, <a href="../gameplay/character.html#setupAnimationSprings">setupAnimationSprings</a>, <a href="../gameplay/character.html#setupAnimationStates">setupAnimationStates</a>, <a href="../gameplay/character.html#setupVisionBone">setupVisionBone</a>, <a href="../gameplay/character.html#setVelocity">setVelocity</a>, <a href="../gameplay/character.html#setZoomed">setZoomed</a>, <a href="../gameplay/character.html#ShouldActorsBlockSplash">ShouldActorsBlockSplash</a>, <a href="../gameplay/character.html#shouldBreakRope">shouldBreakRope</a>, <a href="../gameplay/character.html#ShouldProjectileHit">ShouldProjectileHit</a>, <a href="../gameplay/character.html#showJetpack">showJetpack</a>, <a href="../gameplay/character.html#spawnFallbackWeapon">spawnFallbackWeapon</a>, <a href="../gameplay/character.html#StartGroundBasedLoopingEffect">StartGroundBasedLoopingEffect</a>, <a href="../gameplay/character.html#stopAnimation">stopAnimation</a>, <a href="../gameplay/character.html#stopArmAnimation">stopArmAnimation</a>, <a href="../gameplay/character.html#stopHealthInjection">stopHealthInjection</a>, <a href="../gameplay/character.html#StopMovementEffects">StopMovementEffects</a>, <a href="../gameplay/character.html#stopPackEffect">stopPackEffect</a>, <a href="../gameplay/character.html#stopUpperBodyAnimation">stopUpperBodyAnimation</a>, <a href="../gameplay/character.html#switchEquipment">switchEquipment</a>, <a href="../gameplay/character.html#team">team</a>, <a href="../gameplay/character.html#teamClass">teamClass</a>, <a href="../gameplay/character.html#teleportTo">teleportTo</a>, <a href="../gameplay/character.html#Tick">Tick</a>, <a href="../gameplay/character.html#tickGrappler">tickGrappler</a>, <a href="../gameplay/character.html#Timer">Timer</a>, <a href="../gameplay/character.html#Touch">Touch</a>, <a href="../gameplay/character.html#TravelPostAccept">TravelPostAccept</a>, <a href="../gameplay/character.html#TravelPreAccept">TravelPreAccept</a>, <a href="../gameplay/character.html#unifiedAddForce">unifiedAddForce</a>, <a href="../gameplay/character.html#unifiedAddForceAtPosition">unifiedAddForceAtPosition</a>, <a href="../gameplay/character.html#unifiedAddImpulse">unifiedAddImpulse</a>, <a href="../gameplay/character.html#unifiedAddImpulseAtPosition">unifiedAddImpulseAtPosition</a>, <a href="../gameplay/character.html#unifiedAddVelocity">unifiedAddVelocity</a>, <a href="../gameplay/character.html#unifiedGetGravity">unifiedGetGravity</a>, <a href="../gameplay/character.html#unifiedSetAcceleration">unifiedSetAcceleration</a>, <a href="../gameplay/character.html#unifiedSetPosition">unifiedSetPosition</a>, <a href="../gameplay/character.html#unifiedSetVelocity">unifiedSetVelocity</a>, <a href="../gameplay/character.html#Unpossessed">Unpossessed</a>, <a href="../gameplay/character.html#UnTouch">UnTouch</a>, <a href="../gameplay/character.html#updateCasts">updateCasts</a>, <a href="../gameplay/character.html#updateGrapplerRopeEquippedFirstPerson">updateGrapplerRopeEquippedFirstPerson</a>, <a href="../gameplay/character.html#updateGrapplerRopeThirdPerson">updateGrapplerRopeThirdPerson</a>, <a href="../gameplay/character.html#updatePackEffects">updatePackEffects</a>, <a href="../gameplay/character.html#updateRopeDrawScale">updateRopeDrawScale</a>, <a href="../gameplay/character.html#updateUserSkin">updateUserSkin</a>, <a href="../gameplay/character.html#useEnergy">useEnergy</a>, <a href="../gameplay/character.html#useHealthKit">useHealthKit</a>, <a href="../gameplay/character.html#VelocityTag">VelocityTag</a>, <a href="../gameplay/character.html#wake">wake</a>, <a href="../gameplay/character.html#weaponUseEnergy">weaponUseEnergy</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h3 class="vartag">SingleplayerCharacter</h3>
+<h4><a name="_armsMesh" class="hidden"></a>armsMesh <a href="../Source_gameplay/singleplayercharacter.html#5" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/singleplayercharacter.html" class="source">SingleplayerCharacter</a></span>) <span class="source_type">Mesh</span> armsMesh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthModifier" class="hidden"></a>healthModifier <a href="../Source_gameplay/singleplayercharacter.html#6" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/singleplayercharacter.html" class="source">SingleplayerCharacter</a></span>) <span class="source_type">float</span> healthModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_jetpackClass" class="hidden"></a>jetpackClass <a href="../Source_gameplay/singleplayercharacter.html#4" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/singleplayercharacter.html" class="source">SingleplayerCharacter</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span>&gt; jetpackClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_loadoutAmmoMultiplier" class="hidden"></a>loadoutAmmoMultiplier <a href="../Source_gameplay/singleplayercharacter.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/singleplayercharacter.html" class="source">SingleplayerCharacter</a></span>) <span class="source_type">float</span> loadoutAmmoMultiplier;</div>
+<blockquote class="comment">
+Weapons that the players are equipped with via loadouts have their ammo multiplied by this value
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_getModifiedAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getModifiedAmmo <span class="function_state"></span> <a href="../Source_gameplay/singleplayercharacter.html#45" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">int</span> getModifiedAmmo ( <span class="source_type">int</span> baseAmmo) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_giveJetpack-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> giveJetpack <span class="function_state"></span> <a href="../Source_gameplay/singleplayercharacter.html#26" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  giveJetpack ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span>&gt; jpClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/singleplayercharacter.html#9" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/singleplayercharacter.html#34" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	armorClass = <span class="source_type">class</span><span class="source_name">'TestArmor'</span>
+	loadoutClass = <span class="source_type">class</span><span class="source_name">'TestLoadout'</span>
+	healthModifier = <span class="source_int">1.0</span>
+
+	jetpackClass = <span class="source_type">class</span><span class="source_name">'Jetpack'</span>
+	armsMesh = SkeletalMesh<span class="source_name">'Weapons.PhoenixMediumFPH'</span>
+
+	loadoutAmmoMultiplier = <span class="source_int">1.0</span>
+
+	bZoomOutOnSpawn = false
+	bCanZoom = true
+
+	bApplyHealthFilter = true
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/singleplayercharacter.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#SingleplayerCharacter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/shockmineproximity.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/singleplayergameinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:34.605 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

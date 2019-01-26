@@ -1,0 +1,1251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.HUDElement</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/hudelement.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HUDElement">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/huddeployablereticule.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/hudenergybar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/hudelement.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.HUDElement</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>native abstract PerObjectConfig config ( TribesHUD ) </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tribesgui/hudcontainer.html">HUDContainer</a>, <a href="../tribesgui/huddamageindicator.html">HUDDamageIndicator</a>, <a href="../tribesgui/hudicon.html">HUDIcon</a>, <a href="../tribesgui/hudnumerictexturelabel.html">HUDNumericTextureLabel</a>, <a href="../tribesgui/hudtalkinghead.html">HUDTalkingHead</a>, <a href="../tribesgui/huduseablemarker.html">HUDUseableMarker</a>, <a href="../tribesgui/hudvehiclemanifest.html">HUDVehicleManifest</a>, <a href="../tribesgui/labelelement.html">LabelElement</a>, <a href="../tribesgui/quickchatmenu.html">QuickChatMenu</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribeshudscript.html">TribesHUDScript</a></td><td width="66%"><a href="#_BaseScript" name="BaseScript" title="go to the details">BaseScript</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFlashing" name="bFlashing" title="go to the details">bFlashing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsLayingOut" name="bIsLayingOut" title="go to the details">bIsLayingOut</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNeedsLayout" name="bNeedsLayout" title="go to the details">bNeedsLayout</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRenderedOnce" name="bRenderedOnce" title="go to the details">bRenderedOnce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FlashAlphaMax" name="FlashAlphaMax" title="go to the details">FlashAlphaMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FlashAlphaMin" name="FlashAlphaMin" title="go to the details">FlashAlphaMin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FlashDuration" name="FlashDuration" title="go to the details">FlashDuration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FlashPeriod" name="FlashPeriod" title="go to the details">FlashPeriod</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FlashStartTime" name="FlashStartTime" title="go to the details">FlashStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FlashSwitchTime" name="FlashSwitchTime" title="go to the details">FlashSwitchTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Font</td><td width="66%"><a href="#_HelpFont" name="HelpFont" title="go to the details">HelpFont</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_HelpFontName" name="HelpFontName" title="go to the details">HelpFontName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_HelpLabel" name="HelpLabel" title="go to the details">HelpLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_initialHeight" name="initialHeight" title="go to the details">initialHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_initialPosX" name="initialPosX" title="go to the details">initialPosX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_initialPosY" name="initialPosY" title="go to the details">initialPosY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_initialWidth" name="initialWidth" title="go to the details">initialWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a></td><td width="66%"><a href="#_LocalData" name="LocalData" title="go to the details">LocalData</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html">HUDElement</a></td><td width="66%"><a href="#_nextSibling" name="nextSibling" title="go to the details">nextSibling</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudcontainer.html">HUDContainer</a></td><td width="66%"><a href="#_ParentElement" name="ParentElement" title="go to the details">ParentElement</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html">HUDElement</a></td><td width="66%"><a href="#_previousSibling" name="previousSibling" title="go to the details">previousSibling</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_screenHeight" name="screenHeight" title="go to the details">screenHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_screenWidth" name="screenWidth" title="go to the details">screenWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TargetAlpha" name="TargetAlpha" title="go to the details">TargetAlpha</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_timeSeconds" name="timeSeconds" title="go to the details">timeSeconds</a></td></tr>
+<tr><th colspan="2" class="small">HUDElement</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_alpha" name="alpha" title="go to the details">alpha</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_aspectRatio" name="aspectRatio" title="go to the details">aspectRatio</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a></td><td width="66%"><a href="#_backgroundTexture" name="backgroundTexture" title="go to the details">backgroundTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_borderBottom" name="borderBottom" title="go to the details">borderBottom</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_borderLeft" name="borderLeft" title="go to the details">borderLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_borderRight" name="borderRight" title="go to the details">borderRight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_borderTop" name="borderTop" title="go to the details">borderTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRelativePositioning" name="bRelativePositioning" title="go to the details">bRelativePositioning</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseResFonts" name="bUseResFonts" title="go to the details">bUseResFonts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bVisible" name="bVisible" title="go to the details">bVisible</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_defaultDrawColor" name="defaultDrawColor" title="go to the details">defaultDrawColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a></td><td width="66%"><a href="#_foregroundTexture" name="foregroundTexture" title="go to the details">foregroundTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Height" name="Height" title="go to the details">Height</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html#EHorizontalAlignment">EHorizontalAlignment</a></td><td width="66%"><a href="#_horizontalAlignment" name="horizontalAlignment" title="go to the details">horizontalAlignment</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html#EHorizontalFill">EHorizontalFill</a></td><td width="66%"><a href="#_horizontalFill" name="horizontalFill" title="go to the details">horizontalFill</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_iniOverride" name="iniOverride" title="go to the details">iniOverride</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_insetX" name="insetX" title="go to the details">insetX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_insetY" name="insetY" title="go to the details">insetY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_offsetX" name="offsetX" title="go to the details">offsetX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_offsetY" name="offsetY" title="go to the details">offsetY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_posX" name="posX" title="go to the details">posX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_posY" name="posY" title="go to the details">posY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RelativeHeight" name="RelativeHeight" title="go to the details">RelativeHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RelativePosX" name="RelativePosX" title="go to the details">RelativePosX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RelativePosY" name="RelativePosY" title="go to the details">RelativePosY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RelativeWidth" name="RelativeWidth" title="go to the details">RelativeWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_resFontNames" name="resFontNames" title="go to the details">resFontNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;Font&gt;</td><td width="66%"><a href="#_resFonts" name="resFonts" title="go to the details">resFonts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_textColor" name="textColor" title="go to the details">textColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Font</td><td width="66%"><a href="#_textFont" name="textFont" title="go to the details">textFont</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_textFontName" name="textFontName" title="go to the details">textFontName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html#EVerticalAlignment">EVerticalAlignment</a></td><td width="66%"><a href="#_verticalAlignment" name="verticalAlignment" title="go to the details">verticalAlignment</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudelement.html#EVerticalFill">EVerticalFill</a></td><td width="66%"><a href="#_verticalFill" name="verticalFill" title="go to the details">verticalFill</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Width" name="Width" title="go to the details">Width</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EHorizontalAlignment" name="EHorizontalAlignment" title="go to the details">EHorizontalAlignment</a><br /><span class="small">HALIGN_None,
+HALIGN_Relative,
+HALIGN_Left,
+HALIGN_Center,
+HALIGN_Right,
+HALIGN_Previous,
+HALIGN_Next</span></td></tr>
+<tr><td><a href="#_EHorizontalFill" name="EHorizontalFill" title="go to the details">EHorizontalFill</a><br /><span class="small">HFILL_None,
+HFILL_Relative,
+HFILL_Left,
+HFILL_Right,
+HFILL_Both</span></td></tr>
+<tr><td><a href="#_ELayoutDirection" name="ELayoutDirection" title="go to the details">ELayoutDirection</a><br /><span class="small">LD_ManualLayout,
+LD_Horizontal,
+LD_Vertical</span></td></tr>
+<tr><td><a href="#_EVerticalAlignment" name="EVerticalAlignment" title="go to the details">EVerticalAlignment</a><br /><span class="small">VALIGN_None,
+VALIGN_Relative,
+VALIGN_Top,
+VALIGN_Middle,
+VALIGN_Bottom,
+VALIGN_Previous,
+VALIGN_Next</span></td></tr>
+<tr><td><a href="#_EVerticalFill" name="EVerticalFill" title="go to the details">EVerticalFill</a><br /><span class="small">VFILL_None,
+VFILL_Relative,
+VFILL_Up,
+VFILL_Down,
+VFILL_Both</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_HUDMaterial" name="HUDMaterial" title="go to the details">HUDMaterial</a><br /><span class="small">material, drawColor, coords, style, bStretched, bNoRender, bProgressControlled, bFlashing, flashFrequency, lastFlashTime, bFading, bFadePulse, fadeSourceColor, fadeTargetColor, fadeDuration, fadeStartTime, fadeProgress</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Construct-" name="Construct" title="go to the details">Construct</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/hudelement.html">HUDElement</a>&nbsp;</td><td><a href="#_CreateClonedElement-" name="CreateClonedElement" title="go to the details">CreateClonedElement</a> (string className, string objectName, optional string newObjectName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/hudelement.html">HUDElement</a>&nbsp;</td><td><a href="#_CreateHUDElement-" name="CreateHUDElement" title="go to the details">CreateHUDElement</a> (class&lt;<a href="../tribesgui/hudelement.html">HUDElement</a>&gt; elementClass, String elementName, optional <a href="../core/object.html">Object</a> ownerObject))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_DoLayout-" name="DoLayout" title="go to the details">DoLayout</a> (<a href="../engine/canvas.html">Canvas</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_EncodeColor-" name="EncodeColor" title="go to the details">EncodeColor</a> (<a href="../core/object.html#Color">Color</a> InColor)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_EncodePlayerName-" name="EncodePlayerName" title="go to the details">EncodePlayerName</a> (String PlayerName, String TeamTag, <a href="../gameplay/clientsidecharacter.html#ETeamAlignment">ETeamAlignment</a> alignment, optional class&lt;<a href="../gameplay/teaminfo.html">TeamInfo</a>&gt; PlayerTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FlashElement-" name="FlashElement" title="go to the details">FlashElement</a> (float period, float duration, float AlphaMin, float AlphaMax))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ForceNeedsLayout-" name="ForceNeedsLayout" title="go to the details">ForceNeedsLayout</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetAlpha-" name="GetAlpha" title="go to the details">GetAlpha</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetHeight-" name="GetHeight" title="go to the details">GetHeight</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetMaximumRelativeX-" name="GetMaximumRelativeX" title="go to the details">GetMaximumRelativeX</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetMaximumRelativeY-" name="GetMaximumRelativeY" title="go to the details">GetMaximumRelativeY</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetMaximumX-" name="GetMaximumX" title="go to the details">GetMaximumX</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetMaximumY-" name="GetMaximumY" title="go to the details">GetMaximumY</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetScreenPos-" name="GetScreenPos" title="go to the details">GetScreenPos</a> (out int ScreenPosX, out int ScreenPosY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetWidth-" name="GetWidth" title="go to the details">GetWidth</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetX-" name="GetX" title="go to the details">GetX</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetY-" name="GetY" title="go to the details">GetY</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitElement-" name="InitElement" title="go to the details">InitElement</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitElementHeirachy-" name="InitElementHeirachy" title="go to the details">InitElementHeirachy</a> (<a href="../tribesgui/tribeshudscript.html">TribesHUDScript</a> base, <a href="../tribesgui/hudcontainer.html">HUDContainer</a> Parent))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_InternalHeight-" name="InternalHeight" title="go to the details">InternalHeight</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_InternalLeft-" name="InternalLeft" title="go to the details">InternalLeft</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_InternalTop-" name="InternalTop" title="go to the details">InternalTop</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_InternalWidth-" name="InternalWidth" title="go to the details">InternalWidth</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyEvent-" name="KeyEvent" title="go to the details">KeyEvent</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> Key, <a href="../engine/interactions.html#EInputAction">EInputAction</a> Action, FLOAT Delta, <a href="../tribesgui/hudaction.html">HUDAction</a> Response)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyType-" name="KeyType" title="go to the details">KeyType</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> Key, string Unicode, <a href="../tribesgui/hudaction.html">HUDAction</a> Response)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Layout-" name="Layout" title="go to the details">Layout</a> (<a href="../engine/canvas.html">Canvas</a> canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadConfig-" name="LoadConfig" title="go to the details">LoadConfig</a> (String objectConfigName, class objectClass, optional String Filename)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadFont-" name="LoadFont" title="go to the details">LoadFont</a> (String FontName, out Font font))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadFonts-" name="LoadFonts" title="go to the details">LoadFonts</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a>&nbsp;</td><td><a href="#_MakeHUDMaterial-" name="MakeHUDMaterial" title="go to the details">MakeHUDMaterial</a> (<a href="../engine/material.html">Material</a> mat))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_MaterialHeight-" name="MaterialHeight" title="go to the details">MaterialHeight</a> (<a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a> mat))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_MaterialWidth-" name="MaterialWidth" title="go to the details">MaterialWidth</a> (<a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a> mat))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRenderElement-" name="NativeRenderElement" title="go to the details">NativeRenderElement</a> (<a href="../engine/canvas.html">Canvas</a> c)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnMouseClicked-" name="OnMouseClicked" title="go to the details">OnMouseClicked</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> Sender)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnMouseDoubleClicked-" name="OnMouseDoubleClicked" title="go to the details">OnMouseDoubleClicked</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> Sender)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnMouseEntered-" name="OnMouseEntered" title="go to the details">OnMouseEntered</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> Sender)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnMouseExited-" name="OnMouseExited" title="go to the details">OnMouseExited</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> Sender)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_PointInElement-" name="PointInElement" title="go to the details">PointInElement</a> (int PointX, int PointY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_PointInRegion-" name="PointInRegion" title="go to the details">PointInRegion</a> (int PointX, int PointY, int X1, int Y1, int X2, int Y2))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Render-" name="Render" title="go to the details">Render</a> (<a href="../engine/canvas.html">Canvas</a> c)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_RenderElement-" name="RenderElement" title="go to the details">RenderElement</a> (<a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RenderHUDMaterial-" name="RenderHUDMaterial" title="go to the details">RenderHUDMaterial</a> (<a href="../engine/canvas.html">Canvas</a> c, out <a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a> mat, float matWidth, float matHeight, optional float tileSizeX, optional float tileSizeY)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ResetFont-" name="ResetFont" title="go to the details">ResetFont</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetHUDMaterial-" name="ResetHUDMaterial" title="go to the details">ResetHUDMaterial</a> (out <a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a> mat))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResizeForWidth-" name="ResizeForWidth" title="go to the details">ResizeForWidth</a> (<a href="../engine/canvas.html">Canvas</a> c, int pixelWidth)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/tribeshudscript.html">TribesHUDScript</a>&nbsp;</td><td><a href="#_RootHUDScript-" name="RootHUDScript" title="go to the details">RootHUDScript</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetAlpha-" name="SetAlpha" title="go to the details">SetAlpha</a> (float newAlpha))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetColor-" name="SetColor" title="go to the details">SetColor</a> (<a href="../engine/canvas.html">Canvas</a> C, <a href="../core/object.html#Color">Color</a> newColor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetHeight-" name="SetHeight" title="go to the details">SetHeight</a> (int newHeight))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetNeedsLayout-" name="SetNeedsLayout" title="go to the details">SetNeedsLayout</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetWidth-" name="SetWidth" title="go to the details">SetWidth</a> (int newWidth))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetX-" name="SetX" title="go to the details">SetX</a> (int newX))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetY-" name="SetY" title="go to the details">SetY</a> (int newY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/hudelement.html">HUDElement</a>&nbsp;</td><td><a href="#_StaticCreateHUDElement-" name="StaticCreateHUDElement" title="go to the details">StaticCreateHUDElement</a> (class&lt;<a href="../tribesgui/hudelement.html">HUDElement</a>&gt; elementClass, String elementName, optional <a href="../core/object.html">Object</a> ownerObject))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UpdateData-" name="UpdateData" title="go to the details">UpdateData</a> (<a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a> c)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BaseScript" class="hidden"></a>BaseScript <a href="../Source_tribesgui/hudelement.html#153" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribeshudscript.html" class="source">TribesHUDScript</a></span> BaseScript;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFlashing" class="hidden"></a>bFlashing <a href="../Source_tribesgui/hudelement.html#170" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bFlashing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsLayingOut" class="hidden"></a>bIsLayingOut <a href="../Source_tribesgui/hudelement.html#159" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsLayingOut;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNeedsLayout" class="hidden"></a>bNeedsLayout <a href="../Source_tribesgui/hudelement.html#149" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNeedsLayout;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRenderedOnce" class="hidden"></a>bRenderedOnce <a href="../Source_tribesgui/hudelement.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bRenderedOnce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashAlphaMax" class="hidden"></a>FlashAlphaMax <a href="../Source_tribesgui/hudelement.html#175" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FlashAlphaMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashAlphaMin" class="hidden"></a>FlashAlphaMin <a href="../Source_tribesgui/hudelement.html#174" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FlashAlphaMin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashDuration" class="hidden"></a>FlashDuration <a href="../Source_tribesgui/hudelement.html#172" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FlashDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashPeriod" class="hidden"></a>FlashPeriod <a href="../Source_tribesgui/hudelement.html#171" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FlashPeriod;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashStartTime" class="hidden"></a>FlashStartTime <a href="../Source_tribesgui/hudelement.html#173" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FlashStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashSwitchTime" class="hidden"></a>FlashSwitchTime <a href="../Source_tribesgui/hudelement.html#177" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FlashSwitchTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HelpFont" class="hidden"></a>HelpFont <a href="../Source_tribesgui/hudelement.html#167" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Font</span> HelpFont;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HelpFontName" class="hidden"></a>HelpFontName <a href="../Source_tribesgui/hudelement.html#166" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> HelpFontName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HelpLabel" class="hidden"></a>HelpLabel <a href="../Source_tribesgui/hudelement.html#165" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> HelpLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialHeight" class="hidden"></a>initialHeight <a href="../Source_tribesgui/hudelement.html#142" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> initialHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialPosX" class="hidden"></a>initialPosX <a href="../Source_tribesgui/hudelement.html#139" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> initialPosX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialPosY" class="hidden"></a>initialPosY <a href="../Source_tribesgui/hudelement.html#140" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> initialPosY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialWidth" class="hidden"></a>initialWidth <a href="../Source_tribesgui/hudelement.html#141" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> initialWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LocalData" class="hidden"></a>LocalData <a href="../Source_tribesgui/hudelement.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> LocalData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_nextSibling" class="hidden"></a>nextSibling <a href="../Source_tribesgui/hudelement.html#162" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> nextSibling;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ParentElement" class="hidden"></a>ParentElement <a href="../Source_tribesgui/hudelement.html#152" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> ParentElement;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_previousSibling" class="hidden"></a>previousSibling <a href="../Source_tribesgui/hudelement.html#161" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> previousSibling;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_screenHeight" class="hidden"></a>screenHeight <a href="../Source_tribesgui/hudelement.html#146" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> screenHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_screenWidth" class="hidden"></a>screenWidth <a href="../Source_tribesgui/hudelement.html#145" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> screenWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TargetAlpha" class="hidden"></a>TargetAlpha <a href="../Source_tribesgui/hudelement.html#176" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> TargetAlpha;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_timeSeconds" class="hidden"></a>timeSeconds <a href="../Source_tribesgui/hudelement.html#158" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> timeSeconds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HUDElement</h3>
+<h4><a name="_alpha" class="hidden"></a>alpha <a href="../Source_tribesgui/hudelement.html#132" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config private <span class="source_type">float</span> alpha;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_aspectRatio" class="hidden"></a>aspectRatio <a href="../Source_tribesgui/hudelement.html#106" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> aspectRatio;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_backgroundTexture" class="hidden"></a>backgroundTexture <a href="../Source_tribesgui/hudelement.html#89" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> backgroundTexture;</div>
+<blockquote class="comment">
+The background texture for the element
+</blockquote>
+<hr class="small" />
+<h4><a name="_borderBottom" class="hidden"></a>borderBottom <a href="../Source_tribesgui/hudelement.html#123" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> borderBottom;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_borderLeft" class="hidden"></a>borderLeft <a href="../Source_tribesgui/hudelement.html#122" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> borderLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_borderRight" class="hidden"></a>borderRight <a href="../Source_tribesgui/hudelement.html#124" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> borderRight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_borderTop" class="hidden"></a>borderTop <a href="../Source_tribesgui/hudelement.html#121" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> borderTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRelativePositioning" class="hidden"></a>bRelativePositioning <a href="../Source_tribesgui/hudelement.html#101" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">bool</span> bRelativePositioning;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseResFonts" class="hidden"></a>bUseResFonts <a href="../Source_tribesgui/hudelement.html#93" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">bool</span> bUseResFonts;</div>
+<blockquote class="comment">
+Whether to use the resolution fonts
+</blockquote>
+<hr class="small" />
+<h4><a name="_bVisible" class="hidden"></a>bVisible <a href="../Source_tribesgui/hudelement.html#134" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">bool</span> bVisible;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_defaultDrawColor" class="hidden"></a>defaultDrawColor <a href="../Source_tribesgui/hudelement.html#133" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> defaultDrawColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_foregroundTexture" class="hidden"></a>foregroundTexture <a href="../Source_tribesgui/hudelement.html#90" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> foregroundTexture;</div>
+<blockquote class="comment">
+The background texture for the element
+</blockquote>
+<hr class="small" />
+<h4><a name="_Height" class="hidden"></a>Height <a href="../Source_tribesgui/hudelement.html#113" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> Height;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_horizontalAlignment" class="hidden"></a>horizontalAlignment <a href="../Source_tribesgui/hudelement.html#127" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../tribesgui/hudelement.html#EHorizontalAlignment" class="source">EHorizontalAlignment</a></span> horizontalAlignment;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_horizontalFill" class="hidden"></a>horizontalFill <a href="../Source_tribesgui/hudelement.html#128" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../tribesgui/hudelement.html#EHorizontalFill" class="source">EHorizontalFill</a></span> horizontalFill;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_iniOverride" class="hidden"></a>iniOverride <a href="../Source_tribesgui/hudelement.html#136" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">String</span> iniOverride;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_insetX" class="hidden"></a>insetX <a href="../Source_tribesgui/hudelement.html#118" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> insetX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_insetY" class="hidden"></a>insetY <a href="../Source_tribesgui/hudelement.html#119" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> insetY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_offsetX" class="hidden"></a>offsetX <a href="../Source_tribesgui/hudelement.html#115" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> offsetX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_offsetY" class="hidden"></a>offsetY <a href="../Source_tribesgui/hudelement.html#116" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">int</span> offsetY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_posX" class="hidden"></a>posX <a href="../Source_tribesgui/hudelement.html#110" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> posX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_posY" class="hidden"></a>posY <a href="../Source_tribesgui/hudelement.html#111" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> posY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RelativeHeight" class="hidden"></a>RelativeHeight <a href="../Source_tribesgui/hudelement.html#105" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> RelativeHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RelativePosX" class="hidden"></a>RelativePosX <a href="../Source_tribesgui/hudelement.html#102" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> RelativePosX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RelativePosY" class="hidden"></a>RelativePosY <a href="../Source_tribesgui/hudelement.html#103" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> RelativePosY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RelativeWidth" class="hidden"></a>RelativeWidth <a href="../Source_tribesgui/hudelement.html#104" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> RelativeWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_resFontNames" class="hidden"></a>resFontNames <a href="../Source_tribesgui/hudelement.html#94" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config Array&lt;<span class="source_type">String</span>&gt; resFontNames;</div>
+<blockquote class="comment">
+Array of font names, representing the fonts for different resolutions
+</blockquote>
+<hr class="small" />
+<h4><a name="_resFonts" class="hidden"></a>resFonts <a href="../Source_tribesgui/hudelement.html#95" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config Array&lt;<span class="source_type">Font</span>&gt; resFonts;</div>
+<blockquote class="comment">
+Array of fonts which will be used in differnet resolutions
+</blockquote>
+<hr class="small" />
+<h4><a name="_textColor" class="hidden"></a>textColor <a href="../Source_tribesgui/hudelement.html#98" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> textColor;</div>
+<blockquote class="comment">
+Color to use for the text
+</blockquote>
+<hr class="small" />
+<h4><a name="_textFont" class="hidden"></a>textFont <a href="../Source_tribesgui/hudelement.html#97" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">Font</span> textFont;</div>
+<blockquote class="comment">
+Font to use for the text
+</blockquote>
+<hr class="small" />
+<h4><a name="_textFontName" class="hidden"></a>textFontName <a href="../Source_tribesgui/hudelement.html#96" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">String</span> textFontName;</div>
+<blockquote class="comment">
+Name fo the Font to use for the text
+</blockquote>
+<hr class="small" />
+<h4><a name="_verticalAlignment" class="hidden"></a>verticalAlignment <a href="../Source_tribesgui/hudelement.html#129" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../tribesgui/hudelement.html#EVerticalAlignment" class="source">EVerticalAlignment</a></span> verticalAlignment;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_verticalFill" class="hidden"></a>verticalFill <a href="../Source_tribesgui/hudelement.html#130" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type"><a href="../tribesgui/hudelement.html#EVerticalFill" class="source">EVerticalFill</a></span> verticalFill;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Width" class="hidden"></a>Width <a href="../Source_tribesgui/hudelement.html#112" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) config <span class="source_type">float</span> Width;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EHorizontalAlignment" class="hidden"></a>EHorizontalAlignment <a href="../Source_tribesgui/hudelement.html#18" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tribesgui/hudelement.html#EHorizontalAlignment" class="source">EHorizontalAlignment</a></span><br />
+{<blockquote>HALIGN_None,
+HALIGN_Relative,
+HALIGN_Left,
+HALIGN_Center,
+HALIGN_Right,
+HALIGN_Previous,
+HALIGN_Next</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EHorizontalFill" class="hidden"></a>EHorizontalFill <a href="../Source_tribesgui/hudelement.html#29" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tribesgui/hudelement.html#EHorizontalFill" class="source">EHorizontalFill</a></span><br />
+{<blockquote>HFILL_None,
+HFILL_Relative,
+HFILL_Left,
+HFILL_Right,
+HFILL_Both</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ELayoutDirection" class="hidden"></a>ELayoutDirection <a href="../Source_tribesgui/hudelement.html#11" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tribesgui/hudelement.html#ELayoutDirection" class="source">ELayoutDirection</a></span><br />
+{<blockquote>LD_ManualLayout,
+LD_Horizontal,
+LD_Vertical</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EVerticalAlignment" class="hidden"></a>EVerticalAlignment <a href="../Source_tribesgui/hudelement.html#38" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tribesgui/hudelement.html#EVerticalAlignment" class="source">EVerticalAlignment</a></span><br />
+{<blockquote>VALIGN_None,
+VALIGN_Relative,
+VALIGN_Top,
+VALIGN_Middle,
+VALIGN_Bottom,
+VALIGN_Previous,
+VALIGN_Next</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EVerticalFill" class="hidden"></a>EVerticalFill <a href="../Source_tribesgui/hudelement.html#49" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tribesgui/hudelement.html#EVerticalFill" class="source">EVerticalFill</a></span><br />
+{<blockquote>VFILL_None,
+VFILL_Relative,
+VFILL_Up,
+VFILL_Down,
+VFILL_Both</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_HUDMaterial" class="hidden"></a>HUDMaterial <a href="../Source_tribesgui/hudelement.html#58" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">bool</span> bFadePulse;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">bool</span> bFading;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">bool</span> bFlashing;<br />
+var <span class="source_type">bool</span> bNoRender;<br />
+var <span class="source_type">bool</span> bProgressControlled;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">bool</span> bStretched;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type"><a href="../core/object.html#MatCoords" class="source">MatCoords</a></span> <span class="source_type"><a href="../core/object.html#Coords" class="source">coords</a></span>;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> drawColor;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">float</span> fadeDuration;<br />
+var <span class="source_type">float</span> fadeProgress;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> fadeSourceColor;<br />
+var <span class="source_type">float</span> fadeStartTime;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> fadeTargetColor;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">float</span> flashFrequency;<br />
+var <span class="source_type">float</span> lastFlashTime;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>;<br />
+var(<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>) <span class="source_type">byte</span> style;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+<b>bFadePulse</b>:
+<blockquote>
+	Whether to pulse the fade in and out
+</blockquote>
+<b>bFading</b>:
+<blockquote>
+	Fading flag
+</blockquote>
+<b>bFlashing</b>:
+<blockquote>
+	Flashing flag
+</blockquote>
+<b>bStretched</b>:
+<blockquote>
+	Whether the render the material stretched (good for button borders etc)
+</blockquote>
+<b>coords</b>:
+<blockquote>
+	Texture coordinates (in pixels) of the location of the desired section in the material
+</blockquote>
+<b>drawColor</b>:
+<blockquote>
+	Draw color
+</blockquote>
+<b>fadeDuration</b>:
+<blockquote>
+	How long the fade should take in seconds
+</blockquote>
+<b>fadeSourceColor</b>:
+<blockquote>
+	Color to fade from
+</blockquote>
+<b>fadeTargetColor</b>:
+<blockquote>
+	Color to fade to
+</blockquote>
+<b>flashFrequency</b>:
+<blockquote>
+	Frequency of the flash on/off time (in seconds)
+</blockquote>
+<b>material</b>:
+<blockquote>
+	Material to eb rendered
+</blockquote>
+<b>style</b>:
+<blockquote>
+	Render style - set to 1
+</blockquote>
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Construct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Construct <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#263" class="small">Source code</a></h4>
+<div class="declaration">overloaded <span class="source_type">function</span>  Construct ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateClonedElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateClonedElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#392" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> CreateClonedElement ( <span class="source_type">string</span> className, <span class="source_type">string</span> objectName, optional <span class="source_type">string</span> newObjectName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateHUDElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateHUDElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#375" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> CreateHUDElement ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>&gt; elementClass, <span class="source_type">String</span> elementName, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> ownerObject) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoLayout-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> DoLayout <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#289" class="small">Source code</a></h4>
+<div class="declaration"> event  DoLayout ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EncodeColor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EncodeColor <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#242" class="small">Source code</a></h4>
+<div class="declaration">static native <span class="source_type">function</span> <span class="source_type">String</span> EncodeColor ( <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> InColor )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EncodePlayerName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EncodePlayerName <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#605" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> EncodePlayerName ( <span class="source_type">String</span> PlayerName, <span class="source_type">String</span> TeamTag, <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ETeamAlignment" class="source">ETeamAlignment</a></span> alignment, optional <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; PlayerTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FlashElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#593" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  FlashElement ( <span class="source_type">float</span> period, <span class="source_type">float</span> duration, <span class="source_type">float</span> AlphaMin, <span class="source_type">float</span> AlphaMax) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ForceNeedsLayout-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ForceNeedsLayout <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#302" class="small">Source code</a></h4>
+<div class="declaration"> event  ForceNeedsLayout ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetAlpha-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetAlpha <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#434" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> GetAlpha ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetHeight-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetHeight <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#460" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetHeight ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMaximumRelativeX-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMaximumRelativeX <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#525" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> GetMaximumRelativeX ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMaximumRelativeY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMaximumRelativeY <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#530" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> GetMaximumRelativeY ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMaximumX-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMaximumX <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#535" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> GetMaximumX ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMaximumY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMaximumY <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#540" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> GetMaximumY ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetScreenPos-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetScreenPos <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#566" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GetScreenPos ( out <span class="source_type">int</span> ScreenPosX, out <span class="source_type">int</span> ScreenPosY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetWidth-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetWidth <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#455" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetWidth ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetX-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetX <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#445" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetX ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetY <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#450" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetY ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#268" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitElement ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitElementHeirachy-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitElementHeirachy <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#281" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitElementHeirachy ( <span class="source_type"><a href="../tribesgui/tribeshudscript.html" class="source">TribesHUDScript</a></span> base, <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> <span class="source_type">Parent</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalHeight-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalHeight <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#480" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> InternalHeight ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalLeft-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalLeft <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#470" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> InternalLeft ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalTop-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalTop <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#465" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> InternalTop ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalWidth-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalWidth <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#475" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> InternalWidth ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyEvent <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#253" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> KeyEvent ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span>, <span class="source_type"><a href="../tribesgui/hudaction.html" class="source">HUDAction</a></span> <span class="source_type">Response</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyType <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#252" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> KeyType ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">string</span> <span class="source_type">Unicode</span>, <span class="source_type"><a href="../tribesgui/hudaction.html" class="source">HUDAction</a></span> <span class="source_type">Response</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Layout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Layout <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#228" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  Layout ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadConfig-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadConfig <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#240" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  LoadConfig ( <span class="source_type">String</span> objectConfigName, <span class="source_type">class</span> objectClass, optional <span class="source_type">String</span> Filename )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadFont-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadFont <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#319" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadFont ( <span class="source_type">String</span> FontName, out <span class="source_type">Font</span> <span class="source_type">font</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadFonts-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadFonts <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#307" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadFonts ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MakeHUDMaterial-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MakeHUDMaterial <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#414" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> MakeHUDMaterial ( <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> mat) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaterialHeight-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MaterialHeight <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#553" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> MaterialHeight ( <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> mat) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaterialWidth-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MaterialWidth <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#545" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> MaterialWidth ( <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> mat) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRenderElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRenderElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#234" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  NativeRenderElement ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnMouseClicked-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnMouseClicked <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#257" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnMouseClicked ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> Sender )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnMouseDoubleClicked-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnMouseDoubleClicked <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#258" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnMouseDoubleClicked ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> Sender )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnMouseEntered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnMouseEntered <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#255" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnMouseEntered ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> Sender )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnMouseExited-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnMouseExited <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#256" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnMouseExited ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> Sender )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PointInElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PointInElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#575" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> PointInElement ( <span class="source_type">int</span> PointX, <span class="source_type">int</span> PointY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PointInRegion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PointInRegion <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#584" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> PointInRegion ( <span class="source_type">int</span> PointX, <span class="source_type">int</span> PointY, <span class="source_type">int</span> X1, <span class="source_type">int</span> Y1, <span class="source_type">int</span> X2, <span class="source_type">int</span> Y2) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Render-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Render <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#231" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  Render ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderElement-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> RenderElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#369" class="small">Source code</a></h4>
+<div class="declaration"> event  RenderElement ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderHUDMaterial-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RenderHUDMaterial <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#224" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RenderHUDMaterial ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span>, out <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> mat, <span class="source_type">float</span> matWidth, <span class="source_type">float</span> matHeight, 
+								  optional <span class="source_type">float</span> tileSizeX, optional <span class="source_type">float</span> tileSizeY )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetFont-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ResetFont <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#339" class="small">Source code</a></h4>
+<div class="declaration"> event  ResetFont ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetHUDMaterial-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetHUDMaterial <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#406" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ResetHUDMaterial ( out <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> mat) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResizeForWidth-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResizeForWidth <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#237" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  ResizeForWidth ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span>, <span class="source_type">int</span> pixelWidth )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RootHUDScript-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RootHUDScript <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#561" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribeshudscript.html" class="source">TribesHUDScript</a></span> RootHUDScript ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAlpha-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetAlpha <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#429" class="small">Source code</a></h4>
+<div class="declaration"> event  SetAlpha ( <span class="source_type">float</span> newAlpha) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetColor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetColor <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#440" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetColor ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> newColor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetHeight-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetHeight <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#515" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetHeight ( <span class="source_type">int</span> newHeight) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetNeedsLayout-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetNeedsLayout <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#295" class="small">Source code</a></h4>
+<div class="declaration"> event  SetNeedsLayout ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetWidth-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetWidth <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#505" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetWidth ( <span class="source_type">int</span> newWidth) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetX-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetX <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#485" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetX ( <span class="source_type">int</span> newX) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetY <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#495" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetY ( <span class="source_type">int</span> newY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StaticCreateHUDElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StaticCreateHUDElement <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#380" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> StaticCreateHUDElement ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>&gt; elementClass, <span class="source_type">String</span> elementName, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> ownerObject) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateData-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UpdateData <span class="function_state"></span> <a href="../Source_tribesgui/hudelement.html#361" class="small">Source code</a></h4>
+<div class="declaration"> event  UpdateData ( <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> <span class="source_type">c</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	alpha = <span class="source_int">1</span>
+	bVisible = true
+	bNeedsLayout = true
+
+	RelativePosX = <span class="source_int">0</span>
+	RelativePosY = <span class="source_int">0</span>
+	RelativeWidth = <span class="source_int">1</span>
+	RelativeHeight = <span class="source_int">1</span>
+
+	verticalFill = VFILL_None
+	horizontalFill = HFILL_None
+	verticalAlignment = VALIGN_None
+	horizontalAlignment = HALIGN_None
+
+	defaultDrawColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,B=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+
+	bUseResFonts	= false
+	resFontNames(<span class="source_int">0</span>)	= DefaultSmallFont
+	resFontNames(<span class="source_int">1</span>)	= Tahoma8
+	resFontNames(<span class="source_int">2</span>)	= Tahoma8
+	resFontNames(<span class="source_int">3</span>)	= Tahoma10
+	resFontNames(<span class="source_int">4</span>)	= Tahoma12
+	resFontNames(<span class="source_int">5</span>)	= Tahoma12
+	resFonts(<span class="source_int">0</span>)		= <span class="source_type">font</span><span class="source_name">'Engine_res.res_defaultFont'</span>
+	resFonts(<span class="source_int">1</span>)		= <span class="source_type">font</span><span class="source_name">'TribesFonts.Tahoma8'</span>
+	resFonts(<span class="source_int">2</span>)		= <span class="source_type">font</span><span class="source_name">'TribesFonts.Tahoma8'</span>
+	resFonts(<span class="source_int">3</span>)		= <span class="source_type">font</span><span class="source_name">'TribesFonts.Tahoma10'</span>
+	resFonts(<span class="source_int">4</span>)		= <span class="source_type">font</span><span class="source_name">'TribesFonts.Tahoma12'</span>
+	resFonts(<span class="source_int">5</span>)		= <span class="source_type">font</span><span class="source_name">'TribesFonts.Tahoma12'</span>
+
+	textFontName	= res_defaultFont
+	textFont		= <span class="source_type">font</span><span class="source_name">'Engine_res.res_defaultFont'</span>
+	textColor		= (<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,B=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+
+	HelpFontName	= Tahoma8
+	HelpFont		= <span class="source_type">font</span><span class="source_name">'TribesFonts.Tahoma8'</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/hudelement.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HUDElement">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/huddeployablereticule.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/hudenergybar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:30.891 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

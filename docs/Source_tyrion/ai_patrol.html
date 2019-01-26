@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Tyrion.AI_Patrol</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ai_patrol.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Patrol">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ai_panicgoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ai_patrolgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tyrion/ai_patrol.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_patrol.html">AI_Patrol</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=====================================================================
+</span><a name="2"></a><span class="source_comment">// AI_Patrol
+</span><a name="3"></a><span class="source_comment">// Moves along a series of waypoints
+</span><a name="4"></a><span class="source_comment">//=====================================================================
+</span><a name="5"></a>
+<a name="6"></a><span class="source_type">class</span> <span class="source_type"><a href="../tyrion/ai_patrol.html" class="source">AI_Patrol</a></span> extends <span class="source_type"><a href="../tyrion/ai_movementaction.html" class="source">AI_MovementAction</a></span>
+<a name="7"></a>	editinlinenew;
+<a name="8"></a>
+<a name="9"></a><span class="source_comment">//=====================================================================
+</span><a name="10"></a><span class="source_comment">// Variables
+</span><a name="11"></a>
+<a name="12"></a>var(Parameters) editconst array&lt;<span class="source_type">Name</span>&gt; patrolPointNames;
+<a name="13"></a>var(Parameters) <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#GroundMovementLevels" class="source">GroundMovementLevels</a></span> groundMovement <span class="source_string">"Desired ground movement speed"</span>;
+<a name="14"></a>var(Parameters) <span class="source_type">bool</span> bExecuteOnce <span class="source_string">"Go through the patrol nodes just once"</span>;
+<a name="15"></a>
+<a name="16"></a>var array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>&gt; patrolPoints;
+<a name="17"></a>var <span class="source_type">int</span> patrolIndex;
+<a name="18"></a>var <span class="source_type">int</span> closestIndex;
+<a name="19"></a>var <span class="source_type">float</span> distSquared, closestDistSquared;
+<a name="20"></a>var <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">errorCode</span>;		<span class="source_comment">// errorcode from child action
+</span><a name="21"></a>var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> node;
+<a name="22"></a>
+<a name="23"></a><span class="source_comment">//=====================================================================
+</span><a name="24"></a><span class="source_comment">// Functions
+</span><a name="25"></a>
+<a name="26"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="27"></a><span class="source_comment">// Callbacks from Navigation System actions
+</span><a name="28"></a>
+<a name="29"></a><span class="source_type">function</span> actionSucceededCB( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> )
+<a name="30"></a>{
+<a name="31"></a>	super.actionSucceededCB( <span class="source_type">child</span> );
+<a name="32"></a>	<span class="source_comment">//log("AI_Patrol: child succeeded");
+</span><a name="33"></a>	<span class="source_type">errorcode</span> = ACT_SUCCESS;
+<a name="34"></a>}
+<a name="35"></a>
+<a name="36"></a><span class="source_type">function</span> actionFailedCB( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span>, <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">anErrorCode</span> )
+<a name="37"></a>{
+<a name="38"></a>	super.actionFailedCB( <span class="source_type">child</span>, <span class="source_type">anErrorCode</span> );
+<a name="39"></a>	<span class="source_comment">//log("AI_Patrol: child failed");
+</span><a name="40"></a>	<span class="source_type">errorCode</span> = <span class="source_type">anErrorCode</span>;
+<a name="41"></a>}
+<a name="42"></a>
+<a name="43"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="44"></a>
+<a name="45"></a><span class="source_type">function</span> cleanup()
+<a name="46"></a>{
+<a name="47"></a>	local <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span> <span class="source_type">c</span>;
+<a name="48"></a>
+<a name="49"></a>	super.cleanup();
+<a name="50"></a>
+<a name="51"></a>	<span class="source_type">c</span> = <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span>(<span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="52"></a>
+<a name="53"></a>	<span class="source_comment">// when Patrol deactivates, AI keeps on moving with his last direction
+</span><a name="54"></a>	if ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>() ) )
+<a name="55"></a>		<span class="source_type">c</span>.stopMove();
+<a name="56"></a>
+<a name="57"></a>	<span class="source_type">c</span>.bPatrolling = false;
+<a name="58"></a>}
+<a name="59"></a>
+<a name="60"></a><span class="source_comment">//=====================================================================
+</span><a name="61"></a><span class="source_comment">// State code
+</span><a name="62"></a>
+<a name="63"></a>state Running
+<a name="64"></a>{
+<a name="65"></a>Begin:
+<a name="66"></a>	if ( patrolPointNames.length == <span class="source_int">0</span> )
+<a name="67"></a>	{
+<a name="68"></a>		log( <span class="source_string">"AI WARNING:"</span> @ <span class="source_type">name</span> @ <span class="source_string">"has no patrol points"</span> );
+<a name="69"></a>		succeed();
+<a name="70"></a>	}
+<a name="71"></a>
+<a name="72"></a>	<span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span>(<span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>).bPatrolling = true;
+<a name="73"></a>
+<a name="74"></a>	<span class="source_comment">// find closest patrolPoint; initialize patrolPoints array
+</span><a name="75"></a>	for ( patrolIndex = <span class="source_int">0</span>; patrolIndex &lt; patrolPointNames.length; ++patrolIndex )
+<a name="76"></a>	{
+<a name="77"></a>		node = <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().findStaticByLabel( <span class="source_type">class</span><span class="source_name">'Pathfinding.PlacedNode'</span>, patrolPointNames[patrolIndex] );
+<a name="78"></a>		<span class="source_comment">//log("AI_Patrol: Looking for " $ patrolPointNames[patrolIndex] $ "; found: " $ node );
+</span><a name="79"></a>
+<a name="80"></a>		if ( node == None )
+<a name="81"></a>		{
+<a name="82"></a>			log( <span class="source_string">"AI WARNING:"</span> @ <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type">name</span> @ <span class="source_string">") can't find specified path node"</span> @ patrolPointNames[patrolIndex] );
+<a name="83"></a>			fail( ACT_INVALID_PARAMETERS, true );
+<a name="84"></a>		}
+<a name="85"></a>
+<a name="86"></a>		patrolPoints[patrolIndex] = node.Location;
+<a name="87"></a>
+<a name="88"></a>		distSquared = VDistSquared( node.Location, <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().Location );
+<a name="89"></a>
+<a name="90"></a>		if ( distSquared &lt; closestDistSquared )
+<a name="91"></a>		{
+<a name="92"></a>			closestDistSquared = distSquared;
+<a name="93"></a>			closestIndex = patrolIndex;
+<a name="94"></a>		}
+<a name="95"></a>	}
+<a name="96"></a>
+<a name="97"></a>	patrolIndex = closestIndex;
+<a name="98"></a>
+<a name="99"></a>	if ( <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().logTyrion )
+<a name="100"></a>		log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type">name</span> @ <span class="source_string">") started patrolling at node"</span> @ closestIndex );
+<a name="101"></a>
+<a name="102"></a>	while ( !bExecuteOnce || patrolIndex != patrolPoints.length )
+<a name="103"></a>	{
+<a name="104"></a>		if ( patrolIndex == patrolPoints.length )
+<a name="105"></a>			patrolIndex = <span class="source_int">0</span>;
+<a name="106"></a>
+<a name="107"></a>		<span class="source_comment">//log( "AI_Patrol: Heading from (" @ resource.pawn().Location @ ") to (" @ patrolIndex @ ")" );
+</span><a name="108"></a>		waitForAction( <span class="source_type">class</span><span class="source_name">'NS_MoveToLocation'</span>.static.startAction( <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span>(<span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>),
+<a name="109"></a>						self, patrolPoints[patrolIndex], None,,, groundMovement ) );
+<a name="110"></a>
+<a name="111"></a>		if ( <span class="source_type">errorCode</span> != ACT_SUCCESS )
+<a name="112"></a>		{
+<a name="113"></a>			if ( <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().logTyrion )
+<a name="114"></a>				log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type">name</span> @ <span class="source_string">") aborted due to error"</span> @ <span class="source_type">errorCode</span> @ <span class="source_string">"from MoveToLocation."</span> );
+<a name="115"></a>			fail( ACT_CANT_REACH_DESTINATION );
+<a name="116"></a>		}
+<a name="117"></a>
+<a name="118"></a>		patrolIndex++;
+<a name="119"></a>	}
+<a name="120"></a>
+<a name="121"></a>	if ( <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().logTyrion )
+<a name="122"></a>		log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">resource</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type">name</span> @ <span class="source_string">") succeeded."</span> );
+<a name="123"></a>
+<a name="124"></a>	succeed();
+<a name="125"></a>}
+<a name="126"></a>
+<a name="127"></a><span class="source_comment">//=====================================================================
+</span><a name="128"></a>
+<a name="129"></a>defaultproperties
+<a name="130"></a>{
+<a name="131"></a>	satisfiesGoal = <span class="source_type">class</span><span class="source_name">'AI_PatrolGoal'</span>
+<a name="132"></a>
+<a name="133"></a>	closestDistSquared = <span class="source_int">99999999999999.9f</span>
+<a name="134"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ai_patrol.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Patrol">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ai_panicgoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ai_patrolgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:54:00.000 - Creation time: st 23.5.2018 00:10:41.493 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,926 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Engine.GameSpyManager</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/gamespymanager.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GameSpyManager">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/gamerules.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/gamestats.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/gamespymanager.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.GameSpyManager</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/gamespymanager.html">GameSpyManager</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/tribesgamespymanager.html">TribesGameSpyManager</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BaseFilePlanetPatchURL" name="BaseFilePlanetPatchURL" title="go to the details">BaseFilePlanetPatchURL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAvailable" name="bAvailable" title="go to the details">bAvailable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFailedAvailabilityCheck" name="bFailedAvailabilityCheck" title="go to the details">bFailedAvailabilityCheck</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFailedInitialisation" name="bFailedInitialisation" title="go to the details">bFailedInitialisation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInitAsClient" name="bInitAsClient" title="go to the details">bInitAsClient</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInitAsServer" name="bInitAsServer" title="go to the details">bInitAsServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInitialised" name="bInitialised" title="go to the details">bInitialised</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPresenceInitalised" name="bPresenceInitalised" title="go to the details">bPresenceInitalised</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bServerUpdateFinished" name="bServerUpdateFinished" title="go to the details">bServerUpdateFinished</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStatsInitalised" name="bStatsInitalised" title="go to the details">bStatsInitalised</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTrackingStats" name="bTrackingStats" title="go to the details">bTrackingStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUsingPresence" name="bUsingPresence" title="go to the details">bUsingPresence</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_currentServerIndex" name="currentServerIndex" title="go to the details">currentServerIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_CustomPlayerKeyIds" name="CustomPlayerKeyIds" title="go to the details">CustomPlayerKeyIds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_CustomPlayerKeyNames" name="CustomPlayerKeyNames" title="go to the details">CustomPlayerKeyNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_CustomServerKeyIds" name="CustomServerKeyIds" title="go to the details">CustomServerKeyIds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_CustomServerKeyNames" name="CustomServerKeyNames" title="go to the details">CustomServerKeyNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_CustomTeamKeyIds" name="CustomTeamKeyIds" title="go to the details">CustomTeamKeyIds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_CustomTeamKeyNames" name="CustomTeamKeyNames" title="go to the details">CustomTeamKeyNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/gameengine.html">GameEngine</a></td><td width="66%"><a href="#_Engine" name="Engine" title="go to the details">Engine</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_InitialKeyIds" name="InitialKeyIds" title="go to the details">InitialKeyIds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_PlayerKeyIds" name="PlayerKeyIds" title="go to the details">PlayerKeyIds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_PlayerKeyNames" name="PlayerKeyNames" title="go to the details">PlayerKeyNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ProductRegionID" name="ProductRegionID" title="go to the details">ProductRegionID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ProductVersionID" name="ProductVersionID" title="go to the details">ProductVersionID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_ServerKeyIds" name="ServerKeyIds" title="go to the details">ServerKeyIds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_ServerKeyNames" name="ServerKeyNames" title="go to the details">ServerKeyNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_TeamKeyIds" name="TeamKeyIds" title="go to the details">TeamKeyIds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_TeamKeyNames" name="TeamKeyNames" title="go to the details">TeamKeyNames</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EGameSpyResult" name="EGameSpyResult" title="go to the details">EGameSpyResult</a><br /><span class="small">GSR_VALID_PROFILE,
+GSR_USER_CONNECTED,
+GSR_REGISTERED_UNIQUE_NICK,
+GSR_UNIQUE_NICK_TAKEN,
+GSR_BAD_EMAIL,
+GSR_BAD_PASSWORD,
+GSR_BAD_NICK,
+GSR_TIMED_OUT,
+GSR_GENERAL_FAILURE</span></td></tr>
+<tr><td><a href="#_ETeamAffiliationResult" name="ETeamAffiliationResult" title="go to the details">ETeamAffiliationResult</a><br /><span class="small">TAR_PLAYER_AFFILIATED,
+TAR_TEAM_ID_MISMATCH,
+TAR_OLD_JOIN_TIME</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Delegates Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_delegate.gif" alt="delegate" title="delegate"></td><td>&nbsp;</td><td><a href="#_OnQueryPatchResult+" name="OnQueryPatchResult" title="go to the details">OnQueryPatchResult</a> (bool bNeeded, bool bMandatory, string versionName, string URL)</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_AuthenticatedProfileResult-" name="AuthenticatedProfileResult" title="go to the details">AuthenticatedProfileResult</a> (int profileId, int authenticated, string error)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AuthenticateProfile-" name="AuthenticateProfile" title="go to the details">AuthenticateProfile</a> (int profileId, string Password)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CancelUpdate-" name="CancelUpdate" title="go to the details">CancelUpdate</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CheckUserAccount-" name="CheckUserAccount" title="go to the details">CheckUserAccount</a> (string Nick, string Email, string Password)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClearServerList-" name="ClearServerList" title="go to the details">ClearServerList</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ConnectUserAccount-" name="ConnectUserAccount" title="go to the details">ConnectUserAccount</a> (string Nick, string Email, string Password)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateUserAccount-" name="CreateUserAccount" title="go to the details">CreateUserAccount</a> (string Nick, string Email, string Password)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisconnectUserAccount-" name="DisconnectUserAccount" title="go to the details">DisconnectUserAccount</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_EmailAlreadyTaken-" name="EmailAlreadyTaken" title="go to the details">EmailAlreadyTaken</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FindTeam-" name="FindTeam" title="go to the details">FindTeam</a> (string teamTag)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_FindTeamResult-" name="FindTeamResult" title="go to the details">FindTeamResult</a> (int teamId)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GameSpyInitialised-" name="GameSpyInitialised" title="go to the details">GameSpyInitialised</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>String&nbsp;</td><td><a href="#_GetGameSpyPassword-" name="GetGameSpyPassword" title="go to the details">GetGameSpyPassword</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>String&nbsp;</td><td><a href="#_GetGameSpyProfileId-" name="GetGameSpyProfileId" title="go to the details">GetGameSpyProfileId</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/levelinfo.html">LevelInfo</a>&nbsp;</td><td><a href="#_GetLevelInfo-" name="GetLevelInfo" title="go to the details">GetLevelInfo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_GetNextServer-" name="GetNextServer" title="go to the details">GetNextServer</a> (out int serverId, out String ipAddress, out Array&lt;String&gt; serverData)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetNumPotentialServers-" name="GetNumPotentialServers" title="go to the details">GetNumPotentialServers</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>int&nbsp;</td><td><a href="#_GetNumTeams-" name="GetNumTeams" title="go to the details">GetNumTeams</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetPatchDownloadURL-" name="GetPatchDownloadURL" title="go to the details">GetPatchDownloadURL</a> (int FilePlanetID))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/player.html">Player</a>&nbsp;</td><td><a href="#_GetPlayerObject-" name="GetPlayerObject" title="go to the details">GetPlayerObject</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetProductRegionID-" name="GetProductRegionID" title="go to the details">GetProductRegionID</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetProductVersionID-" name="GetProductVersionID" title="go to the details">GetProductVersionID</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_GetServerIpAddress-" name="GetServerIpAddress" title="go to the details">GetServerIpAddress</a> (int serverId)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_GetServerPort-" name="GetServerPort" title="go to the details">GetServerPort</a> (int serverId)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetValueForKey-" name="GetValueForKey" title="go to the details">GetValueForKey</a> (int key)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetValueForPlayerKey-" name="GetValueForPlayerKey" title="go to the details">GetValueForPlayerKey</a> (int key, int index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetValueForTeamKey-" name="GetValueForTeamKey" title="go to the details">GetValueForTeamKey</a> (int key, int index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HTTPGetRequest-" name="HTTPGetRequest" title="go to the details">HTTPGetRequest</a> (String URL, bool bBlock)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_HTTPGetRequestResult-" name="HTTPGetRequestResult" title="go to the details">HTTPGetRequestResult</a> (bool succeeded, String ResponseData)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitGameSpyClient-" name="InitGameSpyClient" title="go to the details">InitGameSpyClient</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_InitGameSpyData-" name="InitGameSpyData" title="go to the details">InitGameSpyData</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LANUpdateServerList-" name="LANUpdateServerList" title="go to the details">LANUpdateServerList</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_OnLevelChange-" name="OnLevelChange" title="go to the details">OnLevelChange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ProfileCheckResult-" name="ProfileCheckResult" title="go to the details">ProfileCheckResult</a> (<a href="../engine/gamespymanager.html#EGameSpyResult">EGameSpyResult</a> result, int profileId)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ProfileCreateResult-" name="ProfileCreateResult" title="go to the details">ProfileCreateResult</a> (<a href="../engine/gamespymanager.html#EGameSpyResult">EGameSpyResult</a> result, int profileId)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_QueryPatch-" name="QueryPatch" title="go to the details">QueryPatch</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_QueryPatchCompleted-" name="QueryPatchCompleted" title="go to the details">QueryPatchCompleted</a> (bool bNeeded, bool bMandatory, string versionName, int fileplanetID, string URL))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterUniqueNick-" name="RegisterUniqueNick" title="go to the details">RegisterUniqueNick</a> (string UniqueNick)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SendGameSpyGameModeChange-" name="SendGameSpyGameModeChange" title="go to the details">SendGameSpyGameModeChange</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SendStatSnapshot-" name="SendStatSnapshot" title="go to the details">SendStatSnapshot</a> (optional bool finalSnapshot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetDataPrivateRW-" name="SetDataPrivateRW" title="go to the details">SetDataPrivateRW</a> (int profileId, string PrivateData)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetDataPrivateRWResult-" name="SetDataPrivateRWResult" title="go to the details">SetDataPrivateRWResult</a> (int success)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPlayerStat-" name="SetPlayerStat" title="go to the details">SetPlayerStat</a> (coerce string statName, coerce string statValue, int playerId)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetServerStat-" name="SetServerStat" title="go to the details">SetServerStat</a> (coerce string statName, coerce string statValue)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetTeamAffiliation-" name="SetTeamAffiliation" title="go to the details">SetTeamAffiliation</a> (int profileId, int teamId, <a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a> pri)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetTeamAffiliationResult-" name="SetTeamAffiliationResult" title="go to the details">SetTeamAffiliationResult</a> (<a href="../engine/gamespymanager.html#ETeamAffiliationResult">ETeamAffiliationResult</a> result, String TeamTag, <a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a> pri)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetTeamStat-" name="SetTeamStat" title="go to the details">SetTeamStat</a> (coerce string statName, coerce string statValue, int TeamID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_StatsGetPID-" name="StatsGetPID" title="go to the details">StatsGetPID</a> (<a href="../engine/playercontroller.html">PlayerController</a> pc)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_StatsGetStatResponse-" name="StatsGetStatResponse" title="go to the details">StatsGetStatResponse</a> (<a href="../engine/playercontroller.html">PlayerController</a> pc)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_StatsHasPIDAndResponse-" name="StatsHasPIDAndResponse" title="go to the details">StatsHasPIDAndResponse</a> (<a href="../engine/playercontroller.html">PlayerController</a> pc)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StatsNewGameStarted-" name="StatsNewGameStarted" title="go to the details">StatsNewGameStarted</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StatsNewPlayer-" name="StatsNewPlayer" title="go to the details">StatsNewPlayer</a> (int playerId, string playerName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StatsNewTeam-" name="StatsNewTeam" title="go to the details">StatsNewTeam</a> (int TeamID, string TeamName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StatsRemovePlayer-" name="StatsRemovePlayer" title="go to the details">StatsRemovePlayer</a> (int playerId)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StatsRemoveTeam-" name="StatsRemoveTeam" title="go to the details">StatsRemoveTeam</a> (int TeamID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UniqueNickRegistrationResult-" name="UniqueNickRegistrationResult" title="go to the details">UniqueNickRegistrationResult</a> (<a href="../engine/gamespymanager.html#EGameSpyResult">EGameSpyResult</a> result)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UpdateComplete-" name="UpdateComplete" title="go to the details">UpdateComplete</a> (bool bLAN)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UpdatedServerData-" name="UpdatedServerData" title="go to the details">UpdatedServerData</a> (int serverId, String ipAddress, int Ping, bool bLAN, Array&lt;String&gt; serverData, Array&lt;String&gt; playerData, Array&lt;String&gt; teamData)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateServer-" name="UpdateServer" title="go to the details">UpdateServer</a> (int serverId, bool Refresh)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateServerByIP-" name="UpdateServerByIP" title="go to the details">UpdateServerByIP</a> (String ipAddress, int serverGamePort)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateServerList-" name="UpdateServerList" title="go to the details">UpdateServerList</a> (optional String filter)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UserConnectionResult-" name="UserConnectionResult" title="go to the details">UserConnectionResult</a> (<a href="../engine/gamespymanager.html#EGameSpyResult">EGameSpyResult</a> result, int profileId, string UniqueNick)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BaseFilePlanetPatchURL" class="hidden"></a>BaseFilePlanetPatchURL <a href="../Source_engine/gamespymanager.html#67" class="small">Source code</a></h4>
+<div class="declaration">var globalconfig <span class="source_type">string</span> BaseFilePlanetPatchURL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAvailable" class="hidden"></a>bAvailable <a href="../Source_engine/gamespymanager.html#26" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bAvailable;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFailedAvailabilityCheck" class="hidden"></a>bFailedAvailabilityCheck <a href="../Source_engine/gamespymanager.html#27" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bFailedAvailabilityCheck;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFailedInitialisation" class="hidden"></a>bFailedInitialisation <a href="../Source_engine/gamespymanager.html#33" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bFailedInitialisation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bInitAsClient" class="hidden"></a>bInitAsClient <a href="../Source_engine/gamespymanager.html#30" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bInitAsClient;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bInitAsServer" class="hidden"></a>bInitAsServer <a href="../Source_engine/gamespymanager.html#29" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bInitAsServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bInitialised" class="hidden"></a>bInitialised <a href="../Source_engine/gamespymanager.html#32" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bInitialised;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPresenceInitalised" class="hidden"></a>bPresenceInitalised <a href="../Source_engine/gamespymanager.html#39" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bPresenceInitalised;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bServerUpdateFinished" class="hidden"></a>bServerUpdateFinished <a href="../Source_engine/gamespymanager.html#41" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bServerUpdateFinished;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bStatsInitalised" class="hidden"></a>bStatsInitalised <a href="../Source_engine/gamespymanager.html#36" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bStatsInitalised;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTrackingStats" class="hidden"></a>bTrackingStats <a href="../Source_engine/gamespymanager.html#35" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bTrackingStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUsingPresence" class="hidden"></a>bUsingPresence <a href="../Source_engine/gamespymanager.html#38" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bUsingPresence;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentServerIndex" class="hidden"></a>currentServerIndex <a href="../Source_engine/gamespymanager.html#42" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">int</span> currentServerIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CustomPlayerKeyIds" class="hidden"></a>CustomPlayerKeyIds <a href="../Source_engine/gamespymanager.html#56" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; CustomPlayerKeyIds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CustomPlayerKeyNames" class="hidden"></a>CustomPlayerKeyNames <a href="../Source_engine/gamespymanager.html#57" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; CustomPlayerKeyNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CustomServerKeyIds" class="hidden"></a>CustomServerKeyIds <a href="../Source_engine/gamespymanager.html#53" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; CustomServerKeyIds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CustomServerKeyNames" class="hidden"></a>CustomServerKeyNames <a href="../Source_engine/gamespymanager.html#54" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; CustomServerKeyNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CustomTeamKeyIds" class="hidden"></a>CustomTeamKeyIds <a href="../Source_engine/gamespymanager.html#59" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; CustomTeamKeyIds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CustomTeamKeyNames" class="hidden"></a>CustomTeamKeyNames <a href="../Source_engine/gamespymanager.html#60" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; CustomTeamKeyNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Engine" class="hidden"></a>Engine <a href="../Source_engine/gamespymanager.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/gameengine.html" class="source">GameEngine</a></span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitialKeyIds" class="hidden"></a>InitialKeyIds <a href="../Source_engine/gamespymanager.html#63" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; InitialKeyIds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerKeyIds" class="hidden"></a>PlayerKeyIds <a href="../Source_engine/gamespymanager.html#47" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; PlayerKeyIds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerKeyNames" class="hidden"></a>PlayerKeyNames <a href="../Source_engine/gamespymanager.html#48" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; PlayerKeyNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProductRegionID" class="hidden"></a>ProductRegionID <a href="../Source_engine/gamespymanager.html#66" class="small">Source code</a></h4>
+<div class="declaration">var private globalconfig localized <span class="source_type">string</span> ProductRegionID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProductVersionID" class="hidden"></a>ProductVersionID <a href="../Source_engine/gamespymanager.html#65" class="small">Source code</a></h4>
+<div class="declaration">var private globalconfig <span class="source_type">string</span> ProductVersionID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerKeyIds" class="hidden"></a>ServerKeyIds <a href="../Source_engine/gamespymanager.html#44" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; ServerKeyIds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerKeyNames" class="hidden"></a>ServerKeyNames <a href="../Source_engine/gamespymanager.html#45" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; ServerKeyNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamKeyIds" class="hidden"></a>TeamKeyIds <a href="../Source_engine/gamespymanager.html#50" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; TeamKeyIds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamKeyNames" class="hidden"></a>TeamKeyNames <a href="../Source_engine/gamespymanager.html#51" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; TeamKeyNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EGameSpyResult" class="hidden"></a>EGameSpyResult <a href="../Source_engine/gamespymanager.html#4" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span><br />
+{<blockquote>GSR_VALID_PROFILE,
+GSR_USER_CONNECTED,
+GSR_REGISTERED_UNIQUE_NICK,
+GSR_UNIQUE_NICK_TAKEN,
+GSR_BAD_EMAIL,
+GSR_BAD_PASSWORD,
+GSR_BAD_NICK,
+GSR_TIMED_OUT,
+GSR_GENERAL_FAILURE</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ETeamAffiliationResult" class="hidden"></a>ETeamAffiliationResult <a href="../Source_engine/gamespymanager.html#17" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/gamespymanager.html#ETeamAffiliationResult" class="source">ETeamAffiliationResult</a></span><br />
+{<blockquote>TAR_PLAYER_AFFILIATED,
+TAR_TEAM_ID_MISMATCH,
+TAR_OLD_JOIN_TIME</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Delegates Detail</th>
+</tr>
+</table>
+
+<h4><a name="_OnQueryPatchResult+" class="hidden"></a><img src="../img_delegate.gif" alt="" title="delegate"> OnQueryPatchResult <a href="../Source_engine/gamespymanager.html#265" class="small">Source code</a></h4>
+<div class="declaration"> delegate  OnQueryPatchResult ( <span class="source_type">bool</span> bNeeded, <span class="source_type">bool</span> bMandatory, <span class="source_type">string</span> versionName, <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AuthenticatedProfileResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> AuthenticatedProfileResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#182" class="small">Source code</a></h4>
+<div class="declaration"> event  AuthenticatedProfileResult ( <span class="source_type">int</span> profileId, <span class="source_type">int</span> authenticated, <span class="source_type">string</span> <span class="source_type">error</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AuthenticateProfile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AuthenticateProfile <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#180" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  AuthenticateProfile ( <span class="source_type">int</span> profileId, <span class="source_type">string</span> <span class="source_type">Password</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CancelUpdate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CancelUpdate <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#108" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  CancelUpdate (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckUserAccount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckUserAccount <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#164" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  CheckUserAccount ( <span class="source_type">string</span> Nick, <span class="source_type">string</span> Email, <span class="source_type">string</span> <span class="source_type">Password</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClearServerList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClearServerList <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#97" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  ClearServerList (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConnectUserAccount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConnectUserAccount <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#167" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  ConnectUserAccount ( <span class="source_type">string</span> Nick, <span class="source_type">string</span> Email, <span class="source_type">string</span> <span class="source_type">Password</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateUserAccount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateUserAccount <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#161" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  CreateUserAccount ( <span class="source_type">string</span> Nick, <span class="source_type">string</span> Email, <span class="source_type">string</span> <span class="source_type">Password</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisconnectUserAccount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisconnectUserAccount <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#172" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  DisconnectUserAccount (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EmailAlreadyTaken-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> EmailAlreadyTaken <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#228" class="small">Source code</a></h4>
+<div class="declaration"> event  EmailAlreadyTaken (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindTeam <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#185" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  FindTeam ( <span class="source_type">string</span> teamTag )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindTeamResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> FindTeamResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#187" class="small">Source code</a></h4>
+<div class="declaration"> event  FindTeamResult ( <span class="source_type">int</span> teamId )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameSpyInitialised-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GameSpyInitialised <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#76" class="small">Source code</a></h4>
+<div class="declaration"> event  GameSpyInitialised (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameSpyPassword-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetGameSpyPassword <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#226" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">String</span> GetGameSpyPassword (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameSpyProfileId-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetGameSpyProfileId <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#224" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">String</span> GetGameSpyProfileId (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLevelInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLevelInfo <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#84" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> GetLevelInfo (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNextServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNextServer <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#122" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type">bool</span> GetNextServer ( out <span class="source_type">int</span> serverId, out <span class="source_type">String</span> ipAddress, out Array&lt;<span class="source_type">String</span>&gt; serverData )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNumPotentialServers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNumPotentialServers <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#117" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type">int</span> GetNumPotentialServers (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNumTeams-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetNumTeams <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#218" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">int</span> GetNumTeams ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPatchDownloadURL-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetPatchDownloadURL <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#245" class="small">Source code</a></h4>
+<div class="declaration">private event <span class="source_type">string</span> GetPatchDownloadURL ( <span class="source_type">int</span> FilePlanetID) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerObject-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerObject <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#86" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> GetPlayerObject (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetProductRegionID-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetProductRegionID <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#240" class="small">Source code</a></h4>
+<div class="declaration">private event <span class="source_type">string</span> GetProductRegionID ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetProductVersionID-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetProductVersionID <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#232" class="small">Source code</a></h4>
+<div class="declaration">private event <span class="source_type">string</span> GetProductVersionID ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetServerIpAddress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetServerIpAddress <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#111" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type">String</span> GetServerIpAddress ( <span class="source_type">int</span> serverId )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetServerPort-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetServerPort <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#114" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type">String</span> GetServerPort ( <span class="source_type">int</span> serverId )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetValueForKey-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetValueForKey <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#210" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetValueForKey ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">key</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetValueForPlayerKey-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetValueForPlayerKey <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#213" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetValueForPlayerKey ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">key</a></span>, <span class="source_type">int</span> index )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetValueForTeamKey-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetValueForTeamKey <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#216" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetValueForTeamKey ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">key</a></span>, <span class="source_type">int</span> index )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HTTPGetRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HTTPGetRequest <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#195" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  HTTPGetRequest ( <span class="source_type">String</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, <span class="source_type">bool</span> bBlock )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HTTPGetRequestResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> HTTPGetRequestResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#197" class="small">Source code</a></h4>
+<div class="declaration"> event  HTTPGetRequestResult ( <span class="source_type">bool</span> succeeded, <span class="source_type">String</span> ResponseData )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitGameSpyClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitGameSpyClient <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#73" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  InitGameSpyClient (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitGameSpyData-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> InitGameSpyData <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#83" class="small">Source code</a></h4>
+<div class="declaration"> event  InitGameSpyData (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LANUpdateServerList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LANUpdateServerList <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#94" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  LANUpdateServerList (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLevelChange-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OnLevelChange <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#78" class="small">Source code</a></h4>
+<div class="declaration"> event  OnLevelChange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProfileCheckResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ProfileCheckResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#230" class="small">Source code</a></h4>
+<div class="declaration"> event  ProfileCheckResult ( <span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span>, <span class="source_type">int</span> profileId )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProfileCreateResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ProfileCreateResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#229" class="small">Source code</a></h4>
+<div class="declaration"> event  ProfileCreateResult ( <span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span>, <span class="source_type">int</span> profileId )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryPatch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> QueryPatch <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#251" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  QueryPatch (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryPatchCompleted-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> QueryPatchCompleted <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#253" class="small">Source code</a></h4>
+<div class="declaration">private event  QueryPatchCompleted ( <span class="source_type">bool</span> bNeeded, <span class="source_type">bool</span> bMandatory, <span class="source_type">string</span> versionName, <span class="source_type">int</span> fileplanetID, <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterUniqueNick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterUniqueNick <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#175" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  RegisterUniqueNick ( <span class="source_type">string</span> UniqueNick )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SendGameSpyGameModeChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SendGameSpyGameModeChange <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#88" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  SendGameSpyGameModeChange (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SendStatSnapshot-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SendStatSnapshot <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#158" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  SendStatSnapshot ( optional <span class="source_type">bool</span> finalSnapshot )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDataPrivateRW-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetDataPrivateRW <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#190" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  SetDataPrivateRW ( <span class="source_type">int</span> profileId, <span class="source_type">string</span> PrivateData )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDataPrivateRWResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetDataPrivateRWResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#192" class="small">Source code</a></h4>
+<div class="declaration"> event  SetDataPrivateRWResult ( <span class="source_type">int</span> success )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPlayerStat-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPlayerStat <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#152" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  SetPlayerStat ( coerce <span class="source_type">string</span> statName, coerce <span class="source_type">string</span> statValue, <span class="source_type">int</span> <span class="source_type">playerId</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetServerStat-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetServerStat <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#149" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  SetServerStat ( coerce <span class="source_type">string</span> statName, coerce <span class="source_type">string</span> statValue )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetTeamAffiliation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetTeamAffiliation <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#199" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  SetTeamAffiliation ( <span class="source_type">int</span> profileId, <span class="source_type">int</span> teamId, <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">pri</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetTeamAffiliationResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetTeamAffiliationResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#201" class="small">Source code</a></h4>
+<div class="declaration"> event  SetTeamAffiliationResult ( <span class="source_type"><a href="../engine/gamespymanager.html#ETeamAffiliationResult" class="source">ETeamAffiliationResult</a></span> <span class="source_type">result</span>, <span class="source_type">String</span> TeamTag, <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">pri</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetTeamStat-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetTeamStat <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#155" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  SetTeamStat ( coerce <span class="source_type">string</span> statName, coerce <span class="source_type">string</span> statValue, <span class="source_type">int</span> TeamID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsGetPID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsGetPID <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#131" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type">String</span> StatsGetPID ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsGetStatResponse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsGetStatResponse <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#134" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type">String</span> StatsGetStatResponse ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsHasPIDAndResponse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsHasPIDAndResponse <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#128" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type">bool</span> StatsHasPIDAndResponse ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsNewGameStarted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsNewGameStarted <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#125" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  StatsNewGameStarted (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsNewPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsNewPlayer <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#137" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  StatsNewPlayer ( <span class="source_type">int</span> <span class="source_type">playerId</span>, <span class="source_type">string</span> playerName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsNewTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsNewTeam <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#140" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  StatsNewTeam ( <span class="source_type">int</span> TeamID, <span class="source_type">string</span> TeamName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsRemovePlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsRemovePlayer <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#143" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  StatsRemovePlayer ( <span class="source_type">int</span> <span class="source_type">playerId</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatsRemoveTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatsRemoveTeam <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#146" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  StatsRemoveTeam ( <span class="source_type">int</span> TeamID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UniqueNickRegistrationResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UniqueNickRegistrationResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#177" class="small">Source code</a></h4>
+<div class="declaration"> event  UniqueNickRegistrationResult ( <span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateComplete-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UpdateComplete <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#207" class="small">Source code</a></h4>
+<div class="declaration"> event  UpdateComplete ( <span class="source_type">bool</span> bLAN )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdatedServerData-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UpdatedServerData <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#204" class="small">Source code</a></h4>
+<div class="declaration"> event  UpdatedServerData ( <span class="source_type">int</span> serverId, <span class="source_type">String</span> ipAddress, <span class="source_type">int</span> Ping, <span class="source_type">bool</span> bLAN, Array&lt;<span class="source_type">String</span>&gt; serverData, Array&lt;<span class="source_type">String</span>&gt; playerData, Array&lt;<span class="source_type">String</span>&gt; teamData )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateServer <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#105" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  UpdateServer ( <span class="source_type">int</span> serverId, <span class="source_type">bool</span> Refresh )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateServerByIP-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateServerByIP <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#100" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  UpdateServerByIP ( <span class="source_type">String</span> ipAddress, <span class="source_type">int</span> serverGamePort )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateServerList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateServerList <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#91" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  UpdateServerList ( optional <span class="source_type">String</span> filter )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UserConnectionResult-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UserConnectionResult <span class="function_state"></span> <a href="../Source_engine/gamespymanager.html#169" class="small">Source code</a></h4>
+<div class="declaration"> event  UserConnectionResult ( <span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span>, <span class="source_type">int</span> profileId, <span class="source_type">string</span> UniqueNick )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	BaseFilePlanetPatchURL=<span class="source_string">"http://www.fileplanet.com/index.asp?file="</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/gamespymanager.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GameSpyManager">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/gamerules.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/gamestats.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:29.906 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

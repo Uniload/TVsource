@@ -1,0 +1,773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Tyrion.AI_Resource</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ai_resource.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Resource">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ai_repairsensor.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ai_rocketguyattack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tyrion/ai_resource.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_resource.html">AI_Resource</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=====================================================================
+</span><a name="2"></a><span class="source_comment">// AI_Resource
+</span><a name="3"></a><span class="source_comment">// The Tyrion (Tribes 3 AI System) AI Control Mechanism
+</span><a name="4"></a><span class="source_comment">//=====================================================================
+</span><a name="5"></a>
+<a name="6"></a><span class="source_comment">// A note on resource usage:
+</span><a name="7"></a><span class="source_comment">//
+</span><a name="8"></a><span class="source_comment">// Resources are hierarchical. Squads are made up of pawns which are made up of arms, legs,
+</span><a name="9"></a><span class="source_comment">// and a head. Arms, legs, and head resources are called "leaf resources". Leaf resources
+</span><a name="10"></a><span class="source_comment">// are the resources that actually do things in the world, characters and squads are just
+</span><a name="11"></a><span class="source_comment">// collections of these resources.
+</span><a name="12"></a><span class="source_comment">//
+</span><a name="13"></a><span class="source_comment">// Only actions running on leaf resources actually "use" the resources. Character and squad
+</span><a name="14"></a><span class="source_comment">// actions use resources only by virtue of the fact that they spawn child actions that run
+</span><a name="15"></a><span class="source_comment">// on the character's or squad's leaf resources. Consequently, it's easy for character and
+</span><a name="16"></a><span class="source_comment">// squad actions to share a resource. They can run in parallel and won't conflict unless two
+</span><a name="17"></a><span class="source_comment">// of them start a child action on the same leaf resource at the same time.
+</span><a name="18"></a><span class="source_comment">// 
+</span><a name="19"></a><span class="source_comment">// Every action has "resourceUsage" bits that indicate what resources it requires. Squad
+</span><a name="20"></a><span class="source_comment">// actions must have uniform usage of resources across their members (i.e. you can't have
+</span><a name="21"></a><span class="source_comment">// a single squad action that needs the arms of Pawn A and the legs of Pawn B).
+</span><a name="22"></a><span class="source_comment">//
+</span><a name="23"></a><span class="source_comment">// For an action to run on a resource, the resources it requires must be available. Resource
+</span><a name="24"></a><span class="source_comment">// checking occurs in two places: When an action is chosen for a pending goal (inside
+</span><a name="25"></a><span class="source_comment">// "processGoals()") and when a new goal is added to a resource (in "resourceCheck()").
+</span><a name="26"></a><span class="source_comment">// ProcessGoals() won't chose any action (including character and squad actions) unless
+</span><a name="27"></a><span class="source_comment">// the resources specified by that action are currently available. ResourceCheck() will
+</span><a name="28"></a><span class="source_comment">// interrupt an action running on a resources if this resource is a leaf resource and
+</span><a name="29"></a><span class="source_comment">// the new goal has a higher priority.
+</span><a name="30"></a>
+<a name="31"></a><span class="source_type">class</span> <span class="source_type"><a href="../tyrion/ai_resource.html" class="source">AI_Resource</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/tyrion_resourcebase.html" class="source">Tyrion_ResourceBase</a></span>
+<a name="32"></a>	native
+<a name="33"></a>	editinlinenew
+<a name="34"></a>	abstract;
+<a name="35"></a>
+<a name="36"></a>import <span class="source_type">class</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>;
+<a name="37"></a>import <span class="source_type">class</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span>;
+<a name="38"></a>
+<a name="39"></a><span class="source_comment">//=====================================================================
+</span><a name="40"></a><span class="source_comment">// Constants
+</span><a name="41"></a>
+<a name="42"></a><span class="source_comment">// Optional resources 
+</span><a name="43"></a>const OPTIONAL_RESOURCE_PRIORITY = <span class="source_int">20</span>;	<span class="source_comment">// maximum priority for an optional resource
+</span><a name="44"></a>
+<a name="45"></a><span class="source_comment">// Resource usage bits - specify the leaf nodes of the resource hierarchy
+</span><a name="46"></a><span class="source_comment">// character parts
+</span><a name="47"></a>const RU_HEAD		= <span class="source_int">1</span>;
+<a name="48"></a>const RU_ARMS		= <span class="source_int">2</span>;
+<a name="49"></a>const RU_LEGS		= <span class="source_int">4</span>;
+<a name="50"></a>
+<a name="51"></a><span class="source_comment">// vehicle parts
+</span><a name="52"></a>const RU_MOUNT		= <span class="source_int">8</span>;
+<a name="53"></a>
+<a name="54"></a><span class="source_comment">// base installation parts
+</span><a name="55"></a><span class="source_comment">// ...
+</span><a name="56"></a>
+<a name="57"></a><span class="source_comment">//=====================================================================
+</span><a name="58"></a><span class="source_comment">// Variables
+</span><a name="59"></a>
+<a name="60"></a>var array&lt;<span class="source_type"><a href="../tyrion/ai_runnableaction.html" class="source">AI_RunnableAction</a></span>&gt; idleActions;
+<a name="61"></a>var array&lt;<span class="source_type"><a href="../tyrion/ai_runnableaction.html" class="source">AI_RunnableAction</a></span>&gt; runningActions;
+<a name="62"></a>var array&lt;<span class="source_type"><a href="../tyrion/ai_runnableaction.html" class="source">AI_RunnableAction</a></span>&gt; removedActions;	<span class="source_comment">// actions waiting to be deleted
+</span><a name="63"></a>var <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> usedByAction;					<span class="source_comment">// the action that is "using" this resource; only leaf resources (legs/arms/head etc) can be used
+</span><a name="64"></a>var array&lt;<span class="source_type"><a href="../tyrion/ai_sensor.html" class="source">AI_Sensor</a></span>&gt; sensors;				<span class="source_comment">// the sensors available to this resource
+</span><a name="65"></a>var array&lt;<span class="source_type"><a href="../tyrion/ai_sensoraction.html" class="source">AI_SensorAction</a></span>&gt; sensorActions;	<span class="source_comment">// the sensorActions running on this resource
+</span><a name="66"></a>
+<a name="67"></a><span class="source_comment">//=====================================================================
+</span><a name="68"></a><span class="source_comment">// Functions
+</span><a name="69"></a>
+<a name="70"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="71"></a><span class="source_comment">// Called before the resource is first ticked
+</span><a name="72"></a><span class="source_comment">// (called explicitly by Actors that use AI_Resource's,
+</span><a name="73"></a><span class="source_comment">// since objects don't have their own postBeginPlay()'s)
+</span><a name="74"></a><span class="source_comment">// (called on first UAI_Resource.Tick)
+</span><a name="75"></a>
+<a name="76"></a>event init()
+<a name="77"></a>{
+<a name="78"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="79"></a>	local <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>;
+<a name="80"></a>	local array&lt;<span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>&gt; removeGoals;
+<a name="81"></a>
+<a name="82"></a>	<span class="source_comment">// designer-created goals have to be initialized...
+</span><a name="83"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; goals.length; <span class="source_type">i</span>++ )
+<a name="84"></a>	{
+<a name="85"></a>		<span class="source_type">goal</span> = <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>(goals[<span class="source_type">i</span>]);
+<a name="86"></a>
+<a name="87"></a>		if ( <span class="source_type">goal</span>.priorityFn() &lt;= <span class="source_int">0</span> )
+<a name="88"></a>			removeGoals[removeGoals.length] = <span class="source_type">goal</span>;		<span class="source_comment">// removeGoals.push(goal)
+</span><a name="89"></a>		else if ( <span class="source_type">goal</span>.<span class="source_type">resource</span> == None )	<span class="source_comment">// goal not yet initialized 
+</span><a name="90"></a>			<span class="source_type">goal</span>.init( self );
+<a name="91"></a>	}
+<a name="92"></a>
+<a name="93"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; removeGoals.length; <span class="source_type">i</span>++ )
+<a name="94"></a>	{
+<a name="95"></a>		if ( <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().logTyrion )
+<a name="96"></a>			log( <span class="source_string">"Removing"</span> @ removeGoals[<span class="source_type">i</span>].<span class="source_type">name</span> @ <span class="source_string">"from"</span> @ <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().<span class="source_type">name</span> @ <span class="source_string">"(priority &lt;= 0)"</span> ); 
+<a name="97"></a>		removeGoal( removeGoals[<span class="source_type">i</span>] );		<span class="source_comment">// remove goals with 0 priority so they don't clog up resources
+</span><a name="98"></a>	}
+<a name="99"></a>
+<a name="100"></a>	bUnInitialized = false;
+<a name="101"></a>}
+<a name="102"></a>
+<a name="103"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="104"></a><span class="source_comment">// clean up resource-related stuff when pawn dies
+</span><a name="105"></a>
+<a name="106"></a><span class="source_type">function</span> cleanup()
+<a name="107"></a>{
+<a name="108"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="109"></a>	local <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>;
+<a name="110"></a>	local <span class="source_type"><a href="../tyrion/actionbase.html" class="source">ActionBase</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>;
+<a name="111"></a>
+<a name="112"></a>	<span class="source_comment">//if ( pawn() != None )
+</span><a name="113"></a>	<span class="source_comment">//	log( "Cleanup called on" @ name @ pawn().name );
+</span><a name="114"></a>	<span class="source_comment">//else
+</span><a name="115"></a>	<span class="source_comment">//	log( "Cleanup called on" @ name @ "(pawn unknown - ragdoll cleanup?)" );
+</span><a name="116"></a>
+<a name="117"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; goals.length; <span class="source_type">i</span>++ )
+<a name="118"></a>	{
+<a name="119"></a>		<span class="source_type">goal</span> = <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>(goals[<span class="source_type">i</span>]);
+<a name="120"></a>		<span class="source_comment">//log( "... considering" @ goal.name );
+</span><a name="121"></a>
+<a name="122"></a>		<span class="source_comment">// de-link goals from sensor's recipient lists (in lieu of removing them alltogether)
+</span><a name="123"></a>		if ( <span class="source_type">goal</span>.activationSentinel != None && <span class="source_type">goal</span>.activationSentinel.sensor != None )
+<a name="124"></a>		{
+<a name="125"></a>			<span class="source_type">goal</span>.activationSentinel.deactivateSentinel( <span class="source_type">goal</span> );
+<a name="126"></a>			<span class="source_type">goal</span>.activationSentinel.sensor = None;
+<a name="127"></a>		}
+<a name="128"></a>		if ( <span class="source_type">goal</span>.deactivationSentinel != None && <span class="source_type">goal</span>.deactivationSentinel.sensor != None )
+<a name="129"></a>		{
+<a name="130"></a>			<span class="source_type">goal</span>.deactivationSentinel.deactivateSentinel( <span class="source_type">goal</span> );
+<a name="131"></a>			<span class="source_type">goal</span>.deactivationSentinel.sensor = None;
+<a name="132"></a>		}
+<a name="133"></a>	}
+<a name="134"></a>
+<a name="135"></a>	<span class="source_comment">//log( " idleActions:" @ idleActions.length );
+</span><a name="136"></a>	while ( idleActions.length &gt; <span class="source_int">0</span> )
+<a name="137"></a>	{
+<a name="138"></a>		<span class="source_comment">//log( "... considering idle" @ idleActions[0].name );
+</span><a name="139"></a>		<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> = idleActions[<span class="source_int">0</span>];
+<a name="140"></a>		idleActions.remove(<span class="source_int">0</span>, <span class="source_int">1</span>);			<span class="source_comment">// remove element explicitly (so sensorActions get removed)
+</span><a name="141"></a>		<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.instantFail( ACT_RESOURCE_INACTIVE );
+<a name="142"></a>	}
+<a name="143"></a>
+<a name="144"></a>	<span class="source_comment">//log( " runningActions:" @ runningActions.length );
+</span><a name="145"></a>	while ( runningActions.length &gt; <span class="source_int">0</span> )
+<a name="146"></a>	{
+<a name="147"></a>		<span class="source_comment">//log( "... considering running" @ runningActions[0].name );
+</span><a name="148"></a>		<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> = runningActions[<span class="source_int">0</span>];
+<a name="149"></a>		runningActions.remove(<span class="source_int">0</span>, <span class="source_int">1</span>);		<span class="source_comment">// remove element explicitly (so sensorActions get removed)
+</span><a name="150"></a>		<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.instantFail( ACT_RESOURCE_INACTIVE );
+<a name="151"></a>	}
+<a name="152"></a>
+<a name="153"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; sensors.length; <span class="source_type">i</span>++ )
+<a name="154"></a>	{
+<a name="155"></a>		<span class="source_comment">//log( "... considering sensor" @ sensors[i].name @ sensors[i].recipients.length );
+</span><a name="156"></a>		<span class="source_comment">/*if ( sensors[i].recipients.length &gt; 0 )
+<a name="157"></a>		{
+<a name="158"></a>			log( "    The following still have references to this sensor:" );
+<a name="159"></a>			for ( j = 0; j &lt; sensors[i].recipients.length; j++ )
+<a name="160"></a>				log( "     " @ sensors[i].recipients[j].recipient.name );
+<a name="161"></a>		}*/</span>
+<a name="162"></a>		sensors[<span class="source_type">i</span>].cleanup();
+<a name="163"></a>	}
+<a name="164"></a>
+<a name="165"></a>	<span class="source_comment">// InstantFail doesn't remove sensor actions (even though they are in the "runningActions" list),
+</span><a name="166"></a>	<span class="source_comment">// so remove them here explicitly
+</span><a name="167"></a>	<span class="source_comment">//log( " sensorActions:" @ sensorActions.length );
+</span><a name="168"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; sensorActions.length; <span class="source_type">i</span>++ )
+<a name="169"></a>	{
+<a name="170"></a>		<span class="source_comment">//log( "... considering sensorAction" @ sensorActions[i].name );
+</span><a name="171"></a>		sensorActions[<span class="source_type">i</span>].removeAction();
+<a name="172"></a>	}
+<a name="173"></a>	sensorActions.length = <span class="source_int">0</span>;
+<a name="174"></a>
+<a name="175"></a>	<span class="source_comment">// remove remaining goals
+</span><a name="176"></a>	while( goals.length &gt; <span class="source_int">0</span> )
+<a name="177"></a>	{
+<a name="178"></a>		<span class="source_comment">//log( "... considering goal" @ goals[0].name ); 
+</span><a name="179"></a>		removeGoal( <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>(goals[<span class="source_int">0</span>]) );
+<a name="180"></a>	}
+<a name="181"></a>
+<a name="182"></a>	<span class="source_comment">//log( "Cleanup FINISHED on" @ name @ pawn().name );
+</span><a name="183"></a>}
+<a name="184"></a>
+<a name="185"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="186"></a><span class="source_comment">// Delete all the sensors attached to this resource
+</span><a name="187"></a>
+<a name="188"></a><span class="source_type">function</span> deleteSensors()
+<a name="189"></a>{
+<a name="190"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="191"></a>
+<a name="192"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; sensors.length; <span class="source_type">i</span>++ )
+<a name="193"></a>	{
+<a name="194"></a>		sensors[<span class="source_type">i</span>].<span class="source_type">value</span>.Delete();		<span class="source_comment">// this would be in the sensor's destructor if we had one...
+</span><a name="195"></a>		sensors[<span class="source_type">i</span>].Delete();
+<a name="196"></a>	}
+<a name="197"></a>	sensors.length = <span class="source_int">0</span>;
+<a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="201"></a><span class="source_comment">// Delete actions that have been removed from idle and running lists
+</span><a name="202"></a>
+<a name="203"></a>event deleteRemovedActions()
+<a name="204"></a>{
+<a name="205"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="206"></a>
+<a name="207"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; removedActions.length; <span class="source_type">i</span>++ )
+<a name="208"></a>	{
+<a name="209"></a>		<span class="source_comment">//log( "deleteRemovedActions: deleting" @ removedActions[i].name );
+</span><a name="210"></a>		removedActions[<span class="source_type">i</span>].Release();	<span class="source_comment">// Comment out this line to disable AI action deletion
+</span><a name="211"></a>	}
+<a name="212"></a>	removedActions.length = <span class="source_int">0</span>;
+<a name="213"></a>}
+<a name="214"></a>
+<a name="215"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="216"></a><span class="source_comment">// increments refCount and returns object
+</span><a name="217"></a>
+<a name="218"></a><span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_resource.html" class="source">AI_Resource</a></span> myAddRef()
+<a name="219"></a>{
+<a name="220"></a>	AddRef();
+<a name="221"></a>	return self;
+<a name="222"></a>}
+<a name="223"></a>
+<a name="224"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="225"></a><span class="source_comment">// Inform a resource that a particular pawn died
+</span><a name="226"></a><span class="source_comment">// (Resources should not assume they will only get one of these messages per pawn death)
+</span><a name="227"></a>
+<a name="228"></a><span class="source_type">function</span> pawnDied( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> )
+<a name="229"></a>{
+<a name="230"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="231"></a>	local array&lt;<span class="source_type"><a href="../tyrion/actionbase.html" class="source">ActionBase</a></span>&gt; actions;
+<a name="232"></a>
+<a name="233"></a>	<span class="source_comment">// collect actions (don't want to be iterating over lists that might change length)
+</span><a name="234"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; runningActions.length; ++<span class="source_type">i</span> )
+<a name="235"></a>		actions[actions.length] = runningActions[<span class="source_type">i</span>];
+<a name="236"></a>
+<a name="237"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; idleActions.length; ++<span class="source_type">i</span> )
+<a name="238"></a>		actions[actions.length] = idleActions[<span class="source_type">i</span>];
+<a name="239"></a>
+<a name="240"></a>	<span class="source_comment">// inform all actions
+</span><a name="241"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; actions.length; ++<span class="source_type">i</span> )
+<a name="242"></a>	{
+<a name="243"></a>		if ( !actions[<span class="source_type">i</span>].bDeleted )
+<a name="244"></a>			actions[<span class="source_type">i</span>].pawnDied( <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> );
+<a name="245"></a>	}
+<a name="246"></a>}
+<a name="247"></a>
+<a name="248"></a><span class="source_comment">//----------------------------------------------------------------------
+</span><a name="249"></a><span class="source_comment">// Chooses the best action from 'abilities' that satisfies 'goal'
+</span><a name="250"></a><span class="source_comment">// Returns a copy of this action (or None) with a reference count of 1
+</span><a name="251"></a><span class="source_comment">//
+</span><a name="252"></a><span class="source_comment">// Note: to save on action copying, for now goal constraints are not taken into account when
+</span><a name="253"></a><span class="source_comment">//       determining value of selectionHeuristic
+</span><a name="254"></a>
+<a name="255"></a>event <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> chooseAction( <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span> )
+<a name="256"></a>{
+<a name="257"></a>	local <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">bestAction</span>;				<span class="source_comment">// return value
+</span><a name="258"></a>	local <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>;
+<a name="259"></a>	local array&lt;<span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span>&gt; matchingActions;	<span class="source_comment">// sorted list of actions that match 'goal'
+</span><a name="260"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>, j;
+<a name="261"></a>
+<a name="262"></a>	<span class="source_comment">// create a sorted list of actions that achieve 'goal'
+</span><a name="263"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; abilities.length; <span class="source_type">i</span>++ )
+<a name="264"></a>	{
+<a name="265"></a>		<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> = <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span>(abilities[<span class="source_type">i</span>]);
+<a name="266"></a>
+<a name="267"></a>		<span class="source_comment">//log( "@@@" @ pawn().name @ action.name @ action.satisfiesGoal.name @ goal.class @ action.selectionHeuristic( goal ) );
+</span><a name="268"></a>		<span class="source_comment">//if ( ClassIsChildOf( goal.class, action.satisfiesGoal ) )
+</span><a name="269"></a>		<span class="source_comment">//	log( "@@@" @ action.name @ "sat's" @ goal.name @ usedByAction @ usedByAction.achievingGoal.priorityFn() @ goal.priorityFn() );
+</span><a name="270"></a>
+<a name="271"></a>		if ( ClassIsChildOf( <span class="source_type">goal</span>.<span class="source_type">class</span>, <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.satisfiesGoal ) &&
+<a name="272"></a>			( usedByAction == None ||											<span class="source_comment">// resource not in use
+</span><a name="273"></a>			  usedByAction.achievingGoal.priorityFn() &lt; <span class="source_type">goal</span>.priorityFn() ||	<span class="source_comment">// resource doing something less important
+</span><a name="274"></a>			  multipleActionsCheck( <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> ) ||									<span class="source_comment">// the resource can handle multiple actions
+</span><a name="275"></a>			  doesParentHaveResource( <span class="source_type">goal</span>.<span class="source_type">parentAction</span> )))						<span class="source_comment">// the parent of the goal is already using the resource
+</span><a name="276"></a>		{
+<a name="277"></a>			<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.heuristicValue = <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.selectionHeuristic( <span class="source_type">goal</span> );
+<a name="278"></a>
+<a name="279"></a>			if ( <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.heuristicValue &gt; <span class="source_int">0</span> )
+<a name="280"></a>			{
+<a name="281"></a>				<span class="source_comment">// insert 'action' into 'matchingActions', sorted by heuristicValue
+</span><a name="282"></a>				for( j = <span class="source_int">0</span>; j &lt; matchingActions.Length; ++j )
+<a name="283"></a>				{
+<a name="284"></a>					if ( matchingActions[j].heuristicValue &lt; <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.heuristicValue )
+<a name="285"></a>						break;
+<a name="286"></a>				}
+<a name="287"></a>				matchingActions.insert(j, <span class="source_int">1</span>);
+<a name="288"></a>				matchingActions[j] = <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>;
+<a name="289"></a>			}
+<a name="290"></a>		}
+<a name="291"></a>	}
+<a name="292"></a>
+<a name="293"></a>	<span class="source_comment">// find the action with the highest heuristicValue
+</span><a name="294"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; matchingActions.length; <span class="source_type">i</span>++ )
+<a name="295"></a>	{
+<a name="296"></a>		<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> = <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span>( <span class="source_type">class</span><span class="source_name">'Engine.Tyrion_Setup'</span>.static.shallowCopy( matchingActions[<span class="source_type">i</span>] )).myAddRef();	<span class="source_comment">// make a shallow copy
+</span><a name="297"></a>		<span class="source_comment">// log( "ChooseAction: Created new action" @ action.name @ "from" @ matchingActions[i] ); 
+</span><a name="298"></a>
+<a name="299"></a>		if ( setActionParameters( <span class="source_type">goal</span>, <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> ) )	<span class="source_comment">// returns false if parameters named in this goal couldn't be set
+</span><a name="300"></a>		{
+<a name="301"></a>			<span class="source_type">bestAction</span> = <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>;
+<a name="302"></a>			break;
+<a name="303"></a>		}
+<a name="304"></a>		else
+<a name="305"></a>			<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.Release();
+<a name="306"></a>	}
+<a name="307"></a>
+<a name="308"></a>	return <span class="source_type">bestAction</span>;
+<a name="309"></a>}
+<a name="310"></a>
+<a name="311"></a><span class="source_comment">//----------------------------------------------------------------------
+</span><a name="312"></a><span class="source_comment">// Makes sure a high priority goal isn't being prevented from running
+</span><a name="313"></a><span class="source_comment">// because its resource is being used by a lower priority one;
+</span><a name="314"></a><span class="source_comment">// if it is, interrupt the lower priority one
+</span><a name="315"></a><span class="source_comment">// 'bestAction': if known, the action you want running on this goal
+</span><a name="316"></a>
+<a name="317"></a>event resourceCheck( <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>, optional <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">bestAction</span> )
+<a name="318"></a>{
+<a name="319"></a>	<span class="source_comment">// Interrupt lower priority actions that are preventing this goal from being satisfied:
+</span><a name="320"></a>	<span class="source_comment">// 1. find out what actions match this goal
+</span><a name="321"></a>	<span class="source_comment">// 2. if the best one needs to use this resource but a lower priority action is claiming
+</span><a name="322"></a>	<span class="source_comment">//    the resource, interrupt the lower priority action
+</span><a name="323"></a>
+<a name="324"></a>	<span class="source_comment">//log( "RESOURCE_CHECK: goal:" @ goal.name @ "action:" @ bestAction.name @ "usedBy:" @ usedByAction );
+</span><a name="325"></a>
+<a name="326"></a>	if ( usedByAction != None &&		<span class="source_comment">// will only be non-None on leaf resources (there is no resource contention for non-leaf resources)
+</span><a name="327"></a>		 <span class="source_type">goal</span>.bInactive == false &&		<span class="source_comment">// inactive goals don't need to be considered
+</span><a name="328"></a>		 <span class="source_type">goal</span>.priorityFn() &gt; usedByAction.achievingGoal.priorityFn() &&	<span class="source_comment">// new goal's priority is higher
+</span><a name="329"></a>		 !doesParentHaveResource( <span class="source_type">goal</span>.<span class="source_type">parentAction</span> ) )					<span class="source_comment">// parent isn't already using the resource
+</span><a name="330"></a>	{
+<a name="331"></a>		<span class="source_comment">// possible optimization: store bestAction for use by processGoals() - if processGoals() is called on this tick
+</span><a name="332"></a>		if ( <span class="source_type">bestAction</span> == None )
+<a name="333"></a>			<span class="source_type">bestAction</span> = chooseAction( <span class="source_type">goal</span> );	<span class="source_comment">// if a new bestAction is created here it will get deleted at the end of this function...
+</span><a name="334"></a>		else
+<a name="335"></a>			<span class="source_type">bestAction</span>.AddRef();				<span class="source_comment">// ...but if it was passed in it its reference counts will remain unchanged
+</span><a name="336"></a>
+<a name="337"></a>		<span class="source_comment">// the best action needs the resource (resource must be a leaf resource)
+</span><a name="338"></a>		<span class="source_comment">// old: if ( (bestAction.resourceUsage & bestAction.default.resourceUsage) != 0 )
+</span><a name="339"></a>		if ( !multipleActionsCheck( <span class="source_type">bestAction</span> ) )
+<a name="340"></a>		{
+<a name="341"></a>			if ( <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>().logTyrion )
+<a name="342"></a>				log( <span class="source_string">"resourceCheck: Interrupting"</span> @ usedByAction.<span class="source_type">name</span> @
+<a name="343"></a>					<span class="source_string">"(pri"</span> @ usedByAction.achievingGoal.priorityFn() $
+<a name="344"></a>					<span class="source_string">") to achieve"</span> @ <span class="source_type">goal</span>.<span class="source_type">name</span> @ <span class="source_string">"(pri"</span> @ <span class="source_type">goal</span>.priorityFn() $ <span class="source_string">")"</span> );
+<a name="345"></a>			if ( usedByAction == <span class="source_type">goal</span>.<span class="source_type">parentAction</span> )
+<a name="346"></a>				log( <span class="source_string">"AI WARNING: Child action"</span> @ <span class="source_type">bestAction</span>.<span class="source_type">name</span> @ <span class="source_string">"is interrupting its parent"</span> @ <span class="source_type">goal</span>.<span class="source_type">parentAction</span>.<span class="source_type">name</span> ); 
+<a name="347"></a>
+<a name="348"></a>			<span class="source_comment">// invoke parent's "resources stolen" callback
+</span><a name="349"></a>			if ( usedByAction.achievingGoal.<span class="source_type">parentAction</span> != None )
+<a name="350"></a>				usedByAction.achievingGoal.<span class="source_type">parentAction</span>.resourceStolenCB( usedByAction.achievingGoal, self );
+<a name="351"></a>
+<a name="352"></a>			<span class="source_comment">// free up resource
+</span><a name="353"></a>			if ( usedByAction != None )
+<a name="354"></a>				usedByAction.interruptAction();
+<a name="355"></a>		}
+<a name="356"></a>
+<a name="357"></a>		if ( <span class="source_type">bestAction</span> != None )
+<a name="358"></a>			<span class="source_type">bestAction</span>.Release();
+<a name="359"></a>	}
+<a name="360"></a>}
+<a name="361"></a>
+<a name="362"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="363"></a><span class="source_comment">// Adds a sensor action to a resource
+</span><a name="364"></a>
+<a name="365"></a><span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_sensoraction.html" class="source">AI_SensorAction</a></span> addSensorActionClass( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tyrion/ai_sensoraction.html" class="source">AI_SensorAction</a></span>&gt; <span class="source_type">sensorActionClass</span> )
+<a name="366"></a>{
+<a name="367"></a>	local <span class="source_type"><a href="../tyrion/ai_sensoraction.html" class="source">AI_SensorAction</a></span> sensorAction;
+<a name="368"></a>
+<a name="369"></a>	assert(<span class="source_type">sensorActionClass</span> != None);
+<a name="370"></a>	if ( !ClassIsChildOf( <span class="source_type">class</span>, <span class="source_type">sensorActionClass</span>.static.getResourceClass() ) )
+<a name="371"></a>	{
+<a name="372"></a>		log( <span class="source_string">"AI WARNING: addSensorActionClass:"</span> @ <span class="source_type">class</span> @ <span class="source_string">"is not a child of"</span> @ <span class="source_type">sensorActionClass</span>.static.getResourceClass() );
+<a name="373"></a>		assert( ClassIsChildOf( <span class="source_type">class</span>, <span class="source_type">sensorActionClass</span>.static.getResourceClass() ) );
+<a name="374"></a>	}
+<a name="375"></a>
+<a name="376"></a>	<span class="source_comment">//log( name @ "added sensor action class:" @ sensorActionClass );
+</span><a name="377"></a>
+<a name="378"></a>	<span class="source_comment">// allocate a new sensor action, but have it be idle
+</span><a name="379"></a>
+<a name="380"></a>	sensorAction = (new <span class="source_type">sensorActionClass</span>( self )).myAddRef();
+<a name="381"></a>	<span class="source_comment">//log( "---" @ sensorAction @ "addreffed" );
+</span><a name="382"></a>	sensorAction.setupSensors( self );
+<a name="383"></a>	sensorAction.pauseAction();
+<a name="384"></a>
+<a name="385"></a>	sensorActions[sensorActions.length] = sensorAction;
+<a name="386"></a>
+<a name="387"></a>	return sensorAction;
+<a name="388"></a>}
+<a name="389"></a>
+<a name="390"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="391"></a><span class="source_comment">// Can this resource run "action" if it's already being used?
+</span><a name="392"></a><span class="source_comment">// (default is "yes", but individual resources can define their own logic)
+</span><a name="393"></a><span class="source_comment">// Note: check will never be called for non-leaf resources, since they can
+</span><a name="394"></a><span class="source_comment">// always run multiple actions
+</span><a name="395"></a>
+<a name="396"></a><span class="source_type">function</span> <span class="source_type">bool</span> multipleActionsCheck( <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> )
+<a name="397"></a>{
+<a name="398"></a>	return true;
+<a name="399"></a>}
+<a name="400"></a>
+<a name="401"></a><span class="source_comment">//----------------------------------------------------------------------
+</span><a name="402"></a><span class="source_comment">// Is the parent of this action already using a leaf resource?
+</span><a name="403"></a>
+<a name="404"></a><span class="source_type">function</span> <span class="source_type">bool</span> doesParentHaveResource( <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">parentAction</span> )
+<a name="405"></a>{
+<a name="406"></a>	return false;
+<a name="407"></a>}
+<a name="408"></a>
+<a name="409"></a><span class="source_comment">//----------------------------------------------------------------------
+</span><a name="410"></a><span class="source_comment">// Return the corresponding action class for this type of resource
+</span><a name="411"></a>
+<a name="412"></a><span class="source_type">function</span> <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tyrion/ai_runnableaction.html" class="source">AI_RunnableAction</a></span>&gt; getActionClass();
+<a name="413"></a>
+<a name="414"></a><span class="source_comment">//----------------------------------------------------------------------
+</span><a name="415"></a><span class="source_comment">// Wrapper function for setActionParametersInternal
+</span><a name="416"></a>
+<a name="417"></a><span class="source_type">function</span> <span class="source_type">bool</span> setActionParameters( <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>, <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> )
+<a name="418"></a>{
+<a name="419"></a>	return setActionParametersInternal( <span class="source_type">goal</span>, <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> );
+<a name="420"></a>}
+<a name="421"></a>
+<a name="422"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="423"></a><span class="source_comment">// Accessor functions
+</span><a name="424"></a>
+<a name="425"></a>event <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>()
+<a name="426"></a>{
+<a name="427"></a>	return None;
+<a name="428"></a>}
+<a name="429"></a>
+<a name="430"></a><span class="source_macro">#if IG_TRIBES3
+</span><a name="431"></a><span class="source_comment">// returns the rook representing the vehicle mounted turret or the vehicle (for drivers) or the turret 
+</span><a name="432"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> localRook()
+<a name="433"></a>{
+<a name="434"></a>	return <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>());	<span class="source_comment">// returns the same value as pawn() by default
+</span><a name="435"></a>}
+<a name="436"></a><span class="source_macro">#endif
+</span><a name="437"></a>
+<a name="438"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="439"></a><span class="source_comment">// Given the name of a goal, retrieve the object (or None)
+</span><a name="440"></a>
+<a name="441"></a><span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> findGoalByName( <span class="source_type">String</span> <span class="source_type">gName</span> )
+<a name="442"></a>{
+<a name="443"></a>	local <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>;
+<a name="444"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="445"></a>
+<a name="446"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; goals.length; <span class="source_type">i</span>++ )
+<a name="447"></a>	{
+<a name="448"></a>		<span class="source_type">goal</span> = <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>(goals[<span class="source_type">i</span>]);
+<a name="449"></a>		if ( <span class="source_type">gName</span> ~= <span class="source_type">goal</span>.goalName )
+<a name="450"></a>			return <span class="source_type">goal</span>;
+<a name="451"></a>	}
+<a name="452"></a>
+<a name="453"></a>	return None;
+<a name="454"></a>}
+<a name="455"></a>
+<a name="456"></a><span class="source_comment">//----------------------------------------------------------------------
+</span><a name="457"></a><span class="source_comment">// Set parameters in 'action' to those specified by 'goal', if possible
+</span><a name="458"></a><span class="source_comment">//
+</span><a name="459"></a><span class="source_comment">// Notes on goal constraints:
+</span><a name="460"></a><span class="source_comment">// - goal constraints are parameters of the action that matches the goal
+</span><a name="461"></a><span class="source_comment">// - goal constraints steer the the action, giving the poster of the goal some control
+</span><a name="462"></a><span class="source_comment">//   on the execution of the action
+</span><a name="463"></a><span class="source_comment">// - when goal constraints are set, the action uses their values, instead of filling them in itself
+</span><a name="464"></a>
+<a name="465"></a>private native <span class="source_type">function</span> <span class="source_type">bool</span> setActionParametersInternal( <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">goal</span>, <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> );
+<a name="466"></a>
+<a name="467"></a><span class="source_comment">//----------------------------------------------------------------------
+</span><a name="468"></a><span class="source_comment">// Adds a goal to the AI_Resource
+</span><a name="469"></a><span class="source_comment">// low-level function - don't call this directly!
+</span><a name="470"></a><span class="source_comment">// 'parentAction' can be None for top-level goals
+</span><a name="471"></a><span class="source_comment">// Does an implicit "AddRef" on the goal that was added
+</span><a name="472"></a>
+<a name="473"></a><span class="source_type">function</span> addGoal( <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">parent</span>, <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span> )
+<a name="474"></a>{
+<a name="475"></a>	<span class="source_type">goal</span>.AddRef();
+<a name="476"></a>	goals[goals.length] = <span class="source_type">goal</span>;	<span class="source_comment">// goals.push(goal)
+</span><a name="477"></a>	<span class="source_type">goal</span>.<span class="source_type">parentAction</span> = <span class="source_type">parent</span>;
+<a name="478"></a>
+<a name="479"></a>	if ( <span class="source_type">parent</span> != None )
+<a name="480"></a>	{
+<a name="481"></a>		<span class="source_comment">// childGoals.Push( self )
+</span><a name="482"></a>		<span class="source_type">parent</span>.childGoals[<span class="source_type">parent</span>.childGoals.length] = <span class="source_type">goal</span>;
+<a name="483"></a>	}
+<a name="484"></a>
+<a name="485"></a>	if ( <span class="source_type">goal</span>.bInactive == false )
+<a name="486"></a>		bMatchGoals = true;
+<a name="487"></a>}
+<a name="488"></a>
+<a name="489"></a><span class="source_comment">//-----------------------------------------------------------------------
+</span><a name="490"></a><span class="source_comment">// Removes a goal from this AI_Resource
+</span><a name="491"></a><span class="source_comment">// low-level function - don't call this directly!
+</span><a name="492"></a><span class="source_comment">// clears achievingAction
+</span><a name="493"></a><span class="source_comment">// Does an implicit "Release" on the goal that was removed (which means goal may be invalid after this call!!)
+</span><a name="494"></a><span class="source_comment">// It's ok to call removeGoal on a goal that's already been removed.
+</span><a name="495"></a>
+<a name="496"></a><span class="source_type">function</span> removeGoal( <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span> )
+<a name="497"></a>{
+<a name="498"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="499"></a>
+<a name="500"></a>	<span class="source_type">goal</span>.cleanup();
+<a name="501"></a>
+<a name="502"></a>	if ( <span class="source_type">goal</span>.<span class="source_type">parentAction</span> != None )
+<a name="503"></a>	{
+<a name="504"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; <span class="source_type">goal</span>.<span class="source_type">parentAction</span>.childGoals.length; <span class="source_type">i</span>++ )
+<a name="505"></a>			if ( <span class="source_type">goal</span>.<span class="source_type">parentAction</span>.childGoals[<span class="source_type">i</span>] == <span class="source_type">goal</span> )
+<a name="506"></a>			{
+<a name="507"></a>				<span class="source_comment">//log( "-&gt; removing" @ goal.name @ "from child list of" @ goal.parentAction.name );
+</span><a name="508"></a>				<span class="source_type">goal</span>.<span class="source_type">parentAction</span>.childGoals.remove( <span class="source_type">i</span>, <span class="source_int">1</span> );	<span class="source_comment">// removes element - shifts the rest
+</span><a name="509"></a>				break;
+<a name="510"></a>			}
+<a name="511"></a>	}
+<a name="512"></a>
+<a name="513"></a>	if ( <span class="source_type">goal</span>.activationSentinel != None && <span class="source_type">goal</span>.activationSentinel.sensor != None )
+<a name="514"></a>	{
+<a name="515"></a>		<span class="source_type">goal</span>.activationSentinel.deactivateSentinel( <span class="source_type">goal</span> );
+<a name="516"></a>		<span class="source_type">goal</span>.activationSentinel.sensor = None;
+<a name="517"></a>	}
+<a name="518"></a>	if ( <span class="source_type">goal</span>.deactivationSentinel != None && <span class="source_type">goal</span>.deactivationSentinel.sensor != None )
+<a name="519"></a>	{
+<a name="520"></a>		<span class="source_type">goal</span>.deactivationSentinel.deactivateSentinel( <span class="source_type">goal</span> );
+<a name="521"></a>		<span class="source_type">goal</span>.deactivationSentinel.sensor = None;
+<a name="522"></a>	}
+<a name="523"></a>
+<a name="524"></a>	<span class="source_comment">// Check to see if bMatchGoals needs to be set after a goal is removed.
+</span><a name="525"></a>	<span class="source_comment">// If a goal is being achieved by an action that isn't using the resource,
+</span><a name="526"></a>	<span class="source_comment">// then removing that goal doesn't free up any resources. Consequently,
+</span><a name="527"></a>	<span class="source_comment">// no new goal matching has to be performed.
+</span><a name="528"></a>	<span class="source_comment">// (Note: goal's achievingAction slot must still be valid)
+</span><a name="529"></a>
+<a name="530"></a>	if ( usedByAction != None && <span class="source_type">goal</span>.achievingAction == usedByAction )
+<a name="531"></a>		bMatchGoals = true;
+<a name="532"></a>
+<a name="533"></a>	<span class="source_comment">// A more general note:
+</span><a name="534"></a>	<span class="source_comment">// There are four cases when you might have to perform action-to-goal matching:
+</span><a name="535"></a>	<span class="source_comment">// 1. A goal was added (handled in addGoal)
+</span><a name="536"></a>	<span class="source_comment">// 2. A goal was removed (handled in removeGoal)
+</span><a name="537"></a>	<span class="source_comment">// 3. An action completed - because although the goals may not have changed,
+</span><a name="538"></a>	<span class="source_comment">//    resources may have been freed up (handled in handleGoalFailure/handleGoalSuccess)
+</span><a name="539"></a>	<span class="source_comment">//    When an action completes, all the sub-goals it posted have to be removed as well;
+</span><a name="540"></a>	<span class="source_comment">//    this is why removeAction calls removeGoal recursively
+</span><a name="541"></a>	<span class="source_comment">// 4. An action was interrupted - again, resources may have been freed up
+</span><a name="542"></a>	<span class="source_comment">//    (handled in interruptAction which calls handleGoalFailure)
+</span><a name="543"></a>	<span class="source_comment">// 5. A permanent inactive goal changes state
+</span><a name="544"></a>	<span class="source_comment">//    (handled in activate/deactivate/handleGoalFailure/handleGoalSuccess)
+</span><a name="545"></a>	<span class="source_comment">// The possibility still exists that bMatchGoals will be set to true unnecessarily,
+</span><a name="546"></a>	<span class="source_comment">// but no cases were it should have been set and wasn't will occur.
+</span><a name="547"></a>
+<a name="548"></a>	if ( <span class="source_type">goal</span>.achievingAction != None )
+<a name="549"></a>	{
+<a name="550"></a>		<span class="source_comment">//log( "-&gt; removing" @ goal.achievingAction.name );
+</span><a name="551"></a>		<span class="source_type">goal</span>.achievingAction.removeAction();	<span class="source_comment">// clears achievingAction
+</span><a name="552"></a>	}
+<a name="553"></a>
+<a name="554"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; goals.length; <span class="source_type">i</span>++ )
+<a name="555"></a>		if ( goals[<span class="source_type">i</span>] == <span class="source_type">goal</span> )
+<a name="556"></a>		{
+<a name="557"></a>			goals.remove( <span class="source_type">i</span>, <span class="source_int">1</span> );				<span class="source_comment">// removes element - shifts the rest
+</span><a name="558"></a>			<span class="source_type">goal</span>.bDeleted = true;
+<a name="559"></a>			<span class="source_type">goal</span>.<span class="source_type">parentAction</span> = None;
+<a name="560"></a>			<span class="source_comment">//log( "-&gt;" @ goal.name @ "in" @ pawn().name @ "RELEASED" );
+</span><a name="561"></a>			if (<span class="source_type">goal</span>.Release() &gt; <span class="source_int">0</span>)
+<a name="562"></a>			{
+<a name="563"></a>				<span class="source_comment">//assert(!goal.Outer.IsA('Actor'));
+</span><a name="564"></a>				<span class="source_type">goal</span>.NullReferences();
+<a name="565"></a>			}
+<a name="566"></a>			break;
+<a name="567"></a>		}
+<a name="568"></a>}
+<a name="569"></a>
+<a name="570"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="571"></a><span class="source_comment">// Mark all goals as achieved: this will reset the resource to have
+</span><a name="572"></a><span class="source_comment">// only permanent goals (used when a mount loses its driver)
+</span><a name="573"></a>
+<a name="574"></a>event resetGoals()
+<a name="575"></a>{
+<a name="576"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>, n;
+<a name="577"></a>	local <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>;
+<a name="578"></a>
+<a name="579"></a>	n = goals.length;
+<a name="580"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; n; ++<span class="source_type">i</span> )
+<a name="581"></a>	{
+<a name="582"></a>		<span class="source_type">goal</span> = <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>(goals[<span class="source_type">i</span>]);
+<a name="583"></a>		if ( <span class="source_type">goal</span>.achievingAction != None )
+<a name="584"></a>		{
+<a name="585"></a>			<span class="source_comment">//log( "--&gt;" @ localRook().name @ "Calling succeed on" @ goal.name );
+</span><a name="586"></a>			<span class="source_type">goal</span>.achievingAction.instantSucceed();
+<a name="587"></a>
+<a name="588"></a>			<span class="source_comment">// handle goals array length being modified
+</span><a name="589"></a>			if ( goals.length != n )
+<a name="590"></a>			{
+<a name="591"></a>				n = goals.length;
+<a name="592"></a>				--<span class="source_type">i</span>;
+<a name="593"></a>			}
+<a name="594"></a>		}
+<a name="595"></a>	}
+<a name="596"></a>
+<a name="597"></a>	bGoalsReset = true;
+<a name="598"></a>}
+<a name="599"></a>
+<a name="600"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="601"></a><span class="source_comment">// action/goal debug display function
+</span><a name="602"></a>
+<a name="603"></a><span class="source_macro">#if IG_TRIBES3			// Tribes version...
+</span><a name="604"></a><span class="source_type">function</span> displayTyrionDebug()
+<a name="605"></a>{
+<a name="606"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="607"></a>	local <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> debugPawn;
+<a name="608"></a>	local <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>;
+<a name="609"></a>	local <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>;
+<a name="610"></a>	local <span class="source_type">String</span> inactiveString;
+<a name="611"></a>
+<a name="612"></a>	debugPawn = <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>();
+<a name="613"></a>
+<a name="614"></a>	if ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( debugPawn ) && goals.length &gt; <span class="source_int">0</span> )
+<a name="615"></a>	{
+<a name="616"></a>		debugPawn.AddDebugMessage(<span class="source_string">" "</span>);
+<a name="617"></a>		debugPawn.AddDebugMessage( <span class="source_type">Name</span> @ <span class="source_string">"Goals"</span>, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.static.MakeColor(<span class="source_int">255</span>,<span class="source_int">255</span>,<span class="source_int">255</span>));
+<a name="618"></a>
+<a name="619"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; goals.length; <span class="source_type">i</span>++ )
+<a name="620"></a>		{
+<a name="621"></a>			<span class="source_type">goal</span> = <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>(goals[<span class="source_type">i</span>]);
+<a name="622"></a>
+<a name="623"></a>			if ( <span class="source_type">goal</span>.bInactive )
+<a name="624"></a>			{
+<a name="625"></a>				<span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> = <span class="source_type">class</span><span class="source_name">'Canvas'</span>.static.MakeColor(<span class="source_int">0</span>,<span class="source_int">255</span>,<span class="source_int">200</span>);
+<a name="626"></a>				inactiveString = <span class="source_string">"INACTIVE"</span>;
+<a name="627"></a>			}
+<a name="628"></a>			else
+<a name="629"></a>			{
+<a name="630"></a>				<span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> = <span class="source_type">class</span><span class="source_name">'Canvas'</span>.static.MakeColor(<span class="source_int">0</span>,<span class="source_int">255</span>,<span class="source_int">0</span>);
+<a name="631"></a>				inactiveString = <span class="source_string">""</span>;
+<a name="632"></a>			}
+<a name="633"></a>
+<a name="634"></a>			debugPawn.AddDebugMessage( <span class="source_string">"  "</span> $ <span class="source_type">goal</span>.goalDebuggingString() @ <span class="source_string">"("</span> $ <span class="source_type">goal</span>.priorityFn() $ <span class="source_string">")"</span> @ inactiveString, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> );
+<a name="635"></a>			if ( <span class="source_type">goal</span>.achievingAction != None )
+<a name="636"></a>				debugPawn.AddDebugMessage( <span class="source_string">"   "</span> $ <span class="source_type">goal</span>.achievingAction.actionDebuggingString(), <span class="source_type">class</span><span class="source_name">'Canvas'</span>.static.MakeColor(<span class="source_int">200</span>,<span class="source_int">200</span>,<span class="source_int">200</span>) );
+<a name="637"></a>		}
+<a name="638"></a>	}
+<a name="639"></a>}
+<a name="640"></a><span class="source_macro">#endif
+</span><a name="641"></a>
+<a name="642"></a><span class="source_macro">#if IG_SWAT				// SWAT version...
+</span><a name="643"></a><span class="source_type">function</span> displayTyrionDebug()
+<a name="644"></a>{
+<a name="645"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="646"></a>	local <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> debugPawn;
+<a name="647"></a>
+<a name="648"></a>	debugPawn = <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>();
+<a name="649"></a>    debugPawn.AddDebugMessage(<span class="source_string">" "</span>);
+<a name="650"></a>
+<a name="651"></a>	if ( goals.length &gt; <span class="source_int">0</span> )
+<a name="652"></a>	{
+<a name="653"></a>		debugPawn.AddDebugMessage( <span class="source_type">Name</span> $ <span class="source_string">" Goals"</span>, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.Static.MakeColor(<span class="source_int">255</span>,<span class="source_int">255</span>,<span class="source_int">255</span>));
+<a name="654"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; goals.length; <span class="source_type">i</span>++ )
+<a name="655"></a>			if ( !<span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>(goals[<span class="source_type">i</span>]).bInActive )
+<a name="656"></a>				debugPawn.AddDebugMessage(<span class="source_string">"  "</span> $ goals[<span class="source_type">i</span>].goalDebuggingString());
+<a name="657"></a>	}
+<a name="658"></a>
+<a name="659"></a>	if ( runningActions.length &gt; <span class="source_int">0</span> )
+<a name="660"></a>	{
+<a name="661"></a>		debugPawn.AddDebugMessage(<span class="source_string">"Running "</span> $ <span class="source_type">Name</span> $ <span class="source_string">" Actions"</span>, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.Static.MakeColor(<span class="source_int">255</span>,<span class="source_int">255</span>,<span class="source_int">255</span>));
+<a name="662"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; runningActions.length; <span class="source_type">i</span>++ )
+<a name="663"></a>			debugPawn.AddDebugMessage(<span class="source_string">"  "</span> $ runningActions[<span class="source_type">i</span>].actionDebuggingString());
+<a name="664"></a>	}
+<a name="665"></a>
+<a name="666"></a>	if ( idleActions.length &gt; <span class="source_int">0</span> )
+<a name="667"></a>	{
+<a name="668"></a>		debugPawn.AddDebugMessage(<span class="source_string">"Idle "</span> $ <span class="source_type">Name</span> $ <span class="source_string">" Actions"</span>, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.Static.MakeColor(<span class="source_int">255</span>,<span class="source_int">255</span>,<span class="source_int">255</span>));
+<a name="669"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; idleActions.length; <span class="source_type">i</span>++ )
+<a name="670"></a>			debugPawn.AddDebugMessage(<span class="source_string">"  "</span> $ idleActions[<span class="source_type">i</span>].actionDebuggingString());
+<a name="671"></a>	}
+<a name="672"></a>}
+<a name="673"></a><span class="source_macro">#endif
+</span><a name="674"></a>
+<a name="675"></a><span class="source_comment">//=======================================================================
+</span><a name="676"></a>
+<a name="677"></a>defaultproperties
+<a name="678"></a>{
+<a name="679"></a>	bMatchGoals = true
+<a name="680"></a>}
+<a name="681"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ai_resource.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Resource">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ai_repairsensor.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ai_rocketguyattack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: èt 7.10.2004 10:30:38.000 - Creation time: st 23.5.2018 00:10:41.608 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

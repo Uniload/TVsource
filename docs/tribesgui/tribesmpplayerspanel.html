@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.TribesMPPlayersPanel</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesmpplayerspanel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesMPPlayersPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesmppanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribesmpprofilepanel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/tribesmpplayerspanel.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.TribesMPPlayersPanel</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tribesgui/tribesmpescapepanel.html">TribesMPEscapePanel</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/gui.html">GUI</a>
+   |   
+   +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guicomponent.html">GUIComponent</a>
+      |   
+      +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticomponent.html">GUIMultiComponent</a>
+         |   
+         +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guipanel.html">GUIPanel</a>
+            |   
+            +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a>
+               |   
+               +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesmpescapepanel.html">TribesMPEscapePanel</a>
+                  |   
+                  +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesmpplayerspanel.html">TribesMPPlayersPanel</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_addedBuddyString" name="addedBuddyString" title="go to the details">addedBuddyString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDebugAdmin" name="bDebugAdmin" title="go to the details">bDebugAdmin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRecordingDemo" name="bRecordingDemo" title="go to the details">bRecordingDemo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRefreshingLists" name="bRefreshingLists" title="go to the details">bRefreshingLists</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guimulticolumnlistbox.html">GUIMultiColumnListBox</a></td><td width="66%"><a href="#_currentlySelectedList" name="currentlySelectedList" title="go to the details">currentlySelectedList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_failedToAddBuddyString" name="failedToAddBuddyString" title="go to the details">failedToAddBuddyString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_forceTeamString" name="forceTeamString" title="go to the details">forceTeamString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_joinTeamString" name="joinTeamString" title="go to the details">joinTeamString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_muteString" name="muteString" title="go to the details">muteString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_pollingDelay" name="pollingDelay" title="go to the details">pollingDelay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Spectate" name="Spectate" title="go to the details">Spectate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_startRecordingString" name="startRecordingString" title="go to the details">startRecordingString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_stopRecordingString" name="stopRecordingString" title="go to the details">stopRecordingString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/teaminfo.html">TeamInfo</a></td><td width="66%"><a href="#_TeamOne" name="TeamOne" title="go to the details">TeamOne</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/teaminfo.html">TeamInfo</a></td><td width="66%"><a href="#_TeamTwo" name="TeamTwo" title="go to the details">TeamTwo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_unmuteString" name="unmuteString" title="go to the details">unmuteString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_unSpectate" name="unSpectate" title="go to the details">unSpectate</a></td></tr>
+<tr><th colspan="2" class="small">TribesGui</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_AddBuddyButton" name="AddBuddyButton" title="go to the details">AddBuddyButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_BanButton" name="BanButton" title="go to the details">BanButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_ChangeTeamButton" name="ChangeTeamButton" title="go to the details">ChangeTeamButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_DeathIcon" name="DeathIcon" title="go to the details">DeathIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_DeathIconImage" name="DeathIconImage" title="go to the details">DeathIconImage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_ForceTeamOneButton" name="ForceTeamOneButton" title="go to the details">ForceTeamOneButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_ForceTeamTwoButton" name="ForceTeamTwoButton" title="go to the details">ForceTeamTwoButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_GrantAdminButton" name="GrantAdminButton" title="go to the details">GrantAdminButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_JoinTeamOneButton" name="JoinTeamOneButton" title="go to the details">JoinTeamOneButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_JoinTeamTwoButton" name="JoinTeamTwoButton" title="go to the details">JoinTeamTwoButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_KickButton" name="KickButton" title="go to the details">KickButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_MuteButton" name="MuteButton" title="go to the details">MuteButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_ownNameColor" name="ownNameColor" title="go to the details">ownNameColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_RecordButton" name="RecordButton" title="go to the details">RecordButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_SpectateButton" name="SpectateButton" title="go to the details">SpectateButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guimulticolumnlistbox.html">GUIMultiColumnListBox</a></td><td width="66%"><a href="#_SpectatorListBox" name="SpectatorListBox" title="go to the details">SpectatorListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_SpectifyButton" name="SpectifyButton" title="go to the details">SpectifyButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_StatusIcon" name="StatusIcon" title="go to the details">StatusIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_StatusIconImage" name="StatusIconImage" title="go to the details">StatusIconImage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_TeamChangeButton" name="TeamChangeButton" title="go to the details">TeamChangeButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guimulticolumnlistbox.html">GUIMultiColumnListBox</a></td><td width="66%"><a href="#_TeamOneListBox" name="TeamOneListBox" title="go to the details">TeamOneListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guimulticolumnlistbox.html">GUIMultiColumnListBox</a></td><td width="66%"><a href="#_TeamTwoListBox" name="TeamTwoListBox" title="go to the details">TeamTwoListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_VoteAdminButton" name="VoteAdminButton" title="go to the details">VoteAdminButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_VoteToKickButton" name="VoteToKickButton" title="go to the details">VoteToKickButton</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipanel.html#GC">GC</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_AddBuddy-" name="AddBuddy" title="go to the details">AddBuddy</a> (string buddy))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddBuddyClick-" name="AddBuddyClick" title="go to the details">AddBuddyClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BanClick-" name="BanClick" title="go to the details">BanClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeTeamClick-" name="ChangeTeamClick" title="go to the details">ChangeTeamClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_constructRecordingName-" name="constructRecordingName" title="go to the details">constructRecordingName</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_executeCommand-" name="executeCommand" title="go to the details">executeCommand</a> (string command, optional string playerName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ForceTeamOneClick-" name="ForceTeamOneClick" title="go to the details">ForceTeamOneClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ForceTeamTwoClick-" name="ForceTeamTwoClick" title="go to the details">ForceTeamTwoClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_FullTimeDate-" name="FullTimeDate" title="go to the details">FullTimeDate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_getColoredPlayerName-" name="getColoredPlayerName" title="go to the details">getColoredPlayerName</a> (<a href="../gameplay/tribesreplicationinfo.html">TribesReplicationInfo</a> TRI))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_getSelectedPlayerName-" name="getSelectedPlayerName" title="go to the details">getSelectedPlayerName</a> (optional bool bDontStripCodes))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GrantAdminClick-" name="GrantAdminClick" title="go to the details">GrantAdminClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_hasAdminPrivileges-" name="hasAdminPrivileges" title="go to the details">hasAdminPrivileges</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitComponent-" name="InitComponent" title="go to the details">InitComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Owner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnActivate-" name="InternalOnActivate" title="go to the details">InternalOnActivate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnHide-" name="InternalOnHide" title="go to the details">InternalOnHide</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnShow-" name="InternalOnShow" title="go to the details">InternalOnShow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_JoinTeamOneClick-" name="JoinTeamOneClick" title="go to the details">JoinTeamOneClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_JoinTeamTwoClick-" name="JoinTeamTwoClick" title="go to the details">JoinTeamTwoClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KickClick-" name="KickClick" title="go to the details">KickClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MessageClick-" name="MessageClick" title="go to the details">MessageClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MuteClick-" name="MuteClick" title="go to the details">MuteClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnListChange-" name="OnListChange" title="go to the details">OnListChange</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RecordClick-" name="RecordClick" title="go to the details">RecordClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpectateClick-" name="SpectateClick" title="go to the details">SpectateClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpectatorListClick-" name="SpectatorListClick" title="go to the details">SpectatorListClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpectifyClick-" name="SpectifyClick" title="go to the details">SpectifyClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TeamChangeClick-" name="TeamChangeClick" title="go to the details">TeamChangeClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TeamOneListClick-" name="TeamOneListClick" title="go to the details">TeamOneListClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TeamTwoListClick-" name="TeamTwoListClick" title="go to the details">TeamTwoListClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateButtons-" name="UpdateButtons" title="go to the details">UpdateButtons</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateTeamLists-" name="UpdateTeamLists" title="go to the details">UpdateTeamLists</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_VoteAdminClick-" name="VoteAdminClick" title="go to the details">VoteAdminClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_VoteToKickClick-" name="VoteToKickClick" title="go to the details">VoteToKickClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipanel.html#InitComponent">InitComponent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_addedBuddyString" class="hidden"></a>addedBuddyString <a href="../Source_tribesgui/tribesmpplayerspanel.html#34" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> addedBuddyString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDebugAdmin" class="hidden"></a>bDebugAdmin <a href="../Source_tribesgui/tribesmpplayerspanel.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDebugAdmin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRecordingDemo" class="hidden"></a>bRecordingDemo <a href="../Source_tribesgui/tribesmpplayerspanel.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bRecordingDemo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRefreshingLists" class="hidden"></a>bRefreshingLists <a href="../Source_tribesgui/tribesmpplayerspanel.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bRefreshingLists;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentlySelectedList" class="hidden"></a>currentlySelectedList <a href="../Source_tribesgui/tribesmpplayerspanel.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gui/guimulticolumnlistbox.html" class="source">GUIMultiColumnListBox</a></span> currentlySelectedList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_failedToAddBuddyString" class="hidden"></a>failedToAddBuddyString <a href="../Source_tribesgui/tribesmpplayerspanel.html#35" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> failedToAddBuddyString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forceTeamString" class="hidden"></a>forceTeamString <a href="../Source_tribesgui/tribesmpplayerspanel.html#37" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> forceTeamString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_joinTeamString" class="hidden"></a>joinTeamString <a href="../Source_tribesgui/tribesmpplayerspanel.html#36" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> joinTeamString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_muteString" class="hidden"></a>muteString <a href="../Source_tribesgui/tribesmpplayerspanel.html#40" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> muteString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pollingDelay" class="hidden"></a>pollingDelay <a href="../Source_tribesgui/tribesmpplayerspanel.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> pollingDelay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Spectate" class="hidden"></a>Spectate <a href="../Source_tribesgui/tribesmpplayerspanel.html#33" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> Spectate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_startRecordingString" class="hidden"></a>startRecordingString <a href="../Source_tribesgui/tribesmpplayerspanel.html#38" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> startRecordingString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_stopRecordingString" class="hidden"></a>stopRecordingString <a href="../Source_tribesgui/tribesmpplayerspanel.html#39" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> stopRecordingString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamOne" class="hidden"></a>TeamOne <a href="../Source_tribesgui/tribesmpplayerspanel.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> TeamOne;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamTwo" class="hidden"></a>TeamTwo <a href="../Source_tribesgui/tribesmpplayerspanel.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> TeamTwo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unmuteString" class="hidden"></a>unmuteString <a href="../Source_tribesgui/tribesmpplayerspanel.html#41" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> unmuteString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unSpectate" class="hidden"></a>unSpectate <a href="../Source_tribesgui/tribesmpplayerspanel.html#32" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> unSpectate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">TribesGui</h3>
+<h4><a name="_AddBuddyButton" class="hidden"></a>AddBuddyButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> AddBuddyButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_BanButton" class="hidden"></a>BanButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> BanButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeTeamButton" class="hidden"></a>ChangeTeamButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> ChangeTeamButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeathIcon" class="hidden"></a>DeathIcon <a href="../Source_tribesgui/tribesmpplayerspanel.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) protected EditInline Config <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> DeathIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeathIconImage" class="hidden"></a>DeathIconImage <a href="../Source_tribesgui/tribesmpplayerspanel.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) protected EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> DeathIconImage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ForceTeamOneButton" class="hidden"></a>ForceTeamOneButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> ForceTeamOneButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_ForceTeamTwoButton" class="hidden"></a>ForceTeamTwoButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> ForceTeamTwoButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_GrantAdminButton" class="hidden"></a>GrantAdminButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> GrantAdminButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoinTeamOneButton" class="hidden"></a>JoinTeamOneButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> JoinTeamOneButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoinTeamTwoButton" class="hidden"></a>JoinTeamTwoButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> JoinTeamTwoButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_KickButton" class="hidden"></a>KickButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> KickButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_MuteButton" class="hidden"></a>MuteButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> MuteButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownNameColor" class="hidden"></a>ownNameColor <a href="../Source_tribesgui/tribesmpplayerspanel.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private Config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> ownNameColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RecordButton" class="hidden"></a>RecordButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> RecordButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpectateButton" class="hidden"></a>SpectateButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> SpectateButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpectatorListBox" class="hidden"></a>SpectatorListBox <a href="../Source_tribesgui/tribesmpplayerspanel.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guimulticolumnlistbox.html" class="source">GUIMultiColumnListBox</a></span> SpectatorListBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpectifyButton" class="hidden"></a>SpectifyButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> SpectifyButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatusIcon" class="hidden"></a>StatusIcon <a href="../Source_tribesgui/tribesmpplayerspanel.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) protected EditInline Config <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> StatusIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatusIconImage" class="hidden"></a>StatusIconImage <a href="../Source_tribesgui/tribesmpplayerspanel.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) protected EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> StatusIconImage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamChangeButton" class="hidden"></a>TeamChangeButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> TeamChangeButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamOneListBox" class="hidden"></a>TeamOneListBox <a href="../Source_tribesgui/tribesmpplayerspanel.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guimulticolumnlistbox.html" class="source">GUIMultiColumnListBox</a></span> TeamOneListBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamTwoListBox" class="hidden"></a>TeamTwoListBox <a href="../Source_tribesgui/tribesmpplayerspanel.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guimulticolumnlistbox.html" class="source">GUIMultiColumnListBox</a></span> TeamTwoListBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_VoteAdminButton" class="hidden"></a>VoteAdminButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> VoteAdminButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_VoteToKickButton" class="hidden"></a>VoteToKickButton <a href="../Source_tribesgui/tribesmpplayerspanel.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> VoteToKickButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddBuddy-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddBuddy <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#406" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> AddBuddy ( <span class="source_type">string</span> buddy) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddBuddyClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddBuddyClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#221" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AddBuddyClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BanClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BanClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#263" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BanClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeTeamClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeTeamClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#208" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ChangeTeamClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_constructRecordingName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> constructRecordingName <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#494" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> constructRecordingName ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_executeCommand-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> executeCommand <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#305" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  executeCommand ( <span class="source_type">string</span> command, optional <span class="source_type">string</span> playerName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ForceTeamOneClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ForceTeamOneClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#468" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ForceTeamOneClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ForceTeamTwoClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ForceTeamTwoClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#477" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ForceTeamTwoClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FullTimeDate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FullTimeDate <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#486" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> FullTimeDate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getColoredPlayerName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getColoredPlayerName <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#533" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> getColoredPlayerName ( <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span> TRI) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getSelectedPlayerName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getSelectedPlayerName <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#288" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> getSelectedPlayerName ( optional <span class="source_type">bool</span> bDontStripCodes) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GrantAdminClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GrantAdminClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#268" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GrantAdminClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hasAdminPrivileges-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> hasAdminPrivileges <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#376" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> hasAdminPrivileges ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitComponent <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#52" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Owner</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnActivate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnActivate <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#382" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnActivate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnHide-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnHide <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#393" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnHide ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnShow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnShow <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#388" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnShow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoinTeamOneClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> JoinTeamOneClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#456" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  JoinTeamOneClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoinTeamTwoClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> JoinTeamTwoClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#462" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  JoinTeamTwoClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KickClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KickClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#258" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  KickClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MessageClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MessageClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#283" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MessageClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MuteClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MuteClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#249" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MuteClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnListChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnListChange <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#514" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnListChange ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RecordClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RecordClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#501" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RecordClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpectateClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpectateClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#214" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SpectateClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpectatorListClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpectatorListClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#448" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SpectatorListClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpectifyClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpectifyClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#273" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SpectifyClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamChangeClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TeamChangeClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#278" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TeamChangeClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamOneListClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TeamOneListClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#432" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TeamOneListClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamTwoListClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TeamTwoListClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#440" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TeamTwoListClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#400" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateButtons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateButtons <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#315" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateButtons ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateTeamLists-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateTeamLists <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#111" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateTeamLists ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VoteAdminClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> VoteAdminClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#243" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  VoteAdminClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VoteToKickClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> VoteToKickClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmpplayerspanel.html#237" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  VoteToKickClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	pollingDelay=<span class="source_int">0.5</span>
+	bDebugAdmin=false
+	unSpectate = <span class="source_string">"UNSPECTATE"</span>
+	Spectate = <span class="source_string">"SPECTATE"</span>
+	addedBuddyString = <span class="source_string">"You added %1 to your buddy list."</span>
+	failedToAddBuddyString = <span class="source_string">"%1 is already in your buddy list."</span>
+	joinTeamString = <span class="source_string">"JOIN %1"</span>
+	forceTeamString = <span class="source_string">"FORCE %1"</span>
+	startRecordingString = <span class="source_string">"START RECORDING"</span>
+	stopRecordingString = <span class="source_string">"STOP RECORDING"</span>
+	muteString = <span class="source_string">"MUTE"</span>
+	unMuteString = <span class="source_string">"UNMUTE"</span>
+	StatusIcon=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'guitribes.icon_medium'</span>
+	DeathIcon=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'guitribes.icon_skull'</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesmpplayerspanel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesMPPlayersPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesmppanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribesmpprofilepanel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:36.656 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

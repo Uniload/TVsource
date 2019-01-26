@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: TribesGUI.TribesMPAdminPanel</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesmpadminpanel.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesMPAdminPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesmissionloadingmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribesmpbuddymenu.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tribesgui/tribesmpadminpanel.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesmpadminpanel.html">TribesMPAdminPanel</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// ====================================================================
+</span><a name="2"></a><span class="source_comment">//  Class:  TribesGui.TribesMPAdminPanel
+</span><a name="3"></a><span class="source_comment">// ====================================================================
+</span><a name="4"></a>
+<a name="5"></a><span class="source_type">class</span> <span class="source_type"><a href="../tribesgui/tribesmpadminpanel.html" class="source">TribesMPAdminPanel</a></span> extends <span class="source_type"><a href="../tribesgui/tribesmpescapepanel.html" class="source">TribesMPEscapePanel</a></span>;
+<a name="6"></a>
+<a name="7"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilistbox.html" class="source">GUIListBox</a></span>		    MapListBox <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="8"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilistbox.html" class="source">GUIListBox</a></span>		    GameTypeListBox <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="9"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>		    SwitchButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="10"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>		    RestartButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="11"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guieditbox.html" class="source">GUIEditBox</a></span>         TimeLimitBox <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="12"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span>		    TimeLimitLabel <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="13"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>		    UpdateButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="14"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>		    LoginButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="15"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>		    TournamentButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="16"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>		    VoteMapChangeButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="17"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>			VoteTournamentButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="18"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span>		    StatusLabel <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="19"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>			ForceStartButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="20"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>			TeamDamageButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="21"></a>var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>			VoteTeamDamageButton <span class="source_string">"A component of this page which has its behavior defined in the code for this page's class."</span>;
+<a name="22"></a>
+<a name="23"></a>var localized <span class="source_type">string</span> loginString;
+<a name="24"></a>var localized <span class="source_type">string</span> logoutString;
+<a name="25"></a>var localized <span class="source_type">string</span> tourneyString;
+<a name="26"></a>var localized <span class="source_type">string</span> publicString;
+<a name="27"></a>var localized <span class="source_type">string</span> enableTeamDamageString;
+<a name="28"></a>var localized <span class="source_type">string</span> disableTeamDamageString;
+<a name="29"></a>var localized <span class="source_type">string</span> voteTeamDamageOnString;
+<a name="30"></a>var localized <span class="source_type">string</span> voteTeamDamageOffString;
+<a name="31"></a>var localized <span class="source_type">string</span> voteTourneyString;
+<a name="32"></a>var localized <span class="source_type">string</span> votePublicString;
+<a name="33"></a>
+<a name="34"></a>var <span class="source_type">bool</span> bInitialized;
+<a name="35"></a>
+<a name="36"></a><span class="source_type">function</span> InitComponent(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner)
+<a name="37"></a>{
+<a name="38"></a>	Super.InitComponent(MyOwner);
+<a name="39"></a>
+<a name="40"></a>	LoginButton.OnClick=OnLoginClick;
+<a name="41"></a>	SwitchButton.OnClick=OnSwitchClick;
+<a name="42"></a>	RestartButton.OnClick=OnRestartClick;
+<a name="43"></a>	UpdateButton.OnClick=OnUpdateClick;
+<a name="44"></a>	VoteMapChangeButton.OnClick=OnVoteMapChangeClick;
+<a name="45"></a>	VoteTournamentButton.OnClick=OnVoteTournamentClick;
+<a name="46"></a>	ForceStartButton.OnClick=OnForceStartClick;
+<a name="47"></a>	TournamentButton.OnClick=OnTournamentClick;
+<a name="48"></a>	TeamDamageButton.OnClick=OnTeamDamageClick;
+<a name="49"></a>	VoteTeamDamageButton.OnClick=OnVoteTeamDamageClick;
+<a name="50"></a>	GameTypeListBox.List.OnChange=GameTypeListOnChange;
+<a name="51"></a>
+<a name="52"></a>	OnActivate=InternalOnActivate;
+<a name="53"></a>	OnShow=InternalOnShow;
+<a name="54"></a>	OnHide=InternalOnHide;
+<a name="55"></a>}
+<a name="56"></a>
+<a name="57"></a><span class="source_type">function</span> InternalOnActivate()
+<a name="58"></a>{
+<a name="59"></a>	if (!bInitialized)
+<a name="60"></a>	{
+<a name="61"></a>		Refresh();
+<a name="62"></a>		bInitialized = true;
+<a name="63"></a>	}
+<a name="64"></a>
+<a name="65"></a>	RefreshComponents();
+<a name="66"></a>}
+<a name="67"></a>
+<a name="68"></a><span class="source_type">function</span> InternalOnShow()
+<a name="69"></a>{
+<a name="70"></a>	SetTimer(<span class="source_int">0.5</span>, true);
+<a name="71"></a>	RefreshComponents();
+<a name="72"></a>}
+<a name="73"></a>
+<a name="74"></a><span class="source_type">function</span> InternalOnHide()
+<a name="75"></a>{
+<a name="76"></a>	KillTimer();
+<a name="77"></a>}
+<a name="78"></a>
+<a name="79"></a><span class="source_type">function</span> <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span>()
+<a name="80"></a>{
+<a name="81"></a>	RefreshComponents();
+<a name="82"></a>}
+<a name="83"></a>
+<a name="84"></a>
+<a name="85"></a><span class="source_type">function</span> Refresh()
+<a name="86"></a>{
+<a name="87"></a>	<span class="source_type">class</span><span class="source_name">'Utility'</span>.static.refresh();
+<a name="88"></a>	RefreshGameTypes();
+<a name="89"></a>	RefreshGameInfoData();
+<a name="90"></a>	RefreshComponents();
+<a name="91"></a>}
+<a name="92"></a>
+<a name="93"></a><span class="source_type">function</span> RefreshGameTypes()
+<a name="94"></a>{
+<a name="95"></a>	local array&lt;<span class="source_type"><a href="../gameplay/utility.html" class="source">Utility</a></span>.<span class="source_type"><a href="../gameplay/utility.html#GameData" class="source">GameData</a></span>&gt; gdList;
+<a name="96"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="97"></a>
+<a name="98"></a>	<span class="source_type">class</span><span class="source_name">'Utility'</span>.static.getGameTypeList(gdList);
+<a name="99"></a>
+<a name="100"></a>	<span class="source_comment">// Populate game type list
+</span><a name="101"></a>	GameTypeListBox.List.clear();
+<a name="102"></a>
+<a name="103"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;gdList.Length; <span class="source_type">i</span>++)
+<a name="104"></a>	{
+<a name="105"></a>		GameTypeListBox.List.<span class="source_type">Add</span>(gdList[<span class="source_type">i</span>].<span class="source_type">name</span>,,gdList[<span class="source_type">i</span>].<span class="source_type">className</span>);
+<a name="106"></a>	}
+<a name="107"></a>
+<a name="108"></a>	GameTypeListBox.List.Sort();
+<a name="109"></a>	GameTypeListBox.List.SetIndex(<span class="source_int">0</span>);
+<a name="110"></a>}
+<a name="111"></a>
+<a name="112"></a><span class="source_type">function</span> RefreshMaps()
+<a name="113"></a>{
+<a name="114"></a>	local array&lt;<span class="source_type">string</span>&gt; <span class="source_type"><a href="../gameplay/maplist.html" class="source">mapList</a></span>;
+<a name="115"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="116"></a>
+<a name="117"></a>	MapListBox.clear();
+<a name="118"></a>	<span class="source_type">class</span><span class="source_name">'Utility'</span>.static.getLevelListForGameType(GameTypeListBox.List.Get(), <span class="source_type"><a href="../gameplay/maplist.html" class="source">mapList</a></span>);
+<a name="119"></a>
+<a name="120"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type"><a href="../gameplay/maplist.html" class="source">mapList</a></span>.Length; <span class="source_type">i</span>++)
+<a name="121"></a>	{
+<a name="122"></a>		<span class="source_comment">//Log("Adding "$mapList[i]);
+</span><a name="123"></a>		if (MapListBox.List.Find(<span class="source_type"><a href="../gameplay/maplist.html" class="source">mapList</a></span>[<span class="source_type">i</span>]) == <span class="source_string">""</span>)
+<a name="124"></a>			MapListBox.List.<span class="source_type">Add</span>(<span class="source_type"><a href="../gameplay/maplist.html" class="source">mapList</a></span>[<span class="source_type">i</span>]);
+<a name="125"></a>	}
+<a name="126"></a>
+<a name="127"></a>	MapListBox.List.Sort();
+<a name="128"></a>	MapListBox.List.SetIndex(<span class="source_int">0</span>);
+<a name="129"></a>}
+<a name="130"></a>
+<a name="131"></a><span class="source_type">function</span> RefreshGameInfoData()
+<a name="132"></a>{
+<a name="133"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/multiplayergameinfo.html" class="source">MultiplayerGameInfo</a></span>&gt; G;
+<a name="134"></a>
+<a name="135"></a>	G = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/multiplayergameinfo.html" class="source">MultiplayerGameInfo</a></span>&gt;(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(PlayerOwner()).clientSideChar.gameClass);
+<a name="136"></a>
+<a name="137"></a>	if (G == None)
+<a name="138"></a>	{
+<a name="139"></a>		Log(<span class="source_string">"Warning:  RefreshGameInfoData couldn't find gameClass in csc"</span>);
+<a name="140"></a>		return;
+<a name="141"></a>	}
+<a name="142"></a>
+<a name="143"></a>	<span class="source_comment">//Log("Found gameInfo "$G);
+</span><a name="144"></a>	<span class="source_comment">//Log("Found roundInfoClass "$G.default.roundInfoClass);
+</span><a name="145"></a>	<span class="source_comment">//Log("Found round "$G.default.roundInfoClass.default.rounds[0]);
+</span><a name="146"></a>	TimeLimitBox.SetText(<span class="source_type">string</span>(<span class="source_type">int</span>(G.default.roundInfoClass.default.rounds[<span class="source_int">0</span>].duration)));
+<a name="147"></a>}
+<a name="148"></a>
+<a name="149"></a><span class="source_type">function</span> RefreshComponents()
+<a name="150"></a>{
+<a name="151"></a>	<span class="source_comment">// Only show some components when the player has admin access
+</span><a name="152"></a>	if (PlayerOwner().<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bAdmin)
+<a name="153"></a>	{
+<a name="154"></a>		SwitchButton.SetEnabled(true);
+<a name="155"></a>		RestartButton.SetEnabled(true);
+<a name="156"></a>		TimeLimitBox.SetEnabled(true);
+<a name="157"></a>		TimeLimitLabel.SetEnabled(true);
+<a name="158"></a>		TournamentButton.SetEnabled(true);
+<a name="159"></a>		TeamDamageButton.SetEnabled(true);
+<a name="160"></a>		UpdateButton.SetEnabled(true);
+<a name="161"></a>		ForceStartButton.SetEnabled(true);
+<a name="162"></a>		SwitchButton.Show();
+<a name="163"></a>		RestartButton.Show();
+<a name="164"></a>		TimeLimitBox.Show();
+<a name="165"></a>		TimeLimitLabel.Show();
+<a name="166"></a>		TournamentButton.Show();
+<a name="167"></a>		TeamDamageButton.Show();
+<a name="168"></a>		UpdateButton.Show();
+<a name="169"></a>		ForceStartButton.Show();
+<a name="170"></a>		LoginButton.<span class="source_type">Caption</span> = logoutString;
+<a name="171"></a>	}
+<a name="172"></a>	else
+<a name="173"></a>	{
+<a name="174"></a>		SwitchButton.SetEnabled(false);
+<a name="175"></a>		RestartButton.SetEnabled(false);
+<a name="176"></a>		TimeLimitBox.SetEnabled(false);
+<a name="177"></a>		TimeLimitLabel.SetEnabled(false);
+<a name="178"></a>		TournamentButton.SetEnabled(false);
+<a name="179"></a>		TeamDamageButton.SetEnabled(false);
+<a name="180"></a>		UpdateButton.SetEnabled(false);
+<a name="181"></a>		ForceStartButton.SetEnabled(false);
+<a name="182"></a>		SwitchButton.Hide();
+<a name="183"></a>		RestartButton.Hide();
+<a name="184"></a>		TimeLimitBox.Hide();
+<a name="185"></a>		TimeLimitLabel.Hide();
+<a name="186"></a>		TournamentButton.Hide();
+<a name="187"></a>		TeamDamageButton.Hide();
+<a name="188"></a>		UpdateButton.Hide();
+<a name="189"></a>		ForceStartButton.Hide();
+<a name="190"></a>		LoginButton.<span class="source_type">Caption</span> = loginString;
+<a name="191"></a>	}
+<a name="192"></a>
+<a name="193"></a>	<span class="source_comment">// Tourney mode toggle
+</span><a name="194"></a>	if (PlayerOwner().<span class="source_type">Level</span>.GRI.bTournamentMode)
+<a name="195"></a>	{
+<a name="196"></a>		TournamentButton.<span class="source_type">Caption</span> = publicString;
+<a name="197"></a>		VoteTournamentButton.<span class="source_type">Caption</span> = votePublicString;
+<a name="198"></a>		if (PlayerOwner().<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bAdmin)
+<a name="199"></a>		{
+<a name="200"></a>			ForceStartButton.SetEnabled(true);
+<a name="201"></a>			ForceStartButton.Show();
+<a name="202"></a>		}
+<a name="203"></a>	}
+<a name="204"></a>	else
+<a name="205"></a>	{
+<a name="206"></a>		TournamentButton.<span class="source_type">Caption</span> = tourneyString;
+<a name="207"></a>		VoteTournamentButton.<span class="source_type">Caption</span> = voteTourneyString;
+<a name="208"></a>		ForceStartButton.SetEnabled(false);
+<a name="209"></a>		ForceStartButton.Hide();
+<a name="210"></a>	}
+<a name="211"></a>
+<a name="212"></a>	<span class="source_comment">// Team damage toggle
+</span><a name="213"></a>	if (PlayerOwner().<span class="source_type">Level</span>.GRI.playerTeamDamagePercentage == <span class="source_int">0</span>)
+<a name="214"></a>	{
+<a name="215"></a>		TeamDamageButton.<span class="source_type">Caption</span> = disableTeamDamageString;
+<a name="216"></a>		VoteTeamDamageButton.<span class="source_type">Caption</span> = voteTeamDamageOffString;
+<a name="217"></a>	}
+<a name="218"></a>	else
+<a name="219"></a>	{
+<a name="220"></a>		TeamDamageButton.<span class="source_type">Caption</span> = enableTeamDamageString;
+<a name="221"></a>		VoteTeamDamageButton.<span class="source_type">Caption</span> = voteTeamDamageOnString;
+<a name="222"></a>	}
+<a name="223"></a>
+<a name="224"></a>}
+<a name="225"></a>
+<a name="226"></a><span class="source_type">function</span> OnSwitchClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="227"></a>{
+<a name="228"></a>	local <span class="source_type">string</span> gameTypeClassName;
+<a name="229"></a>	local <span class="source_type">string</span> mapFilename;
+<a name="230"></a>
+<a name="231"></a>	<span class="source_comment">// Switch to selected map and game type
+</span><a name="232"></a>	<span class="source_comment">// MJ TODO:  End map properly instead of forcing an abrupt change
+</span><a name="233"></a>
+<a name="234"></a>	mapFilename = MapListBox.List.Get();
+<a name="235"></a>	gameTypeClassName = GameTypeListBox.List.GetExtra();
+<a name="236"></a>
+<a name="237"></a>	<span class="source_comment">// Try doing it with a "switch" and hope the other settings don't get reset
+</span><a name="238"></a>	PlayerOwner().ConsoleCommand(<span class="source_string">"admin switch "</span>$mapFilename$<span class="source_string">"?game="</span>$gameTypeClassName);
+<a name="239"></a>
+<a name="240"></a>	<span class="source_comment">// If that doesn't work, could try this instead:
+</span><a name="241"></a>	<span class="source_comment">// PlayerOwner().ConsoleCommand("admin game changeto "$gameTypeClassName);
+</span><a name="242"></a>	<span class="source_comment">// PlayerOwner().ConsoleCommand("admin game map "$mapFilename);
+</span><a name="243"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="244"></a>}
+<a name="245"></a>
+<a name="246"></a><span class="source_type">function</span> OnRestartClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="247"></a>{
+<a name="248"></a>	PlayerOwner().ConsoleCommand(<span class="source_string">"admin restartmap"</span>);
+<a name="249"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="250"></a>}
+<a name="251"></a>
+<a name="252"></a><span class="source_type">function</span> GameTypeListOnChange(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="253"></a>{
+<a name="254"></a>	<span class="source_comment">// Display set of maps supported by selected game type
+</span><a name="255"></a>	RefreshMaps();
+<a name="256"></a>}
+<a name="257"></a>
+<a name="258"></a><span class="source_type">function</span> OnUpdateClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="259"></a>{
+<a name="260"></a>	local <span class="source_type">float</span> limit;
+<a name="261"></a>	<span class="source_comment">// Game edit doesn't work due to problems with loading game types in AdminIni.uc
+</span><a name="262"></a>	<span class="source_comment">//PlayerOwner().ConsoleCommand("admin game edit");
+</span><a name="263"></a>	<span class="source_comment">//PlayerOwner().ConsoleCommand("admin game set rounddata duration "$TimeLimitBox.GetText());
+</span><a name="264"></a>	<span class="source_comment">//PlayerOwner().ConsoleCommand("admin game endedit");
+</span><a name="265"></a>
+<a name="266"></a>	limit = <span class="source_type">float</span>(TimeLimitBox.GetText());
+<a name="267"></a>
+<a name="268"></a>	if (limit &lt; <span class="source_int">1</span>)
+<a name="269"></a>	{
+<a name="270"></a>		TimeLimitBox.SetText(<span class="source_string">"1"</span>);
+<a name="271"></a>	}
+<a name="272"></a>
+<a name="273"></a>	PlayerOwner().ConsoleCommand(<span class="source_string">"admin settimelimit "</span>$TimeLimitBox.GetText());
+<a name="274"></a>}
+<a name="275"></a>
+<a name="276"></a><span class="source_type">function</span> OnLoginClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="277"></a>{
+<a name="278"></a>	if (PlayerOwner().<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bAdmin)
+<a name="279"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"adminlogout"</span>);
+<a name="280"></a>	else
+<a name="281"></a>		<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.OpenMenu(<span class="source_string">"TribesGui.TribesAdminLoginPopup"</span>, <span class="source_string">"TribesAdminLoginPopup"</span>);
+<a name="282"></a>
+<a name="283"></a>	RefreshComponents();
+<a name="284"></a>}
+<a name="285"></a>
+<a name="286"></a><span class="source_type">function</span> OnVoteMapChangeClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="287"></a>{
+<a name="288"></a>	local <span class="source_type">string</span> gameTypeName;
+<a name="289"></a>	local <span class="source_type">string</span> mapFilename;
+<a name="290"></a>
+<a name="291"></a>	mapFilename = MapListBox.List.Get();
+<a name="292"></a>	gameTypeName = GameTypeListBox.List.Get();
+<a name="293"></a>
+<a name="294"></a>	PlayerOwner().ConsoleCommand(<span class="source_string">"mapvote "</span>$mapFileName@gameTypeName);
+<a name="295"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><span class="source_type">function</span> OnVoteTournamentClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="299"></a>{
+<a name="300"></a>	if (PlayerOwner().<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.bTournamentMode)
+<a name="301"></a>	{
+<a name="302"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"tournamentvote false"</span>);
+<a name="303"></a>	}
+<a name="304"></a>	else
+<a name="305"></a>	{
+<a name="306"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"tournamentvote true"</span>);
+<a name="307"></a>	}
+<a name="308"></a>
+<a name="309"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="310"></a>}
+<a name="311"></a>
+<a name="312"></a><span class="source_type">function</span> OnTournamentClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="313"></a>{
+<a name="314"></a>	if (PlayerOwner().<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.bTournamentMode)
+<a name="315"></a>	{
+<a name="316"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"admin disabletournamentmode"</span>);
+<a name="317"></a>	}
+<a name="318"></a>	else
+<a name="319"></a>	{
+<a name="320"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"admin enabletournamentmode"</span>);
+<a name="321"></a>	}
+<a name="322"></a>
+<a name="323"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="324"></a>	RefreshComponents();
+<a name="325"></a>}
+<a name="326"></a>
+<a name="327"></a><span class="source_type">function</span> OnForceStartClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="328"></a>{
+<a name="329"></a>	PlayerOwner().ConsoleCommand(<span class="source_string">"admin forcestart"</span>);
+<a name="330"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="331"></a>}
+<a name="332"></a>
+<a name="333"></a><span class="source_type">function</span> OnTeamDamageClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="334"></a>{
+<a name="335"></a>	<span class="source_comment">//Log("TD clicked with TD = "$PlayerOwner().GameReplicationInfo.playerTeamDamagePercentage);
+</span><a name="336"></a>	if (PlayerOwner().<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.playerTeamDamagePercentage == <span class="source_int">0</span>)
+<a name="337"></a>	{
+<a name="338"></a>		<span class="source_comment">// Disable team damage
+</span><a name="339"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"admin SetTeamDamage 1.0"</span>);
+<a name="340"></a>	}
+<a name="341"></a>	else
+<a name="342"></a>	{
+<a name="343"></a>		<span class="source_comment">// Enable team damage
+</span><a name="344"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"admin SetTeamDamage 0.0"</span>);
+<a name="345"></a>	}
+<a name="346"></a>
+<a name="347"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="348"></a>	RefreshComponents();
+<a name="349"></a>}
+<a name="350"></a>
+<a name="351"></a><span class="source_type">function</span> OnVoteTeamDamageClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="352"></a>{
+<a name="353"></a>	if (PlayerOwner().<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.playerTeamDamagePercentage == <span class="source_int">0</span>)
+<a name="354"></a>	{
+<a name="355"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"teamdamagevote false"</span>);
+<a name="356"></a>	}
+<a name="357"></a>	else
+<a name="358"></a>	{
+<a name="359"></a>		PlayerOwner().ConsoleCommand(<span class="source_string">"teamdamagevote true"</span>);
+<a name="360"></a>	}
+<a name="361"></a>
+<a name="362"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.CloseMenu();
+<a name="363"></a>	RefreshComponents();
+<a name="364"></a>}
+<a name="365"></a>
+<a name="366"></a>defaultproperties
+<a name="367"></a>{
+<a name="368"></a>	loginString = <span class="source_string">"ADMIN LOGIN"</span>
+<a name="369"></a>	logoutString = <span class="source_string">"ADMIN LOGOUT"</span>
+<a name="370"></a>	tourneyString = <span class="source_string">"TOURNEY MODE"</span>
+<a name="371"></a>	publicString = <span class="source_string">"PUBLIC MODE"</span>
+<a name="372"></a>	enableTeamDamageString		= <span class="source_string">"ENABLE TEAM DAMAGE"</span>
+<a name="373"></a>	disableTeamDamageString		= <span class="source_string">"DISABLE TEAM DAMAGE"</span>
+<a name="374"></a>	voteTeamDamageOnString		= <span class="source_string">"VOTE TEAM DAMAGE ON"</span>
+<a name="375"></a>	voteTeamDamageOffString		= <span class="source_string">"VOTE TEAM DAMAGE OFF"</span>
+<a name="376"></a>	voteTourneyString			= <span class="source_string">"VOTE TOURNAMENT"</span>
+<a name="377"></a>	votePublicString			= <span class="source_string">"VOTE PUBLIC"</span>
+<a name="378"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesmpadminpanel.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesMPAdminPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesmissionloadingmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribesmpbuddymenu.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: st 16.4.2014 10:20:44.000 - Creation time: st 23.5.2018 00:10:48.553 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

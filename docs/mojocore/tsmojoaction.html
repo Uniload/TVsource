@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - MojoCore.TsMojoAction</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../mojocore/mojocore-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_mojocore/tsmojoaction.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TsMojoAction">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../mojocore/tskeyframemarker.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../mojocore/tsmojocontroller.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#mojocore/tsmojoaction.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../mojocore/mojocore-overview.html">MojoCore</a>.TsMojoAction</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>abstract native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../mojocore/mojocore-overview.html">MojoCore</a>.<a href="../mojocore/tsmojoaction.html">TsMojoAction</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../mojoactions/tsaction.html">TsAction</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">actor</a></td><td width="66%"><a href="#_Actor" name="Actor" title="go to the details">Actor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html">Object</a></td><td width="66%"><a href="#_m_group" name="m_group" title="go to the details">m_group</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_length_dirty" name="m_length_dirty" title="go to the details">m_length_dirty</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_offset" name="m_offset" title="go to the details">m_offset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html">Object</a></td><td width="66%"><a href="#_m_output_key" name="m_output_key" title="go to the details">m_output_key</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_predicted_start_time" name="m_predicted_start_time" title="go to the details">m_predicted_start_time</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_recorded_length" name="m_recorded_length" title="go to the details">m_recorded_length</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_skip_action" name="m_skip_action" title="go to the details">m_skip_action</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html">Object</a></td><td width="66%"><a href="#_m_source_key" name="m_source_key" title="go to the details">m_source_key</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_start_time" name="m_start_time" title="go to the details">m_start_time</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../mojocore/tsmojoaction.html">TsMojoAction</a>&gt;</td><td width="66%"><a href="#_m_subaction_list" name="m_subaction_list" title="go to the details">m_subaction_list</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_subaction_offset" name="m_subaction_offset" title="go to the details">m_subaction_offset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../mojocore/tsmojoaction.html">TsMojoAction</a></td><td width="66%"><a href="#_m_subaction_parent" name="m_subaction_parent" title="go to the details">m_subaction_parent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_subaction_track" name="m_subaction_track" title="go to the details">m_subaction_track</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_MojoActorRef" name="MojoActorRef" title="go to the details">MojoActorRef</a><br /><span class="small">name, actor</span></td></tr>
+<tr><td><a href="#_MojoAnimation" name="MojoAnimation" title="go to the details">MojoAnimation</a><br /><span class="small">name, animation_set</span></td></tr>
+<tr><td><a href="#_MojoKeyframe" name="MojoKeyframe" title="go to the details">MojoKeyframe</a><br /><span class="small">position, rotation</span></td></tr>
+<tr><td><a href="#_MojoTimedKeyframe" name="MojoTimedKeyframe" title="go to the details">MojoTimedKeyframe</a><br /><span class="small">position, rotation, time</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanAcceptSubactions-" name="CanAcceptSubactions" title="go to the details">CanAcceptSubactions</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanBeUsedWith-" name="CanBeUsedWith" title="go to the details">CanBeUsedWith</a> (<a href="../engine/actor.html">Actor</a> actor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanFastForwardSkip-" name="CanFastForwardSkip" title="go to the details">CanFastForwardSkip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanGenerateOutputKeys-" name="CanGenerateOutputKeys" title="go to the details">CanGenerateOutputKeys</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanSetDuration-" name="CanSetDuration" title="go to the details">CanSetDuration</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_DisableActionInMojo-" name="DisableActionInMojo" title="go to the details">DisableActionInMojo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_EndCutscene-" name="EndCutscene" title="go to the details">EndCutscene</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Finish-" name="Finish" title="go to the details">Finish</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>float&nbsp;</td><td><a href="#_GetDuration-" name="GetDuration" title="go to the details">GetDuration</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetHelpString-" name="GetHelpString" title="go to the details">GetHelpString</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetNameString-" name="GetNameString" title="go to the details">GetNameString</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetSummaryString-" name="GetSummaryString" title="go to the details">GetSummaryString</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetTrackString-" name="GetTrackString" title="go to the details">GetTrackString</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Interrupt-" name="Interrupt" title="go to the details">Interrupt</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_IsSubaction-" name="IsSubaction" title="go to the details">IsSubaction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_ModifiesActorLocation-" name="ModifiesActorLocation" title="go to the details">ModifiesActorLocation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_OnDelete-" name="OnDelete" title="go to the details">OnDelete</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Pause-" name="Pause" title="go to the details">Pause</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../mojocore/tsmojoaction.html#MojoActorRef">MojoActorRef</a>&nbsp;</td><td><a href="#_ResolveActorRef-" name="ResolveActorRef" title="go to the details">ResolveActorRef</a> (<a href="../mojocore/tsmojoaction.html#MojoActorRef">MojoActorRef</a> ref))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Resume-" name="Resume" title="go to the details">Resume</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_SetDuration-" name="SetDuration" title="go to the details">SetDuration</a> (float duration))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_Start-" name="Start" title="go to the details">Start</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float delta)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Actor" class="hidden"></a>Actor <a href="../Source_mojocore/tsmojoaction.html#7" class="small">Source code</a></h4>
+<div class="declaration">var const transient <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_group" class="hidden"></a>m_group <a href="../Source_mojocore/tsmojoaction.html#19" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> m_group;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_length_dirty" class="hidden"></a>m_length_dirty <a href="../Source_mojocore/tsmojoaction.html#24" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">bool</span> m_length_dirty;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_offset" class="hidden"></a>m_offset <a href="../Source_mojocore/tsmojoaction.html#21" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">float</span> m_offset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_output_key" class="hidden"></a>m_output_key <a href="../Source_mojocore/tsmojoaction.html#18" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> m_output_key;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_predicted_start_time" class="hidden"></a>m_predicted_start_time <a href="../Source_mojocore/tsmojoaction.html#22" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">float</span> m_predicted_start_time;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_recorded_length" class="hidden"></a>m_recorded_length <a href="../Source_mojocore/tsmojoaction.html#23" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">float</span> m_recorded_length;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_skip_action" class="hidden"></a>m_skip_action <a href="../Source_mojocore/tsmojoaction.html#16" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">bool</span> m_skip_action;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_source_key" class="hidden"></a>m_source_key <a href="../Source_mojocore/tsmojoaction.html#17" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> m_source_key;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_start_time" class="hidden"></a>m_start_time <a href="../Source_mojocore/tsmojoaction.html#20" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">float</span> m_start_time;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_subaction_list" class="hidden"></a>m_subaction_list <a href="../Source_mojocore/tsmojoaction.html#25" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport Array&lt;<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>&gt; m_subaction_list;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_subaction_offset" class="hidden"></a>m_subaction_offset <a href="../Source_mojocore/tsmojoaction.html#26" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">float</span> m_subaction_offset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_subaction_parent" class="hidden"></a>m_subaction_parent <a href="../Source_mojocore/tsmojoaction.html#27" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span> m_subaction_parent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_subaction_track" class="hidden"></a>m_subaction_track <a href="../Source_mojocore/tsmojoaction.html#28" class="small">Source code</a></h4>
+<div class="declaration">var const transient private noexport <span class="source_type">int</span> m_subaction_track;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_MojoActorRef" class="hidden"></a>MojoActorRef <a href="../Source_mojocore/tsmojoaction.html#56" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoActorRef" class="source">MojoActorRef</a></span><br />
+{<blockquote>var transient <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span>;<br />
+var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type">name</span> <span class="source_type">name</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MojoAnimation" class="hidden"></a>MojoAnimation <a href="../Source_mojocore/tsmojoaction.html#50" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoAnimation" class="source">MojoAnimation</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type">name</span> animation_set;<br />
+var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type">name</span> <span class="source_type">name</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MojoKeyframe" class="hidden"></a>MojoKeyframe <a href="../Source_mojocore/tsmojoaction.html#37" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoKeyframe" class="source">MojoKeyframe</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">position</span>;<br />
+var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> rotation;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MojoTimedKeyframe" class="hidden"></a>MojoTimedKeyframe <a href="../Source_mojocore/tsmojoaction.html#43" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoTimedKeyframe" class="source">MojoTimedKeyframe</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">position</span>;<br />
+var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> rotation;<br />
+var(<span class="source_type"><a href="../mojocore/tsmojoaction.html" class="source">TsMojoAction</a></span>) <span class="source_type">float</span> <span class="source_type"><a href="../core/time.html" class="source">time</a></span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CanAcceptSubactions-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanAcceptSubactions <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#138" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanAcceptSubactions ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanBeUsedWith-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanBeUsedWith <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#102" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanBeUsedWith ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanFastForwardSkip-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanFastForwardSkip <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#108" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanFastForwardSkip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanGenerateOutputKeys-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanGenerateOutputKeys <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#144" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanGenerateOutputKeys ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanSetDuration-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanSetDuration <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#114" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanSetDuration ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisableActionInMojo-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> DisableActionInMojo <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#126" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> DisableActionInMojo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndCutscene-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> EndCutscene <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#86" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> EndCutscene ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Finish-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Finish <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#85" class="small">Source code</a></h4>
+<div class="declaration"> event  Finish (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDuration-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetDuration <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#159" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">float</span> GetDuration ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetHelpString-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetHelpString <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#98" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetHelpString ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNameString-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetNameString <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#96" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetNameString ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSummaryString-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetSummaryString <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#99" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetSummaryString ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTrackString-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetTrackString <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#97" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetTrackString ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Interrupt-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Interrupt <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#155" class="small">Source code</a></h4>
+<div class="declaration"> event  Interrupt ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsSubaction-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> IsSubaction <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#132" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> IsSubaction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ModifiesActorLocation-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ModifiesActorLocation <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#120" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> ModifiesActorLocation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnDelete-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OnDelete <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#151" class="small">Source code</a></h4>
+<div class="declaration"> event  OnDelete ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Pause-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Pause <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#156" class="small">Source code</a></h4>
+<div class="declaration"> event  Pause ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResolveActorRef-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResolveActorRef <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#62" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoActorRef" class="source">MojoActorRef</a></span> ResolveActorRef ( <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoActorRef" class="source">MojoActorRef</a></span> ref) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Resume-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Resume <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#157" class="small">Source code</a></h4>
+<div class="declaration"> event  Resume ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDuration-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetDuration <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#158" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> SetDuration ( <span class="source_type">float</span> duration) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Start-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Start <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#83" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> Start (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Tick <span class="function_state"></span> <a href="../Source_mojocore/tsmojoaction.html#84" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">delta</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../mojocore/mojocore-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_mojocore/tsmojoaction.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TsMojoAction">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../mojocore/tskeyframemarker.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../mojocore/tsmojocontroller.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:37.692 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

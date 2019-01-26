@@ -1,0 +1,1089 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.JointControlledAircraft</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/jointcontrolledaircraft.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#JointControlledAircraft">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/jetpackpickup.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/key.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/jointcontrolledaircraft.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.JointControlledAircraft</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/vehicle.html">Vehicle</a></dd>
+<dt>Modifiers</dt><dd>abstract dependsOn ( PlayerCharacterController ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/jointcontrolledaircraft.html">JointControlledAircraft</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/assaultship.html">AssaultShip</a>, <a href="../gameplay/pod.html">Pod</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_JCA_LINEAR_VELOCITY_ACCURACY_FACTOR" name="JCA_LINEAR_VELOCITY_ACCURACY_FACTOR" title="go to the details">JCA_LINEAR_VELOCITY_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">100</td></tr>
+<tr><td width="40%"><a href="#_JCA_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" name="JCA_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" title="go to the details">JCA_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">0.01</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#CANNOT_STEAL_VEHICLE_PROMPT_INDEX">CANNOT_STEAL_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#DRIVER_PROMPT_INDEX">DRIVER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#ENEMY_INVENTORY_STATION_PROMPT_INDEX">ENEMY_INVENTORY_STATION_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#ENEMY_OCCUPIED_VEHICLE_PROMPT_INDEX">ENEMY_OCCUPIED_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#FLIP_PROMPT_INDEX">FLIP_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#FULL_VEHICLE_PROMPT_INDEX">FULL_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#GUNNER_PROMPT_INDEX">GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#HEAVY_ATTEMPT_TO_PILOT">HEAVY_ATTEMPT_TO_PILOT</a>, <a href="../gameplay/vehicle.html#INVENTORY_STATION_PROMPT_INDEX">INVENTORY_STATION_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#LEFT_GUNNER_PROMPT_INDEX">LEFT_GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#MAXIMUM_NUMBER_POSITIONS">MAXIMUM_NUMBER_POSITIONS</a>, <a href="../gameplay/vehicle.html#NUMBER_MINOR_ENTRY_SIGNALS">NUMBER_MINOR_ENTRY_SIGNALS</a>, <a href="../gameplay/vehicle.html#RIGHT_GUNNER_PROMPT_INDEX">RIGHT_GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#VEHICLE_PROHIBITED_OBJECT_PROMPT_INDEX">VEHICLE_PROHIBITED_OBJECT_PROMPT_INDEX</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#DAMAGE_OVERKILL">DAMAGE_OVERKILL</a>, <a href="../gameplay/rook.html#MAX_USEABLE_POINTS">MAX_USEABLE_POINTS</a>, <a href="../gameplay/rook.html#N_PAST_POSITIONS">N_PAST_POSITIONS</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/jointcontrolledaircraft.html#AccelerationEffectStateEnum">AccelerationEffectStateEnum</a></td><td width="66%"><a href="#_AccelerationEffectState" name="AccelerationEffectState" title="go to the details">AccelerationEffectState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_currentCameraRotation" name="currentCameraRotation" title="go to the details">currentCameraRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_divingEffectIndex" name="divingEffectIndex" title="go to the details">divingEffectIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_divingForceApplied" name="divingForceApplied" title="go to the details">divingForceApplied</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_LandingGearUp" name="LandingGearUp" title="go to the details">LandingGearUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_navigationMaximumPitch" name="navigationMaximumPitch" title="go to the details">navigationMaximumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_navigationMinimumPitch" name="navigationMinimumPitch" title="go to the details">navigationMinimumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_navigationTurnRate" name="navigationTurnRate" title="go to the details">navigationTurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/jointcontrolledaircraft.html#AircraftState">AircraftState</a></td><td width="66%"><a href="#_oldReplicationAircraftState" name="oldReplicationAircraftState" title="go to the details">oldReplicationAircraftState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_outputControlForce" name="outputControlForce" title="go to the details">outputControlForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_outputFlightPitchAngle" name="outputFlightPitchAngle" title="go to the details">outputFlightPitchAngle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_outputFlightYawAngle" name="outputFlightYawAngle" title="go to the details">outputFlightYawAngle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_padding[2]" name="padding[2]" title="go to the details">padding[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_replicatedControlForce" name="replicatedControlForce" title="go to the details">replicatedControlForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/jointcontrolledaircraft.html#AircraftState">AircraftState</a></td><td width="66%"><a href="#_replicationAircraftState" name="replicationAircraftState" title="go to the details">replicationAircraftState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_rotateMaximumPitch" name="rotateMaximumPitch" title="go to the details">rotateMaximumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_rotateMinimumPitch" name="rotateMinimumPitch" title="go to the details">rotateMinimumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_strafeBack" name="strafeBack" title="go to the details">strafeBack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_strafeDown" name="strafeDown" title="go to the details">strafeDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_strafeForward" name="strafeForward" title="go to the details">strafeForward</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_strafeLeft" name="strafeLeft" title="go to the details">strafeLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_strafeRight" name="strafeRight" title="go to the details">strafeRight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_strafeUp" name="strafeUp" title="go to the details">strafeUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_throttleScale" name="throttleScale" title="go to the details">throttleScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_ThrustingEffectState" name="ThrustingEffectState" title="go to the details">ThrustingEffectState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_thrustThresholdPitch" name="thrustThresholdPitch" title="go to the details">thrustThresholdPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_turningLeftEffectIndex" name="turningLeftEffectIndex" title="go to the details">turningLeftEffectIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_turningRightEffectIndex" name="turningRightEffectIndex" title="go to the details">turningRightEffectIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_viewRotationAI" name="viewRotationAI" title="go to the details">viewRotationAI</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_zAxisFlightRotation" name="zAxisFlightRotation" title="go to the details">zAxisFlightRotation</a></td></tr>
+<tr><th colspan="2" class="small">Animation</th></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_backAnimation" name="backAnimation" title="go to the details">backAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_blendTime" name="blendTime" title="go to the details">blendTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_downAnimation" name="downAnimation" title="go to the details">downAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_forwardAnimation" name="forwardAnimation" title="go to the details">forwardAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gearTraceLength" name="gearTraceLength" title="go to the details">gearTraceLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_gearUpAnimation" name="gearUpAnimation" title="go to the details">gearUpAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gearUpBlendTime" name="gearUpBlendTime" title="go to the details">gearUpBlendTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_idleAnimation" name="idleAnimation" title="go to the details">idleAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_leftAnimation" name="leftAnimation" title="go to the details">leftAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_rightAnimation" name="rightAnimation" title="go to the details">rightAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_spawningAnimation" name="spawningAnimation" title="go to the details">spawningAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_spawningBlendTime" name="spawningBlendTime" title="go to the details">spawningBlendTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_upAnimation" name="upAnimation" title="go to the details">upAnimation</a></td></tr>
+<tr><th colspan="2" class="small">JointControlledAircraft</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_aheadDiveForceScale" name="aheadDiveForceScale" title="go to the details">aheadDiveForceScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_angularBankScale" name="angularBankScale" title="go to the details">angularBankScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_clientControlJointStrength" name="clientControlJointStrength" title="go to the details">clientControlJointStrength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_clientDriverControlJointStrength" name="clientDriverControlJointStrength" title="go to the details">clientDriverControlJointStrength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_coastingCounterGravityForceScale" name="coastingCounterGravityForceScale" title="go to the details">coastingCounterGravityForceScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_coastingDamping" name="coastingDamping" title="go to the details">coastingDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_constrainAircraftPitch" name="constrainAircraftPitch" title="go to the details">constrainAircraftPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_controlJointStrength" name="controlJointStrength" title="go to the details">controlJointStrength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_counterGravityForceScale" name="counterGravityForceScale" title="go to the details">counterGravityForceScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_diveCombinedReduction" name="diveCombinedReduction" title="go to the details">diveCombinedReduction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_diveCounterGravityForceScale" name="diveCounterGravityForceScale" title="go to the details">diveCounterGravityForceScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_diveThrustForce" name="diveThrustForce" title="go to the details">diveThrustForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_downDiveForceScale" name="downDiveForceScale" title="go to the details">downDiveForceScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_flightControlDamping" name="flightControlDamping" title="go to the details">flightControlDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_flightRotationEffectMagnitude" name="flightRotationEffectMagnitude" title="go to the details">flightRotationEffectMagnitude</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_forceScale" name="forceScale" title="go to the details">forceScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_forwardCombinedReduction" name="forwardCombinedReduction" title="go to the details">forwardCombinedReduction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_forwardForce" name="forwardForce" title="go to the details">forwardForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_forwardThrustForce" name="forwardThrustForce" title="go to the details">forwardThrustForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hardAircraftPitchRange" name="hardAircraftPitchRange" title="go to the details">hardAircraftPitchRange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_hardConstrainAircraftPitch" name="hardConstrainAircraftPitch" title="go to the details">hardConstrainAircraftPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_linearBankScale" name="linearBankScale" title="go to the details">linearBankScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_maximumAircraftPitch" name="maximumAircraftPitch" title="go to the details">maximumAircraftPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_minimumAircraftPitch" name="minimumAircraftPitch" title="go to the details">minimumAircraftPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_reverseForce" name="reverseForce" title="go to the details">reverseForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_reverseThrustForce" name="reverseThrustForce" title="go to the details">reverseThrustForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_strafeCombinedReduction" name="strafeCombinedReduction" title="go to the details">strafeCombinedReduction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_strafeForce" name="strafeForce" title="go to the details">strafeForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_strafeThrustForce" name="strafeThrustForce" title="go to the details">strafeThrustForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_thrustCombinedReduction" name="thrustCombinedReduction" title="go to the details">thrustCombinedReduction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_upThrustForce" name="upThrustForce" title="go to the details">upThrustForce</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#abandonmentDestruction">abandonmentDestruction</a>, <a href="../gameplay/vehicle.html#abandonmentDestructionPeriod">abandonmentDestructionPeriod</a>, <a href="../gameplay/vehicle.html#animationFinishThenLoop">animationFinishThenLoop</a>, <a href="../gameplay/vehicle.html#bCanBeStolen">bCanBeStolen</a>, <a href="../gameplay/vehicle.html#bCollisionDamageEnabled">bCollisionDamageEnabled</a>, <a href="../gameplay/vehicle.html#bDisablePositionSwitching">bDisablePositionSwitching</a>, <a href="../gameplay/vehicle.html#bDrawDriverInTP">bDrawDriverInTP</a>, <a href="../gameplay/vehicle.html#bFlipping">bFlipping</a>, <a href="../gameplay/vehicle.html#bGodMode">bGodMode</a>, <a href="../gameplay/vehicle.html#bHasBeenOccupied">bHasBeenOccupied</a>, <a href="../gameplay/vehicle.html#bInvincible">bInvincible</a>, <a href="../gameplay/vehicle.html#bSettledUpsideDown">bSettledUpsideDown</a>, <a href="../gameplay/vehicle.html#bShowPhysicsDebug">bShowPhysicsDebug</a>, <a href="../gameplay/vehicle.html#bVehicleCameraTrace">bVehicleCameraTrace</a>, <a href="../gameplay/vehicle.html#cachedCameraLocation">cachedCameraLocation</a>, <a href="../gameplay/vehicle.html#cameraDistance">cameraDistance</a>, <a href="../gameplay/vehicle.html#cannotStealPrompt">cannotStealPrompt</a>, <a href="../gameplay/vehicle.html#clientInterpolationHard">clientInterpolationHard</a>, <a href="../gameplay/vehicle.html#clientInterpolationPeriod">clientInterpolationPeriod</a>, <a href="../gameplay/vehicle.html#clientInterpolationSnapDistance">clientInterpolationSnapDistance</a>, <a href="../gameplay/vehicle.html#clientPositions[MAXIMUM_NUMBER_POSITIONS]">clientPositions[MAXIMUM_NUMBER_POSITIONS]</a>, <a href="../gameplay/vehicle.html#collisionDamageMagnitudeScale">collisionDamageMagnitudeScale</a>, <a href="../gameplay/vehicle.html#cornerSlowDownDistance">cornerSlowDownDistance</a>, <a href="../gameplay/vehicle.html#cornerSlowDownMinimumCosAngle">cornerSlowDownMinimumCosAngle</a>, <a href="../gameplay/vehicle.html#cornerSlowDownSpeedCoefficient">cornerSlowDownSpeedCoefficient</a>, <a href="../gameplay/vehicle.html#CrushingDamageTypeClass">CrushingDamageTypeClass</a>, <a href="../gameplay/vehicle.html#currentAbandonmentDuration">currentAbandonmentDuration</a>, <a href="../gameplay/vehicle.html#currentDesiredHavokState">currentDesiredHavokState</a>, <a href="../gameplay/vehicle.html#currentSwitchClass">currentSwitchClass</a>, <a href="../gameplay/vehicle.html#customInertiaTensor">customInertiaTensor</a>, <a href="../gameplay/vehicle.html#customInertiaTensorDiagonal">customInertiaTensorDiagonal</a>, <a href="../gameplay/vehicle.html#dampingPlusEnabled">dampingPlusEnabled</a>, <a href="../gameplay/vehicle.html#dampingPlusNegativeZ">dampingPlusNegativeZ</a>, <a href="../gameplay/vehicle.html#dampingPlusPositiveZ">dampingPlusPositiveZ</a>, <a href="../gameplay/vehicle.html#dampingPlusXY">dampingPlusXY</a>, <a href="../gameplay/vehicle.html#destroyedExplosionClass">destroyedExplosionClass</a>, <a href="../gameplay/vehicle.html#destructionObjectClass">destructionObjectClass</a>, <a href="../gameplay/vehicle.html#distanceToMaximumDurationScale">distanceToMaximumDurationScale</a>, <a href="../gameplay/vehicle.html#DiveInput">DiveInput</a>, <a href="../gameplay/vehicle.html#doNotEjectOnFlip">doNotEjectOnFlip</a>, <a href="../gameplay/vehicle.html#drivePitchCoefficient">drivePitchCoefficient</a>, <a href="../gameplay/vehicle.html#driverIndex">driverIndex</a>, <a href="../gameplay/vehicle.html#driverMaximumPitch">driverMaximumPitch</a>, <a href="../gameplay/vehicle.html#driverMinimumPitch">driverMinimumPitch</a>, <a href="../gameplay/vehicle.html#driverPrompt">driverPrompt</a>, <a href="../gameplay/vehicle.html#driverWeapon">driverWeapon</a>, <a href="../gameplay/vehicle.html#driverWeaponClass">driverWeaponClass</a>, <a href="../gameplay/vehicle.html#driveYawCoefficient">driveYawCoefficient</a>, <a href="../gameplay/vehicle.html#effects">effects</a>, <a href="../gameplay/vehicle.html#enemyInventoryStationPrompt">enemyInventoryStationPrompt</a>, <a href="../gameplay/vehicle.html#enemyOccupiedPrompt">enemyOccupiedPrompt</a>, <a href="../gameplay/vehicle.html#engineIdlingEffectIndex">engineIdlingEffectIndex</a>, <a href="../gameplay/vehicle.html#entries">entries</a>, <a href="../gameplay/vehicle.html#exits">exits</a>, <a href="../gameplay/vehicle.html#flipMaximumRotationDuration">flipMaximumRotationDuration</a>, <a href="../gameplay/vehicle.html#flipPrompt">flipPrompt</a>, <a href="../gameplay/vehicle.html#flipPushUpDuration">flipPushUpDuration</a>, <a href="../gameplay/vehicle.html#flipPushUpImpulse">flipPushUpImpulse</a>, <a href="../gameplay/vehicle.html#flipRotateTime">flipRotateTime</a>, <a href="../gameplay/vehicle.html#flipRotationDamping">flipRotationDamping</a>, <a href="../gameplay/vehicle.html#flipRotationStrength">flipRotationStrength</a>, <a href="../gameplay/vehicle.html#flipRotationTimeOut">flipRotationTimeOut</a>, <a href="../gameplay/vehicle.html#flipTriggers">flipTriggers</a>, <a href="../gameplay/vehicle.html#fullVehiclePrompt">fullVehiclePrompt</a>, <a href="../gameplay/vehicle.html#gunnerPrompt">gunnerPrompt</a>, <a href="../gameplay/vehicle.html#healthModifier">healthModifier</a>, <a href="../gameplay/vehicle.html#heavyAttemptedToPilot">heavyAttemptedToPilot</a>, <a href="../gameplay/vehicle.html#heavyAttemptedToPilotSwitchPromptDuration">heavyAttemptedToPilotSwitchPromptDuration</a>, <a href="../gameplay/vehicle.html#initialInvincibilityDuration">initialInvincibilityDuration</a>, <a href="../gameplay/vehicle.html#inventoryStationPrompt">inventoryStationPrompt</a>, <a href="../gameplay/vehicle.html#inverseCosUprightAngle">inverseCosUprightAngle</a>, <a href="../gameplay/vehicle.html#invicibilityMaterial">invicibilityMaterial</a>, <a href="../gameplay/vehicle.html#lastOccupantTeam">lastOccupantTeam</a>, <a href="../gameplay/vehicle.html#lastStateReceiveTime">lastStateReceiveTime</a>, <a href="../gameplay/vehicle.html#leftGunnerPrompt">leftGunnerPrompt</a>, <a href="../gameplay/vehicle.html#localClientPositions[MAXIMUM_NUMBER_POSITIONS]">localClientPositions[MAXIMUM_NUMBER_POSITIONS]</a>, <a href="../gameplay/vehicle.html#localizedName">localizedName</a>, <a href="../gameplay/vehicle.html#localMoveDestination">localMoveDestination</a>, <a href="../gameplay/vehicle.html#localTeam">localTeam</a>, <a href="../gameplay/vehicle.html#loseInitialInvincibilityTime">loseInitialInvincibilityTime</a>, <a href="../gameplay/vehicle.html#ManifestLayoutMaterial">ManifestLayoutMaterial</a>, <a href="../gameplay/vehicle.html#maximumNetUpdateInterval">maximumNetUpdateInterval</a>, <a href="../gameplay/vehicle.html#maximumNextNetUpdateTime">maximumNextNetUpdateTime</a>, <a href="../gameplay/vehicle.html#minimumCollisionDamageMagnitude">minimumCollisionDamageMagnitude</a>, <a href="../gameplay/vehicle.html#minimumObstacleLookAhead">minimumObstacleLookAhead</a>, <a href="../gameplay/vehicle.html#minorPositionEntrySignals[NUMBER_MINOR_ENTRY_SIGNALS]">minorPositionEntrySignals[NUMBER_MINOR_ENTRY_SIGNALS]</a>, <a href="../gameplay/vehicle.html#motor">motor</a>, <a href="../gameplay/vehicle.html#motorClass">motorClass</a>, <a href="../gameplay/vehicle.html#obstacleLookAheadVeloocityScale">obstacleLookAheadVeloocityScale</a>, <a href="../gameplay/vehicle.html#padding[8]">padding[8]</a>, <a href="../gameplay/vehicle.html#positions">positions</a>, <a href="../gameplay/vehicle.html#retriggerEffectEvents">retriggerEffectEvents</a>, <a href="../gameplay/vehicle.html#rightGunnerPrompt">rightGunnerPrompt</a>, <a href="../gameplay/vehicle.html#rootBone">rootBone</a>, <a href="../gameplay/vehicle.html#RotationInput">RotationInput</a>, <a href="../gameplay/vehicle.html#settledUpsideDownCosAngle">settledUpsideDownCosAngle</a>, <a href="../gameplay/vehicle.html#settledUpsideDownSpeed">settledUpsideDownSpeed</a>, <a href="../gameplay/vehicle.html#spawning">spawning</a>, <a href="../gameplay/vehicle.html#stayUprightDamping">stayUprightDamping</a>, <a href="../gameplay/vehicle.html#stayUprightEnabled">stayUprightEnabled</a>, <a href="../gameplay/vehicle.html#stayUprightStrength">stayUprightStrength</a>, <a href="../gameplay/vehicle.html#stopForEnemies">stopForEnemies</a>, <a href="../gameplay/vehicle.html#StrafeInput">StrafeInput</a>, <a href="../gameplay/vehicle.html#strafeLeftEffectIndex">strafeLeftEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeLeftOrThrustEffectIndex">strafeLeftOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeRightEffectIndex">strafeRightEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeRightOrThrustEffectIndex">strafeRightOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleBackEffectIndex">throttleBackEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleForwardEffectIndex">throttleForwardEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleForwardOrThrustEffectIndex">throttleForwardOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#ThrottleInput">ThrottleInput</a>, <a href="../gameplay/vehicle.html#thrustingEffectIndex">thrustingEffectIndex</a>, <a href="../gameplay/vehicle.html#ThrustInput">ThrustInput</a>, <a href="../gameplay/vehicle.html#TopSpeed">TopSpeed</a>, <a href="../gameplay/vehicle.html#TPCameraDistance">TPCameraDistance</a>, <a href="../gameplay/vehicle.html#TPCameraLookAt">TPCameraLookAt</a>, <a href="../gameplay/vehicle.html#vehicleCameraTraceExtents">vehicleCameraTraceExtents</a>, <a href="../gameplay/vehicle.html#vehicleEntries">vehicleEntries</a>, <a href="../gameplay/vehicle.html#vehicleFlipTriggers">vehicleFlipTriggers</a>, <a href="../gameplay/vehicle.html#vehicleProhibitedObjectPrompt">vehicleProhibitedObjectPrompt</a>, <a href="../gameplay/vehicle.html#velocityInheritOnExitScale">velocityInheritOnExitScale</a>, <a href="../gameplay/vehicle.html#waterDamagePerSecond">waterDamagePerSecond</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#AI_LOD_ActivationDistance">AI_LOD_ActivationDistance</a>, <a href="../gameplay/rook.html#AI_LOD_DeactivationDistance">AI_LOD_DeactivationDistance</a>, <a href="../gameplay/rook.html#AI_LOD_deactivation_exemption_ticks">AI_LOD_deactivation_exemption_ticks</a>, <a href="../gameplay/rook.html#AI_LOD_LevelMP">AI_LOD_LevelMP</a>, <a href="../gameplay/rook.html#alertness">alertness</a>, <a href="../gameplay/rook.html#attacker">attacker</a>, <a href="../gameplay/rook.html#bAIThreat">bAIThreat</a>, <a href="../gameplay/rook.html#bAlwaysMarked">bAlwaysMarked</a>, <a href="../gameplay/rook.html#bCanBeSensed">bCanBeSensed</a>, <a href="../gameplay/rook.html#bCanRepair">bCanRepair</a>, <a href="../gameplay/rook.html#bDeferredAICleanup">bDeferredAICleanup</a>, <a href="../gameplay/rook.html#bIsDetectableByEnemies">bIsDetectableByEnemies</a>, <a href="../gameplay/rook.html#bShowJSDebug">bShowJSDebug</a>, <a href="../gameplay/rook.html#bShowLOADebug">bShowLOADebug</a>, <a href="../gameplay/rook.html#bShowNavigationDebug">bShowNavigationDebug</a>, <a href="../gameplay/rook.html#bShowSensingDebug">bShowSensingDebug</a>, <a href="../gameplay/rook.html#bShowSquadDebug">bShowSquadDebug</a>, <a href="../gameplay/rook.html#bShowTyrionCharacterDebug">bShowTyrionCharacterDebug</a>, <a href="../gameplay/rook.html#bShowTyrionHeadDebug">bShowTyrionHeadDebug</a>, <a href="../gameplay/rook.html#bShowTyrionMovementDebug">bShowTyrionMovementDebug</a>, <a href="../gameplay/rook.html#bShowTyrionWeaponDebug">bShowTyrionWeaponDebug</a>, <a href="../gameplay/rook.html#bUnobstructedLOF">bUnobstructedLOF</a>, <a href="../gameplay/rook.html#bUseAlternateOwnershipMaterial">bUseAlternateOwnershipMaterial</a>, <a href="../gameplay/rook.html#bUseAlternateSelfIllumMaterial">bUseAlternateSelfIllumMaterial</a>, <a href="../gameplay/rook.html#clientDamageComponentMask">clientDamageComponentMask</a>, <a href="../gameplay/rook.html#componentBreakThreshold">componentBreakThreshold</a>, <a href="../gameplay/rook.html#damageComponentMask">damageComponentMask</a>, <a href="../gameplay/rook.html#damageComponents">damageComponents</a>, <a href="../gameplay/rook.html#desiredLocation">desiredLocation</a>, <a href="../gameplay/rook.html#effectLogging">effectLogging</a>, <a href="../gameplay/rook.html#estLocation">estLocation</a>, <a href="../gameplay/rook.html#expectedImpactTime">expectedImpactTime</a>, <a href="../gameplay/rook.html#flameDamagePerSecond">flameDamagePerSecond</a>, <a href="../gameplay/rook.html#flameDamageReductionPerSecond">flameDamageReductionPerSecond</a>, <a href="../gameplay/rook.html#flameDamageType">flameDamageType</a>, <a href="../gameplay/rook.html#flameSource">flameSource</a>, <a href="../gameplay/rook.html#grapplerRetentionScale">grapplerRetentionScale</a>, <a href="../gameplay/rook.html#healthMaximum">healthMaximum</a>, <a href="../gameplay/rook.html#hearing">hearing</a>, <a href="../gameplay/rook.html#hudType">hudType</a>, <a href="../gameplay/rook.html#lastDetectedTime">lastDetectedTime</a>, <a href="../gameplay/rook.html#lastShotFiredTime">lastShotFiredTime</a>, <a href="../gameplay/rook.html#loaEndPoint">loaEndPoint</a>, <a href="../gameplay/rook.html#loaEndPoint2">loaEndPoint2</a>, <a href="../gameplay/rook.html#loaHit">loaHit</a>, <a href="../gameplay/rook.html#loaStartPoint">loaStartPoint</a>, <a href="../gameplay/rook.html#loaStartPoint2">loaStartPoint2</a>, <a href="../gameplay/rook.html#logAlertnessChanges">logAlertnessChanges</a>, <a href="../gameplay/rook.html#loopingEffects">loopingEffects</a>, <a href="../gameplay/rook.html#MaxShadowTraceDistance">MaxShadowTraceDistance</a>, <a href="../gameplay/rook.html#mountAI">mountAI</a>, <a href="../gameplay/rook.html#movementForce">movementForce</a>, <a href="../gameplay/rook.html#m_lastTeam">m_lastTeam</a>, <a href="../gameplay/rook.html#m_localTeam">m_localTeam</a>, <a href="../gameplay/rook.html#m_squad">m_squad</a>, <a href="../gameplay/rook.html#m_team">m_team</a>, <a href="../gameplay/rook.html#pastPositionsIndex">pastPositionsIndex</a>, <a href="../gameplay/rook.html#pastPositionsTimeAccu">pastPositionsTimeAccu</a>, <a href="../gameplay/rook.html#pastPositions[N_PAST_POSITIONS]">pastPositions[N_PAST_POSITIONS]</a>, <a href="../gameplay/rook.html#PeripheralVisionZAngle">PeripheralVisionZAngle</a>, <a href="../gameplay/rook.html#personalShield">personalShield</a>, <a href="../gameplay/rook.html#personalShieldClass">personalShieldClass</a>, <a href="../gameplay/rook.html#playerControllerState">playerControllerState</a>, <a href="../gameplay/rook.html#radarInfoClass">radarInfoClass</a>, <a href="../gameplay/rook.html#reactionDelay">reactionDelay</a>, <a href="../gameplay/rook.html#reactionDelayMP">reactionDelayMP</a>, <a href="../gameplay/rook.html#repairers">repairers</a>, <a href="../gameplay/rook.html#repDepLastRateAddition">repDepLastRateAddition</a>, <a href="../gameplay/rook.html#repDepRepairRate">repDepRepairRate</a>, <a href="../gameplay/rook.html#repPakLastRateAddition">repPakLastRateAddition</a>, <a href="../gameplay/rook.html#repPakRepairRate">repPakRepairRate</a>, <a href="../gameplay/rook.html#sensorUpdateFlag">sensorUpdateFlag</a>, <a href="../gameplay/rook.html#ShadowLightDistance">ShadowLightDistance</a>, <a href="../gameplay/rook.html#shotAngularDeviation">shotAngularDeviation</a>, <a href="../gameplay/rook.html#shotAngularDeviationMP">shotAngularDeviationMP</a>, <a href="../gameplay/rook.html#shotLeadAbility">shotLeadAbility</a>, <a href="../gameplay/rook.html#shotLeadAbilityMP">shotLeadAbilityMP</a>, <a href="../gameplay/rook.html#shotNotifier">shotNotifier</a>, <a href="../gameplay/rook.html#SightRadiusToPlayer">SightRadiusToPlayer</a>, <a href="../gameplay/rook.html#teamDamagePercentage">teamDamagePercentage</a>, <a href="../gameplay/rook.html#teamSelfIllumSkinName">teamSelfIllumSkinName</a>, <a href="../gameplay/rook.html#teamSpecificHavokCollisionFiltering">teamSpecificHavokCollisionFiltering</a>, <a href="../gameplay/rook.html#tickTime">tickTime</a>, <a href="../gameplay/rook.html#tickTimeOrg">tickTimeOrg</a>, <a href="../gameplay/rook.html#tickTimeUpdateRange">tickTimeUpdateRange</a>, <a href="../gameplay/rook.html#UseablePointsValid[MAX_USEABLE_POINTS]">UseablePointsValid[MAX_USEABLE_POINTS]</a>, <a href="../gameplay/rook.html#UseablePoints[MAX_USEABLE_POINTS]">UseablePoints[MAX_USEABLE_POINTS]</a>, <a href="../gameplay/rook.html#vehicleAI">vehicleAI</a>, <a href="../gameplay/rook.html#vision">vision</a>, <a href="../gameplay/rook.html#visionMemory">visionMemory</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_AccelerationEffectStateEnum" name="AccelerationEffectStateEnum" title="go to the details">AccelerationEffectStateEnum</a><br /><span class="small">AES_ACCELERATING,
+AES_DECELERATING,
+AES_NONE</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#VehiclePositionType">VehiclePositionType</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#AlertnessLevels">AlertnessLevels</a>, <a href="../gameplay/rook.html#EUseablePointValid">EUseablePointValid</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_AircraftState" name="AircraftState" title="go to the details">AircraftState</a><br /><span class="small">position, velocity, flightAngles, serverThrusting, serverDiving, serverStrafe, serverThrottle</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#ClientOccupantEnterData">ClientOccupantEnterData</a>, <a href="../gameplay/vehicle.html#ClientPositionData">ClientPositionData</a>, <a href="../gameplay/vehicle.html#DesiredHavokState">DesiredHavokState</a>, <a href="../gameplay/vehicle.html#ExitData">ExitData</a>, <a href="../gameplay/vehicle.html#VehicleEffect">VehicleEffect</a>, <a href="../gameplay/vehicle.html#VehicleEntryData">VehicleEntryData</a>, <a href="../gameplay/vehicle.html#VehicleFlipTriggerData">VehicleFlipTriggerData</a>, <a href="../gameplay/vehicle.html#VehiclePosition">VehiclePosition</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#DamageComponent">DamageComponent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_applyOutput-" name="applyOutput" title="go to the details">applyOutput</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_calculateOutputControlForce-" name="calculateOutputControlForce" title="go to the details">calculateOutputControlForce</a> (<a href="../core/object.html#Rotator">rotator</a> referenceRotation, float currentThrottleInput, float currentStrafeInput, float currentThrustInput, bool currentDiveInput)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_clientDriverLeave-" name="clientDriverLeave" title="go to the details">clientDriverLeave</a> (<a href="../engine/controller.html">Controller</a> c, <a href="../gameplay/character.html">Character</a> oldDriver))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_clientOccupantEnter-" name="clientOccupantEnter" title="go to the details">clientOccupantEnter</a> (<a href="../gameplay/vehicle.html#ClientOccupantEnterData">ClientOccupantEnterData</a> data))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_getControlJointAttachLocation-" name="getControlJointAttachLocation" title="go to the details">getControlJointAttachLocation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_getViewRotation-" name="getViewRotation" title="go to the details">getViewRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_initialiseEffects-" name="initialiseEffects" title="go to the details">initialiseEffects</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isEffectCauserActive-" name="isEffectCauserActive" title="go to the details">isEffectCauserActive</a> (int effectCauserIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_needToPushStateToClient-" name="needToPushStateToClient" title="go to the details">needToPushStateToClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_postNetBeginPlay-" name="postNetBeginPlay" title="go to the details">postNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_processInput-" name="processInput" title="go to the details">processInput</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_pushStateToClient-" name="pushStateToClient" title="go to the details">pushStateToClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setCounterGravityForceScale-" name="setCounterGravityForceScale" title="go to the details">setCounterGravityForceScale</a> (float scale)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setFlightControlStrength-" name="setFlightControlStrength" title="go to the details">setFlightControlStrength</a> (float strength)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setFlightForce-" name="setFlightForce" title="go to the details">setFlightForce</a> (<a href="../core/object.html#Vector">vector</a> force)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setFlightRotation-" name="setFlightRotation" title="go to the details">setFlightRotation</a> (int yawAngle, int pitchAngle)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setViewRotation-" name="setViewRotation" title="go to the details">setViewRotation</a> (<a href="../core/object.html#Rotator">rotator</a> r))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_specialCalcViewProcessing-" name="specialCalcViewProcessing" title="go to the details">specialCalcViewProcessing</a> (out <a href="../engine/actor.html">actor</a> viewActor, out <a href="../core/object.html#Vector">vector</a> cameraLocation, out <a href="../core/object.html#Rotator">rotator</a> cameraRotation, int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_updateCameraRotation-" name="updateCameraRotation" title="go to the details">updateCameraRotation</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateEffectsStates-" name="updateEffectsStates" title="go to the details">updateEffectsStates</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_VehicleStateReceived-" name="VehicleStateReceived" title="go to the details">VehicleStateReceived</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#aboutToDie">aboutToDie</a>, <a href="../gameplay/vehicle.html#aboutToSettleUpsideDown">aboutToSettleUpsideDown</a>, <a href="../gameplay/vehicle.html#addEffect">addEffect</a>, <a href="../gameplay/vehicle.html#aimAdjustViewRotation">aimAdjustViewRotation</a>, <a href="../gameplay/vehicle.html#altFire">altFire</a>, <a href="../gameplay/vehicle.html#applyOutput">applyOutput</a>, <a href="../gameplay/vehicle.html#attachToVehicle">attachToVehicle</a>, <a href="../gameplay/vehicle.html#BaseChange">BaseChange</a>, <a href="../gameplay/vehicle.html#BeginState">BeginState</a>, <a href="../gameplay/vehicle.html#cameraTrace">cameraTrace</a>, <a href="../gameplay/vehicle.html#canArmorOccupy">canArmorOccupy</a>, <a href="../gameplay/vehicle.html#canArmourBeDriver">canArmourBeDriver</a>, <a href="../gameplay/vehicle.html#canArmourBePassenger">canArmourBePassenger</a>, <a href="../gameplay/vehicle.html#canBeRepairedBy">canBeRepairedBy</a>, <a href="../gameplay/vehicle.html#canCharacterRespawnAt">canCharacterRespawnAt</a>, <a href="../gameplay/vehicle.html#canOccupy">canOccupy</a>, <a href="../gameplay/vehicle.html#canSwitchPosition">canSwitchPosition</a>, <a href="../gameplay/vehicle.html#canTargetPoint">canTargetPoint</a>, <a href="../gameplay/vehicle.html#cleanupAI">cleanupAI</a>, <a href="../gameplay/vehicle.html#clientDriverLeave">clientDriverLeave</a>, <a href="../gameplay/vehicle.html#clientOccupantEnter">clientOccupantEnter</a>, <a href="../gameplay/vehicle.html#collisionDamage">collisionDamage</a>, <a href="../gameplay/vehicle.html#copyVehicleAIValuesToTurret">copyVehicleAIValuesToTurret</a>, <a href="../gameplay/vehicle.html#customFiredEffectProcessing">customFiredEffectProcessing</a>, <a href="../gameplay/vehicle.html#Destroyed">Destroyed</a>, <a href="../gameplay/vehicle.html#DisplayDebug">DisplayDebug</a>, <a href="../gameplay/vehicle.html#displayWorldSpaceDebug">displayWorldSpaceDebug</a>, <a href="../gameplay/vehicle.html#doCustomFiredEffectProcessing">doCustomFiredEffectProcessing</a>, <a href="../gameplay/vehicle.html#drawActorCollision">drawActorCollision</a>, <a href="../gameplay/vehicle.html#driverLeave">driverLeave</a>, <a href="../gameplay/vehicle.html#enableAbandonmentDestruction">enableAbandonmentDestruction</a>, <a href="../gameplay/vehicle.html#EncroachedBy">EncroachedBy</a>, <a href="../gameplay/vehicle.html#EncroachingOn">EncroachingOn</a>, <a href="../gameplay/vehicle.html#EyePosition">EyePosition</a>, <a href="../gameplay/vehicle.html#FaceRotation">FaceRotation</a>, <a href="../gameplay/vehicle.html#finishedSpawnFromVehicleSpawnPoint">finishedSpawnFromVehicleSpawnPoint</a>, <a href="../gameplay/vehicle.html#fire">fire</a>, <a href="../gameplay/vehicle.html#firingMotor">firingMotor</a>, <a href="../gameplay/vehicle.html#flip">flip</a>, <a href="../gameplay/vehicle.html#forceNetDirty">forceNetDirty</a>, <a href="../gameplay/vehicle.html#generateAIDeathSpeechEvents">generateAIDeathSpeechEvents</a>, <a href="../gameplay/vehicle.html#getAimLocation">getAimLocation</a>, <a href="../gameplay/vehicle.html#getAlternateAimAdjustStart">getAlternateAimAdjustStart</a>, <a href="../gameplay/vehicle.html#getAngle">getAngle</a>, <a href="../gameplay/vehicle.html#getAvailablePositionIndex">getAvailablePositionIndex</a>, <a href="../gameplay/vehicle.html#getCameraLookAt">getCameraLookAt</a>, <a href="../gameplay/vehicle.html#getControllingCharacter">getControllingCharacter</a>, <a href="../gameplay/vehicle.html#getCorrespondingInventoryStation">getCorrespondingInventoryStation</a>, <a href="../gameplay/vehicle.html#getDriver">getDriver</a>, <a href="../gameplay/vehicle.html#getEffectsBaseActor">getEffectsBaseActor</a>, <a href="../gameplay/vehicle.html#getEnergy">getEnergy</a>, <a href="../gameplay/vehicle.html#getFirstPersonEquippableLocation">getFirstPersonEquippableLocation</a>, <a href="../gameplay/vehicle.html#getFirstPersonEquippableRotation">getFirstPersonEquippableRotation</a>, <a href="../gameplay/vehicle.html#getHighByte">getHighByte</a>, <a href="../gameplay/vehicle.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/vehicle.html#getLowByte">getLowByte</a>, <a href="../gameplay/vehicle.html#getMinorPositionEntryIndex">getMinorPositionEntryIndex</a>, <a href="../gameplay/vehicle.html#getOccupantPositionIndex">getOccupantPositionIndex</a>, <a href="../gameplay/vehicle.html#getOccupantTeam">getOccupantTeam</a>, <a href="../gameplay/vehicle.html#getOut">getOut</a>, <a href="../gameplay/vehicle.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/vehicle.html#getPhysicalAttachment">getPhysicalAttachment</a>, <a href="../gameplay/vehicle.html#getPositionIndex">getPositionIndex</a>, <a href="../gameplay/vehicle.html#getPositionPromptIndex">getPositionPromptIndex</a>, <a href="../gameplay/vehicle.html#getProjectileSpawnLocation">getProjectileSpawnLocation</a>, <a href="../gameplay/vehicle.html#getPrompt">getPrompt</a>, <a href="../gameplay/vehicle.html#getTargetPositionIndex">getTargetPositionIndex</a>, <a href="../gameplay/vehicle.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/vehicle.html#getTeamSkin">getTeamSkin</a>, <a href="../gameplay/vehicle.html#getThirdPersonEquippableAttachment">getThirdPersonEquippableAttachment</a>, <a href="../gameplay/vehicle.html#getUnusedInventoryStation">getUnusedInventoryStation</a>, <a href="../gameplay/vehicle.html#getVehicleUseablePoint">getVehicleUseablePoint</a>, <a href="../gameplay/vehicle.html#getViewRotationFromMotor">getViewRotationFromMotor</a>, <a href="../gameplay/vehicle.html#getWeapon">getWeapon</a>, <a href="../gameplay/vehicle.html#GraphData">GraphData</a>, <a href="../gameplay/vehicle.html#InGodMode">InGodMode</a>, <a href="../gameplay/vehicle.html#initDriverAI">initDriverAI</a>, <a href="../gameplay/vehicle.html#initGunnerAI">initGunnerAI</a>, <a href="../gameplay/vehicle.html#initialiseEffects">initialiseEffects</a>, <a href="../gameplay/vehicle.html#initVehicleAI">initVehicleAI</a>, <a href="../gameplay/vehicle.html#interpolateRotation">interpolateRotation</a>, <a href="../gameplay/vehicle.html#isEffectCauserActive">isEffectCauserActive</a>, <a href="../gameplay/vehicle.html#isHavokCompletelyInitialised">isHavokCompletelyInitialised</a>, <a href="../gameplay/vehicle.html#isInventoryPosition">isInventoryPosition</a>, <a href="../gameplay/vehicle.html#isMajorPosition">isMajorPosition</a>, <a href="../gameplay/vehicle.html#isOccupant">isOccupant</a>, <a href="../gameplay/vehicle.html#isOccupied">isOccupied</a>, <a href="../gameplay/vehicle.html#isSettledUpsideDown">isSettledUpsideDown</a>, <a href="../gameplay/vehicle.html#isUpright">isUpright</a>, <a href="../gameplay/vehicle.html#needToPushStateToClient">needToPushStateToClient</a>, <a href="../gameplay/vehicle.html#occupantEnter">occupantEnter</a>, <a href="../gameplay/vehicle.html#occupantEnterAnimationProcessing">occupantEnterAnimationProcessing</a>, <a href="../gameplay/vehicle.html#occupantLeaveAnimationProcessing">occupantLeaveAnimationProcessing</a>, <a href="../gameplay/vehicle.html#occupantSwitchPosition">occupantSwitchPosition</a>, <a href="../gameplay/vehicle.html#onShotFiredNotification">onShotFiredNotification</a>, <a href="../gameplay/vehicle.html#otherClientOccupantEnter">otherClientOccupantEnter</a>, <a href="../gameplay/vehicle.html#otherClientOccupantLeave">otherClientOccupantLeave</a>, <a href="../gameplay/vehicle.html#packPitchAndYaw">packPitchAndYaw</a>, <a href="../gameplay/vehicle.html#performFlip">performFlip</a>, <a href="../gameplay/vehicle.html#PlayDying">PlayDying</a>, <a href="../gameplay/vehicle.html#playerMoveProcessing">playerMoveProcessing</a>, <a href="../gameplay/vehicle.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/vehicle.html#PostLoadGame">PostLoadGame</a>, <a href="../gameplay/vehicle.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/vehicle.html#postNetReceive">postNetReceive</a>, <a href="../gameplay/vehicle.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/vehicle.html#PrecacheVehicleMeshes">PrecacheVehicleMeshes</a>, <a href="../gameplay/vehicle.html#processInput">processInput</a>, <a href="../gameplay/vehicle.html#pushStateToClient">pushStateToClient</a>, <a href="../gameplay/vehicle.html#releaseAltFire">releaseAltFire</a>, <a href="../gameplay/vehicle.html#releaseFire">releaseFire</a>, <a href="../gameplay/vehicle.html#rematchGoals">rematchGoals</a>, <a href="../gameplay/vehicle.html#setFirePressed">setFirePressed</a>, <a href="../gameplay/vehicle.html#setSkin">setSkin</a>, <a href="../gameplay/vehicle.html#setTeam">setTeam</a>, <a href="../gameplay/vehicle.html#settledUpsideDownChanged">settledUpsideDownChanged</a>, <a href="../gameplay/vehicle.html#shouldFire">shouldFire</a>, <a href="../gameplay/vehicle.html#ShouldProjectileHit">ShouldProjectileHit</a>, <a href="../gameplay/vehicle.html#showPhysicsDebug">showPhysicsDebug</a>, <a href="../gameplay/vehicle.html#spawnCharacter">spawnCharacter</a>, <a href="../gameplay/vehicle.html#specialCalcView">specialCalcView</a>, <a href="../gameplay/vehicle.html#specialCalcViewProcessing">specialCalcViewProcessing</a>, <a href="../gameplay/vehicle.html#startedSpawnFromVehicleSpawnPoint">startedSpawnFromVehicleSpawnPoint</a>, <a href="../gameplay/vehicle.html#switchClass">switchClass</a>, <a href="../gameplay/vehicle.html#switchPosition">switchPosition</a>, <a href="../gameplay/vehicle.html#tick">tick</a>, <a href="../gameplay/vehicle.html#Timer">Timer</a>, <a href="../gameplay/vehicle.html#toggleShowPhysicsDebug">toggleShowPhysicsDebug</a>, <a href="../gameplay/vehicle.html#tryToDrive">tryToDrive</a>, <a href="../gameplay/vehicle.html#tryToOccupy">tryToOccupy</a>, <a href="../gameplay/vehicle.html#unpackPitchAndYaw">unpackPitchAndYaw</a>, <a href="../gameplay/vehicle.html#UnPossessed">UnPossessed</a>, <a href="../gameplay/vehicle.html#updateDynamicEffectStates">updateDynamicEffectStates</a>, <a href="../gameplay/vehicle.html#updateEffectsStates">updateEffectsStates</a>, <a href="../gameplay/vehicle.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a>, <a href="../gameplay/vehicle.html#updateTeamSkin">updateTeamSkin</a>, <a href="../gameplay/vehicle.html#useEnergy">useEnergy</a>, <a href="../gameplay/vehicle.html#vehicleCeaseFire">vehicleCeaseFire</a>, <a href="../gameplay/vehicle.html#vehicleFire">vehicleFire</a>, <a href="../gameplay/vehicle.html#VehicleStateReceived">VehicleStateReceived</a>, <a href="../gameplay/vehicle.html#vehicleTrace">vehicleTrace</a>, <a href="../gameplay/vehicle.html#vehicleTransitionTrace">vehicleTransitionTrace</a>, <a href="../gameplay/vehicle.html#VehicleUpdateParams">VehicleUpdateParams</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#activatePersonalShield">activatePersonalShield</a>, <a href="../gameplay/rook.html#addRepairFromDeployable">addRepairFromDeployable</a>, <a href="../gameplay/rook.html#addRepairFromPack">addRepairFromPack</a>, <a href="../gameplay/rook.html#ApplyDamage">ApplyDamage</a>, <a href="../gameplay/rook.html#averageVelocity">averageVelocity</a>, <a href="../gameplay/rook.html#breakDamageComponent">breakDamageComponent</a>, <a href="../gameplay/rook.html#canBeRepairedBy">canBeRepairedBy</a>, <a href="../gameplay/rook.html#canBeSensed">canBeSensed</a>, <a href="../gameplay/rook.html#CanBeUsedBy">CanBeUsedBy</a>, <a href="../gameplay/rook.html#ChunkUp">ChunkUp</a>, <a href="../gameplay/rook.html#cleanupAI">cleanupAI</a>, <a href="../gameplay/rook.html#cleanupDamageComponents">cleanupDamageComponents</a>, <a href="../gameplay/rook.html#CleanupSensing">CleanupSensing</a>, <a href="../gameplay/rook.html#clientUpdateDamageComponents">clientUpdateDamageComponents</a>, <a href="../gameplay/rook.html#createDamageComponent">createDamageComponent</a>, <a href="../gameplay/rook.html#CreateHearingNotifier">CreateHearingNotifier</a>, <a href="../gameplay/rook.html#CreateShotNotifier">CreateShotNotifier</a>, <a href="../gameplay/rook.html#CreateVisionNotifier">CreateVisionNotifier</a>, <a href="../gameplay/rook.html#damageComponentsOnDamage">damageComponentsOnDamage</a>, <a href="../gameplay/rook.html#damageComponentsOnIncreaseHealth">damageComponentsOnIncreaseHealth</a>, <a href="../gameplay/rook.html#damageComponentsPostTakeDamage">damageComponentsPostTakeDamage</a>, <a href="../gameplay/rook.html#deactivatePersonalShield">deactivatePersonalShield</a>, <a href="../gameplay/rook.html#Destroyed">Destroyed</a>, <a href="../gameplay/rook.html#Died">Died</a>, <a href="../gameplay/rook.html#displayActorLabel">displayActorLabel</a>, <a href="../gameplay/rook.html#displayEnemiesList">displayEnemiesList</a>, <a href="../gameplay/rook.html#displayTyrionDebugHeader">displayTyrionDebugHeader</a>, <a href="../gameplay/rook.html#displayWorldSpaceDebug">displayWorldSpaceDebug</a>, <a href="../gameplay/rook.html#DrawVisionCone">DrawVisionCone</a>, <a href="../gameplay/rook.html#EffectIsLooping">EffectIsLooping</a>, <a href="../gameplay/rook.html#enumSquadInfo">enumSquadInfo</a>, <a href="../gameplay/rook.html#enumTeamInfo">enumTeamInfo</a>, <a href="../gameplay/rook.html#firingMotor">firingMotor</a>, <a href="../gameplay/rook.html#generateAISpeechEvents">generateAISpeechEvents</a>, <a href="../gameplay/rook.html#getAlertnessLevel">getAlertnessLevel</a>, <a href="../gameplay/rook.html#getControllingCharacter">getControllingCharacter</a>, <a href="../gameplay/rook.html#getControllingCharacterTeam">getControllingCharacterTeam</a>, <a href="../gameplay/rook.html#GetDamageComponentThresholdRange">GetDamageComponentThresholdRange</a>, <a href="../gameplay/rook.html#getKillerLabel">getKillerLabel</a>, <a href="../gameplay/rook.html#GetObjectiveLocation">GetObjectiveLocation</a>, <a href="../gameplay/rook.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/rook.html#GetRadarInfoClass">GetRadarInfoClass</a>, <a href="../gameplay/rook.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/rook.html#getTeamLabel">getTeamLabel</a>, <a href="../gameplay/rook.html#groundPredictedLocation">groundPredictedLocation</a>, <a href="../gameplay/rook.html#IncreaseHealth">IncreaseHealth</a>, <a href="../gameplay/rook.html#isFriendly">isFriendly</a>, <a href="../gameplay/rook.html#IsInVisionCone">IsInVisionCone</a>, <a href="../gameplay/rook.html#OnEffectInitialized">OnEffectInitialized</a>, <a href="../gameplay/rook.html#OnEffectStarted">OnEffectStarted</a>, <a href="../gameplay/rook.html#OnEffectStopped">OnEffectStopped</a>, <a href="../gameplay/rook.html#OnShotFired">OnShotFired</a>, <a href="../gameplay/rook.html#onTeamChange">onTeamChange</a>, <a href="../gameplay/rook.html#personalShieldActive">personalShieldActive</a>, <a href="../gameplay/rook.html#PlayEffect">PlayEffect</a>, <a href="../gameplay/rook.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/rook.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/rook.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/rook.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/rook.html#PreBeginPlay">PreBeginPlay</a>, <a href="../gameplay/rook.html#PrecacheDamageComponents">PrecacheDamageComponents</a>, <a href="../gameplay/rook.html#predictedLocation">predictedLocation</a>, <a href="../gameplay/rook.html#ProcessBurnDamage">ProcessBurnDamage</a>, <a href="../gameplay/rook.html#ProcessRepair">ProcessRepair</a>, <a href="../gameplay/rook.html#RegisterHearingNotification">RegisterHearingNotification</a>, <a href="../gameplay/rook.html#RegisterShotNotification">RegisterShotNotification</a>, <a href="../gameplay/rook.html#RegisterVisionNotification">RegisterVisionNotification</a>, <a href="../gameplay/rook.html#removeFlameDamage">removeFlameDamage</a>, <a href="../gameplay/rook.html#removeRepairFromDeployable">removeRepairFromDeployable</a>, <a href="../gameplay/rook.html#removeRepairFromPack">removeRepairFromPack</a>, <a href="../gameplay/rook.html#resetPersonalShield">resetPersonalShield</a>, <a href="../gameplay/rook.html#setAlertnessLevel">setAlertnessLevel</a>, <a href="../gameplay/rook.html#setLimitedTimeLODActivation">setLimitedTimeLODActivation</a>, <a href="../gameplay/rook.html#setSquad">setSquad</a>, <a href="../gameplay/rook.html#setTeam">setTeam</a>, <a href="../gameplay/rook.html#ShouldBeMarked">ShouldBeMarked</a>, <a href="../gameplay/rook.html#squad">squad</a>, <a href="../gameplay/rook.html#squadCleanupOnDeath">squadCleanupOnDeath</a>, <a href="../gameplay/rook.html#StartLoopingEffect">StartLoopingEffect</a>, <a href="../gameplay/rook.html#StopEffect">StopEffect</a>, <a href="../gameplay/rook.html#StopLoopingEffect">StopLoopingEffect</a>, <a href="../gameplay/rook.html#team">team</a>, <a href="../gameplay/rook.html#UnregisterHearingNotification">UnregisterHearingNotification</a>, <a href="../gameplay/rook.html#UnregisterShotNotification">UnregisterShotNotification</a>, <a href="../gameplay/rook.html#UnregisterVisionNotification">UnregisterVisionNotification</a>, <a href="../gameplay/rook.html#updateHavokCollisionFilter">updateHavokCollisionFilter</a>, <a href="../gameplay/rook.html#updatePastPositions">updatePastPositions</a>, <a href="../gameplay/rook.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_JCA_LINEAR_VELOCITY_ACCURACY_FACTOR" class="hidden"></a>JCA_LINEAR_VELOCITY_ACCURACY_FACTOR <a href="../Source_gameplay/jointcontrolledaircraft.html#31" class="small">Source code</a></h4>
+<div class="declaration">const JCA_LINEAR_VELOCITY_ACCURACY_FACTOR = <span class="source_int">100</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JCA_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" class="hidden"></a>JCA_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR <a href="../Source_gameplay/jointcontrolledaircraft.html#32" class="small">Source code</a></h4>
+<div class="declaration">const JCA_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR = <span class="source_int">0.01</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AccelerationEffectState" class="hidden"></a>AccelerationEffectState <a href="../Source_gameplay/jointcontrolledaircraft.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html#AccelerationEffectStateEnum" class="source">AccelerationEffectStateEnum</a></span> AccelerationEffectState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentCameraRotation" class="hidden"></a>currentCameraRotation <a href="../Source_gameplay/jointcontrolledaircraft.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> currentCameraRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_divingEffectIndex" class="hidden"></a>divingEffectIndex <a href="../Source_gameplay/jointcontrolledaircraft.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> divingEffectIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_divingForceApplied" class="hidden"></a>divingForceApplied <a href="../Source_gameplay/jointcontrolledaircraft.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> divingForceApplied;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LandingGearUp" class="hidden"></a>LandingGearUp <a href="../Source_gameplay/jointcontrolledaircraft.html#115" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> LandingGearUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_navigationMaximumPitch" class="hidden"></a>navigationMaximumPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#150" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> navigationMaximumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_navigationMinimumPitch" class="hidden"></a>navigationMinimumPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#151" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> navigationMinimumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_navigationTurnRate" class="hidden"></a>navigationTurnRate <a href="../Source_gameplay/jointcontrolledaircraft.html#152" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> navigationTurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_oldReplicationAircraftState" class="hidden"></a>oldReplicationAircraftState <a href="../Source_gameplay/jointcontrolledaircraft.html#135" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html#AircraftState" class="source">AircraftState</a></span> oldReplicationAircraftState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_outputControlForce" class="hidden"></a>outputControlForce <a href="../Source_gameplay/jointcontrolledaircraft.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> outputControlForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_outputFlightPitchAngle" class="hidden"></a>outputFlightPitchAngle <a href="../Source_gameplay/jointcontrolledaircraft.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> outputFlightPitchAngle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_outputFlightYawAngle" class="hidden"></a>outputFlightYawAngle <a href="../Source_gameplay/jointcontrolledaircraft.html#103" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> outputFlightYawAngle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_padding[2]" class="hidden"></a>padding[2] <a href="../Source_gameplay/jointcontrolledaircraft.html#159" class="small">Source code</a></h4>
+<div class="declaration">var transient noexport private const <span class="source_type">int</span> padding[<span class="source_int">2</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_replicatedControlForce" class="hidden"></a>replicatedControlForce <a href="../Source_gameplay/jointcontrolledaircraft.html#132" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> replicatedControlForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_replicationAircraftState" class="hidden"></a>replicationAircraftState <a href="../Source_gameplay/jointcontrolledaircraft.html#134" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html#AircraftState" class="source">AircraftState</a></span> replicationAircraftState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rotateMaximumPitch" class="hidden"></a>rotateMaximumPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> rotateMaximumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rotateMinimumPitch" class="hidden"></a>rotateMinimumPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#153" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> rotateMinimumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeBack" class="hidden"></a>strafeBack <a href="../Source_gameplay/jointcontrolledaircraft.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> strafeBack;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeDown" class="hidden"></a>strafeDown <a href="../Source_gameplay/jointcontrolledaircraft.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> strafeDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeForward" class="hidden"></a>strafeForward <a href="../Source_gameplay/jointcontrolledaircraft.html#111" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> strafeForward;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeLeft" class="hidden"></a>strafeLeft <a href="../Source_gameplay/jointcontrolledaircraft.html#109" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> strafeLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeRight" class="hidden"></a>strafeRight <a href="../Source_gameplay/jointcontrolledaircraft.html#110" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> strafeRight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeUp" class="hidden"></a>strafeUp <a href="../Source_gameplay/jointcontrolledaircraft.html#113" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> strafeUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_throttleScale" class="hidden"></a>throttleScale <a href="../Source_gameplay/jointcontrolledaircraft.html#156" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> throttleScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ThrustingEffectState" class="hidden"></a>ThrustingEffectState <a href="../Source_gameplay/jointcontrolledaircraft.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> ThrustingEffectState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_thrustThresholdPitch" class="hidden"></a>thrustThresholdPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> thrustThresholdPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turningLeftEffectIndex" class="hidden"></a>turningLeftEffectIndex <a href="../Source_gameplay/jointcontrolledaircraft.html#80" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> turningLeftEffectIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turningRightEffectIndex" class="hidden"></a>turningRightEffectIndex <a href="../Source_gameplay/jointcontrolledaircraft.html#79" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> turningRightEffectIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_viewRotationAI" class="hidden"></a>viewRotationAI <a href="../Source_gameplay/jointcontrolledaircraft.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> viewRotationAI;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_zAxisFlightRotation" class="hidden"></a>zAxisFlightRotation <a href="../Source_gameplay/jointcontrolledaircraft.html#146" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">float</span> zAxisFlightRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Animation</h3>
+<h4><a name="_backAnimation" class="hidden"></a>backAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#38" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> backAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_blendTime" class="hidden"></a>blendTime <a href="../Source_gameplay/jointcontrolledaircraft.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">float</span> blendTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_downAnimation" class="hidden"></a>downAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> downAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forwardAnimation" class="hidden"></a>forwardAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> forwardAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gearTraceLength" class="hidden"></a>gearTraceLength <a href="../Source_gameplay/jointcontrolledaircraft.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">float</span> gearTraceLength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gearUpAnimation" class="hidden"></a>gearUpAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#42" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> gearUpAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gearUpBlendTime" class="hidden"></a>gearUpBlendTime <a href="../Source_gameplay/jointcontrolledaircraft.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">float</span> gearUpBlendTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_idleAnimation" class="hidden"></a>idleAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> idleAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftAnimation" class="hidden"></a>leftAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> leftAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightAnimation" class="hidden"></a>rightAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> rightAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_spawningAnimation" class="hidden"></a>spawningAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> spawningAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_spawningBlendTime" class="hidden"></a>spawningBlendTime <a href="../Source_gameplay/jointcontrolledaircraft.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">float</span> spawningBlendTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_upAnimation" class="hidden"></a>upAnimation <a href="../Source_gameplay/jointcontrolledaircraft.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(Animation) <span class="source_type">name</span> upAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">JointControlledAircraft</h3>
+<h4><a name="_aheadDiveForceScale" class="hidden"></a>aheadDiveForceScale <a href="../Source_gameplay/jointcontrolledaircraft.html#62" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> aheadDiveForceScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_angularBankScale" class="hidden"></a>angularBankScale <a href="../Source_gameplay/jointcontrolledaircraft.html#76" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> angularBankScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_clientControlJointStrength" class="hidden"></a>clientControlJointStrength <a href="../Source_gameplay/jointcontrolledaircraft.html#65" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> clientControlJointStrength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_clientDriverControlJointStrength" class="hidden"></a>clientDriverControlJointStrength <a href="../Source_gameplay/jointcontrolledaircraft.html#67" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> clientDriverControlJointStrength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_coastingCounterGravityForceScale" class="hidden"></a>coastingCounterGravityForceScale <a href="../Source_gameplay/jointcontrolledaircraft.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> coastingCounterGravityForceScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_coastingDamping" class="hidden"></a>coastingDamping <a href="../Source_gameplay/jointcontrolledaircraft.html#74" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> coastingDamping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_constrainAircraftPitch" class="hidden"></a>constrainAircraftPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#137" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">bool</span> constrainAircraftPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_controlJointStrength" class="hidden"></a>controlJointStrength <a href="../Source_gameplay/jointcontrolledaircraft.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> controlJointStrength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_counterGravityForceScale" class="hidden"></a>counterGravityForceScale <a href="../Source_gameplay/jointcontrolledaircraft.html#106" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> counterGravityForceScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_diveCombinedReduction" class="hidden"></a>diveCombinedReduction <a href="../Source_gameplay/jointcontrolledaircraft.html#59" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> diveCombinedReduction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_diveCounterGravityForceScale" class="hidden"></a>diveCounterGravityForceScale <a href="../Source_gameplay/jointcontrolledaircraft.html#71" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> diveCounterGravityForceScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_diveThrustForce" class="hidden"></a>diveThrustForce <a href="../Source_gameplay/jointcontrolledaircraft.html#58" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> diveThrustForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_downDiveForceScale" class="hidden"></a>downDiveForceScale <a href="../Source_gameplay/jointcontrolledaircraft.html#61" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> downDiveForceScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_flightControlDamping" class="hidden"></a>flightControlDamping <a href="../Source_gameplay/jointcontrolledaircraft.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> flightControlDamping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_flightRotationEffectMagnitude" class="hidden"></a>flightRotationEffectMagnitude <a href="../Source_gameplay/jointcontrolledaircraft.html#83" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> flightRotationEffectMagnitude;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forceScale" class="hidden"></a>forceScale <a href="../Source_gameplay/jointcontrolledaircraft.html#63" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> forceScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forwardCombinedReduction" class="hidden"></a>forwardCombinedReduction <a href="../Source_gameplay/jointcontrolledaircraft.html#57" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> forwardCombinedReduction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forwardForce" class="hidden"></a>forwardForce <a href="../Source_gameplay/jointcontrolledaircraft.html#52" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> forwardForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forwardThrustForce" class="hidden"></a>forwardThrustForce <a href="../Source_gameplay/jointcontrolledaircraft.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> forwardThrustForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hardAircraftPitchRange" class="hidden"></a>hardAircraftPitchRange <a href="../Source_gameplay/jointcontrolledaircraft.html#143" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> hardAircraftPitchRange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hardConstrainAircraftPitch" class="hidden"></a>hardConstrainAircraftPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#142" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">bool</span> hardConstrainAircraftPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_linearBankScale" class="hidden"></a>linearBankScale <a href="../Source_gameplay/jointcontrolledaircraft.html#77" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> linearBankScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maximumAircraftPitch" class="hidden"></a>maximumAircraftPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#139" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> maximumAircraftPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_minimumAircraftPitch" class="hidden"></a>minimumAircraftPitch <a href="../Source_gameplay/jointcontrolledaircraft.html#138" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> minimumAircraftPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_reverseForce" class="hidden"></a>reverseForce <a href="../Source_gameplay/jointcontrolledaircraft.html#54" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> reverseForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_reverseThrustForce" class="hidden"></a>reverseThrustForce <a href="../Source_gameplay/jointcontrolledaircraft.html#55" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> reverseThrustForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeCombinedReduction" class="hidden"></a>strafeCombinedReduction <a href="../Source_gameplay/jointcontrolledaircraft.html#56" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> strafeCombinedReduction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeForce" class="hidden"></a>strafeForce <a href="../Source_gameplay/jointcontrolledaircraft.html#50" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> strafeForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_strafeThrustForce" class="hidden"></a>strafeThrustForce <a href="../Source_gameplay/jointcontrolledaircraft.html#49" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> strafeThrustForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_thrustCombinedReduction" class="hidden"></a>thrustCombinedReduction <a href="../Source_gameplay/jointcontrolledaircraft.html#60" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> thrustCombinedReduction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_upThrustForce" class="hidden"></a>upThrustForce <a href="../Source_gameplay/jointcontrolledaircraft.html#53" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html" class="source">JointControlledAircraft</a></span>) <span class="source_type">float</span> upThrustForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AccelerationEffectStateEnum" class="hidden"></a>AccelerationEffectStateEnum <a href="../Source_gameplay/jointcontrolledaircraft.html#87" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html#AccelerationEffectStateEnum" class="source">AccelerationEffectStateEnum</a></span><br />
+{<blockquote>AES_ACCELERATING,
+AES_DECELERATING,
+AES_NONE</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AircraftState" class="hidden"></a>AircraftState <a href="../Source_gameplay/jointcontrolledaircraft.html#119" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/jointcontrolledaircraft.html#AircraftState" class="source">AircraftState</a></span><br />
+{<blockquote>var <span class="source_type">int</span> flightAngles;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">position</span>;<br />
+var <span class="source_type">bool</span> serverDiving;<br />
+var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>.EDigitalAxisInput serverStrafe;<br />
+var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>.EDigitalAxisInput serverThrottle;<br />
+var <span class="source_type">bool</span> serverThrusting;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> velocity;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_applyOutput-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> applyOutput <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#300" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  applyOutput ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_calculateOutputControlForce-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> calculateOutputControlForce <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#161" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> calculateOutputControlForce ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> referenceRotation, <span class="source_type">float</span> currentThrottleInput, <span class="source_type">float</span> currentStrafeInput,
+		<span class="source_type">float</span> currentThrustInput, <span class="source_type">bool</span> currentDiveInput )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_clientDriverLeave-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> clientDriverLeave <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#526" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  clientDriverLeave ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">c</span>, <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> oldDriver) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_clientOccupantEnter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> clientOccupantEnter <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#515" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  clientOccupantEnter ( <span class="source_type"><a href="../gameplay/vehicle.html#ClientOccupantEnterData" class="source">ClientOccupantEnterData</a></span> data) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Destroyed <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#554" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getControlJointAttachLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getControlJointAttachLocation <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#324" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> getControlJointAttachLocation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getViewRotation <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#184" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> getViewRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialiseEffects-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> initialiseEffects <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#465" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  initialiseEffects ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isEffectCauserActive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isEffectCauserActive <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#474" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> isEffectCauserActive ( <span class="source_type">int</span> effectCauserIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_needToPushStateToClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> needToPushStateToClient <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#271" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> needToPushStateToClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_postNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> postNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#177" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  postNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_processInput-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> processInput <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#248" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  processInput ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pushStateToClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> pushStateToClient <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#276" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  pushStateToClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setCounterGravityForceScale-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setCounterGravityForceScale <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#169" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  setCounterGravityForceScale ( <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">scale</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setFlightControlStrength-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setFlightControlStrength <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#167" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  setFlightControlStrength ( <span class="source_type">float</span> strength )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setFlightForce-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setFlightForce <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#164" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  setFlightForce ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> force )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setFlightRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setFlightRotation <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#165" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  setFlightRotation ( <span class="source_type">int</span> yawAngle, <span class="source_type">int</span> pitchAngle )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setViewRotation <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#192" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setViewRotation ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">r</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_specialCalcViewProcessing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> specialCalcViewProcessing <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#564" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> specialCalcViewProcessing ( out <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> viewActor, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> cameraLocation,
+		out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">cameraRotation</span>, <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#572" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateCameraRotation-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> updateCameraRotation <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#197" class="small">Source code</a></h4>
+<div class="declaration">simulated event  updateCameraRotation ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateEffectsStates-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateEffectsStates <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#362" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  updateEffectsStates ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VehicleStateReceived-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> VehicleStateReceived <span class="function_state"></span> <a href="../Source_gameplay/jointcontrolledaircraft.html#329" class="small">Source code</a></h4>
+<div class="declaration">simulated event  VehicleStateReceived ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	AirSpeed = <span class="source_int">5000</span>
+
+	Health=<span class="source_int">800</span>
+
+	strafeThrustForce = <span class="source_int">50</span>
+	strafeForce = <span class="source_int">25</span>
+	forwardThrustForce = <span class="source_int">50</span>
+	forwardForce = <span class="source_int">25</span>
+	upThrustForce = <span class="source_int">50</span>
+	reverseForce = <span class="source_int">15</span>
+	reverseThrustForce = <span class="source_int">25</span>
+	strafeCombinedReduction = <span class="source_int">0.5</span>
+	forwardCombinedReduction = <span class="source_int">0.5</span>
+	diveThrustForce = <span class="source_int">50</span>
+	diveCombinedReduction = <span class="source_int">0.5</span>
+	thrustCombinedReduction = <span class="source_int">0.5</span>
+
+	thrustingEffectState = false
+	accelerationEffectState = AES_NONE
+
+	divingForceApplied = false
+
+	downDiveForceScale=<span class="source_int">1.2</span>
+	aheadDiveForceScale=<span class="source_int">0.2</span>
+
+	navigationMaximumPitch = <span class="source_int">7000</span>
+	navigationMinimumPitch = -<span class="source_int">8000</span>
+	navigationTurnRate = <span class="source_int">4000</span>
+	rotateMinimumPitch = -<span class="source_int">10000</span>
+	rotateMaximumPitch = <span class="source_int">10000</span>
+	thrustThresholdPitch = <span class="source_int">500</span>
+
+	Physics = PHYS_Havok
+
+	forceScale = <span class="source_int">250</span>
+
+	clientControlJointStrength = <span class="source_int">1</span>
+	clientDriverControlJointStrength = <span class="source_int">1.5</span>
+	controlJointStrength = <span class="source_int">2.5</span>
+
+	counterGravityForceScale = <span class="source_int">0.5</span>
+	coastingCounterGravityForceScale = <span class="source_int">0.2</span>
+	diveCounterGravityForceScale = <span class="source_int">0</span>
+
+	flightControlDamping = <span class="source_int">0.25</span>
+
+	blendTime = <span class="source_int">0.2</span>
+
+	bPhysicsAnimUpdate = true
+
+	spawningBlendTime = <span class="source_int">0.6</span>
+
+	gearUpBlendTime = <span class="source_int">1.2</span>
+
+	angularBankScale = <span class="source_int">0.35</span>
+	linearBankScale = <span class="source_int">0.4</span>
+
+	gearTraceLength = <span class="source_int">600</span>
+
+	flightRotationEffectMagnitude = <span class="source_int">650</span>
+
+	coastingDamping = <span class="source_int">0.4</span>
+
+	throttleScale = <span class="source_int">0.0005</span>
+
+	hardConstrainAircraftPitch = true
+	hardAircraftPitchRange = <span class="source_int">22500</span>
+
+	currentDesiredHavokState=(ignoreRotation=true)
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/jointcontrolledaircraft.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#JointControlledAircraft">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/jetpackpickup.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/key.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:31.542 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

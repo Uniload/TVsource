@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.DynamicObject</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/dynamicobject.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#DynamicObject">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/doorsensor.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/emergencyspawnpoint.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/dynamicobject.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.DynamicObject</h1>
+
+<dl>
+
+<dt>Modifiers</dt><dd>native placeable </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/dynamicobject.html">DynamicObject</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FadeOutAlpha" name="FadeOutAlpha" title="go to the details">FadeOutAlpha</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FadeOutLength" name="FadeOutLength" title="go to the details">FadeOutLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FadeOutTime" name="FadeOutTime" title="go to the details">FadeOutTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_FadingOut" name="FadingOut" title="go to the details">FadingOut</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_NextVersionCalled" name="NextVersionCalled" title="go to the details">NextVersionCalled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_NextVersionPending" name="NextVersionPending" title="go to the details">NextVersionPending</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/colormodifier.html">ColorModifier</a>&gt;</td><td width="66%"><a href="#_Style" name="Style" title="go to the details">Style</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_StyleCreated" name="StyleCreated" title="go to the details">StyleCreated</a></td></tr>
+<tr><th colspan="2" class="small">DynamicObject</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AngularDamping" name="AngularDamping" title="go to the details">AngularDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Blocking" name="Blocking" title="go to the details">Blocking</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;class&lt;<a href="../physics/dynamicobject.html">DynamicObject</a>&gt;&gt;</td><td width="66%"><a href="#_Children" name="Children" title="go to the details">Children</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Elasticity" name="Elasticity" title="go to the details">Elasticity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Enabled" name="Enabled" title="go to the details">Enabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Explosion" name="Explosion" title="go to the details">Explosion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ExplosionForce" name="ExplosionForce" title="go to the details">ExplosionForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;class&lt;<a href="../gameplay/explosion.html">Explosion</a>&gt;&gt;</td><td width="66%"><a href="#_Explosions" name="Explosions" title="go to the details">Explosions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_FadeOut" name="FadeOut" title="go to the details">FadeOut</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Freeze" name="Freeze" title="go to the details">Freeze</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_friction" name="friction" title="go to the details">friction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Health" name="Health" title="go to the details">Health</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Invulnerable" name="Invulnerable" title="go to the details">Invulnerable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Lifetime" name="Lifetime" title="go to the details">Lifetime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_LimitedLife" name="LimitedLife" title="go to the details">LimitedLife</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LinearDamping" name="LinearDamping" title="go to the details">LinearDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Mass" name="Mass" title="go to the details">Mass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Shadows" name="Shadows" title="go to the details">Shadows</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Stationary" name="Stationary" title="go to the details">Stationary</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Volatile" name="Volatile" title="go to the details">Volatile</a></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EScalabilitySetting" name="EScalabilitySetting" title="go to the details">EScalabilitySetting</a><br /><span class="small">DS_NoDynamics,
+DS_Full,
+</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Construct-" name="Construct" title="go to the details">Construct</a> (<a href="../engine/actor.html">actor</a> Owner, optional optional name Tag, optional <a href="../core/object.html#Vector">vector</a> Location, optional <a href="../core/object.html#Rotator">rotator</a> Rotation, optional float Scale))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateAlphaStyle-" name="CreateAlphaStyle" title="go to the details">CreateAlphaStyle</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Died-" name="Died" title="go to the details">Died</a> (<a href="../engine/controller.html">Controller</a> Killer, class&lt;<a href="../engine/damagetype.html">DamageType</a>&gt; damageType, <a href="../core/object.html#Vector">vector</a> HitLocation))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Explode-" name="Explode" title="go to the details">Explode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetChildSocketName-" name="GetChildSocketName" title="go to the details">GetChildSocketName</a> (int Index, out String Name)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetExplosionSocketName-" name="GetExplosionSocketName" title="go to the details">GetExplosionSocketName</a> (int Index, out String Name)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/dynamicobject.html#EScalabilitySetting">EScalabilitySetting</a>&nbsp;</td><td><a href="#_GetScalabilitySetting-" name="GetScalabilitySetting" title="go to the details">GetScalabilitySetting</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Initialize-" name="Initialize" title="go to the details">Initialize</a> (float Scale, StaticMesh Mesh)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadSkinsFromMaterials-" name="LoadSkinsFromMaterials" title="go to the details">LoadSkinsFromMaterials</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NextVersion-" name="NextVersion" title="go to the details">NextVersion</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostTakeDamage-" name="PostTakeDamage" title="go to the details">PostTakeDamage</a> (float Damage, <a href="../engine/pawn.html">Pawn</a> EventInstigator, <a href="../core/object.html#Vector">vector</a> HitLocation, <a href="../core/object.html#Vector">vector</a> Momentum, class&lt;<a href="../engine/damagetype.html">DamageType</a>&gt; DamageType, optional float projectileFactor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PreBeginPlay-" name="PreBeginPlay" title="go to the details">PreBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PrecacheDynamicObjectRenderData-" name="PrecacheDynamicObjectRenderData" title="go to the details">PrecacheDynamicObjectRenderData</a> (<a href="../engine/levelinfo.html">LevelInfo</a> Level, class&lt;<a href="../physics/dynamicobject.html">DynamicObject</a>&gt; DynClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Remove-" name="Remove" title="go to the details">Remove</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetAlpha-" name="SetAlpha" title="go to the details">SetAlpha</a> (byte Amount))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setNativeActorData-" name="setNativeActorData" title="go to the details">setNativeActorData</a> (float Scale)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_ShouldProjectileHit-" name="ShouldProjectileHit" title="go to the details">ShouldProjectileHit</a> (<a href="../engine/actor.html">Actor</a> projInstigator))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpawnChild-" name="SpawnChild" title="go to the details">SpawnChild</a> (int Index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpawnChildren-" name="SpawnChildren" title="go to the details">SpawnChildren</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartFadeOut-" name="StartFadeOut" title="go to the details">StartFadeOut</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float DeltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Trigger-" name="Trigger" title="go to the details">Trigger</a> (<a href="../engine/actor.html">Actor</a> Other, <a href="../engine/pawn.html">Pawn</a> EventInstigator))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_unifiedAddForce-" name="unifiedAddForce" title="go to the details">unifiedAddForce</a> (<a href="../core/object.html#Vector">Vector</a> force))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_unifiedAddForceAtPosition-" name="unifiedAddForceAtPosition" title="go to the details">unifiedAddForceAtPosition</a> (<a href="../core/object.html#Vector">Vector</a> force, <a href="../core/object.html#Vector">Vector</a> position))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_unifiedAddImpulse-" name="unifiedAddImpulse" title="go to the details">unifiedAddImpulse</a> (<a href="../core/object.html#Vector">Vector</a> impulse))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_unifiedAddImpulseAtPosition-" name="unifiedAddImpulseAtPosition" title="go to the details">unifiedAddImpulseAtPosition</a> (<a href="../core/object.html#Vector">Vector</a> impulse, <a href="../core/object.html#Vector">Vector</a> position))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_unifiedAddTorque-" name="unifiedAddTorque" title="go to the details">unifiedAddTorque</a> (<a href="../core/object.html#Vector">Vector</a> torque))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdatePrecacheRenderData-" name="UpdatePrecacheRenderData" title="go to the details">UpdatePrecacheRenderData</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_FadeOutAlpha" class="hidden"></a>FadeOutAlpha <a href="../Source_gameplay/dynamicobject.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FadeOutAlpha;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FadeOutLength" class="hidden"></a>FadeOutLength <a href="../Source_gameplay/dynamicobject.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FadeOutLength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FadeOutTime" class="hidden"></a>FadeOutTime <a href="../Source_gameplay/dynamicobject.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FadeOutTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FadingOut" class="hidden"></a>FadingOut <a href="../Source_gameplay/dynamicobject.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> FadingOut;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextVersionCalled" class="hidden"></a>NextVersionCalled <a href="../Source_gameplay/dynamicobject.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> NextVersionCalled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextVersionPending" class="hidden"></a>NextVersionPending <a href="../Source_gameplay/dynamicobject.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> NextVersionPending;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Style" class="hidden"></a>Style <a href="../Source_gameplay/dynamicobject.html#43" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/colormodifier.html" class="source">ColorModifier</a></span>&gt; Style;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StyleCreated" class="hidden"></a>StyleCreated <a href="../Source_gameplay/dynamicobject.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> StyleCreated;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">DynamicObject</h3>
+<h4><a name="_AngularDamping" class="hidden"></a>AngularDamping <a href="../Source_gameplay/dynamicobject.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> AngularDamping;</div>
+<blockquote class="comment">
+Angular Damping [0,1] 0 = no damping
+</blockquote>
+<hr class="small" />
+<h4><a name="_Blocking" class="hidden"></a>Blocking <a href="../Source_gameplay/dynamicobject.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> Blocking;</div>
+<blockquote class="comment">
+Blocks players and collide with other objects
+</blockquote>
+<hr class="small" />
+<h4><a name="_Children" class="hidden"></a>Children <a href="../Source_gameplay/dynamicobject.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>&gt;&gt; Children;</div>
+<blockquote class="comment">
+Child objects spawned when this object is destroyed
+</blockquote>
+<hr class="small" />
+<h4><a name="_Elasticity" class="hidden"></a>Elasticity <a href="../Source_gameplay/dynamicobject.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> Elasticity;</div>
+<blockquote class="comment">
+The elasticity [0,1]
+</blockquote>
+<hr class="small" />
+<h4><a name="_Enabled" class="hidden"></a>Enabled <a href="../Source_gameplay/dynamicobject.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> Enabled;</div>
+<blockquote class="comment">
+Start enabled in physics right away
+</blockquote>
+<hr class="small" />
+<h4><a name="_Explosion" class="hidden"></a>Explosion <a href="../Source_gameplay/dynamicobject.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> <span class="source_type"><a href="../gameplay/explosion.html" class="source">Explosion</a></span>;</div>
+<blockquote class="comment">
+Launch child objects with initial explosion (true/false)
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExplosionForce" class="hidden"></a>ExplosionForce <a href="../Source_gameplay/dynamicobject.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> ExplosionForce;</div>
+<blockquote class="comment">
+Force applied to child objects when this object is destroyed
+</blockquote>
+<hr class="small" />
+<h4><a name="_Explosions" class="hidden"></a>Explosions <a href="../Source_gameplay/dynamicobject.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/explosion.html" class="source">Explosion</a></span>&gt;&gt; Explosions;</div>
+<blockquote class="comment">
+Explosion objects spawned when this object is destroyed
+</blockquote>
+<hr class="small" />
+<h4><a name="_FadeOut" class="hidden"></a>FadeOut <a href="../Source_gameplay/dynamicobject.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> FadeOut;</div>
+<blockquote class="comment">
+Fadeout object when destroyed (requires material to be setup correctly)
+</blockquote>
+<hr class="small" />
+<h4><a name="_Freeze" class="hidden"></a>Freeze <a href="../Source_gameplay/dynamicobject.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> Freeze;</div>
+<blockquote class="comment">
+Child objects all freeze immediately on spawning (useful for art testing)
+</blockquote>
+<hr class="small" />
+<h4><a name="_friction" class="hidden"></a>friction <a href="../Source_gameplay/dynamicobject.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> friction;</div>
+<blockquote class="comment">
+The amount of friction [0,1]
+</blockquote>
+<hr class="small" />
+<h4><a name="_Health" class="hidden"></a>Health <a href="../Source_gameplay/dynamicobject.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> Health;</div>
+<blockquote class="comment">
+The amount of health in the object
+</blockquote>
+<hr class="small" />
+<h4><a name="_Invulnerable" class="hidden"></a>Invulnerable <a href="../Source_gameplay/dynamicobject.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> Invulnerable;</div>
+<blockquote class="comment">
+Object will be invulnerable to weapon attacks
+</blockquote>
+<hr class="small" />
+<h4><a name="_Lifetime" class="hidden"></a>Lifetime <a href="../Source_gameplay/dynamicobject.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> Lifetime;</div>
+<blockquote class="comment">
+Object will only appear in the world for this long before fading out
+</blockquote>
+<hr class="small" />
+<h4><a name="_LimitedLife" class="hidden"></a>LimitedLife <a href="../Source_gameplay/dynamicobject.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> LimitedLife;</div>
+<blockquote class="comment">
+If true, object will only hang around for Lifetime amount of time after spawning
+</blockquote>
+<hr class="small" />
+<h4><a name="_LinearDamping" class="hidden"></a>LinearDamping <a href="../Source_gameplay/dynamicobject.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> LinearDamping;</div>
+<blockquote class="comment">
+Linear Damping [0,1] 0 = no damping
+</blockquote>
+<hr class="small" />
+<h4><a name="_Mass" class="hidden"></a>Mass <a href="../Source_gameplay/dynamicobject.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">float</span> Mass;</div>
+<blockquote class="comment">
+The mass of the object (kg)
+</blockquote>
+<hr class="small" />
+<h4><a name="_Shadows" class="hidden"></a>Shadows <a href="../Source_gameplay/dynamicobject.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> Shadows;</div>
+<blockquote class="comment">
+Use projected shadows with this object (expensive)
+</blockquote>
+<hr class="small" />
+<h4><a name="_Stationary" class="hidden"></a>Stationary <a href="../Source_gameplay/dynamicobject.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> Stationary;</div>
+<blockquote class="comment">
+The object is stationary and cannot move
+</blockquote>
+<hr class="small" />
+<h4><a name="_Volatile" class="hidden"></a>Volatile <a href="../Source_gameplay/dynamicobject.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>) <span class="source_type">bool</span> Volatile;</div>
+<blockquote class="comment">
+Object will explode immediately on collision or when hit with a weapon
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EScalabilitySetting" class="hidden"></a>EScalabilitySetting <a href="../Source_gameplay/dynamicobject.html#55" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/dynamicobject.html#EScalabilitySetting" class="source">EScalabilitySetting</a></span><br />
+{<blockquote>DS_NoDynamics,
+DS_Full,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Construct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Construct <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#61" class="small">Source code</a></h4>
+<div class="declaration">overloaded <span class="source_type">function</span>  Construct ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Owner</span>, optional optional <span class="source_type">name</span> Tag, 
+				               optional <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Location, optional <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> Rotation, optional <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateAlphaStyle-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateAlphaStyle <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#340" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CreateAlphaStyle ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Died-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Died <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#291" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Died ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitLocation) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Explode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Explode <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#192" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Explode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetChildSocketName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetChildSocketName <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#419" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  GetChildSocketName ( <span class="source_type">int</span> Index, out <span class="source_type">String</span> <span class="source_type">Name</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExplosionSocketName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExplosionSocketName <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#420" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  GetExplosionSocketName ( <span class="source_type">int</span> Index, out <span class="source_type">String</span> <span class="source_type">Name</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetScalabilitySetting-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetScalabilitySetting <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#289" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/dynamicobject.html#EScalabilitySetting" class="source">EScalabilitySetting</a></span> GetScalabilitySetting (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Initialize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Initialize <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#418" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  Initialize ( <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>, <span class="source_type">StaticMesh</span> <span class="source_type">Mesh</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadSkinsFromMaterials-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadSkinsFromMaterials <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#417" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  LoadSkinsFromMaterials (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextVersion-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NextVersion <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#168" class="small">Source code</a></h4>
+<div class="declaration"> event  NextVersion ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostTakeDamage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostTakeDamage <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#305" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostTakeDamage ( <span class="source_type">float</span> Damage, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">EventInstigator</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitLocation, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Momentum, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>, optional <span class="source_type">float</span> projectileFactor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PreBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#73" class="small">Source code</a></h4>
+<div class="declaration"> event  PreBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrecacheDynamicObjectRenderData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PrecacheDynamicObjectRenderData <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#99" class="small">Source code</a></h4>
+<div class="declaration">static simulated <span class="source_type">function</span>  PrecacheDynamicObjectRenderData ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">Level</span>, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>&gt; DynClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Remove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Remove <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#216" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Remove ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAlpha-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetAlpha <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#368" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetAlpha ( <span class="source_type">byte</span> <span class="source_type">Amount</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setNativeActorData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setNativeActorData <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#71" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  setNativeActorData ( <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldProjectileHit-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ShouldProjectileHit <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#300" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> ShouldProjectileHit ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> projInstigator) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpawnChild-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpawnChild <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#237" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SpawnChild ( <span class="source_type">int</span> Index) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpawnChildren-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpawnChildren <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#228" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SpawnChildren ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartFadeOut-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartFadeOut <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#159" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  StartFadeOut ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Tick <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#123" class="small">Source code</a></h4>
+<div class="declaration"> event  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Trigger-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Trigger <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#151" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span> ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">EventInstigator</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unifiedAddForce-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> unifiedAddForce <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#396" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  unifiedAddForce ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> force) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unifiedAddForceAtPosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> unifiedAddForceAtPosition <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#403" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  unifiedAddForceAtPosition ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> force, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">position</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unifiedAddImpulse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> unifiedAddImpulse <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#382" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  unifiedAddImpulse ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> impulse) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unifiedAddImpulseAtPosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> unifiedAddImpulseAtPosition <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#389" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  unifiedAddImpulseAtPosition ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> impulse, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">position</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unifiedAddTorque-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> unifiedAddTorque <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#410" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  unifiedAddTorque ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> torque) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdatePrecacheRenderData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdatePrecacheRenderData <span class="function_state"></span> <a href="../Source_gameplay/dynamicobject.html#117" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  UpdatePrecacheRenderData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	
+
+	Health = <span class="source_int">100</span>
+	Mass = <span class="source_int">50</span>
+	Elasticity = <span class="source_int">0.3</span>
+	friction = <span class="source_int">0.8</span>
+	LinearDamping = <span class="source_int">0</span>
+	AngularDamping = <span class="source_int">0.05</span>
+
+	Invulnerable = false
+	Blocking = true
+	Stationary = false
+	Enabled = false
+	Shadows = true
+	Volatile = false
+	Freeze = false
+	FadeOut = false
+
+	<span class="source_type"><a href="../gameplay/explosion.html" class="source">Explosion</a></span> = true
+	ExplosionForce = <span class="source_int">10000</span>
+
+	LimitedLife = false
+	LifeTime = <span class="source_int">0</span>
+
+	
+
+	FadingOut = false
+	FadeOutAlpha = <span class="source_int">255</span>
+	FadeOutTime = <span class="source_int">0</span>
+	FadeOutLength = <span class="source_int">0.5</span>
+
+    
+
+    NextVersionPending = false
+	NextVersionCalled = false
+
+	
+	bAcceptsProjectors=false	
+
+    bNoDelete = false
+	bActorShadows = true
+	RemoteRole = ROLE_None
+	<span class="source_type">StaticMesh</span> = <span class="source_type">StaticMesh</span><span class="source_name">'PhysicsObjects.Cube'</span>
+
+	bNeedLifetimeEffectEvents = true
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/dynamicobject.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#DynamicObject">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/doorsensor.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/emergencyspawnpoint.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:29.433 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.Door</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/door.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Door">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/deployedturretsentryweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/doorsensor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/door.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.Door</h1>
+
+<dl>
+
+<dt>Modifiers</dt><dd>implements PathfindingObstacle </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/door.html">Door</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBumped" name="bBumped" title="go to the details">bBumped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanClose" name="bCanClose" title="go to the details">bCanClose</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bOldLocked" name="bOldLocked" title="go to the details">bOldLocked</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPowered" name="bPowered" title="go to the details">bPowered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUsesPower" name="bUsesPower" title="go to the details">bUsesPower</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bWasPowered" name="bWasPowered" title="go to the details">bWasPowered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/doorsensor.html">DoorSensor</a></td><td width="66%"><a href="#_doorSensor" name="doorSensor" title="go to the details">doorSensor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_unlockedMaterial" name="unlockedMaterial" title="go to the details">unlockedMaterial</a></td></tr>
+<tr><th colspan="2" class="small">Door</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocked" name="bLocked" title="go to the details">bLocked</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_lockedMaterial" name="lockedMaterial" title="go to the details">lockedMaterial</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_lockedMaterialIndex" name="lockedMaterialIndex" title="go to the details">lockedMaterialIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/baseinfo.html">BaseInfo</a></td><td width="66%"><a href="#_ownerBase" name="ownerBase" title="go to the details">ownerBase</a></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Bump-SensorControlled" name="Bump" title="go to the details">Bump</a> (actor Other ))<br /><span class="function_state">SensorControlled</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canBePassed-" name="canBePassed" title="go to the details">canBePassed</a> (name teamName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisableTrigger-SensorControlled" name="DisableTrigger" title="go to the details">DisableTrigger</a> ()<br /><span class="function_state">SensorControlled</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_displayActorLabel-" name="displayActorLabel" title="go to the details">displayActorLabel</a> (<a href="../engine/actor.html">Actor</a> t))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoOpen-" name="DoOpen" title="go to the details">DoOpen</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_enumBaseInfo-" name="enumBaseInfo" title="go to the details">enumBaseInfo</a> (<a href="../engine/levelinfo.html">Engine.LevelInfo</a> l, Array&lt;<a href="../gameplay/baseinfo.html">BaseInfo</a>&gt; a))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isPowered-" name="isPowered" title="go to the details">isPowered</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onLockedChange-" name="onLockedChange" title="go to the details">onLockedChange</a> (bool bVal))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>SensorControlled <a href="../Source_gameplay/door.html#130" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> SensorControlled <span class="us_keyw">extends</span> BumpOpenTimed</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Bump+SensorControlled">Bump</a>, <a href="#_DisableTrigger+SensorControlled">DisableTrigger</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bBumped" class="hidden"></a>bBumped <a href="../Source_gameplay/door.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bBumped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bCanClose" class="hidden"></a>bCanClose <a href="../Source_gameplay/door.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bCanClose;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bOldLocked" class="hidden"></a>bOldLocked <a href="../Source_gameplay/door.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bOldLocked;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPowered" class="hidden"></a>bPowered <a href="../Source_gameplay/door.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bPowered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUsesPower" class="hidden"></a>bUsesPower <a href="../Source_gameplay/door.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bUsesPower;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bWasPowered" class="hidden"></a>bWasPowered <a href="../Source_gameplay/door.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bWasPowered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_doorSensor" class="hidden"></a>doorSensor <a href="../Source_gameplay/door.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/doorsensor.html" class="source">DoorSensor</a></span> <span class="source_type"><a href="../gameplay/doorsensor.html" class="source">doorSensor</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unlockedMaterial" class="hidden"></a>unlockedMaterial <a href="../Source_gameplay/door.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> unlockedMaterial;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Door</h3>
+<h4><a name="_bLocked" class="hidden"></a>bLocked <a href="../Source_gameplay/door.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/door.html" class="source">Door</a></span>) <span class="source_type">bool</span> bLocked;</div>
+<blockquote class="comment">
+Whether the door is able to be opened or not
+</blockquote>
+<hr class="small" />
+<h4><a name="_lockedMaterial" class="hidden"></a>lockedMaterial <a href="../Source_gameplay/door.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/door.html" class="source">Door</a></span>) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> lockedMaterial;</div>
+<blockquote class="comment">
+The mesh's standard material defines the material displayed when the door is unlocked; use this variable to set the material displayed when the door is locked
+</blockquote>
+<hr class="small" />
+<h4><a name="_lockedMaterialIndex" class="hidden"></a>lockedMaterialIndex <a href="../Source_gameplay/door.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/door.html" class="source">Door</a></span>) <span class="source_type">int</span> lockedMaterialIndex;</div>
+<blockquote class="comment">
+The index of the material to change on the door when it is locked (typically 0)
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownerBase" class="hidden"></a>ownerBase <a href="../Source_gameplay/door.html#4" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/door.html" class="source">Door</a></span>) editdisplay ( displayActorLabel ) editcombotype ( enumBaseInfo ) <span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span> ownerBase;</div>
+<blockquote class="comment">
+baseInfo that this door belongs to
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Bump-SensorControlled" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Bump <span class="function_state">SensorControlled</span> <a href="../Source_gameplay/door.html#138" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Bump ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canBePassed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canBePassed <span class="function_state"></span> <a href="../Source_gameplay/door.html#157" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> canBePassed ( <span class="source_type">name</span> teamName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisableTrigger-SensorControlled" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisableTrigger <span class="function_state">SensorControlled</span> <a href="../Source_gameplay/door.html#134" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DisableTrigger (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_displayActorLabel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> displayActorLabel <span class="function_state"></span> <a href="../Source_gameplay/door.html#38" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> displayActorLabel ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> t) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoOpen-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoOpen <span class="function_state"></span> <a href="../Source_gameplay/door.html#104" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DoOpen ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_enumBaseInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> enumBaseInfo <span class="function_state"></span> <a href="../Source_gameplay/door.html#27" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  enumBaseInfo ( <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> l, Array&lt;<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span>&gt; a) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isPowered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isPowered <span class="function_state"></span> <a href="../Source_gameplay/door.html#67" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isPowered ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onLockedChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onLockedChange <span class="function_state"></span> <a href="../Source_gameplay/door.html#111" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onLockedChange ( <span class="source_type">bool</span> bVal) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/door.html#44" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_gameplay/door.html#82" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	MoverEncroachType		= ME_IgnoreWhenEncroach
+	InitialState			= SensorControlled
+
+	bProjTarget	= true
+	bUsesPower	= false
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/door.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Door">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/deployedturretsentryweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/doorsensor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:29.401 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

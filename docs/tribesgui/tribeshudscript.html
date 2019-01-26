@@ -1,0 +1,472 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.TribesHUDScript</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribeshudscript.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesHUDScript">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribeshud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribeshudscriptbase.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/tribeshudscript.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.TribesHUDScript</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tribesgui/tribeshudscriptbase.html">TribesHUDScriptBase</a></dd>
+<dt>Modifiers</dt><dd>native abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a>
+   |   
+   +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a>
+      |   
+      +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribeshudscriptbase.html">TribesHUDScriptBase</a>
+         |   
+         +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribeshudscript.html">TribesHUDScript</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tribesgui/tribesdebughudscript.html">TribesDebugHUDScript</a>, <a href="../tribesgui/tribeseditablehudscript.html">TribesEditableHUDScript</a>, <a href="../tribesgui/tribeshelphudscript.html">TribesHelpHUDScript</a>, <a href="../tribesgui/tribesspectatorhudscript.html">TribesSpectatorHUDScript</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudannouncermessagewindow.html">HUDAnnouncerMessageWindow</a></td><td width="66%"><a href="#_AnnouncementsWindow" name="AnnouncementsWindow" title="go to the details">AnnouncementsWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEventMessagesEnabled" name="bEventMessagesEnabled" title="go to the details">bEventMessagesEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsAnnouncmentsEnabled" name="bIsAnnouncmentsEnabled" title="go to the details">bIsAnnouncmentsEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsChatEnabled" name="bIsChatEnabled" title="go to the details">bIsChatEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsQuickChatEnabled" name="bIsQuickChatEnabled" title="go to the details">bIsQuickChatEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bOldQuickChat" name="bOldQuickChat" title="go to the details">bOldQuickChat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowScoreboard" name="bShowScoreboard" title="go to the details">bShowScoreboard</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudchatentry.html">HUDChatEntry</a></td><td width="66%"><a href="#_chatEntry" name="chatEntry" title="go to the details">chatEntry</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudcountdown.html">HUDCountDown</a></td><td width="66%"><a href="#_countDown" name="countDown" title="go to the details">countDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudeventmessagewindow.html">HUDEventMessageWindow</a></td><td width="66%"><a href="#_EventMessageWindow" name="EventMessageWindow" title="go to the details">EventMessageWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../tribesgui/hudelement.html">HUDElement</a>&gt;</td><td width="66%"><a href="#_keyEventReceptors" name="keyEventReceptors" title="go to the details">keyEventReceptors</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastMouseX" name="LastMouseX" title="go to the details">LastMouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastMouseY" name="LastMouseY" title="go to the details">LastMouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudcontainer.html">HUDContainer</a></td><td width="66%"><a href="#_messageContainer" name="messageContainer" title="go to the details">messageContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudmessagewindow.html">HUDMessageWindow</a></td><td width="66%"><a href="#_messageWindow" name="messageWindow" title="go to the details">messageWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../tribesgui/hudelement.html">HUDElement</a>&gt;</td><td width="66%"><a href="#_mouseEventReceptors" name="mouseEventReceptors" title="go to the details">mouseEventReceptors</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudquickchatmenu.html">HUDQuickChatMenu</a></td><td width="66%"><a href="#_quickChatMenu" name="quickChatMenu" title="go to the details">quickChatMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudcontainer.html">HUDContainer</a></td><td width="66%"><a href="#_quickChatMenuContainer" name="quickChatMenuContainer" title="go to the details">quickChatMenuContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/quickchatmenu.html">QuickChatMenu</a></td><td width="66%"><a href="#_rootQuickChatMenuObject" name="rootQuickChatMenuObject" title="go to the details">rootQuickChatMenuObject</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_rootQuickChatMenuObjectName" name="rootQuickChatMenuObjectName" title="go to the details">rootQuickChatMenuObjectName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudcontainer.html">HUDContainer</a></td><td width="66%"><a href="#_scoreboardGroup" name="scoreboardGroup" title="go to the details">scoreboardGroup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/labelelement.html">LabelElement</a></td><td width="66%"><a href="#_teamOneLabel" name="teamOneLabel" title="go to the details">teamOneLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/labelelement.html">LabelElement</a></td><td width="66%"><a href="#_teamOneScoreLabel" name="teamOneScoreLabel" title="go to the details">teamOneScoreLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/labelelement.html">LabelElement</a></td><td width="66%"><a href="#_teamTwoLabel" name="teamTwoLabel" title="go to the details">teamTwoLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/labelelement.html">LabelElement</a></td><td width="66%"><a href="#_teamTwoScoreLabel" name="teamTwoScoreLabel" title="go to the details">teamTwoScoreLabel</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribeshudscriptbase.html">TribesHUDScriptBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribeshudscriptbase.html#ExtensionSpecs">ExtensionSpecs</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudcontainer.html#children">children</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribeshudscriptbase.html">TribesHUDScriptBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribeshudscriptbase.html#HUDExtension">HUDExtension</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Construct-" name="Construct" title="go to the details">Construct</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ConstructBaseComponents-" name="ConstructBaseComponents" title="go to the details">ConstructBaseComponents</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoUpdate-" name="DoUpdate" title="go to the details">DoUpdate</a> (<a href="../engine/canvas.html">Canvas</a> canvas, float NewTimeSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyEvent-" name="KeyEvent" title="go to the details">KeyEvent</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> Key, <a href="../engine/interactions.html#EInputAction">EInputAction</a> Action, FLOAT Delta, HUDAction Response ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyType-" name="KeyType" title="go to the details">KeyType</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> Key, string Unicode, HUDAction Response ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PreShow-" name="PreShow" title="go to the details">PreShow</a> (<a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a> csc))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterKeyEventReceptor-" name="RegisterKeyEventReceptor" title="go to the details">RegisterKeyEventReceptor</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> element))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterMouseEventReceptor-" name="RegisterMouseEventReceptor" title="go to the details">RegisterMouseEventReceptor</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> element))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnRegisterKeyEventReceptor-" name="UnRegisterKeyEventReceptor" title="go to the details">UnRegisterKeyEventReceptor</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> element))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnRegisterMouseEventReceptor-" name="UnRegisterMouseEventReceptor" title="go to the details">UnRegisterMouseEventReceptor</a> (<a href="../tribesgui/hudelement.html">HUDElement</a> element))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateData-" name="UpdateData" title="go to the details">UpdateData</a> (<a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateScoreboard-" name="UpdateScoreboard" title="go to the details">UpdateScoreboard</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribeshudscriptbase.html">TribesHUDScriptBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribeshudscriptbase.html#Construct">Construct</a>, <a href="../tribesgui/tribeshudscriptbase.html#LoadExtensions">LoadExtensions</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudcontainer.html#AddClonedElement">AddClonedElement</a>, <a href="../tribesgui/hudcontainer.html#AddElement">AddElement</a>, <a href="../tribesgui/hudcontainer.html#AddExistingElement">AddExistingElement</a>, <a href="../tribesgui/hudcontainer.html#ElementAdded">ElementAdded</a>, <a href="../tribesgui/hudcontainer.html#ElementRemoved">ElementRemoved</a>, <a href="../tribesgui/hudcontainer.html#ForceNeedsLayout">ForceNeedsLayout</a>, <a href="../tribesgui/hudcontainer.html#HasElement">HasElement</a>, <a href="../tribesgui/hudcontainer.html#InitElementHeirachy">InitElementHeirachy</a>, <a href="../tribesgui/hudcontainer.html#RemoveAll">RemoveAll</a>, <a href="../tribesgui/hudcontainer.html#RemoveElementAt">RemoveElementAt</a>, <a href="../tribesgui/hudcontainer.html#SetAlpha">SetAlpha</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AnnouncementsWindow" class="hidden"></a>AnnouncementsWindow <a href="../Source_tribesgui/tribeshudscript.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudannouncermessagewindow.html" class="source">HUDAnnouncerMessageWindow</a></span> AnnouncementsWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bEventMessagesEnabled" class="hidden"></a>bEventMessagesEnabled <a href="../Source_tribesgui/tribeshudscript.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bEventMessagesEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsAnnouncmentsEnabled" class="hidden"></a>bIsAnnouncmentsEnabled <a href="../Source_tribesgui/tribeshudscript.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsAnnouncmentsEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsChatEnabled" class="hidden"></a>bIsChatEnabled <a href="../Source_tribesgui/tribeshudscript.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsChatEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsQuickChatEnabled" class="hidden"></a>bIsQuickChatEnabled <a href="../Source_tribesgui/tribeshudscript.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsQuickChatEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bOldQuickChat" class="hidden"></a>bOldQuickChat <a href="../Source_tribesgui/tribeshudscript.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bOldQuickChat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowScoreboard" class="hidden"></a>bShowScoreboard <a href="../Source_tribesgui/tribeshudscript.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShowScoreboard;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_chatEntry" class="hidden"></a>chatEntry <a href="../Source_tribesgui/tribeshudscript.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudchatentry.html" class="source">HUDChatEntry</a></span> chatEntry;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_countDown" class="hidden"></a>countDown <a href="../Source_tribesgui/tribeshudscript.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudcountdown.html" class="source">HUDCountDown</a></span> countDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EventMessageWindow" class="hidden"></a>EventMessageWindow <a href="../Source_tribesgui/tribeshudscript.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudeventmessagewindow.html" class="source">HUDEventMessageWindow</a></span> EventMessageWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_keyEventReceptors" class="hidden"></a>keyEventReceptors <a href="../Source_tribesgui/tribeshudscript.html#13" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>&gt; keyEventReceptors;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastMouseX" class="hidden"></a>LastMouseX <a href="../Source_tribesgui/tribeshudscript.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> LastMouseX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastMouseY" class="hidden"></a>LastMouseY <a href="../Source_tribesgui/tribeshudscript.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> LastMouseY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_messageContainer" class="hidden"></a>messageContainer <a href="../Source_tribesgui/tribeshudscript.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> messageContainer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_messageWindow" class="hidden"></a>messageWindow <a href="../Source_tribesgui/tribeshudscript.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudmessagewindow.html" class="source">HUDMessageWindow</a></span> messageWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_mouseEventReceptors" class="hidden"></a>mouseEventReceptors <a href="../Source_tribesgui/tribeshudscript.html#14" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>&gt; mouseEventReceptors;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_quickChatMenu" class="hidden"></a>quickChatMenu <a href="../Source_tribesgui/tribeshudscript.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudquickchatmenu.html" class="source">HUDQuickChatMenu</a></span> <span class="source_type"><a href="../gameplay/quickchatmenu.html" class="source">quickChatMenu</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_quickChatMenuContainer" class="hidden"></a>quickChatMenuContainer <a href="../Source_tribesgui/tribeshudscript.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> quickChatMenuContainer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rootQuickChatMenuObject" class="hidden"></a>rootQuickChatMenuObject <a href="../Source_tribesgui/tribeshudscript.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/quickchatmenu.html" class="source">QuickChatMenu</a></span> rootQuickChatMenuObject;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rootQuickChatMenuObjectName" class="hidden"></a>rootQuickChatMenuObjectName <a href="../Source_tribesgui/tribeshudscript.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> rootQuickChatMenuObjectName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_scoreboardGroup" class="hidden"></a>scoreboardGroup <a href="../Source_tribesgui/tribeshudscript.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> scoreboardGroup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_teamOneLabel" class="hidden"></a>teamOneLabel <a href="../Source_tribesgui/tribeshudscript.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamOneLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_teamOneScoreLabel" class="hidden"></a>teamOneScoreLabel <a href="../Source_tribesgui/tribeshudscript.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamOneScoreLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_teamTwoLabel" class="hidden"></a>teamTwoLabel <a href="../Source_tribesgui/tribeshudscript.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamTwoLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_teamTwoScoreLabel" class="hidden"></a>teamTwoScoreLabel <a href="../Source_tribesgui/tribeshudscript.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamTwoScoreLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Construct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Construct <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#44" class="small">Source code</a></h4>
+<div class="declaration">overloaded <span class="source_type">function</span>  Construct ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConstructBaseComponents-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConstructBaseComponents <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#58" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ConstructBaseComponents ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoUpdate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoUpdate <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#156" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DoUpdate ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>, <span class="source_type">float</span> NewTimeSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyEvent <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#243" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> KeyEvent ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span>, <span class="source_type"><a href="../tribesgui/hudaction.html" class="source">HUDAction</a></span> <span class="source_type">Response</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyType <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#230" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> KeyType ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">string</span> <span class="source_type">Unicode</span>, <span class="source_type"><a href="../tribesgui/hudaction.html" class="source">HUDAction</a></span> <span class="source_type">Response</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreShow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PreShow <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#51" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PreShow ( <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> csc) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterKeyEventReceptor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterKeyEventReceptor <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#210" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RegisterKeyEventReceptor ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> <span class="source_type">element</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterMouseEventReceptor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterMouseEventReceptor <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#191" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RegisterMouseEventReceptor ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> <span class="source_type">element</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnRegisterKeyEventReceptor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnRegisterKeyEventReceptor <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#215" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UnRegisterKeyEventReceptor ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> <span class="source_type">element</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnRegisterMouseEventReceptor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnRegisterMouseEventReceptor <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#196" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UnRegisterMouseEventReceptor ( <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span> <span class="source_type">element</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateData <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#101" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateData ( <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateScoreboard-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateScoreboard <span class="function_state"></span> <a href="../Source_tribesgui/tribeshudscript.html#124" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateScoreboard ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bIsChatEnabled = true
+	bIsQuickChatEnabled = true
+	bEventMessagesEnabled = true
+	bIsAnnouncmentsEnabled = true
+
+	bRelativePositioning = true
+	bShowScoreboard = true
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribeshudscript.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesHUDScript">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribeshud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribeshudscriptbase.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:36.271 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

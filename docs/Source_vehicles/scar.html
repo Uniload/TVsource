@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Vehicles.SCar</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../vehicles/vehicles-overview.html">Package</a></td>
+	<td class="header"><a href="../vehicles/scar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#SCar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_vehicles/lynx.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_vehicles/scopter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_vehicles/scar.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../vehicles/vehicles-overview.html">Vehicles</a>.<a href="../vehicles/scar.html">SCar</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../vehicles/scar.html" class="source">SCar</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/svehicle.html" class="source">SVehicle</a></span>
+<a name="2"></a>	abstract
+<a name="3"></a>	native;
+<a name="4"></a>
+<a name="5"></a><span class="source_comment">// #exec OBJ LOAD FILE=..\textures\InterfaceContent.utx
+</span><a name="6"></a>
+<a name="7"></a>
+<a name="8"></a>cpptext
+<a name="9"></a>{
+<a name="10"></a><span class="source_macro">#ifdef WITH_KARMA
+</span><a name="11"></a>	<span class="source_comment">// Actor interface.
+</span><a name="12"></a>	virtual UBOOL <span class="source_type">Tick</span>(<span class="source_type">FLOAT</span> <span class="source_type">DeltaTime</span>, enum ELevelTick TickType);
+<a name="13"></a>	virtual void PostNetReceive();
+<a name="14"></a>
+<a name="15"></a>	<span class="source_comment">// SVehicle interface.
+</span><a name="16"></a>	virtual void UpdateVehicle(<span class="source_type">FLOAT</span> <span class="source_type">DeltaTime</span>);
+<a name="17"></a>
+<a name="18"></a>	<span class="source_comment">// SCar interface.
+</span><a name="19"></a>	virtual void ProcessCarInput();
+<a name="20"></a>	virtual void ChangeGear(UBOOL bReverse);
+<a name="21"></a>	virtual void PackState();
+<a name="22"></a><span class="source_macro">#endif
+</span><a name="23"></a>}
+<a name="24"></a>
+<a name="25"></a><span class="source_comment">// wheel params
+</span><a name="26"></a>var()	<span class="source_type">float</span>			WheelSoftness;
+<a name="27"></a>var()	<span class="source_type">float</span>			WheelPenScale;
+<a name="28"></a>var()	<span class="source_type">float</span>			WheelRestitution;
+<a name="29"></a>var()	<span class="source_type">float</span>			WheelAdhesion;
+<a name="30"></a>var()	<span class="source_type">float</span>			WheelInertia;
+<a name="31"></a>var()	<span class="source_type"><a href="../core/object.html#InterpCurve" class="source">InterpCurve</a></span>		WheelLongFrictionFunc;
+<a name="32"></a>var()	<span class="source_type">float</span>			WheelLongSlip;
+<a name="33"></a>var()	<span class="source_type"><a href="../core/object.html#InterpCurve" class="source">InterpCurve</a></span>		WheelLatSlipFunc;
+<a name="34"></a>var()	<span class="source_type">float</span>			WheelLongFrictionScale;
+<a name="35"></a>var()	<span class="source_type">float</span>			WheelLatFrictionScale;
+<a name="36"></a>var()	<span class="source_type">float</span>			WheelHandbrakeSlip;
+<a name="37"></a>var()	<span class="source_type">float</span>			WheelHandbrakeFriction;
+<a name="38"></a>var()	<span class="source_type">float</span>			WheelSuspensionTravel;
+<a name="39"></a>var()	<span class="source_type">float</span>			WheelSuspensionOffset;
+<a name="40"></a>
+<a name="41"></a>var()	<span class="source_type">float</span>			FTScale;
+<a name="42"></a>var()	<span class="source_type">float</span>			ChassisTorqueScale;
+<a name="43"></a>var()	<span class="source_type">float</span>			MinBrakeFriction;
+<a name="44"></a>
+<a name="45"></a>var()	<span class="source_type">float</span>			MaxSteerAngle; <span class="source_comment">// degrees
+</span><a name="46"></a>var()	<span class="source_type"><a href="../core/object.html#InterpCurve" class="source">InterpCurve</a></span>		TorqueCurve; <span class="source_comment">// Engine output torque 
+</span><a name="47"></a>var()	<span class="source_type">float</span>			GearRatios[<span class="source_int">5</span>]; <span class="source_comment">// 0 is reverse, 1-4 are forward
+</span><a name="48"></a>var()	<span class="source_type">float</span>			TransRatio; <span class="source_comment">// Other (constant) gearing
+</span><a name="49"></a>var()	<span class="source_type">float</span>			ChangeUpPoint;
+<a name="50"></a>var()	<span class="source_type">float</span>			ChangeDownPoint;
+<a name="51"></a>var()	<span class="source_type">float</span>			LSDFactor;
+<a name="52"></a>
+<a name="53"></a>var()	<span class="source_type">float</span>			EngineBrakeFactor;
+<a name="54"></a>var()	<span class="source_type">float</span>			EngineBrakeRPMScale;
+<a name="55"></a>
+<a name="56"></a>var()	<span class="source_type">float</span>			MaxBrakeTorque;
+<a name="57"></a>var()	<span class="source_type">float</span>			SteerSpeed; <span class="source_comment">// degrees per second
+</span><a name="58"></a>
+<a name="59"></a>var()	<span class="source_type">float</span>			StopThreshold;
+<a name="60"></a>var()	<span class="source_type">float</span>			HandbrakeThresh;
+<a name="61"></a>
+<a name="62"></a>var()	<span class="source_type">float</span>			EngineInertia; <span class="source_comment">// Pre-gear box engine inertia (racing flywheel etc.)
+</span><a name="63"></a>
+<a name="64"></a>var()	<span class="source_type">float</span>			IdleRPM;
+<a name="65"></a>var()	<span class="source_type">sound</span>			IdleSound;
+<a name="66"></a>var()	<span class="source_type">float</span>			EngineRPMSoundRange;
+<a name="67"></a>
+<a name="68"></a>var()	<span class="source_type">name</span>			SteerBoneName;
+<a name="69"></a>var()	<span class="source_type"><a href="../core/object.html#EAxis" class="source">EAxis</a></span>			SteerBoneAxis;
+<a name="70"></a>var()	<span class="source_type">float</span>			SteerBoneMaxAngle; <span class="source_comment">// degrees
+</span><a name="71"></a>
+<a name="72"></a><span class="source_comment">// Internal
+</span><a name="73"></a>var		<span class="source_type">float</span>			OutputBrake;
+<a name="74"></a>var		<span class="source_type">float</span>			OutputGas;
+<a name="75"></a>var		<span class="source_type">bool</span>			OutputHandbrake;
+<a name="76"></a>var		<span class="source_type">int</span>				Gear;
+<a name="77"></a>
+<a name="78"></a>var		<span class="source_type">float</span>			ForwardVel;
+<a name="79"></a>var		<span class="source_type">bool</span>			bIsInverted;
+<a name="80"></a>var		<span class="source_type">bool</span>			bIsDriving;
+<a name="81"></a>var		<span class="source_type">float</span>			NumPoweredWheels;
+<a name="82"></a>
+<a name="83"></a>var		<span class="source_type">float</span>			TotalSpinVel;
+<a name="84"></a>var		<span class="source_type">float</span>			EngineRPM;
+<a name="85"></a>var		<span class="source_type">float</span>			CarMPH;
+<a name="86"></a>var		<span class="source_type">float</span>			ActualSteering;
+<a name="87"></a>
+<a name="88"></a><span class="source_comment">// Rev meter
+</span><a name="89"></a>var		<span class="source_type"><a href="../engine/material.html" class="source">material</a></span>		RevMeterMaterial;
+<a name="90"></a>var()	<span class="source_type">float</span>			RevMeterPosX;
+<a name="91"></a>var()	<span class="source_type">float</span>			RevMeterPosY;
+<a name="92"></a>var()	<span class="source_type">float</span>			RevMeterScale;
+<a name="93"></a>var()	<span class="source_type">float</span>			RevMeterSizeY;
+<a name="94"></a>
+<a name="95"></a>
+<a name="96"></a>struct native <span class="source_type"><a href="../vehicles/scar.html#SCarState" class="source">SCarState</a></span>
+<a name="97"></a>{
+<a name="98"></a>	var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span>				ChassisPosition;
+<a name="99"></a>	var <span class="source_type"><a href="../core/object.html#Quat" class="source">Quat</a></span>				ChassisQuaternion;
+<a name="100"></a>	var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span>				ChassisLinVel;
+<a name="101"></a>	var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span>				ChassisAngVel;
+<a name="102"></a>
+<a name="103"></a>	var <span class="source_type">float</span>				ServerHandbrake;
+<a name="104"></a>	var <span class="source_type">float</span>				ServerBrake;
+<a name="105"></a>	var <span class="source_type">float</span>				ServerGas;
+<a name="106"></a>	var <span class="source_type">int</span>					ServerGear;
+<a name="107"></a>	var	<span class="source_type">float</span>				ServerSteering;
+<a name="108"></a>
+<a name="109"></a>	var <span class="source_type">int</span>					bNewState; <span class="source_comment">// bools inside structs == scary!
+</span><a name="110"></a>};
+<a name="111"></a>
+<a name="112"></a>var		<span class="source_type"><a href="../vehicles/scar.html#SCarState" class="source">SCarState</a></span>			CarState;
+<a name="113"></a>var		<span class="source_type"><a href="../engine/actor.html#KRigidBodyState" class="source">KRigidBodyState</a></span>		ChassisState;
+<a name="114"></a>var		<span class="source_type">bool</span>				bNewCarState;
+<a name="115"></a>
+<a name="116"></a>replication
+<a name="117"></a>{
+<a name="118"></a>	unreliable if(Role == ROLE_Authority)
+<a name="119"></a>		CarState;
+<a name="120"></a>}
+<a name="121"></a><span class="source_comment">///////////////////////////////////////////
+</span><a name="122"></a><span class="source_comment">/////////////// CREATION //////////////////
+</span><a name="123"></a><span class="source_comment">///////////////////////////////////////////
+</span><a name="124"></a>
+<a name="125"></a>simulated <span class="source_type">function</span> PostNetBeginPlay()
+<a name="126"></a>{
+<a name="127"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="128"></a>
+<a name="129"></a>	<span class="source_comment">// Count the number of powered wheels on the car
+</span><a name="130"></a>	NumPoweredWheels = <span class="source_int">0.0</span>;
+<a name="131"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;Wheels.Length; <span class="source_type">i</span>++)
+<a name="132"></a>	{
+<a name="133"></a>		NumPoweredWheels += <span class="source_int">1.0</span>;
+<a name="134"></a>	}
+<a name="135"></a>
+<a name="136"></a>
+<a name="137"></a>    Super.PostNetBeginPlay();
+<a name="138"></a>}
+<a name="139"></a>
+<a name="140"></a>
+<a name="141"></a>
+<a name="142"></a><span class="source_comment">///////////////////////////////////////////
+</span><a name="143"></a><span class="source_comment">////////////////// OTHER //////////////////
+</span><a name="144"></a><span class="source_comment">///////////////////////////////////////////
+</span><a name="145"></a>
+<a name="146"></a>simulated event SVehicleUpdateParams()
+<a name="147"></a>{
+<a name="148"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="149"></a>
+<a name="150"></a>	Super.SVehicleUpdateParams();
+<a name="151"></a>
+<a name="152"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;Wheels.Length; <span class="source_type">i</span>++)
+<a name="153"></a>	{
+<a name="154"></a>		Wheels[<span class="source_type">i</span>].Softness = WheelSoftness;
+<a name="155"></a>		Wheels[<span class="source_type">i</span>].PenScale = WheelPenScale;
+<a name="156"></a>		Wheels[<span class="source_type">i</span>].Restitution = WheelRestitution;
+<a name="157"></a>		Wheels[<span class="source_type">i</span>].Adhesion = WheelAdhesion;
+<a name="158"></a>		Wheels[<span class="source_type">i</span>].WheelInertia = WheelInertia;
+<a name="159"></a>		Wheels[<span class="source_type">i</span>].LongFrictionFunc = WheelLongFrictionFunc;
+<a name="160"></a>		Wheels[<span class="source_type">i</span>].LongSlip = WheelLongSlip;
+<a name="161"></a>		Wheels[<span class="source_type">i</span>].LatSlipFunc = WheelLatSlipFunc;
+<a name="162"></a>		Wheels[<span class="source_type">i</span>].HandbrakeSlipFactor = WheelHandbrakeSlip;
+<a name="163"></a>		Wheels[<span class="source_type">i</span>].HandbrakeFrictionFactor = WheelHandbrakeFriction;
+<a name="164"></a>		Wheels[<span class="source_type">i</span>].SuspensionTravel = WheelSuspensionTravel;
+<a name="165"></a>		Wheels[<span class="source_type">i</span>].SuspensionOffset = WheelSuspensionOffset;
+<a name="166"></a>	}
+<a name="167"></a>}
+<a name="168"></a>
+<a name="169"></a><span class="source_type">function</span> DrawHUD(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>)
+<a name="170"></a>{
+<a name="171"></a>	local <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> WhiteColor;
+<a name="172"></a>	local <span class="source_type">float</span> XL, YL;
+<a name="173"></a>
+<a name="174"></a>	Super.DrawHUD(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>);
+<a name="175"></a>
+<a name="176"></a>	WhiteColor = <span class="source_type">class</span><span class="source_name">'Canvas'</span>.Static.MakeColor(<span class="source_int">255</span>,<span class="source_int">255</span>,<span class="source_int">255</span>);
+<a name="177"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawColor = WhiteColor;
+<a name="178"></a>
+<a name="179"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.Style = <span class="source_type"><a href="../engine/actor.html#ERenderStyle" class="source">ERenderStyle</a></span>.STY_Normal;
+<a name="180"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.StrLen(<span class="source_string">"TEST"</span>, XL, YL);
+<a name="181"></a>
+<a name="182"></a>	<span class="source_comment">// Draw rev meter
+</span><a name="183"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetPos(RevMeterPosX * <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.ClipX, RevMeterPosY * <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">ClipY</span>);
+<a name="184"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawTileStretched(RevMeterMaterial, ((IdleRPM+EngineRPM)/RevMeterScale) * <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.ClipX, RevMeterSizeY * <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">ClipY</span>);
+<a name="185"></a>
+<a name="186"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetPos( RevMeterPosX * <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.ClipX, (RevMeterSizeY + RevMeterPosY) * <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">ClipY</span> + YL );
+<a name="187"></a>    <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">Font</span> = <span class="source_type">class</span><span class="source_name">'HUD'</span>.Static.GetConsoleFont(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>);
+<a name="188"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawText(Gear@CarMPH@IdleRPM+EngineRPM);
+<a name="189"></a>}
+<a name="190"></a>
+<a name="191"></a>event KDriverEnter(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span>)
+<a name="192"></a>{
+<a name="193"></a>	Super.KDriverEnter(<span class="source_type">p</span>);
+<a name="194"></a>
+<a name="195"></a><span class="source_macro">#if !IG_DISABLE_UNREAL_ACTOR_SOUND_MANAGEMENT // ckline: use IG_EFFECTS system instead of old Unreal per-actor sound specifications
+</span><a name="196"></a>	<span class="source_type"><a href="../engine/ambientsound.html" class="source">AmbientSound</a></span> = IdleSound;
+<a name="197"></a><span class="source_macro">#endif
+</span><a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a>event <span class="source_type">bool</span> KDriverLeave(<span class="source_type">bool</span> bForceLeave)
+<a name="201"></a>{
+<a name="202"></a>	<span class="source_comment">// If we succesfully got out of the car, turn off the engine sound.
+</span><a name="203"></a>	if( Super.KDriverLeave(bForceLeave) )
+<a name="204"></a>	{
+<a name="205"></a><span class="source_macro">#if !IG_DISABLE_UNREAL_ACTOR_SOUND_MANAGEMENT // ckline: use IG_EFFECTS system instead of old Unreal per-actor sound specifications
+</span><a name="206"></a>		<span class="source_type"><a href="../engine/ambientsound.html" class="source">AmbientSound</a></span> = None;	
+<a name="207"></a><span class="source_macro">#endif
+</span><a name="208"></a>		return true;
+<a name="209"></a>	}
+<a name="210"></a>	else
+<a name="211"></a>		return false;
+<a name="212"></a>}
+<a name="213"></a>
+<a name="214"></a>
+<a name="215"></a>defaultproperties
+<a name="216"></a>{
+<a name="217"></a><span class="source_comment">//	bSpecialHUD=true
+</span><a name="218"></a>
+<a name="219"></a><span class="source_comment">//	RevMeterMaterial=Material'InterfaceContent.BorderBoxD'
+</span><a name="220"></a>	RevMeterPosX=<span class="source_int">0.01</span>
+<a name="221"></a>	RevMeterPosY=<span class="source_int">0.9</span>
+<a name="222"></a>	RevMeterScale=<span class="source_int">4000.0</span>
+<a name="223"></a>	RevMeterSizeY=<span class="source_int">0.05</span>
+<a name="224"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../vehicles/vehicles-overview.html">Package</a></td>
+	<td class="header"><a href="../vehicles/scar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#SCar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_vehicles/lynx.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_vehicles/scopter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:32.000 - Creation time: st 23.5.2018 00:10:46.836 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

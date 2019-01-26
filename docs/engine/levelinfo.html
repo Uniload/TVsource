@@ -1,0 +1,1402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Engine.LevelInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/levelinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#LevelInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/laddervolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/levelsummary.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/levelinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.LevelInfo</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/zoneinfo.html">ZoneInfo</a></dd>
+<dt>Modifiers</dt><dd>native nativereplication </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/zoneinfo.html">ZoneInfo</a>
+         |   
+         +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/levelinfo.html">LevelInfo</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tmod/clientreplication.html">clientReplication</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/tyrion_setup.html">Tyrion_Setup</a></td><td width="66%"><a href="#_AI_Setup" name="AI_Setup" title="go to the details">AI_Setup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAggressiveLOD" name="bAggressiveLOD" title="go to the details">bAggressiveLOD</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBegunPlay" name="bBegunPlay" title="go to the details">bBegunPlay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCapFramerate" name="bCapFramerate" title="go to the details">bCapFramerate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDropDetail" name="bDropDetail" title="go to the details">bDropDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGameStarted" name="bGameStarted" title="go to the details">bGameStarted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHasPathNodes" name="bHasPathNodes" title="go to the details">bHasPathNodes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsMojoPlaying" name="bIsMojoPlaying" title="go to the details">bIsMojoPlaying</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLevelChange" name="bLevelChange" title="go to the details">bLevelChange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLowSoundDetail" name="bLowSoundDetail" title="go to the details">bLowSoundDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNeverPrecache" name="bNeverPrecache" title="go to the details">bNeverPrecache</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNextItems" name="bNextItems" title="go to the details">bNextItems</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPathsRebuilt" name="bPathsRebuilt" title="go to the details">bPathsRebuilt</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPlayersOnly" name="bPlayersOnly" title="go to the details">bPlayersOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSkipMojoCutscenes" name="bSkipMojoCutscenes" title="go to the details">bSkipMojoCutscenes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStartup" name="bStartup" title="go to the details">bStartup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BuildVersion" name="BuildVersion" title="go to the details">BuildVersion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ComputerName" name="ComputerName" title="go to the details">ComputerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/controller.html">Controller</a></td><td width="66%"><a href="#_ControllerList" name="ControllerList" title="go to the details">ControllerList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html">Object</a></td><td width="66%"><a href="#_cutsceneManager" name="cutsceneManager" title="go to the details">cutsceneManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Day" name="Day" title="go to the details">Day</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_DayOfWeek" name="DayOfWeek" title="go to the details">DayOfWeek</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DecalStayScale" name="DecalStayScale" title="go to the details">DecalStayScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DefaultGravity" name="DefaultGravity" title="go to the details">DefaultGravity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">texture</a></td><td width="66%"><a href="#_DefaultTexture" name="DefaultTexture" title="go to the details">DefaultTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#EDetailMode">EDetailMode</a></td><td width="66%"><a href="#_DetailMode" name="DetailMode" title="go to the details">DetailMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/igeffectssystembase.html">IGEffectsSystemBase</a></td><td width="66%"><a href="#_EffectsSystem" name="EffectsSystem" title="go to the details">EffectsSystem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_EngineVersion" name="EngineVersion" title="go to the details">EngineVersion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/gameinfo.html">GameInfo</a></td><td width="66%"><a href="#_Game" name="Game" title="go to the details">Game</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/gamereplicationinfo.html">GameReplicationInfo</a></td><td width="66%"><a href="#_GRI" name="GRI" title="go to the details">GRI</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Hour" name="Hour" title="go to the details">Hour</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_HubStackLevel" name="HubStackLevel" title="go to the details">HubStackLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/actor.html">Actor</a>&gt;</td><td width="66%"><a href="#_InterestedActorsGameStarted" name="InterestedActorsGameStarted" title="go to the details">InterestedActorsGameStarted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">texture</a></td><td width="66%"><a href="#_LargeVertex" name="LargeVertex" title="go to the details">LargeVertex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/levelinfo.html#ELevelAction">ELevelAction</a></td><td width="66%"><a href="#_LevelAction" name="LevelAction" title="go to the details">LevelAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/playercontroller.html">PlayerController</a></td><td width="66%"><a href="#_LocalPlayerController" name="LocalPlayerController" title="go to the details">LocalPlayerController</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/messagedispatcher.html">MessageDispatcher</a></td><td width="66%"><a href="#_messageDispatcher" name="messageDispatcher" title="go to the details">messageDispatcher</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Millisecond" name="Millisecond" title="go to the details">Millisecond</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MinNetVersion" name="MinNetVersion" title="go to the details">MinNetVersion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Minute" name="Minute" title="go to the details">Minute</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MojoFileURL" name="MojoFileURL" title="go to the details">MojoFileURL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Month" name="Month" title="go to the details">Month</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MoveRepSize" name="MoveRepSize" title="go to the details">MoveRepSize</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/musicmanagerbase.html">MusicManagerBase</a></td><td width="66%"><a href="#_MusicMgr" name="MusicMgr" title="go to the details">MusicMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_NavigationPointList" name="NavigationPointList" title="go to the details">NavigationPointList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/levelinfo.html#ENetMode">ENetMode</a></td><td width="66%"><a href="#_NetMode" name="NetMode" title="go to the details">NetMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_NextSwitchCountdown" name="NextSwitchCountdown" title="go to the details">NextSwitchCountdown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NextURL" name="NextURL" title="go to the details">NextURL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/objectpool.html">ObjectPool</a></td><td width="66%"><a href="#_ObjectPool" name="ObjectPool" title="go to the details">ObjectPool</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PauseDelay" name="PauseDelay" title="go to the details">PauseDelay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a></td><td width="66%"><a href="#_Pauser" name="Pauser" title="go to the details">Pauser</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/pawn.html">Pawn</a></td><td width="66%"><a href="#_PawnList" name="PawnList" title="go to the details">PawnList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/levelinfo.html#EPlatform">EPlatform</a></td><td width="66%"><a href="#_Platform" name="Platform" title="go to the details">Platform</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/material.html">material</a>&gt;</td><td width="66%"><a href="#_PrecacheMaterials" name="PrecacheMaterials" title="go to the details">PrecacheMaterials</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;mesh&gt;</td><td width="66%"><a href="#_PrecacheMeshes" name="PrecacheMeshes" title="go to the details">PrecacheMeshes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;staticmesh&gt;</td><td width="66%"><a href="#_PrecacheStaticMeshes" name="PrecacheStaticMeshes" title="go to the details">PrecacheStaticMeshes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/playercontroller.html">PlayerController</a></td><td width="66%"><a href="#_ReplicationViewer" name="ReplicationViewer" title="go to the details">ReplicationViewer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_ReplicationViewTarget" name="ReplicationViewTarget" title="go to the details">ReplicationViewTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html">Object</a></td><td width="66%"><a href="#_savedCampaign" name="savedCampaign" title="go to the details">savedCampaign</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Second" name="Second" title="go to the details">Second</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_SelectedGroups" name="SelectedGroups" title="go to the details">SelectedGroups</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/speechmanager.html">SpeechManager</a></td><td width="66%"><a href="#_speechManager" name="speechManager" title="go to the details">speechManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/levelsummary.html">LevelSummary</a></td><td width="66%"><a href="#_Summary" name="Summary" title="go to the details">Summary</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/iinterestedteamchanged.html">IInterestedTeamChanged</a>&gt;</td><td width="66%"><a href="#_teamChangedListeners" name="teamChangedListeners" title="go to the details">teamChangedListeners</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TimeSeconds" name="TimeSeconds" title="go to the details">TimeSeconds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_VisibleGroups" name="VisibleGroups" title="go to the details">VisibleGroups</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">texture</a></td><td width="66%"><a href="#_WhiteSquareTexture" name="WhiteSquareTexture" title="go to the details">WhiteSquareTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">texture</a></td><td width="66%"><a href="#_WireframeTexture" name="WireframeTexture" title="go to the details">WireframeTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Year" name="Year" title="go to the details">Year</a></td></tr>
+<tr><th colspan="2" class="small">Audio</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MusicVolumeOverride" name="MusicVolumeOverride" title="go to the details">MusicVolumeOverride</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PlayerDoppler" name="PlayerDoppler" title="go to the details">PlayerDoppler</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Song" name="Song" title="go to the details">Song</a></td></tr>
+<tr><th colspan="2" class="small">Havok</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHavokDisabled" name="bHavokDisabled" title="go to the details">bHavokDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_HavokBroadPhaseDimension" name="HavokBroadPhaseDimension" title="go to the details">HavokBroadPhaseDimension</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_HavokMoppCodeFilename" name="HavokMoppCodeFilename" title="go to the details">HavokMoppCodeFilename</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HavokStepTimeQuantum" name="HavokStepTimeQuantum" title="go to the details">HavokStepTimeQuantum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_vehicleCeilingEnabled" name="vehicleCeilingEnabled" title="go to the details">vehicleCeilingEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_vehicleCeilingHeight" name="vehicleCeilingHeight" title="go to the details">vehicleCeilingHeight</a></td></tr>
+<tr><th colspan="2" class="small">Karma</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bKStaticFriction" name="bKStaticFriction" title="go to the details">bKStaticFriction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_KarmaGravScale" name="KarmaGravScale" title="go to the details">KarmaGravScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_KarmaTimeScale" name="KarmaTimeScale" title="go to the details">KarmaTimeScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxRagdolls" name="MaxRagdolls" title="go to the details">MaxRagdolls</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RagdollTimeScale" name="RagdollTimeScale" title="go to the details">RagdollTimeScale</a></td></tr>
+<tr><th colspan="2" class="small">LevelInfo</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bKNoInit" name="bKNoInit" title="go to the details">bKNoInit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLonePlayer" name="bLonePlayer" title="go to the details">bLonePlayer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoPathfinding" name="bNoPathfinding" title="go to the details">bNoPathfinding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Brightness" name="Brightness" title="go to the details">Brightness</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_CameraLocationDynamic" name="CameraLocationDynamic" title="go to the details">CameraLocationDynamic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_CameraLocationFront" name="CameraLocationFront" title="go to the details">CameraLocationFront</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_CameraLocationSide" name="CameraLocationSide" title="go to the details">CameraLocationSide</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_CameraLocationTop" name="CameraLocationTop" title="go to the details">CameraLocationTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_CameraRotationDynamic" name="CameraRotationDynamic" title="go to the details">CameraRotationDynamic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DefaultGameType" name="DefaultGameType" title="go to the details">DefaultGameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LevelEnterText" name="LevelEnterText" title="go to the details">LevelEnterText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LocalizedPkg" name="LocalizedPkg" title="go to the details">LocalizedPkg</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/levelinfo.html#EPhysicsDetailLevel">EPhysicsDetailLevel</a></td><td width="66%"><a href="#_PhysicsDetailLevel" name="PhysicsDetailLevel" title="go to the details">PhysicsDetailLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PreCacheGame" name="PreCacheGame" title="go to the details">PreCacheGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TimeDilation" name="TimeDilation" title="go to the details">TimeDilation</a></td></tr>
+<tr><th colspan="2" class="small">LevelSummary</th></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_Author" name="Author" title="go to the details">Author</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_Description" name="Description" title="go to the details">Description</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_ExtraInfo" name="ExtraInfo" title="go to the details">ExtraInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HideFromMenus" name="HideFromMenus" title="go to the details">HideFromMenus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_IdealPlayerCountMax" name="IdealPlayerCountMax" title="go to the details">IdealPlayerCountMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_IdealPlayerCountMin" name="IdealPlayerCountMin" title="go to the details">IdealPlayerCountMin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_LocalisationFile" name="LocalisationFile" title="go to the details">LocalisationFile</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_Screenshot" name="Screenshot" title="go to the details">Screenshot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&lt;<a href="../engine/gameinfo.html">GameInfo</a>&gt;&gt;</td><td width="66%"><a href="#_SupportedModes" name="SupportedModes" title="go to the details">SupportedModes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;int&gt;</td><td width="66%"><a href="#_SupportedModesScoreLimits" name="SupportedModesScoreLimits" title="go to the details">SupportedModesScoreLimits</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_Title" name="Title" title="go to the details">Title</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/zoneinfo.html">ZoneInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/zoneinfo.html#AmbientBrightness">AmbientBrightness</a>, <a href="../engine/zoneinfo.html#AmbientHue">AmbientHue</a>, <a href="../engine/zoneinfo.html#AmbientSaturation">AmbientSaturation</a>, <a href="../engine/zoneinfo.html#AmbientVector">AmbientVector</a>, <a href="../engine/zoneinfo.html#AmbientXGroundRatio">AmbientXGroundRatio</a>, <a href="../engine/zoneinfo.html#bClearToFogColor">bClearToFogColor</a>, <a href="../engine/zoneinfo.html#bClipToDistanceFog">bClipToDistanceFog</a>, <a href="../engine/zoneinfo.html#bDisableFogScaling">bDisableFogScaling</a>, <a href="../engine/zoneinfo.html#bDistanceFog">bDistanceFog</a>, <a href="../engine/zoneinfo.html#bLonelyZone">bLonelyZone</a>, <a href="../engine/zoneinfo.html#bTerrainZone">bTerrainZone</a>, <a href="../engine/zoneinfo.html#DistanceFogBlendTime">DistanceFogBlendTime</a>, <a href="../engine/zoneinfo.html#DistanceFogClipBias">DistanceFogClipBias</a>, <a href="../engine/zoneinfo.html#DistanceFogColor">DistanceFogColor</a>, <a href="../engine/zoneinfo.html#DistanceFogEnd">DistanceFogEnd</a>, <a href="../engine/zoneinfo.html#DistanceFogExpBias">DistanceFogExpBias</a>, <a href="../engine/zoneinfo.html#DistanceFogStart">DistanceFogStart</a>, <a href="../engine/zoneinfo.html#DistanceFogType">DistanceFogType</a>, <a href="../engine/zoneinfo.html#EffectsContexts">EffectsContexts</a>, <a href="../engine/zoneinfo.html#EnvironmentMap">EnvironmentMap</a>, <a href="../engine/zoneinfo.html#LocationName">LocationName</a>, <a href="../engine/zoneinfo.html#ManualExcludes">ManualExcludes</a>, <a href="../engine/zoneinfo.html#SkyZone">SkyZone</a>, <a href="../engine/zoneinfo.html#SkyZoneTag">SkyZoneTag</a>, <a href="../engine/zoneinfo.html#Terrains">Terrains</a>, <a href="../engine/zoneinfo.html#TexUPanSpeed">TexUPanSpeed</a>, <a href="../engine/zoneinfo.html#TexVPanSpeed">TexVPanSpeed</a>, <a href="../engine/zoneinfo.html#ZoneEffect">ZoneEffect</a>, <a href="../engine/zoneinfo.html#ZoneTag">ZoneTag</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_ELevelAction" name="ELevelAction" title="go to the details">ELevelAction</a><br /><span class="small">LEVACT_None,
+LEVACT_Loading,
+LEVACT_Saving,
+LEVACT_Connecting,
+LEVACT_Precaching</span></td></tr>
+<tr><td><a href="#_ENetMode" name="ENetMode" title="go to the details">ENetMode</a><br /><span class="small">NM_Standalone,
+NM_DedicatedServer,
+NM_ListenServer,
+NM_Client</span></td></tr>
+<tr><td><a href="#_EPhysicsDetailLevel" name="EPhysicsDetailLevel" title="go to the details">EPhysicsDetailLevel</a><br /><span class="small">PDL_Low,
+PDL_Medium,
+PDL_High</span></td></tr>
+<tr><td><a href="#_EPlatform" name="EPlatform" title="go to the details">EPlatform</a><br /><span class="small">PC,
+PS2,
+XBOX</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/zoneinfo.html">ZoneInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/zoneinfo.html#EFogType">EFogType</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/info.html#KeyValuePair">KeyValuePair</a>, <a href="../engine/info.html#PlayerResponseLine">PlayerResponseLine</a>, <a href="../engine/info.html#ServerResponseLine">ServerResponseLine</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddPrecacheMaterial-" name="AddPrecacheMaterial" title="go to the details">AddPrecacheMaterial</a> (<a href="../engine/material.html">Material</a> mat))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddPrecacheMesh-" name="AddPrecacheMesh" title="go to the details">AddPrecacheMesh</a> (Mesh mesh))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddPrecacheStaticMesh-" name="AddPrecacheStaticMesh" title="go to the details">AddPrecacheStaticMesh</a> (StaticMesh stat))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AllControllers-" name="AllControllers" title="go to the details">AllControllers</a> (class&lt;<a href="../engine/controller.html">Controller</a>&gt; BaseClass, out <a href="../engine/actor.html">actor</a> Actor)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateEffectsSystem-" name="CreateEffectsSystem" title="go to the details">CreateEffectsSystem</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DetailChange-" name="DetailChange" title="go to the details">DetailChange</a> (<a href="../engine/actor.html#EDetailMode">EDetailMode</a> NewDetailMode)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_EscapeCutscene-" name="EscapeCutscene" title="go to the details">EscapeCutscene</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_FillRenderPrecacheArrays-" name="FillRenderPrecacheArrays" title="go to the details">FillRenderPrecacheArrays</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetAddressURL-" name="GetAddressURL" title="go to the details">GetAddressURL</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>class&lt;<a href="../engine/gameinfo.html">GameInfo</a>&gt;&nbsp;</td><td><a href="#_GetGameClass-" name="GetGameClass" title="go to the details">GetGameClass</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/gamespymanager.html">GameSpyManager</a>&nbsp;</td><td><a href="#_GetGameSpyManager-" name="GetGameSpyManager" title="go to the details">GetGameSpyManager</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../engine/playercontroller.html">PlayerController</a>&nbsp;</td><td><a href="#_GetLocalPlayerController-" name="GetLocalPlayerController" title="go to the details">GetLocalPlayerController</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetLocalURL-" name="GetLocalURL" title="go to the details">GetLocalURL</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/material.html">Material</a>&nbsp;</td><td><a href="#_GetMapTexture-" name="GetMapTexture" title="go to the details">GetMapTexture</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetMapTextureExtent-" name="GetMapTextureExtent" title="go to the details">GetMapTextureExtent</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_GetMapTextureOrigin-" name="GetMapTextureOrigin" title="go to the details">GetMapTextureOrigin</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GuardSlow-" name="GuardSlow" title="go to the details">GuardSlow</a> (String GuardString))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_HasGameStarted-" name="HasGameStarted" title="go to the details">HasGameStarted</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HavokGetNextFreeSystemLayer-" name="HavokGetNextFreeSystemLayer" title="go to the details">HavokGetNextFreeSystemLayer</a> (out int systemLayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HavokSetCollisionLayerEnabled-" name="HavokSetCollisionLayerEnabled" title="go to the details">HavokSetCollisionLayerEnabled</a> (int layerA, int layerB, bool enabled, bool updateWorldInfo)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitializeEffectsSystem-" name="InitializeEffectsSystem" title="go to the details">InitializeEffectsSystem</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalRegisterNotifyGameStarted-" name="InternalRegisterNotifyGameStarted" title="go to the details">InternalRegisterNotifyGameStarted</a> (<a href="../engine/actor.html">Actor</a> registeree))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsDemoBuild-" name="IsDemoBuild" title="go to the details">IsDemoBuild</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsEntry-" name="IsEntry" title="go to the details">IsEntry</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsPendingActive-" name="IsPendingActive" title="go to the details">IsPendingActive</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NotifyGameStarted-" name="NotifyGameStarted" title="go to the details">NotifyGameStarted</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_notifyListenersTeamChanged-" name="notifyListenersTeamChanged" title="go to the details">notifyListenersTeamChanged</a> (Pawn <a href="../engine/pawn.html">pawn</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayAllMojoCutscenes-" name="PlayAllMojoCutscenes" title="go to the details">PlayAllMojoCutscenes</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayMojoCutscene-" name="PlayMojoCutscene" title="go to the details">PlayMojoCutscene</a> (name cutsceneName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostLoadGame-" name="PostLoadGame" title="go to the details">PostLoadGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PreBeginPlay-" name="PreBeginPlay" title="go to the details">PreBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterNotifyActorDestroyed-" name="RegisterNotifyActorDestroyed" title="go to the details">RegisterNotifyActorDestroyed</a> (<a href="../engine/iinterestedactordestroyed.html">IInterestedActorDestroyed</a> ObjectToNotify)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterNotifyPawnDied-" name="RegisterNotifyPawnDied" title="go to the details">RegisterNotifyPawnDied</a> (<a href="../engine/iinterestedpawndied.html">IInterestedPawnDied</a> ObjectToNotify)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_registerNotifyTeamChanged-" name="registerNotifyTeamChanged" title="go to the details">registerNotifyTeamChanged</a> (IInterestedTeamChanged objectToNotify ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Reset-" name="Reset" title="go to the details">Reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ServerTravel-" name="ServerTravel" title="go to the details">ServerTravel</a> (string URL, bool bItems ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetupTransientData-" name="SetupTransientData" title="go to the details">SetupTransientData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_ShouldProjectileHit-" name="ShouldProjectileHit" title="go to the details">ShouldProjectileHit</a> (<a href="../engine/actor.html">Actor</a> projInstigator))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ThisIsNeverExecuted-" name="ThisIsNeverExecuted" title="go to the details">ThisIsNeverExecuted</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnRegisterNotifyActorDestroyed-" name="UnRegisterNotifyActorDestroyed" title="go to the details">UnRegisterNotifyActorDestroyed</a> (<a href="../engine/iinterestedactordestroyed.html">IInterestedActorDestroyed</a> RegisteredObject)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnRegisterNotifyPawnDied-" name="UnRegisterNotifyPawnDied" title="go to the details">UnRegisterNotifyPawnDied</a> (<a href="../engine/iinterestedpawndied.html">IInterestedPawnDied</a> RegisteredObject)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_unRegisterNotifyTeamChanged-" name="unRegisterNotifyTeamChanged" title="go to the details">unRegisterNotifyTeamChanged</a> (IInterestedTeamChanged registeredObject ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateMovementConfiguration-" name="UpdateMovementConfiguration" title="go to the details">UpdateMovementConfiguration</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/zoneinfo.html">ZoneInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/zoneinfo.html#ActorEntered">ActorEntered</a>, <a href="../engine/zoneinfo.html#ActorLeaving">ActorLeaving</a>, <a href="../engine/zoneinfo.html#LinkToSkybox">LinkToSkybox</a>, <a href="../engine/zoneinfo.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/zoneinfo.html#ZoneActors">ZoneActors</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/info.html#AcceptPlayInfoProperty">AcceptPlayInfoProperty</a>, <a href="../engine/info.html#FillPlayInfo">FillPlayInfo</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AI_Setup" class="hidden"></a>AI_Setup <a href="../Source_engine/levelinfo.html#214" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/tyrion_setup.html" class="source">Tyrion_Setup</a></span> AI_Setup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAggressiveLOD" class="hidden"></a>bAggressiveLOD <a href="../Source_engine/levelinfo.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAggressiveLOD;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bBegunPlay" class="hidden"></a>bBegunPlay <a href="../Source_engine/levelinfo.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bBegunPlay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bCapFramerate" class="hidden"></a>bCapFramerate <a href="../Source_engine/levelinfo.html#101" class="small">Source code</a></h4>
+<div class="declaration">var globalconfig <span class="source_type">bool</span> bCapFramerate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDropDetail" class="hidden"></a>bDropDetail <a href="../Source_engine/levelinfo.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDropDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bGameStarted" class="hidden"></a>bGameStarted <a href="../Source_engine/levelinfo.html#216" class="small">Source code</a></h4>
+<div class="declaration">var private transient <span class="source_type">bool</span> bGameStarted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHasPathNodes" class="hidden"></a>bHasPathNodes <a href="../Source_engine/levelinfo.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bHasPathNodes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsMojoPlaying" class="hidden"></a>bIsMojoPlaying <a href="../Source_engine/levelinfo.html#232" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsMojoPlaying;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLevelChange" class="hidden"></a>bLevelChange <a href="../Source_engine/levelinfo.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLevelChange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLowSoundDetail" class="hidden"></a>bLowSoundDetail <a href="../Source_engine/levelinfo.html#98" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> bLowSoundDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNeverPrecache" class="hidden"></a>bNeverPrecache <a href="../Source_engine/levelinfo.html#106" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> bNeverPrecache;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNextItems" class="hidden"></a>bNextItems <a href="../Source_engine/levelinfo.html#181" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNextItems;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPathsRebuilt" class="hidden"></a>bPathsRebuilt <a href="../Source_engine/levelinfo.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bPathsRebuilt;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPlayersOnly" class="hidden"></a>bPlayersOnly <a href="../Source_engine/levelinfo.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bPlayersOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSkipMojoCutscenes" class="hidden"></a>bSkipMojoCutscenes <a href="../Source_engine/levelinfo.html#218" class="small">Source code</a></h4>
+<div class="declaration">var globalconfig <span class="source_type">bool</span> bSkipMojoCutscenes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bStartup" class="hidden"></a>bStartup <a href="../Source_engine/levelinfo.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bStartup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BuildVersion" class="hidden"></a>BuildVersion <a href="../Source_engine/levelinfo.html#157" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> BuildVersion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ComputerName" class="hidden"></a>ComputerName <a href="../Source_engine/levelinfo.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> ComputerName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ControllerList" class="hidden"></a>ControllerList <a href="../Source_engine/levelinfo.html#171" class="small">Source code</a></h4>
+<div class="declaration">var transient const <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> ControllerList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cutsceneManager" class="hidden"></a>cutsceneManager <a href="../Source_engine/levelinfo.html#210" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type"><a href="../scripting/cutscenemanager.html" class="source">cutsceneManager</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Day" class="hidden"></a>Day <a href="../Source_engine/levelinfo.html#24" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> Day;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DayOfWeek" class="hidden"></a>DayOfWeek <a href="../Source_engine/levelinfo.html#25" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> DayOfWeek;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecalStayScale" class="hidden"></a>DecalStayScale <a href="../Source_engine/levelinfo.html#79" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">float</span> DecalStayScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultGravity" class="hidden"></a>DefaultGravity <a href="../Source_engine/levelinfo.html#165" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> DefaultGravity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultTexture" class="hidden"></a>DefaultTexture <a href="../Source_engine/levelinfo.html#128" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> DefaultTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DetailMode" class="hidden"></a>DetailMode <a href="../Source_engine/levelinfo.html#94" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/actor.html#EDetailMode" class="source">EDetailMode</a></span> DetailMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EffectsSystem" class="hidden"></a>EffectsSystem <a href="../Source_engine/levelinfo.html#204" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/igeffectssystembase.html" class="source">IGEffectsSystemBase</a></span> <span class="source_type"><a href="../igeffectssystem/effectssystem.html" class="source">EffectsSystem</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineVersion" class="hidden"></a>EngineVersion <a href="../Source_engine/levelinfo.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> EngineVersion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Game" class="hidden"></a>Game <a href="../Source_engine/levelinfo.html#164" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> Game;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GRI" class="hidden"></a>GRI <a href="../Source_engine/levelinfo.html#142" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span> GRI;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Hour" class="hidden"></a>Hour <a href="../Source_engine/levelinfo.html#26" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> Hour;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HubStackLevel" class="hidden"></a>HubStackLevel <a href="../Source_engine/levelinfo.html#132" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> HubStackLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InterestedActorsGameStarted" class="hidden"></a>InterestedActorsGameStarted <a href="../Source_engine/levelinfo.html#206" class="small">Source code</a></h4>
+<div class="declaration">var private array&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt; InterestedActorsGameStarted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LargeVertex" class="hidden"></a>LargeVertex <a href="../Source_engine/levelinfo.html#131" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> LargeVertex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LevelAction" class="hidden"></a>LevelAction <a href="../Source_engine/levelinfo.html#133" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/levelinfo.html#ELevelAction" class="source">ELevelAction</a></span> LevelAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LocalPlayerController" class="hidden"></a>LocalPlayerController <a href="../Source_engine/levelinfo.html#173" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> LocalPlayerController;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_messageDispatcher" class="hidden"></a>messageDispatcher <a href="../Source_engine/levelinfo.html#208" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/messagedispatcher.html" class="source">MessageDispatcher</a></span> <span class="source_type"><a href="../engine/messagedispatcher.html" class="source">messageDispatcher</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Millisecond" class="hidden"></a>Millisecond <a href="../Source_engine/levelinfo.html#29" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> Millisecond;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MinNetVersion" class="hidden"></a>MinNetVersion <a href="../Source_engine/levelinfo.html#156" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> MinNetVersion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Minute" class="hidden"></a>Minute <a href="../Source_engine/levelinfo.html#27" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> Minute;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MojoFileURL" class="hidden"></a>MojoFileURL <a href="../Source_engine/levelinfo.html#219" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> MojoFileURL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Month" class="hidden"></a>Month <a href="../Source_engine/levelinfo.html#23" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> Month;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveRepSize" class="hidden"></a>MoveRepSize <a href="../Source_engine/levelinfo.html#224" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MoveRepSize;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MusicMgr" class="hidden"></a>MusicMgr <a href="../Source_engine/levelinfo.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/musicmanagerbase.html" class="source">MusicManagerBase</a></span> MusicMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NavigationPointList" class="hidden"></a>NavigationPointList <a href="../Source_engine/levelinfo.html#170" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> NavigationPointList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NetMode" class="hidden"></a>NetMode <a href="../Source_engine/levelinfo.html#147" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/levelinfo.html#ENetMode" class="source">ENetMode</a></span> NetMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextSwitchCountdown" class="hidden"></a>NextSwitchCountdown <a href="../Source_engine/levelinfo.html#182" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> NextSwitchCountdown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextURL" class="hidden"></a>NextURL <a href="../Source_engine/levelinfo.html#180" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> NextURL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ObjectPool" class="hidden"></a>ObjectPool <a href="../Source_engine/levelinfo.html#187" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/objectpool.html" class="source">ObjectPool</a></span> <span class="source_type"><a href="../engine/objectpool.html" class="source">ObjectPool</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PauseDelay" class="hidden"></a>PauseDelay <a href="../Source_engine/levelinfo.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> PauseDelay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Pauser" class="hidden"></a>Pauser <a href="../Source_engine/levelinfo.html#83" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Pauser;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnList" class="hidden"></a>PawnList <a href="../Source_engine/levelinfo.html#175" class="small">Source code</a></h4>
+<div class="declaration">var transient const <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> PawnList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Platform" class="hidden"></a>Platform <a href="../Source_engine/levelinfo.html#197" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/levelinfo.html#EPlatform" class="source">EPlatform</a></span> Platform;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrecacheMaterials" class="hidden"></a>PrecacheMaterials <a href="../Source_engine/levelinfo.html#193" class="small">Source code</a></h4>
+<div class="declaration">var transient array&lt;<span class="source_type"><a href="../engine/material.html" class="source">material</a></span>&gt; PrecacheMaterials;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrecacheMeshes" class="hidden"></a>PrecacheMeshes <a href="../Source_engine/levelinfo.html#195" class="small">Source code</a></h4>
+<div class="declaration">var transient array&lt;<span class="source_type">mesh</span>&gt; PrecacheMeshes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrecacheStaticMeshes" class="hidden"></a>PrecacheStaticMeshes <a href="../Source_engine/levelinfo.html#194" class="small">Source code</a></h4>
+<div class="declaration">var transient array&lt;<span class="source_type">staticmesh</span>&gt; PrecacheStaticMeshes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReplicationViewer" class="hidden"></a>ReplicationViewer <a href="../Source_engine/levelinfo.html#227" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> ReplicationViewer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReplicationViewTarget" class="hidden"></a>ReplicationViewTarget <a href="../Source_engine/levelinfo.html#229" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> ReplicationViewTarget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_savedCampaign" class="hidden"></a>savedCampaign <a href="../Source_engine/levelinfo.html#234" class="small">Source code</a></h4>
+<div class="declaration">var deepcopy <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> savedCampaign;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Second" class="hidden"></a>Second <a href="../Source_engine/levelinfo.html#28" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> Second;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectedGroups" class="hidden"></a>SelectedGroups <a href="../Source_engine/levelinfo.html#86" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">string</span> SelectedGroups;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_speechManager" class="hidden"></a>speechManager <a href="../Source_engine/levelinfo.html#212" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type"><a href="../engine/speechmanager.html" class="source">SpeechManager</a></span> <span class="source_type"><a href="../engine/speechmanager.html" class="source">speechManager</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Summary" class="hidden"></a>Summary <a href="../Source_engine/levelinfo.html#84" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span> Summary;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_teamChangedListeners" class="hidden"></a>teamChangedListeners <a href="../Source_engine/levelinfo.html#239" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/iinterestedteamchanged.html" class="source">IInterestedTeamChanged</a></span>&gt; teamChangedListeners;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TimeSeconds" class="hidden"></a>TimeSeconds <a href="../Source_engine/levelinfo.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> TimeSeconds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VisibleGroups" class="hidden"></a>VisibleGroups <a href="../Source_engine/levelinfo.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> VisibleGroups;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WhiteSquareTexture" class="hidden"></a>WhiteSquareTexture <a href="../Source_engine/levelinfo.html#130" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> WhiteSquareTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WireframeTexture" class="hidden"></a>WireframeTexture <a href="../Source_engine/levelinfo.html#129" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> WireframeTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Year" class="hidden"></a>Year <a href="../Source_engine/levelinfo.html#22" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> Year;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Audio</h3>
+<h4><a name="_MusicVolumeOverride" class="hidden"></a>MusicVolumeOverride <a href="../Source_engine/levelinfo.html#121" class="small">Source code</a></h4>
+<div class="declaration">var(Audio) <span class="source_type">float</span> MusicVolumeOverride;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerDoppler" class="hidden"></a>PlayerDoppler <a href="../Source_engine/levelinfo.html#120" class="small">Source code</a></h4>
+<div class="declaration">var(Audio) <span class="source_type">float</span> PlayerDoppler;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Song" class="hidden"></a>Song <a href="../Source_engine/levelinfo.html#119" class="small">Source code</a></h4>
+<div class="declaration">var(Audio) <span class="source_type">string</span> Song;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Havok</h3>
+<h4><a name="_bHavokDisabled" class="hidden"></a>bHavokDisabled <a href="../Source_engine/levelinfo.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(Havok) <span class="source_type">bool</span> bHavokDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokBroadPhaseDimension" class="hidden"></a>HavokBroadPhaseDimension <a href="../Source_engine/levelinfo.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(Havok) <span class="source_type">int</span> HavokBroadPhaseDimension;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokMoppCodeFilename" class="hidden"></a>HavokMoppCodeFilename <a href="../Source_engine/levelinfo.html#71" class="small">Source code</a></h4>
+<div class="declaration">var(Havok) <span class="source_type">string</span> HavokMoppCodeFilename;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokStepTimeQuantum" class="hidden"></a>HavokStepTimeQuantum <a href="../Source_engine/levelinfo.html#70" class="small">Source code</a></h4>
+<div class="declaration">var(Havok) <span class="source_type">float</span> HavokStepTimeQuantum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleCeilingEnabled" class="hidden"></a>vehicleCeilingEnabled <a href="../Source_engine/levelinfo.html#74" class="small">Source code</a></h4>
+<div class="declaration">var(Havok) <span class="source_type">bool</span> vehicleCeilingEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleCeilingHeight" class="hidden"></a>vehicleCeilingHeight <a href="../Source_engine/levelinfo.html#75" class="small">Source code</a></h4>
+<div class="declaration">var(Havok) <span class="source_type">float</span> vehicleCeilingHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Karma</h3>
+<h4><a name="_bKStaticFriction" class="hidden"></a>bKStaticFriction <a href="../Source_engine/levelinfo.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(Karma) <span class="source_type">bool</span> bKStaticFriction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KarmaGravScale" class="hidden"></a>KarmaGravScale <a href="../Source_engine/levelinfo.html#63" class="small">Source code</a></h4>
+<div class="declaration">var(Karma) <span class="source_type">float</span> KarmaGravScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KarmaTimeScale" class="hidden"></a>KarmaTimeScale <a href="../Source_engine/levelinfo.html#60" class="small">Source code</a></h4>
+<div class="declaration">var(Karma) <span class="source_type">float</span> KarmaTimeScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxRagdolls" class="hidden"></a>MaxRagdolls <a href="../Source_engine/levelinfo.html#62" class="small">Source code</a></h4>
+<div class="declaration">var(Karma) <span class="source_type">int</span> MaxRagdolls;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RagdollTimeScale" class="hidden"></a>RagdollTimeScale <a href="../Source_engine/levelinfo.html#61" class="small">Source code</a></h4>
+<div class="declaration">var(Karma) <span class="source_type">float</span> RagdollTimeScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">LevelInfo</h3>
+<h4><a name="_bKNoInit" class="hidden"></a>bKNoInit <a href="../Source_engine/levelinfo.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">bool</span> bKNoInit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLonePlayer" class="hidden"></a>bLonePlayer <a href="../Source_engine/levelinfo.html#91" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">bool</span> bLonePlayer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNoPathfinding" class="hidden"></a>bNoPathfinding <a href="../Source_engine/levelinfo.html#77" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">bool</span> bNoPathfinding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Brightness" class="hidden"></a>Brightness <a href="../Source_engine/levelinfo.html#126" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">float</span> Brightness;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CameraLocationDynamic" class="hidden"></a>CameraLocationDynamic <a href="../Source_engine/levelinfo.html#110" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CameraLocationDynamic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CameraLocationFront" class="hidden"></a>CameraLocationFront <a href="../Source_engine/levelinfo.html#112" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CameraLocationFront;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CameraLocationSide" class="hidden"></a>CameraLocationSide <a href="../Source_engine/levelinfo.html#113" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CameraLocationSide;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CameraLocationTop" class="hidden"></a>CameraLocationTop <a href="../Source_engine/levelinfo.html#111" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CameraLocationTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CameraRotationDynamic" class="hidden"></a>CameraRotationDynamic <a href="../Source_engine/levelinfo.html#114" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> CameraRotationDynamic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultGameType" class="hidden"></a>DefaultGameType <a href="../Source_engine/levelinfo.html#162" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">string</span> DefaultGameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LevelEnterText" class="hidden"></a>LevelEnterText <a href="../Source_engine/levelinfo.html#81" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) localized <span class="source_type">string</span> LevelEnterText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LocalizedPkg" class="hidden"></a>LocalizedPkg <a href="../Source_engine/levelinfo.html#82" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">string</span> LocalizedPkg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PhysicsDetailLevel" class="hidden"></a>PhysicsDetailLevel <a href="../Source_engine/levelinfo.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type"><a href="../engine/levelinfo.html#EPhysicsDetailLevel" class="source">EPhysicsDetailLevel</a></span> PhysicsDetailLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreCacheGame" class="hidden"></a>PreCacheGame <a href="../Source_engine/levelinfo.html#163" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">string</span> PreCacheGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TimeDilation" class="hidden"></a>TimeDilation <a href="../Source_engine/levelinfo.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>) <span class="source_type">float</span> TimeDilation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">LevelSummary</h3>
+<h4><a name="_Author" class="hidden"></a>Author <a href="../Source_engine/levelinfo.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) <span class="source_type">String</span> Author;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Description" class="hidden"></a>Description <a href="../Source_engine/levelinfo.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) localized <span class="source_type">String</span> Description;</div>
+<blockquote class="comment">
+Description of this level.
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExtraInfo" class="hidden"></a>ExtraInfo <a href="../Source_engine/levelinfo.html#47" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) <span class="source_type">String</span> ExtraInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideFromMenus" class="hidden"></a>HideFromMenus <a href="../Source_engine/levelinfo.html#90" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) <span class="source_type">bool</span> HideFromMenus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IdealPlayerCountMax" class="hidden"></a>IdealPlayerCountMax <a href="../Source_engine/levelinfo.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) <span class="source_type">int</span> IdealPlayerCountMax;</div>
+<blockquote class="comment">
+Recommended maximum number of players for this level.
+</blockquote>
+<hr class="small" />
+<h4><a name="_IdealPlayerCountMin" class="hidden"></a>IdealPlayerCountMin <a href="../Source_engine/levelinfo.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) <span class="source_type">int</span> IdealPlayerCountMin;</div>
+<blockquote class="comment">
+Recommended minimum number of players for this level.
+</blockquote>
+<hr class="small" />
+<h4><a name="_LocalisationFile" class="hidden"></a>LocalisationFile <a href="../Source_engine/levelinfo.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) <span class="source_type">String</span> LocalisationFile;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Screenshot" class="hidden"></a>Screenshot <a href="../Source_engine/levelinfo.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> Screenshot;</div>
+<blockquote class="comment">
+A screenshot of this level.
+</blockquote>
+<hr class="small" />
+<h4><a name="_SupportedModes" class="hidden"></a>SupportedModes <a href="../Source_engine/levelinfo.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) Array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>&gt;&gt; SupportedModes;</div>
+<blockquote class="comment">
+List of modes that this map supports.
+</blockquote>
+<hr class="small" />
+<h4><a name="_SupportedModesScoreLimits" class="hidden"></a>SupportedModesScoreLimits <a href="../Source_engine/levelinfo.html#42" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) Array&lt;<span class="source_type">int</span>&gt; SupportedModesScoreLimits;</div>
+<blockquote class="comment">
+Parallels the SupportedModes array.  Score limit for each game type.  0 to disable.
+</blockquote>
+<hr class="small" />
+<h4><a name="_Title" class="hidden"></a>Title <a href="../Source_engine/levelinfo.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>) localized <span class="source_type">String</span> Title;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ELevelAction" class="hidden"></a>ELevelAction <a href="../Source_engine/levelinfo.html#133" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/levelinfo.html#ELevelAction" class="source">ELevelAction</a></span><br />
+{<blockquote>LEVACT_None,
+LEVACT_Loading,
+LEVACT_Saving,
+LEVACT_Connecting,
+LEVACT_Precaching</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ENetMode" class="hidden"></a>ENetMode <a href="../Source_engine/levelinfo.html#147" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/levelinfo.html#ENetMode" class="source">ENetMode</a></span><br />
+{<blockquote>NM_Standalone,
+NM_DedicatedServer,
+NM_ListenServer,
+NM_Client</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EPhysicsDetailLevel" class="hidden"></a>EPhysicsDetailLevel <a href="../Source_engine/levelinfo.html#51" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/levelinfo.html#EPhysicsDetailLevel" class="source">EPhysicsDetailLevel</a></span><br />
+{<blockquote>PDL_Low,
+PDL_Medium,
+PDL_High</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EPlatform" class="hidden"></a>EPlatform <a href="../Source_engine/levelinfo.html#197" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/levelinfo.html#EPlatform" class="source">EPlatform</a></span><br />
+{<blockquote>PC,
+PS2,
+XBOX</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddPrecacheMaterial-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddPrecacheMaterial <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#374" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  AddPrecacheMaterial ( <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> mat) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddPrecacheMesh-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddPrecacheMesh <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#350" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  AddPrecacheMesh ( <span class="source_type">Mesh</span> <span class="source_type">mesh</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddPrecacheStaticMesh-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddPrecacheStaticMesh <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#396" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  AddPrecacheStaticMesh ( <span class="source_type">StaticMesh</span> <span class="source_type"><a href="../gameplay/stat.html" class="source">stat</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllControllers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AllControllers <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#652" class="small">Source code</a></h4>
+<div class="declaration">native iterator <span class="source_type">function</span>  AllControllers ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>&gt; BaseClass, out <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateEffectsSystem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateEffectsSystem <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#283" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  CreateEffectsSystem ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DetailChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DetailChange <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#272" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span>  DetailChange ( <span class="source_type"><a href="../engine/actor.html#EDetailMode" class="source">EDetailMode</a></span> NewDetailMode )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EscapeCutscene-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EscapeCutscene <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#268" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> EscapeCutscene (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillRenderPrecacheArrays-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> FillRenderPrecacheArrays <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#326" class="small">Source code</a></h4>
+<div class="declaration">simulated event  FillRenderPrecacheArrays ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetAddressURL-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetAddressURL <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#433" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span> <span class="source_type">string</span> GetAddressURL (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameClass-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGameClass <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#308" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>&gt; GetGameClass ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameSpyManager-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGameSpyManager <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#248" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span> <span class="source_type"><a href="../engine/gamespymanager.html" class="source">GameSpyManager</a></span> GetGameSpyManager (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLocalPlayerController-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetLocalPlayerController <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#625" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> GetLocalPlayerController ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLocalURL-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLocalURL <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#421" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span> <span class="source_type">string</span> GetLocalURL (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMapTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMapTexture <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#244" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> GetMapTexture (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMapTextureExtent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMapTextureExtent <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#246" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">float</span> GetMapTextureExtent (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMapTextureOrigin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMapTextureOrigin <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#245" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> GetMapTextureOrigin (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GuardSlow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GuardSlow <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#518" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  GuardSlow ( <span class="source_type">String</span> GuardString) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasGameStarted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasGameStarted <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#620" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> HasGameStarted ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokGetNextFreeSystemLayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HavokGetNextFreeSystemLayer <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#262" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  HavokGetNextFreeSystemLayer ( out <span class="source_type">int</span> systemLayer )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokSetCollisionLayerEnabled-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HavokSetCollisionLayerEnabled <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#255" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  HavokSetCollisionLayerEnabled ( <span class="source_type">int</span> layerA, <span class="source_type">int</span> layerB, <span class="source_type">bool</span> enabled, <span class="source_type">bool</span> updateWorldInfo )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitializeEffectsSystem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitializeEffectsSystem <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#293" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  InitializeEffectsSystem ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalRegisterNotifyGameStarted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalRegisterNotifyGameStarted <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#485" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  InternalRegisterNotifyGameStarted ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> registeree) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsDemoBuild-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsDemoBuild <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#426" class="small">Source code</a></h4>
+<div class="declaration">native simulated final <span class="source_type">function</span> <span class="source_type">bool</span> IsDemoBuild (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsEntry-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsEntry <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#273" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span> <span class="source_type">bool</span> IsEntry (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsPendingActive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsPendingActive <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#274" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span> <span class="source_type">bool</span> IsPendingActive (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyGameStarted-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyGameStarted <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#497" class="small">Source code</a></h4>
+<div class="declaration">simulated event  NotifyGameStarted ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_notifyListenersTeamChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> notifyListenersTeamChanged <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#580" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  notifyListenersTeamChanged ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayAllMojoCutscenes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayAllMojoCutscenes <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#267" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  PlayAllMojoCutscenes (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayMojoCutscene-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayMojoCutscene <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#266" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  PlayMojoCutscene ( <span class="source_type">name</span> cutsceneName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#276" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostLoadGame-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostLoadGame <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#303" class="small">Source code</a></h4>
+<div class="declaration"> event  PostLoadGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PreBeginPlay <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#599" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PreBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterNotifyActorDestroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterNotifyActorDestroyed <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#552" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  RegisterNotifyActorDestroyed ( <span class="source_type"><a href="../engine/iinterestedactordestroyed.html" class="source">IInterestedActorDestroyed</a></span> <span class="source_type">ObjectToNotify</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterNotifyPawnDied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterNotifyPawnDied <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#540" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  RegisterNotifyPawnDied ( <span class="source_type"><a href="../engine/iinterestedpawndied.html" class="source">IInterestedPawnDied</a></span> <span class="source_type">ObjectToNotify</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_registerNotifyTeamChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> registerNotifyTeamChanged <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#557" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  registerNotifyTeamChanged ( <span class="source_type"><a href="../engine/iinterestedteamchanged.html" class="source">IInterestedTeamChanged</a></span> <span class="source_type">objectToNotify</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Reset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Reset <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#464" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type">Reset</span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerTravel-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ServerTravel <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#438" class="small">Source code</a></h4>
+<div class="declaration"> event  ServerTravel ( <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, <span class="source_type">bool</span> <span class="source_type">bItems</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetupTransientData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetupTransientData <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#612" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  SetupTransientData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldProjectileHit-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ShouldProjectileHit <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#654" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> ShouldProjectileHit ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> projInstigator) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ThisIsNeverExecuted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ThisIsNeverExecuted <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#455" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ThisIsNeverExecuted ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnRegisterNotifyActorDestroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnRegisterNotifyActorDestroyed <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#553" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  UnRegisterNotifyActorDestroyed ( <span class="source_type"><a href="../engine/iinterestedactordestroyed.html" class="source">IInterestedActorDestroyed</a></span> <span class="source_type">RegisteredObject</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnRegisterNotifyPawnDied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnRegisterNotifyPawnDied <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#541" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  UnRegisterNotifyPawnDied ( <span class="source_type"><a href="../engine/iinterestedpawndied.html" class="source">IInterestedPawnDied</a></span> <span class="source_type">RegisteredObject</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unRegisterNotifyTeamChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> unRegisterNotifyTeamChanged <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#564" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  unRegisterNotifyTeamChanged ( <span class="source_type"><a href="../engine/iinterestedteamchanged.html" class="source">IInterestedTeamChanged</a></span> <span class="source_type">registeredObject</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateMovementConfiguration-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateMovementConfiguration <span class="function_state"></span> <a href="../Source_engine/levelinfo.html#270" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  UpdateMovementConfiguration (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	PreCacheGame=<span class="source_string">"Engine.GameInfo"</span>
+    RemoteRole=ROLE_DumbProxy
+	 bAlwaysRelevant=true
+     TimeDilation=+<span class="source_int">00001.000000</span>
+	 Brightness=<span class="source_int">1</span>
+     bHiddenEd=True
+	 DefaultTexture=DefaultTexture
+	 WireframeTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'Engine_res.WireframeTexture'</span>
+	 WhiteSquareTexture=WhiteSquareTexture
+	 LargeVertex=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'Engine_res.LargeVertex'</span>
+	 HubStackLevel=<span class="source_int">0</span>
+	 DetailMode=DM_SuperHigh
+	 PlayerDoppler=<span class="source_int">0</span>
+	 bWorldGeometry=true
+	 VisibleGroups=<span class="source_string">"None"</span>
+         KarmaTimeScale=<span class="source_int">0.9</span>
+         RagdollTimeScale=<span class="source_int">1</span>
+         MaxRagdolls=<span class="source_int">4</span>
+         bKStaticFriction=true
+         KarmaGravScale=<span class="source_int">1</span>
+	 PhysicsDetailLevel=PDL_High
+    DefaultGravity=-<span class="source_int">1160</span>
+	bCapFramerate=true
+
+	HavokBroadPhaseDimension=<span class="source_int">524288</span> 
+
+     Title=<span class="source_string">"Untitled"</span>
+    MoveRepSize=+<span class="source_int">42.0</span>
+    MusicVolumeOverride=-<span class="source_int">1</span>
+
+
+    DecalStayScale=<span class="source_int">1.0</span>
+
+
+
+	vehicleCeilingEnabled = true
+	vehicleCeilingHeight = <span class="source_int">3000</span>
+
+}
+
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/levelinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#LevelInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/laddervolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/levelsummary.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:31.753 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Engine.HavokConstraint</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/havokconstraint.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HavokConstraint">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/havokconelimitconstraint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/havokhingeconstraint.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/havokconstraint.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/havokconstraint.html">HavokConstraint</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// Havok base class for Constraints.
+</span><a name="2"></a><span class="source_comment">// Some constraints use only a sub set of the given data.
+</span><a name="3"></a><span class="source_comment">// The constraint is between hkAttachedActorA and option hkAttachedActorB.
+</span><a name="4"></a><span class="source_comment">// You can also specify option sub parts of the actors by name. The subparts
+</span><a name="5"></a><span class="source_comment">// are only taken into account if the Mesh of the attached actor is skeletal 
+</span><a name="6"></a><span class="source_comment">// and the Physics of the attached Actor is PHYS_HavokSkeletal. In that way
+</span><a name="7"></a><span class="source_comment">// you can constrain ragdolls together, or to other rigid bodies or the world.
+</span><a name="8"></a>
+<a name="9"></a>
+<a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span> extends <span class="source_type"><a href="../engine/havokactor.html" class="source">HavokActor</a></span>
+<a name="11"></a><span class="source_macro">#if IG_SWAT
+</span><a name="12"></a>    hidecategories(Havok,LightColor,Lighting,<span class="source_type"><a href="../tribestvclient/tribestvreplication.html#Movement" class="source">Movement</a></span>,Force,Display,Collision)
+<a name="13"></a><span class="source_macro">#endif
+</span><a name="14"></a>    abstract
+<a name="15"></a>	placeable
+<a name="16"></a>	native;
+<a name="17"></a>
+<a name="18"></a>cpptext
+<a name="19"></a>{
+<a name="20"></a><span class="source_macro">#ifdef UNREAL_HAVOK
+</span><a name="21"></a>  
+<a name="22"></a>	virtual <span class="source_type">bool</span> HavokInitActor();
+<a name="23"></a>	virtual void HavokQuitActor();
+<a name="24"></a>	virtual void HavokScriptMoveUpdate(<span class="source_type">FLOAT</span> dt);
+<a name="25"></a>
+<a name="26"></a>	virtual void Spawned(); <span class="source_comment">// override the default (rigidbody) one in HavokActor
+</span><a name="27"></a>
+<a name="28"></a>	virtual void PostEditChange(); <span class="source_comment">// this wil auto recreate the constraint if not in Editor
+</span><a name="29"></a>	virtual void PostEditMove();
+<a name="30"></a>
+<a name="31"></a>	virtual void RecreateConstraint(); <span class="source_comment">// call this if you change of the constraint data and the attached body names and change tto/from 0 for damping and strength values (requires extra constraint layer to be changed)
+</span><a name="32"></a>    virtual void UpdateConstraintDetails(); <span class="source_comment">// call this if you just change of the updateable constraint data (limits, positions etc, not the attached bodies though)
+</span><a name="33"></a>	virtual void ActivateAttachedBodies(); <span class="source_comment">// called automatically when you update the constraint, but you can use it anytime.
+</span><a name="34"></a>	virtual void AutoComputeLocalValues(); <span class="source_comment">// compute the Local Axis based on some set other axis (either from the other Actor or from this constraint actor itself). Called automatically on create and update.
+</span><a name="35"></a>	
+<a name="36"></a>	virtual void PrivateSetupExtraData(); <span class="source_comment">// internal call
+</span><a name="37"></a>	virtual void PrivateUpdateExtraData(); <span class="source_comment">// internal call
+</span><a name="38"></a>	virtual void* GetRigidBodyPtrA(); <span class="source_comment">// internal call
+</span><a name="39"></a>	virtual void* GetRigidBodyPtrB(); <span class="source_comment">// internal call
+</span><a name="40"></a>	virtual void* GetBaseConstraint(); <span class="source_comment">// internal call
+</span><a name="41"></a>
+<a name="42"></a>	virtual void CheckForErrors(); <span class="source_comment">// used for checking that this constraint is valid during map build
+</span><a name="43"></a>	virtual void RenderEditorSelected(FLevelSceneNode* SceneNode,FRenderInterface* RI, FDynamicActor* FDA);
+<a name="44"></a>	virtual UBOOL CheckOwnerUpdated();
+<a name="45"></a>
+<a name="46"></a><span class="source_macro">#endif
+</span><a name="47"></a>}
+<a name="48"></a>
+<a name="49"></a>var transient const <span class="source_type">int</span> hkConstraintPtr;
+<a name="50"></a>var transient const <span class="source_type">bool</span> hkInitCalled; 
+<a name="51"></a>
+<a name="52"></a><span class="source_comment">// Actors joined effected by this constraint (could be NULL for 'World')
+</span><a name="53"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) edfindable <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> hkAttachedActorA; <span class="source_comment">// may be a sub system, like a skeletal mesh. If so, the subpoart name will be used.
+</span><a name="54"></a><span class="source_comment">// usually a bone name
+</span><a name="55"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type">name</span> hkAttachedSubPartA <span class="source_string">"If hkAttachedActorA is a skeletal pawn and PHYS_HavokSkeletal, this option specifies the bone of the skeleton to which the constraint should attach"</span>; 
+<a name="56"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) edfindable <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> hkAttachedActorB; <span class="source_comment">// may be a sub system, like a skeletal mesh. If so, the subpoart name will be used.
+</span><a name="57"></a><span class="source_comment">// usually a bone name
+</span><a name="58"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type">name</span> hkAttachedSubPartB <span class="source_string">"If hkAttachedActorB is a skeletal pawn and PHYS_HavokSkeletal, this option specifies the bone of the skeleton to which the constraint should attach"</span>; 
+<a name="59"></a>
+<a name="60"></a><span class="source_comment">// Disable collision between joined objects. Will attempt to make a system group for them (fast filter) and will fall back to pairwise (slow) if there
+</span><a name="61"></a><span class="source_comment">// are too many system groups used (&gt;32K) 
+</span><a name="62"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type">bool</span> bDisableCollisions <span class="source_string">"If true, collisions between hkAttachedActorA and hkAttachedActorB will be disabled"</span>;
+<a name="63"></a>
+<a name="64"></a><span class="source_comment">// Breakable constraints
+</span><a name="65"></a>
+<a name="66"></a><span class="source_comment">// 0 == doesn't break
+</span><a name="67"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type">float</span> fMaxForceToBreak <span class="source_string">"Maximum force required to break the constraint (i.e., un-attached the two actors from each other), in Newtons. If 0, the constraint will never break"</span>;
+<a name="68"></a>
+<a name="69"></a><span class="source_comment">// Varing stength constraints
+</span><a name="70"></a>
+<a name="71"></a><span class="source_comment">// 0 = no special (malleable) tau (strength)
+</span><a name="72"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type">float</span> fSpecificStrength <span class="source_string">"Large impulses or forces can stretch all constraints; the speed of recovery is determined by the constraint's strength (or 'tau' value). Higher values mean that the constraint recovers more quickly. Values can range from 0 to 1"</span>; 
+<a name="73"></a><span class="source_comment">// 0 = no special (malleable) damping.
+</span><a name="74"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type">float</span> fSpecificDamping <span class="source_string">"The damping value governs how quickly the oscillation of a constraint settles down. Low values create springy behavior, while high values will reduce any oscillations very quickly with the size of the oscillations getting much smaller each time. Values can range from 0 to 1"</span>; 
+<a name="75"></a>
+<a name="76"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) enum <span class="source_type"><a href="../engine/havokconstraint.html#EAutoComputeConstraint" class="source">EAutoComputeConstraint</a></span>
+<a name="77"></a>{
+<a name="78"></a>	HKC_DontAutoCompute, <span class="source_comment">// Just use the Local values as specified.
+</span><a name="79"></a>	HKC_AutoComputeBothFromC, <span class="source_comment">// This is most common in the editor. Compute both A and B local values from the transform for this Constraint Actor. Handy for initializing "as placed" in the editor.
+</span><a name="80"></a>	HKC_AutoComputeAFromC,    <span class="source_comment">// Make the basis in A match the world basis of Constraint Actor (C)
+</span><a name="81"></a>	HKC_AutoComputeBFromC,    <span class="source_comment">// Make the basis in B match the world basis of Constraint Actor (C). This is most common for orientation constraint on A to world (B), based on orientation of the constraint C. So set the B bassis to that of C and constrain.
+</span><a name="82"></a>	HKC_AutoComputeAFromB,    <span class="source_comment">// Compute the local values for A from the values given for B
+</span><a name="83"></a>	HKC_AutoComputeBFromA     <span class="source_comment">// Compute the local values for B from the values given for A
+</span><a name="84"></a>} AutoComputeLocals;
+<a name="85"></a>
+<a name="86"></a><span class="source_comment">// Constraint position/orientation, as defined in each body's local reference frame
+</span><a name="87"></a><span class="source_comment">// Local to actor (or the actor subpart space if name given, ie: bone name), and are in Unreal space.
+</span><a name="88"></a><span class="source_comment">// May be Autocomputed from one another, or from the constraint actor itself.
+</span><a name="89"></a>
+<a name="90"></a><span class="source_comment">// BodyA frame
+</span><a name="91"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LocalPosA;  <span class="source_comment">// Local pivot point in A
+</span><a name="92"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LocalAxisA;  <span class="source_comment">// Primary constraint axis in A
+</span><a name="93"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LocalPerpAxisA; <span class="source_comment">// Secondary (perpendicular to Primary) axis for A
+</span><a name="94"></a>
+<a name="95"></a><span class="source_comment">// BodyB frame
+</span><a name="96"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LocalPosB;  <span class="source_comment">// Local pivot point in B
+</span><a name="97"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LocalAxisB; <span class="source_comment">// Primary constraint axis in B
+</span><a name="98"></a>var(<span class="source_type"><a href="../engine/havokconstraint.html" class="source">HavokConstraint</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LocalPerpAxisB; <span class="source_comment">// Secondary (perpendicular to Primary) axis for B
+</span><a name="99"></a>
+<a name="100"></a><span class="source_comment">// Call this function when you change a parameter such as the attached bodies 
+</span><a name="101"></a><span class="source_comment">// recreates the constraint from scratch.
+</span><a name="102"></a>native <span class="source_type">function</span> RecreateConstraint();
+<a name="103"></a>
+<a name="104"></a><span class="source_comment">// Call this function when you change an updatable parameter (limits, positions, etc)
+</span><a name="105"></a>native <span class="source_type">function</span> UpdateConstraintDetails();
+<a name="106"></a>
+<a name="107"></a><span class="source_comment">// Called automatically when you update a constraint, but you can use it whenever you see fit.
+</span><a name="108"></a>native <span class="source_type">function</span> ActivateAttachedBodies();
+<a name="109"></a>
+<a name="110"></a><span class="source_comment">// Called automatically when you update a constraint, but you can use it whenever you see fit.
+</span><a name="111"></a><span class="source_comment">// It computes the Local* values based on the AutoComputeLocals enum.
+</span><a name="112"></a>native <span class="source_type">function</span> ComputeLocalValues();
+<a name="113"></a>
+<a name="114"></a>defaultproperties
+<a name="115"></a>{
+<a name="116"></a>	AutoComputeLocals=HKC_AutoComputeBothFromC
+<a name="117"></a>    LocalPosA=(X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">0</span>)
+<a name="118"></a>    LocalPosB=(X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">0</span>)
+<a name="119"></a>	LocalAxisA=(X=<span class="source_int">1</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">0</span>)
+<a name="120"></a>	LocalAxisB=(X=<span class="source_int">1</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">0</span>)
+<a name="121"></a>	LocalPerpAxisA=(X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">1</span>,Z=<span class="source_int">0</span>)
+<a name="122"></a>	LocalPerpAxisB=(X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">1</span>,Z=<span class="source_int">0</span>)
+<a name="123"></a>
+<a name="124"></a>    bDisableCollisions=True
+<a name="125"></a>    fMaxForceToBreak=<span class="source_int">0</span>
+<a name="126"></a>	fSpecificStrength=<span class="source_int">0</span>
+<a name="127"></a>	fSpecificDamping=<span class="source_int">0</span>
+<a name="128"></a>
+<a name="129"></a>    bHidden=True
+<a name="130"></a>    <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'Engine_res.Havok.S_HkConstraint'</span>
+<a name="131"></a>    DrawType=DT_Sprite
+<a name="132"></a>
+<a name="133"></a>    <span class="source_comment">//Physics=PHYS_None
+</span><a name="134"></a>	bStatic=False
+<a name="135"></a>	bNoDelete=False
+<a name="136"></a>
+<a name="137"></a>	bCollideActors=False
+<a name="138"></a>    bProjTarget=False
+<a name="139"></a>	bBlockActors=False
+<a name="140"></a>	bBlockPlayers=False
+<a name="141"></a>	bWorldGeometry=False
+<a name="142"></a>	bBlockKarma=False
+<a name="143"></a>	bBlockHavok=False
+<a name="144"></a>
+<a name="145"></a>	hkConstraintPtr=<span class="source_int">0</span>
+<a name="146"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/havokconstraint.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HavokConstraint">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/havokconelimitconstraint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/havokhingeconstraint.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:01:22.000 - Creation time: st 23.5.2018 00:10:44.080 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.Tank</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/tank.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Tank">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/talkingheadcamera.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/tankgunnerweapon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/tank.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.Tank</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/treadvehicle.html">TreadVehicle</a></dd>
+<dt>Modifiers</dt><dd>placeable native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/treadvehicle.html">TreadVehicle</a>
+                  |   
+                  +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/tank.html">Tank</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_DRIVER_INDEX" name="DRIVER_INDEX" title="go to the details">DRIVER_INDEX</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+<tr><td width="40%"><a href="#_GUNNER_INDEX" name="GUNNER_INDEX" title="go to the details">GUNNER_INDEX</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/treadvehicle.html">TreadVehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/treadvehicle.html#TV_ANGULAR_VELOCITY_ACCURACY_FACTOR">TV_ANGULAR_VELOCITY_ACCURACY_FACTOR</a>, <a href="../gameplay/treadvehicle.html#TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR">TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a>, <a href="../gameplay/treadvehicle.html#TV_LINEAR_VELOCITY_ACCURACY_FACTOR">TV_LINEAR_VELOCITY_ACCURACY_FACTOR</a>, <a href="../gameplay/treadvehicle.html#TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR">TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanHitTarget" name="bCanHitTarget" title="go to the details">bCanHitTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostAvailableTime" name="boostAvailableTime" title="go to the details">boostAvailableTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_boostChannel" name="boostChannel" title="go to the details">boostChannel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostCloseTime" name="boostCloseTime" title="go to the details">boostCloseTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_boostEventSignal" name="boostEventSignal" title="go to the details">boostEventSignal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_boostInProgress" name="boostInProgress" title="go to the details">boostInProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostOpenAnimationLength" name="boostOpenAnimationLength" title="go to the details">boostOpenAnimationLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostSecondStageTime" name="boostSecondStageTime" title="go to the details">boostSecondStageTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_cannonDisplayVehicleSpaceRotation" name="cannonDisplayVehicleSpaceRotation" title="go to the details">cannonDisplayVehicleSpaceRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_cannonOffset" name="cannonOffset" title="go to the details">cannonOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_cannonTargetRotation" name="cannonTargetRotation" title="go to the details">cannonTargetRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_cannonVehicleSpaceRotation" name="cannonVehicleSpaceRotation" title="go to the details">cannonVehicleSpaceRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_cannonWorldSpaceNoRollRotation" name="cannonWorldSpaceNoRollRotation" title="go to the details">cannonWorldSpaceNoRollRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_closeAnimationPlayed" name="closeAnimationPlayed" title="go to the details">closeAnimationPlayed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_currentViewRotation" name="currentViewRotation" title="go to the details">currentViewRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_gripAnimation" name="gripAnimation" title="go to the details">gripAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_gripAnimationChannel" name="gripAnimationChannel" title="go to the details">gripAnimationChannel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_gripping" name="gripping" title="go to the details">gripping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_landingChannel" name="landingChannel" title="go to the details">landingChannel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_lastTreadContactTime" name="lastTreadContactTime" title="go to the details">lastTreadContactTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_localBoostEventSignal" name="localBoostEventSignal" title="go to the details">localBoostEventSignal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_openAnimationPlayed" name="openAnimationPlayed" title="go to the details">openAnimationPlayed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_throttleForwardAndGroundContactIndex" name="throttleForwardAndGroundContactIndex" title="go to the details">throttleForwardAndGroundContactIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/vehiclemountedturret.html">VehicleMountedTurret</a></td><td width="66%"><a href="#_turret" name="turret" title="go to the details">turret</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_turretBone" name="turretBone" title="go to the details">turretBone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/vehiclemountedturret.html">VehicleMountedTurret</a>&gt;</td><td width="66%"><a href="#_turretClass" name="turretClass" title="go to the details">turretClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_turretOffset" name="turretOffset" title="go to the details">turretOffset</a></td></tr>
+<tr><th colspan="2" class="small">Tank</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostAngle" name="boostAngle" title="go to the details">boostAngle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostEffectDuration" name="boostEffectDuration" title="go to the details">boostEffectDuration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostStrength" name="boostStrength" title="go to the details">boostStrength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostUpDuration" name="boostUpDuration" title="go to the details">boostUpDuration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_boostUpStrength" name="boostUpStrength" title="go to the details">boostUpStrength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_cannonAITurnRate" name="cannonAITurnRate" title="go to the details">cannonAITurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_cannonClientTurnRate" name="cannonClientTurnRate" title="go to the details">cannonClientTurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_cannonMaximumPitch" name="cannonMaximumPitch" title="go to the details">cannonMaximumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_cannonMinimumPitch" name="cannonMinimumPitch" title="go to the details">cannonMinimumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gripAnimationBlendTime" name="gripAnimationBlendTime" title="go to the details">gripAnimationBlendTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerAITurnRate" name="gunnerAITurnRate" title="go to the details">gunnerAITurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_gunnerCameraOffset" name="gunnerCameraOffset" title="go to the details">gunnerCameraOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerClientTurnRate" name="gunnerClientTurnRate" title="go to the details">gunnerClientTurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerMaximumPitch" name="gunnerMaximumPitch" title="go to the details">gunnerMaximumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerMinimumPitch" name="gunnerMinimumPitch" title="go to the details">gunnerMinimumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt;</td><td width="66%"><a href="#_gunnerWeaponClass" name="gunnerWeaponClass" title="go to the details">gunnerWeaponClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_gunnerWeaponOffset" name="gunnerWeaponOffset" title="go to the details">gunnerWeaponOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_landingEffectAirTime" name="landingEffectAirTime" title="go to the details">landingEffectAirTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_timeBetweenBoosts" name="timeBetweenBoosts" title="go to the details">timeBetweenBoosts</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/treadvehicle.html">TreadVehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/treadvehicle.html#animationRateToTexturePanRate">animationRateToTexturePanRate</a>, <a href="../gameplay/treadvehicle.html#centreOfMassHeightOffset">centreOfMassHeightOffset</a>, <a href="../gameplay/treadvehicle.html#forceApplicationHeightOffset">forceApplicationHeightOffset</a>, <a href="../gameplay/treadvehicle.html#leftForwardTreadAnimation">leftForwardTreadAnimation</a>, <a href="../gameplay/treadvehicle.html#leftReverseTreadAnimation">leftReverseTreadAnimation</a>, <a href="../gameplay/treadvehicle.html#leftTreadChannel">leftTreadChannel</a>, <a href="../gameplay/treadvehicle.html#leftTreadContact">leftTreadContact</a>, <a href="../gameplay/treadvehicle.html#leftTreadMaterialIndex">leftTreadMaterialIndex</a>, <a href="../gameplay/treadvehicle.html#leftTreadShader">leftTreadShader</a>, <a href="../gameplay/treadvehicle.html#leftTreadSpinSpeed">leftTreadSpinSpeed</a>, <a href="../gameplay/treadvehicle.html#leftTreadTexPanner">leftTreadTexPanner</a>, <a href="../gameplay/treadvehicle.html#lowFriction">lowFriction</a>, <a href="../gameplay/treadvehicle.html#maximumTreadVelocityDelta">maximumTreadVelocityDelta</a>, <a href="../gameplay/treadvehicle.html#oldReplicationTreadVehicleState">oldReplicationTreadVehicleState</a>, <a href="../gameplay/treadvehicle.html#replicationTreadVehicleState">replicationTreadVehicleState</a>, <a href="../gameplay/treadvehicle.html#rightForwardTreadAnimation">rightForwardTreadAnimation</a>, <a href="../gameplay/treadvehicle.html#rightReverseTreadAnimation">rightReverseTreadAnimation</a>, <a href="../gameplay/treadvehicle.html#rightTreadChannel">rightTreadChannel</a>, <a href="../gameplay/treadvehicle.html#rightTreadContact">rightTreadContact</a>, <a href="../gameplay/treadvehicle.html#rightTreadMaterialIndex">rightTreadMaterialIndex</a>, <a href="../gameplay/treadvehicle.html#rightTreadShader">rightTreadShader</a>, <a href="../gameplay/treadvehicle.html#rightTreadSpinSpeed">rightTreadSpinSpeed</a>, <a href="../gameplay/treadvehicle.html#rightTreadTexPanner">rightTreadTexPanner</a>, <a href="../gameplay/treadvehicle.html#softThrottleSteering">softThrottleSteering</a>, <a href="../gameplay/treadvehicle.html#softThrottleSteeringScale">softThrottleSteeringScale</a>, <a href="../gameplay/treadvehicle.html#softThrottleSteeringStayOnPeriod">softThrottleSteeringStayOnPeriod</a>, <a href="../gameplay/treadvehicle.html#spinSpeedToAnimationRate">spinSpeedToAnimationRate</a>, <a href="../gameplay/treadvehicle.html#steerToVelocityFactor">steerToVelocityFactor</a>, <a href="../gameplay/treadvehicle.html#switchOffSoftThrottleSteeringTime">switchOffSoftThrottleSteeringTime</a>, <a href="../gameplay/treadvehicle.html#throttleSteerToVelocityScaleFactor">throttleSteerToVelocityScaleFactor</a>, <a href="../gameplay/treadvehicle.html#throttleToVelocityFactor">throttleToVelocityFactor</a>, <a href="../gameplay/treadvehicle.html#treadGainFactor">treadGainFactor</a>, <a href="../gameplay/treadvehicle.html#treadGainFactorStopping">treadGainFactorStopping</a>, <a href="../gameplay/treadvehicle.html#treadLength">treadLength</a>, <a href="../gameplay/treadvehicle.html#treadPositionOffset">treadPositionOffset</a>, <a href="../gameplay/treadvehicle.html#treadRadius">treadRadius</a>, <a href="../gameplay/treadvehicle.html#treadVehicleGravityScale">treadVehicleGravityScale</a>, <a href="../gameplay/treadvehicle.html#treadVehiclePadding[1]">treadVehiclePadding[1]</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#carSteer">carSteer</a>, <a href="../gameplay/car.html#driveThrottleCoefficient">driveThrottleCoefficient</a>, <a href="../gameplay/car.html#effectAccelerating">effectAccelerating</a>, <a href="../gameplay/car.html#effectDeccelerating">effectDeccelerating</a>, <a href="../gameplay/car.html#Gear">Gear</a>, <a href="../gameplay/car.html#maximumYawChange">maximumYawChange</a>, <a href="../gameplay/car.html#minimumNavigationThrottle">minimumNavigationThrottle</a>, <a href="../gameplay/car.html#outputCarDirection">outputCarDirection</a>, <a href="../gameplay/car.html#SteeringMaxAngle">SteeringMaxAngle</a>, <a href="../gameplay/car.html#stopSteeringSize">stopSteeringSize</a>, <a href="../gameplay/car.html#StopThreshold">StopThreshold</a>, <a href="../gameplay/car.html#stopVelocitySize">stopVelocitySize</a>, <a href="../gameplay/car.html#strafeSteerAngleOffset">strafeSteerAngleOffset</a>, <a href="../gameplay/car.html#upsideDownDamagePerSecond">upsideDownDamagePerSecond</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/treadvehicle.html">TreadVehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/treadvehicle.html#TreadVehicleReplicationState">TreadVehicleReplicationState</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_applyOutput-" name="applyOutput" title="go to the details">applyOutput</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_destroyed-" name="destroyed" title="go to the details">destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_getAimAdjustedViewRotation-" name="getAimAdjustedViewRotation" title="go to the details">getAimAdjustedViewRotation</a> (<a href="../engine/playercontroller.html">PlayerController</a> pc, <a href="../core/object.html#Vector">Vector</a> fireLocation, int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_getProjectileSpawnLocation-" name="getProjectileSpawnLocation" title="go to the details">getProjectileSpawnLocation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/material.html">Material</a>&nbsp;</td><td><a href="#_getTeamSkin-" name="getTeamSkin" title="go to the details">getTeamSkin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_getThirdPersonEquippableAttachment-" name="getThirdPersonEquippableAttachment" title="go to the details">getThirdPersonEquippableAttachment</a> (<a href="../gameplay/equippable.html">Equippable</a> subject, out <a href="../gameplay/rook.html">Rook</a> attachTo, out name boneName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_getViewRotation-" name="getViewRotation" title="go to the details">getViewRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_initialiseEffects-" name="initialiseEffects" title="go to the details">initialiseEffects</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isEffectCauserActive-" name="isEffectCauserActive" title="go to the details">isEffectCauserActive</a> (int effectCauserIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_playerMoveProcessing-" name="playerMoveProcessing" title="go to the details">playerMoveProcessing</a> (float deltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetReceive-" name="PostNetReceive" title="go to the details">PostNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setGripping-" name="setGripping" title="go to the details">setGripping</a> (bool grippingEnabled)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setViewRotation-" name="setViewRotation" title="go to the details">setViewRotation</a> (<a href="../core/object.html#Rotator">Rotator</a> r))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_ShouldProjectileHit-" name="ShouldProjectileHit" title="go to the details">ShouldProjectileHit</a> (<a href="../engine/actor.html">Actor</a> projInstigator))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_unifiedGetNaturalCOMPosition-" name="unifiedGetNaturalCOMPosition" title="go to the details">unifiedGetNaturalCOMPosition</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/treadvehicle.html">TreadVehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/treadvehicle.html#needToPushStateToClient">needToPushStateToClient</a>, <a href="../gameplay/treadvehicle.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/treadvehicle.html#processInput">processInput</a>, <a href="../gameplay/treadvehicle.html#pushStateToClient">pushStateToClient</a>, <a href="../gameplay/treadvehicle.html#tick">tick</a>, <a href="../gameplay/treadvehicle.html#vehicleStateReceived">vehicleStateReceived</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#applyOutput">applyOutput</a>, <a href="../gameplay/car.html#Destroyed">Destroyed</a>, <a href="../gameplay/car.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/car.html#ProcessInput">ProcessInput</a>, <a href="../gameplay/car.html#tick">tick</a>, <a href="../gameplay/car.html#updateGear">updateGear</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DRIVER_INDEX" class="hidden"></a>DRIVER_INDEX <a href="../Source_gameplay/tank.html#5" class="small">Source code</a></h4>
+<div class="declaration">const DRIVER_INDEX = <span class="source_int">0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GUNNER_INDEX" class="hidden"></a>GUNNER_INDEX <a href="../Source_gameplay/tank.html#6" class="small">Source code</a></h4>
+<div class="declaration">const GUNNER_INDEX = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bCanHitTarget" class="hidden"></a>bCanHitTarget <a href="../Source_gameplay/tank.html#56" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bCanHitTarget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostAvailableTime" class="hidden"></a>boostAvailableTime <a href="../Source_gameplay/tank.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> boostAvailableTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostChannel" class="hidden"></a>boostChannel <a href="../Source_gameplay/tank.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> boostChannel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostCloseTime" class="hidden"></a>boostCloseTime <a href="../Source_gameplay/tank.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> boostCloseTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostEventSignal" class="hidden"></a>boostEventSignal <a href="../Source_gameplay/tank.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> boostEventSignal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostInProgress" class="hidden"></a>boostInProgress <a href="../Source_gameplay/tank.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> boostInProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostOpenAnimationLength" class="hidden"></a>boostOpenAnimationLength <a href="../Source_gameplay/tank.html#61" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> boostOpenAnimationLength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostSecondStageTime" class="hidden"></a>boostSecondStageTime <a href="../Source_gameplay/tank.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> boostSecondStageTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonDisplayVehicleSpaceRotation" class="hidden"></a>cannonDisplayVehicleSpaceRotation <a href="../Source_gameplay/tank.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> cannonDisplayVehicleSpaceRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonOffset" class="hidden"></a>cannonOffset <a href="../Source_gameplay/tank.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> cannonOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonTargetRotation" class="hidden"></a>cannonTargetRotation <a href="../Source_gameplay/tank.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> cannonTargetRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonVehicleSpaceRotation" class="hidden"></a>cannonVehicleSpaceRotation <a href="../Source_gameplay/tank.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> cannonVehicleSpaceRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonWorldSpaceNoRollRotation" class="hidden"></a>cannonWorldSpaceNoRollRotation <a href="../Source_gameplay/tank.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> cannonWorldSpaceNoRollRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_closeAnimationPlayed" class="hidden"></a>closeAnimationPlayed <a href="../Source_gameplay/tank.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> closeAnimationPlayed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentViewRotation" class="hidden"></a>currentViewRotation <a href="../Source_gameplay/tank.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> currentViewRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gripAnimation" class="hidden"></a>gripAnimation <a href="../Source_gameplay/tank.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> gripAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gripAnimationChannel" class="hidden"></a>gripAnimationChannel <a href="../Source_gameplay/tank.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> gripAnimationChannel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gripping" class="hidden"></a>gripping <a href="../Source_gameplay/tank.html#54" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> gripping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_landingChannel" class="hidden"></a>landingChannel <a href="../Source_gameplay/tank.html#72" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> landingChannel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastTreadContactTime" class="hidden"></a>lastTreadContactTime <a href="../Source_gameplay/tank.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> lastTreadContactTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localBoostEventSignal" class="hidden"></a>localBoostEventSignal <a href="../Source_gameplay/tank.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> localBoostEventSignal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_openAnimationPlayed" class="hidden"></a>openAnimationPlayed <a href="../Source_gameplay/tank.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> openAnimationPlayed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_throttleForwardAndGroundContactIndex" class="hidden"></a>throttleForwardAndGroundContactIndex <a href="../Source_gameplay/tank.html#76" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> throttleForwardAndGroundContactIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turret" class="hidden"></a>turret <a href="../Source_gameplay/tank.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span> <span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretBone" class="hidden"></a>turretBone <a href="../Source_gameplay/tank.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> turretBone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretClass" class="hidden"></a>turretClass <a href="../Source_gameplay/tank.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>&gt; turretClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretOffset" class="hidden"></a>turretOffset <a href="../Source_gameplay/tank.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> turretOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Tank</h3>
+<h4><a name="_boostAngle" class="hidden"></a>boostAngle <a href="../Source_gameplay/tank.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> boostAngle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostEffectDuration" class="hidden"></a>boostEffectDuration <a href="../Source_gameplay/tank.html#65" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> boostEffectDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostStrength" class="hidden"></a>boostStrength <a href="../Source_gameplay/tank.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> boostStrength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostUpDuration" class="hidden"></a>boostUpDuration <a href="../Source_gameplay/tank.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> boostUpDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boostUpStrength" class="hidden"></a>boostUpStrength <a href="../Source_gameplay/tank.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> boostUpStrength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonAITurnRate" class="hidden"></a>cannonAITurnRate <a href="../Source_gameplay/tank.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> cannonAITurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonClientTurnRate" class="hidden"></a>cannonClientTurnRate <a href="../Source_gameplay/tank.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> cannonClientTurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonMaximumPitch" class="hidden"></a>cannonMaximumPitch <a href="../Source_gameplay/tank.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> cannonMaximumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cannonMinimumPitch" class="hidden"></a>cannonMinimumPitch <a href="../Source_gameplay/tank.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> cannonMinimumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gripAnimationBlendTime" class="hidden"></a>gripAnimationBlendTime <a href="../Source_gameplay/tank.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> gripAnimationBlendTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerAITurnRate" class="hidden"></a>gunnerAITurnRate <a href="../Source_gameplay/tank.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> gunnerAITurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerCameraOffset" class="hidden"></a>gunnerCameraOffset <a href="../Source_gameplay/tank.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> gunnerCameraOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerClientTurnRate" class="hidden"></a>gunnerClientTurnRate <a href="../Source_gameplay/tank.html#42" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> gunnerClientTurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerMaximumPitch" class="hidden"></a>gunnerMaximumPitch <a href="../Source_gameplay/tank.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> gunnerMaximumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerMinimumPitch" class="hidden"></a>gunnerMinimumPitch <a href="../Source_gameplay/tank.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> gunnerMinimumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerWeaponClass" class="hidden"></a>gunnerWeaponClass <a href="../Source_gameplay/tank.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; gunnerWeaponClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerWeaponOffset" class="hidden"></a>gunnerWeaponOffset <a href="../Source_gameplay/tank.html#38" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> gunnerWeaponOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_landingEffectAirTime" class="hidden"></a>landingEffectAirTime <a href="../Source_gameplay/tank.html#71" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> landingEffectAirTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_timeBetweenBoosts" class="hidden"></a>timeBetweenBoosts <a href="../Source_gameplay/tank.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/tank.html" class="source">Tank</a></span>) <span class="source_type">float</span> timeBetweenBoosts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_applyOutput-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> applyOutput <span class="function_state"></span> <a href="../Source_gameplay/tank.html#190" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  applyOutput ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_destroyed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> destroyed <span class="function_state"></span> <a href="../Source_gameplay/tank.html#403" class="small">Source code</a></h4>
+<div class="declaration">simulated event  destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getAimAdjustedViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getAimAdjustedViewRotation <span class="function_state"></span> <a href="../Source_gameplay/tank.html#376" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> getAimAdjustedViewRotation ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> fireLocation, <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getProjectileSpawnLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getProjectileSpawnLocation <span class="function_state"></span> <a href="../Source_gameplay/tank.html#170" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> getProjectileSpawnLocation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getTeamSkin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getTeamSkin <span class="function_state"></span> <a href="../Source_gameplay/tank.html#156" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> getTeamSkin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getThirdPersonEquippableAttachment-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getThirdPersonEquippableAttachment <span class="function_state"></span> <a href="../Source_gameplay/tank.html#164" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  getThirdPersonEquippableAttachment ( <span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> subject, out <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> attachTo, out <span class="source_type">name</span> boneName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getViewRotation <span class="function_state"></span> <a href="../Source_gameplay/tank.html#224" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> getViewRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialiseEffects-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> initialiseEffects <span class="function_state"></span> <a href="../Source_gameplay/tank.html#89" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  initialiseEffects ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isEffectCauserActive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isEffectCauserActive <span class="function_state"></span> <a href="../Source_gameplay/tank.html#96" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> isEffectCauserActive ( <span class="source_type">int</span> effectCauserIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playerMoveProcessing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> playerMoveProcessing <span class="function_state"></span> <a href="../Source_gameplay/tank.html#219" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  playerMoveProcessing ( <span class="source_type">float</span> <span class="source_type">deltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/tank.html#107" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetReceive <span class="function_state"></span> <a href="../Source_gameplay/tank.html#141" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setGripping-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setGripping <span class="function_state"></span> <a href="../Source_gameplay/tank.html#87" class="small">Source code</a></h4>
+<div class="declaration">simulated native <span class="source_type">function</span>  setGripping ( <span class="source_type">bool</span> grippingEnabled )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setViewRotation <span class="function_state"></span> <a href="../Source_gameplay/tank.html#233" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setViewRotation ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type">r</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldProjectileHit-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ShouldProjectileHit <span class="function_state"></span> <a href="../Source_gameplay/tank.html#394" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> ShouldProjectileHit ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> projInstigator) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state"></span> <a href="../Source_gameplay/tank.html#238" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unifiedGetNaturalCOMPosition-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> unifiedGetNaturalCOMPosition <span class="function_state"></span> <a href="../Source_gameplay/tank.html#412" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> unifiedGetNaturalCOMPosition ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DrawType = DT_Mesh
+	<span class="source_type">Mesh</span> = SkeletalMesh<span class="source_name">'Vehicles.Tank'</span>
+
+	HavokDataClass = <span class="source_type">class</span><span class="source_name">'TankHavokData'</span>
+
+	positions(<span class="source_int">0</span>)=(<span class="source_type">type</span>=VP_DRIVER,hideOccupant=true,occupantControllerState=TribesPlayerDriving,thirdPersonCamera=true,lookAtInheritPitch=false)
+	positions(<span class="source_int">1</span>)=(<span class="source_type">type</span>=VP_GUNNER,hideOccupant=true,occupantControllerState=PlayerVehicleTurreting,thirdPersonCamera=false)
+
+	driverWeaponClass=<span class="source_type">class</span><span class="source_name">'TankWeapon'</span>
+
+	timeBetweenBoosts = <span class="source_int">2</span>
+
+	stayUprightEnabled = true
+	stayUprightDamping = <span class="source_int">0.9</span>
+	stayUprightStrength = <span class="source_int">30</span>
+
+	boostAngle = <span class="source_int">0.785</span>
+	boostStrength = <span class="source_int">5000000</span>
+	boostUpStrength = <span class="source_int">9000000</span>
+	boostUpDuration = <span class="source_int">1</span>
+
+	cannonMaximumPitch = <span class="source_int">10000</span>
+	cannonMinimumPitch = -<span class="source_int">3000</span>
+
+	turretBone = gunner
+
+	gunnerMaximumPitch = <span class="source_int">10000</span>
+	gunnerMinimumPitch = -<span class="source_int">3000</span>
+	gunnerClientTurnRate = <span class="source_int">30000</span>
+
+	turretClass = <span class="source_type">class</span><span class="source_name">'TankMountedTurret'</span>
+
+	gunnerWeaponClass = <span class="source_type">class</span><span class="source_name">'TankGunnerWeapon'</span>
+
+	bCollisionDamageEnabled = false
+
+	gripping = false
+
+	gunnerAITurnRate = <span class="source_int">12000</span>
+
+	motorClass = <span class="source_type">class</span><span class="source_name">'TankMotor'</span>
+
+	gunnerCameraOffset = (X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">50</span>)
+	gunnerWeaponOffset = (X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">25</span>)
+
+	maximumYawChange = <span class="source_int">450</span>
+
+	cannonAITurnRate = <span class="source_int">12000</span>
+	cannonClientTurnRate = <span class="source_int">24000</span>
+
+	stopForEnemies = false
+
+	driveYawCoefficient = <span class="source_int">0.1</span>
+
+	cornerSlowDownSpeedCoefficient = <span class="source_int">1000000</span>
+
+	boostChannel = <span class="source_int">2</span>
+
+	boostEffectDuration = <span class="source_int">0.5</span>
+
+	closeAnimationPlayed = true
+
+	gripAnimationChannel = <span class="source_int">4</span>
+	gripAnimation = ski
+	gripAnimationBlendTime = <span class="source_int">0.5</span>
+
+	driveThrottleCoefficient = <span class="source_int">0.13</span>
+
+	minimumNavigationThrottle = <span class="source_int">0.5</span>
+
+	localizedName = <span class="source_string">"jump tank"</span>
+
+	landingChannel = <span class="source_int">0</span>
+	landingEffectAirTime = <span class="source_int">1</span>
+
+	retriggerEffectEvents = true
+
+	bVehicleCameraTrace = true
+
+	inverseCosUprightAngle = <span class="source_int">0.85</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/tank.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Tank">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/talkingheadcamera.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/tankgunnerweapon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:35.206 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

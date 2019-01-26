@@ -1,0 +1,1013 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: TribesGUI.TribesDebugHUD</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesdebughud.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesDebugHUD">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribescreditsmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribesdebughudscript.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tribesgui/tribesdebughud.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesdebughud.html">TribesDebugHUD</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../tribesgui/tribesdebughud.html" class="source">TribesDebugHUD</a></span> extends <span class="source_type"><a href="../tribesgui/tribeshud.html" class="source">TribesHUD</a></span>;
+<a name="2"></a>
+<a name="3"></a>import enum <span class="source_type"><a href="../gameplay/character.html#AnimationStateEnum" class="source">AnimationStateEnum</a></span> from Gameplay.<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>;
+<a name="4"></a>import enum <span class="source_type"><a href="../gameplay/ragdoll.html#MovementState" class="source">MovementState</a></span> from Gameplay.<span class="source_type"><a href="../gameplay/ragdoll.html" class="source">Ragdoll</a></span>;
+<a name="5"></a>
+<a name="6"></a>var Pathfinding.<span class="source_type"><a href="../pathfinding/pftestharness.html" class="source">PFTestHarness</a></span> pathfindTestHarness;
+<a name="7"></a>var <span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">NavigationTestHarness</a></span> <span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">navigationTestHarness</a></span>;
+<a name="8"></a>var <span class="source_type">string</span> NavigationTestHarnessClass;
+<a name="9"></a>
+<a name="10"></a><span class="source_comment">// AI Debug stuff
+</span><a name="11"></a>var <span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span> debugSquadInfo;	<span class="source_comment">// Squad for whom Formation debug info is being displayed
+</span><a name="12"></a>
+<a name="13"></a><span class="source_comment">// Weapon debug stuff
+</span><a name="14"></a>var <span class="source_type">bool</span> playerWeaponDebug;	<span class="source_comment">// Show debug for the current weapon
+</span><a name="15"></a>
+<a name="16"></a>var <span class="source_type">Font</span> hugeFont;
+<a name="17"></a>
+<a name="18"></a><span class="source_comment">//
+</span><a name="19"></a><span class="source_comment">// Draws the HUD - normally would just call the HUDScript 
+</span><a name="20"></a><span class="source_comment">// to draw, but this one is used for debug data, so just 
+</span><a name="21"></a><span class="source_comment">// paint your stuff in here
+</span><a name="22"></a><span class="source_comment">//
+</span><a name="23"></a><span class="source_type">function</span> DrawHUD(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>)
+<a name="24"></a>{
+<a name="25"></a>	if (animationDebug(<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>))
+<a name="26"></a>	    return;
+<a name="27"></a>
+<a name="28"></a>    movementDebug(<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>);
+<a name="29"></a>}
+<a name="30"></a>
+<a name="31"></a>
+<a name="32"></a><span class="source_type">function</span> <span class="source_type">bool</span> animationDebug(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>)
+<a name="33"></a>{
+<a name="34"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="35"></a>    local <span class="source_type">int</span> <span class="source_type">extra</span>;
+<a name="36"></a>
+<a name="37"></a>    local <span class="source_type">String</span> <span class="source_type">text</span>;
+<a name="38"></a>	local <span class="source_type">float</span> textWidth;
+<a name="39"></a>	local <span class="source_type">float</span> textHeight;
+<a name="40"></a>	
+<a name="41"></a>    local <span class="source_type">float</span> spacingWidth;
+<a name="42"></a>    local <span class="source_type">float</span> spacingHeight;
+<a name="43"></a>
+<a name="44"></a>	local <span class="source_type">float</span> windowLeft;
+<a name="45"></a>	local <span class="source_type">float</span> windowTop;
+<a name="46"></a>	local <span class="source_type">float</span> windowWidth;
+<a name="47"></a>	local <span class="source_type">float</span> windowHeight;
+<a name="48"></a>
+<a name="49"></a>    local <span class="source_type">float</span> textLeft;
+<a name="50"></a>    local <span class="source_type">float</span> textTop;
+<a name="51"></a>    
+<a name="52"></a>	local <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> windowRotator;
+<a name="53"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> windowOffset;
+<a name="54"></a>    
+<a name="55"></a>    local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>;
+<a name="56"></a>    local Gameplay.<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>;
+<a name="57"></a>
+<a name="58"></a>    <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(PlayerOwner);
+<a name="59"></a>    
+<a name="60"></a>    if (<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>!=None && <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.animationDebugCounter&gt;<span class="source_int">0</span>)
+<a name="61"></a>    {
+<a name="62"></a>        <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span> = Gameplay.<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>);
+<a name="63"></a>        
+<a name="64"></a>        if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>!=None)
+<a name="65"></a>        {
+<a name="66"></a>            <span class="source_comment">// draw animation view window
+</span><a name="67"></a>        
+<a name="68"></a>            windowWidth = <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.ClipX;
+<a name="69"></a>            windowHeight = <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">ClipY</span>;
+<a name="70"></a>        
+<a name="71"></a>            windowLeft = (<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.ClipX - windowWidth) / <span class="source_int">2</span>;
+<a name="72"></a>            windowTop = (<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">ClipY</span> - windowHeight) / <span class="source_int">2</span>;
+<a name="73"></a>        
+<a name="74"></a>            windowRotator.Pitch = <span class="source_int">0</span>;
+<a name="75"></a>            windowRotator.Roll = <span class="source_int">0</span>;
+<a name="76"></a>            windowRotator.Yaw = <span class="source_int">0</span>;
+<a name="77"></a>
+<a name="78"></a>            windowOffset = Vect(-<span class="source_int">150</span>,<span class="source_int">0</span>,<span class="source_int">0</span>) &lt;&lt; windowRotator;
+<a name="79"></a>        
+<a name="80"></a>            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawPortal(windowLeft, windowTop, windowWidth, windowHeight, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>.location + windowOffset, windowRotator);
+<a name="81"></a>
+<a name="82"></a>            if (<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.animationDebugCounter&gt;<span class="source_int">1</span>)
+<a name="83"></a>            { 
+<a name="84"></a>                <span class="source_comment">// header
+</span><a name="85"></a>            
+<a name="86"></a>		        <span class="source_type">text</span> = <span class="source_string">"animation system"</span>;
+<a name="87"></a>
+<a name="88"></a>    	        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.<span class="source_type">Font</span> = MedFont;
+<a name="89"></a>
+<a name="90"></a>                spacingWidth = <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.ClipX / <span class="source_int">30</span>;
+<a name="91"></a>                spacingHeight = <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">ClipY</span> / <span class="source_int">30</span>;
+<a name="92"></a>
+<a name="93"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(spacingWidth, spacingHeight);
+<a name="94"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>);
+<a name="95"></a>        		
+<a name="96"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_type">text</span>);
+<a name="97"></a>
+<a name="98"></a>                <span class="source_comment">// key data
+</span><a name="99"></a>                    
+<a name="100"></a>        	    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.<span class="source_type">Font</span> = SmallFont;
+<a name="101"></a>
+<a name="102"></a>                <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.TextSize(<span class="source_string">"text"</span>, textWidth, textHeight);
+<a name="103"></a>       	    
+<a name="104"></a>       	        textHeight *= <span class="source_int">0.8</span>;
+<a name="105"></a>       	    
+<a name="106"></a>       	        textLeft = spacingWidth;
+<a name="107"></a>       	        textTop = spacingHeight * <span class="source_int">3.35</span>;
+<a name="108"></a>       	    
+<a name="109"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop);
+<a name="110"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"current state: "</span>$animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.currentAnimationState));	
+<a name="111"></a>
+<a name="112"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight);
+<a name="113"></a>		        if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.desiredAnimationState!=<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.currentAnimationState)
+<a name="114"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"desired state: "</span>$animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.desiredAnimationState)$<span class="source_string">" ["</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.desiredAnimationStateTime$<span class="source_string">"]"</span>);
+<a name="115"></a>		        else
+<a name="116"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"desired state: "</span>$animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.desiredAnimationState));
+<a name="117"></a>
+<a name="118"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">2</span>);
+<a name="119"></a>		        if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.adjustedAnimationState!=<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.currentAnimationState)
+<a name="120"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"adjusted state: "</span>$animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.adjustedAnimationState)$<span class="source_string">" ["</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.adjustedAnimationStateTime$<span class="source_string">"]"</span>);
+<a name="121"></a>		        else
+<a name="122"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"adjusted state: "</span>$animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.adjustedAnimationState));
+<a name="123"></a>
+<a name="124"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">4</span>);
+<a name="125"></a>		        if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.primaryAnimationLayerState!=AnimationState_None)
+<a name="126"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"primary layer: "</span>$animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.primaryAnimationLayerState)$<span class="source_string">" "</span>$alertnessString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.primaryAnimationLayerAlertness));
+<a name="127"></a>		        else
+<a name="128"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"primary layer: none"</span>);
+<a name="129"></a>
+<a name="130"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">5</span>);
+<a name="131"></a>		        if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.secondaryAnimationLayerState!=AnimationState_None)
+<a name="132"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"secondary layer: "</span>$animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.secondaryAnimationLayerState)$<span class="source_string">" "</span>$alertnessString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.secondaryAnimationLayerAlertness));
+<a name="133"></a>		        else
+<a name="134"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"secondary layer: none"</span>);
+<a name="135"></a>
+<a name="136"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">7</span>);
+<a name="137"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"current alertness: "</span>$alertnessString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.currentAlertnessLevel));
+<a name="138"></a>
+<a name="139"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">8</span>);
+<a name="140"></a>		        <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"adjusted alertness: "</span>$alertnessString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.adjustedAlertnessLevel));
+<a name="141"></a>
+<a name="142"></a>                <span class="source_type">extra</span> = <span class="source_int">0</span>;
+<a name="143"></a>
+<a name="144"></a>                for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_int">23</span>; <span class="source_type">i</span>++)
+<a name="145"></a>                {
+<a name="146"></a>                    if (<span class="source_type">i</span>==<span class="source_int">7</span> || <span class="source_type">i</span>==<span class="source_int">14</span> || <span class="source_type">i</span>==<span class="source_int">21</span>)
+<a name="147"></a>                        <span class="source_type">extra</span> ++;
+<a name="148"></a>                    
+<a name="149"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*(<span class="source_int">11</span>+<span class="source_type">i</span>+<span class="source_type">extra</span>));
+<a name="150"></a>		            if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.animationChannels[<span class="source_type">i</span>].processed!=<span class="source_string">""</span>)
+<a name="151"></a>    		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"channel "</span>$<span class="source_type">i</span>$<span class="source_string">": "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.animationChannels[<span class="source_type">i</span>].processed$<span class="source_string">" ["</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.animationChannels[<span class="source_type">i</span>].alpha$<span class="source_string">"]"</span>);
+<a name="152"></a>    		        else
+<a name="153"></a>    		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"channel "</span>$<span class="source_type">i</span>$<span class="source_string">":"</span>);
+<a name="154"></a>               } 
+<a name="155"></a>
+<a name="156"></a>                if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.extraAnimationPending)               
+<a name="157"></a>                {
+<a name="158"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*(<span class="source_int">11</span>+<span class="source_type">i</span>+<span class="source_type">extra</span>)+<span class="source_int">3</span>);
+<a name="159"></a>		            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"extra animation pending: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.extraAnimationPendingName$<span class="source_string">" ["</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/animationmanager.html" class="source">animationManager</a></span>.extraAnimationPendingTime);
+<a name="160"></a>		        }
+<a name="161"></a>		    }
+<a name="162"></a>	    }
+<a name="163"></a>	    
+<a name="164"></a>	    return true;
+<a name="165"></a>	}
+<a name="166"></a>	
+<a name="167"></a>	return false;
+<a name="168"></a>}
+<a name="169"></a>
+<a name="170"></a>
+<a name="171"></a><span class="source_type">function</span> <span class="source_type">string</span> animationStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#AnimationStateEnum" class="source">AnimationStateEnum</a></span> state)
+<a name="172"></a>{
+<a name="173"></a>	switch (state)
+<a name="174"></a>	{
+<a name="175"></a>        case AnimationState_None:       return <span class="source_string">"none"</span>;
+<a name="176"></a>	    case AnimationState_Stand:      return <span class="source_string">"stand"</span>;
+<a name="177"></a>	    case AnimationState_Walk:       return <span class="source_string">"walk"</span>;
+<a name="178"></a>	    case AnimationState_Run:        return <span class="source_string">"run"</span>; 
+<a name="179"></a>	    case AnimationState_Sprint:     return <span class="source_string">"sprint"</span>;
+<a name="180"></a>	    case AnimationState_Ski:        return <span class="source_string">"ski"</span>;
+<a name="181"></a>	    case AnimationState_Slide:      return <span class="source_string">"slide"</span>;
+<a name="182"></a>	    case AnimationState_Stop:       return <span class="source_string">"stop"</span>;
+<a name="183"></a>	    case AnimationState_Airborne:   return <span class="source_string">"airborne"</span>;
+<a name="184"></a>	    case AnimationState_AirControl: return <span class="source_string">"aircontrol"</span>;
+<a name="185"></a>	    case AnimationState_Thrust:     return <span class="source_string">"thrust"</span>;
+<a name="186"></a>	    case AnimationState_Swim:       return <span class="source_string">"swim"</span>;
+<a name="187"></a>	}
+<a name="188"></a>}
+<a name="189"></a>
+<a name="190"></a>
+<a name="191"></a><span class="source_type">function</span> <span class="source_type">string</span> alertnessString(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>.<span class="source_type"><a href="../gameplay/rook.html#AlertnessLevels" class="source">AlertnessLevels</a></span> <span class="source_type">level</span>)
+<a name="192"></a>{
+<a name="193"></a>	switch (<span class="source_type">level</span>)
+<a name="194"></a>	{
+<a name="195"></a>        case Alertness_Combat:  return <span class="source_string">"combat"</span>;
+<a name="196"></a>        case Alertness_Alert:   return <span class="source_string">"alert"</span>;
+<a name="197"></a>        case Alertness_Neutral: return <span class="source_string">"neutral"</span>;
+<a name="198"></a>	}
+<a name="199"></a>}
+<a name="200"></a>
+<a name="201"></a>
+<a name="202"></a><span class="source_type">function</span> <span class="source_type">bool</span> movementDebug(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>)
+<a name="203"></a>{
+<a name="204"></a>    local <span class="source_type">float</span> spacingWidth;
+<a name="205"></a>    local <span class="source_type">float</span> spacingHeight;
+<a name="206"></a>
+<a name="207"></a>    local <span class="source_type">string</span> <span class="source_type">text</span>;
+<a name="208"></a>    local <span class="source_type">float</span> textWidth;
+<a name="209"></a>    local <span class="source_type">float</span> textHeight;
+<a name="210"></a>    local <span class="source_type">float</span> speedTextWidth;
+<a name="211"></a>    local <span class="source_type">float</span> speedTextHeight;
+<a name="212"></a>    local <span class="source_type">float</span> textLeft;
+<a name="213"></a>    local <span class="source_type">float</span> textTop;
+<a name="214"></a>    
+<a name="215"></a>    local <span class="source_type">int</span> speed;
+<a name="216"></a>    local <span class="source_type">float</span> speedAlpha;
+<a name="217"></a>
+<a name="218"></a>    local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>;
+<a name="219"></a>    local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>;
+<a name="220"></a>
+<a name="221"></a>	<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span> = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(PlayerOwner.<span class="source_type">ViewTarget</span>);
+<a name="222"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span> != None)
+<a name="223"></a>		<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);    
+<a name="224"></a>	
+<a name="225"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>!=None && <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.Physics==PHYS_Movement && <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>!=None && <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.movementDebugCounter&gt;<span class="source_int">0</span>)
+<a name="226"></a>	{
+<a name="227"></a>        spacingWidth = <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.ClipX / <span class="source_int">30</span>;
+<a name="228"></a>        spacingHeight = <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">ClipY</span> / <span class="source_int">30</span>;
+<a name="229"></a>
+<a name="230"></a>        if (<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.movementDebugCounter&gt;<span class="source_int">1</span>)
+<a name="231"></a>        {
+<a name="232"></a>            <span class="source_comment">// header
+</span><a name="233"></a>        
+<a name="234"></a>		    <span class="source_type">text</span> = <span class="source_string">"movement system"</span>;
+<a name="235"></a>
+<a name="236"></a>    	    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.<span class="source_type">Font</span> = MedFont;
+<a name="237"></a>
+<a name="238"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(spacingWidth, spacingHeight);
+<a name="239"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>);
+<a name="240"></a>        	
+<a name="241"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_type">text</span>);
+<a name="242"></a>
+<a name="243"></a>            <span class="source_comment">// states
+</span><a name="244"></a>                
+<a name="245"></a>        	<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.<span class="source_type">Font</span> = SmallFont;
+<a name="246"></a>
+<a name="247"></a>            <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.TextSize(<span class="source_string">"text"</span>, textWidth, textHeight);
+<a name="248"></a>       	
+<a name="249"></a>       	    textHeight *= <span class="source_int">0.8</span>;
+<a name="250"></a>       	
+<a name="251"></a>       	    textLeft = spacingWidth;
+<a name="252"></a>       	    textTop = spacingHeight * <span class="source_int">3.35</span>;
+<a name="253"></a>       	
+<a name="254"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop);
+<a name="255"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"movement state: "</span>$movementStateString(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../tribestvclient/tribestvreplication.html#Movement" class="source">movement</a></span>));	
+<a name="256"></a>
+<a name="257"></a>            <span class="source_comment">// speeds
+</span><a name="258"></a>
+<a name="259"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">2</span>);
+<a name="260"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"total speed: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementSpeed$<span class="source_string">" kph"</span>);	
+<a name="261"></a>
+<a name="262"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">3</span>);
+<a name="263"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"horizontal speed: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementHorizontalSpeed$<span class="source_string">" kph"</span>);	
+<a name="264"></a>
+<a name="265"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">4</span>);
+<a name="266"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"vertical speed: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementVerticalSpeed$<span class="source_string">" kph"</span>);	
+<a name="267"></a>
+<a name="268"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">5</span>);
+<a name="269"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"tangential speed: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementTangentialSpeed$<span class="source_string">" kph"</span>);	
+<a name="270"></a>
+<a name="271"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">6</span>);
+<a name="272"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"directional speed: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementDirectionalSpeed$<span class="source_string">" kph"</span>);	
+<a name="273"></a>
+<a name="274"></a>            <span class="source_comment">// altitude
+</span><a name="275"></a>
+<a name="276"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">8</span>);
+<a name="277"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"altitude: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementAltitude$<span class="source_string">" meters"</span>);	
+<a name="278"></a>
+<a name="279"></a>            <span class="source_comment">// context
+</span><a name="280"></a>
+<a name="281"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">10</span>);
+<a name="282"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"collided: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementCollided));
+<a name="283"></a>		    
+<a name="284"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">11</span>);
+<a name="285"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"close: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementClose));
+<a name="286"></a>		    
+<a name="287"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">12</span>);
+<a name="288"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"touching: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementTouching));
+<a name="289"></a>		    
+<a name="290"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">13</span>);
+<a name="291"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"grounded: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementGrounded));
+<a name="292"></a>		    
+<a name="293"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">14</span>);
+<a name="294"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"airborne: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementAirborne));
+<a name="295"></a>		    
+<a name="296"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">15</span>);
+<a name="297"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"water: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementWater));
+<a name="298"></a>		    
+<a name="299"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">16</span>);
+<a name="300"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"underwater: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementUnderWater));
+<a name="301"></a>		    
+<a name="302"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">17</span>);
+<a name="303"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"zero-g: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementZeroGravity));
+<a name="304"></a>		    
+<a name="305"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">18</span>);
+<a name="306"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"elevator: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementElevator));
+<a name="307"></a>		    
+<a name="308"></a>		    <span class="source_comment">// internal flags
+</span><a name="309"></a>		    
+<a name="310"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">20</span>);
+<a name="311"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"resting: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementResting));
+<a name="312"></a>		    
+<a name="313"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">21</span>);
+<a name="314"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"dynamic: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementDynamic));
+<a name="315"></a>		    
+<a name="316"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">22</span>);
+<a name="317"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"pushing: "</span>$<span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementPushing));
+<a name="318"></a>		    
+<a name="319"></a>		    <span class="source_comment">// floor normal
+</span><a name="320"></a>		    
+<a name="321"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">24</span>);
+<a name="322"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"floor normal: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementNormal.x$<span class="source_string">", "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementNormal.<span class="source_type">y</span>$<span class="source_string">", "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementNormal.z);
+<a name="323"></a>		    
+<a name="324"></a>            <span class="source_comment">// chaos scales
+</span><a name="325"></a>
+<a name="326"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">26</span>);
+<a name="327"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"splash chaos: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementSplashChaos);
+<a name="328"></a>
+<a name="329"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">27</span>);
+<a name="330"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"impulse chaos: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementImpulseChaos);
+<a name="331"></a>
+<a name="332"></a>            <span class="source_comment">// water data
+</span><a name="333"></a>		    
+<a name="334"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">30</span>);
+<a name="335"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"water penetration: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementWaterPenetration);
+<a name="336"></a>		    
+<a name="337"></a>		    <span class="source_comment">// character dimensions
+</span><a name="338"></a>		    
+<a name="339"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">32</span>);
+<a name="340"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"sphere radius: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementSphereRadius);
+<a name="341"></a>		    
+<a name="342"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">33</span>);
+<a name="343"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"sphyll radius: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementSphyllRadius);
+<a name="344"></a>		    
+<a name="345"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(textLeft, textTop + textHeight*<span class="source_int">34</span>);
+<a name="346"></a>		    <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_string">"shyll half height: "</span>$<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementSphyllHalfHeight);
+<a name="347"></a>        }
+<a name="348"></a>        
+<a name="349"></a>        <span class="source_comment">// draw speedo in bottom right
+</span><a name="350"></a>        
+<a name="351"></a>        speed = <span class="source_type">int</span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementSpeed);
+<a name="352"></a>        if (speed&lt;<span class="source_int">10</span>)
+<a name="353"></a>            <span class="source_type">text</span> = <span class="source_string">"  "</span>$<span class="source_type">string</span>(speed)$ <span class="source_string">" kph"</span>;
+<a name="354"></a>        else if (speed&lt;<span class="source_int">100</span>)
+<a name="355"></a>            <span class="source_type">text</span> = <span class="source_string">" "</span>$<span class="source_type">string</span>(speed)$<span class="source_string">" kph"</span>;
+<a name="356"></a>        else
+<a name="357"></a>            <span class="source_type">text</span> = <span class="source_type">string</span>(speed)$<span class="source_string">" kph"</span>;
+<a name="358"></a>
+<a name="359"></a>    	<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.<span class="source_type">Font</span> = hugeFont;
+<a name="360"></a>
+<a name="361"></a>		<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.TextSize(<span class="source_type">text</span>, speedTextWidth, speedTextHeight);
+<a name="362"></a>
+<a name="363"></a>		<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetPos(<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.ClipX-speedTextWidth-spacingWidth/<span class="source_int">6</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.<span class="source_type">ClipY</span>-speedTextHeight-spacingHeight/<span class="source_int">6</span>);
+<a name="364"></a>		
+<a name="365"></a>		speedAlpha = speed / <span class="source_int">30.0</span> * <span class="source_int">255.0</span>;
+<a name="366"></a>		if (speedAlpha&lt;<span class="source_int">1</span>)
+<a name="367"></a>		    speedAlpha = <span class="source_int">1</span>;
+<a name="368"></a>		else if (speedAlpha&gt;<span class="source_int">255</span>)
+<a name="369"></a>		    speedAlpha = <span class="source_int">255</span>;
+<a name="370"></a>		    
+<a name="371"></a>		if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.movementAirborne)
+<a name="372"></a>		    speedAlpha = <span class="source_int">255</span>;
+<a name="373"></a>		
+<a name="374"></a>		<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>, speedAlpha);
+<a name="375"></a>    	
+<a name="376"></a>		<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>.DrawText(<span class="source_type">text</span>);	
+<a name="377"></a>            
+<a name="378"></a>		return true;
+<a name="379"></a>	}
+<a name="380"></a>	
+<a name="381"></a>	return false;
+<a name="382"></a>}
+<a name="383"></a>
+<a name="384"></a><span class="source_type">function</span> <span class="source_type">string</span> movementStateString(<span class="source_type"><a href="../gameplay/ragdoll.html" class="source">Ragdoll</a></span>.<span class="source_type"><a href="../gameplay/ragdoll.html#MovementState" class="source">MovementState</a></span> <span class="source_type"><a href="../gameplay/ragdoll.html#MovementState" class="source">movementState</a></span>)
+<a name="385"></a>{
+<a name="386"></a>	switch (<span class="source_type"><a href="../gameplay/ragdoll.html#MovementState" class="source">movementState</a></span>)
+<a name="387"></a>	{
+<a name="388"></a>	    case MovementState_Stand:       return <span class="source_string">"stand"</span>;
+<a name="389"></a>	    case MovementState_Walk:        return <span class="source_string">"walk"</span>;
+<a name="390"></a>	    case MovementState_Run:         return <span class="source_string">"run"</span>;
+<a name="391"></a>	    case MovementState_Sprint:      return <span class="source_string">"sprint"</span>;
+<a name="392"></a>	    case MovementState_Ski:         return <span class="source_string">"ski"</span>;
+<a name="393"></a>	    case MovementState_Slide:       return <span class="source_string">"slide"</span>;
+<a name="394"></a>	    case MovementState_Stop:        return <span class="source_string">"stop"</span>;
+<a name="395"></a>	    case MovementState_Airborne:    return <span class="source_string">"airborne"</span>;
+<a name="396"></a>	    case MovementState_AirControl:  return <span class="source_string">"aircontrol"</span>;
+<a name="397"></a>	    case MovementState_Thrust:      return <span class="source_string">"thrust"</span>;
+<a name="398"></a>	    case MovementState_Swim:        return <span class="source_string">"swim"</span>;
+<a name="399"></a>	    case MovementState_Float:       return <span class="source_string">"float"</span>;
+<a name="400"></a>	    case MovementState_Skim:        return <span class="source_string">"skim"</span>;
+<a name="401"></a>	    case MovementState_ZeroGravity: return <span class="source_string">"zero-g"</span>;
+<a name="402"></a>	    case MovementState_Elevator:    return <span class="source_string">"elevator"</span>;
+<a name="403"></a>        default:                        return <span class="source_string">"unknown?"</span>;
+<a name="404"></a>	}
+<a name="405"></a>}
+<a name="406"></a>
+<a name="407"></a>
+<a name="408"></a><span class="source_comment">// Key events - might want these for turning on and off 
+</span><a name="409"></a><span class="source_comment">// specific debug views.
+</span><a name="410"></a><span class="source_type">function</span> <span class="source_type">bool</span> KeyType( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, optional <span class="source_type">string</span> <span class="source_type">Unicode</span> )
+<a name="411"></a>{
+<a name="412"></a>	if(HUDscript != None)
+<a name="413"></a>		return HUDScript.KeyType(<span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">Unicode</span>, <span class="source_type">response</span>);
+<a name="414"></a>	return false;
+<a name="415"></a>}
+<a name="416"></a>
+<a name="417"></a><span class="source_type">function</span> <span class="source_type">bool</span> KeyEvent( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span> )
+<a name="418"></a>{
+<a name="419"></a>	if(HUDscript != None)
+<a name="420"></a>		return HUDScript.KeyEvent(<span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>, <span class="source_type">delta</span>, <span class="source_type">response</span>);
+<a name="421"></a>	return false;
+<a name="422"></a>}
+<a name="423"></a>
+<a name="424"></a>simulated event PostBeginPlay()
+<a name="425"></a>{
+<a name="426"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">NavigationTestHarness</a></span>&gt; navigationTestClassInstance;
+<a name="427"></a>
+<a name="428"></a>	Super.PostBeginPlay();
+<a name="429"></a>
+<a name="430"></a>	Label = <span class="source_name">'HUD'</span>;
+<a name="431"></a>
+<a name="432"></a>	<span class="source_comment">// spawn and initialise pathfinding system test harness
+</span><a name="433"></a>	pathfindTestHarness = spawn(<span class="source_type">class</span><span class="source_name">'PFTestHarness'</span>, self);
+<a name="434"></a>	pathfindTestHarness.initialise(self);
+<a name="435"></a>
+<a name="436"></a>	<span class="source_comment">// spawn and initialise navigation system test harness
+</span><a name="437"></a>	navigationTestClassInstance = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">NavigationTestHarness</a></span>&gt;(DynamicLoadObject(NavigationTestHarnessClass, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="438"></a>	<span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">navigationTestHarness</a></span> = spawn(navigationTestClassInstance, self);
+<a name="439"></a>	<span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">navigationTestHarness</a></span>.initialise(self);
+<a name="440"></a>}
+<a name="441"></a>
+<a name="442"></a>simulated event WorldSpaceOverlays()
+<a name="443"></a>{
+<a name="444"></a>	local <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">viewTarget</span>;
+<a name="445"></a>
+<a name="446"></a>	<span class="source_comment">// for jetting/skiing debug
+</span><a name="447"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="448"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> X;
+<a name="449"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">Y</span>;
+<a name="450"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> Z;
+<a name="451"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">loc</span>;
+<a name="452"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> lastLoc;
+<a name="453"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> directionXY;
+<a name="454"></a>	local <span class="source_type">float</span> velocityXY;
+<a name="455"></a>	local <span class="source_type">float</span> velocityZ;
+<a name="456"></a>	local <span class="source_type">float</span> RTK;
+<a name="457"></a>	local <span class="source_type">int</span> pointsN;
+<a name="458"></a>
+<a name="459"></a>	Super.WorldSpaceOverlays();
+<a name="460"></a>
+<a name="461"></a>	pathfindTestHarness.drawDebug();
+<a name="462"></a>
+<a name="463"></a>	<span class="source_type">viewTarget</span> = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(PlayerOwner.<span class="source_type">ViewTarget</span>);
+<a name="464"></a>
+<a name="465"></a>	if (bShowDebugInfo && <span class="source_type">viewTarget</span> != None && <span class="source_type">viewTarget</span>.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> != None)
+<a name="466"></a>	{
+<a name="467"></a>		<span class="source_type">viewTarget</span>.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.displayWorldSpaceDebug(self);
+<a name="468"></a>		<span class="source_type">viewTarget</span>.displayWorldSpaceDebug(self);
+<a name="469"></a>	}
+<a name="470"></a>
+<a name="471"></a>	<span class="source_comment">// Squad (Formations) debug
+</span><a name="472"></a>	if ( debugSquadInfo != None )
+<a name="473"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; debugSquadInfo.pawns.length; <span class="source_type">i</span>++ )
+<a name="474"></a>			Draw3DLine(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(debugSquadInfo.pawns[<span class="source_type">i</span>]).Location, <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(debugSquadInfo.pawns[<span class="source_type">i</span>]).desiredLocation, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.Static.MakeColor(<span class="source_int">200</span>, <span class="source_int">255</span>, <span class="source_int">200</span>) );
+<a name="475"></a>
+<a name="476"></a>	<span class="source_comment">// Sensing debug
+</span><a name="477"></a>	if ( <span class="source_type">viewTarget</span> != None && <span class="source_type">viewTarget</span>.bShowSensingDebug )
+<a name="478"></a>		<span class="source_type">viewTarget</span>.DrawVisionCone( self );
+<a name="479"></a>
+<a name="480"></a>	<span class="source_comment">// jetpacking/skiing debug
+</span><a name="481"></a>	if ( <span class="source_type">viewTarget</span> != None && <span class="source_type">viewTarget</span>.bShowJSDebug && <span class="source_type">viewTarget</span>.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> != None )
+<a name="482"></a>	{
+<a name="483"></a>		<span class="source_comment">// display simulated path of character were he to stop jetpacking now
+</span><a name="484"></a>		<span class="source_comment">// (done here and not in displayWorldSpaceDebugJettingSkiing
+</span><a name="485"></a>		<span class="source_comment">// so it can be displayed for player characters, too)
+</span><a name="486"></a>		RTK = <span class="source_int">0.1</span>;				<span class="source_comment">// time in seconds between trajectory points
+</span><a name="487"></a>		pointsN = <span class="source_int">50</span>;			<span class="source_comment">// number of points
+</span><a name="488"></a>
+<a name="489"></a>		<span class="source_type">loc</span> = <span class="source_type">viewTarget</span>.Location;
+<a name="490"></a>		<span class="source_type">viewTarget</span>.GetAxes( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">viewTarget</span>).<span class="source_type"><a href="../gameplay/motor.html" class="source">motor</a></span>.getMoveRotation(), X, <span class="source_type">Y</span>, Z );	<span class="source_comment">// X is direction
+</span><a name="491"></a>		directionXY.X = X.X;
+<a name="492"></a>		directionXY.<span class="source_type">Y</span> = X.<span class="source_type">Y</span>;
+<a name="493"></a>		directionXY /= VSize( directionXY );	<span class="source_comment">// normalize
+</span><a name="494"></a>		velocityXY = sqrt( <span class="source_type">viewTarget</span>.Velocity.X * <span class="source_type">viewTarget</span>.Velocity.X + <span class="source_type">viewTarget</span>.Velocity.<span class="source_type">Y</span> * <span class="source_type">viewTarget</span>.Velocity.<span class="source_type">Y</span> );
+<a name="495"></a>		velocityZ = <span class="source_type">viewTarget</span>.Velocity.Z;;
+<a name="496"></a>
+<a name="497"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; pointsN; <span class="source_type">i</span>++ )
+<a name="498"></a>		{
+<a name="499"></a>			lastLoc = <span class="source_type">loc</span>;
+<a name="500"></a>
+<a name="501"></a>			velocityZ -= RTK * (<span class="source_int">9.81f</span>*<span class="source_int">80.0f</span>);
+<a name="502"></a>			<span class="source_type">loc</span>.Z = <span class="source_type">loc</span>.Z + RTK * velocityZ;
+<a name="503"></a>			<span class="source_type">loc</span> = <span class="source_type">loc</span> + directionXY * RTK * velocityXY;
+<a name="504"></a>
+<a name="505"></a>			Draw3DLine( lastLoc, <span class="source_type">loc</span>, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.Static.MakeColor(<span class="source_int">255</span>, <span class="source_int">0</span>, <span class="source_int">0</span>));
+<a name="506"></a>		}
+<a name="507"></a>	}
+<a name="508"></a>
+<a name="509"></a>	if(playerWeaponDebug)
+<a name="510"></a>	{
+<a name="511"></a>		if (<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(PlayerOwner.<span class="source_type">ViewTarget</span>) != None && <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(PlayerOwner.<span class="source_type">ViewTarget</span>).<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> != None)
+<a name="512"></a>		{
+<a name="513"></a>			<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(PlayerOwner.<span class="source_type">ViewTarget</span>).<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>.drawDebug(self);
+<a name="514"></a>		}
+<a name="515"></a>	}
+<a name="516"></a>}
+<a name="517"></a>
+<a name="518"></a><span class="source_comment">//------------------------------------------------------------------------
+</span><a name="519"></a><span class="source_comment">// draws a 3D box
+</span><a name="520"></a>
+<a name="521"></a><span class="source_type">function</span> draw3DBox(<span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> minCorner, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> maxCorner, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> lineColor)
+<a name="522"></a>{
+<a name="523"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">a</span>;
+<a name="524"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">b</span>;
+<a name="525"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">c</span>;
+<a name="526"></a>
+<a name="527"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">d</span>;
+<a name="528"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> e;
+<a name="529"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">f</span>;
+<a name="530"></a>
+<a name="531"></a>	<span class="source_comment">// Oh - I'm sure someone will tell me about a better way to perform these initializations...
+</span><a name="532"></a>	<span class="source_type">a</span>.x = maxCorner.x;
+<a name="533"></a>	<span class="source_type">a</span>.<span class="source_type">y</span> = minCorner.<span class="source_type">y</span>;
+<a name="534"></a>	<span class="source_type">a</span>.z = minCorner.z;
+<a name="535"></a>	<span class="source_type">b</span>.x = maxCorner.x;
+<a name="536"></a>	<span class="source_type">b</span>.<span class="source_type">y</span> = maxCorner.<span class="source_type">y</span>;
+<a name="537"></a>	<span class="source_type">b</span>.z = minCorner.z;
+<a name="538"></a>	<span class="source_type">c</span>.x = minCorner.x;
+<a name="539"></a>	<span class="source_type">c</span>.<span class="source_type">y</span> = maxCorner.<span class="source_type">y</span>;
+<a name="540"></a>	<span class="source_type">c</span>.z = minCorner.z;
+<a name="541"></a>
+<a name="542"></a>	<span class="source_type">d</span>.x = minCorner.x;
+<a name="543"></a>	<span class="source_type">d</span>.<span class="source_type">y</span> = maxCorner.<span class="source_type">y</span>;
+<a name="544"></a>	<span class="source_type">d</span>.z = maxCorner.z;
+<a name="545"></a>	e.x = minCorner.x;
+<a name="546"></a>	e.<span class="source_type">y</span> = minCorner.<span class="source_type">y</span>;
+<a name="547"></a>	e.z = maxCorner.z;
+<a name="548"></a>	<span class="source_type">f</span>.x = maxCorner.x;
+<a name="549"></a>	<span class="source_type">f</span>.<span class="source_type">y</span> = minCorner.<span class="source_type">y</span>;
+<a name="550"></a>	<span class="source_type">f</span>.z = maxCorner.z;
+<a name="551"></a>
+<a name="552"></a>	<span class="source_comment">// lower rectangle (in z)
+</span><a name="553"></a>	Draw3DLine(minCorner, <span class="source_type">a</span>, lineColor);
+<a name="554"></a>	Draw3DLine(<span class="source_type">a</span>,         <span class="source_type">b</span>, lineColor);
+<a name="555"></a>	Draw3DLine(<span class="source_type">b</span>,         <span class="source_type">c</span>, lineColor);
+<a name="556"></a>	Draw3DLine(<span class="source_type">c</span>, minCorner, lineColor);
+<a name="557"></a>
+<a name="558"></a>	<span class="source_comment">// upper rectangle (in z)
+</span><a name="559"></a>	Draw3DLine(maxCorner, <span class="source_type">d</span>, lineColor);
+<a name="560"></a>	Draw3DLine(<span class="source_type">d</span>,         e, lineColor);
+<a name="561"></a>	Draw3DLine(e,         <span class="source_type">f</span>, lineColor);
+<a name="562"></a>	Draw3DLine(<span class="source_type">f</span>, maxCorner, lineColor);
+<a name="563"></a>
+<a name="564"></a>	<span class="source_comment">// connecting vertical struts
+</span><a name="565"></a>	Draw3DLine(minCorner, e, lineColor);
+<a name="566"></a>	Draw3DLine(<span class="source_type">a</span>,         <span class="source_type">f</span>, lineColor);
+<a name="567"></a>	Draw3DLine(<span class="source_type">b</span>, maxCorner, lineColor);
+<a name="568"></a>	Draw3DLine(<span class="source_type">c</span>,         <span class="source_type">d</span>, lineColor);
+<a name="569"></a>}
+<a name="570"></a>
+<a name="571"></a><span class="source_comment">// navigation test harness hooks
+</span><a name="572"></a>exec <span class="source_type">function</span> restartNavigationTest()
+<a name="573"></a>{
+<a name="574"></a>	<span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">navigationTestHarness</a></span>.restart();
+<a name="575"></a>}
+<a name="576"></a>exec <span class="source_type">function</span> markNavigationPoint()
+<a name="577"></a>{
+<a name="578"></a>	<span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">navigationTestHarness</a></span>.markPoint();
+<a name="579"></a>}
+<a name="580"></a>exec <span class="source_type">function</span> toggleNavigationTest()
+<a name="581"></a>{
+<a name="582"></a>	<span class="source_type"><a href="../gameplay/navigationtestharness.html" class="source">navigationTestHarness</a></span>.toggleEnabled();
+<a name="583"></a>}
+<a name="584"></a>
+<a name="585"></a><span class="source_comment">// pathfinding test harness hooks
+</span><a name="586"></a>exec <span class="source_type">function</span> pathfindDebug()
+<a name="587"></a>{
+<a name="588"></a>	pathfindTestHarness.pathfindDebug();
+<a name="589"></a>}
+<a name="590"></a>exec <span class="source_type">function</span> pathfindMarkPoint()
+<a name="591"></a>{
+<a name="592"></a>	pathfindTestHarness.pathfindMarkPoint();
+<a name="593"></a>}
+<a name="594"></a>exec <span class="source_type">function</span> showPathNodes()
+<a name="595"></a>{
+<a name="596"></a>	pathfindTestHarness.showPathNodes();
+<a name="597"></a>}
+<a name="598"></a>exec <span class="source_type">function</span> showReach()
+<a name="599"></a>{
+<a name="600"></a>	pathfindTestHarness.toggleShowReach();
+<a name="601"></a>}
+<a name="602"></a>exec <span class="source_type">function</span> pathfindDiagnostics()
+<a name="603"></a>{
+<a name="604"></a>	pathfindTestHarness.diagnostics();
+<a name="605"></a>}
+<a name="606"></a>exec <span class="source_type">function</span> pathfindStep()
+<a name="607"></a>{
+<a name="608"></a>	pathfindTestHarness.toggleStep();
+<a name="609"></a>}
+<a name="610"></a>exec <span class="source_type">function</span> traversalCheck()
+<a name="611"></a>{
+<a name="612"></a>	pathfindTestHarness.toggleTraversalCheck();
+<a name="613"></a>}
+<a name="614"></a>exec <span class="source_type">function</span> pathfindNextStep()
+<a name="615"></a>{
+<a name="616"></a>	pathfindTestHarness.Step();
+<a name="617"></a>}
+<a name="618"></a>exec <span class="source_type">function</span> showNavigationQuadtree()
+<a name="619"></a>{
+<a name="620"></a>	pathfindTestHarness.toggleShowQuadtree();
+<a name="621"></a>}
+<a name="622"></a>exec <span class="source_type">function</span> markPointHere()
+<a name="623"></a>{
+<a name="624"></a>	pathfindTestHarness.markPointHere();
+<a name="625"></a>}
+<a name="626"></a>
+<a name="627"></a><span class="source_comment">// vehicle test hooks
+</span><a name="628"></a>exec <span class="source_type">function</span> showVehiclePhysics()
+<a name="629"></a>{
+<a name="630"></a>	local <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span> vehicleInstance;
+<a name="631"></a>	vehicleInstance = <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(playerOwner.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="632"></a>	if (vehicleInstance == None)
+<a name="633"></a>		log(<span class="source_string">"Not Driving a Vehicle"</span>);
+<a name="634"></a>	else
+<a name="635"></a>		vehicleInstance.toggleShowPhysicsDebug();
+<a name="636"></a>}
+<a name="637"></a>
+<a name="638"></a><span class="source_comment">//-----------------------------------------------------------------------------
+</span><a name="639"></a><span class="source_comment">// Show squad debug info for a SquadInfo
+</span><a name="640"></a><span class="source_comment">// 'index' is the index of the rook in level
+</span><a name="641"></a>
+<a name="642"></a>exec <span class="source_type">function</span> debugSquad( <span class="source_type">int</span> <span class="source_type">index</span> )
+<a name="643"></a>{
+<a name="644"></a>	local <span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span> squad;
+<a name="645"></a>	local <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type"><a href="../gameplay/rook.html" class="source">rook</a></span>;
+<a name="646"></a>	local <span class="source_type">int</span> actorindex;
+<a name="647"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="648"></a>
+<a name="649"></a>	if ( <span class="source_type">index</span> &lt; <span class="source_int">0</span> && debugSquadInfo != None )
+<a name="650"></a>	{
+<a name="651"></a>		for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; debugSquadInfo.pawns.length; <span class="source_type">i</span>++ )
+<a name="652"></a>		{
+<a name="653"></a>			<span class="source_type"><a href="../gameplay/rook.html" class="source">rook</a></span> = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(debugSquadInfo.pawns[<span class="source_type">i</span>]);
+<a name="654"></a>			<span class="source_type"><a href="../gameplay/rook.html" class="source">rook</a></span>.bShowSquadDebug = false;
+<a name="655"></a>		}
+<a name="656"></a>		debugSquadInfo = None;
+<a name="657"></a>	}
+<a name="658"></a>	else
+<a name="659"></a>	{
+<a name="660"></a>		actorIndex = <span class="source_int">0</span>;
+<a name="661"></a>		foreach AllActors( <span class="source_type">class</span><span class="source_name">'SquadInfo'</span>, squad )
+<a name="662"></a>		{
+<a name="663"></a>			log(<span class="source_string">"Squad.name: "</span> $ squad.<span class="source_type">name</span> );
+<a name="664"></a>			if ( actorIndex == <span class="source_type">index</span> )
+<a name="665"></a>			{
+<a name="666"></a>				if ( debugSquadInfo != None )
+<a name="667"></a>					for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; debugSquadInfo.pawns.length; <span class="source_type">i</span>++ )
+<a name="668"></a>					{
+<a name="669"></a>						<span class="source_type"><a href="../gameplay/rook.html" class="source">rook</a></span> = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(debugSquadInfo.pawns[<span class="source_type">i</span>]);
+<a name="670"></a>						<span class="source_type"><a href="../gameplay/rook.html" class="source">rook</a></span>.bShowSquadDebug = false;
+<a name="671"></a>					}
+<a name="672"></a>				debugSquadInfo = squad;
+<a name="673"></a>				for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; debugSquadInfo.pawns.length; <span class="source_type">i</span>++ )
+<a name="674"></a>				{
+<a name="675"></a>					<span class="source_type"><a href="../gameplay/rook.html" class="source">rook</a></span> = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(debugSquadInfo.pawns[<span class="source_type">i</span>]);
+<a name="676"></a>					<span class="source_type"><a href="../gameplay/rook.html" class="source">rook</a></span>.bShowSquadDebug = true;
+<a name="677"></a>				}
+<a name="678"></a>			}
+<a name="679"></a>			actorIndex++;
+<a name="680"></a>		}
+<a name="681"></a>
+<a name="682"></a>		log( <span class="source_string">"debugSquadInfo:"</span> @ debugSquadInfo );
+<a name="683"></a>	}
+<a name="684"></a>}
+<a name="685"></a>
+<a name="686"></a>exec <span class="source_type">function</span> debugPlayerWeapon()
+<a name="687"></a>{
+<a name="688"></a>	playerWeaponDebug = true;
+<a name="689"></a>}
+<a name="690"></a>
+<a name="691"></a><span class="source_comment">// Temporary function to quickly display shadowed text
+</span><a name="692"></a>simulated <span class="source_type">function</span> drawShadowedText(<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type">String</span> <span class="source_type">text</span>, <span class="source_type">int</span> x, <span class="source_type">int</span> <span class="source_type">y</span>)
+<a name="693"></a>{
+<a name="694"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">Font</span> = SmallFont;
+<a name="695"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetPos(x+<span class="source_int">1</span>, <span class="source_type">y</span>+<span class="source_int">1</span>);
+<a name="696"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetDrawColor(<span class="source_int">80</span>, <span class="source_int">80</span>, <span class="source_int">80</span>);
+<a name="697"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawText(<span class="source_type">text</span>);
+<a name="698"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetPos(x, <span class="source_type">y</span>);
+<a name="699"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>);
+<a name="700"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawText(<span class="source_type">text</span>);
+<a name="701"></a>}
+<a name="702"></a>
+<a name="703"></a><span class="source_comment">// Temporary function to quickly display shadowed text
+</span><a name="704"></a>simulated <span class="source_type">function</span> drawJustifiedShadowedText(<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type">String</span> <span class="source_type">text</span>, <span class="source_type">int</span> x, <span class="source_type">int</span> <span class="source_type">y</span>, <span class="source_type">int</span> x1, <span class="source_type">int</span> y1, <span class="source_type">int</span> justify)
+<a name="705"></a>{
+<a name="706"></a>	local <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>;
+<a name="707"></a>
+<a name="708"></a>	<span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> = <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawColor;
+<a name="709"></a>
+<a name="710"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.<span class="source_type">Font</span> = SmallFont;
+<a name="711"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetDrawColor(<span class="source_int">80</span>, <span class="source_int">80</span>, <span class="source_int">80</span>);
+<a name="712"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawTextJustified(<span class="source_type">text</span>, justify, x+<span class="source_int">1</span>, <span class="source_type">y</span>+<span class="source_int">1</span>, x1, y1);
+<a name="713"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetDrawColor(<span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>.<span class="source_type">r</span>, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>.g, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>.<span class="source_type">b</span>, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>.<span class="source_type">a</span>);
+<a name="714"></a>	<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawTextJustified(<span class="source_type">text</span>, justify, x, <span class="source_type">y</span>, x1, y1);
+<a name="715"></a>}
+<a name="716"></a>
+<a name="717"></a><span class="source_comment">// draws the current team and player scores
+</span><a name="718"></a>simulated <span class="source_type">function</span> drawScores(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, optional <span class="source_type">int</span> <span class="source_type">y</span>)
+<a name="719"></a>{
+<a name="720"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> PC;
+<a name="721"></a>	local <span class="source_type">float</span> textSizeX, textSizeY;
+<a name="722"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>, j, x;
+<a name="723"></a>	local Array&lt;<span class="source_type">int</span>&gt; scoreVals;
+<a name="724"></a>	local Array&lt;<span class="source_type">string</span>&gt; scoreNames;
+<a name="725"></a>	local Array&lt;<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>&gt; sortedTRIList;
+<a name="726"></a>	local <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">P</span>;
+<a name="727"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> char;
+<a name="728"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> team;
+<a name="729"></a>
+<a name="730"></a>	PC = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(PlayerOwner);
+<a name="731"></a>	if (PC == None)
+<a name="732"></a>		return;
+<a name="733"></a>
+<a name="734"></a>	char = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(PlayerOwner.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="735"></a>	if (char == None)
+<a name="736"></a>		return;
+<a name="737"></a>
+<a name="738"></a>	<span class="source_type">C</span>.<span class="source_type">Font</span> = SmallFont;
+<a name="739"></a>	<span class="source_type">C</span>.TextSize(<span class="source_string">"W"</span>, textSizeX, textSizeY);
+<a name="740"></a>
+<a name="741"></a>	<span class="source_comment">// Team Scores
+</span><a name="742"></a>	scoreNames.Length = <span class="source_int">0</span>;
+<a name="743"></a>	scoreVals.Length = <span class="source_int">0</span>;
+<a name="744"></a>	<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>);
+<a name="745"></a>	ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'TeamInfo'</span>, team)
+<a name="746"></a>	{
+<a name="747"></a>		<span class="source_comment">// sort by score
+</span><a name="748"></a>		<span class="source_type">i</span> = <span class="source_int">0</span>;
+<a name="749"></a>		if ( scoreVals.length &gt; <span class="source_int">0</span> )
+<a name="750"></a>			while ( <span class="source_type">i</span> &lt; scoreVals.length && scoreVals[<span class="source_type">i</span>] &gt; team.Score )
+<a name="751"></a>				<span class="source_type">i</span>++;
+<a name="752"></a>
+<a name="753"></a>		scoreVals.Insert(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="754"></a>		scoreVals[<span class="source_type">i</span>] = team.Score;
+<a name="755"></a>		scoreNames.Insert(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="756"></a>		scoreNames[<span class="source_type">i</span>] = <span class="source_type">string</span>(team.Label);
+<a name="757"></a>	}
+<a name="758"></a>
+<a name="759"></a>	if (<span class="source_type">y</span> == <span class="source_int">0</span>)
+<a name="760"></a>	{
+<a name="761"></a>		<span class="source_type">y</span> = <span class="source_int">0.1</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>;
+<a name="762"></a>	}
+<a name="763"></a>
+<a name="764"></a>	x = <span class="source_int">0.1</span> * <span class="source_type">C</span>.ClipX;
+<a name="765"></a>
+<a name="766"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.0</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="767"></a>	<span class="source_type">C</span>.DrawText(<span class="source_string">"Team"</span>);
+<a name="768"></a>
+<a name="769"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="770"></a>	<span class="source_type">C</span>.DrawText(<span class="source_string">"Score"</span>);
+<a name="771"></a>
+<a name="772"></a>	<span class="source_type">C</span>.SetPos(x, <span class="source_type">y</span>);
+<a name="773"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, <span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX, <span class="source_int">1</span>);
+<a name="774"></a>
+<a name="775"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>) - <span class="source_int">5</span>, <span class="source_type">y</span> - textSizeY);
+<a name="776"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, <span class="source_int">1</span>, (scoreVals.Length + <span class="source_int">1</span>) * textSizeY);
+<a name="777"></a>
+<a name="778"></a>	<span class="source_type">y</span> += <span class="source_int">2</span>;
+<a name="779"></a>
+<a name="780"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; scoreVals.Length; <span class="source_type">i</span>++)
+<a name="781"></a>	{
+<a name="782"></a>		if (scoreNames[<span class="source_type">i</span>] == <span class="source_type">string</span>(char.team().Label))
+<a name="783"></a>			<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="784"></a>		else
+<a name="785"></a>			<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>);
+<a name="786"></a>
+<a name="787"></a>		drawJustifiedShadowedText(<span class="source_type">C</span>, scoreNames[<span class="source_type">i</span>], x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.0</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.7</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="788"></a>		drawJustifiedShadowedText(<span class="source_type">C</span>, <span class="source_type">string</span>(scoreVals[<span class="source_type">i</span>]), x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">1.0</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="789"></a>
+<a name="790"></a>		<span class="source_type">y</span> += <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>;
+<a name="791"></a>	}
+<a name="792"></a>
+<a name="793"></a>	<span class="source_type">y</span> += <span class="source_int">40</span>;
+<a name="794"></a>
+<a name="795"></a>	<span class="source_comment">// Player Scores
+</span><a name="796"></a>	scoreNames.Length = <span class="source_int">0</span>;
+<a name="797"></a>	scoreVals.Length = <span class="source_int">0</span>;
+<a name="798"></a>	<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>);
+<a name="799"></a>
+<a name="800"></a>	for (j = <span class="source_int">0</span>; j &lt; PlayerOwner.<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.PRIArray.Length; j++)
+<a name="801"></a>	{
+<a name="802"></a>		<span class="source_type">P</span> = <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span>(PlayerOwner.<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.PRIArray[j]);
+<a name="803"></a>
+<a name="804"></a>		<span class="source_comment">// sort by score
+</span><a name="805"></a>		<span class="source_type">i</span> = <span class="source_int">0</span>;
+<a name="806"></a>		if ( scoreVals.length &gt; <span class="source_int">0</span> )
+<a name="807"></a>			while ( <span class="source_type">i</span> &lt; scoreVals.length && scoreVals[<span class="source_type">i</span>] &gt; <span class="source_type">P</span>.Score )
+<a name="808"></a>				<span class="source_type">i</span>++;
+<a name="809"></a>
+<a name="810"></a>		sortedTRIList.Insert(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="811"></a>		sortedTRIList[<span class="source_type">i</span>] = <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span>(<span class="source_type">P</span>);
+<a name="812"></a>		scoreVals.Insert(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="813"></a>		scoreVals[<span class="source_type">i</span>] = <span class="source_type">P</span>.Score;
+<a name="814"></a>		scoreNames.Insert(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="815"></a>		scoreNames[<span class="source_type">i</span>] = <span class="source_type">P</span>.<span class="source_type">PlayerName</span>;
+<a name="816"></a>	}
+<a name="817"></a>
+<a name="818"></a>	x = <span class="source_int">0.1</span> * <span class="source_type">C</span>.ClipX;
+<a name="819"></a>
+<a name="820"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.0</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="821"></a>	<span class="source_type">C</span>.DrawText(<span class="source_string">"Player"</span>);
+<a name="822"></a>
+<a name="823"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="824"></a>	<span class="source_type">C</span>.DrawText(<span class="source_string">"Score"</span>);
+<a name="825"></a>
+<a name="826"></a>
+<a name="827"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span> + <span class="source_int">60</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="828"></a>	<span class="source_type">C</span>.DrawText(<span class="source_string">"O"</span>);
+<a name="829"></a>
+<a name="830"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span> + <span class="source_int">90</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="831"></a>	<span class="source_type">C</span>.DrawText(<span class="source_string">"D"</span>);
+<a name="832"></a>
+<a name="833"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span> + <span class="source_int">120</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="834"></a>	<span class="source_type">C</span>.DrawText(<span class="source_string">"S"</span>);
+<a name="835"></a>
+<a name="836"></a>	for (j=<span class="source_int">0</span>; j &lt; sortedTRIList[<span class="source_int">0</span>].statDataList.Length; j++)
+<a name="837"></a>	{
+<a name="838"></a>		<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span> + <span class="source_int">180</span> + j*<span class="source_int">50</span>), <span class="source_type">y</span> - textSizeY - <span class="source_int">3</span>);
+<a name="839"></a>		<span class="source_type">C</span>.DrawText(char.<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span>.statDataList[j].statClass.default.acronym);
+<a name="840"></a>	}
+<a name="841"></a>
+<a name="842"></a>	<span class="source_type">C</span>.SetPos(x, <span class="source_type">y</span>);
+<a name="843"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, <span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX, <span class="source_int">1</span>);
+<a name="844"></a>
+<a name="845"></a>	<span class="source_type">C</span>.SetPos(x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>) - <span class="source_int">5</span>, <span class="source_type">y</span> - textSizeY);
+<a name="846"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, <span class="source_int">1</span>, (scoreVals.Length + <span class="source_int">1</span>) * textSizeY);
+<a name="847"></a>
+<a name="848"></a>	<span class="source_type">y</span> += <span class="source_int">2</span>;
+<a name="849"></a>
+<a name="850"></a>	<span class="source_type">P</span> = char.<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span>;
+<a name="851"></a>
+<a name="852"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; sortedTRIList.Length; <span class="source_type">i</span>++)
+<a name="853"></a>	{
+<a name="854"></a>		if (sortedTRIList[<span class="source_type">i</span>].<span class="source_type">PlayerName</span> == <span class="source_type">P</span>.<span class="source_type">PlayerName</span>)
+<a name="855"></a>			<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="856"></a>		else
+<a name="857"></a>			<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>, <span class="source_int">255</span>, <span class="source_int">255</span>);
+<a name="858"></a>
+<a name="859"></a>		drawJustifiedShadowedText(<span class="source_type">C</span>, sortedTRIList[<span class="source_type">i</span>].<span class="source_type">PlayerName</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.0</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.7</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="860"></a>		drawJustifiedShadowedText(<span class="source_type">C</span>, <span class="source_type">string</span>(<span class="source_type">int</span>(sortedTRIList[<span class="source_type">i</span>].Score)), x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">1.0</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="861"></a>		drawJustifiedShadowedText(<span class="source_type">C</span>, <span class="source_type">string</span>(sortedTRIList[<span class="source_type">i</span>].offenseScore), x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>+<span class="source_int">60</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">1.0</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="862"></a>		drawJustifiedShadowedText(<span class="source_type">C</span>, <span class="source_type">string</span>(sortedTRIList[<span class="source_type">i</span>].defenseScore), x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>+<span class="source_int">90</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">1.0</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="863"></a>		drawJustifiedShadowedText(<span class="source_type">C</span>, <span class="source_type">string</span>(sortedTRIList[<span class="source_type">i</span>].styleScore), x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span>+<span class="source_int">120</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">1.0</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="864"></a>		for (j=<span class="source_int">0</span>; j &lt; sortedTRIList[<span class="source_type">i</span>].statDataList.Length; j++)
+<a name="865"></a>		{
+<a name="866"></a>			drawJustifiedShadowedText(<span class="source_type">C</span>, <span class="source_type">string</span>(sortedTRIList[<span class="source_type">i</span>].statDataList[j].<span class="source_type">amount</span>), x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">0.22</span> + <span class="source_int">180</span> + j*<span class="source_int">50</span>), <span class="source_type">y</span>, x + (<span class="source_int">0.8</span> * <span class="source_type">C</span>.ClipX * <span class="source_int">1.0</span>), <span class="source_type">y</span> + <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>, <span class="source_int">0</span>);
+<a name="867"></a>		}
+<a name="868"></a>		<span class="source_type">y</span> += <span class="source_int">0.03</span> * <span class="source_type">C</span>.<span class="source_type">ClipY</span>;
+<a name="869"></a>	}
+<a name="870"></a>}
+<a name="871"></a>
+<a name="872"></a><span class="source_comment">// drawBox
+</span><a name="873"></a><span class="source_type">function</span> drawBox(<span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type">C</span>, <span class="source_type">int</span> x, <span class="source_type">int</span> <span class="source_type">y</span>, <span class="source_type">int</span> w, <span class="source_type">int</span> h, optional <span class="source_type">int</span> <span class="source_type">size</span>)
+<a name="874"></a>{
+<a name="875"></a>	if (<span class="source_type">size</span> == <span class="source_int">0</span>)
+<a name="876"></a>		<span class="source_type">size</span> = <span class="source_int">1</span>;
+<a name="877"></a>
+<a name="878"></a>	<span class="source_type">C</span>.SetPos(X, <span class="source_type">Y</span>);
+<a name="879"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, <span class="source_type">size</span>, h);
+<a name="880"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, w, <span class="source_type">size</span>);
+<a name="881"></a>	<span class="source_type">C</span>.SetPos(X + w, <span class="source_type">Y</span>);
+<a name="882"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, <span class="source_type">size</span>, h);
+<a name="883"></a>	<span class="source_type">C</span>.SetPos(X, <span class="source_type">Y</span> + h);
+<a name="884"></a>	<span class="source_type">C</span>.DrawRect(<span class="source_type">C</span>.WhiteTex, w+<span class="source_type">size</span>, <span class="source_type">size</span>);
+<a name="885"></a>	<span class="source_type">C</span>.SetPos(X, <span class="source_type">Y</span>);
+<a name="886"></a>}
+<a name="887"></a>
+<a name="888"></a><span class="source_comment">// LocalizedMessage
+</span><a name="889"></a>simulated <span class="source_type">function</span> LocalizedMessage( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>&gt; <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>, optional <span class="source_type">int</span> Switch, optional Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">Related1</span>, optional Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">Related2</span>, optional Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">OptionalObject</span>, optional <span class="source_type">string</span> <span class="source_type">CriticalString</span>, optional <span class="source_type">string</span> <span class="source_type">OptionalString</span> )
+<a name="890"></a>{
+<a name="891"></a>	PlayerOwner.ClientMessage( <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>.static.GetString(Switch, <span class="source_type">Related1</span>, <span class="source_type">Related2</span>, <span class="source_type">OptionalObject</span>, <span class="source_type">OptionalString</span>) );
+<a name="892"></a>}
+<a name="893"></a>
+<a name="894"></a>
+<a name="895"></a><span class="source_comment">//=============================================================================
+</span><a name="896"></a>
+<a name="897"></a>defaultProperties
+<a name="898"></a>{
+<a name="899"></a>	NavigationTestHarnessClass = <span class="source_string">"Tyrion.ConcreteNavigationTest"</span>
+<a name="900"></a>
+<a name="901"></a>	ConsoleMessagePosY = <span class="source_int">0.6</span>
+<a name="902"></a>	ConsoleMessageCount=<span class="source_int">8</span>
+<a name="903"></a>
+<a name="904"></a>	HUDScriptType = <span class="source_string">"TribesGUI.TribesDebugHUDScript"</span>
+<a name="905"></a>
+<a name="906"></a>    hugeFont = <span class="source_type">font</span><span class="source_name">'TribesFonts.Tahoma24'</span>	
+<a name="907"></a>}
+<a name="908"></a>
+<a name="909"></a><span class="source_comment">//hugeFont = font'UWindowFonts.TahomaB30'
+</span><a name="910"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesdebughud.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesDebugHUD">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribescreditsmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribesdebughudscript.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: st 16.4.2014 10:20:46.000 - Creation time: st 23.5.2018 00:10:48.131 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

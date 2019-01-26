@@ -1,0 +1,1179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.TribesInventorySelectionMenu</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesinventoryselectionmenu.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesInventorySelectionMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesinventorypackbutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribesinventoryweaponactor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/tribesinventoryselectionmenu.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.TribesInventorySelectionMenu</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tribesgui/tribesguipage.html">TribesGUIPage</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/gui.html">GUI</a>
+   |   
+   +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guicomponent.html">GUIComponent</a>
+      |   
+      +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticomponent.html">GUIMultiComponent</a>
+         |   
+         +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guipage.html">GUIPage</a>
+            |   
+            +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipage.html">TribesGUIPage</a>
+               |   
+               +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesinventoryselectionmenu.html">TribesInventorySelectionMenu</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_CURRENT_LOADOUT_SLOT" name="CURRENT_LOADOUT_SLOT" title="go to the details">CURRENT_LOADOUT_SLOT</a></td><td width="10%">=</td><td width="50%">-1</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/playerprofile.html">PlayerProfile</a></td><td width="66%"><a href="#_activeProfile" name="activeProfile" title="go to the details">activeProfile</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&lt;<a href="../gameplay/skininfo.html">SkinInfo</a>&gt;&gt;</td><td width="66%"><a href="#_availableSkins" name="availableSkins" title="go to the details">availableSkins</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsFemale" name="bIsFemale" title="go to the details">bIsFemale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNotInGame" name="bNotInGame" title="go to the details">bNotInGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bOldBehindView" name="bOldBehindView" title="go to the details">bOldBehindView</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseProfiles" name="bUseProfiles" title="go to the details">bUseProfiles</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a></td><td width="66%"><a href="#_characterController" name="characterController" title="go to the details">characterController</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventorycharacterview.html">TribesInventoryCharacterView</a></td><td width="66%"><a href="#_CharacterView" name="CharacterView" title="go to the details">CharacterView</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a></td><td width="66%"><a href="#_clientData" name="clientData" title="go to the details">clientData</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_currentLoadoutArrayStart" name="currentLoadoutArrayStart" title="go to the details">currentLoadoutArrayStart</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryloadoutbutton.html">TribesInventoryLoadoutButton</a></td><td width="66%"><a href="#_CurrentLoadoutTab" name="CurrentLoadoutTab" title="go to the details">CurrentLoadoutTab</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_currentSkinIndex" name="currentSkinIndex" title="go to the details">currentSkinIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryloadoutbutton.html">TribesInventoryLoadoutButton</a></td><td width="66%"><a href="#_editedLoadoutButton" name="editedLoadoutButton" title="go to the details">editedLoadoutButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudenergybar.html">HUDEnergyBar</a></td><td width="66%"><a href="#_energyBar" name="energyBar" title="go to the details">energyBar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_ExternalViewportSurround" name="ExternalViewportSurround" title="go to the details">ExternalViewportSurround</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudhealthbar.html">HUDHealthBar</a></td><td width="66%"><a href="#_healthBar" name="healthBar" title="go to the details">healthBar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudcontainer.html">HUDContainer</a></td><td width="66%"><a href="#_healthEnergyContainer" name="healthEnergyContainer" title="go to the details">healthEnergyContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a></td><td width="66%"><a href="#_inventory" name="inventory" title="go to the details">inventory</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a>&gt;</td><td width="66%"><a href="#_lastAccessClass" name="lastAccessClass" title="go to the details">lastAccessClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_lastAppliedWeaponSlotIndex" name="lastAppliedWeaponSlotIndex" title="go to the details">lastAppliedWeaponSlotIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guieditbox.html">GUIEditBox</a></td><td width="66%"><a href="#_loadoutEditBox" name="loadoutEditBox" title="go to the details">loadoutEditBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">InventoryStationAccess.InventoryStationWeapon</td><td width="66%"><a href="#_NoWeapon" name="NoWeapon" title="go to the details">NoWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/character.html">Character</a></td><td width="66%"><a href="#_playerCharacter" name="playerCharacter" title="go to the details">playerCharacter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/teaminfo.html">TeamInfo</a></td><td width="66%"><a href="#_playerTeam" name="playerTeam" title="go to the details">playerTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">Rotator</a></td><td width="66%"><a href="#_PreviousCameraRotation" name="PreviousCameraRotation" title="go to the details">PreviousCameraRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout">InventoryStationAccess.InventoryStationLoadout</a></td><td width="66%"><a href="#_selectedLoadout" name="selectedLoadout" title="go to the details">selectedLoadout</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryloadoutbutton.html">TribesInventoryLoadoutButton</a></td><td width="66%"><a href="#_SelectedLoadoutButton" name="SelectedLoadoutButton" title="go to the details">SelectedLoadoutButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryweaponbutton.html">TribesInventoryWeaponButton</a></td><td width="66%"><a href="#_SelectedWeaponButton" name="SelectedWeaponButton" title="go to the details">SelectedWeaponButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryweaponslot.html">TribesInventoryWeaponSlot</a></td><td width="66%"><a href="#_SelectedWeaponSlot" name="SelectedWeaponSlot" title="go to the details">SelectedWeaponSlot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../tribesgui/tribesinventoryweaponslot.html">TribesInventoryWeaponSlot</a>&gt;</td><td width="66%"><a href="#_WeaponSlots" name="WeaponSlots" title="go to the details">WeaponSlots</a></td></tr>
+<tr><th colspan="2" class="small">TribesGUI</th></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_AcceptText" name="AcceptText" title="go to the details">AcceptText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribesgui/tribesinventoryarmorbutton.html">TribesInventoryArmorButton</a>&gt;</td><td width="66%"><a href="#_ArmorButtons" name="ArmorButtons" title="go to the details">ArmorButtons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_ArmorButtonsContainer" name="ArmorButtonsContainer" title="go to the details">ArmorButtonsContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams">ButtonParams</a></td><td width="66%"><a href="#_ArmorParams" name="ArmorParams" title="go to the details">ArmorParams</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_ArmorText" name="ArmorText" title="go to the details">ArmorText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAutoAdvanceSlotSelection" name="bAutoAdvanceSlotSelection" title="go to the details">bAutoAdvanceSlotSelection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSwapDuplicateWeaponSlots" name="bSwapDuplicateWeaponSlots" title="go to the details">bSwapDuplicateWeaponSlots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_CharacterContainer" name="CharacterContainer" title="go to the details">CharacterContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_currentLoadoutText" name="currentLoadoutText" title="go to the details">currentLoadoutText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_DoneButton" name="DoneButton" title="go to the details">DoneButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_ExternalViewportPanel" name="ExternalViewportPanel" title="go to the details">ExternalViewportPanel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribesgui/tribesinventoryloadoutbutton.html">TribesInventoryLoadoutButton</a>&gt;</td><td width="66%"><a href="#_LoadoutButtons" name="LoadoutButtons" title="go to the details">LoadoutButtons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_LoadoutButtonsContainer" name="LoadoutButtonsContainer" title="go to the details">LoadoutButtonsContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_LoadoutGroupDownButton" name="LoadoutGroupDownButton" title="go to the details">LoadoutGroupDownButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_LoadoutGroupUpButton" name="LoadoutGroupUpButton" title="go to the details">LoadoutGroupUpButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams">ButtonParams</a></td><td width="66%"><a href="#_LoadoutParams" name="LoadoutParams" title="go to the details">LoadoutParams</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxLoadoutNameLength" name="MaxLoadoutNameLength" title="go to the details">MaxLoadoutNameLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxLoadoutSlots" name="MaxLoadoutSlots" title="go to the details">MaxLoadoutSlots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_NextSkinButton" name="NextSkinButton" title="go to the details">NextSkinButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumVisibleLoadoutSlots" name="NumVisibleLoadoutSlots" title="go to the details">NumVisibleLoadoutSlots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumWeaponSlots" name="NumWeaponSlots" title="go to the details">NumWeaponSlots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribesgui/tribesinventorypackbutton.html">TribesInventoryPackButton</a>&gt;</td><td width="66%"><a href="#_PackButtons" name="PackButtons" title="go to the details">PackButtons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_PackButtonsContainer" name="PackButtonsContainer" title="go to the details">PackButtonsContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams">ButtonParams</a></td><td width="66%"><a href="#_PackParams" name="PackParams" title="go to the details">PackParams</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_PackText" name="PackText" title="go to the details">PackText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_PreviousSkinButton" name="PreviousSkinButton" title="go to the details">PreviousSkinButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_ResetLoadoutButton" name="ResetLoadoutButton" title="go to the details">ResetLoadoutButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilabel.html">GUILabel</a></td><td width="66%"><a href="#_TitleLabel" name="TitleLabel" title="go to the details">TitleLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_TitleText" name="TitleText" title="go to the details">TitleText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_WatchedItemIcon" name="WatchedItemIcon" title="go to the details">WatchedItemIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilabel.html">GUILabel</a></td><td width="66%"><a href="#_WatchedItemInfoLabel" name="WatchedItemInfoLabel" title="go to the details">WatchedItemInfoLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilabel.html">GUILabel</a></td><td width="66%"><a href="#_WatchedItemNameLabel" name="WatchedItemNameLabel" title="go to the details">WatchedItemNameLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_WatchedLoadoutArmorIcon" name="WatchedLoadoutArmorIcon" title="go to the details">WatchedLoadoutArmorIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_WatchedLoadoutPackIcon" name="WatchedLoadoutPackIcon" title="go to the details">WatchedLoadoutPackIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_WatchedLoadoutWeaponIcon1" name="WatchedLoadoutWeaponIcon1" title="go to the details">WatchedLoadoutWeaponIcon1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_WatchedLoadoutWeaponIcon2" name="WatchedLoadoutWeaponIcon2" title="go to the details">WatchedLoadoutWeaponIcon2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_WatchedLoadoutWeaponIcon3" name="WatchedLoadoutWeaponIcon3" title="go to the details">WatchedLoadoutWeaponIcon3</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribesgui/tribesinventoryweaponbutton.html">TribesInventoryWeaponButton</a>&gt;</td><td width="66%"><a href="#_WeaponButtons" name="WeaponButtons" title="go to the details">WeaponButtons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_WeaponButtonsContainer" name="WeaponButtonsContainer" title="go to the details">WeaponButtonsContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams">ButtonParams</a></td><td width="66%"><a href="#_WeaponParams" name="WeaponParams" title="go to the details">WeaponParams</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams">ButtonParams</a></td><td width="66%"><a href="#_WeaponSlotParams" name="WeaponSlotParams" title="go to the details">WeaponSlotParams</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_WeaponSlotsContainer" name="WeaponSlotsContainer" title="go to the details">WeaponSlotsContainer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_WeaponText" name="WeaponText" title="go to the details">WeaponText</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipage.html">TribesGUIPage</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipage.html#bEscapeable">bEscapeable</a>, <a href="../tribesgui/tribesguipage.html#bSuppressLevelRender">bSuppressLevelRender</a>, <a href="../tribesgui/tribesguipage.html#GC">GC</a>, <a href="../tribesgui/tribesguipage.html#PageOpenedAfterEscape">PageOpenedAfterEscape</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guipage.html">GUIPage</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guipage.html#bIsHUD">bIsHUD</a>, <a href="../gui/guipage.html#bIsOverlay">bIsOverlay</a>, <a href="../gui/guipage.html#DialogClassName">DialogClassName</a>, <a href="../gui/guipage.html#HelpText">HelpText</a>, <a href="../gui/guipage.html#Timers">Timers</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_ButtonParams" name="ButtonParams" title="go to the details">ButtonParams</a><br /><span class="small">gutter, rows, columns, styleName</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Delegates Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_delegate.gif" alt="delegate" title="delegate"></td><td>bool&nbsp;</td><td><a href="#_OnCapturedMouseMove+" name="OnCapturedMouseMove" title="go to the details">OnCapturedMouseMove</a> (float deltaX, float deltaY))</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Delegates from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guipage.html">GUIPage</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guipage.html#OnDlgReturned">OnDlgReturned</a>, <a href="../gui/guipage.html#OnPopupReturned">OnPopupReturned</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ApplyButtonParams-" name="ApplyButtonParams" title="go to the details">ApplyButtonParams</a> (Array&lt;<a href="../gui/guicomponent.html">GUIComponent</a>&gt; buttons, <a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams">ButtonParams</a> params, optional int startIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AssignWeaponToSlot-" name="AssignWeaponToSlot" title="go to the details">AssignWeaponToSlot</a> (int slotIndex, InventoryStationAccess.InventoryStationWeapon weapon))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ConfigureInventoryStation-" name="ConfigureInventoryStation" title="go to the details">ConfigureInventoryStation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ConvertToCustomLoadout-" name="ConvertToCustomLoadout" title="go to the details">ConvertToCustomLoadout</a> (<a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout">InventoryStationAccess.InventoryStationLoadout</a> InLoadout, out <a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a> OutLoadout))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ConvertToInventoryLoadout-" name="ConvertToInventoryLoadout" title="go to the details">ConvertToInventoryLoadout</a> (<a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a> InLoadout, out <a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout">InventoryStationAccess.InventoryStationLoadout</a> OutLoadout))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EnableExit-" name="EnableExit" title="go to the details">EnableExit</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/tribesinventoryarmorbutton.html">TribesInventoryArmorButton</a>&nbsp;</td><td><a href="#_FindArmorButton-" name="FindArmorButton" title="go to the details">FindArmorButton</a> (class&lt;<a href="../gameplay/combatrole.html">CombatRole</a>&gt; combatRoleClass, optional out int index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/tribesinventorypackbutton.html">TribesInventoryPackButton</a>&nbsp;</td><td><a href="#_FindPackButton-" name="FindPackButton" title="go to the details">FindPackButton</a> (class&lt;<a href="../gameplay/pack.html">Pack</a>&gt; packClass, optional out int index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/tribesinventoryweaponbutton.html">TribesInventoryWeaponButton</a>&nbsp;</td><td><a href="#_FindWeaponButton-" name="FindWeaponButton" title="go to the details">FindWeaponButton</a> (class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt; weaponClass, optional out int index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FlashArmor-" name="FlashArmor" title="go to the details">FlashArmor</a> (class&lt;<a href="../gameplay/combatrole.html">CombatRole</a>&gt; ItemClass, float Duration))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FlashWeapon-" name="FlashWeapon" title="go to the details">FlashWeapon</a> (class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt; ItemClass, float Duration))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetSlotIndexHoldingWeapon-" name="GetSlotIndexHoldingWeapon" title="go to the details">GetSlotIndexHoldingWeapon</a> (class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt; weaponClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitComponent-" name="InitComponent" title="go to the details">InitComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> MyOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnActivate-" name="InternalOnActivate" title="go to the details">InternalOnActivate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnClick-" name="InternalOnClick" title="go to the details">InternalOnClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_InternalOnKeyEvent-" name="InternalOnKeyEvent" title="go to the details">InternalOnKeyEvent</a> (out byte Key, out byte State, float delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnMousePressed-" name="InternalOnMousePressed" title="go to the details">InternalOnMousePressed</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnArmorClick-" name="OnArmorClick" title="go to the details">OnArmorClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnArmorWatched-" name="OnArmorWatched" title="go to the details">OnArmorWatched</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAssignWeapon-" name="OnAssignWeapon" title="go to the details">OnAssignWeapon</a> (<a href="../tribesgui/tribesinventoryweaponslot.html">TribesInventoryWeaponSlot</a> AssignedSlot))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnClientDraw-" name="OnClientDraw" title="go to the details">OnClientDraw</a> (<a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnExitInventory-" name="OnExitInventory" title="go to the details">OnExitInventory</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnHide-" name="OnHide" title="go to the details">OnHide</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutClick-" name="OnLoadoutClick" title="go to the details">OnLoadoutClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutEditCompleted-" name="OnLoadoutEditCompleted" title="go to the details">OnLoadoutEditCompleted</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutEditFocusGained-" name="OnLoadoutEditFocusGained" title="go to the details">OnLoadoutEditFocusGained</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutEditFocusLost-" name="OnLoadoutEditFocusLost" title="go to the details">OnLoadoutEditFocusLost</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutEditStart-" name="OnLoadoutEditStart" title="go to the details">OnLoadoutEditStart</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutGroupDown-" name="OnLoadoutGroupDown" title="go to the details">OnLoadoutGroupDown</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutGroupUp-" name="OnLoadoutGroupUp" title="go to the details">OnLoadoutGroupUp</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutReset-" name="OnLoadoutReset" title="go to the details">OnLoadoutReset</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnLoadoutWatched-" name="OnLoadoutWatched" title="go to the details">OnLoadoutWatched</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnPackClick-" name="OnPackClick" title="go to the details">OnPackClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnPackWatched-" name="OnPackWatched" title="go to the details">OnPackWatched</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnPageWatched-" name="OnPageWatched" title="go to the details">OnPageWatched</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnSkinNext-" name="OnSkinNext" title="go to the details">OnSkinNext</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnSkinPrevious-" name="OnSkinPrevious" title="go to the details">OnSkinPrevious</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnWeaponClick-" name="OnWeaponClick" title="go to the details">OnWeaponClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnWeaponWatched-" name="OnWeaponWatched" title="go to the details">OnWeaponWatched</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveCurrentLoadout-" name="SaveCurrentLoadout" title="go to the details">SaveCurrentLoadout</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SelectArmor-" name="SelectArmor" title="go to the details">SelectArmor</a> (InventoryStationAccess.InventoryStationCombatRole role))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SelectPack-" name="SelectPack" title="go to the details">SelectPack</a> (InventoryStationAccess.InventoryStationPack pack))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetActiveProfileLoadout-" name="SetActiveProfileLoadout" title="go to the details">SetActiveProfileLoadout</a> (<a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout">InventoryStationAccess.InventoryStationLoadout</a> loadout))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetCurrentLoadout-" name="SetCurrentLoadout" title="go to the details">SetCurrentLoadout</a> (<a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout">InventoryStationAccess.InventoryStationLoadout</a> loadout))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetWeaponSlotsEnabled-" name="SetWeaponSlotsEnabled" title="go to the details">SetWeaponSlotsEnabled</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateAvailableSkins-" name="UpdateAvailableSkins" title="go to the details">UpdateAvailableSkins</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateLoadoutTabs-" name="UpdateLoadoutTabs" title="go to the details">UpdateLoadoutTabs</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateSkin-" name="UpdateSkin" title="go to the details">UpdateSkin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateWeaponSlots-" name="UpdateWeaponSlots" title="go to the details">UpdateWeaponSlots</a> (int NewNumSlots))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipage.html">TribesGUIPage</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipage.html#DisplayMainMenu">DisplayMainMenu</a>, <a href="../tribesgui/tribesguipage.html#GameAbort">GameAbort</a>, <a href="../tribesgui/tribesguipage.html#GameRestart">GameRestart</a>, <a href="../tribesgui/tribesguipage.html#GameResume">GameResume</a>, <a href="../tribesgui/tribesguipage.html#GameStart">GameStart</a>, <a href="../tribesgui/tribesguipage.html#InitComponent">InitComponent</a>, <a href="../tribesgui/tribesguipage.html#InternalOnKeyEvent">InternalOnKeyEvent</a>, <a href="../tribesgui/tribesguipage.html#OnPreLevelChange">OnPreLevelChange</a>, <a href="../tribesgui/tribesguipage.html#Quit">Quit</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guipage.html">GUIPage</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guipage.html#Activate">Activate</a>, <a href="../gui/guipage.html#ChangeHint">ChangeHint</a>, <a href="../gui/guipage.html#DeActivate">DeActivate</a>, <a href="../gui/guipage.html#DlgReturned">DlgReturned</a>, <a href="../gui/guipage.html#Free">Free</a>, <a href="../gui/guipage.html#HandleParameters">HandleParameters</a>, <a href="../gui/guipage.html#Hide">Hide</a>, <a href="../gui/guipage.html#InitComponent">InitComponent</a>, <a href="../gui/guipage.html#NotifyLevelChange">NotifyLevelChange</a>, <a href="../gui/guipage.html#onGameplayMessage">onGameplayMessage</a>, <a href="../gui/guipage.html#OnProgress">OnProgress</a>, <a href="../gui/guipage.html#OpenDlg">OpenDlg</a>, <a href="../gui/guipage.html#Show">Show</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CURRENT_LOADOUT_SLOT" class="hidden"></a>CURRENT_LOADOUT_SLOT <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#128" class="small">Source code</a></h4>
+<div class="declaration">const CURRENT_LOADOUT_SLOT = -<span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_activeProfile" class="hidden"></a>activeProfile <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span> activeProfile;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_availableSkins" class="hidden"></a>availableSkins <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#100" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/skininfo.html" class="source">SkinInfo</a></span>&gt;&gt; availableSkins;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsFemale" class="hidden"></a>bIsFemale <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#126" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsFemale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNotInGame" class="hidden"></a>bNotInGame <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#125" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNotInGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bOldBehindView" class="hidden"></a>bOldBehindView <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#120" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bOldBehindView;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseProfiles" class="hidden"></a>bUseProfiles <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bUseProfiles;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_characterController" class="hidden"></a>characterController <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../gameplay/charactercontroller.html" class="source">characterController</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CharacterView" class="hidden"></a>CharacterView <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#110" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribesinventorycharacterview.html" class="source">TribesInventoryCharacterView</a></span> CharacterView;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_clientData" class="hidden"></a>clientData <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> clientData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentLoadoutArrayStart" class="hidden"></a>currentLoadoutArrayStart <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#115" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> currentLoadoutArrayStart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentLoadoutTab" class="hidden"></a>CurrentLoadoutTab <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribesinventoryloadoutbutton.html" class="source">TribesInventoryLoadoutButton</a></span> CurrentLoadoutTab;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentSkinIndex" class="hidden"></a>currentSkinIndex <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> currentSkinIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_editedLoadoutButton" class="hidden"></a>editedLoadoutButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#109" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribesinventoryloadoutbutton.html" class="source">TribesInventoryLoadoutButton</a></span> editedLoadoutButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_energyBar" class="hidden"></a>energyBar <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudenergybar.html" class="source">HUDEnergyBar</a></span> energyBar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExternalViewportSurround" class="hidden"></a>ExternalViewportSurround <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#121" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> ExternalViewportSurround;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthBar" class="hidden"></a>healthBar <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#111" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudhealthbar.html" class="source">HUDHealthBar</a></span> healthBar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthEnergyContainer" class="hidden"></a>healthEnergyContainer <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#113" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> healthEnergyContainer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_inventory" class="hidden"></a>inventory <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#91" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span> <span class="source_type">inventory</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastAccessClass" class="hidden"></a>lastAccessClass <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#116" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>&gt; lastAccessClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastAppliedWeaponSlotIndex" class="hidden"></a>lastAppliedWeaponSlotIndex <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> lastAppliedWeaponSlotIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_loadoutEditBox" class="hidden"></a>loadoutEditBox <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#103" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gui/guieditbox.html" class="source">GUIEditBox</a></span> loadoutEditBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NoWeapon" class="hidden"></a>NoWeapon <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationWeapon" class="source">InventoryStationWeapon</a></span> NoWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playerCharacter" class="hidden"></a>playerCharacter <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type"><a href="../gameplay/playercharacter.html" class="source">playerCharacter</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playerTeam" class="hidden"></a>playerTeam <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> playerTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreviousCameraRotation" class="hidden"></a>PreviousCameraRotation <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#119" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> PreviousCameraRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_selectedLoadout" class="hidden"></a>selectedLoadout <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> selectedLoadout;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectedLoadoutButton" class="hidden"></a>SelectedLoadoutButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#108" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribesinventoryloadoutbutton.html" class="source">TribesInventoryLoadoutButton</a></span> SelectedLoadoutButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectedWeaponButton" class="hidden"></a>SelectedWeaponButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#107" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribesinventoryweaponbutton.html" class="source">TribesInventoryWeaponButton</a></span> SelectedWeaponButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectedWeaponSlot" class="hidden"></a>SelectedWeaponSlot <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#106" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribesinventoryweaponslot.html" class="source">TribesInventoryWeaponSlot</a></span> SelectedWeaponSlot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponSlots" class="hidden"></a>WeaponSlots <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#105" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../tribesgui/tribesinventoryweaponslot.html" class="source">TribesInventoryWeaponSlot</a></span>&gt; WeaponSlots;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">TribesGUI</h3>
+<h4><a name="_AcceptText" class="hidden"></a>AcceptText <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#78" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) localized <span class="source_type">String</span> AcceptText;</div>
+<blockquote class="comment">
+Info label string (defaults to '4 - Accept Changes & Exit')
+</blockquote>
+<hr class="small" />
+<h4><a name="_ArmorButtons" class="hidden"></a>ArmorButtons <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private array&lt;<span class="source_type"><a href="../tribesgui/tribesinventoryarmorbutton.html" class="source">TribesInventoryArmorButton</a></span>&gt; ArmorButtons;</div>
+<blockquote class="comment">
+Array of Armor buttons available for selection
+</blockquote>
+<hr class="small" />
+<h4><a name="_ArmorButtonsContainer" class="hidden"></a>ArmorButtonsContainer <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> ArmorButtonsContainer;</div>
+<blockquote class="comment">
+Container to place the armor buttons within
+</blockquote>
+<hr class="small" />
+<h4><a name="_ArmorParams" class="hidden"></a>ArmorParams <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams" class="source">ButtonParams</a></span> ArmorParams;</div>
+<blockquote class="comment">
+Layout parameters for the armor button region
+</blockquote>
+<hr class="small" />
+<h4><a name="_ArmorText" class="hidden"></a>ArmorText <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#75" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) localized <span class="source_type">String</span> ArmorText;</div>
+<blockquote class="comment">
+Armor label string (defaults to '1 - Select Armor')
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAutoAdvanceSlotSelection" class="hidden"></a>bAutoAdvanceSlotSelection <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#83" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) Config <span class="source_type">bool</span> bAutoAdvanceSlotSelection;</div>
+<blockquote class="comment">
+Whether to advance to the next weapon slot automatically after applyin a weapon
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSwapDuplicateWeaponSlots" class="hidden"></a>bSwapDuplicateWeaponSlots <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#84" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) Config <span class="source_type">bool</span> bSwapDuplicateWeaponSlots;</div>
+<blockquote class="comment">
+Whether to swap weapons in slots when a duplicate weapon is selected
+</blockquote>
+<hr class="small" />
+<h4><a name="_CharacterContainer" class="hidden"></a>CharacterContainer <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> CharacterContainer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentLoadoutText" class="hidden"></a>currentLoadoutText <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#79" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) localized <span class="source_type">String</span> currentLoadoutText;</div>
+<blockquote class="comment">
+Text of the current loadout tab (defaults to 'Current')
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoneButton" class="hidden"></a>DoneButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#54" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> DoneButton;</div>
+<blockquote class="comment">
+Press to apply the selected loadout and exit the screen
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExternalViewportPanel" class="hidden"></a>ExternalViewportPanel <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> ExternalViewportPanel;</div>
+<blockquote class="comment">
+Container where the external view will be drawn
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadoutButtons" class="hidden"></a>LoadoutButtons <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private array&lt;<span class="source_type"><a href="../tribesgui/tribesinventoryloadoutbutton.html" class="source">TribesInventoryLoadoutButton</a></span>&gt; LoadoutButtons;</div>
+<blockquote class="comment">
+Array of Loadout buttons available for selection
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadoutButtonsContainer" class="hidden"></a>LoadoutButtonsContainer <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> LoadoutButtonsContainer;</div>
+<blockquote class="comment">
+Container to place the loadout buttons within
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadoutGroupDownButton" class="hidden"></a>LoadoutGroupDownButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#52" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> LoadoutGroupDownButton;</div>
+<blockquote class="comment">
+Press to go down one loadout group
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadoutGroupUpButton" class="hidden"></a>LoadoutGroupUpButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> LoadoutGroupUpButton;</div>
+<blockquote class="comment">
+Press to go up one loadout group
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadoutParams" class="hidden"></a>LoadoutParams <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams" class="source">ButtonParams</a></span> LoadoutParams;</div>
+<blockquote class="comment">
+Layout parameters for the loadout button region
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxLoadoutNameLength" class="hidden"></a>MaxLoadoutNameLength <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#88" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) Config <span class="source_type">int</span> MaxLoadoutNameLength;</div>
+<blockquote class="comment">
+Max number of characters in a loadout name
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxLoadoutSlots" class="hidden"></a>MaxLoadoutSlots <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#85" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) Config <span class="source_type">int</span> MaxLoadoutSlots;</div>
+<blockquote class="comment">
+Max number of loadout available in total
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextSkinButton" class="hidden"></a>NextSkinButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#55" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> NextSkinButton;</div>
+<blockquote class="comment">
+Press to show the next available skin for th character
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumVisibleLoadoutSlots" class="hidden"></a>NumVisibleLoadoutSlots <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#86" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) Config <span class="source_type">int</span> NumVisibleLoadoutSlots;</div>
+<blockquote class="comment">
+Max number of loadout slots to display in one row
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumWeaponSlots" class="hidden"></a>NumWeaponSlots <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#87" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) Config <span class="source_type">int</span> NumWeaponSlots;</div>
+<blockquote class="comment">
+Max number of weapon slots available
+</blockquote>
+<hr class="small" />
+<h4><a name="_PackButtons" class="hidden"></a>PackButtons <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private array&lt;<span class="source_type"><a href="../tribesgui/tribesinventorypackbutton.html" class="source">TribesInventoryPackButton</a></span>&gt; PackButtons;</div>
+<blockquote class="comment">
+Array of Pack buttons available for selection
+</blockquote>
+<hr class="small" />
+<h4><a name="_PackButtonsContainer" class="hidden"></a>PackButtonsContainer <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> PackButtonsContainer;</div>
+<blockquote class="comment">
+Container to place the pack buttons within
+</blockquote>
+<hr class="small" />
+<h4><a name="_PackParams" class="hidden"></a>PackParams <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams" class="source">ButtonParams</a></span> PackParams;</div>
+<blockquote class="comment">
+Layout parameters for the packs button region
+</blockquote>
+<hr class="small" />
+<h4><a name="_PackText" class="hidden"></a>PackText <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#76" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) localized <span class="source_type">String</span> PackText;</div>
+<blockquote class="comment">
+Pack label string (defaults to '2 - Select Pack')
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreviousSkinButton" class="hidden"></a>PreviousSkinButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#56" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> PreviousSkinButton;</div>
+<blockquote class="comment">
+Press to show the previous available skin for th character
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetLoadoutButton" class="hidden"></a>ResetLoadoutButton <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#53" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> ResetLoadoutButton;</div>
+<blockquote class="comment">
+Press to reset the current loadout
+</blockquote>
+<hr class="small" />
+<h4><a name="_TitleLabel" class="hidden"></a>TitleLabel <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#48" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span> TitleLabel;</div>
+<blockquote class="comment">
+Title at the top of the window
+</blockquote>
+<hr class="small" />
+<h4><a name="_TitleText" class="hidden"></a>TitleText <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#80" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) localized <span class="source_type">String</span> TitleText;</div>
+<blockquote class="comment">
+Text of the title
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedItemIcon" class="hidden"></a>WatchedItemIcon <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#60" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> WatchedItemIcon;</div>
+<blockquote class="comment">
+Displays an icon for the currently watched item
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedItemInfoLabel" class="hidden"></a>WatchedItemInfoLabel <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#59" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span> WatchedItemInfoLabel;</div>
+<blockquote class="comment">
+Displays info about the currently watched item
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedItemNameLabel" class="hidden"></a>WatchedItemNameLabel <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#58" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span> WatchedItemNameLabel;</div>
+<blockquote class="comment">
+Displayed the name of the currently watched item
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedLoadoutArmorIcon" class="hidden"></a>WatchedLoadoutArmorIcon <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#62" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> WatchedLoadoutArmorIcon;</div>
+<blockquote class="comment">
+Displays an icon for the currently watched loadout armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedLoadoutPackIcon" class="hidden"></a>WatchedLoadoutPackIcon <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#63" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> WatchedLoadoutPackIcon;</div>
+<blockquote class="comment">
+Displays an icon for the currently watched loadout pack
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedLoadoutWeaponIcon1" class="hidden"></a>WatchedLoadoutWeaponIcon1 <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> WatchedLoadoutWeaponIcon1;</div>
+<blockquote class="comment">
+Displays an icon for the currently watched loadout weapon slot 1
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedLoadoutWeaponIcon2" class="hidden"></a>WatchedLoadoutWeaponIcon2 <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#65" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> WatchedLoadoutWeaponIcon2;</div>
+<blockquote class="comment">
+Displays an icon for the currently watched loadout weapon slot 2
+</blockquote>
+<hr class="small" />
+<h4><a name="_WatchedLoadoutWeaponIcon3" class="hidden"></a>WatchedLoadoutWeaponIcon3 <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> WatchedLoadoutWeaponIcon3;</div>
+<blockquote class="comment">
+Displays an icon for the currently watched loadout weapon slot 3
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponButtons" class="hidden"></a>WeaponButtons <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private array&lt;<span class="source_type"><a href="../tribesgui/tribesinventoryweaponbutton.html" class="source">TribesInventoryWeaponButton</a></span>&gt; WeaponButtons;</div>
+<blockquote class="comment">
+Array of Weapon buttons available for selection
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponButtonsContainer" class="hidden"></a>WeaponButtonsContainer <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> WeaponButtonsContainer;</div>
+<blockquote class="comment">
+Container to place the weapon buttons within
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponParams" class="hidden"></a>WeaponParams <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams" class="source">ButtonParams</a></span> WeaponParams;</div>
+<blockquote class="comment">
+Layout parameters for the weapons button region
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponSlotParams" class="hidden"></a>WeaponSlotParams <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) private EditInline Config <span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams" class="source">ButtonParams</a></span> WeaponSlotParams;</div>
+<blockquote class="comment">
+Layout parameters for the weapon slot button region
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponSlotsContainer" class="hidden"></a>WeaponSlotsContainer <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> WeaponSlotsContainer;</div>
+<blockquote class="comment">
+Container to place the weapon slot buttons within
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponText" class="hidden"></a>WeaponText <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#77" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGUI) localized <span class="source_type">String</span> WeaponText;</div>
+<blockquote class="comment">
+Pack label string (defaults to '3 - Select Weapon')
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ButtonParams" class="hidden"></a>ButtonParams <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#15" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams" class="source">ButtonParams</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html" class="source">TribesInventorySelectionMenu</a></span>) config <span class="source_type">int</span> columns;<br />
+var(<span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html" class="source">TribesInventorySelectionMenu</a></span>) config <span class="source_type">float</span> gutter;<br />
+var(<span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html" class="source">TribesInventorySelectionMenu</a></span>) config <span class="source_type">int</span> rows;<br />
+var(<span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html" class="source">TribesInventorySelectionMenu</a></span>) config <span class="source_type">string</span> styleName;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+<b>columns</b>:
+<blockquote>
+	Number of Columns for the buttons
+</blockquote>
+<b>gutter</b>:
+<blockquote>
+	Gutter space between buttons
+</blockquote>
+<b>rows</b>:
+<blockquote>
+	Number of rows for the buttons
+</blockquote>
+<b>styleName</b>:
+<blockquote>
+	Button style
+</blockquote>
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Delegates Detail</th>
+</tr>
+</table>
+
+<h4><a name="_OnCapturedMouseMove+" class="hidden"></a><img src="../img_delegate.gif" alt="" title="delegate"> OnCapturedMouseMove <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#603" class="small">Source code</a></h4>
+<div class="declaration"> delegate <span class="source_type">bool</span> OnCapturedMouseMove ( <span class="source_type">float</span> deltaX, <span class="source_type">float</span> deltaY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ApplyButtonParams-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ApplyButtonParams <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#386" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ApplyButtonParams ( Array&lt;<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span>&gt; buttons, <span class="source_type"><a href="../tribesgui/tribesinventoryselectionmenu.html#ButtonParams" class="source">ButtonParams</a></span> params, optional <span class="source_type">int</span> startIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AssignWeaponToSlot-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AssignWeaponToSlot <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1436" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AssignWeaponToSlot ( <span class="source_type">int</span> slotIndex, <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationWeapon" class="source">InventoryStationWeapon</a></span> <span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConfigureInventoryStation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConfigureInventoryStation <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#282" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ConfigureInventoryStation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToCustomLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToCustomLoadout <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1660" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ConvertToCustomLoadout ( <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> InLoadout,
+								out <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> OutLoadout) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToInventoryLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToInventoryLoadout <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1626" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ConvertToInventoryLoadout ( <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> InLoadout,
+								   out <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> OutLoadout) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EnableExit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EnableExit <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#170" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EnableExit ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindArmorButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindArmorButton <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1514" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesinventoryarmorbutton.html" class="source">TribesInventoryArmorButton</a></span> FindArmorButton ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; combatRoleClass, optional out <span class="source_type">int</span> <span class="source_type">index</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindPackButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindPackButton <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1535" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesinventorypackbutton.html" class="source">TribesInventoryPackButton</a></span> FindPackButton ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt; packClass, optional out <span class="source_type">int</span> <span class="source_type">index</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindWeaponButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindWeaponButton <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1493" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/tribesinventoryweaponbutton.html" class="source">TribesInventoryWeaponButton</a></span> FindWeaponButton ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; <span class="source_type">weaponClass</span>, optional out <span class="source_type">int</span> <span class="source_type">index</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashArmor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FlashArmor <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#134" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  FlashArmor ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; ItemClass, <span class="source_type">float</span> Duration) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FlashWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FlashWeapon <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#152" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  FlashWeapon ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; ItemClass, <span class="source_type">float</span> Duration) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSlotIndexHoldingWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSlotIndexHoldingWeapon <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1475" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetSlotIndexHoldingWeapon ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; <span class="source_type">weaponClass</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitComponent <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#179" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnActivate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnActivate <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#609" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnActivate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#594" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnKeyEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnKeyEvent <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#894" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> InternalOnKeyEvent ( out <span class="source_type">byte</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, out <span class="source_type">byte</span> State, <span class="source_type">float</span> <span class="source_type">delta</span>) )</div>
+<blockquote class="comment">
+// current loadout tab is first
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnMousePressed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnMousePressed <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#380" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnMousePressed ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnArmorClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnArmorClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1119" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnArmorClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnArmorWatched-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnArmorWatched <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1130" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnArmorWatched ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAssignWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAssignWeapon <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1038" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAssignWeapon ( <span class="source_type"><a href="../tribesgui/tribesinventoryweaponslot.html" class="source">TribesInventoryWeaponSlot</a></span> AssignedSlot) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnClientDraw-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnClientDraw <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#462" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnClientDraw ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnExitInventory-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnExitInventory <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#946" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnExitInventory ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnHide-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnHide <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#989" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnHide ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1143" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutEditCompleted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutEditCompleted <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1214" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutEditCompleted ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutEditFocusGained-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutEditFocusGained <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1237" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutEditFocusGained ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutEditFocusLost-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutEditFocusLost <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1228" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutEditFocusLost ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutEditStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutEditStart <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1245" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutEditStart ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutGroupDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutGroupDown <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1326" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutGroupDown ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutGroupUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutGroupUp <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1317" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutGroupUp ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutReset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutReset <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1289" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutReset ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnLoadoutWatched-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnLoadoutWatched <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1189" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnLoadoutWatched ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnPackClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnPackClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1102" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnPackClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnPackWatched-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnPackWatched <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1113" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnPackWatched ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnPageWatched-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnPageWatched <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#582" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnPageWatched ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnSkinNext-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnSkinNext <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1001" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnSkinNext ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnSkinPrevious-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnSkinPrevious <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1010" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnSkinPrevious ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnWeaponClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnWeaponClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1076" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnWeaponClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnWeaponWatched-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnWeaponWatched <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1090" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnWeaponWatched ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveCurrentLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveCurrentLoadout <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#928" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SaveCurrentLoadout ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectArmor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SelectArmor <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1357" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SelectArmor ( <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationCombatRole" class="source">InventoryStationCombatRole</a></span> role) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectPack-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SelectPack <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1413" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SelectPack ( <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationPack" class="source">InventoryStationPack</a></span> <span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetActiveProfileLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetActiveProfileLoadout <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1604" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetActiveProfileLoadout ( <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> <span class="source_type"><a href="../gameplay/loadout.html" class="source">loadout</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetCurrentLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetCurrentLoadout <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1338" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetCurrentLoadout ( <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> <span class="source_type"><a href="../gameplay/loadout.html" class="source">loadout</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetWeaponSlotsEnabled-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetWeaponSlotsEnabled <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1067" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetWeaponSlotsEnabled ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateAvailableSkins-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateAvailableSkins <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1556" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateAvailableSkins ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateLoadoutTabs-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateLoadoutTabs <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#453" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateLoadoutTabs ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateSkin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateSkin <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#1019" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateSkin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateWeaponSlots-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateWeaponSlots <span class="function_state"></span> <a href="../Source_tribesgui/tribesinventoryselectionmenu.html#441" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateWeaponSlots ( <span class="source_type">int</span> NewNumSlots) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	
+	bPersistent					= true
+	bAutoAdvanceSlotSelection	= false
+	bSwapDuplicateWeaponSlots	= false
+	MenuState					= MSAT_Blurry
+	NumVisibleLoadoutSlots		= <span class="source_int">8</span>
+	MaxLoadoutSlots				= <span class="source_int">23</span>
+	NumWeaponSlots				= <span class="source_int">3</span>
+	MaxLoadoutNameLength		= <span class="source_int">24</span>
+
+	ArmorText			= <span class="source_string">"1 - SELECT ARMOR"</span>
+	PackText			= <span class="source_string">"2 - SELECT PACK"</span>
+	WeaponText			= <span class="source_string">"3 - SELECT WEAPON"</span>
+	AcceptText			= <span class="source_string">"4 - ACCEPT CHANGES & EXIT"</span>
+	currentLoadoutText	= <span class="source_string">"CURRENT LOADOUT"</span>
+	TitleText			= <span class="source_string">"INVENTORY STATION"</span>
+
+	ExternalViewportSurround = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'GUITribes.InvScreenBorder'</span>
+
+	ArmorParams			= (gutter=<span class="source_int">5</span>,columns=<span class="source_int">3</span>,rows=<span class="source_int">1</span>,styleName=<span class="source_string">"STY_InvButton"</span>)
+	PackParams			= (gutter=<span class="source_int">5</span>,columns=<span class="source_int">4</span>,rows=<span class="source_int">1</span>,styleName=<span class="source_string">"STY_InvButton"</span>)
+	WeaponParams		= (gutter=<span class="source_int">5</span>,columns=<span class="source_int">5</span>,rows=<span class="source_int">2</span>,styleName=<span class="source_string">"STY_InvWeaponButton"</span>)
+	LoadoutParams		= (gutter=<span class="source_int">0</span>,columns=<span class="source_int">8</span>,rows=<span class="source_int">1</span>,styleName=<span class="source_string">"STY_InvTab"</span>)
+	WeaponSlotParams	= (gutter=<span class="source_int">0</span>,columns=<span class="source_int">3</span>,rows=<span class="source_int">1</span>,styleName=<span class="source_string">"STY_InvButton"</span>)
+
+	bSuppressLevelRender=true
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesinventoryselectionmenu.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesInventorySelectionMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesinventorypackbutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribesinventoryweaponactor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:36.366 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

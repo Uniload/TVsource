@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.EmergencyStation</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/emergencystation.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#EmergencyStation">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/emergencyspawnpoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/emergencystationaccess.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/emergencystation.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.EmergencyStation</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/basedevice.html">BaseDevice</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/basedevice.html">BaseDevice</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/emergencystation.html">EmergencyStation</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#DAMAGE_OVERKILL">DAMAGE_OVERKILL</a>, <a href="../gameplay/rook.html#MAX_USEABLE_POINTS">MAX_USEABLE_POINTS</a>, <a href="../gameplay/rook.html#N_PAST_POSITIONS">N_PAST_POSITIONS</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/emergencystationaccess.html">EmergencyStationAccess</a></td><td width="66%"><a href="#_access" name="access" title="go to the details">access</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/emergencystation.html#eBakeAnimationState">eBakeAnimationState</a></td><td width="66%"><a href="#_animationState" name="animationState" title="go to the details">animationState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bForceIconVisible" name="bForceIconVisible" title="go to the details">bForceIconVisible</a></td></tr>
+<tr><th colspan="2" class="small">EmergencyStation</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/emergencystationaccess.html">EmergencyStationAccess</a>&gt;</td><td width="66%"><a href="#_accessClass" name="accessClass" title="go to the details">accessClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_accessHeight" name="accessHeight" title="go to the details">accessHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_accessPointOffset" name="accessPointOffset" title="go to the details">accessPointOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_accessRadius" name="accessRadius" title="go to the details">accessRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_activeLightSkin" name="activeLightSkin" title="go to the details">activeLightSkin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_activeLightSkinSlot" name="activeLightSkinSlot" title="go to the details">activeLightSkinSlot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/repairpack.html">RepairPack</a>&gt;</td><td width="66%"><a href="#_repairPackClass" name="repairPackClass" title="go to the details">repairPackClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_respawnDelay" name="respawnDelay" title="go to the details">respawnDelay</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/basedevice.html">BaseDevice</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/basedevice.html#baseDeviceMessageClass">baseDeviceMessageClass</a>, <a href="../gameplay/basedevice.html#bCurrentlyDeploying">bCurrentlyDeploying</a>, <a href="../gameplay/basedevice.html#bHasOpenAnim">bHasOpenAnim</a>, <a href="../gameplay/basedevice.html#bInitialization">bInitialization</a>, <a href="../gameplay/basedevice.html#bLoopSavedAnim">bLoopSavedAnim</a>, <a href="../gameplay/basedevice.html#bPowered">bPowered</a>, <a href="../gameplay/basedevice.html#bWasDeployed">bWasDeployed</a>, <a href="../gameplay/basedevice.html#damagedHealthThreshold">damagedHealthThreshold</a>, <a href="../gameplay/basedevice.html#deployer">deployer</a>, <a href="../gameplay/basedevice.html#DestroyedDiffuse">DestroyedDiffuse</a>, <a href="../gameplay/basedevice.html#destroyedExplosionClass">destroyedExplosionClass</a>, <a href="../gameplay/basedevice.html#functionalHealthThreshold">functionalHealthThreshold</a>, <a href="../gameplay/basedevice.html#lastAttacker">lastAttacker</a>, <a href="../gameplay/basedevice.html#lastOfflineTime">lastOfflineTime</a>, <a href="../gameplay/basedevice.html#lastOnlineTime">lastOnlineTime</a>, <a href="../gameplay/basedevice.html#lastUnderAttackTime">lastUnderAttackTime</a>, <a href="../gameplay/basedevice.html#localizedName">localizedName</a>, <a href="../gameplay/basedevice.html#m_bSwitchedOn">m_bSwitchedOn</a>, <a href="../gameplay/basedevice.html#m_ownershipMaterialIdx">m_ownershipMaterialIdx</a>, <a href="../gameplay/basedevice.html#ownerBase">ownerBase</a>, <a href="../gameplay/basedevice.html#OWNERSHIP_MATERIAL_NOT_FOUND">OWNERSHIP_MATERIAL_NOT_FOUND</a>, <a href="../gameplay/basedevice.html#OWNERSHIP_MATERIAL_UNDISCOVERED">OWNERSHIP_MATERIAL_UNDISCOVERED</a>, <a href="../gameplay/basedevice.html#savedAnim">savedAnim</a>, <a href="../gameplay/basedevice.html#secondaryBaseDeviceMessageClass">secondaryBaseDeviceMessageClass</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#AI_LOD_ActivationDistance">AI_LOD_ActivationDistance</a>, <a href="../gameplay/rook.html#AI_LOD_DeactivationDistance">AI_LOD_DeactivationDistance</a>, <a href="../gameplay/rook.html#AI_LOD_deactivation_exemption_ticks">AI_LOD_deactivation_exemption_ticks</a>, <a href="../gameplay/rook.html#AI_LOD_LevelMP">AI_LOD_LevelMP</a>, <a href="../gameplay/rook.html#alertness">alertness</a>, <a href="../gameplay/rook.html#attacker">attacker</a>, <a href="../gameplay/rook.html#bAIThreat">bAIThreat</a>, <a href="../gameplay/rook.html#bAlwaysMarked">bAlwaysMarked</a>, <a href="../gameplay/rook.html#bCanBeSensed">bCanBeSensed</a>, <a href="../gameplay/rook.html#bCanRepair">bCanRepair</a>, <a href="../gameplay/rook.html#bDeferredAICleanup">bDeferredAICleanup</a>, <a href="../gameplay/rook.html#bIsDetectableByEnemies">bIsDetectableByEnemies</a>, <a href="../gameplay/rook.html#bShowJSDebug">bShowJSDebug</a>, <a href="../gameplay/rook.html#bShowLOADebug">bShowLOADebug</a>, <a href="../gameplay/rook.html#bShowNavigationDebug">bShowNavigationDebug</a>, <a href="../gameplay/rook.html#bShowSensingDebug">bShowSensingDebug</a>, <a href="../gameplay/rook.html#bShowSquadDebug">bShowSquadDebug</a>, <a href="../gameplay/rook.html#bShowTyrionCharacterDebug">bShowTyrionCharacterDebug</a>, <a href="../gameplay/rook.html#bShowTyrionHeadDebug">bShowTyrionHeadDebug</a>, <a href="../gameplay/rook.html#bShowTyrionMovementDebug">bShowTyrionMovementDebug</a>, <a href="../gameplay/rook.html#bShowTyrionWeaponDebug">bShowTyrionWeaponDebug</a>, <a href="../gameplay/rook.html#bUnobstructedLOF">bUnobstructedLOF</a>, <a href="../gameplay/rook.html#bUseAlternateOwnershipMaterial">bUseAlternateOwnershipMaterial</a>, <a href="../gameplay/rook.html#bUseAlternateSelfIllumMaterial">bUseAlternateSelfIllumMaterial</a>, <a href="../gameplay/rook.html#clientDamageComponentMask">clientDamageComponentMask</a>, <a href="../gameplay/rook.html#componentBreakThreshold">componentBreakThreshold</a>, <a href="../gameplay/rook.html#damageComponentMask">damageComponentMask</a>, <a href="../gameplay/rook.html#damageComponents">damageComponents</a>, <a href="../gameplay/rook.html#desiredLocation">desiredLocation</a>, <a href="../gameplay/rook.html#effectLogging">effectLogging</a>, <a href="../gameplay/rook.html#estLocation">estLocation</a>, <a href="../gameplay/rook.html#expectedImpactTime">expectedImpactTime</a>, <a href="../gameplay/rook.html#flameDamagePerSecond">flameDamagePerSecond</a>, <a href="../gameplay/rook.html#flameDamageReductionPerSecond">flameDamageReductionPerSecond</a>, <a href="../gameplay/rook.html#flameDamageType">flameDamageType</a>, <a href="../gameplay/rook.html#flameSource">flameSource</a>, <a href="../gameplay/rook.html#grapplerRetentionScale">grapplerRetentionScale</a>, <a href="../gameplay/rook.html#healthMaximum">healthMaximum</a>, <a href="../gameplay/rook.html#hearing">hearing</a>, <a href="../gameplay/rook.html#hudType">hudType</a>, <a href="../gameplay/rook.html#lastDetectedTime">lastDetectedTime</a>, <a href="../gameplay/rook.html#lastShotFiredTime">lastShotFiredTime</a>, <a href="../gameplay/rook.html#loaEndPoint">loaEndPoint</a>, <a href="../gameplay/rook.html#loaEndPoint2">loaEndPoint2</a>, <a href="../gameplay/rook.html#loaHit">loaHit</a>, <a href="../gameplay/rook.html#loaStartPoint">loaStartPoint</a>, <a href="../gameplay/rook.html#loaStartPoint2">loaStartPoint2</a>, <a href="../gameplay/rook.html#logAlertnessChanges">logAlertnessChanges</a>, <a href="../gameplay/rook.html#loopingEffects">loopingEffects</a>, <a href="../gameplay/rook.html#MaxShadowTraceDistance">MaxShadowTraceDistance</a>, <a href="../gameplay/rook.html#mountAI">mountAI</a>, <a href="../gameplay/rook.html#movementForce">movementForce</a>, <a href="../gameplay/rook.html#m_lastTeam">m_lastTeam</a>, <a href="../gameplay/rook.html#m_localTeam">m_localTeam</a>, <a href="../gameplay/rook.html#m_squad">m_squad</a>, <a href="../gameplay/rook.html#m_team">m_team</a>, <a href="../gameplay/rook.html#pastPositionsIndex">pastPositionsIndex</a>, <a href="../gameplay/rook.html#pastPositionsTimeAccu">pastPositionsTimeAccu</a>, <a href="../gameplay/rook.html#pastPositions[N_PAST_POSITIONS]">pastPositions[N_PAST_POSITIONS]</a>, <a href="../gameplay/rook.html#PeripheralVisionZAngle">PeripheralVisionZAngle</a>, <a href="../gameplay/rook.html#personalShield">personalShield</a>, <a href="../gameplay/rook.html#personalShieldClass">personalShieldClass</a>, <a href="../gameplay/rook.html#playerControllerState">playerControllerState</a>, <a href="../gameplay/rook.html#radarInfoClass">radarInfoClass</a>, <a href="../gameplay/rook.html#reactionDelay">reactionDelay</a>, <a href="../gameplay/rook.html#reactionDelayMP">reactionDelayMP</a>, <a href="../gameplay/rook.html#repairers">repairers</a>, <a href="../gameplay/rook.html#repDepLastRateAddition">repDepLastRateAddition</a>, <a href="../gameplay/rook.html#repDepRepairRate">repDepRepairRate</a>, <a href="../gameplay/rook.html#repPakLastRateAddition">repPakLastRateAddition</a>, <a href="../gameplay/rook.html#repPakRepairRate">repPakRepairRate</a>, <a href="../gameplay/rook.html#sensorUpdateFlag">sensorUpdateFlag</a>, <a href="../gameplay/rook.html#ShadowLightDistance">ShadowLightDistance</a>, <a href="../gameplay/rook.html#shotAngularDeviation">shotAngularDeviation</a>, <a href="../gameplay/rook.html#shotAngularDeviationMP">shotAngularDeviationMP</a>, <a href="../gameplay/rook.html#shotLeadAbility">shotLeadAbility</a>, <a href="../gameplay/rook.html#shotLeadAbilityMP">shotLeadAbilityMP</a>, <a href="../gameplay/rook.html#shotNotifier">shotNotifier</a>, <a href="../gameplay/rook.html#SightRadiusToPlayer">SightRadiusToPlayer</a>, <a href="../gameplay/rook.html#teamDamagePercentage">teamDamagePercentage</a>, <a href="../gameplay/rook.html#teamSelfIllumSkinName">teamSelfIllumSkinName</a>, <a href="../gameplay/rook.html#teamSpecificHavokCollisionFiltering">teamSpecificHavokCollisionFiltering</a>, <a href="../gameplay/rook.html#tickTime">tickTime</a>, <a href="../gameplay/rook.html#tickTimeOrg">tickTimeOrg</a>, <a href="../gameplay/rook.html#tickTimeUpdateRange">tickTimeUpdateRange</a>, <a href="../gameplay/rook.html#UseablePointsValid[MAX_USEABLE_POINTS]">UseablePointsValid[MAX_USEABLE_POINTS]</a>, <a href="../gameplay/rook.html#UseablePoints[MAX_USEABLE_POINTS]">UseablePoints[MAX_USEABLE_POINTS]</a>, <a href="../gameplay/rook.html#vehicleAI">vehicleAI</a>, <a href="../gameplay/rook.html#vision">vision</a>, <a href="../gameplay/rook.html#visionMemory">visionMemory</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eBakeAnimationState" name="eBakeAnimationState" title="go to the details">eBakeAnimationState</a><br /><span class="small">BAS_End,
+BAS_Start,
+BAS_Baking</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#AlertnessLevels">AlertnessLevels</a>, <a href="../gameplay/rook.html#EUseablePointValid">EUseablePointValid</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#DamageComponent">DamageComponent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Active" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Unpowered" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Unpowered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canBeSensed-" name="canBeSensed" title="go to the details">canBeSensed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isFunctional-" name="isFunctional" title="go to the details">isFunctional</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isOnCharactersTeam-" name="isOnCharactersTeam" title="go to the details">isOnCharactersTeam</a> (<a href="../gameplay/character.html">Character</a> testCharacter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isRepairPackAvailable-" name="isRepairPackAvailable" title="go to the details">isRepairPackAvailable</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_repairPackTaken-" name="repairPackTaken" title="go to the details">repairPackTaken</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/basedevice.html">BaseDevice</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/basedevice.html#BeginState">BeginState</a>, <a href="../gameplay/basedevice.html#CanBeUsedBy">CanBeUsedBy</a>, <a href="../gameplay/basedevice.html#CheckChangeState">CheckChangeState</a>, <a href="../gameplay/basedevice.html#classConstruct">classConstruct</a>, <a href="../gameplay/basedevice.html#construct">construct</a>, <a href="../gameplay/basedevice.html#Died">Died</a>, <a href="../gameplay/basedevice.html#dispatchDeathMessage">dispatchDeathMessage</a>, <a href="../gameplay/basedevice.html#EndState">EndState</a>, <a href="../gameplay/basedevice.html#enumBaseInfo">enumBaseInfo</a>, <a href="../gameplay/basedevice.html#GetDamageComponentThresholdRange">GetDamageComponentThresholdRange</a>, <a href="../gameplay/basedevice.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/basedevice.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/basedevice.html#isActive">isActive</a>, <a href="../gameplay/basedevice.html#isAlive">isAlive</a>, <a href="../gameplay/basedevice.html#isDamaged">isDamaged</a>, <a href="../gameplay/basedevice.html#isDamagedAtThreshold">isDamagedAtThreshold</a>, <a href="../gameplay/basedevice.html#isDisabled">isDisabled</a>, <a href="../gameplay/basedevice.html#isFunctional">isFunctional</a>, <a href="../gameplay/basedevice.html#isOpenedAnimPlaying">isOpenedAnimPlaying</a>, <a href="../gameplay/basedevice.html#isPowered">isPowered</a>, <a href="../gameplay/basedevice.html#latentBeginActive">latentBeginActive</a>, <a href="../gameplay/basedevice.html#latentExecuteActive">latentExecuteActive</a>, <a href="../gameplay/basedevice.html#latentExecuteInitialization">latentExecuteInitialization</a>, <a href="../gameplay/basedevice.html#LoopBDAnim">LoopBDAnim</a>, <a href="../gameplay/basedevice.html#onTeamChange">onTeamChange</a>, <a href="../gameplay/basedevice.html#PlayBDAnim">PlayBDAnim</a>, <a href="../gameplay/basedevice.html#PlayDamagedDegeneratingEffects">PlayDamagedDegeneratingEffects</a>, <a href="../gameplay/basedevice.html#PlayDamagedEnteredEffects">PlayDamagedEnteredEffects</a>, <a href="../gameplay/basedevice.html#PlayDamagedExitedEffects">PlayDamagedExitedEffects</a>, <a href="../gameplay/basedevice.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/basedevice.html#PostLoadGame">PostLoadGame</a>, <a href="../gameplay/basedevice.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/basedevice.html#setHasPower">setHasPower</a>, <a href="../gameplay/basedevice.html#setSwitchedOn">setSwitchedOn</a>, <a href="../gameplay/basedevice.html#Tick">Tick</a>, <a href="../gameplay/basedevice.html#unifiedAddImpulseAtPosition">unifiedAddImpulseAtPosition</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#activatePersonalShield">activatePersonalShield</a>, <a href="../gameplay/rook.html#addRepairFromDeployable">addRepairFromDeployable</a>, <a href="../gameplay/rook.html#addRepairFromPack">addRepairFromPack</a>, <a href="../gameplay/rook.html#ApplyDamage">ApplyDamage</a>, <a href="../gameplay/rook.html#averageVelocity">averageVelocity</a>, <a href="../gameplay/rook.html#breakDamageComponent">breakDamageComponent</a>, <a href="../gameplay/rook.html#canBeRepairedBy">canBeRepairedBy</a>, <a href="../gameplay/rook.html#canBeSensed">canBeSensed</a>, <a href="../gameplay/rook.html#CanBeUsedBy">CanBeUsedBy</a>, <a href="../gameplay/rook.html#ChunkUp">ChunkUp</a>, <a href="../gameplay/rook.html#cleanupAI">cleanupAI</a>, <a href="../gameplay/rook.html#cleanupDamageComponents">cleanupDamageComponents</a>, <a href="../gameplay/rook.html#CleanupSensing">CleanupSensing</a>, <a href="../gameplay/rook.html#clientUpdateDamageComponents">clientUpdateDamageComponents</a>, <a href="../gameplay/rook.html#createDamageComponent">createDamageComponent</a>, <a href="../gameplay/rook.html#CreateHearingNotifier">CreateHearingNotifier</a>, <a href="../gameplay/rook.html#CreateShotNotifier">CreateShotNotifier</a>, <a href="../gameplay/rook.html#CreateVisionNotifier">CreateVisionNotifier</a>, <a href="../gameplay/rook.html#damageComponentsOnDamage">damageComponentsOnDamage</a>, <a href="../gameplay/rook.html#damageComponentsOnIncreaseHealth">damageComponentsOnIncreaseHealth</a>, <a href="../gameplay/rook.html#damageComponentsPostTakeDamage">damageComponentsPostTakeDamage</a>, <a href="../gameplay/rook.html#deactivatePersonalShield">deactivatePersonalShield</a>, <a href="../gameplay/rook.html#Destroyed">Destroyed</a>, <a href="../gameplay/rook.html#Died">Died</a>, <a href="../gameplay/rook.html#displayActorLabel">displayActorLabel</a>, <a href="../gameplay/rook.html#displayEnemiesList">displayEnemiesList</a>, <a href="../gameplay/rook.html#displayTyrionDebugHeader">displayTyrionDebugHeader</a>, <a href="../gameplay/rook.html#displayWorldSpaceDebug">displayWorldSpaceDebug</a>, <a href="../gameplay/rook.html#DrawVisionCone">DrawVisionCone</a>, <a href="../gameplay/rook.html#EffectIsLooping">EffectIsLooping</a>, <a href="../gameplay/rook.html#enumSquadInfo">enumSquadInfo</a>, <a href="../gameplay/rook.html#enumTeamInfo">enumTeamInfo</a>, <a href="../gameplay/rook.html#firingMotor">firingMotor</a>, <a href="../gameplay/rook.html#generateAISpeechEvents">generateAISpeechEvents</a>, <a href="../gameplay/rook.html#getAlertnessLevel">getAlertnessLevel</a>, <a href="../gameplay/rook.html#getControllingCharacter">getControllingCharacter</a>, <a href="../gameplay/rook.html#getControllingCharacterTeam">getControllingCharacterTeam</a>, <a href="../gameplay/rook.html#GetDamageComponentThresholdRange">GetDamageComponentThresholdRange</a>, <a href="../gameplay/rook.html#getKillerLabel">getKillerLabel</a>, <a href="../gameplay/rook.html#GetObjectiveLocation">GetObjectiveLocation</a>, <a href="../gameplay/rook.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/rook.html#GetRadarInfoClass">GetRadarInfoClass</a>, <a href="../gameplay/rook.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/rook.html#getTeamLabel">getTeamLabel</a>, <a href="../gameplay/rook.html#groundPredictedLocation">groundPredictedLocation</a>, <a href="../gameplay/rook.html#IncreaseHealth">IncreaseHealth</a>, <a href="../gameplay/rook.html#isFriendly">isFriendly</a>, <a href="../gameplay/rook.html#IsInVisionCone">IsInVisionCone</a>, <a href="../gameplay/rook.html#OnEffectInitialized">OnEffectInitialized</a>, <a href="../gameplay/rook.html#OnEffectStarted">OnEffectStarted</a>, <a href="../gameplay/rook.html#OnEffectStopped">OnEffectStopped</a>, <a href="../gameplay/rook.html#OnShotFired">OnShotFired</a>, <a href="../gameplay/rook.html#onTeamChange">onTeamChange</a>, <a href="../gameplay/rook.html#personalShieldActive">personalShieldActive</a>, <a href="../gameplay/rook.html#PlayEffect">PlayEffect</a>, <a href="../gameplay/rook.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/rook.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/rook.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/rook.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/rook.html#PreBeginPlay">PreBeginPlay</a>, <a href="../gameplay/rook.html#PrecacheDamageComponents">PrecacheDamageComponents</a>, <a href="../gameplay/rook.html#predictedLocation">predictedLocation</a>, <a href="../gameplay/rook.html#ProcessBurnDamage">ProcessBurnDamage</a>, <a href="../gameplay/rook.html#ProcessRepair">ProcessRepair</a>, <a href="../gameplay/rook.html#RegisterHearingNotification">RegisterHearingNotification</a>, <a href="../gameplay/rook.html#RegisterShotNotification">RegisterShotNotification</a>, <a href="../gameplay/rook.html#RegisterVisionNotification">RegisterVisionNotification</a>, <a href="../gameplay/rook.html#removeFlameDamage">removeFlameDamage</a>, <a href="../gameplay/rook.html#removeRepairFromDeployable">removeRepairFromDeployable</a>, <a href="../gameplay/rook.html#removeRepairFromPack">removeRepairFromPack</a>, <a href="../gameplay/rook.html#resetPersonalShield">resetPersonalShield</a>, <a href="../gameplay/rook.html#setAlertnessLevel">setAlertnessLevel</a>, <a href="../gameplay/rook.html#setLimitedTimeLODActivation">setLimitedTimeLODActivation</a>, <a href="../gameplay/rook.html#setSquad">setSquad</a>, <a href="../gameplay/rook.html#setTeam">setTeam</a>, <a href="../gameplay/rook.html#ShouldBeMarked">ShouldBeMarked</a>, <a href="../gameplay/rook.html#squad">squad</a>, <a href="../gameplay/rook.html#squadCleanupOnDeath">squadCleanupOnDeath</a>, <a href="../gameplay/rook.html#StartLoopingEffect">StartLoopingEffect</a>, <a href="../gameplay/rook.html#StopEffect">StopEffect</a>, <a href="../gameplay/rook.html#StopLoopingEffect">StopLoopingEffect</a>, <a href="../gameplay/rook.html#team">team</a>, <a href="../gameplay/rook.html#UnregisterHearingNotification">UnregisterHearingNotification</a>, <a href="../gameplay/rook.html#UnregisterShotNotification">UnregisterShotNotification</a>, <a href="../gameplay/rook.html#UnregisterVisionNotification">UnregisterVisionNotification</a>, <a href="../gameplay/rook.html#updateHavokCollisionFilter">updateHavokCollisionFilter</a>, <a href="../gameplay/rook.html#updatePastPositions">updatePastPositions</a>, <a href="../gameplay/rook.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Active <a href="../Source_gameplay/emergencystation.html#119" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Active <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Active">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Unpowered <a href="../Source_gameplay/emergencystation.html#107" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Unpowered <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Unpowered">BeginState</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_access" class="hidden"></a>access <a href="../Source_gameplay/emergencystation.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/emergencystationaccess.html" class="source">EmergencyStationAccess</a></span> access;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_animationState" class="hidden"></a>animationState <a href="../Source_gameplay/emergencystation.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/emergencystation.html#eBakeAnimationState" class="source">eBakeAnimationState</a></span> <span class="source_type"><a href="../gameplay/animationstate.html" class="source">animationState</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bForceIconVisible" class="hidden"></a>bForceIconVisible <a href="../Source_gameplay/emergencystation.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bForceIconVisible;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">EmergencyStation</h3>
+<h4><a name="_accessClass" class="hidden"></a>accessClass <a href="../Source_gameplay/emergencystation.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/emergencystationaccess.html" class="source">EmergencyStationAccess</a></span>&gt; accessClass;</div>
+<blockquote class="comment">
+Access Class to spawn
+</blockquote>
+<hr class="small" />
+<h4><a name="_accessHeight" class="hidden"></a>accessHeight <a href="../Source_gameplay/emergencystation.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type">float</span> accessHeight;</div>
+<blockquote class="comment">
+Height of the access area in front of the Emergency station
+</blockquote>
+<hr class="small" />
+<h4><a name="_accessPointOffset" class="hidden"></a>accessPointOffset <a href="../Source_gameplay/emergencystation.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type">float</span> accessPointOffset;</div>
+<blockquote class="comment">
+Offset of the access area from the Emergency station
+</blockquote>
+<hr class="small" />
+<h4><a name="_accessRadius" class="hidden"></a>accessRadius <a href="../Source_gameplay/emergencystation.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type">float</span> accessRadius;</div>
+<blockquote class="comment">
+Radius of the access area in front of the Emergency station
+</blockquote>
+<hr class="small" />
+<h4><a name="_activeLightSkin" class="hidden"></a>activeLightSkin <a href="../Source_gameplay/emergencystation.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> activeLightSkin;</div>
+<blockquote class="comment">
+The active light skin texture
+</blockquote>
+<hr class="small" />
+<h4><a name="_activeLightSkinSlot" class="hidden"></a>activeLightSkinSlot <a href="../Source_gameplay/emergencystation.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type">int</span> activeLightSkinSlot;</div>
+<blockquote class="comment">
+skin slot for the flashing light skin
+</blockquote>
+<hr class="small" />
+<h4><a name="_repairPackClass" class="hidden"></a>repairPackClass <a href="../Source_gameplay/emergencystation.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/repairpack.html" class="source">RepairPack</a></span>&gt; repairPackClass;</div>
+<blockquote class="comment">
+class of repair pack to give
+</blockquote>
+<hr class="small" />
+<h4><a name="_respawnDelay" class="hidden"></a>respawnDelay <a href="../Source_gameplay/emergencystation.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/emergencystation.html" class="source">EmergencyStation</a></span>) <span class="source_type">float</span> respawnDelay;</div>
+<blockquote class="comment">
+Duration of repair pack respawn
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eBakeAnimationState" class="hidden"></a>eBakeAnimationState <a href="../Source_gameplay/emergencystation.html#23" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/emergencystation.html#eBakeAnimationState" class="source">eBakeAnimationState</a></span><br />
+{<blockquote>BAS_End,
+BAS_Start,
+BAS_Baking</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BeginState-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Active</span> <a href="../Source_gameplay/emergencystation.html#121" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Unpowered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Unpowered</span> <a href="../Source_gameplay/emergencystation.html#109" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canBeSensed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canBeSensed <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#141" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> canBeSensed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Destroyed <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#97" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isFunctional-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isFunctional <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#147" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isFunctional ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isOnCharactersTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isOnCharactersTeam <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#136" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isOnCharactersTeam ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> testCharacter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isRepairPackAvailable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isRepairPackAvailable <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#92" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isRepairPackAvailable ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#36" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_repairPackTaken-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> repairPackTaken <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#130" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  repairPackTaken ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state"></span> <a href="../Source_gameplay/emergencystation.html#61" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	<span class="source_type">Mesh</span>				= SkeletalMesh<span class="source_name">'BaseObjects.RepairStation'</span>
+	DrawType			= DT_Mesh
+	ActiveLightSkin		= <span class="source_type"><a href="../engine/shader.html" class="source">shader</a></span><span class="source_name">'BaseObjects.vstationlightshader'</span>
+	ActiveLightSkinSlot	= <span class="source_int">3</span>
+
+	bReplicateAnimations = true
+
+	bCanBeDamaged	= false
+	bAIThreat		= false
+
+	accessRadius	= <span class="source_int">50</span>
+	accessHeight	= <span class="source_int">80</span>
+	accessClass		= <span class="source_type">class</span><span class="source_name">'Gameplay.EmergencyStationAccess'</span>
+
+	repairPackClass = <span class="source_type">class</span><span class="source_name">'Gameplay.RepairPack'</span>
+
+	respawnDelay	= <span class="source_int">5</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/emergencystation.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#EmergencyStation">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/emergencyspawnpoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/emergencystationaccess.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:29.527 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

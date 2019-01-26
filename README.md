@@ -12,3 +12,8 @@ EditPackages=BaseObjectClasses
 ```
 
 To your `UCC.ini` to use these
+
+Building docs
+-------------
+
+Docs are built using WOTgreal utility

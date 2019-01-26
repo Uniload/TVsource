@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.HUDRadarBase</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/hudradarbase.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HUDRadarBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/hudradar.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/hudrespawnaction.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/hudradarbase.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.HUDRadarBase</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tribesgui/hudcontainer.html">HUDContainer</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a>
+   |   
+   +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a>
+      |   
+      +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudradarbase.html">HUDRadarBase</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tribesgui/hudcommandmap.html">HUDCommandMap</a>, <a href="../tribesgui/hudmarkerdisplay.html">HUDMarkerDisplay</a>, <a href="../tribesgui/hudradar.html">HUDRadar</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_componentOriginX" name="componentOriginX" title="go to the details">componentOriginX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_componentOriginY" name="componentOriginY" title="go to the details">componentOriginY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a></td><td width="66%"><a href="#_currentData" name="currentData" title="go to the details">currentData</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#MatCoords">MatCoords</a></td><td width="66%"><a href="#_LastRenderedMarkerCoords" name="LastRenderedMarkerCoords" title="go to the details">LastRenderedMarkerCoords</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_mapCenter" name="mapCenter" title="go to the details">mapCenter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_mapExtent" name="mapExtent" title="go to the details">mapExtent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">Rotator</a></td><td width="66%"><a href="#_mapRotation" name="mapRotation" title="go to the details">mapRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_zoomFactor" name="zoomFactor" title="go to the details">zoomFactor</a></td></tr>
+<tr><th colspan="2" class="small">HUDRadarBase</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bClipMarkers" name="bClipMarkers" title="go to the details">bClipMarkers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_defaultFlashFrequency" name="defaultFlashFrequency" title="go to the details">defaultFlashFrequency</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_relativeEdgeRadius" name="relativeEdgeRadius" title="go to the details">relativeEdgeRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SmallMarkerZoomThreshold" name="SmallMarkerZoomThreshold" title="go to the details">SmallMarkerZoomThreshold</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudcontainer.html#children">children</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#alpha">alpha</a>, <a href="../tribesgui/hudelement.html#aspectRatio">aspectRatio</a>, <a href="../tribesgui/hudelement.html#backgroundTexture">backgroundTexture</a>, <a href="../tribesgui/hudelement.html#BaseScript">BaseScript</a>, <a href="../tribesgui/hudelement.html#bFlashing">bFlashing</a>, <a href="../tribesgui/hudelement.html#bIsLayingOut">bIsLayingOut</a>, <a href="../tribesgui/hudelement.html#bNeedsLayout">bNeedsLayout</a>, <a href="../tribesgui/hudelement.html#borderBottom">borderBottom</a>, <a href="../tribesgui/hudelement.html#borderLeft">borderLeft</a>, <a href="../tribesgui/hudelement.html#borderRight">borderRight</a>, <a href="../tribesgui/hudelement.html#borderTop">borderTop</a>, <a href="../tribesgui/hudelement.html#bRelativePositioning">bRelativePositioning</a>, <a href="../tribesgui/hudelement.html#bRenderedOnce">bRenderedOnce</a>, <a href="../tribesgui/hudelement.html#bUseResFonts">bUseResFonts</a>, <a href="../tribesgui/hudelement.html#bVisible">bVisible</a>, <a href="../tribesgui/hudelement.html#defaultDrawColor">defaultDrawColor</a>, <a href="../tribesgui/hudelement.html#FlashAlphaMax">FlashAlphaMax</a>, <a href="../tribesgui/hudelement.html#FlashAlphaMin">FlashAlphaMin</a>, <a href="../tribesgui/hudelement.html#FlashDuration">FlashDuration</a>, <a href="../tribesgui/hudelement.html#FlashPeriod">FlashPeriod</a>, <a href="../tribesgui/hudelement.html#FlashStartTime">FlashStartTime</a>, <a href="../tribesgui/hudelement.html#FlashSwitchTime">FlashSwitchTime</a>, <a href="../tribesgui/hudelement.html#foregroundTexture">foregroundTexture</a>, <a href="../tribesgui/hudelement.html#Height">Height</a>, <a href="../tribesgui/hudelement.html#HelpFont">HelpFont</a>, <a href="../tribesgui/hudelement.html#HelpFontName">HelpFontName</a>, <a href="../tribesgui/hudelement.html#HelpLabel">HelpLabel</a>, <a href="../tribesgui/hudelement.html#horizontalAlignment">horizontalAlignment</a>, <a href="../tribesgui/hudelement.html#horizontalFill">horizontalFill</a>, <a href="../tribesgui/hudelement.html#iniOverride">iniOverride</a>, <a href="../tribesgui/hudelement.html#initialHeight">initialHeight</a>, <a href="../tribesgui/hudelement.html#initialPosX">initialPosX</a>, <a href="../tribesgui/hudelement.html#initialPosY">initialPosY</a>, <a href="../tribesgui/hudelement.html#initialWidth">initialWidth</a>, <a href="../tribesgui/hudelement.html#insetX">insetX</a>, <a href="../tribesgui/hudelement.html#insetY">insetY</a>, <a href="../tribesgui/hudelement.html#LocalData">LocalData</a>, <a href="../tribesgui/hudelement.html#nextSibling">nextSibling</a>, <a href="../tribesgui/hudelement.html#offsetX">offsetX</a>, <a href="../tribesgui/hudelement.html#offsetY">offsetY</a>, <a href="../tribesgui/hudelement.html#ParentElement">ParentElement</a>, <a href="../tribesgui/hudelement.html#posX">posX</a>, <a href="../tribesgui/hudelement.html#posY">posY</a>, <a href="../tribesgui/hudelement.html#previousSibling">previousSibling</a>, <a href="../tribesgui/hudelement.html#RelativeHeight">RelativeHeight</a>, <a href="../tribesgui/hudelement.html#RelativePosX">RelativePosX</a>, <a href="../tribesgui/hudelement.html#RelativePosY">RelativePosY</a>, <a href="../tribesgui/hudelement.html#RelativeWidth">RelativeWidth</a>, <a href="../tribesgui/hudelement.html#resFontNames">resFontNames</a>, <a href="../tribesgui/hudelement.html#resFonts">resFonts</a>, <a href="../tribesgui/hudelement.html#screenHeight">screenHeight</a>, <a href="../tribesgui/hudelement.html#screenWidth">screenWidth</a>, <a href="../tribesgui/hudelement.html#TargetAlpha">TargetAlpha</a>, <a href="../tribesgui/hudelement.html#textColor">textColor</a>, <a href="../tribesgui/hudelement.html#textFont">textFont</a>, <a href="../tribesgui/hudelement.html#textFontName">textFontName</a>, <a href="../tribesgui/hudelement.html#timeSeconds">timeSeconds</a>, <a href="../tribesgui/hudelement.html#verticalAlignment">verticalAlignment</a>, <a href="../tribesgui/hudelement.html#verticalFill">verticalFill</a>, <a href="../tribesgui/hudelement.html#Width">Width</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#EHorizontalAlignment">EHorizontalAlignment</a>, <a href="../tribesgui/hudelement.html#EHorizontalFill">EHorizontalFill</a>, <a href="../tribesgui/hudelement.html#ELayoutDirection">ELayoutDirection</a>, <a href="../tribesgui/hudelement.html#EVerticalAlignment">EVerticalAlignment</a>, <a href="../tribesgui/hudelement.html#EVerticalFill">EVerticalFill</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_CalcMarkerPosition-" name="CalcMarkerPosition" title="go to the details">CalcMarkerPosition</a> (<a href="../core/object.html#Vector">Vector</a> position)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a>&nbsp;</td><td><a href="#_GetHUDMaterial-" name="GetHUDMaterial" title="go to the details">GetHUDMaterial</a> (class&lt;<a href="../gameplay/radarinfo.html">RadarInfo</a>&gt; radarInfo, int state, bool isFriendly, EIconType iconType, <a href="../core/object.html#Color">Color</a> TeamColor, EColorType PrefColorType, optional bool bForceFlash)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RenderAllies-" name="RenderAllies" title="go to the details">RenderAllies</a> (<a href="../engine/canvas.html">Canvas</a> c)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RenderEnemies-" name="RenderEnemies" title="go to the details">RenderEnemies</a> (<a href="../engine/canvas.html">Canvas</a> c)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RenderObjectives-" name="RenderObjectives" title="go to the details">RenderObjectives</a> (<a href="../engine/canvas.html">Canvas</a> c)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RenderRadarMarker-" name="RenderRadarMarker" title="go to the details">RenderRadarMarker</a> (<a href="../engine/canvas.html">Canvas</a> c, <a href="../core/object.html#Vector">Vector</a> position, int objectHeight, class&lt;<a href="../gameplay/radarinfo.html">RadarInfo</a>&gt; objectRadarInfo, int state, bool isFriendly, <a href="../core/object.html#Color">Color</a> TeamColor, EColorType PrefColorType, optional String InfoLabel, optional bool bFlashing, optional <a href="../engine/material.html">Material</a> materialOverride)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_ShouldRender-" name="ShouldRender" title="go to the details">ShouldRender</a> (class&lt;<a href="../gameplay/radarinfo.html">RadarInfo</a>&gt; radarInfoClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateData-" name="UpdateData" title="go to the details">UpdateData</a> (<a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a> c))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudcontainer.html#AddClonedElement">AddClonedElement</a>, <a href="../tribesgui/hudcontainer.html#AddElement">AddElement</a>, <a href="../tribesgui/hudcontainer.html#AddExistingElement">AddExistingElement</a>, <a href="../tribesgui/hudcontainer.html#ElementAdded">ElementAdded</a>, <a href="../tribesgui/hudcontainer.html#ElementRemoved">ElementRemoved</a>, <a href="../tribesgui/hudcontainer.html#ForceNeedsLayout">ForceNeedsLayout</a>, <a href="../tribesgui/hudcontainer.html#HasElement">HasElement</a>, <a href="../tribesgui/hudcontainer.html#InitElementHeirachy">InitElementHeirachy</a>, <a href="../tribesgui/hudcontainer.html#RemoveAll">RemoveAll</a>, <a href="../tribesgui/hudcontainer.html#RemoveElementAt">RemoveElementAt</a>, <a href="../tribesgui/hudcontainer.html#SetAlpha">SetAlpha</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#Construct">Construct</a>, <a href="../tribesgui/hudelement.html#CreateClonedElement">CreateClonedElement</a>, <a href="../tribesgui/hudelement.html#CreateHUDElement">CreateHUDElement</a>, <a href="../tribesgui/hudelement.html#DoLayout">DoLayout</a>, <a href="../tribesgui/hudelement.html#EncodeColor">EncodeColor</a>, <a href="../tribesgui/hudelement.html#EncodePlayerName">EncodePlayerName</a>, <a href="../tribesgui/hudelement.html#FlashElement">FlashElement</a>, <a href="../tribesgui/hudelement.html#ForceNeedsLayout">ForceNeedsLayout</a>, <a href="../tribesgui/hudelement.html#GetAlpha">GetAlpha</a>, <a href="../tribesgui/hudelement.html#GetHeight">GetHeight</a>, <a href="../tribesgui/hudelement.html#GetMaximumRelativeX">GetMaximumRelativeX</a>, <a href="../tribesgui/hudelement.html#GetMaximumRelativeY">GetMaximumRelativeY</a>, <a href="../tribesgui/hudelement.html#GetMaximumX">GetMaximumX</a>, <a href="../tribesgui/hudelement.html#GetMaximumY">GetMaximumY</a>, <a href="../tribesgui/hudelement.html#GetScreenPos">GetScreenPos</a>, <a href="../tribesgui/hudelement.html#GetWidth">GetWidth</a>, <a href="../tribesgui/hudelement.html#GetX">GetX</a>, <a href="../tribesgui/hudelement.html#GetY">GetY</a>, <a href="../tribesgui/hudelement.html#InitElement">InitElement</a>, <a href="../tribesgui/hudelement.html#InitElementHeirachy">InitElementHeirachy</a>, <a href="../tribesgui/hudelement.html#InternalHeight">InternalHeight</a>, <a href="../tribesgui/hudelement.html#InternalLeft">InternalLeft</a>, <a href="../tribesgui/hudelement.html#InternalTop">InternalTop</a>, <a href="../tribesgui/hudelement.html#InternalWidth">InternalWidth</a>, <a href="../tribesgui/hudelement.html#KeyEvent">KeyEvent</a>, <a href="../tribesgui/hudelement.html#KeyType">KeyType</a>, <a href="../tribesgui/hudelement.html#Layout">Layout</a>, <a href="../tribesgui/hudelement.html#LoadConfig">LoadConfig</a>, <a href="../tribesgui/hudelement.html#LoadFont">LoadFont</a>, <a href="../tribesgui/hudelement.html#LoadFonts">LoadFonts</a>, <a href="../tribesgui/hudelement.html#MakeHUDMaterial">MakeHUDMaterial</a>, <a href="../tribesgui/hudelement.html#MaterialHeight">MaterialHeight</a>, <a href="../tribesgui/hudelement.html#MaterialWidth">MaterialWidth</a>, <a href="../tribesgui/hudelement.html#NativeRenderElement">NativeRenderElement</a>, <a href="../tribesgui/hudelement.html#OnMouseClicked">OnMouseClicked</a>, <a href="../tribesgui/hudelement.html#OnMouseDoubleClicked">OnMouseDoubleClicked</a>, <a href="../tribesgui/hudelement.html#OnMouseEntered">OnMouseEntered</a>, <a href="../tribesgui/hudelement.html#OnMouseExited">OnMouseExited</a>, <a href="../tribesgui/hudelement.html#PointInElement">PointInElement</a>, <a href="../tribesgui/hudelement.html#PointInRegion">PointInRegion</a>, <a href="../tribesgui/hudelement.html#Render">Render</a>, <a href="../tribesgui/hudelement.html#RenderElement">RenderElement</a>, <a href="../tribesgui/hudelement.html#RenderHUDMaterial">RenderHUDMaterial</a>, <a href="../tribesgui/hudelement.html#ResetFont">ResetFont</a>, <a href="../tribesgui/hudelement.html#ResetHUDMaterial">ResetHUDMaterial</a>, <a href="../tribesgui/hudelement.html#ResizeForWidth">ResizeForWidth</a>, <a href="../tribesgui/hudelement.html#RootHUDScript">RootHUDScript</a>, <a href="../tribesgui/hudelement.html#SetAlpha">SetAlpha</a>, <a href="../tribesgui/hudelement.html#SetColor">SetColor</a>, <a href="../tribesgui/hudelement.html#SetHeight">SetHeight</a>, <a href="../tribesgui/hudelement.html#SetNeedsLayout">SetNeedsLayout</a>, <a href="../tribesgui/hudelement.html#SetWidth">SetWidth</a>, <a href="../tribesgui/hudelement.html#SetX">SetX</a>, <a href="../tribesgui/hudelement.html#SetY">SetY</a>, <a href="../tribesgui/hudelement.html#StaticCreateHUDElement">StaticCreateHUDElement</a>, <a href="../tribesgui/hudelement.html#UpdateData">UpdateData</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_componentOriginX" class="hidden"></a>componentOriginX <a href="../Source_tribesgui/hudradarbase.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> componentOriginX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_componentOriginY" class="hidden"></a>componentOriginY <a href="../Source_tribesgui/hudradarbase.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> componentOriginY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentData" class="hidden"></a>currentData <a href="../Source_tribesgui/hudradarbase.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> currentData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastRenderedMarkerCoords" class="hidden"></a>LastRenderedMarkerCoords <a href="../Source_tribesgui/hudradarbase.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#MatCoords" class="source">MatCoords</a></span> LastRenderedMarkerCoords;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_mapCenter" class="hidden"></a>mapCenter <a href="../Source_tribesgui/hudradarbase.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> mapCenter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_mapExtent" class="hidden"></a>mapExtent <a href="../Source_tribesgui/hudradarbase.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> mapExtent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_mapRotation" class="hidden"></a>mapRotation <a href="../Source_tribesgui/hudradarbase.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> mapRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_zoomFactor" class="hidden"></a>zoomFactor <a href="../Source_tribesgui/hudradarbase.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> zoomFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HUDRadarBase</h3>
+<h4><a name="_bClipMarkers" class="hidden"></a>bClipMarkers <a href="../Source_tribesgui/hudradarbase.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudradarbase.html" class="source">HUDRadarBase</a></span>) config <span class="source_type">bool</span> bClipMarkers;</div>
+<blockquote class="comment">
+whether to clip markers at the zoom level
+</blockquote>
+<hr class="small" />
+<h4><a name="_defaultFlashFrequency" class="hidden"></a>defaultFlashFrequency <a href="../Source_tribesgui/hudradarbase.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudradarbase.html" class="source">HUDRadarBase</a></span>) config <span class="source_type">float</span> defaultFlashFrequency;</div>
+<blockquote class="comment">
+default frequency to flash icons at
+</blockquote>
+<hr class="small" />
+<h4><a name="_relativeEdgeRadius" class="hidden"></a>relativeEdgeRadius <a href="../Source_tribesgui/hudradarbase.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudradarbase.html" class="source">HUDRadarBase</a></span>) config <span class="source_type">float</span> relativeEdgeRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SmallMarkerZoomThreshold" class="hidden"></a>SmallMarkerZoomThreshold <a href="../Source_tribesgui/hudradarbase.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudradarbase.html" class="source">HUDRadarBase</a></span>) config <span class="source_type">float</span> SmallMarkerZoomThreshold;</div>
+<blockquote class="comment">
+zoom level after which the markers will becom dots
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CalcMarkerPosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CalcMarkerPosition <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#22" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> CalcMarkerPosition ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">position</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetHUDMaterial-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetHUDMaterial <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#26" class="small">Source code</a></h4>
+<div class="declaration">static native <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> GetHUDMaterial ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt; <span class="source_type"><a href="../gameplay/radarinfo.html" class="source">radarInfo</a></span>, <span class="source_type">int</span> state, <span class="source_type">bool</span> isFriendly, <span class="source_type">EIconType</span> iconType, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> TeamColor, <span class="source_type">EColorType</span> PrefColorType, optional <span class="source_type">bool</span> bForceFlash )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderAllies-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RenderAllies <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#29" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RenderAllies ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderEnemies-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RenderEnemies <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#28" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RenderEnemies ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderObjectives-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RenderObjectives <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#30" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RenderObjectives ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderRadarMarker-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RenderRadarMarker <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#24" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RenderRadarMarker ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">position</span>, <span class="source_type">int</span> objectHeight, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt; objectRadarInfo, <span class="source_type">int</span> state, <span class="source_type">bool</span> isFriendly, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> TeamColor, <span class="source_type">EColorType</span> PrefColorType, optional <span class="source_type">String</span> InfoLabel, optional <span class="source_type">bool</span> bFlashing, optional <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> materialOverride )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldRender-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ShouldRender <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#43" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> ShouldRender ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt; radarInfoClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateData <span class="function_state"></span> <a href="../Source_tribesgui/hudradarbase.html#38" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateData ( <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bClipMarkers = true
+	defaultFlashFrequency = <span class="source_int">0.7</span>
+	SmallMarkerZoomThreshold=<span class="source_int">0.7</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/hudradarbase.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HUDRadarBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/hudradar.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/hudrespawnaction.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:31.124 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

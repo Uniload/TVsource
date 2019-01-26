@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.ObjectSpawnPoint</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/objectspawnpoint.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ObjectSpawnPoint">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/objectiveslist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/objectspawnuseableobject.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/objectspawnpoint.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/objectspawnpoint.html">ObjectSpawnPoint</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/objectspawnpoint.html" class="source">ObjectSpawnPoint</a></span> extends <span class="source_type"><a href="../gameplay/basedevice.html" class="source">BaseDevice</a></span>;
+<a name="2"></a>
+<a name="3"></a>var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt;	objectType				<span class="source_string">"The type of object spawned at this spawn point"</span>;
+<a name="4"></a>var() <span class="source_type">float</span>			respawnDelay			<span class="source_string">"How long before a new object is made available after the old object is destroyed"</span>;
+<a name="5"></a>var() <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>		spawnOffset				<span class="source_string">"Offset from the origin that the object appears at, possibly temporary, will have to be tuned depending on the type of object being spawned"</span>;
+<a name="6"></a>var() <span class="source_type">bool</span>			bCanSpawnMultiples		<span class="source_string">"If false, the spawn point must wait until the previous object taken from it is used up or destroyed before it can spawn a new object. Otherwise, a new object is spawned once the existing object is taken by a character and the respawn delay elapses"</span>;
+<a name="7"></a>var() <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span>		spawnRotationOffset		<span class="source_string">"Rotation offset to be applied to the object when spawned"</span>;
+<a name="8"></a>var() <span class="source_type">Name</span>			objectAttachBone		<span class="source_string">"Bone on SpawnPoint that the object is attached to when spawned"</span>;
+<a name="9"></a>var() <span class="source_type">float</span>			useableObjectCollisionHeight;
+<a name="10"></a>var() <span class="source_type">float</span>			useableObjectCollisionRadius;
+<a name="11"></a>var() <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>		useableObjectOffset;
+<a name="12"></a>
+<a name="13"></a>var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>						spawnedObject; <span class="source_comment">// use with care on client. prefer signal events.
+</span><a name="14"></a>var <span class="source_type"><a href="../gameplay/objectspawnuseableobject.html" class="source">ObjectSpawnUseableObject</a></span>	<span class="source_type"><a href="../gameplay/useableobject.html" class="source">useableObject</a></span>;
+<a name="15"></a>var <span class="source_type">float</span>						respawnAnimTime;
+<a name="16"></a>var <span class="source_type">bool</span>						bHoldingObject;
+<a name="17"></a>var <span class="source_type">bool</span>						bWatchingObject;
+<a name="18"></a>var <span class="source_type">bool</span>						bFirstSpawn;
+<a name="19"></a>var <span class="source_type">bool</span>						bWaitingForObject;
+<a name="20"></a>var <span class="source_type">bool</span>						bFinishedDeployEnd;
+<a name="21"></a>var <span class="source_type">bool</span>						bFinishedClosing;
+<a name="22"></a>
+<a name="23"></a>replication
+<a name="24"></a>{
+<a name="25"></a>	reliable if (Role == ROLE_Authority)
+<a name="26"></a>		spawnedObject, respawnAnimTime, bHoldingObject, bWatchingObject,
+<a name="27"></a>		bFirstSpawn, bWaitingForObject, bFinishedDeployEnd, bFinishedClosing;
+<a name="28"></a>}
+<a name="29"></a>
+<a name="30"></a>
+<a name="31"></a><span class="source_type">function</span> PostBeginPlay()
+<a name="32"></a>{
+<a name="33"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> useableOffset;
+<a name="34"></a>
+<a name="35"></a>	super.PostBeginPlay();
+<a name="36"></a>
+<a name="37"></a>	useableOffset = useableObjectOffset &gt;&gt; rotation;
+<a name="38"></a>	useableOffset += Location;
+<a name="39"></a>
+<a name="40"></a>	<span class="source_type"><a href="../gameplay/useableobject.html" class="source">useableObject</a></span> = spawn(<span class="source_type">class</span><span class="source_name">'ObjectSpawnUseableObject'</span>,self,,useableOffset,Rotation);
+<a name="41"></a>	<span class="source_type"><a href="../gameplay/useableobject.html" class="source">useableObject</a></span>.SetCollisionSize(useableObjectCollisionRadius, useableObjectCollisionHeight);
+<a name="42"></a>
+<a name="43"></a>	UseablePoints[<span class="source_int">0</span>] = <span class="source_type"><a href="../gameplay/useableobject.html" class="source">useableObject</a></span>.GetUseablePoint();
+<a name="44"></a>	UseablePointsValid[<span class="source_int">0</span>] = UP_Valid;
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a>simulated <span class="source_type">function</span> Destroyed()
+<a name="48"></a>{
+<a name="49"></a>	if (<span class="source_type"><a href="../gameplay/useableobject.html" class="source">useableObject</a></span> != None)
+<a name="50"></a>		<span class="source_type"><a href="../gameplay/useableobject.html" class="source">useableObject</a></span>.Destroy();
+<a name="51"></a>
+<a name="52"></a>	Super.Destroyed();
+<a name="53"></a>}
+<a name="54"></a>
+<a name="55"></a><span class="source_comment">// spawnObject
+</span><a name="56"></a><span class="source_type">function</span> spawnObject()
+<a name="57"></a>{
+<a name="58"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> spawnLocation;
+<a name="59"></a>	local <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> spawnRotation;
+<a name="60"></a>
+<a name="61"></a>	if (objectType == None)
+<a name="62"></a>		return;
+<a name="63"></a>
+<a name="64"></a>	spawnLocation = spawnOffset &gt;&gt; rotation;
+<a name="65"></a>	spawnLocation += Location;
+<a name="66"></a>
+<a name="67"></a>	spawnRotation = spawnRotationOffset + rotation;
+<a name="68"></a>
+<a name="69"></a>	spawnedObject = spawn(objectType, , , spawnLocation, spawnRotation);
+<a name="70"></a>	if (spawnedObject != None)
+<a name="71"></a>	{
+<a name="72"></a>		spawnedObject.SetPhysics(PHYS_None);
+<a name="73"></a>		spawnedObject.Instigator = self;
+<a name="74"></a>		if (objectAttachBone != <span class="source_name">''</span>)
+<a name="75"></a>		{
+<a name="76"></a>			AttachToBone(spawnedObject, objectAttachBone);
+<a name="77"></a>			spawnedObject.bReplicateMovement = true;
+<a name="78"></a>		}
+<a name="79"></a>		TriggerEffectEvent(<span class="source_name">'SpawnObject'</span>);
+<a name="80"></a>
+<a name="81"></a>		if (<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(spawnedObject) != None)
+<a name="82"></a>			<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(spawnedObject).setTeam(team());
+<a name="83"></a>		else if (<span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>(spawnedObject) != None)
+<a name="84"></a>		{
+<a name="85"></a>			<span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>(spawnedObject).team = team();
+<a name="86"></a>			spawnedObject.GotoState(<span class="source_name">'DeployableStation'</span>);
+<a name="87"></a>		}
+<a name="88"></a>
+<a name="89"></a>		bHoldingObject = true;
+<a name="90"></a>	}
+<a name="91"></a>	else
+<a name="92"></a>	{
+<a name="93"></a>		log(<span class="source_string">"ObjectSpawnPoint "</span>$label$<span class="source_string">" couldn't spawn its object"</span>);
+<a name="94"></a>		
+<a name="95"></a>		bHoldingObject = false;
+<a name="96"></a>	}
+<a name="97"></a>}
+<a name="98"></a>
+<a name="99"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> CanBeUsedBy(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> CharacterUser)
+<a name="100"></a>{
+<a name="101"></a>	return super.CanBeUsedBy(CharacterUser);
+<a name="102"></a>}
+<a name="103"></a>
+<a name="104"></a><span class="source_comment">// OnPlayerUsed
+</span><a name="105"></a><span class="source_type">function</span> OnPlayerUsed(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">Other</span>)
+<a name="106"></a>{
+<a name="107"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>;
+<a name="108"></a>	local <span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span> <span class="source_type">d</span>;
+<a name="109"></a>
+<a name="110"></a>	<span class="source_type">c</span> = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">Other</span>);
+<a name="111"></a>
+<a name="112"></a>	<span class="source_type">d</span> = <span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>(spawnedObject);
+<a name="113"></a>
+<a name="114"></a>	if (<span class="source_type">d</span> != None && <span class="source_type">c</span> != None)
+<a name="115"></a>	{
+<a name="116"></a>		if (<span class="source_type">d</span>.canPickup(<span class="source_type">c</span>))
+<a name="117"></a>		{
+<a name="118"></a>			<span class="source_type">d</span>.team = team();
+<a name="119"></a>			<span class="source_type">d</span>.pickup(<span class="source_type">c</span>);
+<a name="120"></a>
+<a name="121"></a>			<span class="source_comment">// no longer a valid useable point
+</span><a name="122"></a>			UseablePointsValid[<span class="source_int">0</span>] = UP_NotValid;
+<a name="123"></a>
+<a name="124"></a>			bHoldingObject = false;
+<a name="125"></a>		}
+<a name="126"></a>	}
+<a name="127"></a>}
+<a name="128"></a>
+<a name="129"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> isOpenedAnimPlaying(<span class="source_type">Name</span> animName)
+<a name="130"></a>{
+<a name="131"></a>	return animName == <span class="source_name">'Open'</span> || animName == <span class="source_name">'DeployStart'</span> || animName == <span class="source_name">'DeployEnd'</span>;
+<a name="132"></a>}
+<a name="133"></a>
+<a name="134"></a>simulated latent <span class="source_type">function</span> latentExecuteActive()
+<a name="135"></a>{
+<a name="136"></a>	local <span class="source_type">float</span> lastTime;
+<a name="137"></a>
+<a name="138"></a>	if (respawnAnimTime != <span class="source_int">0</span>)
+<a name="139"></a>		Goto RespawnAnimClosing;
+<a name="140"></a>
+<a name="141"></a>	if (bHoldingObject)
+<a name="142"></a>		Goto HoldingObject;
+<a name="143"></a>	else if (bWatchingObject)
+<a name="144"></a>		Goto WatchingObject;
+<a name="145"></a>	else if (bWaitingForObject)
+<a name="146"></a>		Goto WaitingForRespawn;
+<a name="147"></a>	else if (bFinishedDeployEnd)
+<a name="148"></a>		Goto FinishedDeployEnd;
+<a name="149"></a>	else if (bFinishedClosing)
+<a name="150"></a>		Goto FinishedClosing;
+<a name="151"></a>	else
+<a name="152"></a>	{
+<a name="153"></a>		if (!bFirstSpawn)
+<a name="154"></a>			Goto WaitingForRespawn;
+<a name="155"></a>		else
+<a name="156"></a>			bFirstSpawn = false;
+<a name="157"></a>	}
+<a name="158"></a>
+<a name="159"></a>SpawnObject:
+<a name="160"></a>	PlayBDAnim(<span class="source_name">'DeployStart'</span>);
+<a name="161"></a>	TriggerEffectEvent(<span class="source_name">'DeployableSpawned'</span>);
+<a name="162"></a>
+<a name="163"></a>	bWaitingForObject = false;
+<a name="164"></a>
+<a name="165"></a>	spawnObject(); <span class="source_comment">// server-only call
+</span><a name="166"></a>	while (spawnedObject == None)
+<a name="167"></a>		Sleep(<span class="source_int">0.1</span>);	<span class="source_comment">// may have to wait on client for object reference to replicate
+</span><a name="168"></a>	UseablePointsValid[<span class="source_int">0</span>] = UP_Valid;
+<a name="169"></a>
+<a name="170"></a>HoldingObject:
+<a name="171"></a>	<span class="source_comment">// check if object was collected
+</span><a name="172"></a>	if (!bHoldingObject)
+<a name="173"></a>	{
+<a name="174"></a>		if (bCanSpawnMultiples)
+<a name="175"></a>		{
+<a name="176"></a>			bWatchingObject = false;
+<a name="177"></a>			StopAnimating();
+<a name="178"></a>			goto WaitingForRespawn;	<span class="source_comment">// we don't care about the object's death if we can spawn multiples
+</span><a name="179"></a>		}
+<a name="180"></a>		else
+<a name="181"></a>		{
+<a name="182"></a>			bWatchingObject = true;
+<a name="183"></a>			goto WatchingObject;
+<a name="184"></a>		}
+<a name="185"></a>	}
+<a name="186"></a>	Sleep(<span class="source_int">0.5</span>);
+<a name="187"></a>	goto HoldingObject;
+<a name="188"></a>
+<a name="189"></a>WatchingObject: <span class="source_comment">// waiting for the spawned object to die
+</span><a name="190"></a>	if (!bWatchingObject)
+<a name="191"></a>	{
+<a name="192"></a>		StopAnimating();
+<a name="193"></a>		goto WaitingForRespawn;
+<a name="194"></a>	}
+<a name="195"></a>
+<a name="196"></a>	if (Role == ROLE_Authority)
+<a name="197"></a>	{
+<a name="198"></a>		if (spawnedObject == None || spawnedObject.bDeleteMe)
+<a name="199"></a>		{
+<a name="200"></a>			bWatchingObject = false;
+<a name="201"></a>		}
+<a name="202"></a>	}
+<a name="203"></a>
+<a name="204"></a>	Sleep(<span class="source_int">0.5</span>);
+<a name="205"></a>	goto WatchingObject;
+<a name="206"></a>
+<a name="207"></a>WaitingForRespawn:
+<a name="208"></a>	bFinishedDeployEnd = false;
+<a name="209"></a>	bWaitingForObject = true;
+<a name="210"></a>
+<a name="211"></a>	if (!IsAnimating())
+<a name="212"></a>	{
+<a name="213"></a>		PlayBDAnim(<span class="source_name">'DeployEnd'</span>);
+<a name="214"></a>	}
+<a name="215"></a>
+<a name="216"></a>	FinishAnim(<span class="source_int">0</span>);
+<a name="217"></a>
+<a name="218"></a>FinishedDeployEnd:
+<a name="219"></a>	bWaitingForObject = false;
+<a name="220"></a>	bFinishedDeployEnd = true;
+<a name="221"></a>
+<a name="222"></a>	while (Role != ROLE_Authority && (respawnAnimTime == <span class="source_int">0</span> && HasAnim(<span class="source_name">'Closing'</span>)))
+<a name="223"></a>	{
+<a name="224"></a>		if (spawnedObject != None)
+<a name="225"></a>			goto SpawnObject;
+<a name="226"></a>		
+<a name="227"></a>		Sleep(<span class="source_int">0</span>);
+<a name="228"></a>	}
+<a name="229"></a>
+<a name="230"></a>RespawnAnimClosing:
+<a name="231"></a>
+<a name="232"></a>	<span class="source_comment">// respawnAnimTime is used to sync anim on client only
+</span><a name="233"></a>	if (Role == ROLE_Authority)
+<a name="234"></a>		respawnAnimTime = GetAnimLength(<span class="source_name">'Closing'</span>) * respawnDelay;
+<a name="235"></a>
+<a name="236"></a>	PlayAnim(<span class="source_name">'Closing'</span>, <span class="source_int">1.0</span> / respawnAnimTime,, <span class="source_int">0</span>);
+<a name="237"></a>	savedAnim = <span class="source_name">'Closing'</span>;
+<a name="238"></a>
+<a name="239"></a>	lastTime = <span class="source_type">Level</span>.TimeSeconds;
+<a name="240"></a>	while (true)
+<a name="241"></a>	{
+<a name="242"></a>		Sleep(<span class="source_int">0</span>);
+<a name="243"></a>		respawnAnimTime -= <span class="source_type">Level</span>.TimeSeconds - lastTime;
+<a name="244"></a>
+<a name="245"></a>		<span class="source_comment">// stop deployable poking through station on client
+</span><a name="246"></a>		if (<span class="source_type">Level</span>.NetMode == NM_Client && spawnedObject != None)
+<a name="247"></a>			spawnedObject.bHidden = true; 
+<a name="248"></a>
+<a name="249"></a>		if (!IsAnimating())
+<a name="250"></a>			break;
+<a name="251"></a>	}
+<a name="252"></a>	
+<a name="253"></a>	StopAnimating();
+<a name="254"></a>
+<a name="255"></a>	respawnAnimTime = <span class="source_int">0</span>;
+<a name="256"></a>
+<a name="257"></a>FinishedClosing:
+<a name="258"></a>	if (spawnedObject != None)
+<a name="259"></a>		spawnedObject.bHidden = false; 
+<a name="260"></a>
+<a name="261"></a>	bFinishedDeployEnd = false;
+<a name="262"></a>	bFinishedClosing = true;
+<a name="263"></a>
+<a name="264"></a>	if (!IsAnimating())
+<a name="265"></a>	{
+<a name="266"></a>		PlayBDAnim(<span class="source_name">'Opening'</span>);
+<a name="267"></a>	}
+<a name="268"></a>	FinishAnim(<span class="source_int">0</span>);
+<a name="269"></a>
+<a name="270"></a>	while (Role != ROLE_Authority && spawnedObject == None)
+<a name="271"></a>	{
+<a name="272"></a>		Sleep(<span class="source_int">0</span>);
+<a name="273"></a>	}
+<a name="274"></a>
+<a name="275"></a>	bFinishedClosing = false;
+<a name="276"></a>	goto SpawnObject;
+<a name="277"></a>}
+<a name="278"></a>
+<a name="279"></a><span class="source_comment">// State Unpowered
+</span><a name="280"></a>simulated state Unpowered
+<a name="281"></a>{
+<a name="282"></a>	simulated <span class="source_type">function</span> BeginState()
+<a name="283"></a>	{
+<a name="284"></a>		super.BeginState();
+<a name="285"></a>		destroyHeldObject();
+<a name="286"></a>		UseablePointsValid[<span class="source_int">0</span>] = UP_NotValid;
+<a name="287"></a>	}
+<a name="288"></a>
+<a name="289"></a>Begin:
+<a name="290"></a>	if (!bInitialization)
+<a name="291"></a>	{
+<a name="292"></a>		PlayBDAnim(<span class="source_name">'Closing'</span>);
+<a name="293"></a>		FinishAnim();
+<a name="294"></a>	}
+<a name="295"></a>	LoopBDAnim(<span class="source_name">'Closed'</span>);
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><span class="source_comment">// State Destructed
+</span><a name="299"></a>simulated state Destructed
+<a name="300"></a>{
+<a name="301"></a>	simulated <span class="source_type">function</span> BeginState()
+<a name="302"></a>	{
+<a name="303"></a>		super.BeginState();
+<a name="304"></a>		destroyHeldObject();
+<a name="305"></a>		UseablePointsValid[<span class="source_int">0</span>] = UP_NotValid;
+<a name="306"></a>	}
+<a name="307"></a>}
+<a name="308"></a>
+<a name="309"></a><span class="source_type">function</span> destroyHeldObject()
+<a name="310"></a>{
+<a name="311"></a>	if (bHoldingObject)
+<a name="312"></a>	{
+<a name="313"></a>		if (spawnedObject != None)
+<a name="314"></a>		{
+<a name="315"></a>			spawnedObject.Destroy();
+<a name="316"></a>			spawnedObject = None;
+<a name="317"></a>		}
+<a name="318"></a>
+<a name="319"></a>		bHoldingObject = false;
+<a name="320"></a>		bWatchingObject = false;
+<a name="321"></a>		bWaitingForObject = false;
+<a name="322"></a>		bFinishedDeployEnd = false;
+<a name="323"></a>		bFinishedClosing = false;
+<a name="324"></a>	}
+<a name="325"></a>}
+<a name="326"></a>
+<a name="327"></a><span class="source_type">function</span> onTeamChange()
+<a name="328"></a>{
+<a name="329"></a>	super.onTeamChange();
+<a name="330"></a>
+<a name="331"></a>	destroyHeldObject();
+<a name="332"></a>}
+<a name="333"></a>
+<a name="334"></a>defaultproperties
+<a name="335"></a>{
+<a name="336"></a>	bReplicateAnimations = false
+<a name="337"></a>
+<a name="338"></a>	bWorldGeometry = false
+<a name="339"></a>	objectAttachBone = <span class="source_string">"deployable"</span>
+<a name="340"></a>
+<a name="341"></a>	useableObjectCollisionHeight = <span class="source_int">80</span>
+<a name="342"></a>	useableObjectCollisionRadius = <span class="source_int">60</span>
+<a name="343"></a>	useableObjectOffset = (X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">40</span>,Z=<span class="source_int">0</span>)
+<a name="344"></a>
+<a name="345"></a>	bFirstSpawn = true;
+<a name="346"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/objectspawnpoint.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ObjectSpawnPoint">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/objectiveslist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/objectspawnuseableobject.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:20.000 - Creation time: st 23.5.2018 00:10:46.260 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

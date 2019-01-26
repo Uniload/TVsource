@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.ConcreteSpeechManager</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/concretespeechmanager.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ConcreteSpeechManager">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/combatrole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/consolecommandmanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/concretespeechmanager.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.ConcreteSpeechManager</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/speechmanager.html">SpeechManager</a></dd>
+<dt>Modifiers</dt><dd>dependsOn ( SpeechCategory ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/speechmanager.html">SpeechManager</a>
+   |   
+   +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/concretespeechmanager.html">ConcreteSpeechManager</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_AIVoiceSetPrecache" name="AIVoiceSetPrecache" title="go to the details">AIVoiceSetPrecache</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIgnoreCategoryFrequency" name="bIgnoreCategoryFrequency" title="go to the details">bIgnoreCategoryFrequency</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/speechcategorymanager.html">SpeechCategoryManager</a></td><td width="66%"><a href="#_categoryManager" name="categoryManager" title="go to the details">categoryManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_categoryMap_padding[5]" name="categoryMap_padding[5]" title="go to the details">categoryMap_padding[5]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/speechchannel.html">SpeechChannel</a>&gt;</td><td width="66%"><a href="#_channels" name="channels" title="go to the details">channels</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_level_padding" name="level_padding" title="go to the details">level_padding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_VolumePriorityDisableTime_padding" name="VolumePriorityDisableTime_padding" title="go to the details">VolumePriorityDisableTime_padding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_VOPrecache" name="VOPrecache" title="go to the details">VOPrecache</a></td></tr>
+<tr><th colspan="2" class="small">ConcreteSpeechManager</th></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_AnnouncerType" name="AnnouncerType" title="go to the details">AnnouncerType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SecondsPerWord" name="SecondsPerWord" title="go to the details">SecondsPerWord</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SpeechInnerRadius" name="SpeechInnerRadius" title="go to the details">SpeechInnerRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SpeechOuterRadius" name="SpeechOuterRadius" title="go to the details">SpeechOuterRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SpeechPitch" name="SpeechPitch" title="go to the details">SpeechPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_VolumePriorityDisabledLagTime" name="VolumePriorityDisabledLagTime" title="go to the details">VolumePriorityDisabledLagTime</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisableChannel-" name="DisableChannel" title="go to the details">DisableChannel</a> (String channelName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EnableChannel-" name="EnableChannel" title="go to the details">EnableChannel</a> (String channelName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetChannelID-" name="GetChannelID" title="go to the details">GetChannelID</a> (String channelName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PrecacheAIVoiceSet-" name="PrecacheAIVoiceSet" title="go to the details">PrecacheAIVoiceSet</a> (String VoiceSetPackageName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PrecacheVO-" name="PrecacheVO" title="go to the details">PrecacheVO</a> (String SpeechTag)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToggleCategoryFrequency-" name="ToggleCategoryFrequency" title="go to the details">ToggleCategoryFrequency</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToggleChannel-" name="ToggleChannel" title="go to the details">ToggleChannel</a> (String channelName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToggleChannelLogging-" name="ToggleChannelLogging" title="go to the details">ToggleChannelLogging</a> (String channelName))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/speechmanager.html">SpeechManager</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/speechmanager.html#CancelSpeech">CancelSpeech</a>, <a href="../engine/speechmanager.html#DisableChannel">DisableChannel</a>, <a href="../engine/speechmanager.html#EnableChannel">EnableChannel</a>, <a href="../engine/speechmanager.html#PlayAnnouncerSpeech">PlayAnnouncerSpeech</a>, <a href="../engine/speechmanager.html#PlayDynamicSpeech">PlayDynamicSpeech</a>, <a href="../engine/speechmanager.html#PlayMovementSpeech">PlayMovementSpeech</a>, <a href="../engine/speechmanager.html#PlayQuickChatSpeech">PlayQuickChatSpeech</a>, <a href="../engine/speechmanager.html#PlayScriptedSpeech">PlayScriptedSpeech</a>, <a href="../engine/speechmanager.html#PrecacheAIVoiceSet">PrecacheAIVoiceSet</a>, <a href="../engine/speechmanager.html#PrecacheVO">PrecacheVO</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AIVoiceSetPrecache" class="hidden"></a>AIVoiceSetPrecache <a href="../Source_gameplay/concretespeechmanager.html#18" class="small">Source code</a></h4>
+<div class="declaration">var transient private Array&lt;<span class="source_type">string</span>&gt; AIVoiceSetPrecache;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIgnoreCategoryFrequency" class="hidden"></a>bIgnoreCategoryFrequency <a href="../Source_gameplay/concretespeechmanager.html#16" class="small">Source code</a></h4>
+<div class="declaration">var transient private <span class="source_type">bool</span> bIgnoreCategoryFrequency;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_categoryManager" class="hidden"></a>categoryManager <a href="../Source_gameplay/concretespeechmanager.html#14" class="small">Source code</a></h4>
+<div class="declaration">var transient private <span class="source_type"><a href="../gameplay/speechcategorymanager.html" class="source">SpeechCategoryManager</a></span> categoryManager;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_categoryMap_padding[5]" class="hidden"></a>categoryMap_padding[5] <a href="../Source_gameplay/concretespeechmanager.html#22" class="small">Source code</a></h4>
+<div class="declaration">var transient noexport private const <span class="source_type">int</span> categoryMap_padding[<span class="source_int">5</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_channels" class="hidden"></a>channels <a href="../Source_gameplay/concretespeechmanager.html#15" class="small">Source code</a></h4>
+<div class="declaration">var transient private Array&lt;<span class="source_type"><a href="../gameplay/speechchannel.html" class="source">SpeechChannel</a></span>&gt; channels;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_level_padding" class="hidden"></a>level_padding <a href="../Source_gameplay/concretespeechmanager.html#21" class="small">Source code</a></h4>
+<div class="declaration">var transient noexport private const <span class="source_type">int</span> level_padding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VolumePriorityDisableTime_padding" class="hidden"></a>VolumePriorityDisableTime_padding <a href="../Source_gameplay/concretespeechmanager.html#23" class="small">Source code</a></h4>
+<div class="declaration">var transient noexport private const <span class="source_type">float</span> VolumePriorityDisableTime_padding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VOPrecache" class="hidden"></a>VOPrecache <a href="../Source_gameplay/concretespeechmanager.html#19" class="small">Source code</a></h4>
+<div class="declaration">var transient private Array&lt;<span class="source_type">string</span>&gt; VOPrecache;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">ConcreteSpeechManager</h3>
+<h4><a name="_AnnouncerType" class="hidden"></a>AnnouncerType <a href="../Source_gameplay/concretespeechmanager.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/concretespeechmanager.html" class="source">ConcreteSpeechManager</a></span>) config <span class="source_type">String</span> AnnouncerType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SecondsPerWord" class="hidden"></a>SecondsPerWord <a href="../Source_gameplay/concretespeechmanager.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/concretespeechmanager.html" class="source">ConcreteSpeechManager</a></span>) config <span class="source_type">float</span> SecondsPerWord;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpeechInnerRadius" class="hidden"></a>SpeechInnerRadius <a href="../Source_gameplay/concretespeechmanager.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/concretespeechmanager.html" class="source">ConcreteSpeechManager</a></span>) config <span class="source_type">float</span> SpeechInnerRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpeechOuterRadius" class="hidden"></a>SpeechOuterRadius <a href="../Source_gameplay/concretespeechmanager.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/concretespeechmanager.html" class="source">ConcreteSpeechManager</a></span>) config <span class="source_type">float</span> SpeechOuterRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpeechPitch" class="hidden"></a>SpeechPitch <a href="../Source_gameplay/concretespeechmanager.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/concretespeechmanager.html" class="source">ConcreteSpeechManager</a></span>) config <span class="source_type">float</span> SpeechPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VolumePriorityDisabledLagTime" class="hidden"></a>VolumePriorityDisabledLagTime <a href="../Source_gameplay/concretespeechmanager.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/concretespeechmanager.html" class="source">ConcreteSpeechManager</a></span>) config <span class="source_type">float</span> VolumePriorityDisabledLagTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DisableChannel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisableChannel <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#76" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DisableChannel ( <span class="source_type">String</span> channelName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EnableChannel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EnableChannel <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#89" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EnableChannel ( <span class="source_type">String</span> channelName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetChannelID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetChannelID <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#32" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetChannelID ( <span class="source_type">String</span> channelName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrecacheAIVoiceSet-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PrecacheAIVoiceSet <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#29" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span>  PrecacheAIVoiceSet ( <span class="source_type">String</span> VoiceSetPackageName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrecacheVO-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PrecacheVO <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#30" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span>  PrecacheVO ( <span class="source_type">String</span> SpeechTag )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleCategoryFrequency-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToggleCategoryFrequency <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#68" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ToggleCategoryFrequency ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleChannel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToggleChannel <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#58" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ToggleChannel ( <span class="source_type">String</span> channelName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleChannelLogging-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToggleChannelLogging <span class="function_state"></span> <a href="../Source_gameplay/concretespeechmanager.html#48" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ToggleChannelLogging ( <span class="source_type">String</span> channelName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	SpeechPitch=<span class="source_int">1.0</span>
+	SpeechInnerRadius=<span class="source_int">4096</span>
+	SpeechOuterRadius=<span class="source_int">8192</span>
+	AnnouncerType=<span class="source_string">"Announcer1"</span>
+	VolumePriorityDisabledLagTime=<span class="source_int">1.0</span>
+	SecondsPerWord=<span class="source_int">0.7</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/concretespeechmanager.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ConcreteSpeechManager">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/combatrole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/consolecommandmanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:29.036 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

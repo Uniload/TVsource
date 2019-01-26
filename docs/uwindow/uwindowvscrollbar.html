@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - UWindow.UWindowVScrollBar</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_uwindow/uwindowvscrollbar.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowVScrollBar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../uwindow/uwindowurltextarea.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../uwindow/uwindowvsplitter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#uwindow/uwindowvscrollbar.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../uwindow/uwindow-overview.html">UWindow</a>.UWindowVScrollBar</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interactions.html">Interactions</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interaction.html">Interaction</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+            |   
+            +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowvscrollbar.html">UWindowVScrollBar</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#DE_Change">DE_Change</a>, <a href="../uwindow/uwindowwindow.html#DE_Click">DE_Click</a>, <a href="../uwindow/uwindowwindow.html#DE_Created">DE_Created</a>, <a href="../uwindow/uwindowwindow.html#DE_DoubleClick">DE_DoubleClick</a>, <a href="../uwindow/uwindowwindow.html#DE_Enter">DE_Enter</a>, <a href="../uwindow/uwindowwindow.html#DE_EnterPressed">DE_EnterPressed</a>, <a href="../uwindow/uwindowwindow.html#DE_Exit">DE_Exit</a>, <a href="../uwindow/uwindowwindow.html#DE_HelpChanged">DE_HelpChanged</a>, <a href="../uwindow/uwindowwindow.html#DE_LMouseDown">DE_LMouseDown</a>, <a href="../uwindow/uwindowwindow.html#DE_MClick">DE_MClick</a>, <a href="../uwindow/uwindowwindow.html#DE_MouseEnter">DE_MouseEnter</a>, <a href="../uwindow/uwindowwindow.html#DE_MouseLeave">DE_MouseLeave</a>, <a href="../uwindow/uwindowwindow.html#DE_MouseMove">DE_MouseMove</a>, <a href="../uwindow/uwindowwindow.html#DE_RClick">DE_RClick</a>, <a href="../uwindow/uwindowwindow.html#DE_WheelDownPressed">DE_WheelDownPressed</a>, <a href="../uwindow/uwindowwindow.html#DE_WheelUpPressed">DE_WheelUpPressed</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#F_Bold">F_Bold</a>, <a href="../uwindow/uwindowbase.html#F_Large">F_Large</a>, <a href="../uwindow/uwindowbase.html#F_LargeBold">F_LargeBold</a>, <a href="../uwindow/uwindowbase.html#F_Normal">F_Normal</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDisabled" name="bDisabled" title="go to the details">bDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDragging" name="bDragging" title="go to the details">bDragging</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowsbdownbutton.html">UWindowSBDownButton</a></td><td width="66%"><a href="#_DownButton" name="DownButton" title="go to the details">DownButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DragY" name="DragY" title="go to the details">DragY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxPos" name="MaxPos" title="go to the details">MaxPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxVisible" name="MaxVisible" title="go to the details">MaxVisible</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinPos" name="MinPos" title="go to the details">MinPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_NextClickTime" name="NextClickTime" title="go to the details">NextClickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Pos" name="Pos" title="go to the details">Pos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ScrollAmount" name="ScrollAmount" title="go to the details">ScrollAmount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ThumbHeight" name="ThumbHeight" title="go to the details">ThumbHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ThumbStart" name="ThumbStart" title="go to the details">ThumbStart</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowsbupbutton.html">UWindowSBUpButton</a></td><td width="66%"><a href="#_UpButton" name="UpButton" title="go to the details">UpButton</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#ActiveWindow">ActiveWindow</a>, <a href="../uwindow/uwindowwindow.html#bAcceptsFocus">bAcceptsFocus</a>, <a href="../uwindow/uwindowwindow.html#bAcceptsHotKeys">bAcceptsHotKeys</a>, <a href="../uwindow/uwindowwindow.html#bAlwaysBehind">bAlwaysBehind</a>, <a href="../uwindow/uwindowwindow.html#bAlwaysOnTop">bAlwaysOnTop</a>, <a href="../uwindow/uwindowwindow.html#bIgnoreLDoubleClick">bIgnoreLDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#bIgnoreMDoubleClick">bIgnoreMDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#bIgnoreRDoubleClick">bIgnoreRDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#bLeaveOnscreen">bLeaveOnscreen</a>, <a href="../uwindow/uwindowwindow.html#bMMouseDown">bMMouseDown</a>, <a href="../uwindow/uwindowwindow.html#bMouseDown">bMouseDown</a>, <a href="../uwindow/uwindowwindow.html#bNoClip">bNoClip</a>, <a href="../uwindow/uwindowwindow.html#bRMouseDown">bRMouseDown</a>, <a href="../uwindow/uwindowwindow.html#bTransient">bTransient</a>, <a href="../uwindow/uwindowwindow.html#bUWindowActive">bUWindowActive</a>, <a href="../uwindow/uwindowwindow.html#bWindowVisible">bWindowVisible</a>, <a href="../uwindow/uwindowwindow.html#ClickTime">ClickTime</a>, <a href="../uwindow/uwindowwindow.html#ClickX">ClickX</a>, <a href="../uwindow/uwindowwindow.html#ClickY">ClickY</a>, <a href="../uwindow/uwindowwindow.html#ClippingRegion">ClippingRegion</a>, <a href="../uwindow/uwindowwindow.html#Cursor">Cursor</a>, <a href="../uwindow/uwindowwindow.html#FirstChildWindow">FirstChildWindow</a>, <a href="../uwindow/uwindowwindow.html#LastChildWindow">LastChildWindow</a>, <a href="../uwindow/uwindowwindow.html#LookAndFeel">LookAndFeel</a>, <a href="../uwindow/uwindowwindow.html#MClickTime">MClickTime</a>, <a href="../uwindow/uwindowwindow.html#MClickX">MClickX</a>, <a href="../uwindow/uwindowwindow.html#MClickY">MClickY</a>, <a href="../uwindow/uwindowwindow.html#ModalWindow">ModalWindow</a>, <a href="../uwindow/uwindowwindow.html#NextSiblingWindow">NextSiblingWindow</a>, <a href="../uwindow/uwindowwindow.html#OwnerWindow">OwnerWindow</a>, <a href="../uwindow/uwindowwindow.html#ParentWindow">ParentWindow</a>, <a href="../uwindow/uwindowwindow.html#PrevSiblingWindow">PrevSiblingWindow</a>, <a href="../uwindow/uwindowwindow.html#RClickTime">RClickTime</a>, <a href="../uwindow/uwindowwindow.html#RClickX">RClickX</a>, <a href="../uwindow/uwindowwindow.html#RClickY">RClickY</a>, <a href="../uwindow/uwindowwindow.html#Root">Root</a>, <a href="../uwindow/uwindowwindow.html#WinHeight">WinHeight</a>, <a href="../uwindow/uwindowwindow.html#WinLeft">WinLeft</a>, <a href="../uwindow/uwindowwindow.html#WinTop">WinTop</a>, <a href="../uwindow/uwindowwindow.html#WinWidth">WinWidth</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#FrameHitTest">FrameHitTest</a>, <a href="../uwindow/uwindowbase.html#MenuSound">MenuSound</a>, <a href="../uwindow/uwindowbase.html#MessageBoxButtons">MessageBoxButtons</a>, <a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a>, <a href="../uwindow/uwindowbase.html#PropertyCondition">PropertyCondition</a>, <a href="../uwindow/uwindowbase.html#TextAlign">TextAlign</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#MouseCursor">MouseCursor</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#HTMLStyle">HTMLStyle</a>, <a href="../uwindow/uwindowbase.html#Region">Region</a>, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeforePaint-" name="BeforePaint" title="go to the details">BeforePaint</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CheckRange-" name="CheckRange" title="go to the details">CheckRange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseDown-" name="LMouseDown" title="go to the details">LMouseDown</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseMove-" name="MouseMove" title="go to the details">MouseMove</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_Scroll-" name="Scroll" title="go to the details">Scroll</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRange-" name="SetRange" title="go to the details">SetRange</a> (float NewMinPos, float NewMaxPos, float NewMaxVisible, optional float NewScrollAmount))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Show-" name="Show" title="go to the details">Show</a> (float P))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#Activated">Activated</a>, <a href="../uwindow/uwindowwindow.html#ActivateWindow">ActivateWindow</a>, <a href="../uwindow/uwindowwindow.html#AfterCreate">AfterCreate</a>, <a href="../uwindow/uwindowwindow.html#AfterPaint">AfterPaint</a>, <a href="../uwindow/uwindowwindow.html#BeforeCreate">BeforeCreate</a>, <a href="../uwindow/uwindowwindow.html#BeforePaint">BeforePaint</a>, <a href="../uwindow/uwindowwindow.html#BeginPlay">BeginPlay</a>, <a href="../uwindow/uwindowwindow.html#BringToFront">BringToFront</a>, <a href="../uwindow/uwindowwindow.html#CancelAcceptsFocus">CancelAcceptsFocus</a>, <a href="../uwindow/uwindowwindow.html#CheckKeyFocusWindow">CheckKeyFocusWindow</a>, <a href="../uwindow/uwindowwindow.html#CheckMousePassThrough">CheckMousePassThrough</a>, <a href="../uwindow/uwindowwindow.html#Click">Click</a>, <a href="../uwindow/uwindowwindow.html#ClipText">ClipText</a>, <a href="../uwindow/uwindowwindow.html#ClipTextWidth">ClipTextWidth</a>, <a href="../uwindow/uwindowwindow.html#Close">Close</a>, <a href="../uwindow/uwindowwindow.html#Created">Created</a>, <a href="../uwindow/uwindowwindow.html#CreateWindow">CreateWindow</a>, <a href="../uwindow/uwindowwindow.html#Deactivated">Deactivated</a>, <a href="../uwindow/uwindowwindow.html#DoTick">DoTick</a>, <a href="../uwindow/uwindowwindow.html#DoubleClick">DoubleClick</a>, <a href="../uwindow/uwindowwindow.html#DrawClippedActor">DrawClippedActor</a>, <a href="../uwindow/uwindowwindow.html#DrawClippedTexture">DrawClippedTexture</a>, <a href="../uwindow/uwindowwindow.html#DrawHorizTiledPieces">DrawHorizTiledPieces</a>, <a href="../uwindow/uwindowwindow.html#DrawMiscBevel">DrawMiscBevel</a>, <a href="../uwindow/uwindowwindow.html#DrawStretchedTexture">DrawStretchedTexture</a>, <a href="../uwindow/uwindowwindow.html#DrawStretchedTextureSegment">DrawStretchedTextureSegment</a>, <a href="../uwindow/uwindowwindow.html#DrawUpBevel">DrawUpBevel</a>, <a href="../uwindow/uwindowwindow.html#DrawVertTiledPieces">DrawVertTiledPieces</a>, <a href="../uwindow/uwindowwindow.html#EscClose">EscClose</a>, <a href="../uwindow/uwindowwindow.html#FindChildWindow">FindChildWindow</a>, <a href="../uwindow/uwindowwindow.html#FindWindowUnder">FindWindowUnder</a>, <a href="../uwindow/uwindowwindow.html#FocusOtherWindow">FocusOtherWindow</a>, <a href="../uwindow/uwindowwindow.html#FocusWindow">FocusWindow</a>, <a href="../uwindow/uwindowwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="../uwindow/uwindowwindow.html#GetEntryLevel">GetEntryLevel</a>, <a href="../uwindow/uwindowwindow.html#GetLevel">GetLevel</a>, <a href="../uwindow/uwindowwindow.html#GetLookAndFeelTexture">GetLookAndFeelTexture</a>, <a href="../uwindow/uwindowwindow.html#GetMouseXY">GetMouseXY</a>, <a href="../uwindow/uwindowwindow.html#GetParent">GetParent</a>, <a href="../uwindow/uwindowwindow.html#GetPlayerOwner">GetPlayerOwner</a>, <a href="../uwindow/uwindowwindow.html#GlobalToWindow">GlobalToWindow</a>, <a href="../uwindow/uwindowwindow.html#HideChildWindow">HideChildWindow</a>, <a href="../uwindow/uwindowwindow.html#HideWindow">HideWindow</a>, <a href="../uwindow/uwindowwindow.html#HotKeyDown">HotKeyDown</a>, <a href="../uwindow/uwindowwindow.html#HotKeyUp">HotKeyUp</a>, <a href="../uwindow/uwindowwindow.html#IsActive">IsActive</a>, <a href="../uwindow/uwindowwindow.html#KeyDown">KeyDown</a>, <a href="../uwindow/uwindowwindow.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="../uwindow/uwindowwindow.html#KeyFocusExit">KeyFocusExit</a>, <a href="../uwindow/uwindowwindow.html#KeyPressed">KeyPressed</a>, <a href="../uwindow/uwindowwindow.html#KeyUp">KeyUp</a>, <a href="../uwindow/uwindowwindow.html#LMouseDown">LMouseDown</a>, <a href="../uwindow/uwindowwindow.html#LMouseUp">LMouseUp</a>, <a href="../uwindow/uwindowwindow.html#MClick">MClick</a>, <a href="../uwindow/uwindowwindow.html#MDoubleClick">MDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#MessageBox">MessageBox</a>, <a href="../uwindow/uwindowwindow.html#MessageBoxDone">MessageBoxDone</a>, <a href="../uwindow/uwindowwindow.html#MessageClients">MessageClients</a>, <a href="../uwindow/uwindowwindow.html#MMouseDown">MMouseDown</a>, <a href="../uwindow/uwindowwindow.html#MMouseUp">MMouseUp</a>, <a href="../uwindow/uwindowwindow.html#MouseEnter">MouseEnter</a>, <a href="../uwindow/uwindowwindow.html#MouseIsOver">MouseIsOver</a>, <a href="../uwindow/uwindowwindow.html#MouseLeave">MouseLeave</a>, <a href="../uwindow/uwindowwindow.html#MouseMove">MouseMove</a>, <a href="../uwindow/uwindowwindow.html#NotifyAfterLevelChange">NotifyAfterLevelChange</a>, <a href="../uwindow/uwindowwindow.html#NotifyBeforeLevelChange">NotifyBeforeLevelChange</a>, <a href="../uwindow/uwindowwindow.html#NotifyQuitUnreal">NotifyQuitUnreal</a>, <a href="../uwindow/uwindowwindow.html#Paint">Paint</a>, <a href="../uwindow/uwindowwindow.html#PaintClients">PaintClients</a>, <a href="../uwindow/uwindowwindow.html#ParseAmpersand">ParseAmpersand</a>, <a href="../uwindow/uwindowwindow.html#ProcessMenuKey">ProcessMenuKey</a>, <a href="../uwindow/uwindowwindow.html#PropagateKey">PropagateKey</a>, <a href="../uwindow/uwindowwindow.html#PropagateMessage">PropagateMessage</a>, <a href="../uwindow/uwindowwindow.html#RClick">RClick</a>, <a href="../uwindow/uwindowwindow.html#RDoubleClick">RDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#RemoveAmpersand">RemoveAmpersand</a>, <a href="../uwindow/uwindowwindow.html#ReplaceText">ReplaceText</a>, <a href="../uwindow/uwindowwindow.html#Resized">Resized</a>, <a href="../uwindow/uwindowwindow.html#ResolutionChanged">ResolutionChanged</a>, <a href="../uwindow/uwindowwindow.html#RMouseDown">RMouseDown</a>, <a href="../uwindow/uwindowwindow.html#RMouseUp">RMouseUp</a>, <a href="../uwindow/uwindowwindow.html#SaveConfigs">SaveConfigs</a>, <a href="../uwindow/uwindowwindow.html#SendToBack">SendToBack</a>, <a href="../uwindow/uwindowwindow.html#SetAcceptsFocus">SetAcceptsFocus</a>, <a href="../uwindow/uwindowwindow.html#SetAcceptsHotKeys">SetAcceptsHotKeys</a>, <a href="../uwindow/uwindowwindow.html#SetCursor">SetCursor</a>, <a href="../uwindow/uwindowwindow.html#SetMouseWindow">SetMouseWindow</a>, <a href="../uwindow/uwindowwindow.html#SetParent">SetParent</a>, <a href="../uwindow/uwindowwindow.html#SetSize">SetSize</a>, <a href="../uwindow/uwindowwindow.html#ShowChildWindow">ShowChildWindow</a>, <a href="../uwindow/uwindowwindow.html#ShowModal">ShowModal</a>, <a href="../uwindow/uwindowwindow.html#ShowWindow">ShowWindow</a>, <a href="../uwindow/uwindowwindow.html#StripCRLF">StripCRLF</a>, <a href="../uwindow/uwindowwindow.html#TextSize">TextSize</a>, <a href="../uwindow/uwindowwindow.html#Tick">Tick</a>, <a href="../uwindow/uwindowwindow.html#Tile">Tile</a>, <a href="../uwindow/uwindowwindow.html#ToolTip">ToolTip</a>, <a href="../uwindow/uwindowwindow.html#WaitModal">WaitModal</a>, <a href="../uwindow/uwindowwindow.html#WindowEvent">WindowEvent</a>, <a href="../uwindow/uwindowwindow.html#WindowHidden">WindowHidden</a>, <a href="../uwindow/uwindowwindow.html#WindowIsVisible">WindowIsVisible</a>, <a href="../uwindow/uwindowwindow.html#WindowShown">WindowShown</a>, <a href="../uwindow/uwindowwindow.html#WindowToGlobal">WindowToGlobal</a>, <a href="../uwindow/uwindowwindow.html#WrapClipText">WrapClipText</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#BuildObjectWithProperties">BuildObjectWithProperties</a>, <a href="../uwindow/uwindowbase.html#GetRegion">GetRegion</a>, <a href="../uwindow/uwindowbase.html#InStrAfter">InStrAfter</a>, <a href="../uwindow/uwindowbase.html#NewRegion">NewRegion</a>, <a href="../uwindow/uwindowbase.html#NewTexRegion">NewTexRegion</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bDisabled" class="hidden"></a>bDisabled <a href="../Source_uwindow/uwindowvscrollbar.html#8" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDragging" class="hidden"></a>bDragging <a href="../Source_uwindow/uwindowvscrollbar.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDragging;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DownButton" class="hidden"></a>DownButton <a href="../Source_uwindow/uwindowvscrollbar.html#7" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowsbdownbutton.html" class="source">UWindowSBDownButton</a></span> DownButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DragY" class="hidden"></a>DragY <a href="../Source_uwindow/uwindowvscrollbar.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> DragY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxPos" class="hidden"></a>MaxPos <a href="../Source_uwindow/uwindowvscrollbar.html#10" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MaxPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxVisible" class="hidden"></a>MaxVisible <a href="../Source_uwindow/uwindowvscrollbar.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MaxVisible;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MinPos" class="hidden"></a>MinPos <a href="../Source_uwindow/uwindowvscrollbar.html#9" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MinPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextClickTime" class="hidden"></a>NextClickTime <a href="../Source_uwindow/uwindowvscrollbar.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> NextClickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Pos" class="hidden"></a>Pos <a href="../Source_uwindow/uwindowvscrollbar.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> Pos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ScrollAmount" class="hidden"></a>ScrollAmount <a href="../Source_uwindow/uwindowvscrollbar.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ScrollAmount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ThumbHeight" class="hidden"></a>ThumbHeight <a href="../Source_uwindow/uwindowvscrollbar.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ThumbHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ThumbStart" class="hidden"></a>ThumbStart <a href="../Source_uwindow/uwindowvscrollbar.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ThumbStart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpButton" class="hidden"></a>UpButton <a href="../Source_uwindow/uwindowvscrollbar.html#6" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowsbupbutton.html" class="source">UWindowSBUpButton</a></span> UpButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BeforePaint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeforePaint <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#96" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeforePaint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckRange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckRange <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#54" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CheckRange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#89" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseDown <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#116" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LMouseDown ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseMove <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#179" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MouseMove ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#111" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Scroll-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Scroll <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#32" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> Scroll ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRange <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#42" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetRange ( <span class="source_type">float</span> NewMinPos, <span class="source_type">float</span> NewMaxPos, <span class="source_type">float</span> NewMaxVisible, optional <span class="source_type">float</span> NewScrollAmount) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Show-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Show <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#19" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Show ( <span class="source_type">float</span> <span class="source_type">P</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_uwindow/uwindowvscrollbar.html#144" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_uwindow/uwindowvscrollbar.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowVScrollBar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../uwindow/uwindowurltextarea.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../uwindow/uwindowvsplitter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:38.771 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

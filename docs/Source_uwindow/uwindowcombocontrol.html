@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: UWindow.UWindowComboControl</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="../uwindow/uwindowcombocontrol.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowComboControl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_uwindow/uwindowcombobutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_uwindow/uwindowcomboleftbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_uwindow/uwindowcombocontrol.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowcombocontrol.html">UWindowComboControl</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../uwindow/uwindowcombocontrol.html" class="source">UWindowComboControl</a></span> extends <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span>;
+<a name="2"></a>
+<a name="3"></a>var	<span class="source_type">float</span>				EditBoxWidth;
+<a name="4"></a>var <span class="source_type">float</span>				EditAreaDrawX, EditAreaDrawY;
+<a name="5"></a>
+<a name="6"></a>var <span class="source_type"><a href="../uwindow/uwindoweditbox.html" class="source">UWindowEditBox</a></span>		EditBox;
+<a name="7"></a>var <span class="source_type"><a href="../uwindow/uwindowcombobutton.html" class="source">UWindowComboButton</a></span>	Button;
+<a name="8"></a>var <span class="source_type"><a href="../uwindow/uwindowcomboleftbutton.html" class="source">UWindowComboLeftButton</a></span> LeftButton;
+<a name="9"></a>var <span class="source_type"><a href="../uwindow/uwindowcomborightbutton.html" class="source">UWindowComboRightButton</a></span> RightButton;
+<a name="10"></a>
+<a name="11"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowcombolist.html" class="source">UWindowComboList</a></span>&gt;	ListClass;
+<a name="12"></a>var <span class="source_type"><a href="../uwindow/uwindowcombolist.html" class="source">UWindowComboList</a></span>	List;
+<a name="13"></a>
+<a name="14"></a>var <span class="source_type">bool</span>				bListVisible;
+<a name="15"></a>var <span class="source_type">bool</span>				bCanEdit;
+<a name="16"></a>var <span class="source_type">bool</span>				bButtons;
+<a name="17"></a>
+<a name="18"></a><span class="source_type">function</span> Created()
+<a name="19"></a>{
+<a name="20"></a>	Super.Created();
+<a name="21"></a>	
+<a name="22"></a>	EditBox = <span class="source_type"><a href="../uwindow/uwindoweditbox.html" class="source">UWindowEditBox</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'UWindowEditBox'</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, WinWidth-<span class="source_int">12</span>, WinHeight)); 
+<a name="23"></a>	EditBox.NotifyOwner = Self;
+<a name="24"></a>	EditBoxWidth = WinWidth / <span class="source_int">2</span>;
+<a name="25"></a>	EditBox.bTransient = True;
+<a name="26"></a>
+<a name="27"></a>	Button = <span class="source_type"><a href="../uwindow/uwindowcombobutton.html" class="source">UWindowComboButton</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'UWindowComboButton'</span>, WinWidth-<span class="source_int">12</span>, <span class="source_int">0</span>, <span class="source_int">12</span>, <span class="source_int">10</span>)); 
+<a name="28"></a>	Button.<span class="source_type">Owner</span> = Self;
+<a name="29"></a>	
+<a name="30"></a>	List = <span class="source_type"><a href="../uwindow/uwindowcombolist.html" class="source">UWindowComboList</a></span>(Root.CreateWindow(ListClass, <span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">100</span>, <span class="source_int">100</span>)); 
+<a name="31"></a>	List.LookAndFeel = LookAndFeel;
+<a name="32"></a>	List.<span class="source_type">Owner</span> = Self;
+<a name="33"></a>	List.<span class="source_type"><a href="../tyrion/setup.html" class="source">Setup</a></span>();
+<a name="34"></a>	
+<a name="35"></a>	List.HideWindow();
+<a name="36"></a>	bListVisible = False;
+<a name="37"></a>
+<a name="38"></a>	SetEditTextColor(LookAndFeel.EditBoxTextColor);
+<a name="39"></a>}
+<a name="40"></a>
+<a name="41"></a><span class="source_type">function</span> SetButtons(<span class="source_type">bool</span> bInButtons)
+<a name="42"></a>{
+<a name="43"></a>	bButtons = bInButtons;
+<a name="44"></a>	if(bInButtons)
+<a name="45"></a>	{
+<a name="46"></a>		LeftButton = <span class="source_type"><a href="../uwindow/uwindowcomboleftbutton.html" class="source">UWindowComboLeftButton</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'UWindowComboLeftButton'</span>, WinWidth-<span class="source_int">12</span>, <span class="source_int">0</span>, <span class="source_int">12</span>, <span class="source_int">10</span>));
+<a name="47"></a>		RightButton = <span class="source_type"><a href="../uwindow/uwindowcomborightbutton.html" class="source">UWindowComboRightButton</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'UWindowComboRightButton'</span>, WinWidth-<span class="source_int">12</span>, <span class="source_int">0</span>, <span class="source_int">12</span>, <span class="source_int">10</span>));
+<a name="48"></a>	}
+<a name="49"></a>	else
+<a name="50"></a>	{
+<a name="51"></a>		LeftButton = None;
+<a name="52"></a>		RightButton = None;
+<a name="53"></a>	}
+<a name="54"></a>}
+<a name="55"></a>
+<a name="56"></a><span class="source_type">function</span> Notify(<span class="source_type">byte</span> E)
+<a name="57"></a>{
+<a name="58"></a>	Super.Notify(E);
+<a name="59"></a>
+<a name="60"></a>	if(E == DE_LMouseDown)
+<a name="61"></a>	{
+<a name="62"></a>		if(!bListVisible)
+<a name="63"></a>		{
+<a name="64"></a>			if(!bCanEdit)
+<a name="65"></a>			{
+<a name="66"></a>				DropDown();
+<a name="67"></a>				Root.CaptureMouse(List);
+<a name="68"></a>			}
+<a name="69"></a>		}
+<a name="70"></a>		else
+<a name="71"></a>			CloseUp();
+<a name="72"></a>	}
+<a name="73"></a>}
+<a name="74"></a>
+<a name="75"></a><span class="source_type">function</span> <span class="source_type">int</span> FindItemIndex(<span class="source_type">string</span> V, optional <span class="source_type">bool</span> bIgnoreCase)
+<a name="76"></a>{
+<a name="77"></a>	return List.FindItemIndex(V, bIgnoreCase);
+<a name="78"></a>}
+<a name="79"></a>
+<a name="80"></a><span class="source_type">function</span> RemoveItem(<span class="source_type">int</span> <span class="source_type">Index</span>)
+<a name="81"></a>{
+<a name="82"></a>	List.RemoveItem(<span class="source_type">Index</span>);
+<a name="83"></a>}
+<a name="84"></a>
+<a name="85"></a><span class="source_type">function</span> <span class="source_type">int</span> FindItemIndex2(<span class="source_type">string</span> V2, optional <span class="source_type">bool</span> bIgnoreCase)
+<a name="86"></a>{
+<a name="87"></a>	return List.FindItemIndex2(V2, bIgnoreCase);
+<a name="88"></a>}
+<a name="89"></a>
+<a name="90"></a><span class="source_type">function</span> Close(optional <span class="source_type">bool</span> bByParent)
+<a name="91"></a>{
+<a name="92"></a>	if(bByParent && bListVisible)
+<a name="93"></a>		CloseUp();
+<a name="94"></a>
+<a name="95"></a>	Super.Close(bByParent);
+<a name="96"></a>}
+<a name="97"></a>
+<a name="98"></a><span class="source_type">function</span> SetNumericOnly(<span class="source_type">bool</span> bNumericOnly)
+<a name="99"></a>{
+<a name="100"></a>	EditBox.bNumericOnly = bNumericOnly;
+<a name="101"></a>}
+<a name="102"></a>
+<a name="103"></a><span class="source_type">function</span> SetNumericFloat(<span class="source_type">bool</span> bNumericFloat)
+<a name="104"></a>{
+<a name="105"></a>	EditBox.bNumericFloat = bNumericFloat;
+<a name="106"></a>}
+<a name="107"></a>
+<a name="108"></a><span class="source_type">function</span> SetFont(<span class="source_type">int</span> NewFont)
+<a name="109"></a>{
+<a name="110"></a>	Super.SetFont(NewFont);
+<a name="111"></a>	EditBox.SetFont(NewFont);
+<a name="112"></a>}
+<a name="113"></a>
+<a name="114"></a><span class="source_type">function</span> SetEditTextColor(<span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> NewColor)
+<a name="115"></a>{
+<a name="116"></a>	EditBox.SetTextColor(NewColor);
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><span class="source_type">function</span> SetEditable(<span class="source_type">bool</span> bNewCanEdit)
+<a name="120"></a>{
+<a name="121"></a>	bCanEdit = bNewCanEdit;
+<a name="122"></a>	EditBox.SetEditable(bCanEdit);
+<a name="123"></a>}
+<a name="124"></a>
+<a name="125"></a><span class="source_type">function</span> <span class="source_type">int</span> GetSelectedIndex()
+<a name="126"></a>{
+<a name="127"></a>	return List.FindItemIndex(GetValue());
+<a name="128"></a>}
+<a name="129"></a>
+<a name="130"></a><span class="source_type">function</span> SetSelectedIndex(<span class="source_type">int</span> <span class="source_type">Index</span>)
+<a name="131"></a>{
+<a name="132"></a>	SetValue(List.GetItemValue(<span class="source_type">Index</span>), List.GetItemValue2(<span class="source_type">Index</span>));
+<a name="133"></a>}
+<a name="134"></a>
+<a name="135"></a><span class="source_type">function</span> <span class="source_type">string</span> GetValue()
+<a name="136"></a>{
+<a name="137"></a>	return EditBox.GetValue();
+<a name="138"></a>}
+<a name="139"></a>
+<a name="140"></a><span class="source_type">function</span> <span class="source_type">string</span> GetValue2()
+<a name="141"></a>{
+<a name="142"></a>	return EditBox.GetValue2();
+<a name="143"></a>}
+<a name="144"></a>
+<a name="145"></a><span class="source_type">function</span> SetValue(<span class="source_type">string</span> <span class="source_type">NewValue</span>, optional <span class="source_type">string</span> NewValue2)
+<a name="146"></a>{
+<a name="147"></a>	EditBox.SetValue(<span class="source_type">NewValue</span>, NewValue2);
+<a name="148"></a>	<span class="source_type"><a href="../uwindow/uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></span>(OwnerWindow).Notify(self, DE_Change);
+<a name="149"></a>}
+<a name="150"></a>
+<a name="151"></a><span class="source_type">function</span> SetMaxLength(<span class="source_type">int</span> MaxLength)
+<a name="152"></a>{
+<a name="153"></a>	EditBox.MaxLength = MaxLength;
+<a name="154"></a>}
+<a name="155"></a>
+<a name="156"></a><span class="source_type">function</span> Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="157"></a>{
+<a name="158"></a>	LookAndFeel.Combo_Draw(Self, <span class="source_type">C</span>);
+<a name="159"></a>	Super.Paint(<span class="source_type">C</span>, X, <span class="source_type">Y</span>);
+<a name="160"></a>}
+<a name="161"></a>
+<a name="162"></a><span class="source_type">function</span> AddItem(<span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">string</span> S2, optional <span class="source_type">int</span> SortWeight)
+<a name="163"></a>{
+<a name="164"></a>	List.AddItem(<span class="source_type">S</span>, S2, SortWeight);
+<a name="165"></a>}
+<a name="166"></a>
+<a name="167"></a><span class="source_type">function</span> InsertItem(<span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">string</span> S2, optional <span class="source_type">int</span> SortWeight)
+<a name="168"></a>{
+<a name="169"></a>	List.InsertItem(<span class="source_type">S</span>, S2, SortWeight);
+<a name="170"></a>}
+<a name="171"></a>
+<a name="172"></a><span class="source_type">function</span> BeforePaint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="173"></a>{
+<a name="174"></a>	Super.BeforePaint(<span class="source_type">C</span>, X, <span class="source_type">Y</span>);
+<a name="175"></a>	LookAndFeel.Combo_SetupSizes(Self, <span class="source_type">C</span>);
+<a name="176"></a>	List.bLeaveOnscreen = bListVisible && bLeaveOnscreen;
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a><span class="source_type">function</span> CloseUp()
+<a name="180"></a>{
+<a name="181"></a>	bListVisible = False;
+<a name="182"></a>	EditBox.SetEditable(bCanEdit);
+<a name="183"></a>	EditBox.SelectAll();
+<a name="184"></a>	List.HideWindow();
+<a name="185"></a>}
+<a name="186"></a>
+<a name="187"></a><span class="source_type">function</span> DropDown()
+<a name="188"></a>{
+<a name="189"></a>	bListVisible = True;
+<a name="190"></a>	EditBox.SetEditable(False);
+<a name="191"></a>	List.ShowWindow();
+<a name="192"></a>}
+<a name="193"></a>
+<a name="194"></a><span class="source_type">function</span> Sort()
+<a name="195"></a>{
+<a name="196"></a>	List.Sort();
+<a name="197"></a>}
+<a name="198"></a>
+<a name="199"></a><span class="source_type">function</span> ClearValue()
+<a name="200"></a>{
+<a name="201"></a>	EditBox.Clear();
+<a name="202"></a>}
+<a name="203"></a>
+<a name="204"></a><span class="source_type">function</span> Clear()
+<a name="205"></a>{
+<a name="206"></a>	List.Clear();
+<a name="207"></a>	EditBox.Clear();
+<a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a><span class="source_type">function</span> FocusOtherWindow(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W)
+<a name="211"></a>{
+<a name="212"></a>	Super.FocusOtherWindow(W);
+<a name="213"></a>
+<a name="214"></a>	if(bListVisible && W.ParentWindow != Self && W != List && W.ParentWindow != List)
+<a name="215"></a>		CloseUp();
+<a name="216"></a>}
+<a name="217"></a>
+<a name="218"></a>defaultproperties
+<a name="219"></a>{
+<a name="220"></a>	ListClass=<span class="source_type">class</span><span class="source_name">'UWindowComboList'</span>
+<a name="221"></a>	bNoKeyboard=True
+<a name="222"></a>}
+<a name="223"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="../uwindow/uwindowcombocontrol.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowComboControl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_uwindow/uwindowcombobutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_uwindow/uwindowcomboleftbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:32.000 - Creation time: st 23.5.2018 00:10:49.859 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

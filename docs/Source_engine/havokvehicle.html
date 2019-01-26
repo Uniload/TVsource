@@ -1,0 +1,801 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Engine.HavokVehicle</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/havokvehicle.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HavokVehicle">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/havokskeletalsystem.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/havokvehiclefactory.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/havokvehicle.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/havokvehicle.html">HavokVehicle</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span> extends <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>
+<a name="2"></a>	native;
+<a name="3"></a>
+<a name="4"></a>cpptext
+<a name="5"></a>{
+<a name="6"></a><span class="source_macro">#ifdef UNREAL_HAVOK
+</span><a name="7"></a>
+<a name="8"></a>	<span class="source_comment">// Actor interface.
+</span><a name="9"></a>	virtual <span class="source_type">bool</span> HavokInitActor();
+<a name="10"></a>	virtual void HavokQuitActor();
+<a name="11"></a>	
+<a name="12"></a>	virtual void PostNetReceive();
+<a name="13"></a>    virtual void PostEditChange();
+<a name="14"></a>    
+<a name="15"></a>	virtual void setPhysics(<span class="source_type">BYTE</span> NewPhysics, AActor *NewFloor, FVector NewFloorV);
+<a name="16"></a>	
+<a name="17"></a>	virtual void TickSimulated( <span class="source_type">FLOAT</span> DeltaSeconds );
+<a name="18"></a>	virtual void TickAuthoritative( <span class="source_type">FLOAT</span> DeltaSeconds );
+<a name="19"></a>	
+<a name="20"></a>	virtual void HavokPreStepCallback(<span class="source_type">FLOAT</span> <span class="source_type">DeltaTime</span>);
+<a name="21"></a>	
+<a name="22"></a>	virtual void RemakeVehicle();  <span class="source_comment">// updates the internal Havok Raycast vehicle. Called by default in VehicleUpdateParams event, but you can call it whenever you change suspension params etc. No need to call this if you just chaneg steering + throtle in the UpdateVehicle event.
+</span><a name="23"></a>	virtual void BuildVehicle();    <span class="source_comment">// constructs the vehicle, internal call from PostBeginPlay
+</span><a name="24"></a>
+<a name="25"></a>	virtual void syncVehicleToBones();
+<a name="26"></a>	
+<a name="27"></a><span class="source_macro">#endif
+</span><a name="28"></a>}
+<a name="29"></a>
+<a name="30"></a>var const transient <span class="source_type">int</span> hkVehicleDataPtr; <span class="source_comment">//the HavokVehicleData pointer for this vehicle (stores the couple of Havok ptrs required to interface with the Havok SDK)
+</span><a name="31"></a>
+<a name="32"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) editinline array&lt;<span class="source_type"><a href="../engine/havokvehiclewheel.html" class="source">HavokVehicleWheel</a></span>&gt;		Wheels; <span class="source_comment">// Wheel data
+</span><a name="33"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) editinline array&lt;<span class="source_type">float</span>&gt;					GearRatios; <span class="source_comment">//1 per gear, just add another value to get more gears. Gear ratios (3 == low speed, 0.5 == high speed)
+</span><a name="34"></a>
+<a name="35"></a><span class="source_comment">// generic controls (set by controller, used by concrete derived classes)
+</span><a name="36"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">float</span>    Steering; <span class="source_comment">// between -1 and 1
+</span><a name="37"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">float</span>    Throttle; <span class="source_comment">// between -1 and 1
+</span><a name="38"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">float</span>	Rise;	  <span class="source_comment">// between -1 and 1
+</span><a name="39"></a>
+<a name="40"></a>var			   <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>				Driver;
+<a name="41"></a>
+<a name="42"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>&gt;	ExitPositions;		<span class="source_comment">// Positions (rel to vehicle) to try putting the player when exiting.
+</span><a name="43"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>&gt;	EntryPositions;		<span class="source_comment">// Positions (rel to vehicle) to create triggers for entry.
+</span><a name="44"></a>
+<a name="45"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>	DrivePos;		<span class="source_comment">// Position (rel to vehicle) to put player while driving.
+</span><a name="46"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>	DriveRot;		<span class="source_comment">// Rotation (rel to vehicle) to put driver while driving.
+</span><a name="47"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">name</span>		DriveAnim;		<span class="source_comment">// Animation to play while driving.
+</span><a name="48"></a>
+<a name="49"></a><span class="source_comment">//// CAMERAS ////
+</span><a name="50"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span>		bDrawMeshInFP;		<span class="source_comment">// Whether to draw the vehicle mesh when in 1st person mode.
+</span><a name="51"></a>var	(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span>		bDrawDriverInTP;	<span class="source_comment">// Whether to draw the driver when in 3rd person mode.
+</span><a name="52"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span>		bZeroPCRotOnEntry;	<span class="source_comment">// If true, set camera rotation to zero on entering vehicle. If false, set it to the vehicle rotation.
+</span><a name="53"></a>
+<a name="54"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>   FPCamPos;	<span class="source_comment">// Position of camera when driving first person.
+</span><a name="55"></a>
+<a name="56"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>   TPCamLookat;
+<a name="57"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">float</span>    TPCamDistance;
+<a name="58"></a>
+<a name="59"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">int</span>		MaxViewYaw; <span class="source_comment">// Maximum amount you can look left and right
+</span><a name="60"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">int</span>		MaxViewPitch; <span class="source_comment">// Maximum amount you can look up and down 
+</span><a name="61"></a>
+<a name="62"></a><span class="source_comment">//// PHYSICS ////
+</span><a name="63"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		ChassisMass; <span class="source_comment">//kg, 750;
+</span><a name="64"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		SteeringMaxAngle;  <span class="source_comment">//~3000 Unreal units, (in Havok it hkMath::HK_REAL_PI / 10.0f);
+</span><a name="65"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		MaxSpeedFullSteeringAngle; <span class="source_comment">//kph  (130.0f * (1.605f / 3.6f)) by default;
+</span><a name="66"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		FrictionEqualizer; <span class="source_comment">//0.5f; 
+</span><a name="67"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		TorqueRollFactor; <span class="source_comment">//0.25f; 
+</span><a name="68"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		TorquePitchFactor; <span class="source_comment">// 0.5f; 
+</span><a name="69"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		TorqueYawFactor; <span class="source_comment">//0.35f; 
+</span><a name="70"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		TorqueExtraFactor; <span class="source_comment">//-0.5f; 
+</span><a name="71"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		ChassisUnitInertiaYaw; <span class="source_comment">//1.0f; 
+</span><a name="72"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		ChassisUnitInertiaRoll; <span class="source_comment">//0.4f; 
+</span><a name="73"></a>var (HavokVehicleGeneral) <span class="source_type">float</span>		ChassisUnitInertiaPitch; <span class="source_comment">//1.0f; 
+</span><a name="74"></a>
+<a name="75"></a>	<span class="source_comment">// Engine Performance
+</span><a name="76"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineTorque; <span class="source_comment">//500.0f;
+</span><a name="77"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineMinRPM; <span class="source_comment">//1000.0f;
+</span><a name="78"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineOptRPM; <span class="source_comment">// 5500.0f;
+</span><a name="79"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineMaxRPM; <span class="source_comment">//7500.0f;
+</span><a name="80"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineTorqueFactorAtMinRPM; <span class="source_comment">// 0.8f;
+</span><a name="81"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineTorqueFactorAtMaxRPM; <span class="source_comment">// 0.8f;
+</span><a name="82"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineResistanceFactorAtMinRPM; <span class="source_comment">// 0.05f;
+</span><a name="83"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineResistanceFactorAtOptRPM; <span class="source_comment">// 0.1f;
+</span><a name="84"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		EngineResistanceFactorAtMaxRPM; <span class="source_comment">// 0.3f;
+</span><a name="85"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		GearDownshiftRPM; <span class="source_comment">//3500.0f;
+</span><a name="86"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		GearUpshiftRPM; <span class="source_comment">// 6500.0f;
+</span><a name="87"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		GearClutchDelayTime; <span class="source_comment">//0.0f;
+</span><a name="88"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		GearReverseRatio; <span class="source_comment">//1.0f;
+</span><a name="89"></a>var (HavokVehicleEngine) <span class="source_type">float</span>		TopSpeed; 	<span class="source_comment">// 130
+</span><a name="90"></a>	
+<a name="91"></a>	<span class="source_comment">// Aerodynamics
+</span><a name="92"></a>var (HavokVehicleAerodynamics) <span class="source_type">float</span>	AerodynamicsAirDensity; <span class="source_comment">// 1.3f
+</span><a name="93"></a>var (HavokVehicleAerodynamics) <span class="source_type">float</span>	AerodynamicsFrontalArea; <span class="source_comment">// 1 (m^2)
+</span><a name="94"></a>var (HavokVehicleAerodynamics) <span class="source_type">float</span>	AerodynamicsDragCoeff; <span class="source_comment">//0.7f;
+</span><a name="95"></a>var (HavokVehicleAerodynamics) <span class="source_type">float</span>	AerodynamicsLiftCoeff; <span class="source_comment">//-0.3f;
+</span><a name="96"></a>var (HavokVehicleAerodynamics) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>	ExtraGravity; <span class="source_comment">// 0,0,-5
+</span><a name="97"></a>var (HavokVehicleAerodynamics) <span class="source_type">float</span>	SpinDamping; <span class="source_comment">//1.0f; 
+</span><a name="98"></a>var (HavokVehicleAerodynamics) <span class="source_type">float</span>	CollisionSpinDamping; <span class="source_comment">// 0.0f;
+</span><a name="99"></a>var (HavokVehicleAerodynamics) <span class="source_type">float</span>	CollisionThreshold; <span class="source_comment">//4.0f; 
+</span><a name="100"></a>
+<a name="101"></a>
+<a name="102"></a><span class="source_comment">//// EFFECTS ////
+</span><a name="103"></a>
+<a name="104"></a><span class="source_comment">// Effect spawned when vehicle is destroyed
+</span><a name="105"></a>var (<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt;	DestroyEffectClass;
+<a name="106"></a>
+<a name="107"></a><span class="source_comment">// Created in PostNetBeginPlay and destroyed when vehicle is.
+</span><a name="108"></a><span class="source_macro">#if !IG_TRIBES3	// rowan: don't support HavokVehicleTrigger, as they are based of old AIScript class
+</span><a name="109"></a>var			   array&lt;HavokVehicleTrigger&gt;	EntryTriggers;
+<a name="110"></a><span class="source_macro">#endif
+</span><a name="111"></a>
+<a name="112"></a>var			   <span class="source_type">bool</span>     bGetOut;
+<a name="113"></a>
+<a name="114"></a><span class="source_comment">// The factory that created this vehicle.
+</span><a name="115"></a>var			   <span class="source_type"><a href="../engine/havokvehiclefactory.html" class="source">HavokVehicleFactory</a></span>	ParentFactory;
+<a name="116"></a>
+<a name="117"></a><span class="source_comment">// Shadow projector
+</span><a name="118"></a>var			   <span class="source_type"><a href="../engine/shadowprojector.html" class="source">ShadowProjector</a></span>	VehicleShadow;
+<a name="119"></a>
+<a name="120"></a>struct native <span class="source_type"><a href="../engine/havokvehicle.html#HavokCarState" class="source">HavokCarState</a></span>
+<a name="121"></a>{
+<a name="122"></a>	var <span class="source_type"><a href="../engine/actor.html#HavokRigidBodyState" class="source">HavokRigidBodyState</a></span> ChassisState;
+<a name="123"></a>
+<a name="124"></a>	var <span class="source_type">float</span>				ServerHandbrake;
+<a name="125"></a>	var <span class="source_type">float</span>				ServerBrake;
+<a name="126"></a>	var <span class="source_type">float</span>				ServerGas;
+<a name="127"></a>	var <span class="source_type">int</span>					ServerGear;
+<a name="128"></a>	var	<span class="source_type">float</span>				ServerSteering;
+<a name="129"></a>
+<a name="130"></a>	var <span class="source_type">int</span>					bNewState; <span class="source_comment">// bools inside structs == scary!
+</span><a name="131"></a>};
+<a name="132"></a>
+<a name="133"></a>var		<span class="source_type"><a href="../engine/havokvehicle.html#HavokCarState" class="source">HavokCarState</a></span>			CarState;
+<a name="134"></a>var		<span class="source_type">bool</span>					bNewCarState;
+<a name="135"></a>
+<a name="136"></a>replication
+<a name="137"></a>{
+<a name="138"></a>	reliable if(Role==ROLE_Authority)
+<a name="139"></a>		ClientDriverEnter, ClientDriverLeave;
+<a name="140"></a>
+<a name="141"></a>	unreliable if(Role == ROLE_Authority)
+<a name="142"></a>		CarState;
+<a name="143"></a>}
+<a name="144"></a>
+<a name="145"></a><span class="source_comment">// Useful function for plotting data to real-time graph on screen.
+</span><a name="146"></a>native final <span class="source_type">function</span> GraphData(<span class="source_type">string</span> DataName, <span class="source_type">float</span> DataValue);
+<a name="147"></a>
+<a name="148"></a>
+<a name="149"></a><span class="source_comment">// Really simple at the moment!
+</span><a name="150"></a><span class="source_type">function</span> PostTakeDamage(<span class="source_type">float</span> Damage, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> instigatedBy, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">hitlocation</span>, 
+<a name="151"></a>						<span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> momentum, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, optional <span class="source_type">float</span> projectileFactor)
+<a name="152"></a>{
+<a name="153"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc;
+<a name="154"></a>
+<a name="155"></a>	Health -= Damage;
+<a name="156"></a>
+<a name="157"></a>	Log(<span class="source_string">"Ouch! "</span>$Health);
+<a name="158"></a>
+<a name="159"></a>	<span class="source_comment">// The vehicle is dead!
+</span><a name="160"></a>	if(Health &lt;= <span class="source_int">0</span>)
+<a name="161"></a>	{
+<a name="162"></a>		if ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> != None )
+<a name="163"></a>		{
+<a name="164"></a>			pc = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>);
+<a name="165"></a>
+<a name="166"></a>			if( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.bIsPlayer && pc != None )
+<a name="167"></a>			{
+<a name="168"></a>				ClientDriverLeave(pc); <span class="source_comment">// Just to reset HUD etc.
+</span><a name="169"></a>
+<a name="170"></a>				<span class="source_comment">// THIS WAS HOW IT WAS IN UT2003, DONT KNOW ABOUT WARFARE...
+</span><a name="171"></a>				<span class="source_comment">// pc.PawnDied(self); // This should unpossess the controller and let the player respawn
+</span><a name="172"></a>			}
+<a name="173"></a>			else
+<a name="174"></a><span class="source_macro">#if IG_TRIBES3
+</span><a name="175"></a>				<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.PawnDied(self);
+<a name="176"></a><span class="source_macro">#else
+</span><a name="177"></a>				<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.Destroy();
+<a name="178"></a><span class="source_macro">#endif
+</span><a name="179"></a>		}
+<a name="180"></a>
+<a name="181"></a>		Destroy(); <span class="source_comment">// Destroy the vehicle itself (see Destroyed below)
+</span><a name="182"></a>	}
+<a name="183"></a>
+<a name="184"></a>    unifiedAddImpulseAtPosition(momentum, <span class="source_type">hitlocation</span>);
+<a name="185"></a>}
+<a name="186"></a>
+<a name="187"></a><span class="source_comment">// Vehicles dont get telefragged.
+</span><a name="188"></a>event EncroachedBy( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span> )
+<a name="189"></a>{
+<a name="190"></a>	Log(<span class="source_string">"HavokVehicle("</span>$self$<span class="source_string">") Encroached By: "</span>$<span class="source_type">Other</span>$<span class="source_string">"."</span>);
+<a name="191"></a>}
+<a name="192"></a>
+<a name="193"></a>simulated <span class="source_type">function</span> FaceRotation( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">NewRotation</span>, <span class="source_type">float</span> <span class="source_type">DeltaTime</span> )
+<a name="194"></a>{
+<a name="195"></a>	<span class="source_comment">// Vehicles ignore 'face rotation'.
+</span><a name="196"></a>}
+<a name="197"></a>
+<a name="198"></a><span class="source_comment">// You got some new info from the server (ie. the CarState has some new info).
+</span><a name="199"></a>event HavokVehicleStateReceived();
+<a name="200"></a>
+<a name="201"></a><span class="source_comment">// Do script car model stuff here - in the UpdateVehicle you can change steering and throtle., if you change suspension sparams, number of wheels etc, call Remake
+</span><a name="202"></a>simulated event UpdateVehicle( <span class="source_type">float</span> <span class="source_type">DeltaTime</span> );
+<a name="203"></a>
+<a name="204"></a><span class="source_comment">// Redo the vehicle params.. all of them:
+</span><a name="205"></a>native <span class="source_type">function</span> RemakeVehicle();
+<a name="206"></a>
+<a name="207"></a><span class="source_comment">// Do any general vehicle set-up when it gets spawned.
+</span><a name="208"></a>simulated <span class="source_type">function</span> PostNetBeginPlay()
+<a name="209"></a>{
+<a name="210"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> RotX, RotY, RotZ;
+<a name="211"></a><span class="source_macro">#if !IG_TRIBES3	// rowan: don't support HavokVehicleTrigger, as they are based of old AIScript class
+</span><a name="212"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="213"></a>	local HavokVehicleTrigger NewTrigger;
+<a name="214"></a><span class="source_macro">#endif
+</span><a name="215"></a>    Super.PostNetBeginPlay();
+<a name="216"></a>
+<a name="217"></a>	if(<span class="source_type">Level</span>.NetMode != NM_Client)
+<a name="218"></a>	{
+<a name="219"></a>	    GetAxes(Rotation,RotX,RotY,RotZ);
+<a name="220"></a>
+<a name="221"></a><span class="source_macro">#if !IG_TRIBES3	// rowan: don't support HavokVehicleTrigger, as they are based of old AIScript class
+</span><a name="222"></a>		EntryTriggers.Length = EntryPositions.Length;
+<a name="223"></a>
+<a name="224"></a>		for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;EntryPositions.Length; <span class="source_type">i</span>++)
+<a name="225"></a>		{
+<a name="226"></a>			<span class="source_comment">// Create triggers for gettting into the hoverbike - only on the server
+</span><a name="227"></a>			NewTrigger = spawn(<span class="source_type">class</span><span class="source_name">'HavokVehicleTrigger'</span>, self,, Location + EntryPositions[<span class="source_type">i</span>].X * RotX + EntryPositions[<span class="source_type">i</span>].<span class="source_type">Y</span> * RotY + EntryPositions[<span class="source_type">i</span>].Z * RotZ);
+<a name="228"></a>			NewTrigger.SetBase(self);
+<a name="229"></a>			NewTrigger.SetCollision(true, false, false);
+<a name="230"></a>
+<a name="231"></a>			EntryTriggers[<span class="source_type">i</span>] = NewTrigger;
+<a name="232"></a>		}
+<a name="233"></a><span class="source_macro">#endif
+</span><a name="234"></a>	}
+<a name="235"></a>
+<a name="236"></a>	<span class="source_comment">// Make sure params are up to date? Should be anyway.
+</span><a name="237"></a>	<span class="source_comment">// HavokVehicleHasChanged();
+</span><a name="238"></a>}
+<a name="239"></a>
+<a name="240"></a><span class="source_comment">// Called when a parameter of the overall articulated actor has changed (like PostEditChange)
+</span><a name="241"></a>simulated event HavokVehicleHasChanged()
+<a name="242"></a>{
+<a name="243"></a>	RemakeVehicle();
+<a name="244"></a>}
+<a name="245"></a>
+<a name="246"></a><span class="source_comment">///////////////////////////////////////////
+</span><a name="247"></a><span class="source_comment">/////////////// NETWORKING ////////////////
+</span><a name="248"></a><span class="source_comment">///////////////////////////////////////////
+</span><a name="249"></a>
+<a name="250"></a>simulated event <span class="source_type">bool</span> HavokUpdateState(out <span class="source_type"><a href="../engine/actor.html#HavokRigidBodyState" class="source">HavokRigidBodyState</a></span> newState)
+<a name="251"></a>{
+<a name="252"></a>	<span class="source_comment">// This should never get called on the server - but just in case!
+</span><a name="253"></a>	if(Role == ROLE_Authority || !bNewCarState)
+<a name="254"></a>		return false;
+<a name="255"></a>
+<a name="256"></a>	newState = CarState.ChassisState;
+<a name="257"></a>	bNewCarState = false;
+<a name="258"></a>
+<a name="259"></a>	return true; <span class="source_comment">// Get Havok to update the chassis rb
+</span><a name="260"></a>	<span class="source_comment">//return false;
+</span><a name="261"></a>}
+<a name="262"></a>
+<a name="263"></a>
+<a name="264"></a><span class="source_comment">// The pawn Driver has tried to take control of this vehicle
+</span><a name="265"></a><span class="source_type">function</span> TryToDrive(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span>)
+<a name="266"></a>{
+<a name="267"></a>	local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">C</span>;
+<a name="268"></a>	<span class="source_type">C</span> = <span class="source_type">p</span>.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>;
+<a name="269"></a>
+<a name="270"></a>    if ( (Driver == None) && (<span class="source_type">C</span> != None) && <span class="source_type">C</span>.bIsPlayer && !<span class="source_type">C</span>.IsInState(<span class="source_name">'PlayerDriving'</span>) && <span class="source_type">p</span>.IsHumanControlled() )
+<a name="271"></a>	{        
+<a name="272"></a>		DriverEnter(<span class="source_type">p</span>);
+<a name="273"></a>    }
+<a name="274"></a>}
+<a name="275"></a>
+<a name="276"></a><span class="source_comment">// Events called on driver entering/leaving vehicle
+</span><a name="277"></a>
+<a name="278"></a>simulated <span class="source_type">function</span> ClientDriverEnter(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc)
+<a name="279"></a>{
+<a name="280"></a>	log(<span class="source_string">"Enter: "</span>$pc.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="281"></a>
+<a name="282"></a>	<span class="source_comment">//pc.myHUD.bCrosshairShow = false;
+</span><a name="283"></a>	<span class="source_comment">//pc.myHUD.bShowWeaponInfo = false;
+</span><a name="284"></a>	<span class="source_comment">//pc.myHUD.bShowPersonalInfo = false;
+</span><a name="285"></a>	<span class="source_comment">//pc.myHUD.bShowPoints = false;
+</span><a name="286"></a>
+<a name="287"></a>	pc.bBehindView = true;
+<a name="288"></a>	pc.bFixedCamera = false;
+<a name="289"></a>	pc.bFreeCamera = true;
+<a name="290"></a>
+<a name="291"></a>	<span class="source_comment">// Set rotation of camera when getting into vehicle based on bZeroPCRotOnEntry
+</span><a name="292"></a>	if(	bZeroPCRotOnEntry )
+<a name="293"></a>		pc.SetRotation( rot(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>) );
+<a name="294"></a>	else
+<a name="295"></a>		pc.SetRotation( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>( vect(<span class="source_int">1</span>, <span class="source_int">0</span>, <span class="source_int">0</span>) &gt;&gt; Rotation ) );
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><span class="source_type">function</span> DriverEnter(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span>)
+<a name="299"></a>{
+<a name="300"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc;
+<a name="301"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> AttachPos;
+<a name="302"></a>
+<a name="303"></a>    log(<span class="source_string">"HavokVehicle DriverEnter"</span>);
+<a name="304"></a>
+<a name="305"></a>	<span class="source_comment">// Set pawns current controller to control the vehicle pawn instead
+</span><a name="306"></a>	Driver = <span class="source_type">p</span>;
+<a name="307"></a>
+<a name="308"></a>	<span class="source_comment">// Move the driver into position, and attach to car.
+</span><a name="309"></a>	Driver.SetCollision(false, false, false);
+<a name="310"></a>	Driver.bCollideWorld = false;
+<a name="311"></a>	Driver.bPhysicsAnimUpdate = false;
+<a name="312"></a>	Driver.Velocity = vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>);
+<a name="313"></a><span class="source_comment">//	Driver.SetPhysics(PHYS_None);
+</span><a name="314"></a>
+<a name="315"></a>	AttachPos = Location + (DrivePos &gt;&gt; Rotation);
+<a name="316"></a>	Driver.SetLocation(AttachPos);
+<a name="317"></a>
+<a name="318"></a>	Driver.SetPhysics(PHYS_None);
+<a name="319"></a>
+<a name="320"></a>	Driver.bHardAttach = true;
+<a name="321"></a>	Driver.SetBase(None);
+<a name="322"></a>	Driver.SetBase(self);
+<a name="323"></a>	Driver.SetRelativeRotation(DriveRot);
+<a name="324"></a>	Driver.SetPhysics(PHYS_None);
+<a name="325"></a>
+<a name="326"></a>	pc = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">p</span>.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>);
+<a name="327"></a>	<span class="source_comment">//pc.ClientSetBehindView(true);
+</span><a name="328"></a>	<span class="source_comment">//pc.ClientSetFixedCamera(false);
+</span><a name="329"></a>
+<a name="330"></a>	<span class="source_comment">// Disconnect PlyaerController from Driver and connect to HavokVehicle.
+</span><a name="331"></a>	pc.Unpossess();
+<a name="332"></a>	Driver.SetOwner(self); <span class="source_comment">// This keeps the driver relevant.
+</span><a name="333"></a>	pc.Possess(self);
+<a name="334"></a>
+<a name="335"></a>	pc.ClientSetViewTarget(self); <span class="source_comment">// Set playercontroller to view the vehicle
+</span><a name="336"></a>
+<a name="337"></a>	<span class="source_comment">// Change controller state to driver
+</span><a name="338"></a>    pc.GotoState(<span class="source_name">'PlayerDriving'</span>);
+<a name="339"></a>
+<a name="340"></a>	ClientDriverEnter(pc);
+<a name="341"></a>}
+<a name="342"></a>
+<a name="343"></a>simulated <span class="source_type">function</span> ClientDriverLeave(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc)
+<a name="344"></a>{
+<a name="345"></a>	<span class="source_comment">//local vector exitLookDir;
+</span><a name="346"></a>
+<a name="347"></a>	log(<span class="source_string">"Leave: "</span>$pc.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="348"></a>
+<a name="349"></a>	<span class="source_comment">//pc.bBehindView = false;
+</span><a name="350"></a>	pc.bFixedCamera = true;
+<a name="351"></a>	pc.bFreeCamera = false;
+<a name="352"></a>
+<a name="353"></a>	<span class="source_comment">// Stop messing with bOwnerNoSee
+</span><a name="354"></a>	Driver.bOwnerNoSee = Driver.default.bOwnerNoSee;
+<a name="355"></a>
+<a name="356"></a>	<span class="source_comment">// This removes any 'roll' from the look direction.
+</span><a name="357"></a>	<span class="source_comment">//exitLookDir = Vector(pc.Rotation);
+</span><a name="358"></a>	<span class="source_comment">//pc.SetRotation(Rotator(exitLookDir));
+</span><a name="359"></a>
+<a name="360"></a>    <span class="source_comment">//pc.myHUD.bCrosshairShow = pc.myHUD.default.bCrosshairShow;
+</span><a name="361"></a>	<span class="source_comment">//pc.myHUD.bShowWeaponInfo = pc.myHUD.default.bShowWeaponInfo;
+</span><a name="362"></a>	<span class="source_comment">//pc.myHUD.bShowPersonalInfo = pc.myHUD.default.bShowPersonalInfo;
+</span><a name="363"></a>	<span class="source_comment">//pc.myHUD.bShowPoints = pc.myHUD.default.bShowPoints;
+</span><a name="364"></a>}
+<a name="365"></a>
+<a name="366"></a><span class="source_comment">// Called from the PlayerController when player wants to get out.
+</span><a name="367"></a><span class="source_type">function</span> <span class="source_type">bool</span> DriverLeave(<span class="source_type">bool</span> bForceLeave)
+<a name="368"></a>{
+<a name="369"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc;
+<a name="370"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="371"></a>	local <span class="source_type">bool</span> havePlaced;
+<a name="372"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitLocation</span>, HitNormal, tryPlace;
+<a name="373"></a>
+<a name="374"></a>    log(<span class="source_string">"HavokVehicle DriverLeave"</span>);
+<a name="375"></a>
+<a name="376"></a>	<span class="source_comment">// Do nothing if we're not being driven
+</span><a name="377"></a>	if(Driver == None)
+<a name="378"></a>		return false;
+<a name="379"></a>
+<a name="380"></a>	<span class="source_comment">// Before we can exit, we need to find a place to put the driver.
+</span><a name="381"></a>	<span class="source_comment">// Iterate over array of possible exit locations.
+</span><a name="382"></a>	
+<a name="383"></a>	Driver.bHardAttach = false;
+<a name="384"></a>	Driver.bCollideWorld = true;
+<a name="385"></a>	Driver.SetCollision(true, true, true);
+<a name="386"></a>	
+<a name="387"></a>	havePlaced = false;
+<a name="388"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span> &lt; ExitPositions.Length && havePlaced == false; <span class="source_type">i</span>++)
+<a name="389"></a>	{
+<a name="390"></a>		<span class="source_comment">//Log("Trying Exit:"$i);
+</span><a name="391"></a>	
+<a name="392"></a>		tryPlace = Location + (ExitPositions[<span class="source_type">i</span>] &gt;&gt; Rotation);
+<a name="393"></a>	
+<a name="394"></a>		<span class="source_comment">// First, do a line check (stops us passing through things on exit).
+</span><a name="395"></a>		if( Trace(<span class="source_type">HitLocation</span>, HitNormal, tryPlace, Location, false) != None )
+<a name="396"></a>			continue;
+<a name="397"></a>			
+<a name="398"></a>		<span class="source_comment">// Then see if we can place the player there.
+</span><a name="399"></a>		if( !Driver.SetLocation(tryPlace) )
+<a name="400"></a>			continue;
+<a name="401"></a>		
+<a name="402"></a>		havePlaced = true;
+<a name="403"></a>		
+<a name="404"></a>		<span class="source_comment">//Log("SUCCESS!");		
+</span><a name="405"></a>	}
+<a name="406"></a>
+<a name="407"></a>	<span class="source_comment">// If we could not find a place to put the driver, leave driver inside as before.
+</span><a name="408"></a>	if(!havePlaced && !bForceLeave)
+<a name="409"></a>	{
+<a name="410"></a>		Log(<span class="source_string">"Could not place driver."</span>);
+<a name="411"></a>	
+<a name="412"></a>		Driver.bHardAttach = true;
+<a name="413"></a>		Driver.bCollideWorld = false;
+<a name="414"></a>		Driver.SetCollision(false, false, false);
+<a name="415"></a>	
+<a name="416"></a>		return false;
+<a name="417"></a>	}
+<a name="418"></a>
+<a name="419"></a>	pc = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>);
+<a name="420"></a>
+<a name="421"></a>	ClientDriverLeave(pc);
+<a name="422"></a>
+<a name="423"></a>	<span class="source_comment">// Reconnect PlayerController to Driver.
+</span><a name="424"></a>	pc.Unpossess();
+<a name="425"></a>	Driver.SetOwner(pc);
+<a name="426"></a>	pc.Possess(Driver);
+<a name="427"></a>
+<a name="428"></a>	pc.ClientSetViewTarget(Driver); <span class="source_comment">// Set playercontroller to view the persone that got out
+</span><a name="429"></a>
+<a name="430"></a>	<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> = None;
+<a name="431"></a>
+<a name="432"></a>	Driver.PlayWaiting();
+<a name="433"></a>	Driver.bPhysicsAnimUpdate = Driver.Default.bPhysicsAnimUpdate;
+<a name="434"></a>
+<a name="435"></a>	<span class="source_comment">// Do stuff on client
+</span><a name="436"></a>	<span class="source_comment">//pc.ClientSetBehindView(false);
+</span><a name="437"></a>	<span class="source_comment">//pc.ClientSetFixedCamera(true);
+</span><a name="438"></a>
+<a name="439"></a>    Driver.Acceleration = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">24000</span>);
+<a name="440"></a>	Driver.SetPhysics(PHYS_Falling);
+<a name="441"></a>	Driver.SetBase(None);
+<a name="442"></a>
+<a name="443"></a>	<span class="source_comment">// Car now has no driver
+</span><a name="444"></a>	Driver = None;
+<a name="445"></a>
+<a name="446"></a>	<span class="source_comment">// Put brakes on before you get out :)
+</span><a name="447"></a>    Throttle=<span class="source_int">0</span>;
+<a name="448"></a>    Steering=<span class="source_int">0</span>;
+<a name="449"></a>	Rise=<span class="source_int">0</span>;
+<a name="450"></a>    
+<a name="451"></a>    return true;
+<a name="452"></a>}
+<a name="453"></a>
+<a name="454"></a>simulated <span class="source_type">function</span> Destroyed()
+<a name="455"></a>{
+<a name="456"></a><span class="source_macro">#if !IG_TRIBES3
+</span><a name="457"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="458"></a><span class="source_macro">#endif
+</span><a name="459"></a>
+<a name="460"></a>	Log(<span class="source_string">"HavokVehicle Destroyed"</span>);
+<a name="461"></a>
+<a name="462"></a>	<span class="source_comment">// Destroy the triggers used for getting in.
+</span><a name="463"></a><span class="source_macro">#if !IG_TRIBES3	// rowan: don't support HavokVehicleTrigger, as they are based of old AIScript class
+</span><a name="464"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;EntryTriggers.Length; <span class="source_type">i</span>++)
+<a name="465"></a>	{
+<a name="466"></a>		if(EntryTriggers[<span class="source_type">i</span>] != None)
+<a name="467"></a>			EntryTriggers[<span class="source_type">i</span>].Destroy();
+<a name="468"></a>	}
+<a name="469"></a><span class="source_macro">#endif
+</span><a name="470"></a>
+<a name="471"></a>	<span class="source_comment">// If there was a driver in the vehicle, destroy him too
+</span><a name="472"></a>	if(Driver != None)
+<a name="473"></a>		Driver.Destroy();
+<a name="474"></a>
+<a name="475"></a>	<span class="source_comment">// Decrease number of cars active out of parent factory
+</span><a name="476"></a>	if(ParentFactory != None)
+<a name="477"></a>		ParentFactory.VehicleCount--;
+<a name="478"></a>
+<a name="479"></a>	<span class="source_comment">// Trigger any effects for destruction
+</span><a name="480"></a>	if(DestroyEffectClass != None)
+<a name="481"></a>		spawn(DestroyEffectClass, , , Location, Rotation);
+<a name="482"></a>
+<a name="483"></a>	<span class="source_comment">// Destroy shadow projector
+</span><a name="484"></a>    if (VehicleShadow != None) 
+<a name="485"></a>		VehicleShadow.Destroy();
+<a name="486"></a>
+<a name="487"></a>	Super.Destroyed();
+<a name="488"></a>}
+<a name="489"></a>
+<a name="490"></a><span class="source_comment">// Just to intercept 'getting out' request.
+</span><a name="491"></a>simulated event <span class="source_type">Tick</span>(<span class="source_type">float</span> deltaSeconds)
+<a name="492"></a>{
+<a name="493"></a>	local <span class="source_type">bool</span> gotOut;
+<a name="494"></a>
+<a name="495"></a>	if(bGetOut && ROLE==Role_Authority)
+<a name="496"></a>	{
+<a name="497"></a>		gotOut = DriverLeave(false);
+<a name="498"></a>		if(!gotOut )
+<a name="499"></a>		{
+<a name="500"></a>			Log(<span class="source_string">"Couldn't Leave - staying in!"</span>);
+<a name="501"></a>		}
+<a name="502"></a>	}
+<a name="503"></a>	bGetOut = false;
+<a name="504"></a>}
+<a name="505"></a>
+<a name="506"></a><span class="source_comment">// This will get called if we couldn't move a pawn out of the way. 
+</span><a name="507"></a><span class="source_type">function</span> <span class="source_type">bool</span> EncroachingOn( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span> )
+<a name="508"></a>{
+<a name="509"></a>	if ( <span class="source_type">Other</span> == None )
+<a name="510"></a>		return false;
+<a name="511"></a>
+<a name="512"></a>	<span class="source_comment">// If its a non-vehicle pawn, do lots of damage.
+</span><a name="513"></a>	if( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Other</span>) != None && <span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>(<span class="source_type">Other</span>) == None )
+<a name="514"></a>	{
+<a name="515"></a>		<span class="source_type">Other</span>.TakeDamage(<span class="source_int">10000</span>, None, <span class="source_type">Other</span>.Location, vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>), <span class="source_type">class</span><span class="source_name">'Crushed'</span>);
+<a name="516"></a>		return false;
+<a name="517"></a>	}
+<a name="518"></a>}
+<a name="519"></a>
+<a name="520"></a><span class="source_comment">// Glue a shadow projector on
+</span><a name="521"></a>simulated <span class="source_type">function</span> PostBeginPlay()
+<a name="522"></a>{
+<a name="523"></a>    Super.PostBeginPlay();
+<a name="524"></a>
+<a name="525"></a>    if (<span class="source_type">Level</span>.NetMode != NM_DedicatedServer)
+<a name="526"></a>    {
+<a name="527"></a>        VehicleShadow = Spawn(<span class="source_type">class</span><span class="source_name">'ShadowProjector'</span>, self, <span class="source_name">''</span>, Location);
+<a name="528"></a>        VehicleShadow.ShadowActor = self;
+<a name="529"></a>        VehicleShadow.bBlobShadow = false;
+<a name="530"></a>        VehicleShadow.LightDirection = Normal(vect(<span class="source_int">1</span>,<span class="source_int">1</span>,<span class="source_int">6</span>));
+<a name="531"></a>        VehicleShadow.LightDistance = <span class="source_int">1200</span>;
+<a name="532"></a>        VehicleShadow.MaxTraceDistance = <span class="source_int">350</span>;
+<a name="533"></a>        VehicleShadow.InitShadow();
+<a name="534"></a>    }
+<a name="535"></a>}
+<a name="536"></a>
+<a name="537"></a><span class="source_comment">// Special calc-view for vehicles
+</span><a name="538"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> SpecialCalcView(out <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> ViewActor, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CameraLocation, out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">CameraRotation</span> )
+<a name="539"></a>{
+<a name="540"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CamLookAt, <span class="source_type">HitLocation</span>, HitNormal, OffsetVector;
+<a name="541"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc;
+<a name="542"></a>	local <span class="source_type"><a href="../core/object.html#Quat" class="source">quat</a></span> CarQuat, LookQuat, ResultQuat;
+<a name="543"></a>
+<a name="544"></a>	pc = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>);
+<a name="545"></a>
+<a name="546"></a>	<span class="source_comment">// Only do this mode we have a playercontroller viewing this vehicle
+</span><a name="547"></a>	if(pc == None || pc.<span class="source_type">ViewTarget</span> != self)
+<a name="548"></a>		return false;
+<a name="549"></a>
+<a name="550"></a>	if(pc.bBehindView) <span class="source_comment">///// THIRD PERSON ///////
+</span><a name="551"></a>	{
+<a name="552"></a>		ViewActor = self;
+<a name="553"></a>		CamLookAt = Location + (TPCamLookat &gt;&gt; Rotation); 
+<a name="554"></a>
+<a name="555"></a>		OffsetVector = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="556"></a>		OffsetVector.X = -<span class="source_int">1.0</span> * TPCamDistance;
+<a name="557"></a>
+<a name="558"></a>		CameraLocation = CamLookAt + (OffsetVector &gt;&gt; <span class="source_type">CameraRotation</span>);
+<a name="559"></a>
+<a name="560"></a>		if( Trace( <span class="source_type">HitLocation</span>, HitNormal, CameraLocation, CamLookAt, false, vect(<span class="source_int">10</span>, <span class="source_int">10</span>, <span class="source_int">10</span>) ) != None )
+<a name="561"></a>		{
+<a name="562"></a>			CameraLocation = <span class="source_type">HitLocation</span>;
+<a name="563"></a>		}
+<a name="564"></a>
+<a name="565"></a>		bOwnerNoSee = false;
+<a name="566"></a>
+<a name="567"></a>		if(bDrawDriverInTP)
+<a name="568"></a>			Driver.bOwnerNoSee = false;
+<a name="569"></a>		else
+<a name="570"></a>			Driver.bOwnerNoSee = true;
+<a name="571"></a>	}
+<a name="572"></a>	else <span class="source_comment">////// FIRST PERSON //////
+</span><a name="573"></a>	{
+<a name="574"></a>		ViewActor = self;
+<a name="575"></a>
+<a name="576"></a>		<span class="source_comment">// Camera position is locked to car
+</span><a name="577"></a>		CameraLocation = Location + (FPCamPos &gt;&gt; Rotation);
+<a name="578"></a>
+<a name="579"></a>		<span class="source_comment">//Log(CameraRotation);
+</span><a name="580"></a>		CarQuat = QuatFromRotator(Rotation);
+<a name="581"></a>
+<a name="582"></a>		<span class="source_comment">// Limit where you can look while driving.
+</span><a name="583"></a>
+<a name="584"></a>		Normalize(<span class="source_type">CameraRotation</span>); <span class="source_comment">// Puts each element between +/- 32767
+</span><a name="585"></a>
+<a name="586"></a>		if(<span class="source_type">CameraRotation</span>.Yaw &gt; MaxViewYaw)
+<a name="587"></a>			<span class="source_type">CameraRotation</span>.Yaw = MaxViewYaw;
+<a name="588"></a>		else if(<span class="source_type">CameraRotation</span>.Yaw &lt; -MaxViewYaw)
+<a name="589"></a>			<span class="source_type">CameraRotation</span>.Yaw = -MaxViewYaw;
+<a name="590"></a>
+<a name="591"></a>		<span class="source_comment">//if(CameraRotation.Pitch &gt; MaxViewPitch)
+</span><a name="592"></a>		<span class="source_comment">//	CameraRotation.Pitch = MaxViewPitch;
+</span><a name="593"></a>		<span class="source_comment">//else if(CameraRotation.Pitch &lt; -MaxViewPitch)
+</span><a name="594"></a>		<span class="source_comment">//	CameraRotation.Pitch = -MaxViewPitch;
+</span><a name="595"></a>
+<a name="596"></a>		<span class="source_comment">//pc.DesiredRotation = CameraRotation;
+</span><a name="597"></a>		<span class="source_comment">//pc.SetRotation(CameraRotation);
+</span><a name="598"></a>
+<a name="599"></a>		LookQuat = QuatFromRotator(<span class="source_type">CameraRotation</span>);
+<a name="600"></a>		ResultQuat = QuatProduct(LookQuat, CarQuat);
+<a name="601"></a>		<span class="source_type">CameraRotation</span> = QuatToRotator(ResultQuat);
+<a name="602"></a>
+<a name="603"></a>		if(bDrawMeshInFP)
+<a name="604"></a>			bOwnerNoSee = false;
+<a name="605"></a>		else
+<a name="606"></a>			bOwnerNoSee = true;
+<a name="607"></a>
+<a name="608"></a>		Driver.bOwnerNoSee = true; <span class="source_comment">// In first person, dont draw the driver
+</span><a name="609"></a>	}
+<a name="610"></a>
+<a name="611"></a>	return true;
+<a name="612"></a>}
+<a name="613"></a>
+<a name="614"></a>defaultproperties
+<a name="615"></a>{
+<a name="616"></a>    Steering=<span class="source_int">0</span>
+<a name="617"></a>    Throttle=<span class="source_int">0</span>
+<a name="618"></a>	Rise=<span class="source_int">0</span>
+<a name="619"></a>	
+<a name="620"></a>	<span class="source_comment">//ExitPositions(0)=(X=0,Y=0,Z=0)	
+</span><a name="621"></a>    ExitPositions(<span class="source_int">0</span>)=(<span class="source_type">Y</span>=-<span class="source_int">315.000000</span>,Z=<span class="source_int">100.000000</span>)
+<a name="622"></a>    ExitPositions(<span class="source_int">1</span>)=(<span class="source_type">Y</span>=<span class="source_int">315.000000</span>,Z=<span class="source_int">100.000000</span>)
+<a name="623"></a>    ExitPositions(<span class="source_int">2</span>)=(<span class="source_type">Y</span>=<span class="source_int">0.000000</span>,Z=-<span class="source_int">400.000000</span>)
+<a name="624"></a>    ExitPositions(<span class="source_int">3</span>)=(<span class="source_type">Y</span>=<span class="source_int">0.000000</span>,Z=<span class="source_int">400.000000</span>)
+<a name="625"></a>    EntryPositions(<span class="source_int">0</span>)=(<span class="source_type">Y</span>=<span class="source_int">265.000000</span>,Z=<span class="source_int">10.000000</span>)
+<a name="626"></a>    EntryPositions(<span class="source_int">1</span>)=(<span class="source_type">Y</span>=-<span class="source_int">265.000000</span>,Z=<span class="source_int">10.000000</span>)
+<a name="627"></a>    
+<a name="628"></a> 	bDrawDriverInTP=false
+<a name="629"></a>	bDrawMeshInFP=true
+<a name="630"></a>
+<a name="631"></a>	DrivePos=(X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">0</span>)
+<a name="632"></a>	bZeroPCRotOnEntry=true
+<a name="633"></a>
+<a name="634"></a>	TPCamLookat=(X=-<span class="source_int">100</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=<span class="source_int">100</span>)
+<a name="635"></a>	TPCamDistance=<span class="source_int">600</span>
+<a name="636"></a>
+<a name="637"></a>	MaxViewYaw=<span class="source_int">16000</span>
+<a name="638"></a>	MaxViewPitch=<span class="source_int">16000</span>
+<a name="639"></a>
+<a name="640"></a>    Physics=PHYS_Havok
+<a name="641"></a>	bEdShouldSnap=True
+<a name="642"></a>	bStatic=False
+<a name="643"></a>	bShadowCast=False
+<a name="644"></a>	bCollideActors=True
+<a name="645"></a>	bCollideWorld=False
+<a name="646"></a>    bProjTarget=True
+<a name="647"></a>	bBlockActors=True
+<a name="648"></a>	bBlockNonZeroExtentTraces=True
+<a name="649"></a>	bBlockZeroExtentTraces=True
+<a name="650"></a>	bBlockPlayers=True
+<a name="651"></a>	bWorldGeometry=False
+<a name="652"></a>	bBlockKarma=False
+<a name="653"></a>	bBlockHavok=True
+<a name="654"></a>    CollisionHeight=+<span class="source_int">000001.000000</span>
+<a name="655"></a>	CollisionRadius=+<span class="source_int">000001.000000</span>
+<a name="656"></a>	bAcceptsProjectors=True
+<a name="657"></a>	bCanBeBaseForPawns=True
+<a name="658"></a>	bAlwaysRelevant=True
+<a name="659"></a>	RemoteRole=ROLE_SimulatedProxy
+<a name="660"></a>	bNetInitialRotation=True
+<a name="661"></a>	bSpecialCalcView=True
+<a name="662"></a>	<span class="source_comment">//bSpecialHUD=true
+</span><a name="663"></a>	
+<a name="664"></a>	<span class="source_comment">// Chassis
+</span><a name="665"></a>	ChassisMass=<span class="source_int">750</span> <span class="source_comment">//kg, 750;
+</span><a name="666"></a>	SteeringMaxAngle=<span class="source_int">4000</span> <span class="source_comment">// hkMath::HK_REAL_PI / 10.0f or so;
+</span><a name="667"></a>	MaxSpeedFullSteeringAngle=<span class="source_int">70</span> <span class="source_comment">//kph  (130.0f * (1.605f / 3.6f)) by default in a lot of Havok demos;
+</span><a name="668"></a>	FrictionEqualizer=<span class="source_int">0.5</span>
+<a name="669"></a>	TorqueRollFactor=<span class="source_int">0.25</span>
+<a name="670"></a>	TorquePitchFactor=<span class="source_int">0.5</span>
+<a name="671"></a>	TorqueYawFactor=<span class="source_int">0.35</span> 
+<a name="672"></a>	TorqueExtraFactor=-<span class="source_int">0.5</span>
+<a name="673"></a>	ChassisUnitInertiaYaw=<span class="source_int">1.0</span>
+<a name="674"></a>	ChassisUnitInertiaRoll=<span class="source_int">0.4</span>
+<a name="675"></a>	ChassisUnitInertiaPitch=<span class="source_int">1.0</span>
+<a name="676"></a>
+<a name="677"></a>	<span class="source_comment">// Engine Performance
+</span><a name="678"></a>	EngineTorque=<span class="source_int">500</span>
+<a name="679"></a>	EngineMinRPM=<span class="source_int">1000</span>
+<a name="680"></a>	EngineOptRPM=<span class="source_int">5500</span>
+<a name="681"></a>	EngineMaxRPM=<span class="source_int">7500</span>
+<a name="682"></a>	EngineTorqueFactorAtMinRPM=<span class="source_int">0.8</span>
+<a name="683"></a>	EngineTorqueFactorAtMaxRPM=<span class="source_int">0.8</span>
+<a name="684"></a>	EngineResistanceFactorAtMinRPM=<span class="source_int">0.05</span>
+<a name="685"></a>	EngineResistanceFactorAtOptRPM=<span class="source_int">0.1</span>
+<a name="686"></a>	EngineResistanceFactorAtMaxRPM=<span class="source_int">0.3</span>
+<a name="687"></a>	GearDownshiftRPM=<span class="source_int">3500</span>
+<a name="688"></a>	GearUpshiftRPM=<span class="source_int">6500</span>
+<a name="689"></a>	GearClutchDelayTime=<span class="source_int">0</span>
+<a name="690"></a>	GearReverseRatio=<span class="source_int">1</span>
+<a name="691"></a>	TopSpeed=<span class="source_int">130</span>
+<a name="692"></a>	
+<a name="693"></a>	<span class="source_comment">// Aerodynamics
+</span><a name="694"></a>	AerodynamicsAirDensity=<span class="source_int">1.3</span>
+<a name="695"></a>	AerodynamicsFrontalArea=<span class="source_int">1</span>
+<a name="696"></a>	AerodynamicsDragCoeff=<span class="source_int">0.7</span>
+<a name="697"></a>	AerodynamicsLiftCoeff=-<span class="source_int">0.3</span>
+<a name="698"></a>	ExtraGravity=(X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=-<span class="source_int">5</span>)
+<a name="699"></a>	SpinDamping=<span class="source_int">1</span>
+<a name="700"></a>	CollisionSpinDamping=<span class="source_int">0</span>
+<a name="701"></a>	CollisionThreshold=<span class="source_int">4</span>
+<a name="702"></a>	
+<a name="703"></a>	<span class="source_comment">// At least one gear, straight ratio of 1 
+</span><a name="704"></a>	GearRatios(<span class="source_int">0</span>)=<span class="source_int">1</span>
+<a name="705"></a>	
+<a name="706"></a>	<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'Engine_res.Havok.S_HkVehicle'</span>
+<a name="707"></a>	
+<a name="708"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/havokvehicle.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HavokVehicle">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/havokskeletalsystem.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/havokvehiclefactory.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:01:22.000 - Creation time: st 23.5.2018 00:10:44.119 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

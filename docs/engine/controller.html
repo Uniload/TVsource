@@ -1,0 +1,1103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Engine.Controller</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/controller.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Controller">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/constantmaterial.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/crushed.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/controller.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.Controller</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/actor.html">Actor</a></dd>
+<dt>Modifiers</dt><dd>native nativereplication abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/controller.html">Controller</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tyrion/ai_controller.html">AI_Controller</a>, <a href="../gameplay/charactercontroller.html">CharacterController</a>, <a href="../engine/playercontroller.html">PlayerController</a>, <a href="../mojocore/tsmojocontroller.html">TsMojoController</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_LATENT_MOVETOWARD" name="LATENT_MOVETOWARD" title="go to the details">LATENT_MOVETOWARD</a></td><td width="10%">=</td><td width="50%">503</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#MAXSTEPHEIGHT">MAXSTEPHEIGHT</a>, <a href="../engine/actor.html#MINFLOORZ">MINFLOORZ</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_bAltFire" name="bAltFire" title="go to the details">bAltFire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_bDuck" name="bDuck" title="go to the details">bDuck</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_bFire" name="bFire" title="go to the details">bFire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGodMode" name="bGodMode" title="go to the details">bGodMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsPlayer" name="bIsPlayer" title="go to the details">bIsPlayer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_bJetpack" name="bJetpack" title="go to the details">bJetpack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_bJump" name="bJump" title="go to the details">bJump</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_bRun" name="bRun" title="go to the details">bRun</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_bSki" name="bSki" title="go to the details">bSki</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUsePlayerHearing" name="bUsePlayerHearing" title="go to the details">bUsePlayerHearing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/controller.html#TraversalLineCheck">TraversalLineCheck</a>&gt;</td><td width="66%"><a href="#_debugTraversalLineChecks" name="debugTraversalLineChecks" title="go to the details">debugTraversalLineChecks</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_FailedReachLocation" name="FailedReachLocation" title="go to the details">FailedReachLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FailedReachTime" name="FailedReachTime" title="go to the details">FailedReachTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FovAngle" name="FovAngle" title="go to the details">FovAngle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GroundPitchTime" name="GroundPitchTime" title="go to the details">GroundPitchTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Handedness" name="Handedness" title="go to the details">Handedness</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_LastFailedReach" name="LastFailedReach" title="go to the details">LastFailedReach</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/controller.html#FindPathResult">FindPathResult</a></td><td width="66%"><a href="#_lastFindPathResult" name="lastFindPathResult" title="go to the details">lastFindPathResult</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/pawn.html">Pawn</a></td><td width="66%"><a href="#_MonitoredPawn" name="MonitoredPawn" title="go to the details">MonitoredPawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MonitorMaxDistSq" name="MonitorMaxDistSq" title="go to the details">MonitorMaxDistSq</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_MonitorStartLoc" name="MonitorStartLoc" title="go to the details">MonitorStartLoc</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/controller.html">Controller</a></td><td width="66%"><a href="#_nextController" name="nextController" title="go to the details">nextController</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/pawn.html">Pawn</a></td><td width="66%"><a href="#_Pawn" name="Pawn" title="go to the details">Pawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/pawn.html">Pawn</a>&gt;</td><td width="66%"><a href="#_PawnClass" name="PawnClass" title="go to the details">PawnClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_PlayerNum" name="PlayerNum" title="go to the details">PlayerNum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a></td><td width="66%"><a href="#_PlayerReplicationInfo" name="PlayerReplicationInfo" title="go to the details">PlayerReplicationInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/pawn.html">Pawn</a>&gt;</td><td width="66%"><a href="#_PreviousPawnClass" name="PreviousPawnClass" title="go to the details">PreviousPawnClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/controller.html#RouteCacheElement">RouteCacheElement</a>&gt;</td><td width="66%"><a href="#_RouteCache" name="RouteCache" title="go to the details">RouteCache</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_RouteComplete" name="RouteComplete" title="go to the details">RouteComplete</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_StartSpot" name="StartSpot" title="go to the details">StartSpot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_ViewX" name="ViewX" title="go to the details">ViewX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_ViewY" name="ViewY" title="go to the details">ViewY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_ViewZ" name="ViewZ" title="go to the details">ViewZ</a></td></tr>
+<tr><th colspan="2" class="small">Controller</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a>&gt;</td><td width="66%"><a href="#_PlayerReplicationInfoClass" name="PlayerReplicationInfoClass" title="go to the details">PlayerReplicationInfoClass</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#Acceleration">Acceleration</a>, <a href="../engine/actor.html#ActorRenderData">ActorRenderData</a>, <a href="../engine/actor.html#AmbientGlow">AmbientGlow</a>, <a href="../engine/actor.html#AntiPortal">AntiPortal</a>, <a href="../engine/actor.html#Attached">Attached</a>, <a href="../engine/actor.html#AttachmentBone">AttachmentBone</a>, <a href="../engine/actor.html#AttachTag">AttachTag</a>, <a href="../engine/actor.html#bAcceptsProjectors">bAcceptsProjectors</a>, <a href="../engine/actor.html#bAcceptsShadowProjectors">bAcceptsShadowProjectors</a>, <a href="../engine/actor.html#bActorShadows">bActorShadows</a>, <a href="../engine/actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="../engine/actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="../engine/actor.html#bAlwaysZeroBoneOffset">bAlwaysZeroBoneOffset</a>, <a href="../engine/actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="../engine/actor.html#Base">Base</a>, <a href="../engine/actor.html#bAutoAlignToTerrain">bAutoAlignToTerrain</a>, <a href="../engine/actor.html#bBlockActors">bBlockActors</a>, <a href="../engine/actor.html#bBlockHavok">bBlockHavok</a>, <a href="../engine/actor.html#bBlockKarma">bBlockKarma</a>, <a href="../engine/actor.html#bBlockNonZeroExtentTraces">bBlockNonZeroExtentTraces</a>, <a href="../engine/actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="../engine/actor.html#bBlockZeroExtentTraces">bBlockZeroExtentTraces</a>, <a href="../engine/actor.html#bBounce">bBounce</a>, <a href="../engine/actor.html#bCanBeDamaged">bCanBeDamaged</a>, <a href="../engine/actor.html#bCanTeleport">bCanTeleport</a>, <a href="../engine/actor.html#bCastsVolumetricShadows">bCastsVolumetricShadows</a>, <a href="../engine/actor.html#bClientAnim">bClientAnim</a>, <a href="../engine/actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="../engine/actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="../engine/actor.html#bClientHavokPhysics">bClientHavokPhysics</a>, <a href="../engine/actor.html#bCollideActors">bCollideActors</a>, <a href="../engine/actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="../engine/actor.html#bCollideWorld">bCollideWorld</a>, <a href="../engine/actor.html#bCompressedPosition">bCompressedPosition</a>, <a href="../engine/actor.html#bCorona">bCorona</a>, <a href="../engine/actor.html#bDeleteMe">bDeleteMe</a>, <a href="../engine/actor.html#bDemoOwner">bDemoOwner</a>, <a href="../engine/actor.html#bDemoRecording">bDemoRecording</a>, <a href="../engine/actor.html#bDestroyInPainVolume">bDestroyInPainVolume</a>, <a href="../engine/actor.html#bDirectional">bDirectional</a>, <a href="../engine/actor.html#bDisableBspVolumetrics">bDisableBspVolumetrics</a>, <a href="../engine/actor.html#bDisableEditorCopying">bDisableEditorCopying</a>, <a href="../engine/actor.html#bDisableHavokCollisionWhenAttached">bDisableHavokCollisionWhenAttached</a>, <a href="../engine/actor.html#bDisableShadowOptimisation">bDisableShadowOptimisation</a>, <a href="../engine/actor.html#bDisableSorting">bDisableSorting</a>, <a href="../engine/actor.html#bDisableTick">bDisableTick</a>, <a href="../engine/actor.html#bDisableTouch">bDisableTouch</a>, <a href="../engine/actor.html#bDisturbFluidSurface">bDisturbFluidSurface</a>, <a href="../engine/actor.html#bDoNotApproximateBumpmap">bDoNotApproximateBumpmap</a>, <a href="../engine/actor.html#bDynamicLight">bDynamicLight</a>, <a href="../engine/actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="../engine/actor.html#bEdSnap">bEdSnap</a>, <a href="../engine/actor.html#bEnableHavokBackstep">bEnableHavokBackstep</a>, <a href="../engine/actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="../engine/actor.html#bGameRelevant">bGameRelevant</a>, <a href="../engine/actor.html#bGetOverlayMaterialFromBase">bGetOverlayMaterialFromBase</a>, <a href="../engine/actor.html#bGetSkinFromBase">bGetSkinFromBase</a>, <a href="../engine/actor.html#bHardAttach">bHardAttach</a>, <a href="../engine/actor.html#bHidden">bHidden</a>, <a href="../engine/actor.html#bHiddenEd">bHiddenEd</a>, <a href="../engine/actor.html#bHiddenEdGroup">bHiddenEdGroup</a>, <a href="../engine/actor.html#bHighDetail">bHighDetail</a>, <a href="../engine/actor.html#bHurtEntry">bHurtEntry</a>, <a href="../engine/actor.html#bIgnoreEncroachers">bIgnoreEncroachers</a>, <a href="../engine/actor.html#bIgnoreOutOfWorld">bIgnoreOutOfWorld</a>, <a href="../engine/actor.html#bImportantActor">bImportantActor</a>, <a href="../engine/actor.html#bInterpolating">bInterpolating</a>, <a href="../engine/actor.html#bIsMirror">bIsMirror</a>, <a href="../engine/actor.html#bIsVehicle">bIsVehicle</a>, <a href="../engine/actor.html#bJustTeleported">bJustTeleported</a>, <a href="../engine/actor.html#bLightChanged">bLightChanged</a>, <a href="../engine/actor.html#bLightingVisibility">bLightingVisibility</a>, <a href="../engine/actor.html#bLockLocation">bLockLocation</a>, <a href="../engine/actor.html#bMovable">bMovable</a>, <a href="../engine/actor.html#bNavigationRelevant">bNavigationRelevant</a>, <a href="../engine/actor.html#bNeedLifetimeEffectEvents">bNeedLifetimeEffectEvents</a>, <a href="../engine/actor.html#bNeedPostRenderCallback">bNeedPostRenderCallback</a>, <a href="../engine/actor.html#bNetDirty">bNetDirty</a>, <a href="../engine/actor.html#bNetInitial">bNetInitial</a>, <a href="../engine/actor.html#bNetInitialRotation">bNetInitialRotation</a>, <a href="../engine/actor.html#bNetNotify">bNetNotify</a>, <a href="../engine/actor.html#bNetOwner">bNetOwner</a>, <a href="../engine/actor.html#bNetRelevant">bNetRelevant</a>, <a href="../engine/actor.html#bNetTemporary">bNetTemporary</a>, <a href="../engine/actor.html#bNetworkRelevancyVisible">bNetworkRelevancyVisible</a>, <a href="../engine/actor.html#bNoDelete">bNoDelete</a>, <a href="../engine/actor.html#bNoRepMesh">bNoRepMesh</a>, <a href="../engine/actor.html#bObsolete">bObsolete</a>, <a href="../engine/actor.html#bOnlyAffectCurrentZone">bOnlyAffectCurrentZone</a>, <a href="../engine/actor.html#bOnlyAffectPawns">bOnlyAffectPawns</a>, <a href="../engine/actor.html#bOnlyDirtyReplication">bOnlyDirtyReplication</a>, <a href="../engine/actor.html#bOnlyDrawIfAttached">bOnlyDrawIfAttached</a>, <a href="../engine/actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="../engine/actor.html#bOnlyRelevantToOwner">bOnlyRelevantToOwner</a>, <a href="../engine/actor.html#bOrientOnSlope">bOrientOnSlope</a>, <a href="../engine/actor.html#bOverruleNavigationRelevant">bOverruleNavigationRelevant</a>, <a href="../engine/actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="../engine/actor.html#bPathColliding">bPathColliding</a>, <a href="../engine/actor.html#bPathTemp">bPathTemp</a>, <a href="../engine/actor.html#bPendingDelete">bPendingDelete</a>, <a href="../engine/actor.html#bProjectile">bProjectile</a>, <a href="../engine/actor.html#bProjTarget">bProjTarget</a>, <a href="../engine/actor.html#bRepClientDemo">bRepClientDemo</a>, <a href="../engine/actor.html#bReplicateAnimations">bReplicateAnimations</a>, <a href="../engine/actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="../engine/actor.html#bReplicateLabel">bReplicateLabel</a>, <a href="../engine/actor.html#bReplicateMovement">bReplicateMovement</a>, <a href="../engine/actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="../engine/actor.html#Brush">Brush</a>, <a href="../engine/actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="../engine/actor.html#bSelected">bSelected</a>, <a href="../engine/actor.html#bSendDestructionNotification">bSendDestructionNotification</a>, <a href="../engine/actor.html#bShadowCast">bShadowCast</a>, <a href="../engine/actor.html#bShouldBaseAtStartup">bShouldBaseAtStartup</a>, <a href="../engine/actor.html#bShowOctreeNodes">bShowOctreeNodes</a>, <a href="../engine/actor.html#bSkipActorPropertyReplication">bSkipActorPropertyReplication</a>, <a href="../engine/actor.html#bSkipEncroachment">bSkipEncroachment</a>, <a href="../engine/actor.html#bSpecialLit">bSpecialLit</a>, <a href="../engine/actor.html#bStasis">bStasis</a>, <a href="../engine/actor.html#bStatic">bStatic</a>, <a href="../engine/actor.html#bStaticLighting">bStaticLighting</a>, <a href="../engine/actor.html#bSuperHighDetail">bSuperHighDetail</a>, <a href="../engine/actor.html#bTearOff">bTearOff</a>, <a href="../engine/actor.html#bTempEditor">bTempEditor</a>, <a href="../engine/actor.html#bTimerLoop">bTimerLoop</a>, <a href="../engine/actor.html#bTrailerAllowRotation">bTrailerAllowRotation</a>, <a href="../engine/actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="../engine/actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="../engine/actor.html#bTravel">bTravel</a>, <a href="../engine/actor.html#bTriggerEffectEventsBeforeGameStarts">bTriggerEffectEventsBeforeGameStarts</a>, <a href="../engine/actor.html#BumpmapLODScale">BumpmapLODScale</a>, <a href="../engine/actor.html#bUnifiedPositionChanged">bUnifiedPositionChanged</a>, <a href="../engine/actor.html#bUnifiedVelocityChanged">bUnifiedVelocityChanged</a>, <a href="../engine/actor.html#bUnlit">bUnlit</a>, <a href="../engine/actor.html#Buoyancy">Buoyancy</a>, <a href="../engine/actor.html#bUpdateSimulatedPosition">bUpdateSimulatedPosition</a>, <a href="../engine/actor.html#bUseCylinderCollision">bUseCylinderCollision</a>, <a href="../engine/actor.html#bUseDynamicLights">bUseDynamicLights</a>, <a href="../engine/actor.html#bUseLightingFromBase">bUseLightingFromBase</a>, <a href="../engine/actor.html#bUseRootMotionBound">bUseRootMotionBound</a>, <a href="../engine/actor.html#bVolumetricShadowCast">bVolumetricShadowCast</a>, <a href="../engine/actor.html#bWasSNFiltered">bWasSNFiltered</a>, <a href="../engine/actor.html#bWorldGeometry">bWorldGeometry</a>, <a href="../engine/actor.html#CachedLocalToWorld">CachedLocalToWorld</a>, <a href="../engine/actor.html#CachedLocation">CachedLocation</a>, <a href="../engine/actor.html#CachedRotation">CachedRotation</a>, <a href="../engine/actor.html#CollisionHeight">CollisionHeight</a>, <a href="../engine/actor.html#CollisionRadius">CollisionRadius</a>, <a href="../engine/actor.html#CollisionTag">CollisionTag</a>, <a href="../engine/actor.html#ColLocation">ColLocation</a>, <a href="../engine/actor.html#CullDistance">CullDistance</a>, <a href="../engine/actor.html#Deleted">Deleted</a>, <a href="../engine/actor.html#DesiredRotation">DesiredRotation</a>, <a href="../engine/actor.html#DrawScale">DrawScale</a>, <a href="../engine/actor.html#DrawScale3D">DrawScale3D</a>, <a href="../engine/actor.html#DrawType">DrawType</a>, <a href="../engine/actor.html#Event">Event</a>, <a href="../engine/actor.html#exclusiveToGameInfo">exclusiveToGameInfo</a>, <a href="../engine/actor.html#forceAccumulator">forceAccumulator</a>, <a href="../engine/actor.html#ForcedVisibilityZoneTag">ForcedVisibilityZoneTag</a>, <a href="../engine/actor.html#ForceRadius">ForceRadius</a>, <a href="../engine/actor.html#ForceScale">ForceScale</a>, <a href="../engine/actor.html#ForceType">ForceType</a>, <a href="../engine/actor.html#gameInfoExclusions">gameInfoExclusions</a>, <a href="../engine/actor.html#gameInfoInclusions">gameInfoInclusions</a>, <a href="../engine/actor.html#GravityScale">GravityScale</a>, <a href="../engine/actor.html#Group">Group</a>, <a href="../engine/actor.html#HardRelMatrix">HardRelMatrix</a>, <a href="../engine/actor.html#havokAngularVelocity">havokAngularVelocity</a>, <a href="../engine/actor.html#HavokData">HavokData</a>, <a href="../engine/actor.html#havokDataClass">havokDataClass</a>, <a href="../engine/actor.html#havokGameTickForce">havokGameTickForce</a>, <a href="../engine/actor.html#havokGameTickForcePosition">havokGameTickForcePosition</a>, <a href="../engine/actor.html#havokSkeletalRotationSpeed">havokSkeletalRotationSpeed</a>, <a href="../engine/actor.html#InitialState">InitialState</a>, <a href="../engine/actor.html#Instigator">Instigator</a>, <a href="../engine/actor.html#JoinedTag">JoinedTag</a>, <a href="../engine/actor.html#Label">Label</a>, <a href="../engine/actor.html#LastRenderTime">LastRenderTime</a>, <a href="../engine/actor.html#LastTick">LastTick</a>, <a href="../engine/actor.html#LatentAnimChannelCount">LatentAnimChannelCount</a>, <a href="../engine/actor.html#LatentFloat">LatentFloat</a>, <a href="../engine/actor.html#LatentStackLocations">LatentStackLocations</a>, <a href="../engine/actor.html#Leaves">Leaves</a>, <a href="../engine/actor.html#Level">Level</a>, <a href="../engine/actor.html#LifeSpan">LifeSpan</a>, <a href="../engine/actor.html#LightBrightness">LightBrightness</a>, <a href="../engine/actor.html#LightCone">LightCone</a>, <a href="../engine/actor.html#LightEffect">LightEffect</a>, <a href="../engine/actor.html#LightHue">LightHue</a>, <a href="../engine/actor.html#LightPeriod">LightPeriod</a>, <a href="../engine/actor.html#LightPhase">LightPhase</a>, <a href="../engine/actor.html#LightRadius">LightRadius</a>, <a href="../engine/actor.html#LightRenderData">LightRenderData</a>, <a href="../engine/actor.html#LightSaturation">LightSaturation</a>, <a href="../engine/actor.html#LightType">LightType</a>, <a href="../engine/actor.html#Location">Location</a>, <a href="../engine/actor.html#LODBias">LODBias</a>, <a href="../engine/actor.html#Mass">Mass</a>, <a href="../engine/actor.html#maxDifficulty">maxDifficulty</a>, <a href="../engine/actor.html#MaxLights">MaxLights</a>, <a href="../engine/actor.html#maxNumPlayers">maxNumPlayers</a>, <a href="../engine/actor.html#MaxTraceDistance">MaxTraceDistance</a>, <a href="../engine/actor.html#Mesh">Mesh</a>, <a href="../engine/actor.html#MeshInstance">MeshInstance</a>, <a href="../engine/actor.html#MessageClass">MessageClass</a>, <a href="../engine/actor.html#minDifficulty">minDifficulty</a>, <a href="../engine/actor.html#minNumPlayers">minNumPlayers</a>, <a href="../engine/actor.html#movementObject">movementObject</a>, <a href="../engine/actor.html#MovementObjectClass">MovementObjectClass</a>, <a href="../engine/actor.html#NetPriority">NetPriority</a>, <a href="../engine/actor.html#NetTag">NetTag</a>, <a href="../engine/actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="../engine/actor.html#NetUpdateTime">NetUpdateTime</a>, <a href="../engine/actor.html#OctreeBox">OctreeBox</a>, <a href="../engine/actor.html#OctreeBoxCenter">OctreeBoxCenter</a>, <a href="../engine/actor.html#OctreeBoxRadii">OctreeBoxRadii</a>, <a href="../engine/actor.html#OctreeNodes">OctreeNodes</a>, <a href="../engine/actor.html#Owner">Owner</a>, <a href="../engine/actor.html#OwnerGroups">OwnerGroups</a>, <a href="../engine/actor.html#PendingTouch">PendingTouch</a>, <a href="../engine/actor.html#Physics">Physics</a>, <a href="../engine/actor.html#PhysicsVolume">PhysicsVolume</a>, <a href="../engine/actor.html#PrePivot">PrePivot</a>, <a href="../engine/actor.html#Projectors">Projectors</a>, <a href="../engine/actor.html#Region">Region</a>, <a href="../engine/actor.html#RelativeLocation">RelativeLocation</a>, <a href="../engine/actor.html#RelativeRotation">RelativeRotation</a>, <a href="../engine/actor.html#RemoteRole">RemoteRole</a>, <a href="../engine/actor.html#RenderRevision">RenderRevision</a>, <a href="../engine/actor.html#RepSkin">RepSkin</a>, <a href="../engine/actor.html#Role">Role</a>, <a href="../engine/actor.html#Rotation">Rotation</a>, <a href="../engine/actor.html#RotationRate">RotationRate</a>, <a href="../engine/actor.html#ScaleGlow">ScaleGlow</a>, <a href="../engine/actor.html#SimAnim">SimAnim</a>, <a href="../engine/actor.html#Skins">Skins</a>, <a href="../engine/actor.html#SoundOcclusion">SoundOcclusion</a>, <a href="../engine/actor.html#SpeechTag">SpeechTag</a>, <a href="../engine/actor.html#StaticFilterState">StaticFilterState</a>, <a href="../engine/actor.html#StaticMesh">StaticMesh</a>, <a href="../engine/actor.html#StaticMeshInstance">StaticMeshInstance</a>, <a href="../engine/actor.html#StaticMeshProjectors">StaticMeshProjectors</a>, <a href="../engine/actor.html#StaticSectionBatches">StaticSectionBatches</a>, <a href="../engine/actor.html#Style">Style</a>, <a href="../engine/actor.html#Tag">Tag</a>, <a href="../engine/actor.html#Texture">Texture</a>, <a href="../engine/actor.html#TimerCounter">TimerCounter</a>, <a href="../engine/actor.html#TimerRate">TimerRate</a>, <a href="../engine/actor.html#torqueAccumulator">torqueAccumulator</a>, <a href="../engine/actor.html#Touching">Touching</a>, <a href="../engine/actor.html#TriggeredBy">TriggeredBy</a>, <a href="../engine/actor.html#unifiedPosition">unifiedPosition</a>, <a href="../engine/actor.html#unifiedVelocity">unifiedVelocity</a>, <a href="../engine/actor.html#UsesSubVisibility">UsesSubVisibility</a>, <a href="../engine/actor.html#Velocity">Velocity</a>, <a href="../engine/actor.html#XLevel">XLevel</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_FindPathResult" name="FindPathResult" title="go to the details">FindPathResult</a><br /><span class="small">FPR_NoError,
+FPR_SearchSpaceExhausted</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#EDetailMode">EDetailMode</a>, <a href="../engine/actor.html#EDoubleClickDir">EDoubleClickDir</a>, <a href="../engine/actor.html#EDrawType">EDrawType</a>, <a href="../engine/actor.html#EFilterState">EFilterState</a>, <a href="../engine/actor.html#EForceType">EForceType</a>, <a href="../engine/actor.html#ELightEffect">ELightEffect</a>, <a href="../engine/actor.html#ELightType">ELightType</a>, <a href="../engine/actor.html#EMusicTransition">EMusicTransition</a>, <a href="../engine/actor.html#ENetRole">ENetRole</a>, <a href="../engine/actor.html#EPhysics">EPhysics</a>, <a href="../engine/actor.html#ERenderStyle">ERenderStyle</a>, <a href="../engine/actor.html#ESoundOcclusion">ESoundOcclusion</a>, <a href="../engine/actor.html#ETravelType">ETravelType</a>, <a href="../engine/actor.html#SocketCoordinates">SocketCoordinates</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_FindPathAIProperties" name="FindPathAIProperties" title="go to the details">FindPathAIProperties</a><br /><span class="small">jetpack, Airborne, roadBased, teamName, upCostFactor, downCostFactor</span></td></tr>
+<tr><td><a href="#_RouteCacheElement" name="RouteCacheElement" title="go to the details">RouteCacheElement</a><br /><span class="small">location, jetpack, energy, obstacle, height, angle</span></td></tr>
+<tr><td><a href="#_TraversalLineCheck" name="TraversalLineCheck" title="go to the details">TraversalLineCheck</a><br /><span class="small">start, end, colour</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#ActorRenderDataPtr">ActorRenderDataPtr</a>, <a href="../engine/actor.html#AnimRep">AnimRep</a>, <a href="../engine/actor.html#BatchReference">BatchReference</a>, <a href="../engine/actor.html#HavokRigidBodyState">HavokRigidBodyState</a>, <a href="../engine/actor.html#KRBVec">KRBVec</a>, <a href="../engine/actor.html#KRigidBodyState">KRigidBodyState</a>, <a href="../engine/actor.html#LightRenderDataPtr">LightRenderDataPtr</a>, <a href="../engine/actor.html#PointRegion">PointRegion</a>, <a href="../engine/actor.html#ProjectorRenderInfoPtr">ProjectorRenderInfoPtr</a>, <a href="../engine/actor.html#StaticMeshProjectorRenderInfoPtr">StaticMeshProjectorRenderInfoPtr</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddController-" name="AddController" title="go to the details">AddController</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AdjustView-" name="AdjustView" title="go to the details">AdjustView</a> (float DeltaTime ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_AIHearSound-" name="AIHearSound" title="go to the details">AIHearSound</a> (<a href="../engine/actor.html">actor</a> Actor, sound S, <a href="../core/object.html#Vector">vector</a> SoundLocation, <a href="../core/object.html#Vector">vector</a> Parameters, bool Attenuate)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_AutoTaunt-" name="AutoTaunt" title="go to the details">AutoTaunt</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GameEnded" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GameEnded</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangedWeapon-" name="ChangedWeapon" title="go to the details">ChangedWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CheckFutureSight-" name="CheckFutureSight" title="go to the details">CheckFutureSight</a> (float DeltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientDying-" name="ClientDying" title="go to the details">ClientDying</a> (class&lt;<a href="../engine/damagetype.html">DamageType</a>&gt; DamageType, <a href="../core/object.html#Vector">vector</a> HitLocation))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientGameEnded-" name="ClientGameEnded" title="go to the details">ClientGameEnded</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientSetLocation-" name="ClientSetLocation" title="go to the details">ClientSetLocation</a> (<a href="../core/object.html#Vector">vector</a> NewLocation, rotator NewRotation ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientSetRotation-" name="ClientSetRotation" title="go to the details">ClientSetRotation</a> (rotator NewRotation ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ContinueFindPath-" name="ContinueFindPath" title="go to the details">ContinueFindPath</a> (bool untilComplete)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DebugTraversalCheck-" name="DebugTraversalCheck" title="go to the details">DebugTraversalCheck</a> (<a href="../core/object.html#Vector">vector</a> start, <a href="../core/object.html#Vector">vector</a> end)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DiscardFindPath-" name="DiscardFindPath" title="go to the details">DiscardFindPath</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayDebug-" name="DisplayDebug" title="go to the details">DisplayDebug</a> (<a href="../engine/canvas.html">Canvas</a> Canvas, out float YL, out float YPos))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_displayWorldSpaceDebug-" name="displayWorldSpaceDebug" title="go to the details">displayWorldSpaceDebug</a> (<a href="../engine/hud.html">HUD</a> displayHUD)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_DontReuseTaunt-" name="DontReuseTaunt" title="go to the details">DontReuseTaunt</a> (int T))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPathDebug-" name="DrawPathDebug" title="go to the details">DrawPathDebug</a> (Viewport viewport, bool showQuadtree, bool showNodes, bool stepEnabled, bool showReach)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FindPath-" name="FindPath" title="go to the details">FindPath</a> (<a href="../core/object.html#Vector">vector</a> start, <a href="../core/object.html#Vector">vector</a> end, <a href="../engine/controller.html#FindPathAIProperties">FindPathAIProperties</a> AIProperties, array&lt;<a href="../engine/actor.html">Actor</a>&gt; ignore, bool printLogs, optional bool manualContinue)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GameHasEnded-" name="GameHasEnded" title="go to the details">GameHasEnded</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetFacingDirection-" name="GetFacingDirection" title="go to the details">GetFacingDirection</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetFindPathResult-" name="GetFindPathResult" title="go to the details">GetFindPathResult</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_GetHumanReadableName-" name="GetHumanReadableName" title="go to the details">GetHumanReadableName</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_GetViewRotation-" name="GetViewRotation" title="go to the details">GetViewRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_HearNoise-" name="HearNoise" title="go to the details">HearNoise</a> (float Loudness, <a href="../engine/actor.html">Actor</a> NoiseMaker)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitPlayerReplicationInfo-" name="InitPlayerReplicationInfo" title="go to the details">InitPlayerReplicationInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_InLatentExecution-" name="InLatentExecution" title="go to the details">InLatentExecution</a> (int LatentActionNumber)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsFindPathComplete-" name="IsFindPathComplete" title="go to the details">IsFindPathComplete</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_LineOfSightTo-" name="LineOfSightTo" title="go to the details">LineOfSightTo</a> (<a href="../engine/actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_LongFall-" name="LongFall" title="go to the details">LongFall</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_MayFall-" name="MayFall" title="go to the details">MayFall</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_NotifyBump-" name="NotifyBump" title="go to the details">NotifyBump</a> (<a href="../engine/actor.html">Actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_NotifyHeadVolumeChange-" name="NotifyHeadVolumeChange" title="go to the details">NotifyHeadVolumeChange</a> (<a href="../engine/physicsvolume.html">PhysicsVolume</a> NewVolume)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NotifyHitMover-" name="NotifyHitMover" title="go to the details">NotifyHitMover</a> (<a href="../core/object.html#Vector">vector</a> HitNormal, <a href="../engine/mover.html">mover</a> Wall)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_NotifyHitWall-" name="NotifyHitWall" title="go to the details">NotifyHitWall</a> (<a href="../core/object.html#Vector">vector</a> HitNormal, <a href="../engine/actor.html">actor</a> Wall)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NotifyJumpApex-" name="NotifyJumpApex" title="go to the details">NotifyJumpApex</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyKilled-" name="NotifyKilled" title="go to the details">NotifyKilled</a> (<a href="../engine/controller.html">Controller</a> Killer, <a href="../engine/controller.html">Controller</a> Killed, <a href="../engine/pawn.html">pawn</a> Other))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_NotifyLanded-" name="NotifyLanded" title="go to the details">NotifyLanded</a> (<a href="../core/object.html#Vector">vector</a> HitNormal)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NotifyMissedJump-" name="NotifyMissedJump" title="go to the details">NotifyMissedJump</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_NotifyPhysicsVolumeChange-" name="NotifyPhysicsVolumeChange" title="go to the details">NotifyPhysicsVolumeChange</a> (<a href="../engine/physicsvolume.html">PhysicsVolume</a> NewVolume)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyTakeHit-" name="NotifyTakeHit" title="go to the details">NotifyTakeHit</a> (<a href="../engine/pawn.html">pawn</a> InstigatedBy, <a href="../core/object.html#Vector">vector</a> HitLocation, int Damage, class&lt;<a href="../engine/damagetype.html">DamageType</a>&gt; damageType, <a href="../core/object.html#Vector">vector</a> Momentum))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PathDiagnostics-" name="PathDiagnostics" title="go to the details">PathDiagnostics</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnDied-" name="PawnDied" title="go to the details">PawnDied</a> (<a href="../engine/pawn.html">Pawn</a> P))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnDied-Dead" name="PawnDied" title="go to the details">PawnDied</a> (<a href="../engine/pawn.html">Pawn</a> P))<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnIsInPain-" name="PawnIsInPain" title="go to the details">PawnIsInPain</a> (<a href="../engine/physicsvolume.html">PhysicsVolume</a> PainVolume)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PendingStasis-" name="PendingStasis" title="go to the details">PendingStasis</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Possess-" name="Possess" title="go to the details">Possess</a> (<a href="../engine/pawn.html">Pawn</a> aPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostLoadGame-" name="PostLoadGame" title="go to the details">PostLoadGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PreBeginPlay-" name="PreBeginPlay" title="go to the details">PreBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveController-" name="RemoveController" title="go to the details">RemoveController</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_RenderOverlays-" name="RenderOverlays" title="go to the details">RenderOverlays</a> (<a href="../engine/canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Reset-" name="Reset" title="go to the details">Reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Restart-" name="Restart" title="go to the details">Restart</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_SameTeamAs-" name="SameTeamAs" title="go to the details">SameTeamAs</a> (<a href="../engine/controller.html">Controller</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerGivePawn-" name="ServerGivePawn" title="go to the details">ServerGivePawn</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerReStartPlayer-" name="ServerReStartPlayer" title="go to the details">ServerReStartPlayer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerReStartPlayer-Dead" name="ServerReStartPlayer" title="go to the details">ServerReStartPlayer</a> ()))<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetFall-" name="SetFall" title="go to the details">SetFall</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPawnClass-" name="SetPawnClass" title="go to the details">SetPawnClass</a> (string inClass, string inCharacter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShakeView-" name="ShakeView" title="go to the details">ShakeView</a> (float shaketime, float RollMag, <a href="../core/object.html#Vector">vector</a> OffsetMag, float RollRate, <a href="../core/object.html#Vector">vector</a> OffsetRate, float OffsetTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SoakStop-" name="SoakStop" title="go to the details">SoakStop</a> (string problem)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnPossess-" name="UnPossess" title="go to the details">UnPossess</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_WantsSmoothedView-" name="WantsSmoothedView" title="go to the details">WantsSmoothedView</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WasKilledBy-" name="WasKilledBy" title="go to the details">WasKilledBy</a> (<a href="../engine/controller.html">Controller</a> Other)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#*">*</a>, <a href="../engine/actor.html#+">+</a>, <a href="../engine/actor.html#-">-</a>, <a href="../engine/actor.html#actorLabel">actorLabel</a>, <a href="../engine/actor.html#AddContextForNextEffectEvent">AddContextForNextEffectEvent</a>, <a href="../engine/actor.html#AddDebugMessage">AddDebugMessage</a>, <a href="../engine/actor.html#AITrace">AITrace</a>, <a href="../engine/actor.html#AllActors">AllActors</a>, <a href="../engine/actor.html#Allocate">Allocate</a>, <a href="../engine/actor.html#AnimBlendParams">AnimBlendParams</a>, <a href="../engine/actor.html#AnimBlendToAlpha">AnimBlendToAlpha</a>, <a href="../engine/actor.html#AnimEnd">AnimEnd</a>, <a href="../engine/actor.html#AnimIsInGroup">AnimIsInGroup</a>, <a href="../engine/actor.html#AnimStopLooping">AnimStopLooping</a>, <a href="../engine/actor.html#Attach">Attach</a>, <a href="../engine/actor.html#AttachToBone">AttachToBone</a>, <a href="../engine/actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="../engine/actor.html#BaseChange">BaseChange</a>, <a href="../engine/actor.html#BasedActors">BasedActors</a>, <a href="../engine/actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="../engine/actor.html#BeginEvent">BeginEvent</a>, <a href="../engine/actor.html#BeginPlay">BeginPlay</a>, <a href="../engine/actor.html#BoneRefresh">BoneRefresh</a>, <a href="../engine/actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="../engine/actor.html#Bump">Bump</a>, <a href="../engine/actor.html#CanSplash">CanSplash</a>, <a href="../engine/actor.html#checkSocket">checkSocket</a>, <a href="../engine/actor.html#ChildActors">ChildActors</a>, <a href="../engine/actor.html#classConstruct">classConstruct</a>, <a href="../engine/actor.html#clientDispatchMessage">clientDispatchMessage</a>, <a href="../engine/actor.html#Clock">Clock</a>, <a href="../engine/actor.html#CollidingActors">CollidingActors</a>, <a href="../engine/actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="../engine/actor.html#Construct">Construct</a>, <a href="../engine/actor.html#CurrentLIPSincAnim">CurrentLIPSincAnim</a>, <a href="../engine/actor.html#DebugClock">DebugClock</a>, <a href="../engine/actor.html#DebugUnclock">DebugUnclock</a>, <a href="../engine/actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="../engine/actor.html#Destroy">Destroy</a>, <a href="../engine/actor.html#Destroyed">Destroyed</a>, <a href="../engine/actor.html#Detach">Detach</a>, <a href="../engine/actor.html#DetachFromBone">DetachFromBone</a>, <a href="../engine/actor.html#dispatchMessage">dispatchMessage</a>, <a href="../engine/actor.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/actor.html#DrawDebugLine">DrawDebugLine</a>, <a href="../engine/actor.html#DynamicActors">DynamicActors</a>, <a href="../engine/actor.html#EffectIsRelevant">EffectIsRelevant</a>, <a href="../engine/actor.html#EnableChannelNotify">EnableChannelNotify</a>, <a href="../engine/actor.html#EncroachedBy">EncroachedBy</a>, <a href="../engine/actor.html#EncroachingOn">EncroachingOn</a>, <a href="../engine/actor.html#EndedRotation">EndedRotation</a>, <a href="../engine/actor.html#EndEvent">EndEvent</a>, <a href="../engine/actor.html#Error">Error</a>, <a href="../engine/actor.html#Falling">Falling</a>, <a href="../engine/actor.html#FastTrace">FastTrace</a>, <a href="../engine/actor.html#findByLabel">findByLabel</a>, <a href="../engine/actor.html#findStaticByLabel">findStaticByLabel</a>, <a href="../engine/actor.html#FinishAnim">FinishAnim</a>, <a href="../engine/actor.html#FinishedInterpolation">FinishedInterpolation</a>, <a href="../engine/actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="../engine/actor.html#ForceFeedbackSupported">ForceFeedbackSupported</a>, <a href="../engine/actor.html#FreezeAnimAt">FreezeAnimAt</a>, <a href="../engine/actor.html#GainedChild">GainedChild</a>, <a href="../engine/actor.html#GetAnimLength">GetAnimLength</a>, <a href="../engine/actor.html#GetAnimParams">GetAnimParams</a>, <a href="../engine/actor.html#GetBoneCoords">GetBoneCoords</a>, <a href="../engine/actor.html#GetBoneRotation">GetBoneRotation</a>, <a href="../engine/actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="../engine/actor.html#GetClosestBone">GetClosestBone</a>, <a href="../engine/actor.html#GetCollisionExtent">GetCollisionExtent</a>, <a href="../engine/actor.html#GetCurrentMaterial">GetCurrentMaterial</a>, <a href="../engine/actor.html#GetDebugName">GetDebugName</a>, <a href="../engine/actor.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../engine/actor.html#getHurtRadiusParent">getHurtRadiusParent</a>, <a href="../engine/actor.html#GetItemName">GetItemName</a>, <a href="../engine/actor.html#GetLIPSincAnimDuration">GetLIPSincAnimDuration</a>, <a href="../engine/actor.html#GetLocalString">GetLocalString</a>, <a href="../engine/actor.html#GetMapName">GetMapName</a>, <a href="../engine/actor.html#GetMaterial">GetMaterial</a>, <a href="../engine/actor.html#GetMeshName">GetMeshName</a>, <a href="../engine/actor.html#GetMeshOrigin">GetMeshOrigin</a>, <a href="../engine/actor.html#GetNextInt">GetNextInt</a>, <a href="../engine/actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="../engine/actor.html#GetNextSkin">GetNextSkin</a>, <a href="../engine/actor.html#GetNotifyChannel">GetNotifyChannel</a>, <a href="../engine/actor.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../engine/actor.html#GetRadarInfoClass">GetRadarInfoClass</a>, <a href="../engine/actor.html#getReceiveDamageRadius">getReceiveDamageRadius</a>, <a href="../engine/actor.html#GetRenderBoundingSphere">GetRenderBoundingSphere</a>, <a href="../engine/actor.html#GetRootLocation">GetRootLocation</a>, <a href="../engine/actor.html#GetRootLocationDelta">GetRootLocationDelta</a>, <a href="../engine/actor.html#GetRootRotation">GetRootRotation</a>, <a href="../engine/actor.html#GetRootRotationDelta">GetRootRotationDelta</a>, <a href="../engine/actor.html#getSocket">getSocket</a>, <a href="../engine/actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="../engine/actor.html#GetURLMap">GetURLMap</a>, <a href="../engine/actor.html#GetUrlOption">GetUrlOption</a>, <a href="../engine/actor.html#HasAnim">HasAnim</a>, <a href="../engine/actor.html#HasLIPSincAnim">HasLIPSincAnim</a>, <a href="../engine/actor.html#HavokActivate">HavokActivate</a>, <a href="../engine/actor.html#HavokCollisionGroupChange">HavokCollisionGroupChange</a>, <a href="../engine/actor.html#HavokGetAngularVelocity">HavokGetAngularVelocity</a>, <a href="../engine/actor.html#HavokGetCenterOfMass">HavokGetCenterOfMass</a>, <a href="../engine/actor.html#HavokGetLastTracedBone">HavokGetLastTracedBone</a>, <a href="../engine/actor.html#HavokGetLinearVelocity">HavokGetLinearVelocity</a>, <a href="../engine/actor.html#HavokGetPosition">HavokGetPosition</a>, <a href="../engine/actor.html#HavokGetState">HavokGetState</a>, <a href="../engine/actor.html#HavokImpartCOMImpulse">HavokImpartCOMImpulse</a>, <a href="../engine/actor.html#HavokImpartForce">HavokImpartForce</a>, <a href="../engine/actor.html#HavokImpartImpulse">HavokImpartImpulse</a>, <a href="../engine/actor.html#HavokImpartLinearForceAll">HavokImpartLinearForceAll</a>, <a href="../engine/actor.html#HavokIsActive">HavokIsActive</a>, <a href="../engine/actor.html#HavokReturnSkeletalActorToAnimationSystem">HavokReturnSkeletalActorToAnimationSystem</a>, <a href="../engine/actor.html#HavokSetAngularDamping">HavokSetAngularDamping</a>, <a href="../engine/actor.html#HavokSetAngularVelocity">HavokSetAngularVelocity</a>, <a href="../engine/actor.html#HavokSetBlocking">HavokSetBlocking</a>, <a href="../engine/actor.html#HavokSetCOM">HavokSetCOM</a>, <a href="../engine/actor.html#HavokSetGameTickForce">HavokSetGameTickForce</a>, <a href="../engine/actor.html#HavokSetLinearDamping">HavokSetLinearDamping</a>, <a href="../engine/actor.html#HavokSetLinearVelocity">HavokSetLinearVelocity</a>, <a href="../engine/actor.html#HavokSetLinearVelocityAll">HavokSetLinearVelocityAll</a>, <a href="../engine/actor.html#HavokSetPosition">HavokSetPosition</a>, <a href="../engine/actor.html#HavokSetRotation">HavokSetRotation</a>, <a href="../engine/actor.html#HavokSlowSetCollisionEnabled">HavokSlowSetCollisionEnabled</a>, <a href="../engine/actor.html#HavokUpdateState">HavokUpdateState</a>, <a href="../engine/actor.html#Hide">Hide</a>, <a href="../engine/actor.html#HitWall">HitWall</a>, <a href="../engine/actor.html#HurtRadius">HurtRadius</a>, <a href="../engine/actor.html#InterruptSound">InterruptSound</a>, <a href="../engine/actor.html#IsAnimating">IsAnimating</a>, <a href="../engine/actor.html#IsInPain">IsInPain</a>, <a href="../engine/actor.html#IsInVolume">IsInVolume</a>, <a href="../engine/actor.html#IsOverlapping">IsOverlapping</a>, <a href="../engine/actor.html#IsPlayingLIPSincAnim">IsPlayingLIPSincAnim</a>, <a href="../engine/actor.html#IsTweening">IsTweening</a>, <a href="../engine/actor.html#KilledBy">KilledBy</a>, <a href="../engine/actor.html#Landed">Landed</a>, <a href="../engine/actor.html#LinkMesh">LinkMesh</a>, <a href="../engine/actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="../engine/actor.html#LIPSincAnimEnd">LIPSincAnimEnd</a>, <a href="../engine/actor.html#LocalizeMapText">LocalizeMapText</a>, <a href="../engine/actor.html#LockRootMotion">LockRootMotion</a>, <a href="../engine/actor.html#LoopAnim">LoopAnim</a>, <a href="../engine/actor.html#LostChild">LostChild</a>, <a href="../engine/actor.html#makeDormant">makeDormant</a>, <a href="../engine/actor.html#MakeNoise">MakeNoise</a>, <a href="../engine/actor.html#MatchStarting">MatchStarting</a>, <a href="../engine/actor.html#Move">Move</a>, <a href="../engine/actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="../engine/actor.html#MoveSmooth">MoveSmooth</a>, <a href="../engine/actor.html#nearbyControlledPawns">nearbyControlledPawns</a>, <a href="../engine/actor.html#NearSpot">NearSpot</a>, <a href="../engine/actor.html#OnGameStarted">OnGameStarted</a>, <a href="../engine/actor.html#OnHidden">OnHidden</a>, <a href="../engine/actor.html#OnlyAffectPawns">OnlyAffectPawns</a>, <a href="../engine/actor.html#onMessage">onMessage</a>, <a href="../engine/actor.html#OnOptimizedIn">OnOptimizedIn</a>, <a href="../engine/actor.html#OnOptimizedOut">OnOptimizedOut</a>, <a href="../engine/actor.html#OnShown">OnShown</a>, <a href="../engine/actor.html#OptimizeIn">OptimizeIn</a>, <a href="../engine/actor.html#OptimizeOut">OptimizeOut</a>, <a href="../engine/actor.html#PauseSound">PauseSound</a>, <a href="../engine/actor.html#PhysicsVolumeChange">PhysicsVolumeChange</a>, <a href="../engine/actor.html#PlayAnim">PlayAnim</a>, <a href="../engine/actor.html#PlayAnimAdditive">PlayAnimAdditive</a>, <a href="../engine/actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="../engine/actor.html#PlayFeedbackEffect">PlayFeedbackEffect</a>, <a href="../engine/actor.html#PlayLIPSincAnim">PlayLIPSincAnim</a>, <a href="../engine/actor.html#PlayLoopedSound">PlayLoopedSound</a>, <a href="../engine/actor.html#PlayMusic">PlayMusic</a>, <a href="../engine/actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="../engine/actor.html#PlayScriptedAnim">PlayScriptedAnim</a>, <a href="../engine/actor.html#PlaySound">PlaySound</a>, <a href="../engine/actor.html#PlayStream">PlayStream</a>, <a href="../engine/actor.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="../engine/actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/actor.html#PostLoadGame">PostLoadGame</a>, <a href="../engine/actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../engine/actor.html#PostNetReceive">PostNetReceive</a>, <a href="../engine/actor.html#PostTakeDamage">PostTakeDamage</a>, <a href="../engine/actor.html#PostTeleport">PostTeleport</a>, <a href="../engine/actor.html#PostTouch">PostTouch</a>, <a href="../engine/actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/actor.html#PrecacheSpeech">PrecacheSpeech</a>, <a href="../engine/actor.html#PreScriptedTextureRendered">PreScriptedTextureRendered</a>, <a href="../engine/actor.html#PreTeleport">PreTeleport</a>, <a href="../engine/actor.html#PreTrigger">PreTrigger</a>, <a href="../engine/actor.html#processHurtRadiusVictim">processHurtRadiusVictim</a>, <a href="../engine/actor.html#ProjectileTouch">ProjectileTouch</a>, <a href="../engine/actor.html#RadiusActors">RadiusActors</a>, <a href="../engine/actor.html#registerClientMessage">registerClientMessage</a>, <a href="../engine/actor.html#registerMessage">registerMessage</a>, <a href="../engine/actor.html#RegisterNotifyGameStarted">RegisterNotifyGameStarted</a>, <a href="../engine/actor.html#RenderOverlays">RenderOverlays</a>, <a href="../engine/actor.html#RenderTexture">RenderTexture</a>, <a href="../engine/actor.html#ReplaceText">ReplaceText</a>, <a href="../engine/actor.html#Reset">Reset</a>, <a href="../engine/actor.html#ResumeSound">ResumeSound</a>, <a href="../engine/actor.html#SetAnimFrame">SetAnimFrame</a>, <a href="../engine/actor.html#SetBase">SetBase</a>, <a href="../engine/actor.html#SetBoneDirection">SetBoneDirection</a>, <a href="../engine/actor.html#SetBoneLocation">SetBoneLocation</a>, <a href="../engine/actor.html#SetBoneRotation">SetBoneRotation</a>, <a href="../engine/actor.html#SetBoneScale">SetBoneScale</a>, <a href="../engine/actor.html#SetCollision">SetCollision</a>, <a href="../engine/actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="../engine/actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="../engine/actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="../engine/actor.html#SetDrawScale">SetDrawScale</a>, <a href="../engine/actor.html#SetDrawScale3D">SetDrawScale3D</a>, <a href="../engine/actor.html#SetDrawType">SetDrawType</a>, <a href="../engine/actor.html#SetGRI">SetGRI</a>, <a href="../engine/actor.html#SetInitialState">SetInitialState</a>, <a href="../engine/actor.html#SetLocation">SetLocation</a>, <a href="../engine/actor.html#SetOwner">SetOwner</a>, <a href="../engine/actor.html#SetPhysics">SetPhysics</a>, <a href="../engine/actor.html#SetRelativeLocation">SetRelativeLocation</a>, <a href="../engine/actor.html#SetRelativeRotation">SetRelativeRotation</a>, <a href="../engine/actor.html#SetRotation">SetRotation</a>, <a href="../engine/actor.html#SetStaticMesh">SetStaticMesh</a>, <a href="../engine/actor.html#SetTimer">SetTimer</a>, <a href="../engine/actor.html#ShallowCopyMaterial">ShallowCopyMaterial</a>, <a href="../engine/actor.html#ShouldActorsBlockSplash">ShouldActorsBlockSplash</a>, <a href="../engine/actor.html#ShouldProjectileHit">ShouldProjectileHit</a>, <a href="../engine/actor.html#Show">Show</a>, <a href="../engine/actor.html#Spawn">Spawn</a>, <a href="../engine/actor.html#SpecialHandling">SpecialHandling</a>, <a href="../engine/actor.html#StartInterpolation">StartInterpolation</a>, <a href="../engine/actor.html#staticActorLabel">staticActorLabel</a>, <a href="../engine/actor.html#StopAllMusic">StopAllMusic</a>, <a href="../engine/actor.html#StopAnimating">StopAnimating</a>, <a href="../engine/actor.html#StopFeedbackEffect">StopFeedbackEffect</a>, <a href="../engine/actor.html#StopLIPSincAnim">StopLIPSincAnim</a>, <a href="../engine/actor.html#StopMusic">StopMusic</a>, <a href="../engine/actor.html#SuggestFallVelocity">SuggestFallVelocity</a>, <a href="../engine/actor.html#TakeDamage">TakeDamage</a>, <a href="../engine/actor.html#TestMove">TestMove</a>, <a href="../engine/actor.html#Tick">Tick</a>, <a href="../engine/actor.html#Timer">Timer</a>, <a href="../engine/actor.html#TornOff">TornOff</a>, <a href="../engine/actor.html#Touch">Touch</a>, <a href="../engine/actor.html#TouchingActor">TouchingActor</a>, <a href="../engine/actor.html#TouchingActors">TouchingActors</a>, <a href="../engine/actor.html#Trace">Trace</a>, <a href="../engine/actor.html#TraceActors">TraceActors</a>, <a href="../engine/actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="../engine/actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="../engine/actor.html#Trigger">Trigger</a>, <a href="../engine/actor.html#TriggerEffectEvent">TriggerEffectEvent</a>, <a href="../engine/actor.html#TriggerEvent">TriggerEvent</a>, <a href="../engine/actor.html#TweenAnim">TweenAnim</a>, <a href="../engine/actor.html#UnClock">UnClock</a>, <a href="../engine/actor.html#unifiedAddForce">unifiedAddForce</a>, <a href="../engine/actor.html#unifiedAddForceAtPosition">unifiedAddForceAtPosition</a>, <a href="../engine/actor.html#unifiedAddImpulse">unifiedAddImpulse</a>, <a href="../engine/actor.html#unifiedAddImpulseAtPosition">unifiedAddImpulseAtPosition</a>, <a href="../engine/actor.html#unifiedAddTorque">unifiedAddTorque</a>, <a href="../engine/actor.html#unifiedAddVelocity">unifiedAddVelocity</a>, <a href="../engine/actor.html#unifiedGetAcceleration">unifiedGetAcceleration</a>, <a href="../engine/actor.html#unifiedGetCOMPosition">unifiedGetCOMPosition</a>, <a href="../engine/actor.html#unifiedGetGravity">unifiedGetGravity</a>, <a href="../engine/actor.html#unifiedGetMass">unifiedGetMass</a>, <a href="../engine/actor.html#unifiedGetNaturalCOMPosition">unifiedGetNaturalCOMPosition</a>, <a href="../engine/actor.html#unifiedGetPosition">unifiedGetPosition</a>, <a href="../engine/actor.html#unifiedGetVelocity">unifiedGetVelocity</a>, <a href="../engine/actor.html#unifiedSetAcceleration">unifiedSetAcceleration</a>, <a href="../engine/actor.html#unifiedSetAngularVelocity">unifiedSetAngularVelocity</a>, <a href="../engine/actor.html#unifiedSetMass">unifiedSetMass</a>, <a href="../engine/actor.html#unifiedSetPosition">unifiedSetPosition</a>, <a href="../engine/actor.html#unifiedSetRotation">unifiedSetRotation</a>, <a href="../engine/actor.html#unifiedSetVelocity">unifiedSetVelocity</a>, <a href="../engine/actor.html#UnTouch">UnTouch</a>, <a href="../engine/actor.html#UnTrigger">UnTrigger</a>, <a href="../engine/actor.html#UnTriggerEffectEvent">UnTriggerEffectEvent</a>, <a href="../engine/actor.html#UnTriggerEvent">UnTriggerEvent</a>, <a href="../engine/actor.html#UpdateAttachmentLocations">UpdateAttachmentLocations</a>, <a href="../engine/actor.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a>, <a href="../engine/actor.html#UpdateURL">UpdateURL</a>, <a href="../engine/actor.html#UsedBy">UsedBy</a>, <a href="../engine/actor.html#VisibleActors">VisibleActors</a>, <a href="../engine/actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="../engine/actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Dead <a href="../Source_engine/controller.html#617" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Dead <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_PawnDied+Dead">PawnDied</a>, <a href="#_ServerReStartPlayer+Dead">ServerReStartPlayer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GameEnded <a href="../Source_engine/controller.html#635" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GameEnded <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GameEnded">BeginState</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_LATENT_MOVETOWARD" class="hidden"></a>LATENT_MOVETOWARD <a href="../Source_engine/controller.html#110" class="small">Source code</a></h4>
+<div class="declaration">const LATENT_MOVETOWARD = <span class="source_int">503</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bAltFire" class="hidden"></a>bAltFire <a href="../Source_engine/controller.html#46" class="small">Source code</a></h4>
+<div class="declaration">var input <span class="source_type">byte</span> bAltFire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDuck" class="hidden"></a>bDuck <a href="../Source_engine/controller.html#46" class="small">Source code</a></h4>
+<div class="declaration">var input <span class="source_type">byte</span> bDuck;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFire" class="hidden"></a>bFire <a href="../Source_engine/controller.html#46" class="small">Source code</a></h4>
+<div class="declaration">var input <span class="source_type">byte</span> bFire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bGodMode" class="hidden"></a>bGodMode <a href="../Source_engine/controller.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bGodMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsPlayer" class="hidden"></a>bIsPlayer <a href="../Source_engine/controller.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsPlayer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bJetpack" class="hidden"></a>bJetpack <a href="../Source_engine/controller.html#46" class="small">Source code</a></h4>
+<div class="declaration">var input <span class="source_type">byte</span> <span class="source_type">bJetpack</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bJump" class="hidden"></a>bJump <a href="../Source_engine/controller.html#46" class="small">Source code</a></h4>
+<div class="declaration">var input <span class="source_type">byte</span> bJump;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRun" class="hidden"></a>bRun <a href="../Source_engine/controller.html#46" class="small">Source code</a></h4>
+<div class="declaration">var input <span class="source_type">byte</span> bRun;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSki" class="hidden"></a>bSki <a href="../Source_engine/controller.html#46" class="small">Source code</a></h4>
+<div class="declaration">var input <span class="source_type">byte</span> bSki;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUsePlayerHearing" class="hidden"></a>bUsePlayerHearing <a href="../Source_engine/controller.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bUsePlayerHearing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_debugTraversalLineChecks" class="hidden"></a>debugTraversalLineChecks <a href="../Source_engine/controller.html#83" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/controller.html#TraversalLineCheck" class="source">TraversalLineCheck</a></span>&gt; debugTraversalLineChecks;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FailedReachLocation" class="hidden"></a>FailedReachLocation <a href="../Source_engine/controller.html#106" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> FailedReachLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FailedReachTime" class="hidden"></a>FailedReachTime <a href="../Source_engine/controller.html#105" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">float</span> FailedReachTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FovAngle" class="hidden"></a>FovAngle <a href="../Source_engine/controller.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> FovAngle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GroundPitchTime" class="hidden"></a>GroundPitchTime <a href="../Source_engine/controller.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> GroundPitchTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Handedness" class="hidden"></a>Handedness <a href="../Source_engine/controller.html#40" class="small">Source code</a></h4>
+<div class="declaration">var globalconfig <span class="source_type">float</span> Handedness;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastFailedReach" class="hidden"></a>LastFailedReach <a href="../Source_engine/controller.html#104" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> LastFailedReach;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastFindPathResult" class="hidden"></a>lastFindPathResult <a href="../Source_engine/controller.html#75" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/controller.html#FindPathResult" class="source">FindPathResult</a></span> lastFindPathResult;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MonitoredPawn" class="hidden"></a>MonitoredPawn <a href="../Source_engine/controller.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> MonitoredPawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MonitorMaxDistSq" class="hidden"></a>MonitorMaxDistSq <a href="../Source_engine/controller.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MonitorMaxDistSq;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MonitorStartLoc" class="hidden"></a>MonitorStartLoc <a href="../Source_engine/controller.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> MonitorStartLoc;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_nextController" class="hidden"></a>nextController <a href="../Source_engine/controller.html#49" class="small">Source code</a></h4>
+<div class="declaration">var transient const <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> nextController;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Pawn" class="hidden"></a>Pawn <a href="../Source_engine/controller.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnClass" class="hidden"></a>PawnClass <a href="../Source_engine/controller.html#89" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt; PawnClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerNum" class="hidden"></a>PlayerNum <a href="../Source_engine/controller.html#38" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">int</span> PlayerNum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerReplicationInfo" class="hidden"></a>PlayerReplicationInfo <a href="../Source_engine/controller.html#87" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreviousPawnClass" class="hidden"></a>PreviousPawnClass <a href="../Source_engine/controller.html#90" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt; PreviousPawnClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RouteCache" class="hidden"></a>RouteCache <a href="../Source_engine/controller.html#73" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/controller.html#RouteCacheElement" class="source">RouteCacheElement</a></span>&gt; RouteCache;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RouteComplete" class="hidden"></a>RouteComplete <a href="../Source_engine/controller.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> RouteComplete;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartSpot" class="hidden"></a>StartSpot <a href="../Source_engine/controller.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> StartSpot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ViewX" class="hidden"></a>ViewX <a href="../Source_engine/controller.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> ViewX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ViewY" class="hidden"></a>ViewY <a href="../Source_engine/controller.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> ViewY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ViewZ" class="hidden"></a>ViewZ <a href="../Source_engine/controller.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> ViewZ;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Controller</h3>
+<h4><a name="_PlayerReplicationInfoClass" class="hidden"></a>PlayerReplicationInfoClass <a href="../Source_engine/controller.html#86" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>&gt; PlayerReplicationInfoClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_FindPathResult" class="hidden"></a>FindPathResult <a href="../Source_engine/controller.html#66" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/controller.html#FindPathResult" class="source">FindPathResult</a></span><br />
+{<blockquote>FPR_NoError,
+FPR_SearchSpaceExhausted</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_FindPathAIProperties" class="hidden"></a>FindPathAIProperties <a href="../Source_engine/controller.html#23" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../engine/controller.html#FindPathAIProperties" class="source">FindPathAIProperties</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> Airborne;<br />
+var <span class="source_type">float</span> downCostFactor;<br />
+var <span class="source_type">bool</span> <span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>;<br />
+var <span class="source_type">bool</span> roadBased;<br />
+var <span class="source_type">name</span> teamName;<br />
+var <span class="source_type">float</span> upCostFactor;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RouteCacheElement" class="hidden"></a>RouteCacheElement <a href="../Source_engine/controller.html#53" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../engine/controller.html#RouteCacheElement" class="source">RouteCacheElement</a></span><br />
+{<blockquote>var <span class="source_type">float</span> <span class="source_type">angle</span>;<br />
+var <span class="source_type">float</span> energy;<br />
+var <span class="source_type">float</span> height;<br />
+var <span class="source_type">bool</span> <span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> location;<br />
+var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> obstacle;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TraversalLineCheck" class="hidden"></a>TraversalLineCheck <a href="../Source_engine/controller.html#77" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../engine/controller.html#TraversalLineCheck" class="source">TraversalLineCheck</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> colour;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> end;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> start;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddController-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddController <span class="function_state"></span> <a href="../Source_engine/controller.html#164" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">529</span>) final <span class="source_type">function</span>  AddController (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AdjustView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AdjustView <span class="function_state"></span> <a href="../Source_engine/controller.html#440" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AdjustView ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AIHearSound-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> AIHearSound <span class="function_state"></span> <a href="../Source_engine/controller.html#180" class="small">Source code</a></h4>
+<div class="declaration"> event  AIHearSound ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>, 
+	<span class="source_type">sound</span> <span class="source_type">S</span>, 
+	<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> SoundLocation, 
+	<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Parameters,
+	<span class="source_type">bool</span> Attenuate )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AutoTaunt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AutoTaunt <span class="function_state"></span> <a href="../Source_engine/controller.html#605" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> AutoTaunt ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GameEnded" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GameEnded</span> <a href="../Source_engine/controller.html#640" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangedWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangedWeapon <span class="function_state"></span> <a href="../Source_engine/controller.html#589" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ChangedWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckFutureSight-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckFutureSight <span class="function_state"></span> <a href="../Source_engine/controller.html#584" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> CheckFutureSight ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientDying-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientDying <span class="function_state"></span> <a href="../Source_engine/controller.html#282" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ClientDying ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitLocation) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientGameEnded-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientGameEnded <span class="function_state"></span> <a href="../Source_engine/controller.html#464" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ClientGameEnded ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientSetLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientSetLocation <span class="function_state"></span> <a href="../Source_engine/controller.html#249" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ClientSetLocation ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> NewLocation, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">NewRotation</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientSetRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientSetRotation <span class="function_state"></span> <a href="../Source_engine/controller.html#271" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ClientSetRotation ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">NewRotation</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ContinueFindPath-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ContinueFindPath <span class="function_state"></span> <a href="../Source_engine/controller.html#154" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  ContinueFindPath ( <span class="source_type">bool</span> untilComplete )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DebugTraversalCheck-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DebugTraversalCheck <span class="function_state"></span> <a href="../Source_engine/controller.html#161" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  DebugTraversalCheck ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> start, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> end )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Destroyed <span class="function_state"></span> <a href="../Source_engine/controller.html#414" class="small">Source code</a></h4>
+<div class="declaration">simulated event  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DiscardFindPath-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DiscardFindPath <span class="function_state"></span> <a href="../Source_engine/controller.html#146" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  DiscardFindPath (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayDebug <span class="function_state"></span> <a href="../Source_engine/controller.html#193" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DisplayDebug ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, out <span class="source_type">float</span> YL, out <span class="source_type">float</span> YPos) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_displayWorldSpaceDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> displayWorldSpaceDebug <span class="function_state"></span> <a href="../Source_engine/controller.html#141" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  displayWorldSpaceDebug ( <span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span> displayHUD )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DontReuseTaunt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DontReuseTaunt <span class="function_state"></span> <a href="../Source_engine/controller.html#610" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> DontReuseTaunt ( <span class="source_type">int</span> T) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPathDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPathDebug <span class="function_state"></span> <a href="../Source_engine/controller.html#156" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  DrawPathDebug ( <span class="source_type">Viewport</span> <span class="source_type">viewport</span>, <span class="source_type">bool</span> showQuadtree, <span class="source_type">bool</span> showNodes, <span class="source_type">bool</span> stepEnabled,
+		<span class="source_type">bool</span> showReach )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindPath-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindPath <span class="function_state"></span> <a href="../Source_engine/controller.html#151" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  FindPath ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> start, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> end, <span class="source_type"><a href="../engine/controller.html#FindPathAIProperties" class="source">FindPathAIProperties</a></span> AIProperties, array&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt; ignore, <span class="source_type">bool</span> printLogs,
+		optional <span class="source_type">bool</span> manualContinue )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameHasEnded-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GameHasEnded <span class="function_state"></span> <a href="../Source_engine/controller.html#457" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GameHasEnded ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetFacingDirection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetFacingDirection <span class="function_state"></span> <a href="../Source_engine/controller.html#479" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetFacingDirection ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetFindPathResult-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetFindPathResult <span class="function_state"></span> <a href="../Source_engine/controller.html#144" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  GetFindPathResult (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetHumanReadableName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetHumanReadableName <span class="function_state"></span> <a href="../Source_engine/controller.html#222" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">String</span> GetHumanReadableName ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetViewRotation <span class="function_state"></span> <a href="../Source_engine/controller.html#229" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> GetViewRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HearNoise-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> HearNoise <span class="function_state"></span> <a href="../Source_engine/controller.html#188" class="small">Source code</a></h4>
+<div class="declaration"> event  HearNoise ( <span class="source_type">float</span> Loudness, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> NoiseMaker )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitPlayerReplicationInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitPlayerReplicationInfo <span class="function_state"></span> <a href="../Source_engine/controller.html#398" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitPlayerReplicationInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InLatentExecution-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InLatentExecution <span class="function_state"></span> <a href="../Source_engine/controller.html#167" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type">bool</span> InLatentExecution ( <span class="source_type">int</span> LatentActionNumber )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsFindPathComplete-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsFindPathComplete <span class="function_state"></span> <a href="../Source_engine/controller.html#149" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type">bool</span> IsFindPathComplete (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LineOfSightTo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LineOfSightTo <span class="function_state"></span> <a href="../Source_engine/controller.html#136" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">514</span>) final <span class="source_type">function</span> <span class="source_type">bool</span> LineOfSightTo ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LongFall-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> LongFall <span class="function_state"></span> <a href="../Source_engine/controller.html#351" class="small">Source code</a></h4>
+<div class="declaration"> event  LongFall (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MayFall-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> MayFall <span class="function_state"></span> <a href="../Source_engine/controller.html#168" class="small">Source code</a></h4>
+<div class="declaration"> event  MayFall (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyBump-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyBump <span class="function_state"></span> <a href="../Source_engine/controller.html#359" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> NotifyBump ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyHeadVolumeChange-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyHeadVolumeChange <span class="function_state"></span> <a href="../Source_engine/controller.html#356" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> NotifyHeadVolumeChange ( <span class="source_type"><a href="../engine/physicsvolume.html" class="source">PhysicsVolume</a></span> NewVolume )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyHitMover-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyHitMover <span class="function_state"></span> <a href="../Source_engine/controller.html#360" class="small">Source code</a></h4>
+<div class="declaration"> event  NotifyHitMover ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitNormal, <span class="source_type"><a href="../engine/mover.html" class="source">mover</a></span> Wall )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyHitWall-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyHitWall <span class="function_state"></span> <a href="../Source_engine/controller.html#358" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> NotifyHitWall ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitNormal, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> Wall )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyJumpApex-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyJumpApex <span class="function_state"></span> <a href="../Source_engine/controller.html#361" class="small">Source code</a></h4>
+<div class="declaration"> event  NotifyJumpApex (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyKilled-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyKilled <span class="function_state"></span> <a href="../Source_engine/controller.html#534" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  NotifyKilled ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killed, <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> <span class="source_type">Other</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyLanded-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyLanded <span class="function_state"></span> <a href="../Source_engine/controller.html#357" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> NotifyLanded ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitNormal )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyMissedJump-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyMissedJump <span class="function_state"></span> <a href="../Source_engine/controller.html#362" class="small">Source code</a></h4>
+<div class="declaration"> event  NotifyMissedJump (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyPhysicsVolumeChange-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyPhysicsVolumeChange <span class="function_state"></span> <a href="../Source_engine/controller.html#355" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> NotifyPhysicsVolumeChange ( <span class="source_type"><a href="../engine/physicsvolume.html" class="source">PhysicsVolume</a></span> NewVolume )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyTakeHit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyTakeHit <span class="function_state"></span> <a href="../Source_engine/controller.html#366" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  NotifyTakeHit ( <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> InstigatedBy, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitLocation, <span class="source_type">int</span> Damage, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Momentum) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PathDiagnostics-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PathDiagnostics <span class="function_state"></span> <a href="../Source_engine/controller.html#159" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  PathDiagnostics (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnDied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnDied <span class="function_state"></span> <a href="../Source_engine/controller.html#324" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PawnDied ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">P</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnDied-Dead" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnDied <span class="function_state">Dead</span> <a href="../Source_engine/controller.html#621" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PawnDied ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">P</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnIsInPain-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnIsInPain <span class="function_state"></span> <a href="../Source_engine/controller.html#371" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PawnIsInPain ( <span class="source_type"><a href="../engine/physicsvolume.html" class="source">PhysicsVolume</a></span> PainVolume )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PendingStasis-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PendingStasis <span class="function_state"></span> <a href="../Source_engine/controller.html#170" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PendingStasis ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Possess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Possess <span class="function_state"></span> <a href="../Source_engine/controller.html#293" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Possess ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> aPawn) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_engine/controller.html#388" class="small">Source code</a></h4>
+<div class="declaration"> event  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostLoadGame-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostLoadGame <span class="function_state"></span> <a href="../Source_engine/controller.html#383" class="small">Source code</a></h4>
+<div class="declaration"> event  PostLoadGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PreBeginPlay <span class="function_state"></span> <a href="../Source_engine/controller.html#373" class="small">Source code</a></h4>
+<div class="declaration"> event  PreBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveController-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveController <span class="function_state"></span> <a href="../Source_engine/controller.html#165" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">530</span>) final <span class="source_type">function</span>  RemoveController (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderOverlays-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> RenderOverlays <span class="function_state"></span> <a href="../Source_engine/controller.html#469" class="small">Source code</a></h4>
+<div class="declaration">simulated event  RenderOverlays ( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Reset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Reset <span class="function_state"></span> <a href="../Source_engine/controller.html#237" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Reset ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Restart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Restart <span class="function_state"></span> <a href="../Source_engine/controller.html#346" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Restart ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SameTeamAs-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SameTeamAs <span class="function_state"></span> <a href="../Source_engine/controller.html#404" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> SameTeamAs ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> C) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerGivePawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerGivePawn <span class="function_state"></span> <a href="../Source_engine/controller.html#603" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ServerGivePawn (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerReStartPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerReStartPlayer <span class="function_state"></span> <a href="../Source_engine/controller.html#595" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ServerReStartPlayer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerReStartPlayer-Dead" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerReStartPlayer <span class="function_state">Dead</span> <a href="../Source_engine/controller.html#627" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ServerReStartPlayer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetFall-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetFall <span class="function_state"></span> <a href="../Source_engine/controller.html#370" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetFall (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPawnClass-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPawnClass <span class="function_state"></span> <a href="../Source_engine/controller.html#576" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetPawnClass ( <span class="source_type">string</span> inClass, <span class="source_type">string</span> inCharacter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShakeView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShakeView <span class="function_state"></span> <a href="../Source_engine/controller.html#532" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ShakeView ( <span class="source_type">float</span> shaketime, <span class="source_type">float</span> RollMag, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> OffsetMag, <span class="source_type">float</span> RollRate, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> OffsetRate, <span class="source_type">float</span> OffsetTime )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SoakStop-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SoakStop <span class="function_state"></span> <a href="../Source_engine/controller.html#291" class="small">Source code</a></h4>
+<div class="declaration"> event  SoakStop ( <span class="source_type">string</span> problem )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnPossess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnPossess <span class="function_state"></span> <a href="../Source_engine/controller.html#305" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UnPossess ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WantsSmoothedView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WantsSmoothedView <span class="function_state"></span> <a href="../Source_engine/controller.html#452" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> WantsSmoothedView ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WasKilledBy-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WasKilledBy <span class="function_state"></span> <a href="../Source_engine/controller.html#312" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  WasKilledBy ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	RotationRate=(Pitch=<span class="source_int">3072</span>,Yaw=<span class="source_int">30000</span>,Roll=<span class="source_int">2048</span>)
+     FovAngle=+<span class="source_int">00090.000000</span>
+	 bHidden=true
+	 bHiddenEd=true
+	 PlayerReplicationInfoClass=<span class="source_type">Class</span><span class="source_name">'Engine.PlayerReplicationInfo'</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/controller.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Controller">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/constantmaterial.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/crushed.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:29.148 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

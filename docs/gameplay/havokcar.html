@@ -1,0 +1,964 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.HavokCar</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/havokcar.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HavokCar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/handgrenadeprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/havokcarwheel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/havokcar.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.HavokCar</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/car.html">Car</a></dd>
+<dt>Modifiers</dt><dd>placeable dependson ( PlayerCharacterController ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/havokcar.html">HavokCar</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/buggy.html">Buggy</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_HC_ANGULAR_VELOCITY_ACCURACY_FACTOR" name="HC_ANGULAR_VELOCITY_ACCURACY_FACTOR" title="go to the details">HC_ANGULAR_VELOCITY_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">1000</td></tr>
+<tr><td width="40%"><a href="#_HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR" name="HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR" title="go to the details">HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">0.001</td></tr>
+<tr><td width="40%"><a href="#_HC_LINEAR_VELOCITY_ACCURACY_FACTOR" name="HC_LINEAR_VELOCITY_ACCURACY_FACTOR" title="go to the details">HC_LINEAR_VELOCITY_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">100</td></tr>
+<tr><td width="40%"><a href="#_HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" name="HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" title="go to the details">HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">0.01</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#CANNOT_STEAL_VEHICLE_PROMPT_INDEX">CANNOT_STEAL_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#DRIVER_PROMPT_INDEX">DRIVER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#ENEMY_INVENTORY_STATION_PROMPT_INDEX">ENEMY_INVENTORY_STATION_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#ENEMY_OCCUPIED_VEHICLE_PROMPT_INDEX">ENEMY_OCCUPIED_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#FLIP_PROMPT_INDEX">FLIP_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#FULL_VEHICLE_PROMPT_INDEX">FULL_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#GUNNER_PROMPT_INDEX">GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#HEAVY_ATTEMPT_TO_PILOT">HEAVY_ATTEMPT_TO_PILOT</a>, <a href="../gameplay/vehicle.html#INVENTORY_STATION_PROMPT_INDEX">INVENTORY_STATION_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#LEFT_GUNNER_PROMPT_INDEX">LEFT_GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#MAXIMUM_NUMBER_POSITIONS">MAXIMUM_NUMBER_POSITIONS</a>, <a href="../gameplay/vehicle.html#NUMBER_MINOR_ENTRY_SIGNALS">NUMBER_MINOR_ENTRY_SIGNALS</a>, <a href="../gameplay/vehicle.html#RIGHT_GUNNER_PROMPT_INDEX">RIGHT_GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#VEHICLE_PROHIBITED_OBJECT_PROMPT_INDEX">VEHICLE_PROHIBITED_OBJECT_PROMPT_INDEX</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;class&lt;<a href="../gameplay/havokcarwheel.html">HavokCarWheel</a>&gt;&gt;</td><td width="66%"><a href="#_havokCarWheelClasses" name="havokCarWheelClasses" title="go to the details">havokCarWheelClasses</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_hkVehicleDataPtr" name="hkVehicleDataPtr" title="go to the details">hkVehicleDataPtr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_leftFrontSkiddingEffectIndex" name="leftFrontSkiddingEffectIndex" title="go to the details">leftFrontSkiddingEffectIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_leftRearSkiddingEffectIndex" name="leftRearSkiddingEffectIndex" title="go to the details">leftRearSkiddingEffectIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/havokcar.html#HavokCarReplicationState">HavokCarReplicationState</a></td><td width="66%"><a href="#_OldReplicationCarState" name="OldReplicationCarState" title="go to the details">OldReplicationCarState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/havokcar.html#HavokCarReplicationState">HavokCarReplicationState</a></td><td width="66%"><a href="#_ReplicationCarState" name="ReplicationCarState" title="go to the details">ReplicationCarState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_rightFrontSkiddingEffectIndex" name="rightFrontSkiddingEffectIndex" title="go to the details">rightFrontSkiddingEffectIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_rightRearSkiddingEffectIndex" name="rightRearSkiddingEffectIndex" title="go to the details">rightRearSkiddingEffectIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_systemHandbrake" name="systemHandbrake" title="go to the details">systemHandbrake</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/havokvehiclewheel.html">Engine.HavokVehicleWheel</a>&gt;</td><td width="66%"><a href="#_Wheels" name="Wheels" title="go to the details">Wheels</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gameplay/havokcar.html#WheelOutput">WheelOutput</a>&gt;</td><td width="66%"><a href="#_wheelsOutput" name="wheelsOutput" title="go to the details">wheelsOutput</a></td></tr>
+<tr><th colspan="2" class="small">HavokVehicle</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_applyHandbrakeSpeed" name="applyHandbrakeSpeed" title="go to the details">applyHandbrakeSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_commonSuspensionDampingCompression" name="commonSuspensionDampingCompression" title="go to the details">commonSuspensionDampingCompression</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_commonSuspensionDampingRelaxation" name="commonSuspensionDampingRelaxation" title="go to the details">commonSuspensionDampingRelaxation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_commonSuspensionStrength" name="commonSuspensionStrength" title="go to the details">commonSuspensionStrength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_commonSuspensionTravel" name="commonSuspensionTravel" title="go to the details">commonSuspensionTravel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_commonWheelFriction" name="commonWheelFriction" title="go to the details">commonWheelFriction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_commonWheelMass" name="commonWheelMass" title="go to the details">commonWheelMass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_commonWheelViscosityFriction" name="commonWheelViscosityFriction" title="go to the details">commonWheelViscosityFriction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;float&gt;</td><td width="66%"><a href="#_GearRatios" name="GearRatios" title="go to the details">GearRatios</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_leftFrontWheelIndex" name="leftFrontWheelIndex" title="go to the details">leftFrontWheelIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_leftRearWheelIndex" name="leftRearWheelIndex" title="go to the details">leftRearWheelIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_occupiedApplyHandbrakeSpeed" name="occupiedApplyHandbrakeSpeed" title="go to the details">occupiedApplyHandbrakeSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_rightFrontWheelIndex" name="rightFrontWheelIndex" title="go to the details">rightFrontWheelIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_rightRearWheelIndex" name="rightRearWheelIndex" title="go to the details">rightRearWheelIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_skidEffectEnergyThreshold" name="skidEffectEnergyThreshold" title="go to the details">skidEffectEnergyThreshold</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;class&lt;<a href="../engine/havokvehiclewheel.html">Engine.HavokVehicleWheel</a>&gt;&gt;</td><td width="66%"><a href="#_wheelClasses" name="wheelClasses" title="go to the details">wheelClasses</a></td></tr>
+<tr><th colspan="2" class="small">HavokVehicleAerodynamics</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AerodynamicsAirDensity" name="AerodynamicsAirDensity" title="go to the details">AerodynamicsAirDensity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AerodynamicsDragCoeff" name="AerodynamicsDragCoeff" title="go to the details">AerodynamicsDragCoeff</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AerodynamicsFrontalArea" name="AerodynamicsFrontalArea" title="go to the details">AerodynamicsFrontalArea</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AerodynamicsLiftCoeff" name="AerodynamicsLiftCoeff" title="go to the details">AerodynamicsLiftCoeff</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CollisionSpinDamping" name="CollisionSpinDamping" title="go to the details">CollisionSpinDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CollisionThreshold" name="CollisionThreshold" title="go to the details">CollisionThreshold</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_ExtraGravity" name="ExtraGravity" title="go to the details">ExtraGravity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SpinDamping" name="SpinDamping" title="go to the details">SpinDamping</a></td></tr>
+<tr><th colspan="2" class="small">HavokVehicleEngine</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineMaxRPM" name="EngineMaxRPM" title="go to the details">EngineMaxRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineMinRPM" name="EngineMinRPM" title="go to the details">EngineMinRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineOptRPM" name="EngineOptRPM" title="go to the details">EngineOptRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineResistanceFactorAtMaxRPM" name="EngineResistanceFactorAtMaxRPM" title="go to the details">EngineResistanceFactorAtMaxRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineResistanceFactorAtMinRPM" name="EngineResistanceFactorAtMinRPM" title="go to the details">EngineResistanceFactorAtMinRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineResistanceFactorAtOptRPM" name="EngineResistanceFactorAtOptRPM" title="go to the details">EngineResistanceFactorAtOptRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineTorque" name="EngineTorque" title="go to the details">EngineTorque</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineTorqueFactorAtMaxRPM" name="EngineTorqueFactorAtMaxRPM" title="go to the details">EngineTorqueFactorAtMaxRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EngineTorqueFactorAtMinRPM" name="EngineTorqueFactorAtMinRPM" title="go to the details">EngineTorqueFactorAtMinRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GearClutchDelayTime" name="GearClutchDelayTime" title="go to the details">GearClutchDelayTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GearDownshiftRPM" name="GearDownshiftRPM" title="go to the details">GearDownshiftRPM</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GearReverseRatio" name="GearReverseRatio" title="go to the details">GearReverseRatio</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GearUpshiftRPM" name="GearUpshiftRPM" title="go to the details">GearUpshiftRPM</a></td></tr>
+<tr><th colspan="2" class="small">HavokVehicleGeneral</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ChassisMass" name="ChassisMass" title="go to the details">ChassisMass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ChassisUnitInertiaPitch" name="ChassisUnitInertiaPitch" title="go to the details">ChassisUnitInertiaPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ChassisUnitInertiaRoll" name="ChassisUnitInertiaRoll" title="go to the details">ChassisUnitInertiaRoll</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ChassisUnitInertiaYaw" name="ChassisUnitInertiaYaw" title="go to the details">ChassisUnitInertiaYaw</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FrictionEqualizer" name="FrictionEqualizer" title="go to the details">FrictionEqualizer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxSpeedFullSteeringAngle" name="MaxSpeedFullSteeringAngle" title="go to the details">MaxSpeedFullSteeringAngle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TorqueExtraFactor" name="TorqueExtraFactor" title="go to the details">TorqueExtraFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TorquePitchFactor" name="TorquePitchFactor" title="go to the details">TorquePitchFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TorqueRollFactor" name="TorqueRollFactor" title="go to the details">TorqueRollFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TorqueYawFactor" name="TorqueYawFactor" title="go to the details">TorqueYawFactor</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#carSteer">carSteer</a>, <a href="../gameplay/car.html#driveThrottleCoefficient">driveThrottleCoefficient</a>, <a href="../gameplay/car.html#effectAccelerating">effectAccelerating</a>, <a href="../gameplay/car.html#effectDeccelerating">effectDeccelerating</a>, <a href="../gameplay/car.html#Gear">Gear</a>, <a href="../gameplay/car.html#maximumYawChange">maximumYawChange</a>, <a href="../gameplay/car.html#minimumNavigationThrottle">minimumNavigationThrottle</a>, <a href="../gameplay/car.html#outputCarDirection">outputCarDirection</a>, <a href="../gameplay/car.html#SteeringMaxAngle">SteeringMaxAngle</a>, <a href="../gameplay/car.html#stopSteeringSize">stopSteeringSize</a>, <a href="../gameplay/car.html#StopThreshold">StopThreshold</a>, <a href="../gameplay/car.html#stopVelocitySize">stopVelocitySize</a>, <a href="../gameplay/car.html#strafeSteerAngleOffset">strafeSteerAngleOffset</a>, <a href="../gameplay/car.html#upsideDownDamagePerSecond">upsideDownDamagePerSecond</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#abandonmentDestruction">abandonmentDestruction</a>, <a href="../gameplay/vehicle.html#abandonmentDestructionPeriod">abandonmentDestructionPeriod</a>, <a href="../gameplay/vehicle.html#animationFinishThenLoop">animationFinishThenLoop</a>, <a href="../gameplay/vehicle.html#bCanBeStolen">bCanBeStolen</a>, <a href="../gameplay/vehicle.html#bCollisionDamageEnabled">bCollisionDamageEnabled</a>, <a href="../gameplay/vehicle.html#bDisablePositionSwitching">bDisablePositionSwitching</a>, <a href="../gameplay/vehicle.html#bDrawDriverInTP">bDrawDriverInTP</a>, <a href="../gameplay/vehicle.html#bFlipping">bFlipping</a>, <a href="../gameplay/vehicle.html#bGodMode">bGodMode</a>, <a href="../gameplay/vehicle.html#bHasBeenOccupied">bHasBeenOccupied</a>, <a href="../gameplay/vehicle.html#bInvincible">bInvincible</a>, <a href="../gameplay/vehicle.html#bSettledUpsideDown">bSettledUpsideDown</a>, <a href="../gameplay/vehicle.html#bShowPhysicsDebug">bShowPhysicsDebug</a>, <a href="../gameplay/vehicle.html#bVehicleCameraTrace">bVehicleCameraTrace</a>, <a href="../gameplay/vehicle.html#cachedCameraLocation">cachedCameraLocation</a>, <a href="../gameplay/vehicle.html#cameraDistance">cameraDistance</a>, <a href="../gameplay/vehicle.html#cannotStealPrompt">cannotStealPrompt</a>, <a href="../gameplay/vehicle.html#clientInterpolationHard">clientInterpolationHard</a>, <a href="../gameplay/vehicle.html#clientInterpolationPeriod">clientInterpolationPeriod</a>, <a href="../gameplay/vehicle.html#clientInterpolationSnapDistance">clientInterpolationSnapDistance</a>, <a href="../gameplay/vehicle.html#clientPositions[MAXIMUM_NUMBER_POSITIONS]">clientPositions[MAXIMUM_NUMBER_POSITIONS]</a>, <a href="../gameplay/vehicle.html#collisionDamageMagnitudeScale">collisionDamageMagnitudeScale</a>, <a href="../gameplay/vehicle.html#cornerSlowDownDistance">cornerSlowDownDistance</a>, <a href="../gameplay/vehicle.html#cornerSlowDownMinimumCosAngle">cornerSlowDownMinimumCosAngle</a>, <a href="../gameplay/vehicle.html#cornerSlowDownSpeedCoefficient">cornerSlowDownSpeedCoefficient</a>, <a href="../gameplay/vehicle.html#CrushingDamageTypeClass">CrushingDamageTypeClass</a>, <a href="../gameplay/vehicle.html#currentAbandonmentDuration">currentAbandonmentDuration</a>, <a href="../gameplay/vehicle.html#currentDesiredHavokState">currentDesiredHavokState</a>, <a href="../gameplay/vehicle.html#currentSwitchClass">currentSwitchClass</a>, <a href="../gameplay/vehicle.html#customInertiaTensor">customInertiaTensor</a>, <a href="../gameplay/vehicle.html#customInertiaTensorDiagonal">customInertiaTensorDiagonal</a>, <a href="../gameplay/vehicle.html#dampingPlusEnabled">dampingPlusEnabled</a>, <a href="../gameplay/vehicle.html#dampingPlusNegativeZ">dampingPlusNegativeZ</a>, <a href="../gameplay/vehicle.html#dampingPlusPositiveZ">dampingPlusPositiveZ</a>, <a href="../gameplay/vehicle.html#dampingPlusXY">dampingPlusXY</a>, <a href="../gameplay/vehicle.html#destroyedExplosionClass">destroyedExplosionClass</a>, <a href="../gameplay/vehicle.html#destructionObjectClass">destructionObjectClass</a>, <a href="../gameplay/vehicle.html#distanceToMaximumDurationScale">distanceToMaximumDurationScale</a>, <a href="../gameplay/vehicle.html#DiveInput">DiveInput</a>, <a href="../gameplay/vehicle.html#doNotEjectOnFlip">doNotEjectOnFlip</a>, <a href="../gameplay/vehicle.html#drivePitchCoefficient">drivePitchCoefficient</a>, <a href="../gameplay/vehicle.html#driverIndex">driverIndex</a>, <a href="../gameplay/vehicle.html#driverMaximumPitch">driverMaximumPitch</a>, <a href="../gameplay/vehicle.html#driverMinimumPitch">driverMinimumPitch</a>, <a href="../gameplay/vehicle.html#driverPrompt">driverPrompt</a>, <a href="../gameplay/vehicle.html#driverWeapon">driverWeapon</a>, <a href="../gameplay/vehicle.html#driverWeaponClass">driverWeaponClass</a>, <a href="../gameplay/vehicle.html#driveYawCoefficient">driveYawCoefficient</a>, <a href="../gameplay/vehicle.html#effects">effects</a>, <a href="../gameplay/vehicle.html#enemyInventoryStationPrompt">enemyInventoryStationPrompt</a>, <a href="../gameplay/vehicle.html#enemyOccupiedPrompt">enemyOccupiedPrompt</a>, <a href="../gameplay/vehicle.html#engineIdlingEffectIndex">engineIdlingEffectIndex</a>, <a href="../gameplay/vehicle.html#entries">entries</a>, <a href="../gameplay/vehicle.html#exits">exits</a>, <a href="../gameplay/vehicle.html#flipMaximumRotationDuration">flipMaximumRotationDuration</a>, <a href="../gameplay/vehicle.html#flipPrompt">flipPrompt</a>, <a href="../gameplay/vehicle.html#flipPushUpDuration">flipPushUpDuration</a>, <a href="../gameplay/vehicle.html#flipPushUpImpulse">flipPushUpImpulse</a>, <a href="../gameplay/vehicle.html#flipRotateTime">flipRotateTime</a>, <a href="../gameplay/vehicle.html#flipRotationDamping">flipRotationDamping</a>, <a href="../gameplay/vehicle.html#flipRotationStrength">flipRotationStrength</a>, <a href="../gameplay/vehicle.html#flipRotationTimeOut">flipRotationTimeOut</a>, <a href="../gameplay/vehicle.html#flipTriggers">flipTriggers</a>, <a href="../gameplay/vehicle.html#fullVehiclePrompt">fullVehiclePrompt</a>, <a href="../gameplay/vehicle.html#gunnerPrompt">gunnerPrompt</a>, <a href="../gameplay/vehicle.html#healthModifier">healthModifier</a>, <a href="../gameplay/vehicle.html#heavyAttemptedToPilot">heavyAttemptedToPilot</a>, <a href="../gameplay/vehicle.html#heavyAttemptedToPilotSwitchPromptDuration">heavyAttemptedToPilotSwitchPromptDuration</a>, <a href="../gameplay/vehicle.html#initialInvincibilityDuration">initialInvincibilityDuration</a>, <a href="../gameplay/vehicle.html#inventoryStationPrompt">inventoryStationPrompt</a>, <a href="../gameplay/vehicle.html#inverseCosUprightAngle">inverseCosUprightAngle</a>, <a href="../gameplay/vehicle.html#invicibilityMaterial">invicibilityMaterial</a>, <a href="../gameplay/vehicle.html#lastOccupantTeam">lastOccupantTeam</a>, <a href="../gameplay/vehicle.html#lastStateReceiveTime">lastStateReceiveTime</a>, <a href="../gameplay/vehicle.html#leftGunnerPrompt">leftGunnerPrompt</a>, <a href="../gameplay/vehicle.html#localClientPositions[MAXIMUM_NUMBER_POSITIONS]">localClientPositions[MAXIMUM_NUMBER_POSITIONS]</a>, <a href="../gameplay/vehicle.html#localizedName">localizedName</a>, <a href="../gameplay/vehicle.html#localMoveDestination">localMoveDestination</a>, <a href="../gameplay/vehicle.html#localTeam">localTeam</a>, <a href="../gameplay/vehicle.html#loseInitialInvincibilityTime">loseInitialInvincibilityTime</a>, <a href="../gameplay/vehicle.html#ManifestLayoutMaterial">ManifestLayoutMaterial</a>, <a href="../gameplay/vehicle.html#maximumNetUpdateInterval">maximumNetUpdateInterval</a>, <a href="../gameplay/vehicle.html#maximumNextNetUpdateTime">maximumNextNetUpdateTime</a>, <a href="../gameplay/vehicle.html#minimumCollisionDamageMagnitude">minimumCollisionDamageMagnitude</a>, <a href="../gameplay/vehicle.html#minimumObstacleLookAhead">minimumObstacleLookAhead</a>, <a href="../gameplay/vehicle.html#minorPositionEntrySignals[NUMBER_MINOR_ENTRY_SIGNALS]">minorPositionEntrySignals[NUMBER_MINOR_ENTRY_SIGNALS]</a>, <a href="../gameplay/vehicle.html#motor">motor</a>, <a href="../gameplay/vehicle.html#motorClass">motorClass</a>, <a href="../gameplay/vehicle.html#obstacleLookAheadVeloocityScale">obstacleLookAheadVeloocityScale</a>, <a href="../gameplay/vehicle.html#padding[8]">padding[8]</a>, <a href="../gameplay/vehicle.html#positions">positions</a>, <a href="../gameplay/vehicle.html#retriggerEffectEvents">retriggerEffectEvents</a>, <a href="../gameplay/vehicle.html#rightGunnerPrompt">rightGunnerPrompt</a>, <a href="../gameplay/vehicle.html#rootBone">rootBone</a>, <a href="../gameplay/vehicle.html#RotationInput">RotationInput</a>, <a href="../gameplay/vehicle.html#settledUpsideDownCosAngle">settledUpsideDownCosAngle</a>, <a href="../gameplay/vehicle.html#settledUpsideDownSpeed">settledUpsideDownSpeed</a>, <a href="../gameplay/vehicle.html#spawning">spawning</a>, <a href="../gameplay/vehicle.html#stayUprightDamping">stayUprightDamping</a>, <a href="../gameplay/vehicle.html#stayUprightEnabled">stayUprightEnabled</a>, <a href="../gameplay/vehicle.html#stayUprightStrength">stayUprightStrength</a>, <a href="../gameplay/vehicle.html#stopForEnemies">stopForEnemies</a>, <a href="../gameplay/vehicle.html#StrafeInput">StrafeInput</a>, <a href="../gameplay/vehicle.html#strafeLeftEffectIndex">strafeLeftEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeLeftOrThrustEffectIndex">strafeLeftOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeRightEffectIndex">strafeRightEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeRightOrThrustEffectIndex">strafeRightOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleBackEffectIndex">throttleBackEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleForwardEffectIndex">throttleForwardEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleForwardOrThrustEffectIndex">throttleForwardOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#ThrottleInput">ThrottleInput</a>, <a href="../gameplay/vehicle.html#thrustingEffectIndex">thrustingEffectIndex</a>, <a href="../gameplay/vehicle.html#ThrustInput">ThrustInput</a>, <a href="../gameplay/vehicle.html#TopSpeed">TopSpeed</a>, <a href="../gameplay/vehicle.html#TPCameraDistance">TPCameraDistance</a>, <a href="../gameplay/vehicle.html#TPCameraLookAt">TPCameraLookAt</a>, <a href="../gameplay/vehicle.html#vehicleCameraTraceExtents">vehicleCameraTraceExtents</a>, <a href="../gameplay/vehicle.html#vehicleEntries">vehicleEntries</a>, <a href="../gameplay/vehicle.html#vehicleFlipTriggers">vehicleFlipTriggers</a>, <a href="../gameplay/vehicle.html#vehicleProhibitedObjectPrompt">vehicleProhibitedObjectPrompt</a>, <a href="../gameplay/vehicle.html#velocityInheritOnExitScale">velocityInheritOnExitScale</a>, <a href="../gameplay/vehicle.html#waterDamagePerSecond">waterDamagePerSecond</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#VehiclePositionType">VehiclePositionType</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_HavokCarReplicationState" name="HavokCarReplicationState" title="go to the details">HavokCarReplicationState</a><br /><span class="small">Position, rotation, LinVel, AngVel, digitalThrottleInput, digitalStrafeInput, serverSteering[2], ServerBoost, ServerHandbrake</span></td></tr>
+<tr><td><a href="#_WheelOutput" name="WheelOutput" title="go to the details">WheelOutput</a><br /><span class="small">skidEnergyDensity, suspensionLength, groundContact</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#ClientOccupantEnterData">ClientOccupantEnterData</a>, <a href="../gameplay/vehicle.html#ClientPositionData">ClientPositionData</a>, <a href="../gameplay/vehicle.html#DesiredHavokState">DesiredHavokState</a>, <a href="../gameplay/vehicle.html#ExitData">ExitData</a>, <a href="../gameplay/vehicle.html#VehicleEffect">VehicleEffect</a>, <a href="../gameplay/vehicle.html#VehicleEntryData">VehicleEntryData</a>, <a href="../gameplay/vehicle.html#VehicleFlipTriggerData">VehicleFlipTriggerData</a>, <a href="../gameplay/vehicle.html#VehiclePosition">VehiclePosition</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_EncroachedBy-" name="EncroachedBy" title="go to the details">EncroachedBy</a> (actor Other ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FaceRotation-" name="FaceRotation" title="go to the details">FaceRotation</a> (<a href="../core/object.html#Rotator">rotator</a> NewRotation, float DeltaTime ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_havokCarSwitchClass-" name="havokCarSwitchClass" title="go to the details">havokCarSwitchClass</a> (class&lt;<a href="../gameplay/havokcar.html">HavokCar</a>&gt; havokCarClass)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_HavokVehicleHasChanged-" name="HavokVehicleHasChanged" title="go to the details">HavokVehicleHasChanged</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_initialiseEffects-" name="initialiseEffects" title="go to the details">initialiseEffects</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isEffectCauserActive-" name="isEffectCauserActive" title="go to the details">isEffectCauserActive</a> (int effectCauserIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isSettledUpsideDown-" name="isSettledUpsideDown" title="go to the details">isSettledUpsideDown</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_needToPushStateToClient-" name="needToPushStateToClient" title="go to the details">needToPushStateToClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PreBeginPlay-" name="PreBeginPlay" title="go to the details">PreBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_pushStateToClient-" name="pushStateToClient" title="go to the details">pushStateToClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemakeVehicle-" name="RemakeVehicle" title="go to the details">RemakeVehicle</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_switchClass-" name="switchClass" title="go to the details">switchClass</a> (class&lt;<a href="../gameplay/vehicle.html">Vehicle</a>&gt; switchClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_switchWheelClasses-" name="switchWheelClasses" title="go to the details">switchWheelClasses</a> (out array<class<HavokCarWheel> &gt; newWheelClasses)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateDynamicEffectStates-" name="updateDynamicEffectStates" title="go to the details">updateDynamicEffectStates</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateSkidEffect-" name="updateSkidEffect" title="go to the details">updateSkidEffect</a> (int wheelIndex, int effectIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UpdateVehicle-" name="UpdateVehicle" title="go to the details">UpdateVehicle</a> (float DeltaTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_vehicleStateReceived-" name="vehicleStateReceived" title="go to the details">vehicleStateReceived</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#applyOutput">applyOutput</a>, <a href="../gameplay/car.html#Destroyed">Destroyed</a>, <a href="../gameplay/car.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/car.html#ProcessInput">ProcessInput</a>, <a href="../gameplay/car.html#tick">tick</a>, <a href="../gameplay/car.html#updateGear">updateGear</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#aboutToDie">aboutToDie</a>, <a href="../gameplay/vehicle.html#aboutToSettleUpsideDown">aboutToSettleUpsideDown</a>, <a href="../gameplay/vehicle.html#addEffect">addEffect</a>, <a href="../gameplay/vehicle.html#aimAdjustViewRotation">aimAdjustViewRotation</a>, <a href="../gameplay/vehicle.html#altFire">altFire</a>, <a href="../gameplay/vehicle.html#applyOutput">applyOutput</a>, <a href="../gameplay/vehicle.html#attachToVehicle">attachToVehicle</a>, <a href="../gameplay/vehicle.html#BaseChange">BaseChange</a>, <a href="../gameplay/vehicle.html#BeginState">BeginState</a>, <a href="../gameplay/vehicle.html#cameraTrace">cameraTrace</a>, <a href="../gameplay/vehicle.html#canArmorOccupy">canArmorOccupy</a>, <a href="../gameplay/vehicle.html#canArmourBeDriver">canArmourBeDriver</a>, <a href="../gameplay/vehicle.html#canArmourBePassenger">canArmourBePassenger</a>, <a href="../gameplay/vehicle.html#canBeRepairedBy">canBeRepairedBy</a>, <a href="../gameplay/vehicle.html#canCharacterRespawnAt">canCharacterRespawnAt</a>, <a href="../gameplay/vehicle.html#canOccupy">canOccupy</a>, <a href="../gameplay/vehicle.html#canSwitchPosition">canSwitchPosition</a>, <a href="../gameplay/vehicle.html#canTargetPoint">canTargetPoint</a>, <a href="../gameplay/vehicle.html#cleanupAI">cleanupAI</a>, <a href="../gameplay/vehicle.html#clientDriverLeave">clientDriverLeave</a>, <a href="../gameplay/vehicle.html#clientOccupantEnter">clientOccupantEnter</a>, <a href="../gameplay/vehicle.html#collisionDamage">collisionDamage</a>, <a href="../gameplay/vehicle.html#copyVehicleAIValuesToTurret">copyVehicleAIValuesToTurret</a>, <a href="../gameplay/vehicle.html#customFiredEffectProcessing">customFiredEffectProcessing</a>, <a href="../gameplay/vehicle.html#Destroyed">Destroyed</a>, <a href="../gameplay/vehicle.html#DisplayDebug">DisplayDebug</a>, <a href="../gameplay/vehicle.html#displayWorldSpaceDebug">displayWorldSpaceDebug</a>, <a href="../gameplay/vehicle.html#doCustomFiredEffectProcessing">doCustomFiredEffectProcessing</a>, <a href="../gameplay/vehicle.html#drawActorCollision">drawActorCollision</a>, <a href="../gameplay/vehicle.html#driverLeave">driverLeave</a>, <a href="../gameplay/vehicle.html#enableAbandonmentDestruction">enableAbandonmentDestruction</a>, <a href="../gameplay/vehicle.html#EncroachedBy">EncroachedBy</a>, <a href="../gameplay/vehicle.html#EncroachingOn">EncroachingOn</a>, <a href="../gameplay/vehicle.html#EyePosition">EyePosition</a>, <a href="../gameplay/vehicle.html#FaceRotation">FaceRotation</a>, <a href="../gameplay/vehicle.html#finishedSpawnFromVehicleSpawnPoint">finishedSpawnFromVehicleSpawnPoint</a>, <a href="../gameplay/vehicle.html#fire">fire</a>, <a href="../gameplay/vehicle.html#firingMotor">firingMotor</a>, <a href="../gameplay/vehicle.html#flip">flip</a>, <a href="../gameplay/vehicle.html#forceNetDirty">forceNetDirty</a>, <a href="../gameplay/vehicle.html#generateAIDeathSpeechEvents">generateAIDeathSpeechEvents</a>, <a href="../gameplay/vehicle.html#getAimLocation">getAimLocation</a>, <a href="../gameplay/vehicle.html#getAlternateAimAdjustStart">getAlternateAimAdjustStart</a>, <a href="../gameplay/vehicle.html#getAngle">getAngle</a>, <a href="../gameplay/vehicle.html#getAvailablePositionIndex">getAvailablePositionIndex</a>, <a href="../gameplay/vehicle.html#getCameraLookAt">getCameraLookAt</a>, <a href="../gameplay/vehicle.html#getControllingCharacter">getControllingCharacter</a>, <a href="../gameplay/vehicle.html#getCorrespondingInventoryStation">getCorrespondingInventoryStation</a>, <a href="../gameplay/vehicle.html#getDriver">getDriver</a>, <a href="../gameplay/vehicle.html#getEffectsBaseActor">getEffectsBaseActor</a>, <a href="../gameplay/vehicle.html#getEnergy">getEnergy</a>, <a href="../gameplay/vehicle.html#getFirstPersonEquippableLocation">getFirstPersonEquippableLocation</a>, <a href="../gameplay/vehicle.html#getFirstPersonEquippableRotation">getFirstPersonEquippableRotation</a>, <a href="../gameplay/vehicle.html#getHighByte">getHighByte</a>, <a href="../gameplay/vehicle.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/vehicle.html#getLowByte">getLowByte</a>, <a href="../gameplay/vehicle.html#getMinorPositionEntryIndex">getMinorPositionEntryIndex</a>, <a href="../gameplay/vehicle.html#getOccupantPositionIndex">getOccupantPositionIndex</a>, <a href="../gameplay/vehicle.html#getOccupantTeam">getOccupantTeam</a>, <a href="../gameplay/vehicle.html#getOut">getOut</a>, <a href="../gameplay/vehicle.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/vehicle.html#getPhysicalAttachment">getPhysicalAttachment</a>, <a href="../gameplay/vehicle.html#getPositionIndex">getPositionIndex</a>, <a href="../gameplay/vehicle.html#getPositionPromptIndex">getPositionPromptIndex</a>, <a href="../gameplay/vehicle.html#getProjectileSpawnLocation">getProjectileSpawnLocation</a>, <a href="../gameplay/vehicle.html#getPrompt">getPrompt</a>, <a href="../gameplay/vehicle.html#getTargetPositionIndex">getTargetPositionIndex</a>, <a href="../gameplay/vehicle.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/vehicle.html#getTeamSkin">getTeamSkin</a>, <a href="../gameplay/vehicle.html#getThirdPersonEquippableAttachment">getThirdPersonEquippableAttachment</a>, <a href="../gameplay/vehicle.html#getUnusedInventoryStation">getUnusedInventoryStation</a>, <a href="../gameplay/vehicle.html#getVehicleUseablePoint">getVehicleUseablePoint</a>, <a href="../gameplay/vehicle.html#getViewRotationFromMotor">getViewRotationFromMotor</a>, <a href="../gameplay/vehicle.html#getWeapon">getWeapon</a>, <a href="../gameplay/vehicle.html#GraphData">GraphData</a>, <a href="../gameplay/vehicle.html#InGodMode">InGodMode</a>, <a href="../gameplay/vehicle.html#initDriverAI">initDriverAI</a>, <a href="../gameplay/vehicle.html#initGunnerAI">initGunnerAI</a>, <a href="../gameplay/vehicle.html#initialiseEffects">initialiseEffects</a>, <a href="../gameplay/vehicle.html#initVehicleAI">initVehicleAI</a>, <a href="../gameplay/vehicle.html#interpolateRotation">interpolateRotation</a>, <a href="../gameplay/vehicle.html#isEffectCauserActive">isEffectCauserActive</a>, <a href="../gameplay/vehicle.html#isHavokCompletelyInitialised">isHavokCompletelyInitialised</a>, <a href="../gameplay/vehicle.html#isInventoryPosition">isInventoryPosition</a>, <a href="../gameplay/vehicle.html#isMajorPosition">isMajorPosition</a>, <a href="../gameplay/vehicle.html#isOccupant">isOccupant</a>, <a href="../gameplay/vehicle.html#isOccupied">isOccupied</a>, <a href="../gameplay/vehicle.html#isSettledUpsideDown">isSettledUpsideDown</a>, <a href="../gameplay/vehicle.html#isUpright">isUpright</a>, <a href="../gameplay/vehicle.html#needToPushStateToClient">needToPushStateToClient</a>, <a href="../gameplay/vehicle.html#occupantEnter">occupantEnter</a>, <a href="../gameplay/vehicle.html#occupantEnterAnimationProcessing">occupantEnterAnimationProcessing</a>, <a href="../gameplay/vehicle.html#occupantLeaveAnimationProcessing">occupantLeaveAnimationProcessing</a>, <a href="../gameplay/vehicle.html#occupantSwitchPosition">occupantSwitchPosition</a>, <a href="../gameplay/vehicle.html#onShotFiredNotification">onShotFiredNotification</a>, <a href="../gameplay/vehicle.html#otherClientOccupantEnter">otherClientOccupantEnter</a>, <a href="../gameplay/vehicle.html#otherClientOccupantLeave">otherClientOccupantLeave</a>, <a href="../gameplay/vehicle.html#packPitchAndYaw">packPitchAndYaw</a>, <a href="../gameplay/vehicle.html#performFlip">performFlip</a>, <a href="../gameplay/vehicle.html#PlayDying">PlayDying</a>, <a href="../gameplay/vehicle.html#playerMoveProcessing">playerMoveProcessing</a>, <a href="../gameplay/vehicle.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/vehicle.html#PostLoadGame">PostLoadGame</a>, <a href="../gameplay/vehicle.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/vehicle.html#postNetReceive">postNetReceive</a>, <a href="../gameplay/vehicle.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/vehicle.html#PrecacheVehicleMeshes">PrecacheVehicleMeshes</a>, <a href="../gameplay/vehicle.html#processInput">processInput</a>, <a href="../gameplay/vehicle.html#pushStateToClient">pushStateToClient</a>, <a href="../gameplay/vehicle.html#releaseAltFire">releaseAltFire</a>, <a href="../gameplay/vehicle.html#releaseFire">releaseFire</a>, <a href="../gameplay/vehicle.html#rematchGoals">rematchGoals</a>, <a href="../gameplay/vehicle.html#setFirePressed">setFirePressed</a>, <a href="../gameplay/vehicle.html#setSkin">setSkin</a>, <a href="../gameplay/vehicle.html#setTeam">setTeam</a>, <a href="../gameplay/vehicle.html#settledUpsideDownChanged">settledUpsideDownChanged</a>, <a href="../gameplay/vehicle.html#shouldFire">shouldFire</a>, <a href="../gameplay/vehicle.html#ShouldProjectileHit">ShouldProjectileHit</a>, <a href="../gameplay/vehicle.html#showPhysicsDebug">showPhysicsDebug</a>, <a href="../gameplay/vehicle.html#spawnCharacter">spawnCharacter</a>, <a href="../gameplay/vehicle.html#specialCalcView">specialCalcView</a>, <a href="../gameplay/vehicle.html#specialCalcViewProcessing">specialCalcViewProcessing</a>, <a href="../gameplay/vehicle.html#startedSpawnFromVehicleSpawnPoint">startedSpawnFromVehicleSpawnPoint</a>, <a href="../gameplay/vehicle.html#switchClass">switchClass</a>, <a href="../gameplay/vehicle.html#switchPosition">switchPosition</a>, <a href="../gameplay/vehicle.html#tick">tick</a>, <a href="../gameplay/vehicle.html#Timer">Timer</a>, <a href="../gameplay/vehicle.html#toggleShowPhysicsDebug">toggleShowPhysicsDebug</a>, <a href="../gameplay/vehicle.html#tryToDrive">tryToDrive</a>, <a href="../gameplay/vehicle.html#tryToOccupy">tryToOccupy</a>, <a href="../gameplay/vehicle.html#unpackPitchAndYaw">unpackPitchAndYaw</a>, <a href="../gameplay/vehicle.html#UnPossessed">UnPossessed</a>, <a href="../gameplay/vehicle.html#updateDynamicEffectStates">updateDynamicEffectStates</a>, <a href="../gameplay/vehicle.html#updateEffectsStates">updateEffectsStates</a>, <a href="../gameplay/vehicle.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a>, <a href="../gameplay/vehicle.html#updateTeamSkin">updateTeamSkin</a>, <a href="../gameplay/vehicle.html#useEnergy">useEnergy</a>, <a href="../gameplay/vehicle.html#vehicleCeaseFire">vehicleCeaseFire</a>, <a href="../gameplay/vehicle.html#vehicleFire">vehicleFire</a>, <a href="../gameplay/vehicle.html#VehicleStateReceived">VehicleStateReceived</a>, <a href="../gameplay/vehicle.html#vehicleTrace">vehicleTrace</a>, <a href="../gameplay/vehicle.html#vehicleTransitionTrace">vehicleTransitionTrace</a>, <a href="../gameplay/vehicle.html#VehicleUpdateParams">VehicleUpdateParams</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_HC_ANGULAR_VELOCITY_ACCURACY_FACTOR" class="hidden"></a>HC_ANGULAR_VELOCITY_ACCURACY_FACTOR <a href="../Source_gameplay/havokcar.html#36" class="small">Source code</a></h4>
+<div class="declaration">const HC_ANGULAR_VELOCITY_ACCURACY_FACTOR = <span class="source_int">1000</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR" class="hidden"></a>HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR <a href="../Source_gameplay/havokcar.html#37" class="small">Source code</a></h4>
+<div class="declaration">const HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR = <span class="source_int">0.001</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HC_LINEAR_VELOCITY_ACCURACY_FACTOR" class="hidden"></a>HC_LINEAR_VELOCITY_ACCURACY_FACTOR <a href="../Source_gameplay/havokcar.html#33" class="small">Source code</a></h4>
+<div class="declaration">const HC_LINEAR_VELOCITY_ACCURACY_FACTOR = <span class="source_int">100</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" class="hidden"></a>HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR <a href="../Source_gameplay/havokcar.html#34" class="small">Source code</a></h4>
+<div class="declaration">const HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR = <span class="source_int">0.01</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_havokCarWheelClasses" class="hidden"></a>havokCarWheelClasses <a href="../Source_gameplay/havokcar.html#71" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/havokcarwheel.html" class="source">HavokCarWheel</a></span>&gt;&gt; havokCarWheelClasses;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkVehicleDataPtr" class="hidden"></a>hkVehicleDataPtr <a href="../Source_gameplay/havokcar.html#51" class="small">Source code</a></h4>
+<div class="declaration">var const transient <span class="source_type">int</span> hkVehicleDataPtr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftFrontSkiddingEffectIndex" class="hidden"></a>leftFrontSkiddingEffectIndex <a href="../Source_gameplay/havokcar.html#116" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> leftFrontSkiddingEffectIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftRearSkiddingEffectIndex" class="hidden"></a>leftRearSkiddingEffectIndex <a href="../Source_gameplay/havokcar.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> leftRearSkiddingEffectIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OldReplicationCarState" class="hidden"></a>OldReplicationCarState <a href="../Source_gameplay/havokcar.html#122" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/havokcar.html#HavokCarReplicationState" class="source">HavokCarReplicationState</a></span> OldReplicationCarState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReplicationCarState" class="hidden"></a>ReplicationCarState <a href="../Source_gameplay/havokcar.html#121" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/havokcar.html#HavokCarReplicationState" class="source">HavokCarReplicationState</a></span> ReplicationCarState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightFrontSkiddingEffectIndex" class="hidden"></a>rightFrontSkiddingEffectIndex <a href="../Source_gameplay/havokcar.html#118" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> rightFrontSkiddingEffectIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightRearSkiddingEffectIndex" class="hidden"></a>rightRearSkiddingEffectIndex <a href="../Source_gameplay/havokcar.html#119" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> rightRearSkiddingEffectIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_systemHandbrake" class="hidden"></a>systemHandbrake <a href="../Source_gameplay/havokcar.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> systemHandbrake;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Wheels" class="hidden"></a>Wheels <a href="../Source_gameplay/havokcar.html#72" class="small">Source code</a></h4>
+<div class="declaration">var editinline array&lt;<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/havokvehiclewheel.html" class="source">HavokVehicleWheel</a></span>&gt; Wheels;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_wheelsOutput" class="hidden"></a>wheelsOutput <a href="../Source_gameplay/havokcar.html#46" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../gameplay/havokcar.html#WheelOutput" class="source">WheelOutput</a></span>&gt; wheelsOutput;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HavokVehicle</h3>
+<h4><a name="_applyHandbrakeSpeed" class="hidden"></a>applyHandbrakeSpeed <a href="../Source_gameplay/havokcar.html#113" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">float</span> applyHandbrakeSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_commonSuspensionDampingCompression" class="hidden"></a>commonSuspensionDampingCompression <a href="../Source_gameplay/havokcar.html#129" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span> commonSuspensionDampingCompression;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_commonSuspensionDampingRelaxation" class="hidden"></a>commonSuspensionDampingRelaxation <a href="../Source_gameplay/havokcar.html#130" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span> commonSuspensionDampingRelaxation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_commonSuspensionStrength" class="hidden"></a>commonSuspensionStrength <a href="../Source_gameplay/havokcar.html#128" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span> commonSuspensionStrength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_commonSuspensionTravel" class="hidden"></a>commonSuspensionTravel <a href="../Source_gameplay/havokcar.html#131" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span> commonSuspensionTravel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_commonWheelFriction" class="hidden"></a>commonWheelFriction <a href="../Source_gameplay/havokcar.html#126" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span> commonWheelFriction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_commonWheelMass" class="hidden"></a>commonWheelMass <a href="../Source_gameplay/havokcar.html#125" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span> commonWheelMass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_commonWheelViscosityFriction" class="hidden"></a>commonWheelViscosityFriction <a href="../Source_gameplay/havokcar.html#127" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">bool</span> commonWheelViscosityFriction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GearRatios" class="hidden"></a>GearRatios <a href="../Source_gameplay/havokcar.html#74" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) editinline array&lt;<span class="source_type">float</span>&gt; GearRatios;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftFrontWheelIndex" class="hidden"></a>leftFrontWheelIndex <a href="../Source_gameplay/havokcar.html#133" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">int</span> leftFrontWheelIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftRearWheelIndex" class="hidden"></a>leftRearWheelIndex <a href="../Source_gameplay/havokcar.html#134" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">int</span> leftRearWheelIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_occupiedApplyHandbrakeSpeed" class="hidden"></a>occupiedApplyHandbrakeSpeed <a href="../Source_gameplay/havokcar.html#114" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">float</span> occupiedApplyHandbrakeSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightFrontWheelIndex" class="hidden"></a>rightFrontWheelIndex <a href="../Source_gameplay/havokcar.html#135" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">int</span> rightFrontWheelIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightRearWheelIndex" class="hidden"></a>rightRearWheelIndex <a href="../Source_gameplay/havokcar.html#136" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">int</span> rightRearWheelIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_skidEffectEnergyThreshold" class="hidden"></a>skidEffectEnergyThreshold <a href="../Source_gameplay/havokcar.html#139" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) <span class="source_type">float</span> skidEffectEnergyThreshold;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_wheelClasses" class="hidden"></a>wheelClasses <a href="../Source_gameplay/havokcar.html#70" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokvehicle.html" class="source">HavokVehicle</a></span>) array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/havokvehiclewheel.html" class="source">HavokVehicleWheel</a></span>&gt;&gt; wheelClasses;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HavokVehicleAerodynamics</h3>
+<h4><a name="_AerodynamicsAirDensity" class="hidden"></a>AerodynamicsAirDensity <a href="../Source_gameplay/havokcar.html#104" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type">float</span> AerodynamicsAirDensity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AerodynamicsDragCoeff" class="hidden"></a>AerodynamicsDragCoeff <a href="../Source_gameplay/havokcar.html#106" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type">float</span> AerodynamicsDragCoeff;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AerodynamicsFrontalArea" class="hidden"></a>AerodynamicsFrontalArea <a href="../Source_gameplay/havokcar.html#105" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type">float</span> AerodynamicsFrontalArea;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AerodynamicsLiftCoeff" class="hidden"></a>AerodynamicsLiftCoeff <a href="../Source_gameplay/havokcar.html#107" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type">float</span> AerodynamicsLiftCoeff;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CollisionSpinDamping" class="hidden"></a>CollisionSpinDamping <a href="../Source_gameplay/havokcar.html#110" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type">float</span> CollisionSpinDamping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CollisionThreshold" class="hidden"></a>CollisionThreshold <a href="../Source_gameplay/havokcar.html#111" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type">float</span> CollisionThreshold;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExtraGravity" class="hidden"></a>ExtraGravity <a href="../Source_gameplay/havokcar.html#108" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> ExtraGravity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpinDamping" class="hidden"></a>SpinDamping <a href="../Source_gameplay/havokcar.html#109" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleAerodynamics) <span class="source_type">float</span> SpinDamping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HavokVehicleEngine</h3>
+<h4><a name="_EngineMaxRPM" class="hidden"></a>EngineMaxRPM <a href="../Source_gameplay/havokcar.html#92" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineMaxRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineMinRPM" class="hidden"></a>EngineMinRPM <a href="../Source_gameplay/havokcar.html#90" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineMinRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineOptRPM" class="hidden"></a>EngineOptRPM <a href="../Source_gameplay/havokcar.html#91" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineOptRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineResistanceFactorAtMaxRPM" class="hidden"></a>EngineResistanceFactorAtMaxRPM <a href="../Source_gameplay/havokcar.html#97" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineResistanceFactorAtMaxRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineResistanceFactorAtMinRPM" class="hidden"></a>EngineResistanceFactorAtMinRPM <a href="../Source_gameplay/havokcar.html#95" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineResistanceFactorAtMinRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineResistanceFactorAtOptRPM" class="hidden"></a>EngineResistanceFactorAtOptRPM <a href="../Source_gameplay/havokcar.html#96" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineResistanceFactorAtOptRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineTorque" class="hidden"></a>EngineTorque <a href="../Source_gameplay/havokcar.html#89" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineTorque;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineTorqueFactorAtMaxRPM" class="hidden"></a>EngineTorqueFactorAtMaxRPM <a href="../Source_gameplay/havokcar.html#94" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineTorqueFactorAtMaxRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EngineTorqueFactorAtMinRPM" class="hidden"></a>EngineTorqueFactorAtMinRPM <a href="../Source_gameplay/havokcar.html#93" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> EngineTorqueFactorAtMinRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GearClutchDelayTime" class="hidden"></a>GearClutchDelayTime <a href="../Source_gameplay/havokcar.html#100" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> GearClutchDelayTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GearDownshiftRPM" class="hidden"></a>GearDownshiftRPM <a href="../Source_gameplay/havokcar.html#98" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> GearDownshiftRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GearReverseRatio" class="hidden"></a>GearReverseRatio <a href="../Source_gameplay/havokcar.html#101" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> GearReverseRatio;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GearUpshiftRPM" class="hidden"></a>GearUpshiftRPM <a href="../Source_gameplay/havokcar.html#99" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleEngine) <span class="source_type">float</span> GearUpshiftRPM;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HavokVehicleGeneral</h3>
+<h4><a name="_ChassisMass" class="hidden"></a>ChassisMass <a href="../Source_gameplay/havokcar.html#77" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> ChassisMass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChassisUnitInertiaPitch" class="hidden"></a>ChassisUnitInertiaPitch <a href="../Source_gameplay/havokcar.html#86" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> ChassisUnitInertiaPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChassisUnitInertiaRoll" class="hidden"></a>ChassisUnitInertiaRoll <a href="../Source_gameplay/havokcar.html#85" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> ChassisUnitInertiaRoll;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChassisUnitInertiaYaw" class="hidden"></a>ChassisUnitInertiaYaw <a href="../Source_gameplay/havokcar.html#84" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> ChassisUnitInertiaYaw;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FrictionEqualizer" class="hidden"></a>FrictionEqualizer <a href="../Source_gameplay/havokcar.html#79" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> FrictionEqualizer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxSpeedFullSteeringAngle" class="hidden"></a>MaxSpeedFullSteeringAngle <a href="../Source_gameplay/havokcar.html#78" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> MaxSpeedFullSteeringAngle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TorqueExtraFactor" class="hidden"></a>TorqueExtraFactor <a href="../Source_gameplay/havokcar.html#83" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> TorqueExtraFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TorquePitchFactor" class="hidden"></a>TorquePitchFactor <a href="../Source_gameplay/havokcar.html#81" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> TorquePitchFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TorqueRollFactor" class="hidden"></a>TorqueRollFactor <a href="../Source_gameplay/havokcar.html#80" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> TorqueRollFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TorqueYawFactor" class="hidden"></a>TorqueYawFactor <a href="../Source_gameplay/havokcar.html#82" class="small">Source code</a></h4>
+<div class="declaration">var(HavokVehicleGeneral) <span class="source_type">float</span> TorqueYawFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_HavokCarReplicationState" class="hidden"></a>HavokCarReplicationState <a href="../Source_gameplay/havokcar.html#53" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/havokcar.html#HavokCarReplicationState" class="source">HavokCarReplicationState</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> AngVel;<br />
+var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>.EDigitalAxisInput digitalStrafeInput;<br />
+var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>.EDigitalAxisInput digitalThrottleInput;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LinVel;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Position</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Quat" class="source">quat</a></span> rotation;<br />
+var <span class="source_type">bool</span> ServerBoost;<br />
+var <span class="source_type">bool</span> ServerHandbrake;<br />
+var <span class="source_type">byte</span> serverSteering[<span class="source_int">2</span>];<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WheelOutput" class="hidden"></a>WheelOutput <a href="../Source_gameplay/havokcar.html#40" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/havokcar.html#WheelOutput" class="source">WheelOutput</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> groundContact;<br />
+var <span class="source_type">float</span> skidEnergyDensity;<br />
+var <span class="source_type">float</span> suspensionLength;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EncroachedBy-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> EncroachedBy <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#161" class="small">Source code</a></h4>
+<div class="declaration"> event  EncroachedBy ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FaceRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FaceRotation <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#166" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  FaceRotation ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">NewRotation</span>, <span class="source_type">float</span> <span class="source_type">DeltaTime</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_havokCarSwitchClass-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> havokCarSwitchClass <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#231" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span>  havokCarSwitchClass ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/havokcar.html" class="source">HavokCar</a></span>&gt; havokCarClass )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokVehicleHasChanged-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> HavokVehicleHasChanged <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#246" class="small">Source code</a></h4>
+<div class="declaration">simulated event  HavokVehicleHasChanged ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialiseEffects-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> initialiseEffects <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#171" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  initialiseEffects ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isEffectCauserActive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isEffectCauserActive <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#334" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> isEffectCauserActive ( <span class="source_type">int</span> effectCauserIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isSettledUpsideDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isSettledUpsideDown <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#399" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> isSettledUpsideDown ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_needToPushStateToClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> needToPushStateToClient <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#255" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> needToPushStateToClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#237" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PreBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#147" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PreBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pushStateToClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> pushStateToClient <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#289" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  pushStateToClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemakeVehicle-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemakeVehicle <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#229" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RemakeVehicle (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_switchClass-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> switchClass <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#380" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  switchClass ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>&gt; switchClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_switchWheelClasses-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> switchWheelClasses <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#234" class="small">Source code</a></h4>
+<div class="declaration">native simulated <span class="source_type">function</span>  switchWheelClasses ( out array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/havokcarwheel.html" class="source">HavokCarWheel</a></span>&gt; &gt; newWheelClasses )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#181" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateDynamicEffectStates-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateDynamicEffectStates <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#351" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  updateDynamicEffectStates ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateSkidEffect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateSkidEffect <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#362" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  updateSkidEffect ( <span class="source_type">int</span> wheelIndex, <span class="source_type">int</span> effectIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateVehicle-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UpdateVehicle <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#226" class="small">Source code</a></h4>
+<div class="declaration">simulated event  UpdateVehicle ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleStateReceived-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> vehicleStateReceived <span class="function_state"></span> <a href="../Source_gameplay/havokcar.html#310" class="small">Source code</a></h4>
+<div class="declaration">simulated event  vehicleStateReceived ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DrawType=DT_Mesh
+	<span class="source_type">Mesh</span>=SkeletalMesh<span class="source_name">'Vehicles.Buggy'</span>
+    
+ 	bDrawDriverInTP=false
+
+    Physics=PHYS_Havok
+	bEdShouldSnap=True
+	bStatic=False
+	bShadowCast=False
+	bCollideActors=True
+	bCollideWorld=False
+    bProjTarget=True
+	bBlockActors=True
+	bBlockNonZeroExtentTraces=True
+	bBlockZeroExtentTraces=True
+	bBlockPlayers=True
+	bWorldGeometry=False
+	bBlockKarma=False
+	bBlockHavok=True
+    CollisionHeight=+<span class="source_int">000001.000000</span>
+	CollisionRadius=+<span class="source_int">000001.000000</span>
+	bAcceptsProjectors=False
+	bCanBeBaseForPawns=True
+	RemoteRole=ROLE_SimulatedProxy
+	bNetInitialRotation=True
+	bSpecialCalcView=True
+	
+	
+	
+	ChassisMass=<span class="source_int">750</span> 
+	SteeringMaxAngle=<span class="source_int">4000</span> 
+	MaxSpeedFullSteeringAngle=<span class="source_int">70</span> 
+	FrictionEqualizer=<span class="source_int">0.5</span>
+	TorqueRollFactor=<span class="source_int">0.25</span>
+	TorquePitchFactor=<span class="source_int">0.5</span>
+	TorqueYawFactor=<span class="source_int">0.35</span> 
+	TorqueExtraFactor=-<span class="source_int">0.5</span>
+	ChassisUnitInertiaYaw=<span class="source_int">1.0</span>
+	ChassisUnitInertiaRoll=<span class="source_int">0.4</span>
+	ChassisUnitInertiaPitch=<span class="source_int">1.0</span>
+
+	
+	EngineTorque=<span class="source_int">500</span>
+	EngineMinRPM=<span class="source_int">1000</span>
+	EngineOptRPM=<span class="source_int">5500</span>
+	EngineMaxRPM=<span class="source_int">7500</span>
+	EngineTorqueFactorAtMinRPM=<span class="source_int">0.8</span>
+	EngineTorqueFactorAtMaxRPM=<span class="source_int">0.8</span>
+	EngineResistanceFactorAtMinRPM=<span class="source_int">0.05</span>
+	EngineResistanceFactorAtOptRPM=<span class="source_int">0.1</span>
+	EngineResistanceFactorAtMaxRPM=<span class="source_int">0.3</span>
+	GearDownshiftRPM=<span class="source_int">3500</span>
+	GearUpshiftRPM=<span class="source_int">6500</span>
+	GearClutchDelayTime=<span class="source_int">0</span>
+	GearReverseRatio=<span class="source_int">1</span>
+	TopSpeed=<span class="source_int">6500</span>
+	
+	
+	AerodynamicsAirDensity=<span class="source_int">1.3</span>
+	AerodynamicsFrontalArea=<span class="source_int">1</span>
+	AerodynamicsDragCoeff=<span class="source_int">0.7</span>
+	AerodynamicsLiftCoeff=-<span class="source_int">0.3</span>
+	ExtraGravity=(X=<span class="source_int">0</span>,<span class="source_type">Y</span>=<span class="source_int">0</span>,Z=-<span class="source_int">5</span>)
+	SpinDamping=<span class="source_int">1</span>
+	CollisionSpinDamping=<span class="source_int">0</span>
+	CollisionThreshold=<span class="source_int">4</span>
+	
+	
+	GearRatios(<span class="source_int">0</span>)=<span class="source_int">1</span>
+	
+	<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'Engine_res.Havok.S_HkVehicle'</span>
+	
+	HavokDataClass=<span class="source_type">class</span><span class="source_name">'BuggyHavokData'</span>
+
+	ReplicationCarState=(digitalThrottleInput=DAI_Zero)
+
+	applyHandbrakeSpeed = <span class="source_int">200</span>
+	occupiedApplyHandbrakeSpeed = <span class="source_int">500</span>
+
+	commonWheelMass = true
+	commonWheelFriction = true
+	commonWheelViscosityFriction = true
+	commonSuspensionStrength = true
+	commonSuspensionDampingCompression = true
+	commonSuspensionDampingRelaxation = true
+	commonSuspensionTravel = true
+
+	leftFrontWheelIndex = <span class="source_int">0</span>
+	leftRearWheelIndex = <span class="source_int">2</span>
+	rightFrontWheelIndex = <span class="source_int">1</span> 
+	rightRearWheelIndex = <span class="source_int">3</span>
+
+	skidEffectEnergyThreshold = <span class="source_int">25</span>
+
+	clientInterpolationHard = true
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/havokcar.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HavokCar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/handgrenadeprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/havokcarwheel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:30.624 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

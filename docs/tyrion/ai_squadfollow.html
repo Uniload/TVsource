@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Tyrion.AI_SquadFollow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_squadfollow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_SquadFollow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_squadattackgoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_squadfollowgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tyrion/ai_squadfollow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.AI_SquadFollow</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tyrion/ai_squadaction.html">AI_SquadAction</a></dd>
+<dt>Modifiers</dt><dd>implements IFollowFunction editinlinenew </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/tyrion_actionbase.html">Tyrion_ActionBase</a>
+      |   
+      +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a>
+         |   
+         +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_runnableaction.html">AI_RunnableAction</a>
+            |   
+            +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_action.html">AI_Action</a>
+               |   
+               +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_squadaction.html">AI_SquadAction</a>
+                  |   
+                  +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_squadfollow.html">AI_SquadFollow</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_MAX_SQUAD_SIZE" name="MAX_SQUAD_SIZE" title="go to the details">MAX_SQUAD_SIZE</a></td><td width="10%">=</td><td width="50%">9</td></tr>
+<tr><td width="40%"><a href="#_MIN_LEADER_SPEED" name="MIN_LEADER_SPEED" title="go to the details">MIN_LEADER_SPEED</a></td><td width="10%">=</td><td width="50%">3</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_aliveFollowers" name="aliveFollowers" title="go to the details">aliveFollowers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_goal.html">AI_Goal</a></td><td width="66%"><a href="#_followGoals[MAX_SQUAD_SIZE]" name="followGoals[MAX_SQUAD_SIZE]" title="go to the details">followGoals[MAX_SQUAD_SIZE]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_i" name="i" title="go to the details">i</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_lastUpdateOffset[MAX_SQUAD_SIZE]" name="lastUpdateOffset[MAX_SQUAD_SIZE]" title="go to the details">lastUpdateOffset[MAX_SQUAD_SIZE]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/pawn.html">Pawn</a></td><td width="66%"><a href="#_pawn" name="pawn" title="go to the details">pawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_positionMap[MAX_SQUAD_SIZE]" name="positionMap[MAX_SQUAD_SIZE]" title="go to the details">positionMap[MAX_SQUAD_SIZE]</a></td></tr>
+<tr><th colspan="2" class="small">InternalParameters</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/pawn.html">Pawn</a></td><td width="66%"><a href="#_target" name="target" title="go to the details">target</a></td></tr>
+<tr><th colspan="2" class="small">Parameters</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_energyUsage" name="energyUsage" title="go to the details">energyUsage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_formationDiameter" name="formationDiameter" title="go to the details">formationDiameter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Character.GroundMovementLevels</td><td width="66%"><a href="#_preferredGroundMovement" name="preferredGroundMovement" title="go to the details">preferredGroundMovement</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_proximity" name="proximity" title="go to the details">proximity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_targetName" name="targetName" title="go to the details">targetName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_terminalHeight" name="terminalHeight" title="go to the details">terminalHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_terminalVelocity" name="terminalVelocity" title="go to the details">terminalVelocity</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_action.html">AI_Action</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ai_action.html#achievingGoal">achievingGoal</a>, <a href="../tyrion/ai_action.html#childGoals">childGoals</a>, <a href="../tyrion/ai_action.html#heuristicValue">heuristicValue</a>, <a href="../tyrion/ai_action.html#nsChild">nsChild</a>, <a href="../tyrion/ai_action.html#resourceUsage">resourceUsage</a>, <a href="../tyrion/ai_action.html#satisfiesGoal">satisfiesGoal</a>, <a href="../tyrion/ai_action.html#waitingForGoalsN">waitingForGoalsN</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_assignPawnsToPositions-" name="assignPawnsToPositions" title="go to the details">assignPawnsToPositions</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_classConstruct-" name="classConstruct" title="go to the details">classConstruct</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_cleanup-" name="cleanup" title="go to the details">cleanup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_nFollowers-" name="nFollowers" title="go to the details">nFollowers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_nPossibleFollowers-" name="nPossibleFollowers" title="go to the details">nPossibleFollowers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_offset-" name="offset" title="go to the details">offset</a> (<a href="../engine/pawn.html">Pawn</a> leader, int positionIndex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_offsetInternal-" name="offsetInternal" title="go to the details">offsetInternal</a> (<a href="../engine/pawn.html">Pawn</a> leader, int positionIndex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_pawnDied-" name="pawnDied" title="go to the details">pawnDied</a> (Pawn member ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_proximityFunction-" name="proximityFunction" title="go to the details">proximityFunction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_updateOffset-" name="updateOffset" title="go to the details">updateOffset</a> (<a href="../engine/pawn.html">Pawn</a> follower, <a href="../engine/pawn.html">Pawn</a> leader, int positionIndex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_validDestination-" name="validDestination" title="go to the details">validDestination</a> (Vector point ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_verifyAliveFollowers-" name="verifyAliveFollowers" title="go to the details">verifyAliveFollowers</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_squadaction.html">AI_SquadAction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ai_squadaction.html#classConstruct">classConstruct</a>, <a href="../tyrion/ai_squadaction.html#findResource">findResource</a>, <a href="../tyrion/ai_squadaction.html#getResourceClass">getResourceClass</a>, <a href="../tyrion/ai_squadaction.html#squad">squad</a>, <a href="../tyrion/ai_squadaction.html#squadResource">squadResource</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_action.html">AI_Action</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ai_action.html#fail">fail</a>, <a href="../tyrion/ai_action.html#getChildReference">getChildReference</a>, <a href="../tyrion/ai_action.html#getResource">getResource</a>, <a href="../tyrion/ai_action.html#goalAchievedCB">goalAchievedCB</a>, <a href="../tyrion/ai_action.html#goalNotAchievedCB">goalNotAchievedCB</a>, <a href="../tyrion/ai_action.html#initAction">initAction</a>, <a href="../tyrion/ai_action.html#instantFail">instantFail</a>, <a href="../tyrion/ai_action.html#instantSucceed">instantSucceed</a>, <a href="../tyrion/ai_action.html#interruptAction">interruptAction</a>, <a href="../tyrion/ai_action.html#interruptGoalIf">interruptGoalIf</a>, <a href="../tyrion/ai_action.html#myAddRef">myAddRef</a>, <a href="../tyrion/ai_action.html#OnSensorMessage">OnSensorMessage</a>, <a href="../tyrion/ai_action.html#removeAction">removeAction</a>, <a href="../tyrion/ai_action.html#removeChildReference">removeChildReference</a>, <a href="../tyrion/ai_action.html#resourceStolenCB">resourceStolenCB</a>, <a href="../tyrion/ai_action.html#runAction">runAction</a>, <a href="../tyrion/ai_action.html#selectionHeuristic">selectionHeuristic</a>, <a href="../tyrion/ai_action.html#setChildReference">setChildReference</a>, <a href="../tyrion/ai_action.html#succeed">succeed</a>, <a href="../tyrion/ai_action.html#waitForAllGoals">waitForAllGoals</a>, <a href="../tyrion/ai_action.html#waitForAllGoalsConsidered">waitForAllGoalsConsidered</a>, <a href="../tyrion/ai_action.html#waitForAllGoalsInList">waitForAllGoalsInList</a>, <a href="../tyrion/ai_action.html#waitForAnyGoal">waitForAnyGoal</a>, <a href="../tyrion/ai_action.html#waitForGoal">waitForGoal</a>, <a href="../tyrion/ai_action.html#waitForResourcesAvailable">waitForResourcesAvailable</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Running <a href="../Source_tyrion/ai_squadfollow.html#310" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Running <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_MAX_SQUAD_SIZE" class="hidden"></a>MAX_SQUAD_SIZE <a href="../Source_tyrion/ai_squadfollow.html#12" class="small">Source code</a></h4>
+<div class="declaration">const MAX_SQUAD_SIZE = <span class="source_int">9</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MIN_LEADER_SPEED" class="hidden"></a>MIN_LEADER_SPEED <a href="../Source_tyrion/ai_squadfollow.html#13" class="small">Source code</a></h4>
+<div class="declaration">const MIN_LEADER_SPEED = <span class="source_int">3</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_aliveFollowers" class="hidden"></a>aliveFollowers <a href="../Source_tyrion/ai_squadfollow.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> aliveFollowers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_followGoals[MAX_SQUAD_SIZE]" class="hidden"></a>followGoals[MAX_SQUAD_SIZE] <a href="../Source_tyrion/ai_squadfollow.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> followGoals[MAX_SQUAD_SIZE];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_i" class="hidden"></a>i <a href="../Source_tyrion/ai_squadfollow.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> i;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastUpdateOffset[MAX_SQUAD_SIZE]" class="hidden"></a>lastUpdateOffset[MAX_SQUAD_SIZE] <a href="../Source_tyrion/ai_squadfollow.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> lastUpdateOffset[MAX_SQUAD_SIZE];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pawn" class="hidden"></a>pawn <a href="../Source_tyrion/ai_squadfollow.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_positionMap[MAX_SQUAD_SIZE]" class="hidden"></a>positionMap[MAX_SQUAD_SIZE] <a href="../Source_tyrion/ai_squadfollow.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> positionMap[MAX_SQUAD_SIZE];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">InternalParameters</h3>
+<h4><a name="_target" class="hidden"></a>target <a href="../Source_tyrion/ai_squadfollow.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(InternalParameters) editconst <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">target</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Parameters</h3>
+<h4><a name="_energyUsage" class="hidden"></a>energyUsage <a href="../Source_tyrion/ai_squadfollow.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type">float</span> energyUsage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_formationDiameter" class="hidden"></a>formationDiameter <a href="../Source_tyrion/ai_squadfollow.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type">float</span> formationDiameter;</div>
+<blockquote class="comment">
+What's the approximate diameter of the formation?
+</blockquote>
+<hr class="small" />
+<h4><a name="_preferredGroundMovement" class="hidden"></a>preferredGroundMovement <a href="../Source_tyrion/ai_squadfollow.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.GroundMovementLevels preferredGroundMovement;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_proximity" class="hidden"></a>proximity <a href="../Source_tyrion/ai_squadfollow.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type">float</span> proximity;</div>
+<blockquote class="comment">
+How close to get to one's desired position while following
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetName" class="hidden"></a>targetName <a href="../Source_tyrion/ai_squadfollow.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) editinline <span class="source_type">Name</span> targetName;</div>
+<blockquote class="comment">
+A pawn to follow
+</blockquote>
+<hr class="small" />
+<h4><a name="_terminalHeight" class="hidden"></a>terminalHeight <a href="../Source_tyrion/ai_squadfollow.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type">float</span> terminalHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_terminalVelocity" class="hidden"></a>terminalVelocity <a href="../Source_tyrion/ai_squadfollow.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type">float</span> terminalVelocity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_assignPawnsToPositions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> assignPawnsToPositions <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#245" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  assignPawnsToPositions ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_classConstruct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> classConstruct <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#380" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  classConstruct ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cleanup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> cleanup <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#286" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  cleanup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_nFollowers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> nFollowers <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#42" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> nFollowers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_nPossibleFollowers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> nPossibleFollowers <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#50" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> nPossibleFollowers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_offset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> offset <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#158" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> offset ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> leader, <span class="source_type">int</span> <span class="source_type">positionIndex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_offsetInternal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> offsetInternal <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#163" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> offsetInternal ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> leader, <span class="source_type">int</span> <span class="source_type">positionIndex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pawnDied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> pawnDied <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#74" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  pawnDied ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">member</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_proximityFunction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> proximityFunction <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#66" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> proximityFunction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateOffset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateOffset <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#126" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> updateOffset ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> follower, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> leader, <span class="source_type">int</span> <span class="source_type">positionIndex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_validDestination-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> validDestination <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#58" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> validDestination ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">point</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_verifyAliveFollowers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> verifyAliveFollowers <span class="function_state"></span> <a href="../Source_tyrion/ai_squadfollow.html#102" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> verifyAliveFollowers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	satisfiesGoal = <span class="source_type">class</span><span class="source_name">'AI_SquadFollowGoal'</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_squadfollow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_SquadFollow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_squadattackgoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_squadfollowgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:27.551 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

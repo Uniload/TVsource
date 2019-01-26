@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.ArcProjectile</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/arcprojectile.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ArcProjectile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/antiaircraftweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/armor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/arcprojectile.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.ArcProjectile</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/explosiveprojectile.html">ExplosiveProjectile</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/projectile.html">Projectile</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/explosiveprojectile.html">ExplosiveProjectile</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/arcprojectile.html">ArcProjectile</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/grenadelauncherprojectile.html">GrenadeLauncherProjectile</a>, <a href="../gameplay/handgrenadeprojectile.html">HandGrenadeProjectile</a>, <a href="../gameplay/mortarprojectile.html">MortarProjectile</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bReadyToExplode" name="bReadyToExplode" title="go to the details">bReadyToExplode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShouldBounce" name="bShouldBounce" title="go to the details">bShouldBounce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_lastCatapultHitTick" name="lastCatapultHitTick" title="go to the details">lastCatapultHitTick</a></td></tr>
+<tr><th colspan="2" class="small">ArcProjectile</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bExplodeInAir" name="bExplodeInAir" title="go to the details">bExplodeInAir</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_BounceVelocityModifier" name="BounceVelocityModifier" title="go to the details">BounceVelocityModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FuseTimer" name="FuseTimer" title="go to the details">FuseTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_noBounceVelocityThreshold" name="noBounceVelocityThreshold" title="go to the details">noBounceVelocityThreshold</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/explosiveprojectile.html">ExplosiveProjectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/explosiveprojectile.html#bEndedLife">bEndedLife</a>, <a href="../gameplay/explosiveprojectile.html#ExplosionClass">ExplosionClass</a>, <a href="../gameplay/explosiveprojectile.html#orientDecalToVelocity">orientDecalToVelocity</a>, <a href="../gameplay/explosiveprojectile.html#radiusDamageAmt">radiusDamageAmt</a>, <a href="../gameplay/explosiveprojectile.html#radiusDamageMomentum">radiusDamageMomentum</a>, <a href="../gameplay/explosiveprojectile.html#radiusDamageSize">radiusDamageSize</a>, <a href="../gameplay/explosiveprojectile.html#storedDrawType">storedDrawType</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/projectile.html">Projectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/projectile.html#AccelerationMagtitude">AccelerationMagtitude</a>, <a href="../gameplay/projectile.html#bDeflectable">bDeflectable</a>, <a href="../gameplay/projectile.html#bounceCount">bounceCount</a>, <a href="../gameplay/projectile.html#bReceivedInitialVelocity">bReceivedInitialVelocity</a>, <a href="../gameplay/projectile.html#bReplicateInitialVelocity">bReplicateInitialVelocity</a>, <a href="../gameplay/projectile.html#bScaleProjectile">bScaleProjectile</a>, <a href="../gameplay/projectile.html#damageAmt">damageAmt</a>, <a href="../gameplay/projectile.html#damageTypeClass">damageTypeClass</a>, <a href="../gameplay/projectile.html#deathMessage">deathMessage</a>, <a href="../gameplay/projectile.html#InitialVelocity">InitialVelocity</a>, <a href="../gameplay/projectile.html#initialXDrawScale">initialXDrawScale</a>, <a href="../gameplay/projectile.html#knockback">knockback</a>, <a href="../gameplay/projectile.html#knockbackAliveScale">knockbackAliveScale</a>, <a href="../gameplay/projectile.html#MaxVelocity">MaxVelocity</a>, <a href="../gameplay/projectile.html#rookAttacker">rookAttacker</a>, <a href="../gameplay/projectile.html#SpawnTick">SpawnTick</a>, <a href="../gameplay/projectile.html#victim">victim</a>, <a href="../gameplay/projectile.html#xDrawScalePerSecond">xDrawScalePerSecond</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_CalcBounceVelocity-" name="CalcBounceVelocity" title="go to the details">CalcBounceVelocity</a> (<a href="../core/object.html#Vector">Vector</a> HitNormal))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_construct-" name="construct" title="go to the details">construct</a> (<a href="../gameplay/rook.html">Rook</a> attacker, optional <a href="../engine/actor.html">actor</a> Owner, optional name Tag, optional <a href="../core/object.html#Vector">vector</a> Location, optional <a href="../core/object.html#Rotator">rotator</a> Rotation))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HitWall-" name="HitWall" title="go to the details">HitWall</a> (<a href="../core/object.html#Vector">vector</a> HitNormal, <a href="../engine/actor.html">actor</a> Wall))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProjectileHit-" name="ProjectileHit" title="go to the details">ProjectileHit</a> (<a href="../engine/actor.html">Actor</a> Other, <a href="../core/object.html#Vector">vector</a> TouchLocation, <a href="../core/object.html#Vector">vector</a> TouchNormal))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_projectileTouchProcessing-" name="projectileTouchProcessing" title="go to the details">projectileTouchProcessing</a> (<a href="../engine/actor.html">Actor</a> Other, <a href="../core/object.html#Vector">vector</a> TouchLocation, <a href="../core/object.html#Vector">vector</a> TouchNormal))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ShouldHit-" name="ShouldHit" title="go to the details">ShouldHit</a> (<a href="../engine/actor.html">Actor</a> Other, <a href="../core/object.html#Vector">vector</a> TouchLocation))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/explosiveprojectile.html">ExplosiveProjectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/explosiveprojectile.html#Destroyed">Destroyed</a>, <a href="../gameplay/explosiveprojectile.html#endLife">endLife</a>, <a href="../gameplay/explosiveprojectile.html#makeHarmless">makeHarmless</a>, <a href="../gameplay/explosiveprojectile.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/explosiveprojectile.html#PostBounce">PostBounce</a>, <a href="../gameplay/explosiveprojectile.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/explosiveprojectile.html#ProjectileHit">ProjectileHit</a>, <a href="../gameplay/explosiveprojectile.html#ShouldHit">ShouldHit</a>, <a href="../gameplay/explosiveprojectile.html#triggerHitEffect">triggerHitEffect</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/projectile.html">Projectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/projectile.html#bounce">bounce</a>, <a href="../gameplay/projectile.html#ClientDetectDeflection">ClientDetectDeflection</a>, <a href="../gameplay/projectile.html#construct">construct</a>, <a href="../gameplay/projectile.html#endLife">endLife</a>, <a href="../gameplay/projectile.html#HitWall">HitWall</a>, <a href="../gameplay/projectile.html#makeHarmless">makeHarmless</a>, <a href="../gameplay/projectile.html#PostBounce">PostBounce</a>, <a href="../gameplay/projectile.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/projectile.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/projectile.html#PrecacheProjectileRenderData">PrecacheProjectileRenderData</a>, <a href="../gameplay/projectile.html#ProjectileHit">ProjectileHit</a>, <a href="../gameplay/projectile.html#ProjectileTouch">ProjectileTouch</a>, <a href="../gameplay/projectile.html#projectileTouchProcessing">projectileTouchProcessing</a>, <a href="../gameplay/projectile.html#resolveImpactEffect">resolveImpactEffect</a>, <a href="../gameplay/projectile.html#ShouldDeflect">ShouldDeflect</a>, <a href="../gameplay/projectile.html#ShouldHit">ShouldHit</a>, <a href="../gameplay/projectile.html#Tick">Tick</a>, <a href="../gameplay/projectile.html#triggerHitEffect">triggerHitEffect</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bReadyToExplode" class="hidden"></a>bReadyToExplode <a href="../Source_gameplay/arcprojectile.html#3" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bReadyToExplode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShouldBounce" class="hidden"></a>bShouldBounce <a href="../Source_gameplay/arcprojectile.html#8" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShouldBounce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastCatapultHitTick" class="hidden"></a>lastCatapultHitTick <a href="../Source_gameplay/arcprojectile.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> lastCatapultHitTick;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">ArcProjectile</h3>
+<h4><a name="_bExplodeInAir" class="hidden"></a>bExplodeInAir <a href="../Source_gameplay/arcprojectile.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/arcprojectile.html" class="source">ArcProjectile</a></span>) <span class="source_type">bool</span> bExplodeInAir;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BounceVelocityModifier" class="hidden"></a>BounceVelocityModifier <a href="../Source_gameplay/arcprojectile.html#5" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/arcprojectile.html" class="source">ArcProjectile</a></span>) <span class="source_type">float</span> BounceVelocityModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FuseTimer" class="hidden"></a>FuseTimer <a href="../Source_gameplay/arcprojectile.html#4" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/arcprojectile.html" class="source">ArcProjectile</a></span>) <span class="source_type">float</span> FuseTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_noBounceVelocityThreshold" class="hidden"></a>noBounceVelocityThreshold <a href="../Source_gameplay/arcprojectile.html#6" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/arcprojectile.html" class="source">ArcProjectile</a></span>) <span class="source_type">float</span> noBounceVelocityThreshold;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CalcBounceVelocity-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CalcBounceVelocity <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#67" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> CalcBounceVelocity ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> HitNormal) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_construct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> construct <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#14" class="small">Source code</a></h4>
+<div class="declaration">overloaded <span class="source_type">function</span>  construct ( <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">attacker</span>, optional <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Owner</span>, optional <span class="source_type">name</span> Tag, 
+				  optional <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Location, optional <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> Rotation) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HitWall-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HitWall <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#86" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  HitWall ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitNormal, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> Wall) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#23" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProjectileHit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProjectileHit <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#73" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  ProjectileHit ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Other, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchLocation, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchNormal) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_projectileTouchProcessing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> projectileTouchProcessing <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#53" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> projectileTouchProcessing ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Other, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchLocation, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchNormal) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldHit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShouldHit <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#48" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> ShouldHit ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Other, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchLocation) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#33" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state"></span> <a href="../Source_gameplay/arcprojectile.html#39" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bBounce = true
+	Physics = PHYS_Falling
+
+	noBounceVelocityThreshold = <span class="source_int">10</span>
+
+	<span class="source_type">StaticMesh</span> = <span class="source_type">StaticMesh</span><span class="source_name">'Weapons.Grenade'</span>
+	deathMessage = <span class="source_name">'%s copped it off %s\'s INSERTWEAPONNAMEHERE'</span>
+
+	bSkipEncroachment = false
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/arcprojectile.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ArcProjectile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/antiaircraftweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/armor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:28.252 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

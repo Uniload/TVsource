@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Scripting.Action</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../scripting/scripting-overview.html">Package</a></td>
+	<td class="header"><a href="../scripting/action.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Action">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_scripting/watcherbase.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_scripting/actionblockingexecutescript.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_scripting/action.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../scripting/scripting-overview.html">Scripting</a>.<a href="../scripting/action.html">Action</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// Action
+</span><a name="2"></a><span class="source_comment">//
+</span><a name="3"></a><span class="source_comment">// All Action paramters should be of type "string". These parameters must be resolved before use.
+</span><a name="4"></a><span class="source_comment">// On execution of the action, locals of type Variable should be defined (they are 'new'ed in the resolve function)
+</span><a name="5"></a><span class="source_comment">// "resolve" should then be called, passing each local Variable and its string representation.
+</span><a name="6"></a><span class="source_comment">// The string is first parsed to attempt to resolve it to an existing script variable by name.
+</span><a name="7"></a><span class="source_comment">// If a variable is found, then the value from that object is used to create a new variable object. 
+</span><a name="8"></a><span class="source_comment">// If no variable by the given name exists, then the resolve function attempts to parse the value to a built-in data type.
+</span><a name="9"></a><span class="source_type">class</span> <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span> extends Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span>
+<a name="10"></a>	editinlinenew
+<a name="11"></a>	collapsecategories
+<a name="12"></a>	hidecategories(<span class="source_type"><a href="../core/object.html" class="source">object</a></span>)
+<a name="13"></a>	native
+<a name="14"></a>	abstract;
+<a name="15"></a>
+<a name="16"></a>import <span class="source_type">class</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>;
+<a name="17"></a>import <span class="source_type">class</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>;
+<a name="18"></a>import <span class="source_type">class</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span>;
+<a name="19"></a>
+<a name="20"></a>cpptext
+<a name="21"></a>{
+<a name="22"></a>	virtual void CleanupDestroyed();
+<a name="23"></a>	virtual UAction* FixOwnership(AScript* ownerScript);
+<a name="24"></a>	virtual void CheckForErrors(FString& prefix, <span class="source_type">int</span> <span class="source_type">index</span>, AScript* ownerScript);
+<a name="25"></a>	virtual <span class="source_type">bool</span> IsMember(UAction* <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>) { return false; }
+<a name="26"></a>}
+<a name="27"></a>
+<a name="28"></a>var <span class="source_type">string</span> actionDisplayName;
+<a name="29"></a>var <span class="source_type">string</span> actionHelp;
+<a name="30"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span>&gt; returnType;
+<a name="31"></a>var <span class="source_type">string</span> <span class="source_type">category</span>;
+<a name="32"></a>
+<a name="33"></a>var <span class="source_type"><a href="../scripting/script.html" class="source">Script</a></span> parentScript;
+<a name="34"></a>
+<a name="35"></a><span class="source_comment">// True if this actions properties can accept any return type from a nested action
+</span><a name="36"></a><span class="source_comment">// used by the assignment actions
+</span><a name="37"></a>var <span class="source_type">bool</span> acceptAllTypes;
+<a name="38"></a>
+<a name="39"></a><span class="source_comment">// parameter resolve data
+</span><a name="40"></a>struct native <span class="source_type"><a href="../scripting/action.html#ParameterResolveInfo" class="source">ParameterResolveInfo</a></span>
+<a name="41"></a>{
+<a name="42"></a>	var deepcopy <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>;
+<a name="43"></a>	var <span class="source_type">Name</span> <span class="source_type"><a href="../scripting/variable.html" class="source">variable</a></span>; 
+<a name="44"></a>	var <span class="source_type">Name</span> propertyName;
+<a name="45"></a>};
+<a name="46"></a>
+<a name="47"></a>var private Array&lt;<span class="source_type"><a href="../scripting/action.html#ParameterResolveInfo" class="source">ParameterResolveInfo</a></span>&gt; resolveInfoList;
+<a name="48"></a>
+<a name="49"></a><span class="source_comment">// construct
+</span><a name="50"></a>overloaded <span class="source_type">function</span> construct()
+<a name="51"></a>{
+<a name="52"></a>	parentScript = <span class="source_type"><a href="../scripting/script.html" class="source">Script</a></span>(Outer);
+<a name="53"></a>	assert(parentScript != None);
+<a name="54"></a>}
+<a name="55"></a>
+<a name="56"></a><span class="source_type">function</span> setParentScript(<span class="source_type"><a href="../scripting/script.html" class="source">Script</a></span> <span class="source_type">s</span>)
+<a name="57"></a>{
+<a name="58"></a>	parentScript = <span class="source_type">s</span>;
+<a name="59"></a>}
+<a name="60"></a>
+<a name="61"></a>native final <span class="source_type">function</span> SetActionPropertyText(<span class="source_type">string</span> PropName, <span class="source_type">string</span> PropValue);
+<a name="62"></a>
+<a name="63"></a><span class="source_comment">// resolveParameters
+</span><a name="64"></a><span class="source_comment">// Uses the parameterResolveInfo array (previously filled by native UnrealEd code during script creation) to
+</span><a name="65"></a><span class="source_comment">// set the value of Action or Variable parameters to the run-time return value of an action/variable, if required.
+</span><a name="66"></a><span class="source_comment">// Call this at the start of your execute function to resolve script variables to Action return values.
+</span><a name="67"></a>private latent <span class="source_type">function</span> resolveParameters()
+<a name="68"></a>{
+<a name="69"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="70"></a>	local <span class="source_type">Name</span> propName;
+<a name="71"></a>	local <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> v;
+<a name="72"></a>	local Array&lt;<span class="source_type">int</span>&gt; resolveActions;
+<a name="73"></a>
+<a name="74"></a>	ForEach AllProperties(self.<span class="source_type">Class</span>, <span class="source_type">class</span><span class="source_name">'Action'</span>, propName)
+<a name="75"></a>	{
+<a name="76"></a>		<span class="source_comment">// See if this action property should be set to the value of an action
+</span><a name="77"></a>		for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; resolveInfoList.Length; <span class="source_type">i</span>++)
+<a name="78"></a>		{
+<a name="79"></a>			if (resolveInfoList[<span class="source_type">i</span>].propertyName == propName)
+<a name="80"></a>			{
+<a name="81"></a>                if (resolveInfoList[<span class="source_type">i</span>].<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> != None) <span class="source_comment">// add resolve index to resolve action list
+</span><a name="82"></a>				{
+<a name="83"></a>					resolveActions.Length = resolveActions.Length + <span class="source_int">1</span>;
+<a name="84"></a>					resolveActions[resolveActions.Length - <span class="source_int">1</span>] = <span class="source_type">i</span>;
+<a name="85"></a>				}
+<a name="86"></a>				else if (resolveInfoList[<span class="source_type">i</span>].<span class="source_type"><a href="../scripting/variable.html" class="source">variable</a></span> != <span class="source_name">''</span>) <span class="source_comment">// resolve as a variable
+</span><a name="87"></a>				{
+<a name="88"></a>					v = tryFindVariable(resolveInfoList[<span class="source_type">i</span>].<span class="source_type"><a href="../scripting/variable.html" class="source">variable</a></span>);
+<a name="89"></a>
+<a name="90"></a>					if (v != None)
+<a name="91"></a>					{
+<a name="92"></a>						SetActionPropertyText(<span class="source_type">string</span>(propName), v.GetPropertyText(<span class="source_string">"value"</span>));
+<a name="93"></a>					}
+<a name="94"></a>				}
+<a name="95"></a>				else <span class="source_comment">// empty resolve info
+</span><a name="96"></a>				{
+<a name="97"></a>					logError(<span class="source_string">"Parameter "</span>$propName$<span class="source_string">" has an entry in the resolveinfo map, but has no action or variable resolve target"</span>);
+<a name="98"></a>				}
+<a name="99"></a>			}
+<a name="100"></a>		}
+<a name="101"></a>	}
+<a name="102"></a>
+<a name="103"></a>	<span class="source_comment">// Execute resolved actions
+</span><a name="104"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; resolveActions.Length; ++<span class="source_type">i</span>)
+<a name="105"></a>	{
+<a name="106"></a>		v = resolveInfoList[resolveActions[<span class="source_type">i</span>]].<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.execute();
+<a name="107"></a>
+<a name="108"></a>		if (v != None)
+<a name="109"></a>		{
+<a name="110"></a>			SetActionPropertyText(<span class="source_type">string</span>(resolveInfoList[resolveActions[<span class="source_type">i</span>]].propertyName), v.GetPropertyText(<span class="source_string">"value"</span>));
+<a name="111"></a>		}
+<a name="112"></a>		else
+<a name="113"></a>		{
+<a name="114"></a>			SetPropertyText(<span class="source_type">string</span>(resolveInfoList[resolveActions[<span class="source_type">i</span>]].propertyName), <span class="source_string">""</span>);
+<a name="115"></a>		}
+<a name="116"></a>	}
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><span class="source_comment">// logError
+</span><a name="120"></a><span class="source_type">function</span> logError(<span class="source_type">string</span> <span class="source_type">reason</span>)
+<a name="121"></a>{
+<a name="122"></a>	local <span class="source_type">string</span> <span class="source_type">s</span>;
+<a name="123"></a>
+<a name="124"></a>	editorDisplayString(<span class="source_type">s</span>);
+<a name="125"></a>
+<a name="126"></a>	<span class="source_type">s</span> = <span class="source_string">"ERROR: "</span>$parentScript.<span class="source_type">Name</span>$<span class="source_string">", Action "</span>$<span class="source_type">s</span>$<span class="source_string">": "</span>$<span class="source_type">reason</span>;
+<a name="127"></a>	SLog(<span class="source_type">s</span>);
+<a name="128"></a>}
+<a name="129"></a>
+<a name="130"></a><span class="source_comment">// findByLabel
+</span><a name="131"></a><span class="source_type">function</span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> findByLabel(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt; actorClass, <span class="source_type">Name</span> label)
+<a name="132"></a>{
+<a name="133"></a>	return parentScript.findByLabel(actorClass, label);
+<a name="134"></a>}
+<a name="135"></a>
+<a name="136"></a><span class="source_comment">// findStaticByLabel
+</span><a name="137"></a><span class="source_type">function</span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> findStaticByLabel(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt; actorClass, <span class="source_type">Name</span> label)
+<a name="138"></a>{
+<a name="139"></a>	return parentScript.findStaticByLabel(actorClass, label);
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a>simulated <span class="source_type">function</span> PrecacheSpeech(<span class="source_type"><a href="../engine/speechmanager.html" class="source">SpeechManager</a></span> Manager);
+<a name="143"></a>
+<a name="144"></a><span class="source_comment">// newVariable
+</span><a name="145"></a><span class="source_comment">// Convenience
+</span><a name="146"></a><span class="source_type">function</span> <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> newVariable(<span class="source_type">Name</span> <span class="source_type"><a href="../scripting/variablename.html" class="source">variableName</a></span>, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span>&gt; variableType)
+<a name="147"></a>{
+<a name="148"></a>	return parentScript.newVariable(<span class="source_type"><a href="../scripting/variablename.html" class="source">variableName</a></span>, variableType);
+<a name="149"></a>}
+<a name="150"></a>
+<a name="151"></a><span class="source_comment">// newTemporaryVariable
+</span><a name="152"></a><span class="source_comment">// Convenience
+</span><a name="153"></a><span class="source_type">function</span> <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> newTemporaryVariable(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span>&gt; variableType, optional <span class="source_type">string</span> initValue)
+<a name="154"></a>{
+<a name="155"></a>	return parentScript.newTemporaryVariable(variableType, initValue);
+<a name="156"></a>}
+<a name="157"></a>
+<a name="158"></a><span class="source_comment">// findVariable
+</span><a name="159"></a><span class="source_comment">// Convenience
+</span><a name="160"></a><span class="source_type">function</span> <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> findVariable(coerce <span class="source_type">string</span> <span class="source_type"><a href="../scripting/variablename.html" class="source">variableName</a></span>)
+<a name="161"></a>{
+<a name="162"></a>	local <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> v;
+<a name="163"></a>
+<a name="164"></a>    v = <span class="source_type">class</span><span class="source_name">'Variable'</span>.static.findVariable(<span class="source_type"><a href="../scripting/variablename.html" class="source">variableName</a></span>, parentScript);
+<a name="165"></a>	if (v == None)
+<a name="166"></a>	{
+<a name="167"></a>		logError(<span class="source_string">"Variable "</span>$<span class="source_type"><a href="../scripting/variablename.html" class="source">variableName</a></span>$<span class="source_string">" not found"</span>);
+<a name="168"></a>	}
+<a name="169"></a>
+<a name="170"></a>	return v;
+<a name="171"></a>}
+<a name="172"></a>
+<a name="173"></a><span class="source_comment">// tryFindVariable
+</span><a name="174"></a><span class="source_comment">// Convenience, doesn't log, use for situations where the find can fail without causing an error (i.e. a test for existance)
+</span><a name="175"></a><span class="source_type">function</span> <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> tryFindVariable(coerce <span class="source_type">string</span> <span class="source_type"><a href="../scripting/variablename.html" class="source">variableName</a></span>)
+<a name="176"></a>{
+<a name="177"></a>	local <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> v;
+<a name="178"></a>
+<a name="179"></a>    v = <span class="source_type">class</span><span class="source_name">'Variable'</span>.static.findVariable(<span class="source_type"><a href="../scripting/variablename.html" class="source">variableName</a></span>, parentScript);
+<a name="180"></a>
+<a name="181"></a>	return v;
+<a name="182"></a>}
+<a name="183"></a>
+<a name="184"></a><span class="source_comment">// execute
+</span><a name="185"></a>latent <span class="source_type">function</span> <span class="source_type"><a href="../scripting/variable.html" class="source">Variable</a></span> execute()
+<a name="186"></a>{
+<a name="187"></a>	resolveParameters();
+<a name="188"></a>	return None;
+<a name="189"></a>}
+<a name="190"></a>
+<a name="191"></a><span class="source_comment">// propertyDisplayString
+</span><a name="192"></a><span class="source_comment">// resolves a property if necessary and determines the appropriate display string for it
+</span><a name="193"></a><span class="source_type">function</span> <span class="source_type">string</span> propertyDisplayString(<span class="source_type">Name</span> propName)
+<a name="194"></a>{
+<a name="195"></a>	local <span class="source_type">string</span> <span class="source_type">s</span>;
+<a name="196"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="197"></a>
+<a name="198"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; resolveInfoList.Length; <span class="source_type">i</span>++)
+<a name="199"></a>	{
+<a name="200"></a>		if (resolveInfoList[<span class="source_type">i</span>].propertyName == propName)
+<a name="201"></a>		{
+<a name="202"></a>			if (resolveInfoList[<span class="source_type">i</span>].<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> != None)
+<a name="203"></a>			{
+<a name="204"></a>				resolveInfoList[<span class="source_type">i</span>].<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.editorDisplayString(<span class="source_type">s</span>);
+<a name="205"></a>				return <span class="source_type">s</span>;
+<a name="206"></a>			}
+<a name="207"></a>			else if (resolveInfoList[<span class="source_type">i</span>].<span class="source_type"><a href="../scripting/variable.html" class="source">variable</a></span> != <span class="source_name">''</span>)
+<a name="208"></a>			{
+<a name="209"></a>				return <span class="source_type">string</span>(resolveInfoList[<span class="source_type">i</span>].<span class="source_type"><a href="../scripting/variable.html" class="source">variable</a></span>);
+<a name="210"></a>			}
+<a name="211"></a>		}
+<a name="212"></a>	}
+<a name="213"></a>
+<a name="214"></a>	return GetPropertyText(<span class="source_type">string</span>(propName));
+<a name="215"></a>}
+<a name="216"></a>
+<a name="217"></a><span class="source_comment">// editorDisplayString
+</span><a name="218"></a><span class="source_comment">// called by UnrealEd to get a display string
+</span><a name="219"></a>event <span class="source_type">function</span> editorDisplayString(out <span class="source_type">string</span> <span class="source_type">s</span>)
+<a name="220"></a>{
+<a name="221"></a>	<span class="source_type">s</span> = actionDisplayName;
+<a name="222"></a>}
+<a name="223"></a>
+<a name="224"></a><span class="source_comment">// editcombotype list fill functions
+</span><a name="225"></a><span class="source_comment">// enumScriptLabelList
+</span><a name="226"></a>event <span class="source_type">function</span> enumScriptLabels(<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">level</span>, out Array&lt;<span class="source_type">Name</span>&gt; <span class="source_type">s</span>)
+<a name="227"></a>{
+<a name="228"></a>	local <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">a</span>;
+<a name="229"></a>	
+<a name="230"></a>	ForEach <span class="source_type">level</span>.AllActors(<span class="source_type">class</span><span class="source_name">'Actor'</span>, <span class="source_type">a</span>)
+<a name="231"></a>	{
+<a name="232"></a>		if (<span class="source_type">a</span>.label != <span class="source_type">a</span>.<span class="source_type">name</span> && <span class="source_type">a</span>.label != <span class="source_name">''</span>)
+<a name="233"></a>		{
+<a name="234"></a>			<span class="source_type">s</span>[<span class="source_type">s</span>.Length] = <span class="source_type">a</span>.label;
+<a name="235"></a>		}
+<a name="236"></a>	}
+<a name="237"></a>}
+<a name="238"></a>
+<a name="239"></a><span class="source_comment">// enum all scripts with a valid label
+</span><a name="240"></a>event <span class="source_type">function</span> enumScripts(<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">level</span>, out Array&lt;<span class="source_type">Name</span>&gt; <span class="source_type">s</span>)
+<a name="241"></a>{
+<a name="242"></a>	local <span class="source_type"><a href="../scripting/script.html" class="source">Script</a></span> aScript;
+<a name="243"></a>	
+<a name="244"></a>	ForEach <span class="source_type">level</span>.AllActors(<span class="source_type">class</span><span class="source_name">'Script'</span>, aScript)
+<a name="245"></a>	{
+<a name="246"></a>		if (aScript.label != <span class="source_name">''</span>)
+<a name="247"></a>		{
+<a name="248"></a>			<span class="source_type">s</span>[<span class="source_type">s</span>.Length] = aScript.label;
+<a name="249"></a>		}
+<a name="250"></a>	}
+<a name="251"></a>}
+<a name="252"></a>
+<a name="253"></a>
+<a name="254"></a>defaultproperties
+<a name="255"></a>{
+<a name="256"></a>	returnType			= None
+<a name="257"></a>	actionDisplayName	= <span class="source_string">"&lt;actionDisplayName&gt;"</span>
+<a name="258"></a>	actionHelp			= <span class="source_string">"&lt;actionHelp&gt;"</span>
+<a name="259"></a>	<span class="source_type">category</span>			= <span class="source_string">"Default Category"</span>
+<a name="260"></a>	acceptAllTypes		= false
+<a name="261"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../scripting/scripting-overview.html">Package</a></td>
+	<td class="header"><a href="../scripting/action.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Action">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_scripting/watcherbase.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_scripting/actionblockingexecutescript.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:42.000 - Creation time: st 23.5.2018 00:10:39.997 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

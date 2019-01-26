@@ -1,0 +1,658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesWebAdmin.TribesServerAdmin</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribeswebadmin/tribeswebadmin-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribeswebadmin/tribesserveradmin.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesServerAdmin">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribeswebadmin/tribesimageserver.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribeswebadmin/tribesserveradminspectator.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribeswebadmin/tribesserveradmin.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribeswebadmin/tribeswebadmin-overview.html">TribesWebAdmin</a>.TribesServerAdmin</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uweb/webapplication.html">WebApplication</a></dd>
+<dt>Modifiers</dt><dd>config </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uweb/uweb-overview.html">UWeb</a>.<a href="../uweb/webapplication.html">WebApplication</a>
+   |   
+   +-- <a href="../tribeswebadmin/tribeswebadmin-overview.html">TribesWebAdmin</a>.<a href="../tribeswebadmin/tribesserveradmin.html">TribesServerAdmin</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AdminRealm" name="AdminRealm" title="go to the details">AdminRealm</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribeswebadmin/stringarray.html">StringArray</a></td><td width="66%"><a href="#_AExcMutators" name="AExcMutators" title="go to the details">AExcMutators</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribeswebadmin/stringarray.html">StringArray</a></td><td width="66%"><a href="#_AGameType" name="AGameType" title="go to the details">AGameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribeswebadmin/stringarray.html">StringArray</a></td><td width="66%"><a href="#_AIncMutators" name="AIncMutators" title="go to the details">AIncMutators</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;Gameplay.xUtil.MutatorRecord&gt;</td><td width="66%"><a href="#_AllMutators" name="AllMutators" title="go to the details">AllMutators</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/tribesadminuser.html">TribesAdminUser</a></td><td width="66%"><a href="#_CurAdmin" name="CurAdmin" title="go to the details">CurAdmin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DefaultBG" name="DefaultBG" title="go to the details">DefaultBG</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/playinfo.html">PlayInfo</a></td><td width="66%"><a href="#_GamePI" name="GamePI" title="go to the details">GamePI</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_HeaderPage" name="HeaderPage" title="go to the details">HeaderPage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_HighlightedBG" name="HighlightedBG" title="go to the details">HighlightedBG</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_htm" name="htm" title="go to the details">htm</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MessagePage" name="MessagePage" title="go to the details">MessagePage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;class&lt;<a href="../tribeswebadmin/tribeswebqueryhandler.html">TribesWebQueryHandler</a>&gt;&gt;</td><td width="66%"><a href="#_QueryHandlerClasses" name="QueryHandlerClasses" title="go to the details">QueryHandlerClasses</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribeswebadmin/tribeswebqueryhandler.html">TribesWebQueryHandler</a>&gt;</td><td width="66%"><a href="#_QueryHandlers" name="QueryHandlers" title="go to the details">QueryHandlers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uweb/webresponse.html">WebResponse</a></td><td width="66%"><a href="#_Resp" name="Resp" title="go to the details">Resp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_RestartPage" name="RestartPage" title="go to the details">RestartPage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_RootFrame" name="RootFrame" title="go to the details">RootFrame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribeswebadmin/tribesserveradminspectator.html">TribesServerAdminSpectator</a></td><td width="66%"><a href="#_Spectator" name="Spectator" title="go to the details">Spectator</a></td></tr>
+<tr><th colspan="2" class="small">TribesServerAdmin</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../tribeswebadmin/tribesserveradminspectator.html">TribesServerAdminSpectator</a>&gt;</td><td width="66%"><a href="#_SpectatorType" name="SpectatorType" title="go to the details">SpectatorType</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uweb/uweb-overview.html">UWeb</a>.<a href="../uweb/webapplication.html">WebApplication</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uweb/webapplication.html#Level">Level</a>, <a href="../uweb/webapplication.html#Path">Path</a>, <a href="../uweb/webapplication.html#WebServer">WebServer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AccessDenied-" name="AccessDenied" title="go to the details">AccessDenied</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ApplyMapList-" name="ApplyMapList" title="go to the details">ApplyMapList</a> (<a href="../tribeswebadmin/stringarray.html">StringArray</a> ExcludeMaps, <a href="../tribeswebadmin/stringarray.html">StringArray</a> IncludeMaps, String GameType, String MapListType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CanPerform-" name="CanPerform" title="go to the details">CanPerform</a> (string privs))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_Checkbox-" name="Checkbox" title="go to the details">Checkbox</a> (string tag, bool bChecked))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_GenerateGameTypeOptions-" name="GenerateGameTypeOptions" title="go to the details">GenerateGameTypeOptions</a> (String CurrentGameType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_GenerateMapListOptions-" name="GenerateMapListOptions" title="go to the details">GenerateMapListOptions</a> (String GameType, String MapListType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_GenerateMapListSelect-" name="GenerateMapListSelect" title="go to the details">GenerateMapListSelect</a> (<a href="../tribeswebadmin/stringarray.html">StringArray</a> MapList, <a href="../tribeswebadmin/stringarray.html">StringArray</a> MovedMaps))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_HasURLOption-" name="HasURLOption" title="go to the details">HasURLOption</a> (string ParamName, out string Value))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_HtmlEncode-" name="HtmlEncode" title="go to the details">HtmlEncode</a> (string src))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_HyperLink-" name="HyperLink" title="go to the details">HyperLink</a> (string url, string text, bool bEnabled, optional string target))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Init-" name="Init" title="go to the details">Init</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadGameTypes-" name="LoadGameTypes" title="go to the details">LoadGameTypes</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadMutators-" name="LoadMutators" title="go to the details">LoadMutators</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadQueryHandlers-" name="LoadQueryHandlers" title="go to the details">LoadQueryHandlers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_MapIsChanging-" name="MapIsChanging" title="go to the details">MapIsChanging</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MapTitle-" name="MapTitle" title="go to the details">MapTitle</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_NextPriv-" name="NextPriv" title="go to the details">NextPriv</a> (out string privs))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_PadLeft-" name="PadLeft" title="go to the details">PadLeft</a> (String InStr, int Width, String PadStr))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostQuery-" name="PostQuery" title="go to the details">PostQuery</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_PreQuery-" name="PreQuery" title="go to the details">PreQuery</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Query-" name="Query" title="go to the details">Query</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_QueryHeaderPage-" name="QueryHeaderPage" title="go to the details">QueryHeaderPage</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_QueryRestartPage-" name="QueryRestartPage" title="go to the details">QueryRestartPage</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_QueryRootFrame-" name="QueryRootFrame" title="go to the details">QueryRootFrame</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_QuerySubmitRestartPage-" name="QuerySubmitRestartPage" title="go to the details">QuerySubmitRestartPage</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribeswebadmin/stringarray.html">StringArray</a>&nbsp;</td><td><a href="#_ReloadExcludeMaps-" name="ReloadExcludeMaps" title="go to the details">ReloadExcludeMaps</a> (String GameType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribeswebadmin/stringarray.html">StringArray</a>&nbsp;</td><td><a href="#_ReloadIncludeMaps-" name="ReloadIncludeMaps" title="go to the details">ReloadIncludeMaps</a> (<a href="../tribeswebadmin/stringarray.html">StringArray</a> ExMaps, String GameClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerChangeMap-" name="ServerChangeMap" title="go to the details">ServerChangeMap</a> (<a href="../uweb/webrequest.html">WebRequest</a> Request, <a href="../uweb/webresponse.html">WebResponse</a> Response, string MapName, string GameType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_SetGamePI-" name="SetGamePI" title="go to the details">SetGamePI</a> (string GameType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ShowFrame-" name="ShowFrame" title="go to the details">ShowFrame</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response, string Page))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowMessage-" name="ShowMessage" title="go to the details">ShowMessage</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response, string Title, string Message))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ShowPage-" name="ShowPage" title="go to the details">ShowPage</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response, string Page))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StatusError-" name="StatusError" title="go to the details">StatusError</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response, string Message))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StatusOk-" name="StatusOk" title="go to the details">StatusOk</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response, string Message))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_StatusReport-" name="StatusReport" title="go to the details">StatusReport</a> (<a href="../uweb/webresponse.html">WebResponse</a> Response, string ErrorMessage, string SuccessMessage))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_StringIf-" name="StringIf" title="go to the details">StringIf</a> (bool bCond, string iftrue, string iffalse))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateDefaultMaps-" name="UpdateDefaultMaps" title="go to the details">UpdateDefaultMaps</a> (String GameType, <a href="../tribeswebadmin/stringarray.html">StringArray</a> Maps))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_UsedMutators-" name="UsedMutators" title="go to the details">UsedMutators</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_WebInclude-" name="WebInclude" title="go to the details">WebInclude</a> (string file))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uweb/uweb-overview.html">UWeb</a>.<a href="../uweb/webapplication.html">WebApplication</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uweb/webapplication.html#Cleanup">Cleanup</a>, <a href="../uweb/webapplication.html#Init">Init</a>, <a href="../uweb/webapplication.html#PostQuery">PostQuery</a>, <a href="../uweb/webapplication.html#PreQuery">PreQuery</a>, <a href="../uweb/webapplication.html#Query">Query</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AdminRealm" class="hidden"></a>AdminRealm <a href="../Source_tribeswebadmin/tribesserveradmin.html#28" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> AdminRealm;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AExcMutators" class="hidden"></a>AExcMutators <a href="../Source_tribeswebadmin/tribesserveradmin.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> AExcMutators;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AGameType" class="hidden"></a>AGameType <a href="../Source_tribeswebadmin/tribesserveradmin.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> AGameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AIncMutators" class="hidden"></a>AIncMutators <a href="../Source_tribeswebadmin/tribesserveradmin.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> AIncMutators;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllMutators" class="hidden"></a>AllMutators <a href="../Source_tribeswebadmin/tribesserveradmin.html#13" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;Gameplay.<span class="source_type"><a href="../gameplay/xutil.html" class="source">xUtil</a></span>.<span class="source_type"><a href="../gameplay/xutil.html#MutatorRecord" class="source">MutatorRecord</a></span>&gt; AllMutators;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurAdmin" class="hidden"></a>CurAdmin <a href="../Source_tribeswebadmin/tribesserveradmin.html#10" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/tribesadminuser.html" class="source">TribesAdminUser</a></span> CurAdmin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultBG" class="hidden"></a>DefaultBG <a href="../Source_tribeswebadmin/tribesserveradmin.html#25" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> DefaultBG;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GamePI" class="hidden"></a>GamePI <a href="../Source_tribeswebadmin/tribesserveradmin.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/playinfo.html" class="source">PlayInfo</a></span> GamePI;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HeaderPage" class="hidden"></a>HeaderPage <a href="../Source_tribeswebadmin/tribesserveradmin.html#21" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> HeaderPage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HighlightedBG" class="hidden"></a>HighlightedBG <a href="../Source_tribeswebadmin/tribesserveradmin.html#26" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> HighlightedBG;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_htm" class="hidden"></a>htm <a href="../Source_tribeswebadmin/tribesserveradmin.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> htm;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MessagePage" class="hidden"></a>MessagePage <a href="../Source_tribeswebadmin/tribesserveradmin.html#22" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> MessagePage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryHandlerClasses" class="hidden"></a>QueryHandlerClasses <a href="../Source_tribeswebadmin/tribesserveradmin.html#5" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../tribeswebadmin/tribeswebqueryhandler.html" class="source">TribesWebQueryHandler</a></span>&gt;&gt; QueryHandlerClasses;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryHandlers" class="hidden"></a>QueryHandlers <a href="../Source_tribeswebadmin/tribesserveradmin.html#6" class="small">Source code</a></h4>
+<div class="declaration">var config array&lt;<span class="source_type"><a href="../tribeswebadmin/tribeswebqueryhandler.html" class="source">TribesWebQueryHandler</a></span>&gt; QueryHandlers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Resp" class="hidden"></a>Resp <a href="../Source_tribeswebadmin/tribesserveradmin.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> Resp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RestartPage" class="hidden"></a>RestartPage <a href="../Source_tribeswebadmin/tribesserveradmin.html#23" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> RestartPage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RootFrame" class="hidden"></a>RootFrame <a href="../Source_tribeswebadmin/tribesserveradmin.html#20" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> RootFrame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Spectator" class="hidden"></a>Spectator <a href="../Source_tribeswebadmin/tribesserveradmin.html#9" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribeswebadmin/tribesserveradminspectator.html" class="source">TribesServerAdminSpectator</a></span> Spectator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">TribesServerAdmin</h3>
+<h4><a name="_SpectatorType" class="hidden"></a>SpectatorType <a href="../Source_tribeswebadmin/tribesserveradmin.html#4" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribeswebadmin/tribesserveradmin.html" class="source">TribesServerAdmin</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tribeswebadmin/tribesserveradminspectator.html" class="source">TribesServerAdminSpectator</a></span>&gt; SpectatorType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AccessDenied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AccessDenied <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#823" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AccessDenied ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ApplyMapList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ApplyMapList <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#482" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ApplyMapList ( <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> ExcludeMaps, <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> IncludeMaps, <span class="source_type">String</span> GameType, <span class="source_type">String</span> MapListType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanPerform-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanPerform <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#881" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> CanPerform ( <span class="source_type">string</span> privs) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Checkbox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Checkbox <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#852" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> Checkbox ( <span class="source_type">string</span> tag, <span class="source_type">bool</span> bChecked) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GenerateGameTypeOptions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GenerateGameTypeOptions <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#625" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> GenerateGameTypeOptions ( <span class="source_type">String</span> CurrentGameType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GenerateMapListOptions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GenerateMapListOptions <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#650" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> GenerateMapListOptions ( <span class="source_type">String</span> GameType, <span class="source_type">String</span> MapListType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GenerateMapListSelect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GenerateMapListSelect <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#685" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> GenerateMapListSelect ( <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> <span class="source_type"><a href="../gameplay/maplist.html" class="source">MapList</a></span>, <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> MovedMaps) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasURLOption-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasURLOption <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#728" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> HasURLOption ( <span class="source_type">string</span> ParamName, out <span class="source_type">string</span> <span class="source_type">Value</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HtmlEncode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HtmlEncode <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#749" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> HtmlEncode ( <span class="source_type">string</span> src) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HyperLink-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HyperLink <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#828" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> HyperLink ( <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">url</a></span>, <span class="source_type">string</span> <span class="source_type">text</span>, <span class="source_type">bool</span> <span class="source_type">bEnabled</span>, optional <span class="source_type">string</span> <span class="source_type">target</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Init-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Init <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#32" class="small">Source code</a></h4>
+<div class="declaration"> event  Init ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadGameTypes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadGameTypes <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#353" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadGameTypes ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadMutators-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadMutators <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#371" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadMutators ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadQueryHandlers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadQueryHandlers <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#62" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadQueryHandlers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapIsChanging-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MapIsChanging <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#331" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> MapIsChanging ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapTitle-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MapTitle <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#312" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MapTitle ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextPriv-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NextPriv <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#862" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> NextPriv ( out <span class="source_type">string</span> privs) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PadLeft-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PadLeft <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#470" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> PadLeft ( <span class="source_type">String</span> InStr, <span class="source_type">int</span> Width, <span class="source_type">String</span> PadStr) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostQuery-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostQuery <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#147" class="small">Source code</a></h4>
+<div class="declaration"> event  PostQuery ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreQuery-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PreQuery <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#106" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> PreQuery ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Query-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Query <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#160" class="small">Source code</a></h4>
+<div class="declaration"> event  Query ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryHeaderPage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> QueryHeaderPage <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#202" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  QueryHeaderPage ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryRestartPage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> QueryRestartPage <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#235" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  QueryRestartPage ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryRootFrame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> QueryRootFrame <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#187" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  QueryRootFrame ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QuerySubmitRestartPage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> QuerySubmitRestartPage <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#240" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  QuerySubmitRestartPage ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReloadExcludeMaps-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReloadExcludeMaps <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#524" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> ReloadExcludeMaps ( <span class="source_type">String</span> GameType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReloadIncludeMaps-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReloadIncludeMaps <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#565" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> ReloadIncludeMaps ( <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> ExMaps, <span class="source_type">String</span> GameClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerChangeMap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerChangeMap <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#245" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ServerChangeMap ( <span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>, <span class="source_type">string</span> MapName, <span class="source_type">string</span> GameType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGamePI-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGamePI <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#704" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> SetGamePI ( <span class="source_type">string</span> GameType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowFrame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowFrame <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#780" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> ShowFrame ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>, <span class="source_type">string</span> <span class="source_type">Page</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowMessage <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#816" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ShowMessage ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>, <span class="source_type">string</span> Title, <span class="source_type">string</span> <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowPage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowPage <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#786" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> ShowPage ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>, <span class="source_type">string</span> <span class="source_type">Page</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatusError-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatusError <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#793" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  StatusError ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>, <span class="source_type">string</span> <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatusOk-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatusOk <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#801" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  StatusOk ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>, <span class="source_type">string</span> <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StatusReport-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StatusReport <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#806" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> StatusReport ( <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>, <span class="source_type">string</span> ErrorMessage, <span class="source_type">string</span> SuccessMessage) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StringIf-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StringIf <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#844" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> StringIf ( <span class="source_type">bool</span> bCond, <span class="source_type">string</span> iftrue, <span class="source_type">string</span> iffalse) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateDefaultMaps-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateDefaultMaps <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#592" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateDefaultMaps ( <span class="source_type">String</span> GameType, <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span> Maps) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UsedMutators-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UsedMutators <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#453" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> UsedMutators ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WebInclude-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WebInclude <span class="function_state"></span> <a href="../Source_tribeswebadmin/tribesserveradmin.html#348" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> WebInclude ( <span class="source_type">string</span> file) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+    SpectatorType=<span class="source_type">Class</span><span class="source_name">'TribesServerAdminSpectator'</span>
+	
+	QueryHandlerClasses(<span class="source_int">0</span>)=<span class="source_type">class</span><span class="source_name">'TribesWebQueryCurrent'</span>
+	QueryHandlerClasses(<span class="source_int">1</span>)=<span class="source_type">class</span><span class="source_name">'TribesWebQueryDefaults'</span>
+	QueryHandlerClasses(<span class="source_int">2</span>)=<span class="source_type">class</span><span class="source_name">'TribesWebQueryAdmins'</span>
+	
+    AdminRealm=<span class="source_string">"Tribes Remote Admin Server"</span>
+    RootFrame=<span class="source_string">"rootframe"</span>
+    HeaderPage=<span class="source_string">"mainmenu"</span>
+    MessagePage=<span class="source_string">"message"</span>
+	RestartPage=<span class="source_string">"server_restart"</span>
+	
+    DefaultBG=<span class="source_string">"#aaaaaa"</span>
+    HighlightedBG=<span class="source_string">"#3a7c8c"</span>
+	
+	htm=<span class="source_string">".htm"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribeswebadmin/tribeswebadmin-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribeswebadmin/tribesserveradmin.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesServerAdmin">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribeswebadmin/tribesimageserver.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribeswebadmin/tribesserveradminspectator.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:36.881 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

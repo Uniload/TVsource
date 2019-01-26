@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - AICommon.VisionNotifier</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../aicommon/aicommon-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_aicommon/visionnotifier.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#VisionNotifier">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../aicommon/squadinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../aicommon/hearingnotifier.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#aicommon/visionnotifier.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../aicommon/aicommon-overview.html">AICommon</a>.VisionNotifier</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/refcount.html">RefCount</a></dd>
+<dt>Modifiers</dt><dd>implements Engine.IInterestedPawnDied native noexport </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a>
+   |   
+   +-- <a href="../aicommon/aicommon-overview.html">AICommon</a>.<a href="../aicommon/visionnotifier.html">VisionNotifier</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/tribesvisionnotifier.html">TribesVisionNotifier</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CurrentSeenListPadding" name="CurrentSeenListPadding" title="go to the details">CurrentSeenListPadding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NotificationListPadding" name="NotificationListPadding" title="go to the details">NotificationListPadding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SeenListPadding" name="SeenListPadding" title="go to the details">SeenListPadding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/pawn.html">Pawn</a></td><td width="66%"><a href="#_Viewer" name="Viewer" title="go to the details">Viewer</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/refcount.html#LatentStackLocations">LatentStackLocations</a>, <a href="../core/refcount.html#m_RefCount">m_RefCount</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CleanupVisionNotifier-" name="CleanupVisionNotifier" title="go to the details">CleanupVisionNotifier</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitializeVisionNotifier-" name="InitializeVisionNotifier" title="go to the details">InitializeVisionNotifier</a> (<a href="../engine/pawn.html">Pawn</a> InViewer))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsOnCurrentSeenList-" name="IsOnCurrentSeenList" title="go to the details">IsOnCurrentSeenList</a> (<a href="../engine/pawn.html">Pawn</a> TestPawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsOnSeenList-" name="IsOnSeenList" title="go to the details">IsOnSeenList</a> (<a href="../engine/pawn.html">Pawn</a> TestPawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isVisible-" name="isVisible" title="go to the details">isVisible</a> (<a href="../engine/pawn.html">Pawn</a> TestPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_logSeenList-" name="logSeenList" title="go to the details">logSeenList</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnOtherActorDestroyed-" name="OnOtherActorDestroyed" title="go to the details">OnOtherActorDestroyed</a> (<a href="../engine/actor.html">Actor</a> ActorBeingDestroyed))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnOtherPawnDied-" name="OnOtherPawnDied" title="go to the details">OnOtherPawnDied</a> (<a href="../engine/pawn.html">Pawn</a> DeadPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterVisionNotification-" name="RegisterVisionNotification" title="go to the details">RegisterVisionNotification</a> (<a href="../aicommon/ivisionnotification.html">IVisionNotification</a> Registrant)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveAnyReferencesToPawn-" name="RemoveAnyReferencesToPawn" title="go to the details">RemoveAnyReferencesToPawn</a> (<a href="../engine/pawn.html">Pawn</a> PawnBeingRemoved)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnregisterVisionNotification-" name="UnregisterVisionNotification" title="go to the details">UnregisterVisionNotification</a> (<a href="../aicommon/ivisionnotification.html">IVisionNotification</a> Registrant)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/refcount.html#AddRef">AddRef</a>, <a href="../core/refcount.html#Release">Release</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CurrentSeenListPadding" class="hidden"></a>CurrentSeenListPadding <a href="../Source_aicommon/visionnotifier.html#21" class="small">Source code</a></h4>
+<div class="declaration">var transient const private <span class="source_type">int</span> CurrentSeenListPadding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotificationListPadding" class="hidden"></a>NotificationListPadding <a href="../Source_aicommon/visionnotifier.html#22" class="small">Source code</a></h4>
+<div class="declaration">var transient const private <span class="source_type">int</span> NotificationListPadding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SeenListPadding" class="hidden"></a>SeenListPadding <a href="../Source_aicommon/visionnotifier.html#20" class="small">Source code</a></h4>
+<div class="declaration">var transient const private <span class="source_type">int</span> SeenListPadding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Viewer" class="hidden"></a>Viewer <a href="../Source_aicommon/visionnotifier.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> Viewer;</div>
+<blockquote class="comment">
+// Private Variables
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CleanupVisionNotifier-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CleanupVisionNotifier <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#38" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CleanupVisionNotifier ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitializeVisionNotifier-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitializeVisionNotifier <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#28" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitializeVisionNotifier ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> InViewer) )</div>
+<blockquote class="comment">
+// Initialization
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsOnCurrentSeenList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsOnCurrentSeenList <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#75" class="small">Source code</a></h4>
+<div class="declaration">protected native <span class="source_type">function</span> <span class="source_type">bool</span> IsOnCurrentSeenList ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> TestPawn )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsOnSeenList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsOnSeenList <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#79" class="small">Source code</a></h4>
+<div class="declaration">protected native <span class="source_type">function</span> <span class="source_type">bool</span> IsOnSeenList ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> TestPawn )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isVisible-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isVisible <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#68" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isVisible ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> TestPawn) )</div>
+<blockquote class="comment">
+// Notifications from Pawn
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_logSeenList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> logSeenList <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#92" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  logSeenList (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnOtherActorDestroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnOtherActorDestroyed <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#48" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnOtherActorDestroyed ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> ActorBeingDestroyed) )</div>
+<blockquote class="comment">
+// Death / Destruction Notifications
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnOtherPawnDied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnOtherPawnDied <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#56" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnOtherPawnDied ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> DeadPawn) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterVisionNotification-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterVisionNotification <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#85" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RegisterVisionNotification ( <span class="source_type"><a href="../aicommon/ivisionnotification.html" class="source">IVisionNotification</a></span> Registrant )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveAnyReferencesToPawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveAnyReferencesToPawn <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#61" class="small">Source code</a></h4>
+<div class="declaration">protected native <span class="source_type">function</span>  RemoveAnyReferencesToPawn ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> PawnBeingRemoved )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnregisterVisionNotification-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnregisterVisionNotification <span class="function_state"></span> <a href="../Source_aicommon/visionnotifier.html#86" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  UnregisterVisionNotification ( <span class="source_type"><a href="../aicommon/ivisionnotification.html" class="source">IVisionNotification</a></span> Registrant )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../aicommon/aicommon-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_aicommon/visionnotifier.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#VisionNotifier">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../aicommon/squadinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../aicommon/hearingnotifier.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:39.008 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

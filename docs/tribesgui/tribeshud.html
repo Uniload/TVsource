@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.TribesHUD</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribeshud.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesHUD">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribeshelpscreen.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribeshudscript.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/tribeshud.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.TribesHUD</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/tribeshudbase.html">TribesHUDBase</a></dd>
+<dt>Modifiers</dt><dd>Config ( TribesHUD ) abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/hud.html">HUD</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/tribeshudbase.html">TribesHUDBase</a>
+         |   
+         +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribeshud.html">TribesHUD</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tribesgui/tribesawaitgamestarthud.html">TribesAwaitGameStartHUD</a>, <a href="../tribesgui/tribescommandhud.html">TribesCommandHUD</a>, <a href="../tribesgui/tribescountdownhud.html">TribesCountdownHUD</a>, <a href="../tribesgui/tribesdebughud.html">TribesDebugHUD</a>, <a href="../tribesgui/tribesingamehud.html">TribesIngameHUD</a>, <a href="../tribesgui/tribesspectatorhud.html">TribesSpectatorHUD</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAllowChat" name="bAllowChat" title="go to the details">bAllowChat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAllowInteractions" name="bAllowInteractions" title="go to the details">bAllowInteractions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/tribeshudscript.html">TribesHUDScript</a></td><td width="66%"><a href="#_HUDScript" name="HUDScript" title="go to the details">HUDScript</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_HUDScriptName" name="HUDScriptName" title="go to the details">HUDScriptName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_HUDScriptType" name="HUDScriptType" title="go to the details">HUDScriptType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_MouseCursorDrawColor" name="MouseCursorDrawColor" title="go to the details">MouseCursorDrawColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_MouseCursorTexture" name="MouseCursorTexture" title="go to the details">MouseCursorTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MouseX" name="MouseX" title="go to the details">MouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MouseY" name="MouseY" title="go to the details">MouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudaction.html">HUDAction</a></td><td width="66%"><a href="#_Response" name="Response" title="go to the details">Response</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/tribeshudbase.html">TribesHUDBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/tribeshudbase.html#bAllowCommandHUDSwitching">bAllowCommandHUDSwitching</a>, <a href="../gameplay/tribeshudbase.html#bShowCursor">bShowCursor</a>, <a href="../gameplay/tribeshudbase.html#ClientSideChar">ClientSideChar</a>, <a href="../gameplay/tribeshudbase.html#Controller">Controller</a>, <a href="../gameplay/tribeshudbase.html#quickKeyText">quickKeyText</a>, <a href="../gameplay/tribeshudbase.html#TagBindings">TagBindings</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/hud.html">HUD</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/hud.html#bBadConnectionAlert">bBadConnectionAlert</a>, <a href="../engine/hud.html#bHideCenterMessages">bHideCenterMessages</a>, <a href="../engine/hud.html#bHideHUD">bHideHUD</a>, <a href="../engine/hud.html#BigFont">BigFont</a>, <a href="../engine/hud.html#bMessageBeep">bMessageBeep</a>, <a href="../engine/hud.html#bShowDebugInfo">bShowDebugInfo</a>, <a href="../engine/hud.html#bShowScores">bShowScores</a>, <a href="../engine/hud.html#ConnectingMessage">ConnectingMessage</a>, <a href="../engine/hud.html#ConsoleColor">ConsoleColor</a>, <a href="../engine/hud.html#ConsoleFontSize">ConsoleFontSize</a>, <a href="../engine/hud.html#ConsoleMessageCount">ConsoleMessageCount</a>, <a href="../engine/hud.html#ConsoleMessagePosX">ConsoleMessagePosX</a>, <a href="../engine/hud.html#ConsoleMessagePosY">ConsoleMessagePosY</a>, <a href="../engine/hud.html#FontArrayFonts[9]">FontArrayFonts[9]</a>, <a href="../engine/hud.html#FontArrayNames[9]">FontArrayNames[9]</a>, <a href="../engine/hud.html#FontScreenWidthMedium[9]">FontScreenWidthMedium[9]</a>, <a href="../engine/hud.html#FontScreenWidthSmall[9]">FontScreenWidthSmall[9]</a>, <a href="../engine/hud.html#HudCanvasScale">HudCanvasScale</a>, <a href="../engine/hud.html#HUDConfigWindowType">HUDConfigWindowType</a>, <a href="../engine/hud.html#LargeFont">LargeFont</a>, <a href="../engine/hud.html#LoadingMessage">LoadingMessage</a>, <a href="../engine/hud.html#MedFont">MedFont</a>, <a href="../engine/hud.html#MessageFontOffset">MessageFontOffset</a>, <a href="../engine/hud.html#MOTDColor">MOTDColor</a>, <a href="../engine/hud.html#nextHUD">nextHUD</a>, <a href="../engine/hud.html#PausedMessage">PausedMessage</a>, <a href="../engine/hud.html#PlayerOwner">PlayerOwner</a>, <a href="../engine/hud.html#PrecachingMessage">PrecachingMessage</a>, <a href="../engine/hud.html#ProgressFadeTime">ProgressFadeTime</a>, <a href="../engine/hud.html#ProgressFontFont">ProgressFontFont</a>, <a href="../engine/hud.html#ProgressFontName">ProgressFontName</a>, <a href="../engine/hud.html#SavingMessage">SavingMessage</a>, <a href="../engine/hud.html#Scoreboard">Scoreboard</a>, <a href="../engine/hud.html#SmallFont">SmallFont</a>, <a href="../engine/hud.html#TextMessages[8]">TextMessages[8]</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/tribeshudbase.html">TribesHUDBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/tribeshudbase.html#TagBindingMap">TagBindingMap</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/hud.html">HUD</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/hud.html#ConsoleMessage">ConsoleMessage</a>, <a href="../engine/hud.html#HUDLocalizedMessage">HUDLocalizedMessage</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Cleanup-" name="Cleanup" title="go to the details">Cleanup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CleanupActionDelegates-" name="CleanupActionDelegates" title="go to the details">CleanupActionDelegates</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawHUD-" name="DrawHUD" title="go to the details">DrawHUD</a> (<a href="../engine/canvas.html">Canvas</a> canvas))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HUDShown-" name="HUDShown" title="go to the details">HUDShown</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_impl_CancelChat-" name="impl_CancelChat" title="go to the details">impl_CancelChat</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_impl_SendChatMessage-" name="impl_SendChatMessage" title="go to the details">impl_SendChatMessage</a> (String msg))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_impl_SendQuickChatMessage-" name="impl_SendQuickChatMessage" title="go to the details">impl_SendQuickChatMessage</a> (<a href="../gameplay/quickchatmenu.html">QuickChatMenu</a> menuItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitActionDelegates-" name="InitActionDelegates" title="go to the details">InitActionDelegates</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyEvent-" name="KeyEvent" title="go to the details">KeyEvent</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> Key, <a href="../engine/interactions.html#EInputAction">EInputAction</a> Action, FLOAT Delta ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyType-" name="KeyType" title="go to the details">KeyType</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> Key, optional string Unicode ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LocalizedMessage-" name="LocalizedMessage" title="go to the details">LocalizedMessage</a> (class&lt;<a href="../engine/localmessage.html">LocalMessage</a>&gt; Message, optional int Switch, optional <a href="../core/object.html">Core.Object</a> Related1, optional <a href="../core/object.html">Core.Object</a> Related2, optional <a href="../core/object.html">Core.Object</a> OptionalObject, optional string CriticalString, optional string OptionalString))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Message-" name="Message" title="go to the details">Message</a> (<a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a> PRI, coerce string Msg, name MsgType ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_NeedsKeyInput-" name="NeedsKeyInput" title="go to the details">NeedsKeyInput</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostRender-" name="PostRender" title="go to the details">PostRender</a> (<a href="../engine/canvas.html">Canvas</a> canvas))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetHUDScript-" name="SetHUDScript" title="go to the details">SetHUDScript</a> (string NewHUDScriptType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateHUDData-" name="UpdateHUDData" title="go to the details">UpdateHUDData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateRoundInfoData-" name="UpdateRoundInfoData" title="go to the details">UpdateRoundInfoData</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/tribeshudbase.html">TribesHUDBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/tribeshudbase.html#AddHUDMarker">AddHUDMarker</a>, <a href="../gameplay/tribeshudbase.html#Cleanup">Cleanup</a>, <a href="../gameplay/tribeshudbase.html#ClearHUDEquipmentData">ClearHUDEquipmentData</a>, <a href="../gameplay/tribeshudbase.html#GetCharacter">GetCharacter</a>, <a href="../gameplay/tribeshudbase.html#GetHotkey">GetHotkey</a>, <a href="../gameplay/tribeshudbase.html#HUDHidden">HUDHidden</a>, <a href="../gameplay/tribeshudbase.html#HUDShown">HUDShown</a>, <a href="../gameplay/tribeshudbase.html#KeyEvent">KeyEvent</a>, <a href="../gameplay/tribeshudbase.html#KeyType">KeyType</a>, <a href="../gameplay/tribeshudbase.html#NeedsKeyInput">NeedsKeyInput</a>, <a href="../gameplay/tribeshudbase.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/tribeshudbase.html#ReplacePromptKeyBinds">ReplacePromptKeyBinds</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDData">UpdateHUDData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDEquipmentData">UpdateHUDEquipmentData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDGameData">UpdateHUDGameData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDHealthData">UpdateHUDHealthData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDObjectiveData">UpdateHUDObjectiveData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDPromptData">UpdateHUDPromptData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDRadarData">UpdateHUDRadarData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDSensorData">UpdateHUDSensorData</a>, <a href="../gameplay/tribeshudbase.html#UpdateHUDTargetData">UpdateHUDTargetData</a>, <a href="../gameplay/tribeshudbase.html#UpdateObjectiveList">UpdateObjectiveList</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/hud.html">HUD</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/hud.html#AddTextMessage">AddTextMessage</a>, <a href="../engine/hud.html#CheckCountdown">CheckCountdown</a>, <a href="../engine/hud.html#ClearMessage">ClearMessage</a>, <a href="../engine/hud.html#ConnectFailure">ConnectFailure</a>, <a href="../engine/hud.html#CopyMessage">CopyMessage</a>, <a href="../engine/hud.html#Destroyed">Destroyed</a>, <a href="../engine/hud.html#DisplayBadConnectionAlert">DisplayBadConnectionAlert</a>, <a href="../engine/hud.html#DisplayMessages">DisplayMessages</a>, <a href="../engine/hud.html#DisplayPortrait">DisplayPortrait</a>, <a href="../engine/hud.html#DisplayProgressMessage">DisplayProgressMessage</a>, <a href="../engine/hud.html#Draw3DCircle">Draw3DCircle</a>, <a href="../engine/hud.html#Draw3DCone">Draw3DCone</a>, <a href="../engine/hud.html#Draw3DCylinder">Draw3DCylinder</a>, <a href="../engine/hud.html#Draw3DLine">Draw3DLine</a>, <a href="../engine/hud.html#DrawHUD">DrawHUD</a>, <a href="../engine/hud.html#DrawLevelAction">DrawLevelAction</a>, <a href="../engine/hud.html#DrawRoute">DrawRoute</a>, <a href="../engine/hud.html#GetConsoleFont">GetConsoleFont</a>, <a href="../engine/hud.html#GetMediumFontFor">GetMediumFontFor</a>, <a href="../engine/hud.html#LargerFontThan">LargerFontThan</a>, <a href="../engine/hud.html#LoadFont">LoadFont</a>, <a href="../engine/hud.html#LoadFontStatic">LoadFontStatic</a>, <a href="../engine/hud.html#LoadProgressFont">LoadProgressFont</a>, <a href="../engine/hud.html#LocalizedMessage">LocalizedMessage</a>, <a href="../engine/hud.html#Message">Message</a>, <a href="../engine/hud.html#PlayReceivedMessage">PlayReceivedMessage</a>, <a href="../engine/hud.html#PlayStartupMessage">PlayStartupMessage</a>, <a href="../engine/hud.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/hud.html#PostRender">PostRender</a>, <a href="../engine/hud.html#PrintActionMessage">PrintActionMessage</a>, <a href="../engine/hud.html#ProcessKeyEvent">ProcessKeyEvent</a>, <a href="../engine/hud.html#ShowDebug">ShowDebug</a>, <a href="../engine/hud.html#ShowScores">ShowScores</a>, <a href="../engine/hud.html#SpawnScoreBoard">SpawnScoreBoard</a>, <a href="../engine/hud.html#UseHugeFont">UseHugeFont</a>, <a href="../engine/hud.html#UseLargeFont">UseLargeFont</a>, <a href="../engine/hud.html#UseMediumFont">UseMediumFont</a>, <a href="../engine/hud.html#UseSmallFont">UseSmallFont</a>, <a href="../engine/hud.html#WorldSpaceOverlays">WorldSpaceOverlays</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bAllowChat" class="hidden"></a>bAllowChat <a href="../Source_tribesgui/tribeshud.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAllowChat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAllowInteractions" class="hidden"></a>bAllowInteractions <a href="../Source_tribesgui/tribeshud.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAllowInteractions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDScript" class="hidden"></a>HUDScript <a href="../Source_tribesgui/tribeshud.html#7" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/tribeshudscript.html" class="source">TribesHUDScript</a></span> HUDScript;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDScriptName" class="hidden"></a>HUDScriptName <a href="../Source_tribesgui/tribeshud.html#9" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> HUDScriptName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDScriptType" class="hidden"></a>HUDScriptType <a href="../Source_tribesgui/tribeshud.html#8" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> HUDScriptType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseCursorDrawColor" class="hidden"></a>MouseCursorDrawColor <a href="../Source_tribesgui/tribeshud.html#18" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> MouseCursorDrawColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseCursorTexture" class="hidden"></a>MouseCursorTexture <a href="../Source_tribesgui/tribeshud.html#17" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> MouseCursorTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseX" class="hidden"></a>MouseX <a href="../Source_tribesgui/tribeshud.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> MouseX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseY" class="hidden"></a>MouseY <a href="../Source_tribesgui/tribeshud.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> MouseY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Response" class="hidden"></a>Response <a href="../Source_tribesgui/tribeshud.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudaction.html" class="source">HUDAction</a></span> <span class="source_type">Response</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Cleanup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Cleanup <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#34" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  Cleanup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CleanupActionDelegates-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CleanupActionDelegates <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#296" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CleanupActionDelegates ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawHUD-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawHUD <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#64" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DrawHUD ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HUDShown <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#58" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  HUDShown ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_impl_CancelChat-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> impl_CancelChat <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#378" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  impl_CancelChat ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_impl_SendChatMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> impl_SendChatMessage <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#386" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  impl_SendChatMessage ( <span class="source_type">String</span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">msg</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_impl_SendQuickChatMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> impl_SendQuickChatMessage <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#399" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  impl_SendQuickChatMessage ( <span class="source_type"><a href="../gameplay/quickchatmenu.html" class="source">QuickChatMenu</a></span> menuItem) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitActionDelegates-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitActionDelegates <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#283" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitActionDelegates ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyEvent <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#104" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> KeyEvent ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyType <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#96" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> KeyType ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, optional <span class="source_type">string</span> <span class="source_type">Unicode</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LocalizedMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LocalizedMessage <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#212" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  LocalizedMessage ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>&gt; <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>, optional <span class="source_type">int</span> Switch, optional Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">Related1</span>, optional Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">Related2</span>, optional Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">OptionalObject</span>, optional <span class="source_type">string</span> CriticalString, optional <span class="source_type">string</span> <span class="source_type">OptionalString</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Message-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Message <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#129" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span> ( <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">PRI</span>, coerce <span class="source_type">string</span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">name</span> <span class="source_type">MsgType</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NeedsKeyInput-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NeedsKeyInput <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#39" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> NeedsKeyInput ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#22" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostRender-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostRender <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#70" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostRender ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetHUDScript-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetHUDScript <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#44" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetHUDScript ( <span class="source_type">string</span> NewHUDScriptType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateHUDData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateHUDData <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#310" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  UpdateHUDData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateRoundInfoData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateRoundInfoData <span class="function_state"></span> <a href="../Source_tribesgui/tribeshud.html#343" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateRoundInfoData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bAllowChat = true
+	bAllowInteractions = false
+	bShowCursor = false
+	ConsoleMessagePosX = <span class="source_int">0.00</span>
+	ConsoleMessagePosY = <span class="source_int">0.45</span>
+    ConsoleMessageCount=<span class="source_int">5</span>
+
+	HUDScriptName = <span class="source_string">""</span>
+
+    FontArrayNames(<span class="source_int">0</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">1</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">2</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">3</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">4</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">5</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">6</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">7</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+    FontArrayNames(<span class="source_int">8</span>)=<span class="source_string">"Engine_res.SmallFont"</span>
+
+	MouseCursorTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'guitribes.mousecursor'</span>
+	MouseCursorDrawColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribeshud.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesHUD">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribeshelpscreen.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribeshudscript.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:36.241 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

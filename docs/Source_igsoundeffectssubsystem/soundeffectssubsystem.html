@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: IGSoundEffectsSubsystem.SoundEffectsSubsystem</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/igsoundeffectssubsystem-overview.html">Package</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/soundeffectssubsystem.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#SoundEffectsSubsystem">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_igsoundeffectssubsystem/soundeffectspecification.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_igsoundeffectssubsystem/soundinstance.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_igsoundeffectssubsystem/soundeffectssubsystem.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../igsoundeffectssubsystem/igsoundeffectssubsystem-overview.html">IGSoundEffectsSubsystem</a>.<a href="../igsoundeffectssubsystem/soundeffectssubsystem.html">SoundEffectsSubsystem</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../igsoundeffectssubsystem/soundeffectssubsystem.html" class="source">SoundEffectsSubsystem</a></span> extends IGEffectsSystem.<span class="source_type"><a href="../igeffectssystem/effectssubsystem.html" class="source">EffectsSubsystem</a></span>
+<a name="2"></a>    implements <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/iinterestedactordestroyed.html" class="source">IInterestedActorDestroyed</a></span>
+<a name="3"></a>    config(SoundEffects)
+<a name="4"></a>    native;
+<a name="5"></a>
+<a name="6"></a><span class="source_comment">// =============================================================================
+</span><a name="7"></a><span class="source_comment">//  SoundEffectsSubsystem
+</span><a name="8"></a><span class="source_comment">// 
+</span><a name="9"></a><span class="source_comment">// 
+</span><a name="10"></a><span class="source_comment">//  The SoundEffectsSubsystem is the manager class for the sound system.  It contains the public 
+</span><a name="11"></a><span class="source_comment">//  interface that the EffectsSystem deals with.  Most of the functionality is handled in native
+</span><a name="12"></a><span class="source_comment">//  code, except for overriden script functions from the base class, EffectsSubsystem, though these
+</span><a name="13"></a><span class="source_comment">//  are kept small and generally rely on native functions anyway.  This class has the responsibility
+</span><a name="14"></a><span class="source_comment">//  of creating and maintaining the list of currently playing soundinstances.  
+</span><a name="15"></a><span class="source_comment">//
+</span><a name="16"></a><span class="source_comment">// ==============================================================================
+</span><a name="17"></a>
+<a name="18"></a><span class="source_comment">// Constants
+</span><a name="19"></a>const kMaxSounds        = <span class="source_int">80</span>;
+<a name="20"></a>const kMaxInstances     = <span class="source_int">80</span>;
+<a name="21"></a>const kNoTime           = <span class="source_int">1000000000.0</span>;
+<a name="22"></a>
+<a name="23"></a><span class="source_comment">// ==============================================================================
+</span><a name="24"></a><span class="source_comment">// Variables
+</span><a name="25"></a><span class="source_comment">// ==============================================================================
+</span><a name="26"></a>
+<a name="27"></a><span class="source_comment">// SoundInstanceBank is an ActorBank which handles pooling soundinstances that are no longer in the 
+</span><a name="28"></a><span class="source_comment">// CurrentSounds array.  Each sound currently playing has a corresponding SoundInstance that encapsulates
+</span><a name="29"></a><span class="source_comment">// the instance data, and handles updating the sound.  When a new sound plays, a SoundInstance is withdrawn
+</span><a name="30"></a><span class="source_comment">// from the SoundInstanceBank and added to the CurrentSounds array.  When a sound stops, it is removed from
+</span><a name="31"></a><span class="source_comment">// the CurrentSounds and deposited into the SoundInstanceBank.  Note: SoundInstances perform no updating 
+</span><a name="32"></a><span class="source_comment">// functionality while in the SoundInstanceBank.
+</span><a name="33"></a>var private transient <span class="source_type"><a href="../igsoundeffectssubsystem/actorbank.html" class="source">ActorBank</a></span>             SoundInstanceBank;      <span class="source_comment">// Bank of unused SoundInstances.
+</span><a name="34"></a>var private transient array&lt;<span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span>&gt;  CurrentSounds;          <span class="source_comment">// Currently playing SoundInstances.
+</span><a name="35"></a>
+<a name="36"></a><span class="source_comment">// State flags....
+</span><a name="37"></a>var private <span class="source_type">bool</span>                            bSoundsArePaused;       <span class="source_comment">// Whether all sounds are paused
+</span><a name="38"></a>var private <span class="source_type">bool</span>                            GameStarted;            <span class="source_comment">// Whether the game has started or not
+</span><a name="39"></a>var private config <span class="source_type">bool</span>                     bDebugSounds;           <span class="source_comment">// Whether we should log out all sorts of debug info.
+</span><a name="40"></a>
+<a name="41"></a><span class="source_comment">// Native functions...
+</span><a name="42"></a><span class="source_comment">// Tell the sound system that the give sound will loop
+</span><a name="43"></a>native static <span class="source_type">function</span>                      SetNativeLooping (<span class="source_type">Level</span> inSoundLevel, <span class="source_type">sound</span> inSound);
+<a name="44"></a><span class="source_comment">// Return a debug string describing the state of the sound system
+</span><a name="45"></a>native final <span class="source_type">function</span> <span class="source_type">string</span>                GetSoundDebugText ();
+<a name="46"></a>
+<a name="47"></a><span class="source_comment">// Stopping sound functionality....
+</span><a name="48"></a>native final <span class="source_type">function</span> <span class="source_type">bool</span>                  StopSound(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Source</span>, <span class="source_type">Sound</span> <span class="source_type">Sound</span>);
+<a name="49"></a><span class="source_comment">// Stop all SoundInstances being played on the given actor
+</span><a name="50"></a>native final <span class="source_type">function</span>                       StopMySchemas (<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> inSource);
+<a name="51"></a><span class="source_comment">// Stop all SoundInstances being played currently
+</span><a name="52"></a>native final <span class="source_type">function</span>                       StopAllSchemas();
+<a name="53"></a><span class="source_comment">// Stop all looping schemas that the specified actor is playing
+</span><a name="54"></a>native final <span class="source_type">function</span>                       StopMyLoopingSchemas(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> inSource);
+<a name="55"></a><span class="source_comment">// Returns if the given specification is playing on the given actor
+</span><a name="56"></a>native final <span class="source_type">function</span> <span class="source_type">bool</span>                  IsSchemaPlaying (<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> inSource, <span class="source_type">name</span> SpecificationName);
+<a name="57"></a>
+<a name="58"></a><span class="source_comment">// These private functions handle instance creation/deletion/updating. 
+</span><a name="59"></a>native private final <span class="source_type">function</span> <span class="source_type">bool</span>          CanStartInstance(<span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span> inInstance);
+<a name="60"></a>native private final <span class="source_type">function</span>               KillInstance(<span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span> inInstance);
+<a name="61"></a>native private final <span class="source_type">function</span>               AddToCurrentSounds (<span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span> inInstance);
+<a name="62"></a><span class="source_comment">// CreateSoundInstance withdraws a SoundInstance from a bank, which could possibly cause the creation of a soundinstance
+</span><a name="63"></a><span class="source_comment">// TODO: Maybe should be called "GetSoundInstance" or something?
+</span><a name="64"></a>native private final <span class="source_type">function</span> <span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span> CreateSoundInstance ();
+<a name="65"></a>
+<a name="66"></a>native private final <span class="source_type">function</span> NativeInitialize();
+<a name="67"></a>
+<a name="68"></a><span class="source_comment">// Overridable delegate for withdrawn behavior 
+</span><a name="69"></a><span class="source_type">function</span> OnBankWithdrawn(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> inActorWithdrawn)
+<a name="70"></a>{
+<a name="71"></a>    assertWithDescription( inActorWithdrawn.IsA( <span class="source_name">'SoundInstance'</span> ), <span class="source_string">"Withdrawing a non-SoundInstance from the bank!"</span> );
+<a name="72"></a>    inActorWithdrawn.OptimizeIn();
+<a name="73"></a>}
+<a name="74"></a>
+<a name="75"></a><span class="source_comment">// Overridable delegate for deposited behavior 
+</span><a name="76"></a><span class="source_type">function</span> OnBankDeposited(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> inActorDeposited)
+<a name="77"></a>{
+<a name="78"></a>    local <span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span> BankedInstance;
+<a name="79"></a>    assertWithDescription( inActorDeposited.IsA( <span class="source_name">'SoundInstance'</span> ), <span class="source_string">"Depositing a non-SoundInstance from the bank!"</span> );
+<a name="80"></a>    
+<a name="81"></a>    <span class="source_comment">// Make sure the sound was stopped before hand...
+</span><a name="82"></a>    BankedInstance = <span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span>(inActorDeposited);
+<a name="83"></a>    if ( BankedInstance.SoundHandle != -<span class="source_int">1</span> )
+<a name="84"></a>        assertWithDescription( false, <span class="source_string">"Error, SoundInstance "</span>$BankedInstance$<span class="source_string">" is being deposited in the bank but it wasn't stopped."</span> );
+<a name="85"></a>
+<a name="86"></a>    if (bDebugSounds)
+<a name="87"></a>    {
+<a name="88"></a>    	log(<span class="source_string">"Actor: "</span>$BankedInstance$<span class="source_string">" was deposited"</span>);
+<a name="89"></a>    }
+<a name="90"></a>    inActorDeposited.OptimizeOut();
+<a name="91"></a>}
+<a name="92"></a>
+<a name="93"></a><span class="source_comment">// PreBeginPlay override handles initialization of any necessary data
+</span><a name="94"></a>simulated <span class="source_type">function</span> PreBeginPlay()
+<a name="95"></a>{
+<a name="96"></a>    Super.PreBeginPlay();
+<a name="97"></a>
+<a name="98"></a>    RegisterNotifyGameStarted();
+<a name="99"></a>
+<a name="100"></a>	if (Outer.<span class="source_type">Name</span> != <span class="source_name">'Entry'</span>)
+<a name="101"></a>		<span class="source_type">Level</span>.RegisterNotifyActorDestroyed(Self);
+<a name="102"></a>
+<a name="103"></a>    <span class="source_comment">// Create sound instance bank
+</span><a name="104"></a>    SoundInstanceBank = Spawn(<span class="source_type">class</span><span class="source_name">'ActorBank'</span>);
+<a name="105"></a>    SoundInstanceBank.Initialize( <span class="source_type">class</span><span class="source_name">'SoundInstance'</span> );
+<a name="106"></a>
+<a name="107"></a>    SoundInstanceBank.OnWithdrawn = OnBankWithdrawn;
+<a name="108"></a>    SoundInstanceBank.OnDeposited = OnBankDeposited;
+<a name="109"></a>
+<a name="110"></a>	NativeInitialize();
+<a name="111"></a>}
+<a name="112"></a>
+<a name="113"></a><span class="source_type">function</span> OnOtherActorDestroyed(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> ActorBeingDestroyed)
+<a name="114"></a>{
+<a name="115"></a>    <span class="source_comment">//log("Actor"$ActorBeingDestroyed$" was destroyed");
+</span><a name="116"></a>    StopMyLoopingSchemas(ActorBeingDestroyed);
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><span class="source_comment">// GameStarted notification function, sets the GameStarted flag to true...
+</span><a name="120"></a>simulated <span class="source_type">function</span> OnGameStarted() { GameStarted=true; }
+<a name="121"></a>
+<a name="122"></a><span class="source_comment">// GetSoundMaterialFlags is used to get the pertinent flag from the Material.  Sometimes the sound designer
+</span><a name="123"></a><span class="source_comment">// will set the SoundFlag directly, other times, when the MaterialSoundType is not set, the visual effect
+</span><a name="124"></a><span class="source_comment">// flag will be used. 
+</span><a name="125"></a>simulated <span class="source_type">function</span> <span class="source_type">int</span> GetSoundMaterialFlags(<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> inMaterial)
+<a name="126"></a>{
+<a name="127"></a>    <span class="source_comment">// HACK: set the SoundEffectSubsystem's TextureFlags from the passed material (if any)
+</span><a name="128"></a>    if (inMaterial != None)
+<a name="129"></a>    {
+<a name="130"></a>        if (inMaterial.MaterialSoundType != <span class="source_int">0</span>)
+<a name="131"></a>            return inMaterial.MaterialSoundType;
+<a name="132"></a>        else
+<a name="133"></a>            return inMaterial.MaterialVisualType;
+<a name="134"></a>    }
+<a name="135"></a>    return <span class="source_int">0</span>;
+<a name="136"></a>}
+<a name="137"></a>
+<a name="138"></a><span class="source_comment">// This EffectSubsystem overriden function plays the given effect specification.  This will result in the creation and 
+</span><a name="139"></a><span class="source_comment">// updating of a new SoundInstance if necessary.
+</span><a name="140"></a>simulated event <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> PlayEffectSpecification(<span class="source_type"><a href="../igeffectssystem/effectspecification.html" class="source">EffectSpecification</a></span> GenericSchema,
+<a name="141"></a>                                                 <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Source</span>,
+<a name="142"></a>                                                 optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Target</span>,
+<a name="143"></a>                                                 optional <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> TargetMaterial,
+<a name="144"></a>                                                 optional <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> overrideWorldLocation,
+<a name="145"></a>                                                 optional <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> overrideWorldRotation,
+<a name="146"></a>                                                 optional <span class="source_type"><a href="../engine/ieffectobserver.html" class="source">IEffectObserver</a></span> Observer)
+<a name="147"></a>{
+<a name="148"></a>    local <span class="source_type"><a href="../igsoundeffectssubsystem/soundinstance.html" class="source">SoundInstance</a></span> NewInstance;
+<a name="149"></a>    local <span class="source_type"><a href="../igsoundeffectssubsystem/soundeffectspecification.html" class="source">SoundEffectSpecification</a></span> Schema;
+<a name="150"></a>    local <span class="source_type">bool</span> bInstanceValid;
+<a name="151"></a>
+<a name="152"></a>	if (GenericSchema == None)
+<a name="153"></a>		return None;
+<a name="154"></a>
+<a name="155"></a>    if (bDebugSounds)
+<a name="156"></a>    {
+<a name="157"></a>        log( <span class="source_string">"[SOUNDEFFECTS] - EffectSpecification Triggered!  Specification: "</span>$GenericSchema$<span class="source_string">", on Actor: "</span>$<span class="source_type">Source</span>$<span class="source_string">" and Material: "</span>$TargetMaterial);
+<a name="158"></a>    }
+<a name="159"></a>
+<a name="160"></a>    Schema = <span class="source_type"><a href="../igsoundeffectssubsystem/soundeffectspecification.html" class="source">SoundEffectSpecification</a></span>(GenericSchema);
+<a name="161"></a>    <span class="source_comment">//log("Playeffectspec: "$GenericSchema$" with observer: "$Observer);
+</span><a name="162"></a>    assert(Schema != None);
+<a name="163"></a>
+<a name="164"></a>    <span class="source_comment">// Create a new sound instance
+</span><a name="165"></a>    NewInstance = CreateSoundInstance();
+<a name="166"></a>    if (NewInstance != None)
+<a name="167"></a>    {
+<a name="168"></a>        <span class="source_comment">// Construct the soundinstance based on the Specification...
+</span><a name="169"></a>        bInstanceValid = Schema.ConstructSoundInstance(NewInstance, GetSoundMaterialFlags(TargetMaterial), <span class="source_type">Source</span>, GameStarted);
+<a name="170"></a>
+<a name="171"></a><span class="source_macro">#if !IG_TRIBES3 // Alex: sound effect observers were causing clean up crashes - we do not use this functionality so it has been culled
+</span><a name="172"></a>        <span class="source_comment">// SetObserver as soon as Instance is constructed, previously it was set after the next !bInstanceValid || !CanStartInstance() 
+</span><a name="173"></a>        <span class="source_comment">// conditional.  Set it here so OnEffectStopped is called correctly if the NewInstance doesn't play.
+</span><a name="174"></a>        if (Observer != None)
+<a name="175"></a>            NewInstance.SetObserver(Observer);
+<a name="176"></a><span class="source_macro">#endif
+</span><a name="177"></a>
+<a name="178"></a>        if ( !bInstanceValid  || !CanStartInstance(NewInstance) )
+<a name="179"></a>        {
+<a name="180"></a>            if (bDebugSounds)
+<a name="181"></a>            {
+<a name="182"></a>                log( <span class="source_string">"[SOUNDEFFECTS] - ERROR! Sound could not be started!"</span> );
+<a name="183"></a>            }
+<a name="184"></a>            KillInstance (NewInstance);
+<a name="185"></a>            return None;
+<a name="186"></a>        }         
+<a name="187"></a>
+<a name="188"></a>        if ( bDebugSounds )
+<a name="189"></a>            log( <span class="source_string">"New Instance:"</span>$NewInstance$<span class="source_string">" Instantiated: "</span>$NewInstance.toString() );
+<a name="190"></a>
+<a name="191"></a>        <span class="source_comment">// SoundInstance is ok to be played...
+</span><a name="192"></a>        AddToCurrentSounds(NewInstance);
+<a name="193"></a>        if ( bDebugSounds )
+<a name="194"></a>            log( <span class="source_string">"About to play New Instance: "</span>$NewInstance.toString() );
+<a name="195"></a>               
+<a name="196"></a>        <span class="source_comment">// Tell the instance it's been properly initialized...
+</span><a name="197"></a>        NewInstance.OnFinishedInitialized();
+<a name="198"></a>
+<a name="199"></a>        <span class="source_comment">// Play the sound and shiznits....
+</span><a name="200"></a>        NewInstance.Play();
+<a name="201"></a>    }
+<a name="202"></a>    return NewInstance;    <span class="source_comment">// SoundEffectSubsystems create SoundInstances which are Actors and can be returned here to
+</span><a name="203"></a>                           <span class="source_comment">// implement the normal behavior of an EffectsSubsystem
+</span><a name="204"></a>}
+<a name="205"></a>
+<a name="206"></a><span class="source_comment">// This EffectSubsystem overriden function stops the given effect specification.  This will result in stopping the 
+</span><a name="207"></a><span class="source_comment">// sound in the lower level unreal code, removing the SoundInstance from the CurrentSounds.
+</span><a name="208"></a>simulated event StopEffectSpecification(<span class="source_type"><a href="../igeffectssystem/effectspecification.html" class="source">EffectSpecification</a></span> EffectSpec, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Source</span>)
+<a name="209"></a>{
+<a name="210"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="211"></a>    assertWithDescription(<span class="source_type">source</span> != None, <span class="source_string">"StopSchema called with NULL source."</span>);
+<a name="212"></a>
+<a name="213"></a>    <span class="source_comment">// Check through currently playing sounds and stop instances
+</span><a name="214"></a>    <span class="source_comment">// with this object and schema.
+</span><a name="215"></a>    for (<span class="source_type">i</span> = CurrentSounds.Length-<span class="source_int">1</span>; <span class="source_type">i</span> &gt;= <span class="source_int">0</span>; --<span class="source_type">i</span>)
+<a name="216"></a>    {
+<a name="217"></a>        if (CurrentSounds[<span class="source_type">i</span>] != None)
+<a name="218"></a>        {
+<a name="219"></a>            if (CurrentSounds[<span class="source_type">i</span>].<span class="source_type">Source</span> == <span class="source_type">source</span> && CurrentSounds[<span class="source_type">i</span>].SchemaName == EffectSpec.<span class="source_type">Name</span>)
+<a name="220"></a>                KillInstance (CurrentSounds[<span class="source_type">i</span>]);
+<a name="221"></a>        }
+<a name="222"></a>    }
+<a name="223"></a>}
+<a name="224"></a>
+<a name="225"></a>
+<a name="226"></a><span class="source_comment">// These pause functions call a console command which causes the lower level unreal code to pause 
+</span><a name="227"></a><span class="source_comment">// all sounds.  Note: This functionality is likely to chaange....
+</span><a name="228"></a>simulated <span class="source_type">function</span> PauseAllSchemas ()
+<a name="229"></a>{
+<a name="230"></a>        if (!bSoundsArePaused)
+<a name="231"></a>        {
+<a name="232"></a>                ConsoleCommand (<span class="source_string">"PauseSounds"</span>);
+<a name="233"></a>                bSoundsArePaused = true;
+<a name="234"></a>        }
+<a name="235"></a>}
+<a name="236"></a>simulated <span class="source_type">function</span> UnpauseAllSchemas ()
+<a name="237"></a>{
+<a name="238"></a>        if (bSoundsArePaused)
+<a name="239"></a>        {
+<a name="240"></a>                ConsoleCommand (<span class="source_string">"UnpauseSounds"</span>);
+<a name="241"></a>                bSoundsArePaused = false;
+<a name="242"></a>        }
+<a name="243"></a>}
+<a name="244"></a>
+<a name="245"></a>
+<a name="246"></a><span class="source_comment">// PlayMarkerSounds plays sounds triggered by walking into a given SoundMarker.  Sounds played will stop the previous
+</span><a name="247"></a><span class="source_comment">// marker sound and start a new one.
+</span><a name="248"></a>simulated <span class="source_type">function</span> PlayMarkerSounds (<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> inSource, <span class="source_type">string</span> inSoundID1, <span class="source_type">string</span> inSoundID2)
+<a name="249"></a>{
+<a name="250"></a>    local <span class="source_type">bool</span> bPlaySound1;
+<a name="251"></a>    local <span class="source_type">bool</span> bPlaySound2;
+<a name="252"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="253"></a>    
+<a name="254"></a>    bPlaySound1 = true;
+<a name="255"></a>    bPlaySound2 = true;
+<a name="256"></a>
+<a name="257"></a>    <span class="source_comment">// Stop any marker sounds currently playing (that aren't also played by *this* marker)
+</span><a name="258"></a>
+<a name="259"></a>    for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; CurrentSounds.Length; ++<span class="source_type">i</span>)
+<a name="260"></a>        if (CurrentSounds[<span class="source_type">i</span>] != None && CurrentSounds[<span class="source_type">i</span>].<span class="source_type">Source</span> != None)
+<a name="261"></a>            if (CurrentSounds[<span class="source_type">i</span>].<span class="source_type">Source</span>.IsA (<span class="source_name">'SoundMarker'</span>))
+<a name="262"></a>                if (<span class="source_type">string</span>(CurrentSounds[<span class="source_type">i</span>].SchemaName) == inSoundID1)
+<a name="263"></a>                    <span class="source_comment">// Sound 1 is already playing
+</span><a name="264"></a>                    bPlaySound1 = false;
+<a name="265"></a>                else if (<span class="source_type">string</span>(CurrentSounds[<span class="source_type">i</span>].SchemaName) == inSoundID2)
+<a name="266"></a>                    <span class="source_comment">// Sound 2 is already playing
+</span><a name="267"></a>                    bPlaySound2 = false; 
+<a name="268"></a>                else
+<a name="269"></a>                    KillInstance (CurrentSounds[<span class="source_type">i</span>]);
+<a name="270"></a>
+<a name="271"></a>    <span class="source_comment">// Play the new sound(s)
+</span><a name="272"></a>    if (inSoundID1 != <span class="source_string">""</span> && GetSpecificationByString(inSoundID1) != None && bPlaySound1)
+<a name="273"></a>        PlayEffectSpecification(GetSpecificationByString(inSoundID1), inSource);
+<a name="274"></a>
+<a name="275"></a>    if (inSoundID2 != <span class="source_string">""</span> && GetSpecificationByString(inSoundID2) != None && bPlaySound2)
+<a name="276"></a>        PlayEffectSpecification(GetSpecificationByString(inSoundID2), inSource);
+<a name="277"></a>}
+<a name="278"></a>
+<a name="279"></a><span class="source_comment">// Print the current sounds and sound instances to the log
+</span><a name="280"></a>simulated <span class="source_type">function</span> LogState()
+<a name="281"></a>{
+<a name="282"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="283"></a>    local <span class="source_type">String</span> StateString;
+<a name="284"></a>
+<a name="285"></a>    Log(<span class="source_string">"----------------------------------------------------------------"</span>);
+<a name="286"></a>    Log(<span class="source_string">"|              SOUND EFFECTS SUBSYSTEM STATE                   |"</span>);
+<a name="287"></a>    Log(<span class="source_string">"----------------------------------------------------------------"</span>);
+<a name="288"></a>    Log(<span class="source_string">"| Existing sounds:"</span>);
+<a name="289"></a>    for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; CurrentSounds.Length; ++<span class="source_type">i</span>)
+<a name="290"></a>    {
+<a name="291"></a>        StateString = <span class="source_string">"None"</span>;
+<a name="292"></a>        if (CurrentSounds[<span class="source_type">i</span>] != None) { StateString = CurrentSounds[<span class="source_type">i</span>].toString(); }
+<a name="293"></a>        Log(<span class="source_string">"|   #"</span>$<span class="source_type">i</span>$<span class="source_string">": "</span>$StateString);
+<a name="294"></a>    }
+<a name="295"></a>    Log(<span class="source_string">"----------------------------------------------------------------"</span>);
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><span class="source_comment">// Native c++ .h interface....
+</span><a name="299"></a>cpptext
+<a name="300"></a>{
+<a name="301"></a>private: 
+<a name="302"></a>    void RemoveFromCurrentSounds (ASoundInstance* inInstance);
+<a name="303"></a>    <span class="source_comment">// Handles cases where a new sound can overwrite an old sound
+</span><a name="304"></a>    UBOOL HandleOverlap (ASoundInstance* inExistingSound, ASoundInstance* inNewSound);
+<a name="305"></a>    UBOOL IsBeingDelayed(ASoundInstance* inInstance);
+<a name="306"></a>    UBOOL IsSchemaPlaying(AActor* inSource, FName schemaName);
+<a name="307"></a>    <span class="source_type">class</span> USoundEffectSpecification* GetSpecificationByName( FName SchemaName );
+<a name="308"></a>    UBOOL CanStartInstance(ASoundInstance* inInstance);
+<a name="309"></a>
+<a name="310"></a>    <span class="source_comment">// Stop instance will just stop the sample playing, while leaving the SoundInstance updating, this 
+</span><a name="311"></a>    <span class="source_comment">// should NEVER be called by anything outside of ASoundInstance of ASoundEffectsSubsystem.  This is used
+</span><a name="312"></a>    <span class="source_comment">// for non-seamless loops where there is a random delay between loop iterations.  
+</span><a name="313"></a>    void StopInstance (ASoundInstance* inInstance);
+<a name="314"></a>    <span class="source_comment">// Requires ASoundInstance to be a friend...
+</span><a name="315"></a>    friend <span class="source_type">class</span> ASoundInstance;
+<a name="316"></a>
+<a name="317"></a>    <span class="source_comment">// When the UAudioSubsystem stops a sound sample for whatever reason, we need to make sure and cleanup SoundInstance's
+</span><a name="318"></a>    <span class="source_comment">// that reference the sample
+</span><a name="319"></a>    void OnSubsystemStoppedSound( <span class="source_type">int</span> StoppedHandle );
+<a name="320"></a>    <span class="source_comment">// Requires this function to be a friend...
+</span><a name="321"></a>    friend static void GlobalSoundStoppedByAudioSubsystem( <span class="source_type">int</span> SoundIndex );
+<a name="322"></a>
+<a name="323"></a>    static UAudioSubsystem* <span class="source_type">AudioSubsystem</span>;
+<a name="324"></a>
+<a name="325"></a>public:
+<a name="326"></a>    <span class="source_comment">// Used to register names for events in this package
+</span><a name="327"></a>    void InitExecution();
+<a name="328"></a>    void PostScriptDestroyed();
+<a name="329"></a>    
+<a name="330"></a>    <span class="source_comment">// Returns the duration of the sound
+</span><a name="331"></a>    static <span class="source_type">FLOAT</span> GetSoundInstanceDuration(ASoundInstance* inInstance);
+<a name="332"></a>
+<a name="333"></a>    <span class="source_comment">// Returns the current UAudioSubsystem...
+</span><a name="334"></a>    static UAudioSubsystem* GetAudio();
+<a name="335"></a>
+<a name="336"></a>    <span class="source_comment">// Stops a sound from playing the actual sound, though it still updates.  Used when a sound is too far away to hear
+</span><a name="337"></a>    void MuteInstance (ASoundInstance* inInstance);
+<a name="338"></a>    void UnMuteInstance (ASoundInstance* inInstance);
+<a name="339"></a>
+<a name="340"></a>    <span class="source_comment">// Instance handling functions
+</span><a name="341"></a>    void PlayInstance (ASoundInstance* inInstance);
+<a name="342"></a>    void KillInstance (ASoundInstance* inInstance);
+<a name="343"></a>}
+<a name="344"></a>
+<a name="345"></a>
+<a name="346"></a>defaultproperties
+<a name="347"></a>{
+<a name="348"></a>    EffectSpecificationSubClass=<span class="source_type">class</span><span class="source_name">'SoundEffectSpecification'</span>
+<a name="349"></a>    bDebugSounds=false
+<a name="350"></a>}
+<a name="351"></a>
+<a name="352"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/igsoundeffectssubsystem-overview.html">Package</a></td>
+	<td class="header"><a href="../igsoundeffectssubsystem/soundeffectssubsystem.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#SoundEffectsSubsystem">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_igsoundeffectssubsystem/soundeffectspecification.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_igsoundeffectssubsystem/soundinstance.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:12.000 - Creation time: st 23.5.2018 00:10:47.163 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

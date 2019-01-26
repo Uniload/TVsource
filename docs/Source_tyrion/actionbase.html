@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Tyrion.ActionBase</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/actionbase.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ActionBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/actionaddgoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/actionchangeaicontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tyrion/actionbase.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=====================================================================
+</span><a name="2"></a><span class="source_comment">// ActionBase
+</span><a name="3"></a><span class="source_comment">//
+</span><a name="4"></a><span class="source_comment">// Base class for Tyrion (AI) and Cersei (Navigation System) actions
+</span><a name="5"></a><span class="source_comment">//=====================================================================
+</span><a name="6"></a>
+<a name="7"></a><span class="source_type">class</span> <span class="source_type"><a href="../tyrion/actionbase.html" class="source">ActionBase</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/tyrion_actionbase.html" class="source">Tyrion_ActionBase</a></span>
+<a name="8"></a>	native
+<a name="9"></a>	abstract
+<a name="10"></a>	native
+<a name="11"></a>	threaded;
+<a name="12"></a>
+<a name="13"></a><span class="source_comment">//=====================================================================
+</span><a name="14"></a><span class="source_comment">// Constants
+</span><a name="15"></a>
+<a name="16"></a><span class="source_comment">// errorCodes; everything &gt; 0 is a failure
+</span><a name="17"></a>enum <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span>
+<a name="18"></a>{
+<a name="19"></a>   ACT_SUCCESS,
+<a name="20"></a>   ACT_GENERAL_FAILURE,
+<a name="21"></a>   ACT_RESOURCE_INACTIVE,		<span class="source_comment">// resource became inactive (due to death, LODding, etc.)
+</span><a name="22"></a>   ACT_INTERRUPTED,				<span class="source_comment">// the action was interrupted by a call to "InterruptAction"
+</span><a name="23"></a>   ACT_CANT_FIND_PATH,
+<a name="24"></a>   ACT_IRREVERSIBLY_OFF_COURSE,
+<a name="25"></a>   ACT_TIME_LIMIT_EXCEEDED,
+<a name="26"></a>   ACT_INVALID_PARAMETERS,		<span class="source_comment">// parameters provided to the action don't make sense
+</span><a name="27"></a>   ACT_CANT_REACH_DESTINATION,
+<a name="28"></a>   ACT_ALL_RESOURCES_DIED,		<span class="source_comment">// all the resources the action was running on died
+</span><a name="29"></a>   ACT_REQUIRED_RESOURCE_STOLEN,
+<a name="30"></a>   ACT_INSUFFICIENT_RESOURCES_AVAILABLE,
+<a name="31"></a>   ACT_INSUFFICIENT_ENERGY,
+<a name="32"></a>   ACT_DESTINATION_ENCROACHED,
+<a name="33"></a>   ACT_LOST_TARGET,				<span class="source_comment">// lost target of action
+</span><a name="34"></a>   ACT_COULDNT_ENTER_VEHICLE,
+<a name="35"></a>   ACT_COULDNT_EXIT_VEHICLE,
+<a name="36"></a>   ACT_PARTIAL_SUCCESS
+<a name="37"></a>};
+<a name="38"></a>
+<a name="39"></a>const DONT_CARE = -<span class="source_int">99999.0</span>;			<span class="source_comment">// "don't care" value for movement related action parameters
+</span><a name="40"></a>
+<a name="41"></a><span class="source_comment">//=====================================================================
+</span><a name="42"></a><span class="source_comment">// Variables
+</span><a name="43"></a>
+<a name="44"></a>var <span class="source_type">bool</span> bIdle;					<span class="source_comment">// is this action idle?
+</span><a name="45"></a>var <span class="source_type">bool</span> bCompleted;			<span class="source_comment">// has this action completed?
+</span><a name="46"></a>var <span class="source_type">bool</span> bWasTicked;			<span class="source_comment">// true if action was ticked at least once
+</span><a name="47"></a>var <span class="source_type">bool</span> bDeleted;				<span class="source_comment">// set when this action has been deleted
+</span><a name="48"></a>var <span class="source_type">bool</span> bSensorAction;			<span class="source_comment">// is this action a sensorAction?
+</span><a name="49"></a>
+<a name="50"></a><span class="source_comment">//=====================================================================
+</span><a name="51"></a><span class="source_comment">// Functions
+</span><a name="52"></a>
+<a name="53"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="54"></a><span class="source_comment">// Called when an action finished or is interrupted
+</span><a name="55"></a>
+<a name="56"></a><span class="source_type">function</span> cleanup();
+<a name="57"></a>
+<a name="58"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="59"></a><span class="source_comment">// Removes action from all the data structures it is in; terminates it
+</span><a name="60"></a>
+<a name="61"></a><span class="source_type">function</span> removeAction();
+<a name="62"></a>
+<a name="63"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="64"></a><span class="source_comment">// Removes the goal associated with the action (if any)
+</span><a name="65"></a>
+<a name="66"></a><span class="source_type">function</span> removeGoal();
+<a name="67"></a>
+<a name="68"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="69"></a><span class="source_comment">// action state query functions
+</span><a name="70"></a>
+<a name="71"></a><span class="source_comment">// Note: idle state is undefined if action has completed
+</span><a name="72"></a><span class="source_type">function</span> <span class="source_type">bool</span> isIdle()
+<a name="73"></a>{
+<a name="74"></a>	return bIdle;
+<a name="75"></a>}
+<a name="76"></a>
+<a name="77"></a><span class="source_type">function</span> <span class="source_type">bool</span> isRunning()
+<a name="78"></a>{
+<a name="79"></a>	return !bIdle;
+<a name="80"></a>}
+<a name="81"></a>
+<a name="82"></a><span class="source_type">function</span> <span class="source_type">bool</span> hasCompleted()
+<a name="83"></a>{
+<a name="84"></a>	return bCompleted;
+<a name="85"></a>}
+<a name="86"></a>
+<a name="87"></a><span class="source_comment">// true if action was ticked at least once
+</span><a name="88"></a><span class="source_type">function</span> <span class="source_type">bool</span> wasTicked()
+<a name="89"></a>{
+<a name="90"></a>	return bWasTicked;
+<a name="91"></a>}
+<a name="92"></a>
+<a name="93"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="94"></a><span class="source_comment">// Pause an action (put it onto idle list)
+</span><a name="95"></a><span class="source_comment">// Typically called by the resource/controller
+</span><a name="96"></a>
+<a name="97"></a><span class="source_type">function</span> pauseAction();
+<a name="98"></a>
+<a name="99"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="100"></a><span class="source_comment">// Run an action
+</span><a name="101"></a><span class="source_comment">// Typically called by the resource/controller
+</span><a name="102"></a>
+<a name="103"></a>event runAction();
+<a name="104"></a>
+<a name="105"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="106"></a><span class="source_comment">// Inform an action that a particular pawn died
+</span><a name="107"></a><span class="source_comment">// (Actions should not assume they will only get one of these messages per pawn death)
+</span><a name="108"></a>
+<a name="109"></a><span class="source_type">function</span> pawnDied( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> );
+<a name="110"></a>
+<a name="111"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="112"></a><span class="source_comment">// Called by an action when it has failed at accomplishing its goal
+</span><a name="113"></a>
+<a name="114"></a>event instantFail( <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">errorCode</span>, optional <span class="source_type">bool</span> <span class="source_type">bRemoveGoal</span> )
+<a name="115"></a>{
+<a name="116"></a>	removeAction();
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><span class="source_macro">#if IG_TRIBES3
+</span><a name="120"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="121"></a><span class="source_comment">// Add action to childAction list
+</span><a name="122"></a>
+<a name="123"></a><span class="source_type">function</span> setChildReference( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> );
+<a name="124"></a>
+<a name="125"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="126"></a><span class="source_comment">// Remove action from childAction list
+</span><a name="127"></a>
+<a name="128"></a><span class="source_type">function</span> removeChildReference( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> );
+<a name="129"></a>
+<a name="130"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="131"></a><span class="source_comment">// Return the Cersei child?
+</span><a name="132"></a>
+<a name="133"></a><span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> getChildReference();
+<a name="134"></a>
+<a name="135"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="136"></a><span class="source_comment">// Callbacks from Navigation System actions
+</span><a name="137"></a><span class="source_comment">// (used when a Tyrion action wants to call a Cersei action)
+</span><a name="138"></a>
+<a name="139"></a><span class="source_type">function</span> actionSucceededCB( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> )
+<a name="140"></a>{
+<a name="141"></a>	<span class="source_comment">// If the child finishes and the parent was idle, start the parent up again
+</span><a name="142"></a>	if ( bIdle && <span class="source_type">child</span>.bWakeUpParent )
+<a name="143"></a>	{
+<a name="144"></a>		runAction();
+<a name="145"></a>		<span class="source_comment">//log( "--&gt;" @ name @ "now knows that" @ child.name @ "succeeded!" );
+</span><a name="146"></a>	}
+<a name="147"></a>}
+<a name="148"></a>
+<a name="149"></a><span class="source_type">function</span> actionFailedCB( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span>, <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">errorCode</span> )
+<a name="150"></a>{
+<a name="151"></a>	<span class="source_comment">// If the child finishes and the parent was idle, start the parent up again
+</span><a name="152"></a>	if ( bIdle && <span class="source_type">child</span>.bWakeUpParent )
+<a name="153"></a>	{
+<a name="154"></a>		runAction();
+<a name="155"></a>		<span class="source_comment">//log( "--&gt;" @ name @ "now knows that" @ child.name @ "failed!" );
+</span><a name="156"></a>	}
+<a name="157"></a>}
+<a name="158"></a><span class="source_macro">#endif
+</span><a name="159"></a>
+<a name="160"></a><span class="source_comment">//=====================================================================
+</span><a name="161"></a><span class="source_comment">// Action Idioms
+</span><a name="162"></a>
+<a name="163"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="164"></a><span class="source_comment">// Action idiom: yield
+</span><a name="165"></a><span class="source_comment">// Continue execution on next tick at the position following 'yield()'
+</span><a name="166"></a>
+<a name="167"></a>latent <span class="source_type">function</span> yield()
+<a name="168"></a>{
+<a name="169"></a>	Sleep(<span class="source_int">0.0</span>);
+<a name="170"></a>}
+<a name="171"></a>
+<a name="172"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="173"></a><span class="source_comment">// Action idiom: pause
+</span><a name="174"></a><span class="source_comment">// Pause an action by taken it off the 'runningActions' list;
+</span><a name="175"></a><span class="source_comment">// When action is switched back to 'Running' it
+</span><a name="176"></a><span class="source_comment">// continues execution at the position following 'pause()'
+</span><a name="177"></a>
+<a name="178"></a>latent <span class="source_type">function</span> pause()
+<a name="179"></a>{
+<a name="180"></a>	pauseAction();
+<a name="181"></a>	yield();
+<a name="182"></a>}
+<a name="183"></a>
+<a name="184"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="185"></a><span class="source_comment">// Action idiom: sleepForever
+</span><a name="186"></a>
+<a name="187"></a>latent <span class="source_type">function</span> sleepForever()
+<a name="188"></a>{
+<a name="189"></a>	while( true )
+<a name="190"></a>		pause();
+<a name="191"></a>}
+<a name="192"></a>
+<a name="193"></a><span class="source_macro">#if IG_TRIBES3
+</span><a name="194"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="195"></a><span class="source_comment">// Action idiom: waitForAction
+</span><a name="196"></a><span class="source_comment">// Pauses parent until 'child' completes (fails or succeeds)
+</span><a name="197"></a><span class="source_comment">// (Note: only makes sense for NS_Action children)
+</span><a name="198"></a>
+<a name="199"></a>latent <span class="source_type">function</span> waitForAction( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> )
+<a name="200"></a>{
+<a name="201"></a>	<span class="source_type">child</span>.bWakeUpParent = true;
+<a name="202"></a>	pause();
+<a name="203"></a>}
+<a name="204"></a>
+<a name="205"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="206"></a><span class="source_comment">// Action idiom: interruptActionIf
+</span><a name="207"></a><span class="source_comment">// Parent runs in parallel with child, and interrupts 'child' if 'condition' is true
+</span><a name="208"></a><span class="source_comment">// If child releases while this function is running, "getChildReference" will return None
+</span><a name="209"></a>
+<a name="210"></a>latent <span class="source_type">function</span> interruptActionIf( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span>, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../tyrion/ibooleanactioncondition.html" class="source">IBooleanActionCondition</a></span>&gt; <span class="source_type">condition</span> )
+<a name="211"></a>{
+<a name="212"></a>	while ( <span class="source_type">child</span> != None && !<span class="source_type">child</span>.hasCompleted() )		<span class="source_comment">// child is still running
+</span><a name="213"></a>	{
+<a name="214"></a>		if ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkDead( <span class="source_type">child</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> ) || <span class="source_type">condition</span>.static.actionTest( self, <span class="source_type">child</span> ))	<span class="source_comment">// interrupt child when condition is true
+</span><a name="215"></a>		{
+<a name="216"></a>			<span class="source_type">child</span>.interruptAction();
+<a name="217"></a>			break;
+<a name="218"></a>		}
+<a name="219"></a>		else
+<a name="220"></a>		{
+<a name="221"></a>			yield();
+<a name="222"></a>		}
+<a name="223"></a>	}
+<a name="224"></a>}
+<a name="225"></a><span class="source_macro">#endif
+</span><a name="226"></a>
+<a name="227"></a><span class="source_comment">//=====================================================================
+</span><a name="228"></a><span class="source_comment">// General utility functions
+</span><a name="229"></a>
+<a name="230"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="231"></a><span class="source_comment">// rotate a vector around Z by "angle" radians
+</span><a name="232"></a><span class="source_comment">// todo: move to object?
+</span><a name="233"></a>
+<a name="234"></a>static final <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> rotateZ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> v, <span class="source_type">float</span> <span class="source_type">angle</span> )
+<a name="235"></a>{
+<a name="236"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">result</span>;
+<a name="237"></a>	local <span class="source_type">float</span> cosangle;
+<a name="238"></a>	local <span class="source_type">float</span> sinAngle;
+<a name="239"></a>
+<a name="240"></a>	sinangle = sin(<span class="source_type">angle</span>);
+<a name="241"></a>	cosangle = cos(<span class="source_type">angle</span>);
+<a name="242"></a>
+<a name="243"></a>	<span class="source_type">result</span>.X = cosangle * v.X - sinangle * v.<span class="source_type">Y</span>;
+<a name="244"></a>	<span class="source_type">result</span>.<span class="source_type">Y</span> = sinangle * v.X + cosangle * v.<span class="source_type">Y</span>;
+<a name="245"></a>	<span class="source_type">result</span>.Z = v.Z;
+<a name="246"></a>
+<a name="247"></a>	return <span class="source_type">result</span>;
+<a name="248"></a>}
+<a name="249"></a>
+<a name="250"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="251"></a><span class="source_comment">// what's the minimum distance between two objects on two trajectories?
+</span><a name="252"></a><span class="source_comment">// startA and velA define the trajectory of object A
+</span><a name="253"></a><span class="source_comment">// startB and velB define the trajectory of object B
+</span><a name="254"></a><span class="source_comment">// Function returns minimum distance and the time t to get to minimum distance (which will be 0
+</span><a name="255"></a><span class="source_comment">// if objects are moving away from one another)
+</span><a name="256"></a>
+<a name="257"></a>static final <span class="source_type">function</span> <span class="source_type">float</span> minDistBetweenTrajectories( out <span class="source_type">float</span> <span class="source_type">t</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> startA, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> velA, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> startB, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">velB</span> )
+<a name="258"></a>{
+<a name="259"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> posDelta;
+<a name="260"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> velDelta;
+<a name="261"></a>
+<a name="262"></a>	posDelta = startA - startB;
+<a name="263"></a>	velDelta = velA - <span class="source_type">velB</span>;
+<a name="264"></a>
+<a name="265"></a>	<span class="source_type">t</span> = -posDelta.X * velDelta.X - posDelta.<span class="source_type">Y</span> * velDelta.<span class="source_type">Y</span> - posDelta.Z * velDelta.Z;
+<a name="266"></a>	<span class="source_type">t</span> /= velDelta.X * velDelta.X + velDelta.<span class="source_type">Y</span> * velDelta.<span class="source_type">Y</span> + velDelta.Z * velDelta.Z;
+<a name="267"></a>
+<a name="268"></a>	if ( <span class="source_type">t</span> &lt; <span class="source_int">0</span> )
+<a name="269"></a>		<span class="source_type">t</span> = <span class="source_int">0</span>;		<span class="source_comment">// trajectories are diverging: t = 0 is the point in time where they are closest
+</span><a name="270"></a>
+<a name="271"></a>	return VSize( posDelta + <span class="source_type">t</span> * velDelta );
+<a name="272"></a>}
+<a name="273"></a>
+<a name="274"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="275"></a><span class="source_comment">// what's the point on a line closest to a given point A?
+</span><a name="276"></a><span class="source_comment">// (solution taken from "Foley/van Dam/Feiner/Hughes: Computer Graphics - Principles and Practice", p. 1100)
+</span><a name="277"></a>
+<a name="278"></a>static final <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> closestPointOnALine( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> lineStart, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">lineDir</span> )
+<a name="279"></a>{
+<a name="280"></a>	return lineStart + (( <span class="source_type">A</span> - lineStart ) Dot <span class="source_type">lineDir</span>) / (<span class="source_type">lineDir</span> Dot <span class="source_type">lineDir</span>) * <span class="source_type">lineDir</span>;
+<a name="281"></a>}
+<a name="282"></a>
+<a name="283"></a><span class="source_comment">//=====================================================================
+</span><a name="284"></a>
+<a name="285"></a>defaultproperties
+<a name="286"></a>{
+<a name="287"></a>	bIdle			= true
+<a name="288"></a>	bCompleted		= false
+<a name="289"></a>	bSensorAction	= false
+<a name="290"></a>}
+<a name="291"></a>
+<a name="292"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/actionbase.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ActionBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/actionaddgoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/actionchangeaicontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: èt 9.9.2004 16:25:32.000 - Creation time: st 23.5.2018 00:10:40.023 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

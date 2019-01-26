@@ -1,0 +1,1085 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.InventoryStationAccess</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/inventorystationaccess.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#InventoryStationAccess">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/inventorystation.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/inventorystationaccesscontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/inventorystationaccess.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span> extends <span class="source_type"><a href="../gameplay/basedeviceaccess.html" class="source">BaseDeviceAccess</a></span>
+<a name="2"></a>	notplaceable
+<a name="3"></a>	dependsOn(<span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span>);
+<a name="4"></a>
+<a name="5"></a><span class="source_comment">/// Inventory Station Protocol
+</span><a name="6"></a><span class="source_comment">///
+</span><a name="7"></a><span class="source_comment">/// Server										Client
+</span><a name="8"></a><span class="source_comment">///
+</span><a name="9"></a><span class="source_comment">/// UsedBy: Player pressed used in vicinity
+</span><a name="10"></a><span class="source_comment">/// of Inventory Station. Registers players
+</span><a name="11"></a><span class="source_comment">/// desire to use inventory station.
+</span><a name="12"></a><span class="source_comment">///
+</span><a name="13"></a><span class="source_comment">///												clientInventoryStationWait: Puts client into waiting state.
+</span><a name="14"></a><span class="source_comment">///
+</span><a name="15"></a><span class="source_comment">/// Tick: Waits for inventory station to
+</span><a name="16"></a><span class="source_comment">/// become accessible and then calls
+</span><a name="17"></a><span class="source_comment">/// characterAccess.
+</span><a name="18"></a><span class="source_comment">///
+</span><a name="19"></a><span class="source_comment">/// characterAccess: Puts user's Controller
+</span><a name="20"></a><span class="source_comment">/// into PlayerUsingInventoryStation state
+</span><a name="21"></a><span class="source_comment">/// and calls clientInventoryStationAccess on
+</span><a name="22"></a><span class="source_comment">/// user's Controller.
+</span><a name="23"></a><span class="source_comment">///
+</span><a name="24"></a><span class="source_comment">///												clientInventoryStationAccess: Hides HUD and
+</span><a name="25"></a><span class="source_comment">///												displays Inventory Station UI.
+</span><a name="26"></a><span class="source_comment">///
+</span><a name="27"></a><span class="source_comment">///												*** Player selects Loadout and eventually presses "Done". ***
+</span><a name="28"></a><span class="source_comment">///
+</span><a name="29"></a><span class="source_comment">///												finishCharacterAccess: Called by UI. Calls
+</span><a name="30"></a><span class="source_comment">///												serverFinishInventoryStationAccess on user's Controller and
+</span><a name="31"></a><span class="source_comment">///												clientTerminateCharacterAccess.
+</span><a name="32"></a><span class="source_comment">///
+</span><a name="33"></a><span class="source_comment">/// serverFinishInventoryStationAccess:			clientTerminateCharacterAccess: Calls
+</span><a name="34"></a><span class="source_comment">/// Confirms user was actually using this		clientFinishInventoryStationAccess on user's Controller.
+</span><a name="35"></a><span class="source_comment">/// Inventory Station. Puts user back into
+</span><a name="36"></a><span class="source_comment">/// default state and calls						clientFinishInventoryStationAccess: Shows HUD and removes
+</span><a name="37"></a><span class="source_comment">/// serverFinishCharacterAccess.				Inventory Station UI.
+</span><a name="38"></a><span class="source_comment">///
+</span><a name="39"></a><span class="source_comment">/// serverFinishCharacterAccess:
+</span><a name="40"></a><span class="source_comment">/// Confirms validity of selected loadout
+</span><a name="41"></a><span class="source_comment">/// and applies it.
+</span><a name="42"></a><span class="source_comment">///
+</span><a name="43"></a><span class="source_comment">/// *********************************************************************************************************
+</span><a name="44"></a><span class="source_comment">///
+</span><a name="45"></a><span class="source_comment">/// CASE INVENTORY STATION CEASES TO BE FUNCTIONAL WHILE BEING USED OR USER IS BLOWN OFF
+</span><a name="46"></a><span class="source_comment">///
+</span><a name="47"></a><span class="source_comment">/// *** Termination Condition Activated ***
+</span><a name="48"></a><span class="source_comment">///
+</span><a name="49"></a><span class="source_comment">/// Tick: Detects termination condition
+</span><a name="50"></a><span class="source_comment">/// and calls
+</span><a name="51"></a><span class="source_comment">/// serverTerminateInventoryStationAccess on
+</span><a name="52"></a><span class="source_comment">/// user's controller as a result.
+</span><a name="53"></a><span class="source_comment">///
+</span><a name="54"></a><span class="source_comment">/// serverTerminateInventoryStationAccess:
+</span><a name="55"></a><span class="source_comment">/// call serverTerminateCharacterAccess and
+</span><a name="56"></a><span class="source_comment">/// clientTerminateInventoryStationAccess.
+</span><a name="57"></a><span class="source_comment">///
+</span><a name="58"></a><span class="source_comment">/// serverTerminateCharacterAccess:
+</span><a name="59"></a><span class="source_comment">/// Puts user's controller into default
+</span><a name="60"></a><span class="source_comment">/// state.
+</span><a name="61"></a><span class="source_comment">///
+</span><a name="62"></a><span class="source_comment">///												clientTerminateInventoryStationAccess: Calls
+</span><a name="63"></a><span class="source_comment">///												clientFinishInventoryStationAccess (see above).
+</span><a name="64"></a>
+<a name="65"></a>var private <span class="source_type"><a href="../gameplay/inventorystationaccesscontrol.html" class="source">InventoryStationAccessControl</a></span> <span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>;
+<a name="66"></a>
+<a name="67"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">float</span>	healRateHealthFractionPerSecond	<span class="source_string">"Heal rate for the health injection"</span>;
+<a name="68"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">bool</span>	bCanUseCustomLoadouts			<span class="source_string">"Whether this station allows users to utilise custom loadouts"</span>;
+<a name="69"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">bool</span>	bAutoFillWeapons				<span class="source_string">"Whether to fill out the weapons array automatically"</span>;
+<a name="70"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">bool</span>	bAutoFillPacks					<span class="source_string">"Whether to fill out the packs array automatically"</span>;
+<a name="71"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">bool</span>	bAutoFillCombatRoles			<span class="source_string">"Whether to fill out the combat roles array automatically"</span>;
+<a name="72"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">bool</span>	bAutoConfigGrenades				<span class="source_string">"Whether to set the grenades class automatically"</span>;
+<a name="73"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">bool</span>	bInventoryTutorial				<span class="source_string">"Is this inventory station in tutorial mode"</span>;
+<a name="74"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">int</span>		NumFallbackWeapons				<span class="source_string">"Number of fall back weapons for the station (At the start of the weapons array)"</span>;
+<a name="75"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventorystationAccess</a></span>) <span class="source_type">bool</span>	bDispenseGrenades				<span class="source_string">"Whether this station dispenses grenades"</span>;
+<a name="76"></a>
+<a name="77"></a>var <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>	currentUser;
+<a name="78"></a>var <span class="source_type">float</span>		percentageHealth;
+<a name="79"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>		userPosition;
+<a name="80"></a>var <span class="source_type">bool</span>		bWaitingForAccess;
+<a name="81"></a>var const <span class="source_type">int</span>	maxWeapons;
+<a name="82"></a>
+<a name="83"></a>struct <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationCombatRole" class="source">InventoryStationCombatRole</a></span>
+<a name="84"></a>{
+<a name="85"></a>	var () <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; combatRoleClass;
+<a name="86"></a>	var () <span class="source_type">bool</span> <span class="source_type">bEnabled</span>;
+<a name="87"></a>};
+<a name="88"></a>
+<a name="89"></a>struct <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationPack" class="source">InventoryStationPack</a></span>
+<a name="90"></a>{
+<a name="91"></a>	var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt;	packClass;
+<a name="92"></a>	var() <span class="source_type">bool</span>			<span class="source_type">bEnabled</span>;
+<a name="93"></a>};
+<a name="94"></a>
+<a name="95"></a>struct <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationWeapon" class="source">InventoryStationWeapon</a></span>
+<a name="96"></a>{
+<a name="97"></a>	var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;	<span class="source_type">weaponClass</span>;
+<a name="98"></a>	var() <span class="source_type">bool</span>			<span class="source_type">bEnabled</span>;
+<a name="99"></a>};
+<a name="100"></a>
+<a name="101"></a>struct <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationGrenades" class="source">InventoryStationGrenades</a></span>
+<a name="102"></a>{
+<a name="103"></a>	var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/handgrenade.html" class="source">HandGrenade</a></span>&gt;	grenadeClass;
+<a name="104"></a>	var() <span class="source_type">bool</span>					<span class="source_type">bEnabled</span>;
+<a name="105"></a>};
+<a name="106"></a>
+<a name="107"></a>struct <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span>
+<a name="108"></a>{
+<a name="109"></a>	var <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationCombatRole" class="source">InventoryStationCombatRole</a></span>		role;
+<a name="110"></a>	var <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationWeapon" class="source">InventoryStationWeapon</a></span>			weapons[<span class="source_int">10</span>];
+<a name="111"></a>	var <span class="source_type">int</span>								activeWeaponSlot;
+<a name="112"></a>	var <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationPack" class="source">InventoryStationPack</a></span>			<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>;
+<a name="113"></a>	var <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationGrenades" class="source">InventoryStationGrenades</a></span>		grenades;
+<a name="114"></a>	var <span class="source_type">bool</span>							NoLoadout;
+<a name="115"></a>	var <span class="source_type">string</span>							userSkin;
+<a name="116"></a>};
+<a name="117"></a>
+<a name="118"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) Array&lt;<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationCombatRole" class="source">InventoryStationCombatRole</a></span>&gt;	roles;
+<a name="119"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) Array&lt;<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationWeapon" class="source">InventoryStationWeapon</a></span>&gt;		weapons;
+<a name="120"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) Array&lt;<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationPack" class="source">InventoryStationPack</a></span>&gt;			packs;
+<a name="121"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) Array&lt;<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span>&gt;		loadouts;
+<a name="122"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationGrenades" class="source">InventoryStationGrenades</a></span>			grenades;
+<a name="123"></a>var(<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>) <span class="source_type">int</span>									defaultLoadoutIndex;
+<a name="124"></a>
+<a name="125"></a>replication
+<a name="126"></a>{
+<a name="127"></a>	reliable if (Role == ROLE_Authority)
+<a name="128"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>;
+<a name="129"></a>}
+<a name="130"></a>
+<a name="131"></a>
+<a name="132"></a>simulated <span class="source_type">function</span> UpdatePrecacheRenderData()
+<a name="133"></a>{
+<a name="134"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="135"></a>
+<a name="136"></a>	Super.UpdatePrecacheRenderData();
+<a name="137"></a>
+<a name="138"></a>	<span class="source_comment">// precache weapons
+</span><a name="139"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; weapons.Length; ++<span class="source_type">i</span>)
+<a name="140"></a>	{
+<a name="141"></a>		if (weapons[<span class="source_type">i</span>].<span class="source_type">bEnabled</span>)
+<a name="142"></a>			<span class="source_type">class</span><span class="source_name">'Weapon'</span>.static.PrecacheWeaponRenderData(<span class="source_type">Level</span>, weapons[<span class="source_type">i</span>].<span class="source_type">weaponClass</span>);
+<a name="143"></a>	}
+<a name="144"></a>}
+<a name="145"></a>
+<a name="146"></a><span class="source_comment">// checks if a role is available by its FULL class name
+</span><a name="147"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> IsRoleAvailable(<span class="source_type">String</span> roleClassName)
+<a name="148"></a>{
+<a name="149"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="150"></a>
+<a name="151"></a>	for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; roles.Length; ++<span class="source_type">i</span>)
+<a name="152"></a>	{
+<a name="153"></a>		if(roleClassName ~= (roles[<span class="source_type">i</span>].combatRoleClass.Outer.<span class="source_type">Name</span> $<span class="source_string">"."</span> $roles[<span class="source_type">i</span>].combatRoleClass.<span class="source_type">Name</span>) && roles[<span class="source_type">i</span>].<span class="source_type">bEnabled</span>)
+<a name="154"></a>			return true;
+<a name="155"></a>	}
+<a name="156"></a>
+<a name="157"></a>	return false;
+<a name="158"></a>}
+<a name="159"></a>
+<a name="160"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span> getCorrespondingInventoryStation()
+<a name="161"></a>{
+<a name="162"></a>	return self;
+<a name="163"></a>}
+<a name="164"></a>
+<a name="165"></a>simulated <span class="source_type">function</span> <span class="source_type">int</span> getNumberLoadouts()
+<a name="166"></a>{
+<a name="167"></a>	return loadouts.Length;
+<a name="168"></a>}
+<a name="169"></a>
+<a name="170"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> getLoadout(<span class="source_type">int</span> loadoutIndex)
+<a name="171"></a>{
+<a name="172"></a>	return loadouts[loadoutIndex];
+<a name="173"></a>}
+<a name="174"></a>
+<a name="175"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> getDefaultLoadout()
+<a name="176"></a>{
+<a name="177"></a>	return loadouts[defaultLoadoutIndex];
+<a name="178"></a>}
+<a name="179"></a>
+<a name="180"></a>simulated <span class="source_type">function</span> clientSetupInventoryStation(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">user</span>)
+<a name="181"></a>{
+<a name="182"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="183"></a>	local <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationWeapon" class="source">InventoryStationWeapon</a></span> w;
+<a name="184"></a>	local <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationPack" class="source">InventoryStationPack</a></span> <span class="source_type">p</span>;
+<a name="185"></a>	local <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationCombatRole" class="source">InventoryStationCombatRole</a></span> newRole;
+<a name="186"></a>
+<a name="187"></a>	currentUser = <span class="source_type">user</span>;
+<a name="188"></a>	if(currentUser != None)
+<a name="189"></a>		percentageHealth = FClamp(currentUser.health / currentUser.healthMaximum, <span class="source_int">0.0</span>, <span class="source_int">1.0</span>);
+<a name="190"></a>	else
+<a name="191"></a>		percentageHealth = <span class="source_int">1.0</span>;
+<a name="192"></a>
+<a name="193"></a>	<span class="source_comment">//================================
+</span><a name="194"></a>	<span class="source_comment">// Auto Fill debug - fill out arrays
+</span><a name="195"></a>
+<a name="196"></a>	if(bAutoFillWeapons)
+<a name="197"></a>	{
+<a name="198"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponSpinfusor"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="199"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="200"></a>		weapons[<span class="source_int">0</span>] = w;
+<a name="201"></a>
+<a name="202"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponChaingun"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="203"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="204"></a>		weapons[<span class="source_int">1</span>] = w;
+<a name="205"></a>
+<a name="206"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponBlaster"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="207"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="208"></a>		weapons[<span class="source_int">2</span>] = w;
+<a name="209"></a>
+<a name="210"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponGrenadeLauncher"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="211"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="212"></a>		weapons[<span class="source_int">3</span>] = w;
+<a name="213"></a>
+<a name="214"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponSniperRifle"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="215"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="216"></a>		weapons[<span class="source_int">4</span>] = w;
+<a name="217"></a>
+<a name="218"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponMortar"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="219"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="220"></a>		weapons[<span class="source_int">5</span>] = w;
+<a name="221"></a>
+<a name="222"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponRocketPod"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="223"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="224"></a>		weapons[<span class="source_int">6</span>] = w;
+<a name="225"></a>
+<a name="226"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponBuckler"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="227"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="228"></a>		weapons[<span class="source_int">7</span>] = w;
+<a name="229"></a>
+<a name="230"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponBurner"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="231"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="232"></a>		weapons[<span class="source_int">8</span>] = w;
+<a name="233"></a>
+<a name="234"></a>		w.<span class="source_type">weaponClass</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponGrappler"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="235"></a>		w.<span class="source_type">bEnabled</span> = true;
+<a name="236"></a>		weapons[<span class="source_int">9</span>] = w;
+<a name="237"></a>	}
+<a name="238"></a>
+<a name="239"></a>	if(bAutoFillPacks)
+<a name="240"></a>	{
+<a name="241"></a>		<span class="source_type">p</span>.packClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.PackSpeed"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="242"></a>		<span class="source_type">p</span>.<span class="source_type">bEnabled</span> = true;
+<a name="243"></a>		packs[<span class="source_int">0</span>] = <span class="source_type">p</span>;
+<a name="244"></a>
+<a name="245"></a>		<span class="source_type">p</span>.packClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.PackRepair"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="246"></a>		<span class="source_type">p</span>.<span class="source_type">bEnabled</span> = true;
+<a name="247"></a>		packs[<span class="source_int">1</span>] = <span class="source_type">p</span>;
+<a name="248"></a>
+<a name="249"></a>		<span class="source_type">p</span>.packClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.PackEnergy"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="250"></a>		<span class="source_type">p</span>.<span class="source_type">bEnabled</span> = true;
+<a name="251"></a>		packs[<span class="source_int">2</span>] = <span class="source_type">p</span>;
+<a name="252"></a>
+<a name="253"></a>		<span class="source_type">p</span>.packClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.PackShield"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="254"></a>		<span class="source_type">p</span>.<span class="source_type">bEnabled</span> = true;
+<a name="255"></a>		packs[<span class="source_int">3</span>] = <span class="source_type">p</span>;
+<a name="256"></a>	}
+<a name="257"></a>
+<a name="258"></a>	if(bAutoConfigGrenades)
+<a name="259"></a>	{
+<a name="260"></a>		grenades.grenadeClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/handgrenade.html" class="source">HandGrenade</a></span>&gt;(DynamicLoadObject(<span class="source_string">"EquipmentClasses.WeaponHandGrenade"</span>, <span class="source_type">class</span><span class="source_name">'class'</span>));
+<a name="261"></a>		grenades.<span class="source_type">bEnabled</span> = true;
+<a name="262"></a>	}
+<a name="263"></a>	<span class="source_comment">//================================
+</span><a name="264"></a>
+<a name="265"></a>	<span class="source_comment">// fill out the roles array with team data
+</span><a name="266"></a>	if(bAutoFillCombatRoles && currentUser != None)
+<a name="267"></a>	{
+<a name="268"></a>		for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; currentUser.team().combatRoleData.Length; ++<span class="source_type">i</span>)
+<a name="269"></a>		{
+<a name="270"></a>			newRole.combatRoleClass = currentUser.team().combatRoleData[<span class="source_type">i</span>].role;
+<a name="271"></a>			newRole.<span class="source_type">bEnabled</span> = true;
+<a name="272"></a>			roles[<span class="source_type">i</span>] = newRole;
+<a name="273"></a>		}
+<a name="274"></a>	}
+<a name="275"></a>}
+<a name="276"></a>
+<a name="277"></a><span class="source_type">function</span> <span class="source_type">bool</span> CanBeUsedBy(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">user</span>)
+<a name="278"></a>{
+<a name="279"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> characterUser;
+<a name="280"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>;
+<a name="281"></a>
+<a name="282"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">user</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="283"></a>
+<a name="284"></a>	characterUser = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">user</span>);
+<a name="285"></a>
+<a name="286"></a>	<span class="source_comment">// do nothing if used by non-character
+</span><a name="287"></a>	if (characterUser == None)
+<a name="288"></a>		return false;
+<a name="289"></a>
+<a name="290"></a>	<span class="source_comment">// do nothing if no player controller
+</span><a name="291"></a>	if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> == None)
+<a name="292"></a>		return false;
+<a name="293"></a>
+<a name="294"></a>	<span class="source_comment">// if an enemy do nothing
+</span><a name="295"></a>	if (!<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.isOnCharactersTeam(characterUser))
+<a name="296"></a>		return false;
+<a name="297"></a>
+<a name="298"></a>	<span class="source_comment">// if user is currently using inventory station have user exit
+</span><a name="299"></a>	if (<span class="source_type">user</span> == currentUser)
+<a name="300"></a>		return false;
+<a name="301"></a>
+<a name="302"></a>	<span class="source_comment">// do nothing if inventory station is currently begin used
+</span><a name="303"></a>	if (currentUser != None)
+<a name="304"></a>		return false;
+<a name="305"></a>
+<a name="306"></a>	<span class="source_comment">// do nothing if inventory station is not functional
+</span><a name="307"></a>	if (!<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.isFunctional())
+<a name="308"></a>		return false;
+<a name="309"></a>
+<a name="310"></a>	return true;
+<a name="311"></a>}
+<a name="312"></a>
+<a name="313"></a><span class="source_type">function</span> initialise(<span class="source_type"><a href="../gameplay/inventorystationaccesscontrol.html" class="source">InventoryStationAccessControl</a></span> newAccessControl)
+<a name="314"></a>{
+<a name="315"></a>	<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span> = newAccessControl;
+<a name="316"></a>}
+<a name="317"></a>
+<a name="318"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> GetCurrentUserLoadout()
+<a name="319"></a>{
+<a name="320"></a>	local <span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> currentLoadout;
+<a name="321"></a>	local <span class="source_type"><a href="../gameplay/equipment.html" class="source">Equipment</a></span> nextEquipment;
+<a name="322"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="323"></a>
+<a name="324"></a>
+<a name="325"></a>	<span class="source_comment">// combat role
+</span><a name="326"></a>	if(currentUser.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span> == None)
+<a name="327"></a>	{
+<a name="328"></a>		<span class="source_comment">// could be single player game, no combat role. 
+</span><a name="329"></a>		<span class="source_comment">// We should set one here in case
+</span><a name="330"></a>		for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; currentUser.team().combatRoleData.Length; ++<span class="source_type">i</span>)
+<a name="331"></a>		{
+<a name="332"></a>			if(currentUser.team().combatRoleData[<span class="source_type">i</span>].role.default.armorClass == currentUser.armorClass)
+<a name="333"></a>			{
+<a name="334"></a>				currentUser.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span> = currentUser.team().combatRoleData[<span class="source_type">i</span>].role;
+<a name="335"></a>				break;
+<a name="336"></a>			}
+<a name="337"></a>		}
+<a name="338"></a>	}
+<a name="339"></a>
+<a name="340"></a>	if(currentUser.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span> != None)
+<a name="341"></a>	{
+<a name="342"></a>		currentLoadout.role.combatRoleClass = currentUser.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>;
+<a name="343"></a>	}
+<a name="344"></a>	else
+<a name="345"></a>	{
+<a name="346"></a>		currentLoadout.NoLoadout = true;
+<a name="347"></a>		return currentLoadout;
+<a name="348"></a>	}
+<a name="349"></a>
+<a name="350"></a>	<span class="source_comment">// skin
+</span><a name="351"></a>	currentLoadout.userSkin = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>).getSkinPreference(currentUser.<span class="source_type">Mesh</span>);
+<a name="352"></a>
+<a name="353"></a>	<span class="source_comment">// weapons
+</span><a name="354"></a>	if (!<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.getCurrentLoadoutWeapons(currentLoadout, currentUser))
+<a name="355"></a>	{
+<a name="356"></a>		for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; <span class="source_int">10</span>; ++<span class="source_type">i</span>)
+<a name="357"></a>			currentLoadout.weapons[<span class="source_type">i</span>].<span class="source_type">weaponClass</span> = None;
+<a name="358"></a>
+<a name="359"></a>		for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; <span class="source_type">class</span><span class="source_name">'Character'</span>.const.NUM_WEAPON_SLOTS; ++<span class="source_type">i</span>)
+<a name="360"></a>			if (currentUser.weaponSlots[<span class="source_type">i</span>] != None)
+<a name="361"></a>				currentLoadout.weapons[<span class="source_type">i</span>].<span class="source_type">weaponClass</span> = currentUser.weaponSlots[<span class="source_type">i</span>].<span class="source_type">class</span>;
+<a name="362"></a>	}
+<a name="363"></a>
+<a name="364"></a>	<span class="source_comment">// pack
+</span><a name="365"></a>	nextEquipment = currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Gameplay.Pack'</span>);
+<a name="366"></a>	if(nextEquipment != None)
+<a name="367"></a>		currentLoadout.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.packClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt;(nextEquipment.<span class="source_type">class</span>);
+<a name="368"></a>
+<a name="369"></a>	<span class="source_comment">// grenades
+</span><a name="370"></a>	nextEquipment = <span class="source_type"><a href="../gameplay/handgrenade.html" class="source">HandGrenade</a></span>(currentUser.altWeapon);
+<a name="371"></a>	if(nextEquipment != None)
+<a name="372"></a>		currentLoadout.grenades.grenadeClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/handgrenade.html" class="source">HandGrenade</a></span>&gt;(nextEquipment.<span class="source_type">class</span>);
+<a name="373"></a>
+<a name="374"></a>	return currentLoadout;
+<a name="375"></a>}
+<a name="376"></a>
+<a name="377"></a><span class="source_comment">/// Called on server when user presses use key in vicinity of inventory station.
+</span><a name="378"></a><span class="source_type">function</span> UsedBy(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">user</span>)
+<a name="379"></a>{
+<a name="380"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> characterUser;
+<a name="381"></a>	local <span class="source_type">bool</span> <span class="source_type">result</span>;
+<a name="382"></a>
+<a name="383"></a>	if (!<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.directUsage())
+<a name="384"></a>		return;
+<a name="385"></a>
+<a name="386"></a>	characterUser = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">user</span>);
+<a name="387"></a>
+<a name="388"></a>	<span class="source_comment">// do nothing if used by non-character
+</span><a name="389"></a>	if (characterUser == None)
+<a name="390"></a>		return;
+<a name="391"></a>
+<a name="392"></a>	<span class="source_type">result</span> = usedByProcessing(characterUser);
+<a name="393"></a>
+<a name="394"></a>	<span class="source_comment">// only super if actually using
+</span><a name="395"></a>	if (<span class="source_type">result</span>)
+<a name="396"></a>	{
+<a name="397"></a>		super.UsedBy(<span class="source_type">user</span>);
+<a name="398"></a>		characterUser.unifiedSetVelocity(Vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>));
+<a name="399"></a>	}
+<a name="400"></a>}
+<a name="401"></a>
+<a name="402"></a><span class="source_comment">// Does processing associated with a character using the inventory station. May be called directly.
+</span><a name="403"></a><span class="source_type">function</span> <span class="source_type">bool</span> usedByProcessing(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">user</span>)
+<a name="404"></a>{
+<a name="405"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>;
+<a name="406"></a>
+<a name="407"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">user</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="408"></a>
+<a name="409"></a>	<span class="source_comment">// do nothing if no player controller
+</span><a name="410"></a>	if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> == None)
+<a name="411"></a>		return false;
+<a name="412"></a>
+<a name="413"></a>	<span class="source_comment">// if an enemy do nothing
+</span><a name="414"></a>	if (!<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.isOnCharactersTeam(<span class="source_type">user</span>))
+<a name="415"></a>	{
+<a name="416"></a>		log(<span class="source_string">"Attempted To Use Enemy Inventory Station"</span>);
+<a name="417"></a>		return false;
+<a name="418"></a>	}
+<a name="419"></a>
+<a name="420"></a>	<span class="source_comment">// if user is currently using inventory station have user exit
+</span><a name="421"></a>	if (<span class="source_type">user</span> == currentUser)
+<a name="422"></a>	{
+<a name="423"></a>		clientTerminateCharacterAccess(currentUser);
+<a name="424"></a>		return false;
+<a name="425"></a>	}
+<a name="426"></a>
+<a name="427"></a>	<span class="source_comment">// do nothing if inventory station is currently being used
+</span><a name="428"></a>	if (currentUser != None)
+<a name="429"></a>	{
+<a name="430"></a>		log(<span class="source_string">"INVENTORY STATION ALREADY BEING USED"</span>);
+<a name="431"></a>		return false;
+<a name="432"></a>	}
+<a name="433"></a>
+<a name="434"></a>	<span class="source_comment">// do nothing if inventory station is not functional
+</span><a name="435"></a>	if (!<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.isFunctional())
+<a name="436"></a>	{
+<a name="437"></a>		log(<span class="source_string">"INVENTORY STATION CANNOT BE ACCESSED"</span>);
+<a name="438"></a>		return false;
+<a name="439"></a>	}
+<a name="440"></a>
+<a name="441"></a>	currentUser = <span class="source_type">user</span>;
+<a name="442"></a>
+<a name="443"></a>	<span class="source_comment">// register interest to access inventory station
+</span><a name="444"></a>	<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.accessRequired(<span class="source_type">user</span>, self, currentUser.armorClass.default.heightIndex);
+<a name="445"></a>	bWaitingForAccess = true;
+<a name="446"></a>
+<a name="447"></a>	<span class="source_comment">// store use position
+</span><a name="448"></a>	userPosition = currentUser.location;
+<a name="449"></a>
+<a name="450"></a>	<span class="source_comment">// check if access can begin immediately
+</span><a name="451"></a>	if (<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.isAccessible(currentUser))
+<a name="452"></a>	{
+<a name="453"></a>		characterAccess();
+<a name="454"></a>		bWaitingForAccess = false;
+<a name="455"></a>	}
+<a name="456"></a>	else
+<a name="457"></a>	{
+<a name="458"></a>		<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.GotoState(<span class="source_name">'PlayerWaitingInventoryStation'</span>);
+<a name="459"></a>		<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.clientInventoryStationWait();
+<a name="460"></a>	}
+<a name="461"></a>
+<a name="462"></a>	return true;
+<a name="463"></a>}
+<a name="464"></a>
+<a name="465"></a><span class="source_type">function</span> <span class="source_type">tick</span>(<span class="source_type">float</span> deltaSeconds)
+<a name="466"></a>{
+<a name="467"></a>	local <span class="source_type">bool</span> isTouching;
+<a name="468"></a>	local <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> touchingTest;
+<a name="469"></a>
+<a name="470"></a>	Super.<span class="source_type">tick</span>(deltaSeconds);
+<a name="471"></a>
+<a name="472"></a>	<span class="source_comment">// if there is no access control, then just return
+</span><a name="473"></a>	if(<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span> == None)
+<a name="474"></a>		return;
+<a name="475"></a>
+<a name="476"></a>	<span class="source_comment">// bWaitingForAccess should never be true when currentUser is None
+</span><a name="477"></a>	if (bWaitingForAccess && currentUser == None)
+<a name="478"></a>		bWaitingForAccess = false;
+<a name="479"></a>
+<a name="480"></a>	<span class="source_comment">// check if access can begin
+</span><a name="481"></a>	if (bWaitingForAccess && <span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.isAccessible(currentUser))
+<a name="482"></a>	{
+<a name="483"></a>		characterAccess();
+<a name="484"></a>		bWaitingForAccess = false;
+<a name="485"></a>		return;
+<a name="486"></a>	}
+<a name="487"></a>
+<a name="488"></a>	<span class="source_comment">// check if access must be terminated
+</span><a name="489"></a>	if (currentUser != None && !<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.isFunctional())
+<a name="490"></a>	{
+<a name="491"></a>		<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>).serverTerminateInventoryStationAccess();
+<a name="492"></a>		return;
+<a name="493"></a>	}
+<a name="494"></a>
+<a name="495"></a>	<span class="source_comment">// check if user has been blown off inventory station
+</span><a name="496"></a>	if (<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.directUsage() && currentUser != None)
+<a name="497"></a>	{
+<a name="498"></a>		isTouching = false;
+<a name="499"></a>		foreach touchingActors(<span class="source_type">class</span><span class="source_name">'Actor'</span>, touchingTest)
+<a name="500"></a>			if (touchingTest == currentUser)
+<a name="501"></a>				isTouching = true;
+<a name="502"></a>		if (!isTouching)
+<a name="503"></a>		{
+<a name="504"></a>			serverTerminateCharacterAccess();
+<a name="505"></a>
+<a name="506"></a>			<span class="source_comment">// ... inform access control so as user will be removed from queue
+</span><a name="507"></a>			if (bWaitingForAccess)
+<a name="508"></a>				<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.accessNoLongerRequired(currentUser);
+<a name="509"></a>				
+<a name="510"></a>			currentUser = None;
+<a name="511"></a>			bWaitingForAccess = false;
+<a name="512"></a>			return;
+<a name="513"></a>		}
+<a name="514"></a>	}
+<a name="515"></a>
+<a name="516"></a>	<span class="source_comment">// Why not just apply an injection when the user enters?
+</span><a name="517"></a>
+<a name="518"></a>	<span class="source_comment">// while current user is actually using inventory station regenerate health
+</span><a name="519"></a><span class="source_comment">/*	if (currentUser != None && PlayerCharacterController(currentUser.Controller).isInState(
+<a name="520"></a>				'PlayerUsingInventoryStation'))
+<a name="521"></a>	{
+<a name="522"></a>		currentUser.increaseHealth(deltaSeconds * healRateHealthPerSecond);
+<a name="523"></a>	}
+<a name="524"></a>*/</span>	
+<a name="525"></a>}
+<a name="526"></a>
+<a name="527"></a><span class="source_comment">/// Grants inventory station access to a user. Called on server.
+</span><a name="528"></a><span class="source_type">function</span> characterAccess()
+<a name="529"></a>{
+<a name="530"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>;
+<a name="531"></a>
+<a name="532"></a>	if (bDeleteMe)
+<a name="533"></a>		return;
+<a name="534"></a>
+<a name="535"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="536"></a>
+<a name="537"></a>	<span class="source_comment">// do nothing if no player controller
+</span><a name="538"></a>	if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> == None)
+<a name="539"></a>		return;
+<a name="540"></a>
+<a name="541"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.<span class="source_type"><a href="../gameplay/inventorystation.html" class="source">inventoryStation</a></span> = self;
+<a name="542"></a>
+<a name="543"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.clientInventoryStationAccess(self);
+<a name="544"></a>
+<a name="545"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.GotoState(<span class="source_name">'PlayerUsingInventoryStation'</span>);
+<a name="546"></a>
+<a name="547"></a>	<span class="source_comment">// stop any previous health injections
+</span><a name="548"></a>	currentUser.stopHealthInjection();
+<a name="549"></a>	<span class="source_comment">// and start an all new one! This uses a really big amount to
+</span><a name="550"></a>	<span class="source_comment">// account for hte fact that the user can change armor and we want
+</span><a name="551"></a>	<span class="source_comment">// it to fill all the way up.
+</span><a name="552"></a>	currentUser.healthInjection(healRateHealthFractionPerSecond * currentUser.healthMaximum, <span class="source_int">500</span>);
+<a name="553"></a>}
+<a name="554"></a>
+<a name="555"></a><span class="source_comment">/// Does processing assocaited with a character actually electing to finish usage of an inventory station.
+</span><a name="556"></a><span class="source_comment">/// Called on client from Inventory Station user interface.
+</span><a name="557"></a>simulated <span class="source_type">function</span> finishCharacterAccess(<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> selectedLoadout)
+<a name="558"></a>{
+<a name="559"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>;
+<a name="560"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> cachedUser;
+<a name="561"></a>
+<a name="562"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="563"></a>
+<a name="564"></a>	<span class="source_comment">// do nothing if no player controller
+</span><a name="565"></a>	if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> == None)
+<a name="566"></a>		return;
+<a name="567"></a>
+<a name="568"></a>	cachedUser = currentUser;
+<a name="569"></a>
+<a name="570"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.serverFinishInventoryStationAccess(
+<a name="571"></a>			self, 
+<a name="572"></a>			selectedLoadout.role.combatRoleClass,
+<a name="573"></a>			selectedLoadout.userSkin,
+<a name="574"></a>			selectedLoadOut.activeWeaponSlot,
+<a name="575"></a>			selectedLoadOut.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.packClass,
+<a name="576"></a>			selectedLoadOut.grenades.grenadeClass,
+<a name="577"></a>			selectedLoadout.weapons[<span class="source_int">0</span>].<span class="source_type">weaponClass</span>,
+<a name="578"></a>			selectedLoadout.weapons[<span class="source_int">1</span>].<span class="source_type">weaponClass</span>,
+<a name="579"></a>			selectedLoadout.weapons[<span class="source_int">2</span>].<span class="source_type">weaponClass</span>,
+<a name="580"></a>			selectedLoadout.weapons[<span class="source_int">3</span>].<span class="source_type">weaponClass</span>,
+<a name="581"></a>			selectedLoadout.weapons[<span class="source_int">4</span>].<span class="source_type">weaponClass</span>,
+<a name="582"></a>			selectedLoadout.weapons[<span class="source_int">5</span>].<span class="source_type">weaponClass</span>,
+<a name="583"></a>			selectedLoadout.weapons[<span class="source_int">6</span>].<span class="source_type">weaponClass</span>,
+<a name="584"></a>			selectedLoadout.weapons[<span class="source_int">7</span>].<span class="source_type">weaponClass</span>,
+<a name="585"></a>			selectedLoadout.weapons[<span class="source_int">8</span>].<span class="source_type">weaponClass</span>,
+<a name="586"></a>			selectedLoadout.weapons[<span class="source_int">9</span>].<span class="source_type">weaponClass</span>);
+<a name="587"></a>
+<a name="588"></a>	<span class="source_comment">// current user may or may not be None here
+</span><a name="589"></a>
+<a name="590"></a>	clientTerminateCharacterAccess(cachedUser);
+<a name="591"></a>
+<a name="592"></a>	currentUser = None;
+<a name="593"></a>}
+<a name="594"></a>
+<a name="595"></a><span class="source_comment">/// Called on the server from the server. Applies selected loadout to user. If returnToUsualMovment is true the character shall go back
+</span><a name="596"></a><span class="source_comment">/// to the usual movement state.
+</span><a name="597"></a><span class="source_type">function</span> serverFinishCharacterAccess(<span class="source_type"><a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout" class="source">InventoryStationLoadout</a></span> selectedLoadout, <span class="source_type">bool</span> returnToUsualMovment, optional <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">user</span>)
+<a name="598"></a>{
+<a name="599"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; newCombatRoleClass;
+<a name="600"></a>	local <span class="source_type">Mesh</span> newMesh;
+<a name="601"></a>	local <span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span> <span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>;
+<a name="602"></a>	local <span class="source_type">Mesh</span> armsMesh;
+<a name="603"></a>	local <span class="source_type">float</span> temporaryHealth;
+<a name="604"></a>
+<a name="605"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> originalLocation;
+<a name="606"></a>	local <span class="source_type">float</span> originalHeight;
+<a name="607"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> originalOrigin;
+<a name="608"></a>
+<a name="609"></a><span class="source_comment">//	local vector newLocation;
+</span><a name="610"></a>
+<a name="611"></a>	local <span class="source_type"><a href="../gameplay/equipment.html" class="source">Equipment</a></span> workEquipment;
+<a name="612"></a>	local <span class="source_type"><a href="../gameplay/equipment.html" class="source">Equipment</a></span> newEquipment;
+<a name="613"></a>	local <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span> newWeapon;
+<a name="614"></a>	local <span class="source_type"><a href="../gameplay/handgrenade.html" class="source">HandGrenade</a></span> newGrenades;
+<a name="615"></a>
+<a name="616"></a>	local <span class="source_type">class</span>&lt;Gameplay.<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; workWeaponClass;
+<a name="617"></a>	local <span class="source_type">class</span>&lt;Gameplay.<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt; workPackClass;
+<a name="618"></a>
+<a name="619"></a>	local <span class="source_type">int</span> numHealthKits, maxHealthKits;
+<a name="620"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/consumable.html" class="source">Consumable</a></span>&gt; healthKitClass;
+<a name="621"></a>
+<a name="622"></a>	local <span class="source_type">bool</span> bIsFemale;
+<a name="623"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="624"></a>	local <span class="source_type">bool</span> armorEnabled;
+<a name="625"></a>
+<a name="626"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>;
+<a name="627"></a>
+<a name="628"></a>	if(<span class="source_type">user</span> != None)
+<a name="629"></a>		currentUser = <span class="source_type">user</span>;
+<a name="630"></a>
+<a name="631"></a>	if(currentUser == None)
+<a name="632"></a>	{
+<a name="633"></a>		Warn(<span class="source_string">"currentUser was None in serverFinishCharacterAccess on '"</span>$self $<span class="source_string">"' (user='"</span> $<span class="source_type">user</span> $<span class="source_string">"', returnToUsualMovment='"</span> $returnToUsualMovment $<span class="source_string">"')"</span>);
+<a name="634"></a>		<span class="source_comment">//
+</span><a name="635"></a>		<span class="source_comment">// try and exit anyway, but there is no point in carrying on with this function:
+</span><a name="636"></a>		<span class="source_comment">// without a PlayerController & Character there is nothing we can do.
+</span><a name="637"></a>		<span class="source_comment">//
+</span><a name="638"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.accessFinished(None, returnToUsualMovment);
+<a name="639"></a>		return;
+<a name="640"></a>	}
+<a name="641"></a>
+<a name="642"></a>	<span class="source_comment">// if the user has selected armor of their existing type, then they can have it
+</span><a name="643"></a>	<span class="source_comment">// otherwise, we need to validate that this armor is enabled in this access.
+</span><a name="644"></a>	if(selectedLoadout.role.combatRoleClass.default.armorClass == currentUser.armorClass)
+<a name="645"></a>	{
+<a name="646"></a>		armorEnabled = true;
+<a name="647"></a>	}
+<a name="648"></a>	else
+<a name="649"></a>	{
+<a name="650"></a>		armorEnabled = false;
+<a name="651"></a>		for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; roles.Length; ++<span class="source_type">i</span>)
+<a name="652"></a>		{
+<a name="653"></a>			if(selectedLoadout.role.combatRoleClass.default.armorClass == roles[<span class="source_type">i</span>].combatRoleClass.default.ArmorClass && roles[<span class="source_type">i</span>].<span class="source_type">bEnabled</span>)
+<a name="654"></a>				armorEnabled = true;
+<a name="655"></a>		}
+<a name="656"></a>	}
+<a name="657"></a>
+<a name="658"></a>	if(! armorEnabled)
+<a name="659"></a>	{
+<a name="660"></a>		LOG(<span class="source_string">"User attempted to select an armor class which was unavailable: Reverting to previous armor."</span>);
+<a name="661"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.accessFinished(None, returnToUsualMovment);
+<a name="662"></a>		return;
+<a name="663"></a>	}
+<a name="664"></a>
+<a name="665"></a>
+<a name="666"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="667"></a>
+<a name="668"></a>	if(<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.IsSinglePlayer())
+<a name="669"></a>		bIsFemale = currentUser.bIsFemale;
+<a name="670"></a>	else
+<a name="671"></a>		bIsFemale = <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsFemale;
+<a name="672"></a>
+<a name="673"></a>	<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.accessFinished(currentUser, returnToUsualMovment);
+<a name="674"></a>
+<a name="675"></a>	<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.changeApplied(self);
+<a name="676"></a>
+<a name="677"></a>	percentageHealth = FClamp(currentUser.health / currentUser.healthMaximum, <span class="source_int">0.0</span>, <span class="source_int">1.0</span>);
+<a name="678"></a>
+<a name="679"></a>	<span class="source_comment">// change to selected pack
+</span><a name="680"></a>
+<a name="681"></a>	<span class="source_comment">// ... delete pack (should only be one)
+</span><a name="682"></a>	workEquipment = currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Gameplay.Pack'</span>);
+<a name="683"></a>	while (workEquipment != None)
+<a name="684"></a>	{
+<a name="685"></a>		currentUser.removeEquipment(workEquipment);
+<a name="686"></a>		workEquipment.destroy();
+<a name="687"></a>		workEquipment = currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Gameplay.Pack'</span>);
+<a name="688"></a>	}
+<a name="689"></a>
+<a name="690"></a>	<span class="source_comment">// ... add new pack
+</span><a name="691"></a>	workPackClass = selectedLoadout.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.packClass;
+<a name="692"></a>	if (workPackClass != None)
+<a name="693"></a>		currentUser.newPack(workPackClass);
+<a name="694"></a>
+<a name="695"></a>	<span class="source_comment">// ... charge pack
+</span><a name="696"></a>	if (currentUser.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span> != None)
+<a name="697"></a>		currentUser.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.setCharged();
+<a name="698"></a>
+<a name="699"></a>	<span class="source_comment">// change to selected armour if armour is different
+</span><a name="700"></a>	newCombatRoleClass = selectedLoadout.role.combatRoleClass;
+<a name="701"></a>	if (selectedLoadout.role.combatRoleClass.default.armorClass != currentUser.armorClass)
+<a name="702"></a>	{
+<a name="703"></a>		originalOrigin = currentUser.getMeshOrigin();
+<a name="704"></a>		originalLocation = currentUser.location;
+<a name="705"></a>		originalHeight = currentUser.collisionHeight;
+<a name="706"></a>
+<a name="707"></a>		<span class="source_comment">// ... change armour (do not add additional health)
+</span><a name="708"></a>		temporaryHealth = currentUser.health;
+<a name="709"></a>		currentUser.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span> = newCombatRoleClass;
+<a name="710"></a>
+<a name="711"></a>		newCombatRoleClass.default.armorClass.static.equip(currentUser);
+<a name="712"></a>		<span class="source_comment">// apply the health modifier
+</span><a name="713"></a>		if(<span class="source_type"><a href="../gameplay/singleplayercharacter.html" class="source">SinglePlayerCharacter</a></span>(currentUser) != None)
+<a name="714"></a>		{
+<a name="715"></a>			currentUser.healthMaximum *= <span class="source_type"><a href="../gameplay/singleplayercharacter.html" class="source">SinglePlayerCharacter</a></span>(currentUser).healthModifier;
+<a name="716"></a>			if(currentUser.bApplyHealthFilter)
+<a name="717"></a>				currentUser.healthMaximum *= <span class="source_type"><a href="../gameplay/singleplayergameinfo.html" class="source">SinglePlayerGameInfo</a></span>(currentUser.<span class="source_type">Level</span>.Game).difficultyMods[<span class="source_type"><a href="../gameplay/tribesguicontrollerbase.html" class="source">TribesGUIControllerBase</a></span>(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>).<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>).GuiConfig.CurrentCampaign.selectedDifficulty].playerHealthMultiplier;
+<a name="718"></a>		}
+<a name="719"></a>		if (temporaryHealth &gt; currentUser.healthMaximum)
+<a name="720"></a>			temporaryHealth = currentUser.healthMaximum;
+<a name="721"></a>		currentUser.health = temporaryHealth;
+<a name="722"></a>
+<a name="723"></a>		<span class="source_comment">// ... change mesh
+</span><a name="724"></a>		newMesh = currentUser.team().getMeshForRole(newCombatRoleClass, bIsFemale);
+<a name="725"></a>		if (newMesh != None)
+<a name="726"></a>			currentUser.LinkMesh(newMesh);
+<a name="727"></a>		else
+<a name="728"></a>			log(<span class="source_string">"InventoryStationAccess: No mesh defined for combat role "</span>$newCombatRoleClass$<span class="source_string">", team "</span>$
+<a name="729"></a>					currentUser.team()$ <span class="source_string">", bIsFemale "</span>$ bIsFemale);
+<a name="730"></a>
+<a name="731"></a><span class="source_comment">/*		// ... move character to correct height
+<a name="732"></a>		newLocation = originalLocation - originalOrigin;
+<a name="733"></a>		newLocation.z = newLocation.z - originalHeight + currentUser.collisionHeight;
+<a name="734"></a>		newLocation += currentUser.getMeshOrigin();
+<a name="735"></a>		currentUser.unifiedSetPosition(newLocation);
+<a name="736"></a>*/</span>
+<a name="737"></a>		<span class="source_comment">// ... change jetpack mesh
+</span><a name="738"></a>		<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> = currentUser.team().getJetpackForRole(currentUser, newCombatRoleClass, bIsFemale);
+<a name="739"></a>		currentUser.setJetpack(<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>);
+<a name="740"></a>
+<a name="741"></a>		<span class="source_comment">// ... change arms mesh
+</span><a name="742"></a>		armsMesh = currentUser.team().getArmsMeshForRole(newCombatRoleClass);
+<a name="743"></a>		currentUser.setArmsMesh(armsMesh);
+<a name="744"></a>	}
+<a name="745"></a>
+<a name="746"></a>	<span class="source_comment">// change to selected weapons
+</span><a name="747"></a>
+<a name="748"></a>	<span class="source_comment">// ... delete all current weapons
+</span><a name="749"></a>	workEquipment = currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Gameplay.Weapon'</span>);
+<a name="750"></a>	while (workEquipment != None)
+<a name="751"></a>	{
+<a name="752"></a>		if (currentUser.<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span> == workEquipment)
+<a name="753"></a>			currentUser.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> = None;
+<a name="754"></a>
+<a name="755"></a>		currentUser.removeEquipment(workEquipment);
+<a name="756"></a>		workEquipment.destroy();
+<a name="757"></a>
+<a name="758"></a>		workEquipment = currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Gameplay.Weapon'</span>);
+<a name="759"></a>	}
+<a name="760"></a>
+<a name="761"></a>	<span class="source_comment">// ... add new weapons and set ammo counts to maximum allowed by loadout spec
+</span><a name="762"></a>
+<a name="763"></a>	for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; selectedLoadout.role.combatRoleClass.default.armorClass.default.maxCarriedWeapons; ++<span class="source_type">i</span>)
+<a name="764"></a>	{
+<a name="765"></a>		<span class="source_comment">// add each weapon
+</span><a name="766"></a>		workWeaponClass = ValidateWeaponClass(selectedLoadout.weapons[<span class="source_type">i</span>].<span class="source_type">weaponClass</span>, newCombatRoleClass.default.armorClass);
+<a name="767"></a>		if (workWeaponClass != None)
+<a name="768"></a>		{
+<a name="769"></a>			newEquipment = currentUser.newEquipment(workWeaponClass);
+<a name="770"></a>
+<a name="771"></a>			<span class="source_comment">// apply pickup delay to prevent exploit of bypassing refire rate by constantly getting new loadouts
+</span><a name="772"></a>			<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>(newEquipment).applyPickupDelay();
+<a name="773"></a>
+<a name="774"></a>			<span class="source_comment">// remember the first weapon
+</span><a name="775"></a>			if (<span class="source_type">i</span> == <span class="source_int">0</span>)
+<a name="776"></a>			{
+<a name="777"></a>				workEquipment = newEquipment;
+<a name="778"></a>			}
+<a name="779"></a>		}
+<a name="780"></a>	}
+<a name="781"></a>
+<a name="782"></a>	<span class="source_comment">// ... set all weapons to max ammo
+</span><a name="783"></a>	newWeapon = <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>(currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Weapon'</span>));
+<a name="784"></a>	while (newWeapon != None)
+<a name="785"></a>	{
+<a name="786"></a>		newWeapon.ammoCount = currentUser.getMaxAmmo(newWeapon.<span class="source_type">class</span>);
+<a name="787"></a>		newWeapon = <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>(currentUser.nextEquipment(newWeapon, <span class="source_type">class</span><span class="source_name">'Weapon'</span>));
+<a name="788"></a>	}
+<a name="789"></a>	
+<a name="790"></a>	<span class="source_comment">// ... select first weapon
+</span><a name="791"></a>	if (workEquipment != None)
+<a name="792"></a>		currentUser.<span class="source_type"><a href="../gameplay/motor.html" class="source">motor</a></span>.setWeapon(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>(workEquipment));
+<a name="793"></a>	else
+<a name="794"></a>		currentUser.<span class="source_type"><a href="../gameplay/motor.html" class="source">motor</a></span>.setWeapon(currentUser.fallbackWeapon);
+<a name="795"></a>
+<a name="796"></a>	<span class="source_comment">// change to selected pack
+</span><a name="797"></a>
+<a name="798"></a>	<span class="source_comment">// ... delete pack (should only be one)
+</span><a name="799"></a>	workEquipment = currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Gameplay.Pack'</span>);
+<a name="800"></a>	while (workEquipment != None)
+<a name="801"></a>	{
+<a name="802"></a>		currentUser.removeEquipment(workEquipment);
+<a name="803"></a>		workEquipment.destroy();
+<a name="804"></a>		workEquipment = currentUser.nextEquipment(None, <span class="source_type">class</span><span class="source_name">'Gameplay.Pack'</span>);
+<a name="805"></a>	}
+<a name="806"></a>
+<a name="807"></a>	<span class="source_comment">// ... add new pack
+</span><a name="808"></a>	workPackClass = selectedLoadout.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.packClass;
+<a name="809"></a>	if (workPackClass != None)
+<a name="810"></a>		currentUser.newPack(workPackClass);
+<a name="811"></a>
+<a name="812"></a>	<span class="source_comment">// ... charge pack
+</span><a name="813"></a>	if (currentUser.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span> != None)
+<a name="814"></a>		currentUser.<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.setCharged();
+<a name="815"></a>
+<a name="816"></a>	<span class="source_comment">// Fill up on health kits
+</span><a name="817"></a>	numHealthKits = currentUser.numHealthKitsCarried();
+<a name="818"></a>	maxHealthKits = currentUser.armorClass.static.maxHealthKits();
+<a name="819"></a>	healthKitClass = currentUser.armorClass.static.getHealthKitClass();
+<a name="820"></a>
+<a name="821"></a>	if (maxHealthKits != -<span class="source_int">1</span> && healthKitClass != None)
+<a name="822"></a>		for(numHealthKits = numHealthKits; numHealthKits &lt; maxHealthKits; ++numHealthKits)
+<a name="823"></a>			currentUser.newEquipment(healthKitClass);
+<a name="824"></a>	<span class="source_comment">// add health kit if character does not have one
+</span><a name="825"></a>	<span class="source_comment">//if (bAutoFillHealthKits && currentUser.nextEquipment(None, currentUser.armorClass.static.getHealthKitClass()) == None)
+</span><a name="826"></a>	<span class="source_comment">//{
+</span><a name="827"></a>	<span class="source_comment">//	currentUser.newEquipment(currentUser.armorClass.static.getHealthKitClass());
+</span><a name="828"></a>	<span class="source_comment">//}
+</span><a name="829"></a>
+<a name="830"></a>	<span class="source_comment">// take the grenades away from the user
+</span><a name="831"></a>	if(currentUser.altWeapon != None)
+<a name="832"></a>		currentUser.altWeapon.ammoCount = <span class="source_int">0</span>;
+<a name="833"></a>
+<a name="834"></a>	<span class="source_comment">// give the user grenades
+</span><a name="835"></a>	if(bDispenseGrenades)
+<a name="836"></a>	{
+<a name="837"></a>		if(selectedLoadout.grenades.grenadeClass != None)
+<a name="838"></a>			newGrenades = currentUser.newGrenades(selectedLoadout.grenades.grenadeClass);
+<a name="839"></a>		else if(grenades.<span class="source_type">bEnabled</span> && grenades.grenadeClass != None)
+<a name="840"></a>			newGrenades = currentUser.newGrenades(grenades.grenadeClass);
+<a name="841"></a>
+<a name="842"></a>		<span class="source_comment">// apply pickup delay to prevent exploit of bypassing refire rate by constantly getting new loadouts
+</span><a name="843"></a>		newGrenades.applyPickupDelay();
+<a name="844"></a>	}
+<a name="845"></a>
+<a name="846"></a>	<span class="source_comment">// give character full energy
+</span><a name="847"></a>	currentUser.energy = currentUser.energyMaximum;
+<a name="848"></a>
+<a name="849"></a>	<span class="source_comment">// we applied a health injection when the user enteres the station, and
+</span><a name="850"></a>	<span class="source_comment">// now we need to ensure that the remaining health injection will fill
+</span><a name="851"></a>	<span class="source_comment">// the user to full health:
+</span><a name="852"></a>	currentUser.health = percentageHealth * currentUser.healthMaximum;
+<a name="853"></a>	currentUser.StopHealthInjection();
+<a name="854"></a>	currentUser.healthInjection(healRateHealthFractionPerSecond * currentUser.healthMaximum,
+<a name="855"></a>			currentUser.healthMaximum - currentUser.health);
+<a name="856"></a>
+<a name="857"></a>	<span class="source_comment">// change skin
+</span><a name="858"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.clientSetSkinPreference(currentUser.<span class="source_type">Mesh</span>, selectedLoadout.userSkin);
+<a name="859"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.serverSetSkin(selectedLoadout.userSkin, currentUser.<span class="source_type">Mesh</span>);
+<a name="860"></a>	<span class="source_comment">//currentUser.tribesReplicationInfo.userSkinName = selectedLoadout.userSkin;
+</span><a name="861"></a>
+<a name="862"></a>	if (returnToUsualMovment)
+<a name="863"></a>		currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GotoState(<span class="source_name">'CharacterMovement'</span>);
+<a name="864"></a>	else
+<a name="865"></a>		currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GotoState(<span class="source_name">''</span>);
+<a name="866"></a>	currentUser.calculateExtents();
+<a name="867"></a>	currentUser.Wake();
+<a name="868"></a>
+<a name="869"></a>	currentUser = None;
+<a name="870"></a>}
+<a name="871"></a>
+<a name="872"></a><span class="source_type">function</span> serverTerminateCharacterAccess()
+<a name="873"></a>{
+<a name="874"></a>	<span class="source_comment">// inform access control
+</span><a name="875"></a>	if (bWaitingForAccess)
+<a name="876"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.accessNoLongerRequired(currentUser);
+<a name="877"></a>	else
+<a name="878"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>.accessFinished(currentUser, true);
+<a name="879"></a>
+<a name="880"></a>	<span class="source_comment">// we applied a health injection when the user enteres the station, and
+</span><a name="881"></a>	<span class="source_comment">// now we need to ensure that the remaining health injection will fill
+</span><a name="882"></a>	<span class="source_comment">// the user to full health:
+</span><a name="883"></a>	currentUser.StopHealthInjection();
+<a name="884"></a>	currentUser.healthInjection(healRateHealthFractionPerSecond * currentUser.healthMaximum, 
+<a name="885"></a>		currentUser.healthMaximum - currentUser.health);
+<a name="886"></a>
+<a name="887"></a>	<span class="source_comment">// update movement
+</span><a name="888"></a>	currentUser.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GotoState(<span class="source_name">'CharacterMovement'</span>);
+<a name="889"></a>	currentUser.calculateExtents();
+<a name="890"></a>	currentUser.Wake();
+<a name="891"></a>
+<a name="892"></a>	<span class="source_comment">// update properties
+</span><a name="893"></a>	currentUser = None;
+<a name="894"></a>	bWaitingForAccess = false;
+<a name="895"></a>}
+<a name="896"></a>
+<a name="897"></a><span class="source_comment">// returns None if the weapon class is not allowed on the armor
+</span><a name="898"></a><span class="source_type">function</span> <span class="source_type">class</span>&lt;Gameplay.<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; ValidateWeaponClass(<span class="source_type">class</span>&lt;Gameplay.<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; <span class="source_type">weaponClass</span>, <span class="source_type">class</span>&lt;Gameplay.<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>&gt; armorClass)
+<a name="899"></a>{
+<a name="900"></a>	local <span class="source_type"><a href="../gameplay/equipment.html" class="source">Equipment</a></span> nextEquipment;
+<a name="901"></a>
+<a name="902"></a>	if (armorClass == None)
+<a name="903"></a>	{
+<a name="904"></a>		warn(<span class="source_string">"armorClass is None"</span>);
+<a name="905"></a>		return None;
+<a name="906"></a>	}
+<a name="907"></a>
+<a name="908"></a>	if(<span class="source_type">weaponClass</span> != None)
+<a name="909"></a>	{
+<a name="910"></a>		nextEquipment = currentUser.nextEquipment(None, <span class="source_type">weaponClass</span>);
+<a name="911"></a>		if(nextEquipment != None || ! armorClass.static.isWeaponAllowed(<span class="source_type">weaponClass</span>))
+<a name="912"></a>		{
+<a name="913"></a>			log(<span class="source_string">"LOOK AT YOU HACKER! PANTING AND SWEATING AS YOU TRY TO SELECT A WEAPON YOU ARE NOT ALLOWED TO HAVE!"</span>);
+<a name="914"></a>			return None;
+<a name="915"></a>		}
+<a name="916"></a>	}
+<a name="917"></a>
+<a name="918"></a>	return <span class="source_type">weaponClass</span>;
+<a name="919"></a>}
+<a name="920"></a>
+<a name="921"></a>
+<a name="922"></a><span class="source_comment">/// Abruptly forces character to finish using this inventory station. Called on server.
+</span><a name="923"></a>simulated <span class="source_type">function</span> clientTerminateCharacterAccess(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">user</span>)
+<a name="924"></a>{
+<a name="925"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>;
+<a name="926"></a>
+<a name="927"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">user</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="928"></a>
+<a name="929"></a>	if(currentUser != None)
+<a name="930"></a>		currentUser.stopHealthInjection();
+<a name="931"></a>
+<a name="932"></a>	<span class="source_comment">// do nothing if no player controller
+</span><a name="933"></a>	if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> == None)
+<a name="934"></a>		return;
+<a name="935"></a>
+<a name="936"></a>	<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.clientFinishInventoryStationAccess();
+<a name="937"></a>}
+<a name="938"></a>
+<a name="939"></a><span class="source_comment">/// Returns the vehicle corresponding to this inventory station. Might be None.
+</span><a name="940"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span> getVehicleBase()
+<a name="941"></a>{
+<a name="942"></a>	return <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type"><a href="../engine/accesscontrol.html" class="source">accessControl</a></span>);
+<a name="943"></a>}
+<a name="944"></a>
+<a name="945"></a>defaultproperties
+<a name="946"></a>{
+<a name="947"></a>	DrawType = DT_None
+<a name="948"></a>	bHidden = false
+<a name="949"></a>
+<a name="950"></a>	bAlwaysRelevant = false
+<a name="951"></a>
+<a name="952"></a>	bHardAttach=true
+<a name="953"></a>	bCollideActors=false
+<a name="954"></a>	CollisionRadius=+<span class="source_int">0080.000000</span>
+<a name="955"></a>	CollisionHeight=+<span class="source_int">0100.000000</span>
+<a name="956"></a>	bCollideWhenPlacing=false
+<a name="957"></a>	bOnlyAffectPawns=true
+<a name="958"></a>
+<a name="959"></a>	RemoteRole=ROLE_SimulatedProxy
+<a name="960"></a>
+<a name="961"></a>	bWaitingForAccess=false
+<a name="962"></a>
+<a name="963"></a>	healRateHealthFractionPerSecond=<span class="source_int">0.04</span>
+<a name="964"></a>
+<a name="965"></a>	bAutoFillCombatRoles	= true
+<a name="966"></a>	bAutoFillWeapons		= true
+<a name="967"></a>	bAutoFillPacks			= true
+<a name="968"></a>	bAutoConfigGrenades		= true
+<a name="969"></a>	bCanUseCustomLoadouts	= true
+<a name="970"></a>
+<a name="971"></a>	bDispenseGrenades = true
+<a name="972"></a>
+<a name="973"></a>	maxWeapons = <span class="source_int">10</span>
+<a name="974"></a>	numFallbackWeapons = <span class="source_int">1</span>;
+<a name="975"></a>
+<a name="976"></a>	prompt = <span class="source_string">"Press '%1' to enter the Inventory Station"</span>
+<a name="977"></a>	markerOffset = (X=<span class="source_int">0</span>,<span class="source_type">Y</span>=-<span class="source_int">80</span>,Z=<span class="source_int">0</span>)
+<a name="978"></a>}
+<a name="979"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/inventorystationaccess.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#InventoryStationAccess">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/inventorystation.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/inventorystationaccesscontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: èt 7.10.2004 10:30:36.000 - Creation time: st 23.5.2018 00:10:44.721 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

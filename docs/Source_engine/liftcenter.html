@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Engine.LiftCenter</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/liftcenter.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#LiftCenter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/levelsummary.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/liftexit.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/liftcenter.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/liftcenter.html">LiftCenter</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">// LiftCenter.
+</span><a name="3"></a><span class="source_comment">//=============================================================================
+</span><a name="4"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/liftcenter.html" class="source">LiftCenter</a></span> extends <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span>
+<a name="5"></a>	placeable
+<a name="6"></a>	native;
+<a name="7"></a>
+<a name="8"></a>var() <span class="source_type">name</span> LiftTag;
+<a name="9"></a>var	 <span class="source_type"><a href="../engine/mover.html" class="source">mover</a></span> MyLift;
+<a name="10"></a>var() <span class="source_type">name</span> LiftTrigger;
+<a name="11"></a>var <span class="source_type"><a href="../engine/trigger.html" class="source">trigger</a></span> RecommendedTrigger;
+<a name="12"></a>var <span class="source_type">float</span> MaxDist2D;
+<a name="13"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LiftOffset;	<span class="source_comment">// starting vector between MyLift location and LiftCenter location
+</span><a name="14"></a>
+<a name="15"></a><span class="source_type">function</span> PostBeginPlay()
+<a name="16"></a>{
+<a name="17"></a>	if ( LiftTrigger != <span class="source_name">''</span> )
+<a name="18"></a>		ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'Trigger'</span>, RecommendedTrigger, LiftTrigger )
+<a name="19"></a>			break;
+<a name="20"></a>	Super.PostBeginPlay();
+<a name="21"></a>}
+<a name="22"></a>
+<a name="23"></a><span class="source_comment">/* SpecialHandling is called by the navigation code when the next path has been found.  
+<a name="24"></a>It gives that path an opportunity to modify the result based on any special considerations
+<a name="25"></a>
+<a name="26"></a>Here, we check if the mover needs to be triggered
+<a name="27"></a>*/</span>
+<a name="28"></a>
+<a name="29"></a><span class="source_type">function</span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> SpecialHandling(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">Other</span>)
+<a name="30"></a>{
+<a name="31"></a>	<span class="source_comment">// if no lift, no special handling
+</span><a name="32"></a>	if ( MyLift == None )
+<a name="33"></a>		return self;
+<a name="34"></a>
+<a name="35"></a>	<span class="source_comment">// check whether or not need to trigger the lift
+</span><a name="36"></a>	if ( !MyLift.IsInState(<span class="source_name">'StandOpenTimed'</span>) )
+<a name="37"></a>	{
+<a name="38"></a>		if ( MyLift.bClosed 
+<a name="39"></a>			&& (RecommendedTrigger != None) )
+<a name="40"></a>			return RecommendedTrigger;
+<a name="41"></a>	}	
+<a name="42"></a>	else if ( MyLift.BumpType == BT_PlayerBump && !<span class="source_type">Other</span>.IsPlayerPawn() )
+<a name="43"></a>		return None;
+<a name="44"></a>
+<a name="45"></a>	return self;
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a><span class="source_comment">/* 
+<a name="49"></a>Check if mover is positioned to allow Pawn to get on
+<a name="50"></a>*/</span>
+<a name="51"></a><span class="source_comment">// DLB Controller clean pass: removed AI logic
+</span><a name="52"></a><span class="source_comment">/*function bool SuggestMovePreparation(Pawn Other)
+<a name="53"></a>{
+<a name="54"></a>	// if already on lift, no problem 
+<a name="55"></a>	if ( Other.base == MyLift )
+<a name="56"></a>		return false;
+<a name="57"></a>
+<a name="58"></a>	// make sure LiftCenter is correctly positioned on the lift
+<a name="59"></a>	SetLocation(MyLift.Location + LiftOffset);
+<a name="60"></a>	SetBase(MyLift);
+<a name="61"></a>
+<a name="62"></a>	// if mover is moving, wait
+<a name="63"></a>	if ( MyLift.bInterpolating || !ProceedWithMove(Other) )
+<a name="64"></a>	{
+<a name="65"></a>		Other.Controller.WaitForMover(MyLift);
+<a name="66"></a>		return true;
+<a name="67"></a>	}
+<a name="68"></a>
+<a name="69"></a>	return false;
+<a name="70"></a>}*/</span>
+<a name="71"></a>
+<a name="72"></a><span class="source_type">function</span> <span class="source_type">bool</span> ProceedWithMove(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">Other</span>)
+<a name="73"></a>{
+<a name="74"></a>	local <span class="source_type"><a href="../engine/liftexit.html" class="source">LiftExit</a></span> Start;
+<a name="75"></a>	local <span class="source_type">float</span> dist2D;
+<a name="76"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> dir;
+<a name="77"></a>
+<a name="78"></a>	<span class="source_comment">// see if mover is at appropriate location/keyframe
+</span><a name="79"></a>	Start = <span class="source_type"><a href="../engine/liftexit.html" class="source">LiftExit</a></span>(<span class="source_type">Other</span>.Anchor);
+<a name="80"></a>
+<a name="81"></a>	if ( (Start != None) && (Start.KeyFrame != <span class="source_int">255</span>) )
+<a name="82"></a>	{
+<a name="83"></a>		if ( MyLift.KeyNum == Start.KeyFrame )
+<a name="84"></a>			return true;
+<a name="85"></a>	}
+<a name="86"></a>	else
+<a name="87"></a>	{
+<a name="88"></a>		<span class="source_comment">//check distance directly - make sure close
+</span><a name="89"></a>		dir = Location - <span class="source_type">Other</span>.Location;
+<a name="90"></a>		dir.Z = <span class="source_int">0</span>;
+<a name="91"></a>		dist2D = VSize(dir);
+<a name="92"></a>		if ( (Location.Z - CollisionHeight &lt; <span class="source_type">Other</span>.Location.Z - <span class="source_type">Other</span>.CollisionHeight + MAXSTEPHEIGHT)
+<a name="93"></a>			&& (Location.Z - CollisionHeight &gt; <span class="source_type">Other</span>.Location.Z - <span class="source_type">Other</span>.CollisionHeight - <span class="source_int">1200</span>)
+<a name="94"></a>			&& ( dist2D &lt; MaxDist2D) )
+<a name="95"></a>		{
+<a name="96"></a>			return true;
+<a name="97"></a>		}
+<a name="98"></a>	}
+<a name="99"></a>
+<a name="100"></a>	<span class="source_comment">// if mover not operating, need to start it
+</span><a name="101"></a>	<span class="source_comment">// DLB Controller clean pass: removed AI logic 
+</span><a name="102"></a>	<span class="source_comment">/*if ( MyLift.bClosed )
+<a name="103"></a>	{
+<a name="104"></a>		Other.SetMoveTarget(SpecialHandling(Other));
+<a name="105"></a>		return true;
+<a name="106"></a>	}*/</span>
+<a name="107"></a>
+<a name="108"></a>	return false;
+<a name="109"></a>}
+<a name="110"></a>
+<a name="111"></a>defaultproperties
+<a name="112"></a>{
+<a name="113"></a>	<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'Engine_res.S_LiftCenter'</span>
+<a name="114"></a>	RemoteRole=ROLE_None
+<a name="115"></a>	bStatic=false
+<a name="116"></a>	bSpecialMove=true
+<a name="117"></a>	ExtraCost=<span class="source_int">400</span>
+<a name="118"></a>	MaxDist2D=+<span class="source_int">400.000</span>
+<a name="119"></a>	bNoAutoConnect=true
+<a name="120"></a>	bNeverUseStrafing=true
+<a name="121"></a>	bForceNoStrafing=true
+<a name="122"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/liftcenter.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#LiftCenter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/levelsummary.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/liftexit.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:01:26.000 - Creation time: st 23.5.2018 00:10:45.006 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

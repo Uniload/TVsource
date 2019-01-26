@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: IGEffectsSystem.EffectsSystem</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../igeffectssystem/igeffectssystem-overview.html">Package</a></td>
+	<td class="header"><a href="../igeffectssystem/effectssystem.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#EffectsSystem">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_igeffectssystem/effectssubsystem.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_igeffectssystem/eventresponse.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_igeffectssystem/effectssystem.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../igeffectssystem/igeffectssystem-overview.html">IGEffectsSystem</a>.<a href="../igeffectssystem/effectssystem.html">EffectsSystem</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../igeffectssystem/effectssystem.html" class="source">EffectsSystem</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/igeffectssystembase.html" class="source">IGEffectsSystemBase</a></span>
+<a name="2"></a>    native
+<a name="3"></a>    config(<span class="source_type"><a href="../igeffectssystem/effectssystem.html" class="source">EffectsSystem</a></span>);
+<a name="4"></a>
+<a name="5"></a>import enum <span class="source_type"><a href="../engine/material.html#EMaterialVisualType" class="source">EMaterialVisualType</a></span> from <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>;
+<a name="6"></a>
+<a name="7"></a>var private config array&lt; <span class="source_type">class</span>&lt;<span class="source_type"><a href="../igeffectssystem/effectssubsystem.html" class="source">EffectsSubsystem</a></span>&gt; &gt; <span class="source_type"><a href="../igeffectssystem/effectssubsystem.html" class="source">EffectsSubsystem</a></span>;       <span class="source_comment">//named in the singular for clarity of configuration file
+</span><a name="8"></a>var private array&lt;<span class="source_type"><a href="../igeffectssystem/effectssubsystem.html" class="source">EffectsSubsystem</a></span>&gt; AllEffectsSubsystems;  <span class="source_comment">// effects subsystems that were created in Init()
+</span><a name="9"></a>
+<a name="10"></a><span class="source_comment">//This is a list of classes that need to be preloaded for effects purposes.
+</span><a name="11"></a><span class="source_comment">//Classes normally do not need to be preloaded.
+</span><a name="12"></a><span class="source_comment">//A class should be preloaded by the Effects System iff
+</span><a name="13"></a><span class="source_comment">//  1) effects may be played on instance(s) of the class, and
+</span><a name="14"></a><span class="source_comment">//  2) the class would otherwise not be loaded until PostBeginPlay(), ie. by a DynamicLoadObject().
+</span><a name="15"></a><span class="source_comment">//Note that if a class is dynamically loaded in PreBeginPlay(), then it does not need to be preloaded.
+</span><a name="16"></a><span class="source_comment">//Also, there is no harm in "Preloading" a class that would be loaded early enough anyway.
+</span><a name="17"></a>var private config array&lt; <span class="source_type">String</span> &gt; PreloadActorClass;                 <span class="source_comment">//named in the singular for clarity of configuration file
+</span><a name="18"></a>
+<a name="19"></a><span class="source_comment">// switch on trigger logging in an .ini
+</span><a name="20"></a>var config <span class="source_type">bool</span> LogEffectEvents;
+<a name="21"></a>
+<a name="22"></a>var array&lt;<span class="source_type">name</span>&gt; TemporaryContexts;
+<a name="23"></a>var array&lt;<span class="source_type">name</span>&gt; PersistentContexts;
+<a name="24"></a>
+<a name="25"></a><span class="source_comment">//Queued Events
+</span><a name="26"></a><span class="source_comment">//  (FYI, We're using multiple arrays because
+</span><a name="27"></a><span class="source_comment">//  - dynamic arrays of structs don't work in UnrealScript, and
+</span><a name="28"></a><span class="source_comment">//  - using an array of objects would leak those objects since objects aren't garbage collected)
+</span><a name="29"></a>var private <span class="source_type">bool</span>            QueueingEvents;                 <span class="source_comment">//is the system currently queueing events
+</span><a name="30"></a>var private array&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt;    QueuedSource;
+<a name="31"></a>var private array&lt;<span class="source_type">name</span>&gt;     QueuedEffectEvent;
+<a name="32"></a>var private array&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt;    QueuedTarget;
+<a name="33"></a>var private array&lt;<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>&gt; QueuedTargetMaterial;
+<a name="34"></a>var private array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>&gt;   QueuedOverrideWorldLocation;
+<a name="35"></a>var private array&lt;<span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>&gt;  QueuedOverrideWorldRotation;
+<a name="36"></a>var private array&lt;<span class="source_type">byte</span>&gt;     QueuedUnTriggered;
+<a name="37"></a>
+<a name="38"></a><span class="source_comment">// DebugEffectEvent support:
+</span><a name="39"></a><span class="source_comment">//   The EffectsSystem will log details of a TriggerEffectEvent() call if the name of the EffectEvent triggered is in this list.
+</span><a name="40"></a><span class="source_comment">//   To make this work, you will need to add an exec function like the following to somewhere appropriate:
+</span><a name="41"></a><span class="source_comment">//     function DebugEffectEvent(name EffectEvent)
+</span><a name="42"></a><span class="source_comment">//     {
+</span><a name="43"></a><span class="source_comment">//         EffectsSystem(Level.EffectsSystem).DebugEffectEvent[EffectsSystem(Level.EffectsSystem).DebugEffectEvent.length] = EffectEvent;
+</span><a name="44"></a><span class="source_comment">//     }
+</span><a name="45"></a>var config array&lt;<span class="source_type">name</span>&gt; DebugEffectEvent;    
+<a name="46"></a>
+<a name="47"></a>simulated native <span class="source_type">function</span> Init(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Owner</span>);
+<a name="48"></a>
+<a name="49"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../igeffectssystem/effectssubsystem.html" class="source">EffectsSubsystem</a></span> GetSubsystem(<span class="source_type">name</span> inSubsystem)
+<a name="50"></a>{
+<a name="51"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="52"></a>
+<a name="53"></a>    <span class="source_comment">//find subsystem
+</span><a name="54"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;AllEffectsSubsystems.length; ++<span class="source_type">i</span>)
+<a name="55"></a>        if (AllEffectsSubsystems[<span class="source_type">i</span>].tag == inSubsystem)
+<a name="56"></a>            return AllEffectsSubsystems[<span class="source_type">i</span>];
+<a name="57"></a>
+<a name="58"></a>    <span class="source_comment">//not found
+</span><a name="59"></a>    return None;
+<a name="60"></a>}
+<a name="61"></a>
+<a name="62"></a>simulated <span class="source_type">function</span> AddContextForNextEffectEvent(<span class="source_type">name</span> Context)
+<a name="63"></a>{
+<a name="64"></a>    TemporaryContexts[TemporaryContexts.length] = Context;
+<a name="65"></a>}
+<a name="66"></a>
+<a name="67"></a><span class="source_comment">//it is not an error to add a persistent context that is already a persistent context
+</span><a name="68"></a>simulated <span class="source_type">function</span> AddPersistentContext(<span class="source_type">name</span> Context)
+<a name="69"></a>{
+<a name="70"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="71"></a>
+<a name="72"></a>    <span class="source_comment">//don't add duplicate contexts to persistent list
+</span><a name="73"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;PersistentContexts.length; ++<span class="source_type">i</span>)
+<a name="74"></a>        if (PersistentContexts[<span class="source_type">i</span>] == Context)
+<a name="75"></a>            return;     <span class="source_comment">//already in that context
+</span><a name="76"></a>
+<a name="77"></a>    PersistentContexts[PersistentContexts.length] = Context;
+<a name="78"></a>}
+<a name="79"></a>
+<a name="80"></a><span class="source_comment">//it is not an error to remove a persistent context that is not a current persistent context
+</span><a name="81"></a>simulated <span class="source_type">function</span> RemovePersistentContext(<span class="source_type">name</span> Context)
+<a name="82"></a>{
+<a name="83"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="84"></a>
+<a name="85"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;PersistentContexts.length; ++<span class="source_type">i</span>)
+<a name="86"></a>    {
+<a name="87"></a>        if (PersistentContexts[<span class="source_type">i</span>] == Context)
+<a name="88"></a>        {
+<a name="89"></a>            PersistentContexts.Remove(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="90"></a>
+<a name="91"></a>            <span class="source_comment">//it is guaranteed to be unique by AddPersistentContext(), so we're done.
+</span><a name="92"></a>            return;
+<a name="93"></a>        }
+<a name="94"></a>    }
+<a name="95"></a>}
+<a name="96"></a>
+<a name="97"></a>simulated <span class="source_type">function</span> ClearPersistentContexts()
+<a name="98"></a>{
+<a name="99"></a>    PersistentContexts.Remove(<span class="source_int">0</span>, PersistentContexts.length);
+<a name="100"></a>}
+<a name="101"></a>
+<a name="102"></a><span class="source_comment">//starts queueing events.  Effect Events will be queued until
+</span><a name="103"></a><span class="source_comment">//  FlushQueuedEvents() is called.
+</span><a name="104"></a><span class="source_comment">//It is not an error to call QueueEvents() when already queueing.
+</span><a name="105"></a>simulated <span class="source_type">function</span> QueueEvents()
+<a name="106"></a>{
+<a name="107"></a>    QueueingEvents = true;
+<a name="108"></a>}
+<a name="109"></a>
+<a name="110"></a>simulated event FlushQueuedEvents()
+<a name="111"></a>{
+<a name="112"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="113"></a>
+<a name="114"></a>    QueueingEvents = false;
+<a name="115"></a>
+<a name="116"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;QueuedSource.length; ++<span class="source_type">i</span>)
+<a name="117"></a>    {	
+<a name="118"></a>		<span class="source_comment">// rowan: check for cleaned up actors (=none) in the queued source array
+</span><a name="119"></a>		if (QueuedSource[<span class="source_type">i</span>] != None)
+<a name="120"></a>		{
+<a name="121"></a>			EffectEventTriggered(
+<a name="122"></a>				QueuedSource[<span class="source_type">i</span>],
+<a name="123"></a>				QueuedEffectEvent[<span class="source_type">i</span>],
+<a name="124"></a>				QueuedTarget[<span class="source_type">i</span>],
+<a name="125"></a>				QueuedTargetMaterial[<span class="source_type">i</span>],
+<a name="126"></a>				QueuedOverrideWorldLocation[<span class="source_type">i</span>],
+<a name="127"></a>				QueuedOverrideWorldRotation[<span class="source_type">i</span>],
+<a name="128"></a>				(QueuedUnTriggered[<span class="source_type">i</span>]!=<span class="source_int">0</span>));                <span class="source_comment">//convert byte to bool
+</span><a name="129"></a>		}
+<a name="130"></a>    }
+<a name="131"></a>    <span class="source_comment">//empty the queueing arrays... thanks to Ryan for the tip
+</span><a name="132"></a>    QueuedSource.Remove(<span class="source_int">0</span>, QueuedSource.length);
+<a name="133"></a>    QueuedEffectEvent.Remove(<span class="source_int">0</span>, QueuedEffectEvent.length);
+<a name="134"></a>    QueuedTarget.Remove(<span class="source_int">0</span>, QueuedTarget.length);
+<a name="135"></a>    QueuedTargetMaterial.Remove(<span class="source_int">0</span>, QueuedTargetMaterial.length);
+<a name="136"></a>    QueuedOverrideWorldLocation.Remove(<span class="source_int">0</span>, QueuedOverrideWorldLocation.length);
+<a name="137"></a>    QueuedOverrideWorldRotation.Remove(<span class="source_int">0</span>, QueuedOverrideWorldRotation.length);
+<a name="138"></a>    QueuedUnTriggered.Remove(<span class="source_int">0</span>, QueuedUnTriggered.length);
+<a name="139"></a>}
+<a name="140"></a>
+<a name="141"></a><span class="source_comment">// Most parameters are documentated in Actor.uc TriggerEffectEvent()
+</span><a name="142"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> EffectEventTriggered(
+<a name="143"></a>    <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Source</span>,
+<a name="144"></a>    <span class="source_type">name</span> EffectEvent,
+<a name="145"></a>    optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Target</span>,
+<a name="146"></a>    optional <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> TargetMaterial,
+<a name="147"></a>    optional <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> overrideWorldLocation, 
+<a name="148"></a>    optional <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> overrideWorldRotation,
+<a name="149"></a>    optional <span class="source_type">bool</span> unTriggered,
+<a name="150"></a>    optional <span class="source_type">bool</span> PlayOnTarget,
+<a name="151"></a>    optional <span class="source_type">bool</span> QueryOnly,
+<a name="152"></a>    optional <span class="source_type"><a href="../engine/ieffectobserver.html" class="source">IEffectObserver</a></span> Observer,
+<a name="153"></a>    optional <span class="source_type">name</span> Tag)
+<a name="154"></a>{
+<a name="155"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="156"></a>    local <span class="source_type">bool</span> AnySubsystemFoundMatch;
+<a name="157"></a>	local <span class="source_type">String</span> DebugString;
+<a name="158"></a>	local <span class="source_type">bool</span> ThisSubsystemFoundMatch;
+<a name="159"></a>
+<a name="160"></a>    if (QueueingEvents)
+<a name="161"></a>    {
+<a name="162"></a>        <span class="source_comment">//array sizes should always be equal
+</span><a name="163"></a>        <span class="source_type">i</span> = QueuedSource.length;
+<a name="164"></a>        assert( QueuedEffectEvent.length == <span class="source_type">i</span>
+<a name="165"></a>            &&  QueuedTarget.length == <span class="source_type">i</span>
+<a name="166"></a>            &&  QueuedTargetMaterial.length == <span class="source_type">i</span>
+<a name="167"></a>            &&  QueuedOverrideWorldLocation.length == <span class="source_type">i</span>
+<a name="168"></a>            &&  QueuedOverrideWorldRotation.length == <span class="source_type">i</span>
+<a name="169"></a>            &&  QueuedUnTriggered.length == <span class="source_type">i</span>);
+<a name="170"></a>
+<a name="171"></a>        QueuedSource[<span class="source_type">i</span>] = <span class="source_type">Source</span>;
+<a name="172"></a>        QueuedEffectEvent[<span class="source_type">i</span>] = EffectEvent;
+<a name="173"></a>        QueuedTarget[<span class="source_type">i</span>] = <span class="source_type">Target</span>;
+<a name="174"></a>        QueuedTargetMaterial[<span class="source_type">i</span>] = targetMaterial;
+<a name="175"></a>        QueuedOverrideWorldLocation[<span class="source_type">i</span>] = overrideWorldLocation;
+<a name="176"></a>        QueuedOverrideWorldRotation[<span class="source_type">i</span>] = overrideWorldRotation;
+<a name="177"></a>        QueuedUnTriggered[<span class="source_type">i</span>] = <span class="source_type">byte</span>(unTriggered);   <span class="source_comment">//convert bool to byte
+</span><a name="178"></a>    }
+<a name="179"></a>    else <span class="source_comment">//dispatch to subsystems
+</span><a name="180"></a>    {
+<a name="181"></a>        if ( AllEffectsSubsystems.Length == <span class="source_int">0</span> )
+<a name="182"></a>            return false;
+<a name="183"></a>
+<a name="184"></a>        for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;AllEffectsSubsystems.length; ++<span class="source_type">i</span>)
+<a name="185"></a>		{
+<a name="186"></a>            if (AnySubsystemFoundMatch && QueryOnly)
+<a name="187"></a>			{
+<a name="188"></a>                return AnySubsystemFoundMatch;
+<a name="189"></a>			}
+<a name="190"></a>            else
+<a name="191"></a>			{
+<a name="192"></a>				ThisSubsystemFoundMatch = 
+<a name="193"></a>				AllEffectsSubsystems[<span class="source_type">i</span>].EffectEventTriggered(
+<a name="194"></a>						<span class="source_type">Source</span>, EffectEvent, <span class="source_type">Target</span>, TargetMaterial, overrideWorldLocation, 
+<a name="195"></a>                        overrideWorldRotation, unTriggered, PlayOnTarget, QueryOnly, Observer, Tag
+<a name="196"></a>                    );
+<a name="197"></a>				AnySubsystemFoundMatch = ThisSubsystemFoundMatch ||  AnySubsystemFoundMatch;
+<a name="198"></a>			}
+<a name="199"></a>		}
+<a name="200"></a>	}
+<a name="201"></a>	
+<a name="202"></a>	<span class="source_comment">// DebugEffectEvent support
+</span><a name="203"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;DebugEffectEvent.length; ++<span class="source_type">i</span>)
+<a name="204"></a>	{
+<a name="205"></a>        if (DebugEffectEvent[<span class="source_type">i</span>] == EffectEvent)
+<a name="206"></a>		{
+<a name="207"></a>			DebugString = <span class="source_string">"EffectsSystem::EffectEventTriggered() "</span>;
+<a name="208"></a>
+<a name="209"></a>            DebugString = DebugString$<span class="source_string">" EffectEvent="</span>$EffectEvent$<span class="source_string">": "</span>;
+<a name="210"></a>
+<a name="211"></a>            DebugString = DebugString$<span class="source_string">"AnythingMatched="</span>$AnySubsystemFoundMatch;
+<a name="212"></a>
+<a name="213"></a>			if (<span class="source_type">Source</span>!=None)
+<a name="214"></a>				DebugString = DebugString$<span class="source_string">", Source.Class="</span>$<span class="source_type">Source</span>.<span class="source_type">Class</span>.<span class="source_type">name</span>;
+<a name="215"></a>			else
+<a name="216"></a>					DebugString = DebugString$<span class="source_string">", Source.Class=None"</span>;			
+<a name="217"></a>
+<a name="218"></a>
+<a name="219"></a>			if (<span class="source_type">Target</span>!=None) 
+<a name="220"></a>				DebugString = DebugString$<span class="source_string">", Target="</span>$<span class="source_type">Target</span>.<span class="source_type">class</span>.<span class="source_type">name</span>;
+<a name="221"></a>			else
+<a name="222"></a>				DebugString = DebugString$<span class="source_string">", Target=None"</span>;
+<a name="223"></a>
+<a name="224"></a>			if (TargetMaterial!=None) 
+<a name="225"></a>			{
+<a name="226"></a>				DebugString = DebugString
+<a name="227"></a>					$<span class="source_string">", TargetMaterial.MaterialSoundType="</span>$TargetMaterial.MaterialSoundType
+<a name="228"></a>					$<span class="source_string">", TargetMaterial.MaterialVisualType="</span>$GetEnum(<span class="source_type"><a href="../engine/material.html#EMaterialVisualType" class="source">EMaterialVisualType</a></span>, TargetMaterial.MaterialVisualType)$<span class="source_string">" ("</span>$TargetMaterial.MaterialVisualType$<span class="source_string">")"</span>;
+<a name="229"></a>			}
+<a name="230"></a>			else
+<a name="231"></a>			{
+<a name="232"></a>				DebugString = DebugString
+<a name="233"></a>					$<span class="source_string">", TargetMaterial.MaterialSoundType=Unknown, TargetMaterial.MaterialVisualType=Unknown"</span>;
+<a name="234"></a>			}
+<a name="235"></a>
+<a name="236"></a>			DebugString = DebugString
+<a name="237"></a>				$<span class="source_string">", UnTriggered="</span>$UnTriggered
+<a name="238"></a>				$<span class="source_string">", PlayOnTarget="</span>$PlayOnTarget
+<a name="239"></a>				$<span class="source_string">", QueryOnly="</span>$QueryOnly
+<a name="240"></a>				$<span class="source_string">", Observer="</span>$Observer
+<a name="241"></a>                $<span class="source_string">", Tag="</span>$Tag;
+<a name="242"></a>            
+<a name="243"></a>            DebugString = DebugString$<span class="source_string">" ZoneContexts=["</span>;
+<a name="244"></a>            for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; <span class="source_type">Source</span>.<span class="source_type"><a href="../uwindow/uwindowbase.html#Region" class="source">Region</a></span>.Zone.EffectsContexts.Length; <span class="source_type">i</span>++)
+<a name="245"></a>                DebugString = DebugString$<span class="source_string">" "</span>$<span class="source_type">Source</span>.<span class="source_type"><a href="../uwindow/uwindowbase.html#Region" class="source">Region</a></span>.Zone.EffectsContexts[<span class="source_type">i</span>];
+<a name="246"></a>            DebugString = DebugString$<span class="source_string">" ]"</span>;
+<a name="247"></a>
+<a name="248"></a>            DebugString = DebugString$<span class="source_string">" PersistentContexts=["</span>;
+<a name="249"></a>            for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; PersistentContexts.Length; <span class="source_type">i</span>++)
+<a name="250"></a>                DebugString = DebugString$<span class="source_string">" "</span>$PersistentContexts[<span class="source_type">i</span>];
+<a name="251"></a>            DebugString = DebugString$<span class="source_string">" ]"</span>;
+<a name="252"></a>
+<a name="253"></a>            <span class="source_comment">//tcohen 6/22/2004 Note that the TemporaryContexts report will be wrong if anything
+</span><a name="254"></a>            <span class="source_comment">//  matches for the 'Spawned' or 'Alive' events on an effect, because the
+</span><a name="255"></a>            <span class="source_comment">//  TemporaryContexts list will have already been cleared by now.
+</span><a name="256"></a>            DebugString = DebugString$<span class="source_string">" TemporaryContexts=["</span>;
+<a name="257"></a>            for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; TemporaryContexts.Length; <span class="source_type">i</span>++)
+<a name="258"></a>                DebugString = DebugString$<span class="source_string">" "</span>$TemporaryContexts[<span class="source_type">i</span>];
+<a name="259"></a>            DebugString = DebugString$<span class="source_string">" ]"</span>;
+<a name="260"></a>
+<a name="261"></a>			log (DebugString);
+<a name="262"></a>		}
+<a name="263"></a>	}
+<a name="264"></a>
+<a name="265"></a>    <span class="source_comment">//clear contexts after every EffectEventTriggered()
+</span><a name="266"></a>    TemporaryContexts.Remove(<span class="source_int">0</span>, TemporaryContexts.length);
+<a name="267"></a>
+<a name="268"></a>    return AnySubsystemFoundMatch;
+<a name="269"></a>}
+<a name="270"></a>
+<a name="271"></a><span class="source_comment">// Dump the state of an EffectsSubsystem to the log
+</span><a name="272"></a><span class="source_comment">//
+</span><a name="273"></a><span class="source_comment">// SubsystemName should be one of "VISUAL" or "SOUND",
+</span><a name="274"></a><span class="source_comment">// since only IGSoundEffectsSubsystem and IGVisualEffectSubsytem 
+</span><a name="275"></a><span class="source_comment">// are currently supported
+</span><a name="276"></a>exec <span class="source_type">function</span> DumpEffects(<span class="source_type">Name</span> SubsystemName)
+<a name="277"></a>{
+<a name="278"></a>    local <span class="source_type"><a href="../igeffectssystem/effectssubsystem.html" class="source">EffectsSubsystem</a></span> SubSys;
+<a name="279"></a>    local <span class="source_type">Name</span> <span class="source_type">ClassName</span>;
+<a name="280"></a>        
+<a name="281"></a>    if (SubsystemName == <span class="source_name">'SOUND'</span>)
+<a name="282"></a>    {
+<a name="283"></a>        <span class="source_type">ClassName</span> = <span class="source_name">'SoundEffectsSubsystem'</span>;
+<a name="284"></a>    }
+<a name="285"></a>    else if (SubsystemName == <span class="source_name">'VISUAL'</span>)
+<a name="286"></a>    {
+<a name="287"></a>        <span class="source_type">ClassName</span> = <span class="source_name">'VisualEffectsSubsystem'</span>;
+<a name="288"></a>    }
+<a name="289"></a>
+<a name="290"></a>    Subsys = GetSubsystem(<span class="source_type">ClassName</span>);
+<a name="291"></a>    if (Subsys == None)
+<a name="292"></a>    {
+<a name="293"></a>        Warn(<span class="source_string">"WARNING: Cannot dump effects; subsystem not found: "</span>$<span class="source_type">ClassName</span>);
+<a name="294"></a>        return;
+<a name="295"></a>    }
+<a name="296"></a>    Subsys.LogState();
+<a name="297"></a>}
+<a name="298"></a>
+<a name="299"></a>defaultproperties
+<a name="300"></a>{
+<a name="301"></a>    <span class="source_comment">//the system initially queues events, until it is initialized
+</span><a name="302"></a>    QueueingEvents=true
+<a name="303"></a>}
+<a name="304"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../igeffectssystem/igeffectssystem-overview.html">Package</a></td>
+	<td class="header"><a href="../igeffectssystem/effectssystem.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#EffectsSystem">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_igeffectssystem/effectssubsystem.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_igeffectssystem/eventresponse.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:12.000 - Creation time: st 23.5.2018 00:10:43.216 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

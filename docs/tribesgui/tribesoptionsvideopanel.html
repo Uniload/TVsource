@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.TribesOptionsVideoPanel</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesoptionsvideopanel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesOptionsVideoPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesoptionsnetworkpanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribespatchcheck.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/tribesoptionsvideopanel.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.TribesOptionsVideoPanel</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tribesgui/tribessettingspanel.html">TribesSettingsPanel</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/gui.html">GUI</a>
+   |   
+   +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guicomponent.html">GUIComponent</a>
+      |   
+      +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticomponent.html">GUIMultiComponent</a>
+         |   
+         +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guipanel.html">GUIPanel</a>
+            |   
+            +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a>
+               |   
+               +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribessettingspanel.html">TribesSettingsPanel</a>
+                  |   
+                  +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesoptionsvideopanel.html">TribesOptionsVideoPanel</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bExiting" name="bExiting" title="go to the details">bExiting</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsDataDirty" name="bIsDataDirty" title="go to the details">bIsDataDirty</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTimerHack" name="bTimerHack" title="go to the details">bTimerHack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_InitialRenderDetail" name="InitialRenderDetail" title="go to the details">InitialRenderDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LastResolution" name="LastResolution" title="go to the details">LastResolution</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guidlg.html">GUIDlg</a></td><td width="66%"><a href="#_promptDlg" name="promptDlg" title="go to the details">promptDlg</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipanel.html">GUIPanel</a></td><td width="66%"><a href="#_targetPanel" name="targetPanel" title="go to the details">targetPanel</a></td></tr>
+<tr><th colspan="2" class="small">TribesGui</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_ApplyButton" name="ApplyButton" title="go to the details">ApplyButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_BMDBox" name="BMDBox" title="go to the details">BMDBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guislider.html">GUISlider</a></td><td width="66%"><a href="#_BrightnessSlider" name="BrightnessSlider" title="go to the details">BrightnessSlider</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ChangesText" name="ChangesText" title="go to the details">ChangesText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guislider.html">GUISlider</a></td><td width="66%"><a href="#_ContrastSlider" name="ContrastSlider" title="go to the details">ContrastSlider</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_DecoBox" name="DecoBox" title="go to the details">DecoBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_DefaultsButton" name="DefaultsButton" title="go to the details">DefaultsButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_DetailChoices" name="DetailChoices" title="go to the details">DetailChoices</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_DSDBox" name="DSDBox" title="go to the details">DSDBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_FluidBox" name="FluidBox" title="go to the details">FluidBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_FogBox" name="FogBox" title="go to the details">FogBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guislider.html">GUISlider</a></td><td width="66%"><a href="#_GammaSlider" name="GammaSlider" title="go to the details">GammaSlider</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_GlowDBox" name="GlowDBox" title="go to the details">GlowDBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_MacroBox" name="MacroBox" title="go to the details">MacroBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_OnOffChoices" name="OnOffChoices" title="go to the details">OnOffChoices</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_PS2Box" name="PS2Box" title="go to the details">PS2Box</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_RenderDetailBox" name="RenderDetailBox" title="go to the details">RenderDetailBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_RenderDetailChoices" name="RenderDetailChoices" title="go to the details">RenderDetailChoices</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ResFailedText" name="ResFailedText" title="go to the details">ResFailedText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_ResolutionBox" name="ResolutionBox" title="go to the details">ResolutionBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ResSwitchedText" name="ResSwitchedText" title="go to the details">ResSwitchedText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_SwitchingResText" name="SwitchingResText" title="go to the details">SwitchingResText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_TexDBox" name="TexDBox" title="go to the details">TexDBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicombobox.html">GUIComboBox</a></td><td width="66%"><a href="#_WorldBox" name="WorldBox" title="go to the details">WorldBox</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribessettingspanel.html">TribesSettingsPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribessettingspanel.html#bLoadingSettings">bLoadingSettings</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipanel.html#GC">GC</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ApplyVidSettings-" name="ApplyVidSettings" title="go to the details">ApplyVidSettings</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetRenderDetailSetting-" name="GetRenderDetailSetting" title="go to the details">GetRenderDetailSetting</a> (<a href="../gui/guicombobox.html">GUIComboBox</a> box, string cmd))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitComponent-" name="InitComponent" title="go to the details">InitComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> MyOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnConfirmApplyDlgReturned-" name="InternalOnConfirmApplyDlgReturned" title="go to the details">InternalOnConfirmApplyDlgReturned</a> (int Button, string Passback))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnDlgReturned-" name="InternalOnDlgReturned" title="go to the details">InternalOnDlgReturned</a> (int Button, string Passback))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnHide-" name="InternalOnHide" title="go to the details">InternalOnHide</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnShow-" name="InternalOnShow" title="go to the details">InternalOnShow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadSettings-" name="LoadSettings" title="go to the details">LoadSettings</a> (bool UpdateRes))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnApply-" name="OnApply" title="go to the details">OnApply</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnBrightness-" name="OnBrightness" title="go to the details">OnBrightness</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnContrast-" name="OnContrast" title="go to the details">OnContrast</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnCustomSelection-" name="OnCustomSelection" title="go to the details">OnCustomSelection</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnDefaults-" name="OnDefaults" title="go to the details">OnDefaults</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnGamma-" name="OnGamma" title="go to the details">OnGamma</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnOptionsEnding-" name="OnOptionsEnding" title="go to the details">OnOptionsEnding</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_OnOwnerTabSwitch-" name="OnOwnerTabSwitch" title="go to the details">OnOwnerTabSwitch</a> (<a href="../gui/guipanel.html">GUIPanel</a> Target))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnPostPrecache-" name="OnPostPrecache" title="go to the details">OnPostPrecache</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnRenderDetail-" name="OnRenderDetail" title="go to the details">OnRenderDetail</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnSettingsDirty-" name="OnSettingsDirty" title="go to the details">OnSettingsDirty</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnVideoApplyFinished-" name="OnVideoApplyFinished" title="go to the details">OnVideoApplyFinished</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RestoreDefaults-" name="RestoreDefaults" title="go to the details">RestoreDefaults</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRenderDetail-" name="SetRenderDetail" title="go to the details">SetRenderDetail</a> (bool save))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRenderDetailSetting-" name="SetRenderDetailSetting" title="go to the details">SetRenderDetailSetting</a> (string cmd, int idx))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TryResSwitch-" name="TryResSwitch" title="go to the details">TryResSwitch</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribessettingspanel.html">TribesSettingsPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribessettingspanel.html#OnOptionsEnding">OnOptionsEnding</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipanel.html#InitComponent">InitComponent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bExiting" class="hidden"></a>bExiting <a href="../Source_tribesgui/tribesoptionsvideopanel.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bExiting;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsDataDirty" class="hidden"></a>bIsDataDirty <a href="../Source_tribesgui/tribesoptionsvideopanel.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIsDataDirty;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTimerHack" class="hidden"></a>bTimerHack <a href="../Source_tribesgui/tribesoptionsvideopanel.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bTimerHack;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitialRenderDetail" class="hidden"></a>InitialRenderDetail <a href="../Source_tribesgui/tribesoptionsvideopanel.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> InitialRenderDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastResolution" class="hidden"></a>LastResolution <a href="../Source_tribesgui/tribesoptionsvideopanel.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> LastResolution;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_promptDlg" class="hidden"></a>promptDlg <a href="../Source_tribesgui/tribesoptionsvideopanel.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gui/guidlg.html" class="source">GUIDlg</a></span> promptDlg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetPanel" class="hidden"></a>targetPanel <a href="../Source_tribesgui/tribesoptionsvideopanel.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> targetPanel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">TribesGui</h3>
+<h4><a name="_ApplyButton" class="hidden"></a>ApplyButton <a href="../Source_tribesgui/tribesoptionsvideopanel.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> ApplyButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_BMDBox" class="hidden"></a>BMDBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> BMDBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_BrightnessSlider" class="hidden"></a>BrightnessSlider <a href="../Source_tribesgui/tribesoptionsvideopanel.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guislider.html" class="source">GUISlider</a></span> BrightnessSlider;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangesText" class="hidden"></a>ChangesText <a href="../Source_tribesgui/tribesoptionsvideopanel.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized <span class="source_type">string</span> ChangesText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ContrastSlider" class="hidden"></a>ContrastSlider <a href="../Source_tribesgui/tribesoptionsvideopanel.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guislider.html" class="source">GUISlider</a></span> ContrastSlider;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecoBox" class="hidden"></a>DecoBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> DecoBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultsButton" class="hidden"></a>DefaultsButton <a href="../Source_tribesgui/tribesoptionsvideopanel.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> DefaultsButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_DetailChoices" class="hidden"></a>DetailChoices <a href="../Source_tribesgui/tribesoptionsvideopanel.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized Array&lt;<span class="source_type">string</span>&gt; DetailChoices;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DSDBox" class="hidden"></a>DSDBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> DSDBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_FluidBox" class="hidden"></a>FluidBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> FluidBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_FogBox" class="hidden"></a>FogBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> FogBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_GammaSlider" class="hidden"></a>GammaSlider <a href="../Source_tribesgui/tribesoptionsvideopanel.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guislider.html" class="source">GUISlider</a></span> GammaSlider;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_GlowDBox" class="hidden"></a>GlowDBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> GlowDBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_MacroBox" class="hidden"></a>MacroBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> MacroBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnOffChoices" class="hidden"></a>OnOffChoices <a href="../Source_tribesgui/tribesoptionsvideopanel.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized Array&lt;<span class="source_type">string</span>&gt; OnOffChoices;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PS2Box" class="hidden"></a>PS2Box <a href="../Source_tribesgui/tribesoptionsvideopanel.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> PS2Box;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderDetailBox" class="hidden"></a>RenderDetailBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> RenderDetailBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderDetailChoices" class="hidden"></a>RenderDetailChoices <a href="../Source_tribesgui/tribesoptionsvideopanel.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized Array&lt;<span class="source_type">string</span>&gt; RenderDetailChoices;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResFailedText" class="hidden"></a>ResFailedText <a href="../Source_tribesgui/tribesoptionsvideopanel.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized <span class="source_type">string</span> ResFailedText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResolutionBox" class="hidden"></a>ResolutionBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> ResolutionBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResSwitchedText" class="hidden"></a>ResSwitchedText <a href="../Source_tribesgui/tribesoptionsvideopanel.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized <span class="source_type">string</span> ResSwitchedText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwitchingResText" class="hidden"></a>SwitchingResText <a href="../Source_tribesgui/tribesoptionsvideopanel.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized <span class="source_type">string</span> SwitchingResText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TexDBox" class="hidden"></a>TexDBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> TexDBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_WorldBox" class="hidden"></a>WorldBox <a href="../Source_tribesgui/tribesoptionsvideopanel.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> WorldBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ApplyVidSettings-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ApplyVidSettings <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#213" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ApplyVidSettings ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRenderDetailSetting-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRenderDetailSetting <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#302" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GetRenderDetailSetting ( <span class="source_type"><a href="../gui/guicombobox.html" class="source">GUIComboBox</a></span> <span class="source_type"><a href="../core/object.html#Box" class="source">box</a></span>, <span class="source_type">string</span> <span class="source_type">cmd</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitComponent <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#44" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnConfirmApplyDlgReturned-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnConfirmApplyDlgReturned <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#162" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnConfirmApplyDlgReturned ( <span class="source_type">int</span> Button, <span class="source_type">string</span> <span class="source_type">Passback</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnDlgReturned-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnDlgReturned <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#364" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnDlgReturned ( <span class="source_type">int</span> Button, <span class="source_type">string</span> <span class="source_type">Passback</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnHide-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnHide <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#107" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnHide ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnShow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnShow <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#93" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnShow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadSettings-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadSettings <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#243" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadSettings ( <span class="source_type">bool</span> UpdateRes) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnApply-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnApply <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#176" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnApply ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnBrightness-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnBrightness <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#418" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnBrightness ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnContrast-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnContrast <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#424" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnContrast ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnCustomSelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnCustomSelection <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#181" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnCustomSelection ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnDefaults-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnDefaults <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#406" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnDefaults ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnGamma-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnGamma <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#430" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnGamma ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnOptionsEnding-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnOptionsEnding <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#135" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnOptionsEnding ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnOwnerTabSwitch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnOwnerTabSwitch <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#123" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> OnOwnerTabSwitch ( <span class="source_type"><a href="../gui/guipanel.html" class="source">GUIPanel</a></span> <span class="source_type">Target</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnPostPrecache-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnPostPrecache <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#385" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnPostPrecache ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnRenderDetail-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnRenderDetail <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#187" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnRenderDetail ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnSettingsDirty-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnSettingsDirty <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#116" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnSettingsDirty ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnVideoApplyFinished-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnVideoApplyFinished <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#148" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnVideoApplyFinished ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RestoreDefaults-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RestoreDefaults <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#416" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RestoreDefaults (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRenderDetail-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRenderDetail <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#196" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetRenderDetail ( <span class="source_type">bool</span> save) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRenderDetailSetting-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRenderDetailSetting <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#316" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetRenderDetailSetting ( <span class="source_type">string</span> <span class="source_type">cmd</span>, <span class="source_type">int</span> <span class="source_type">idx</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#345" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TryResSwitch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TryResSwitch <span class="function_state"></span> <a href="../Source_tribesgui/tribesoptionsvideopanel.html#338" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TryResSwitch ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DetailChoices=(<span class="source_string">"Low/Off"</span>,<span class="source_string">"Medium"</span>,<span class="source_string">"High"</span>,<span class="source_string">"Ultra-High"</span>)
+	RenderDetailChoices=(<span class="source_string">"Low"</span>,<span class="source_string">"Medium"</span>,<span class="source_string">"High"</span>,<span class="source_string">"Ultra-High"</span>,<span class="source_string">"Custom"</span>)
+	OnOffChoices=(<span class="source_string">"On"</span>,<span class="source_string">"Off"</span>)
+	SwitchingResText=<span class="source_string">"The screen's resolution will now be changed. If you experience problems, wait 15 seconds and the resolution setting will be restored."</span>
+	ResSwitchedText=<span class="source_string">"Press OK to keep this resolution setting."</span>
+	ChangesText=<span class="source_string">"Changes to video settings will be lost unless they are applied. Would you like to apply them now?"</span>
+	ResFailedText=<span class="source_string">"Your video card is unable to display the game at that resolution. The next closest match has been selected. Press OK to keep this resolution."</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesoptionsvideopanel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesOptionsVideoPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesoptionsnetworkpanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribespatchcheck.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:36.801 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

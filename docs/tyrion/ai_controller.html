@@ -1,0 +1,1081 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Tyrion.AI_Controller</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_controller.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Controller">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_commonsensesensoraction.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_directattack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tyrion/ai_controller.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.AI_Controller</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/controller.html">Controller</a></dd>
+<dt>Modifiers</dt><dd>native dependsOn ( ActionBase ) </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/controller.html">Controller</a>
+      |   
+      +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_controller.html">AI_Controller</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_ALERTNESS_ALERT_TIME" name="ALERTNESS_ALERT_TIME" title="go to the details">ALERTNESS_ALERT_TIME</a></td><td width="10%">=</td><td width="50%">20.0f</td></tr>
+<tr><td width="40%"><a href="#_ALERTNESS_COMBAT_TIME" name="ALERTNESS_COMBAT_TIME" title="go to the details">ALERTNESS_COMBAT_TIME</a></td><td width="10%">=</td><td width="50%">10.0f</td></tr>
+<tr><td width="40%"><a href="#_DEBUGAI_X" name="DEBUGAI_X" title="go to the details">DEBUGAI_X</a></td><td width="10%">=</td><td width="50%">20</td></tr>
+<tr><td width="40%"><a href="#_DEBUGAI_Y" name="DEBUGAI_Y" title="go to the details">DEBUGAI_Y</a></td><td width="10%">=</td><td width="50%">100</td></tr>
+<tr><td width="40%"><a href="#_DONT_CARE" name="DONT_CARE" title="go to the details">DONT_CARE</a></td><td width="10%">=</td><td width="50%">-99999.0</td></tr>
+<tr><td width="40%"><a href="#_DO_LOCAL_MOVE_NUMBER" name="DO_LOCAL_MOVE_NUMBER" title="go to the details">DO_LOCAL_MOVE_NUMBER</a></td><td width="10%">=</td><td width="50%">2200</td></tr>
+<tr><td width="40%"><a href="#_MAX_TICKS_TO_PROCESS_PAIN" name="MAX_TICKS_TO_PROCESS_PAIN" title="go to the details">MAX_TICKS_TO_PROCESS_PAIN</a></td><td width="10%">=</td><td width="50%">5</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#LATENT_MOVETOWARD">LATENT_MOVETOWARD</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#MAXSTEPHEIGHT">MAXSTEPHEIGHT</a>, <a href="../engine/actor.html#MINFLOORZ">MINFLOORZ</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_actorHit" name="actorHit" title="go to the details">actorHit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_aircraftAttacking" name="aircraftAttacking" title="go to the details">aircraftAttacking</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/aircraftdolocalmove.html">AircraftDoLocalMove</a></td><td width="66%"><a href="#_aircraftLocalMoveAction" name="aircraftLocalMoveAction" title="go to the details">aircraftLocalMoveAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_avoidDirection" name="avoidDirection" title="go to the details">avoidDirection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_avoidDistance" name="avoidDistance" title="go to the details">avoidDistance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAiming" name="bAiming" title="go to the details">bAiming</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAvoiding" name="bAvoiding" title="go to the details">bAvoiding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bJetpacking" name="bJetpacking" title="go to the details">bJetpacking</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bJetSkiManager" name="bJetSkiManager" title="go to the details">bJetSkiManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoLOA" name="bNoLOA" title="go to the details">bNoLOA</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPatrolling" name="bPatrolling" title="go to the details">bPatrolling</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShouldJetpack" name="bShouldJetpack" title="go to the details">bShouldJetpack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSkiTo" name="bSkiTo" title="go to the details">bSkiTo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTerminate" name="bTerminate" title="go to the details">bTerminate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/cardolocalmove.html">CarDoLocalMove</a></td><td width="66%"><a href="#_carLocalMoveAction" name="carLocalMoveAction" title="go to the details">carLocalMoveAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_currentSpeed" name="currentSpeed" title="go to the details">currentSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_controller.html#LOA_AvoidDirections">LOA_AvoidDirections</a></td><td width="66%"><a href="#_dirSwitch" name="dirSwitch" title="go to the details">dirSwitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_disableSmoothing" name="disableSmoothing" title="go to the details">disableSmoothing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ns_dolocalmove.html">NS_DoLocalMove</a></td><td width="66%"><a href="#_dlm" name="dlm" title="go to the details">dlm</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_controller.html#DLM_MovementMode">DLM_MovementMode</a></td><td width="66%"><a href="#_dlmMovementMode" name="dlmMovementMode" title="go to the details">dlmMovementMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_controller.html#DLM_ReturnCodes">DLM_ReturnCodes</a></td><td width="66%"><a href="#_dlmReturnValue" name="dlmReturnValue" title="go to the details">dlmReturnValue</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_dodgeDisplacement" name="dodgeDisplacement" title="go to the details">dodgeDisplacement</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_dodgeExpirationTime" name="dodgeExpirationTime" title="go to the details">dodgeExpirationTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_dodgeStartTime" name="dodgeStartTime" title="go to the details">dodgeStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_elevatorCentreXY" name="elevatorCentreXY" title="go to the details">elevatorCentreXY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_followedActor" name="followedActor" title="go to the details">followedActor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tyrion/ns_action.html">NS_Action</a>&gt;</td><td width="66%"><a href="#_idleActions" name="idleActions" title="go to the details">idleActions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_lastActorHit" name="lastActorHit" title="go to the details">lastActorHit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_lastActorLocation" name="lastActorLocation" title="go to the details">lastActorLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/actionbase.html#ACT_ErrorCodes">ACT_ErrorCodes</a></td><td width="66%"><a href="#_lastErrorCode" name="lastErrorCode" title="go to the details">lastErrorCode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_LastLocation" name="LastLocation" title="go to the details">LastLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_localMoveDirection" name="localMoveDirection" title="go to the details">localMoveDirection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_localMoveDistance" name="localMoveDistance" title="go to the details">localMoveDistance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_localMoveNextDirection" name="localMoveNextDirection" title="go to the details">localMoveNextDirection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_localMoveNextDirectionXY" name="localMoveNextDirectionXY" title="go to the details">localMoveNextDirectionXY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_localMoveNextDistance" name="localMoveNextDistance" title="go to the details">localMoveNextDistance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_localMoveNextDistanceXY" name="localMoveNextDistanceXY" title="go to the details">localMoveNextDistanceXY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_localMoveOrigin" name="localMoveOrigin" title="go to the details">localMoveOrigin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_localMoveStartTimeSeconds" name="localMoveStartTimeSeconds" title="go to the details">localMoveStartTimeSeconds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_localMoveTimeLimitSeconds" name="localMoveTimeLimitSeconds" title="go to the details">localMoveTimeLimitSeconds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_localSmoothMoveDestination" name="localSmoothMoveDestination" title="go to the details">localSmoothMoveDestination</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_localSmoothMoveDestinationValid" name="localSmoothMoveDestinationValid" title="go to the details">localSmoothMoveDestinationValid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_maximumDuration" name="maximumDuration" title="go to the details">maximumDuration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_moveStartTime" name="moveStartTime" title="go to the details">moveStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_previousSmoothingFactor" name="previousSmoothingFactor" title="go to the details">previousSmoothingFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tyrion/ns_action.html">NS_Action</a>&gt;</td><td width="66%"><a href="#_removedActions" name="removedActions" title="go to the details">removedActions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tyrion/ns_action.html">NS_Action</a>&gt;</td><td width="66%"><a href="#_runningActions" name="runningActions" title="go to the details">runningActions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_smoothingStarted" name="smoothingStarted" title="go to the details">smoothingStarted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tyrion/ai_controller.html#TerrainSample">TerrainSample</a>&gt;</td><td width="66%"><a href="#_terrainSamples" name="terrainSamples" title="go to the details">terrainSamples</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tyrion/ai_controller.html#TerrainSample">TerrainSample</a>&gt;</td><td width="66%"><a href="#_terrainSamplesDebug" name="terrainSamplesDebug" title="go to the details">terrainSamplesDebug</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ticksElapsedWithNoProgress" name="ticksElapsedWithNoProgress" title="go to the details">ticksElapsedWithNoProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Range">Range</a></td><td width="66%"><a href="#_tickTimeUpdateRange" name="tickTimeUpdateRange" title="go to the details">tickTimeUpdateRange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_controller.html#VDLM_ReturnCodes">VDLM_ReturnCodes</a></td><td width="66%"><a href="#_vehicleDoLocalMoveResult" name="vehicleDoLocalMoveResult" title="go to the details">vehicleDoLocalMoveResult</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_vehicleNavigationFunctionIndex" name="vehicleNavigationFunctionIndex" title="go to the details">vehicleNavigationFunctionIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ns_dozerogravitylocalmove.html">NS_DoZeroGravityLocalMove</a></td><td width="66%"><a href="#_zeroGravityMoveAction" name="zeroGravityMoveAction" title="go to the details">zeroGravityMoveAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_controller.html#DZGLM_ReturnCodes">DZGLM_ReturnCodes</a></td><td width="66%"><a href="#_zeroGravityMoveResult" name="zeroGravityMoveResult" title="go to the details">zeroGravityMoveResult</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#bAltFire">bAltFire</a>, <a href="../engine/controller.html#bDuck">bDuck</a>, <a href="../engine/controller.html#bFire">bFire</a>, <a href="../engine/controller.html#bGodMode">bGodMode</a>, <a href="../engine/controller.html#bIsPlayer">bIsPlayer</a>, <a href="../engine/controller.html#bJetpack">bJetpack</a>, <a href="../engine/controller.html#bJump">bJump</a>, <a href="../engine/controller.html#bRun">bRun</a>, <a href="../engine/controller.html#bSki">bSki</a>, <a href="../engine/controller.html#bUsePlayerHearing">bUsePlayerHearing</a>, <a href="../engine/controller.html#debugTraversalLineChecks">debugTraversalLineChecks</a>, <a href="../engine/controller.html#FailedReachLocation">FailedReachLocation</a>, <a href="../engine/controller.html#FailedReachTime">FailedReachTime</a>, <a href="../engine/controller.html#FovAngle">FovAngle</a>, <a href="../engine/controller.html#GroundPitchTime">GroundPitchTime</a>, <a href="../engine/controller.html#Handedness">Handedness</a>, <a href="../engine/controller.html#LastFailedReach">LastFailedReach</a>, <a href="../engine/controller.html#lastFindPathResult">lastFindPathResult</a>, <a href="../engine/controller.html#MonitoredPawn">MonitoredPawn</a>, <a href="../engine/controller.html#MonitorMaxDistSq">MonitorMaxDistSq</a>, <a href="../engine/controller.html#MonitorStartLoc">MonitorStartLoc</a>, <a href="../engine/controller.html#nextController">nextController</a>, <a href="../engine/controller.html#Pawn">Pawn</a>, <a href="../engine/controller.html#PawnClass">PawnClass</a>, <a href="../engine/controller.html#PlayerNum">PlayerNum</a>, <a href="../engine/controller.html#PlayerReplicationInfo">PlayerReplicationInfo</a>, <a href="../engine/controller.html#PlayerReplicationInfoClass">PlayerReplicationInfoClass</a>, <a href="../engine/controller.html#PreviousPawnClass">PreviousPawnClass</a>, <a href="../engine/controller.html#RouteCache">RouteCache</a>, <a href="../engine/controller.html#RouteComplete">RouteComplete</a>, <a href="../engine/controller.html#StartSpot">StartSpot</a>, <a href="../engine/controller.html#ViewX">ViewX</a>, <a href="../engine/controller.html#ViewY">ViewY</a>, <a href="../engine/controller.html#ViewZ">ViewZ</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#Acceleration">Acceleration</a>, <a href="../engine/actor.html#ActorRenderData">ActorRenderData</a>, <a href="../engine/actor.html#AmbientGlow">AmbientGlow</a>, <a href="../engine/actor.html#AntiPortal">AntiPortal</a>, <a href="../engine/actor.html#Attached">Attached</a>, <a href="../engine/actor.html#AttachmentBone">AttachmentBone</a>, <a href="../engine/actor.html#AttachTag">AttachTag</a>, <a href="../engine/actor.html#bAcceptsProjectors">bAcceptsProjectors</a>, <a href="../engine/actor.html#bAcceptsShadowProjectors">bAcceptsShadowProjectors</a>, <a href="../engine/actor.html#bActorShadows">bActorShadows</a>, <a href="../engine/actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="../engine/actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="../engine/actor.html#bAlwaysZeroBoneOffset">bAlwaysZeroBoneOffset</a>, <a href="../engine/actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="../engine/actor.html#Base">Base</a>, <a href="../engine/actor.html#bAutoAlignToTerrain">bAutoAlignToTerrain</a>, <a href="../engine/actor.html#bBlockActors">bBlockActors</a>, <a href="../engine/actor.html#bBlockHavok">bBlockHavok</a>, <a href="../engine/actor.html#bBlockKarma">bBlockKarma</a>, <a href="../engine/actor.html#bBlockNonZeroExtentTraces">bBlockNonZeroExtentTraces</a>, <a href="../engine/actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="../engine/actor.html#bBlockZeroExtentTraces">bBlockZeroExtentTraces</a>, <a href="../engine/actor.html#bBounce">bBounce</a>, <a href="../engine/actor.html#bCanBeDamaged">bCanBeDamaged</a>, <a href="../engine/actor.html#bCanTeleport">bCanTeleport</a>, <a href="../engine/actor.html#bCastsVolumetricShadows">bCastsVolumetricShadows</a>, <a href="../engine/actor.html#bClientAnim">bClientAnim</a>, <a href="../engine/actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="../engine/actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="../engine/actor.html#bClientHavokPhysics">bClientHavokPhysics</a>, <a href="../engine/actor.html#bCollideActors">bCollideActors</a>, <a href="../engine/actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="../engine/actor.html#bCollideWorld">bCollideWorld</a>, <a href="../engine/actor.html#bCompressedPosition">bCompressedPosition</a>, <a href="../engine/actor.html#bCorona">bCorona</a>, <a href="../engine/actor.html#bDeleteMe">bDeleteMe</a>, <a href="../engine/actor.html#bDemoOwner">bDemoOwner</a>, <a href="../engine/actor.html#bDemoRecording">bDemoRecording</a>, <a href="../engine/actor.html#bDestroyInPainVolume">bDestroyInPainVolume</a>, <a href="../engine/actor.html#bDirectional">bDirectional</a>, <a href="../engine/actor.html#bDisableBspVolumetrics">bDisableBspVolumetrics</a>, <a href="../engine/actor.html#bDisableEditorCopying">bDisableEditorCopying</a>, <a href="../engine/actor.html#bDisableHavokCollisionWhenAttached">bDisableHavokCollisionWhenAttached</a>, <a href="../engine/actor.html#bDisableShadowOptimisation">bDisableShadowOptimisation</a>, <a href="../engine/actor.html#bDisableSorting">bDisableSorting</a>, <a href="../engine/actor.html#bDisableTick">bDisableTick</a>, <a href="../engine/actor.html#bDisableTouch">bDisableTouch</a>, <a href="../engine/actor.html#bDisturbFluidSurface">bDisturbFluidSurface</a>, <a href="../engine/actor.html#bDoNotApproximateBumpmap">bDoNotApproximateBumpmap</a>, <a href="../engine/actor.html#bDynamicLight">bDynamicLight</a>, <a href="../engine/actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="../engine/actor.html#bEdSnap">bEdSnap</a>, <a href="../engine/actor.html#bEnableHavokBackstep">bEnableHavokBackstep</a>, <a href="../engine/actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="../engine/actor.html#bGameRelevant">bGameRelevant</a>, <a href="../engine/actor.html#bGetOverlayMaterialFromBase">bGetOverlayMaterialFromBase</a>, <a href="../engine/actor.html#bGetSkinFromBase">bGetSkinFromBase</a>, <a href="../engine/actor.html#bHardAttach">bHardAttach</a>, <a href="../engine/actor.html#bHidden">bHidden</a>, <a href="../engine/actor.html#bHiddenEd">bHiddenEd</a>, <a href="../engine/actor.html#bHiddenEdGroup">bHiddenEdGroup</a>, <a href="../engine/actor.html#bHighDetail">bHighDetail</a>, <a href="../engine/actor.html#bHurtEntry">bHurtEntry</a>, <a href="../engine/actor.html#bIgnoreEncroachers">bIgnoreEncroachers</a>, <a href="../engine/actor.html#bIgnoreOutOfWorld">bIgnoreOutOfWorld</a>, <a href="../engine/actor.html#bImportantActor">bImportantActor</a>, <a href="../engine/actor.html#bInterpolating">bInterpolating</a>, <a href="../engine/actor.html#bIsMirror">bIsMirror</a>, <a href="../engine/actor.html#bIsVehicle">bIsVehicle</a>, <a href="../engine/actor.html#bJustTeleported">bJustTeleported</a>, <a href="../engine/actor.html#bLightChanged">bLightChanged</a>, <a href="../engine/actor.html#bLightingVisibility">bLightingVisibility</a>, <a href="../engine/actor.html#bLockLocation">bLockLocation</a>, <a href="../engine/actor.html#bMovable">bMovable</a>, <a href="../engine/actor.html#bNavigationRelevant">bNavigationRelevant</a>, <a href="../engine/actor.html#bNeedLifetimeEffectEvents">bNeedLifetimeEffectEvents</a>, <a href="../engine/actor.html#bNeedPostRenderCallback">bNeedPostRenderCallback</a>, <a href="../engine/actor.html#bNetDirty">bNetDirty</a>, <a href="../engine/actor.html#bNetInitial">bNetInitial</a>, <a href="../engine/actor.html#bNetInitialRotation">bNetInitialRotation</a>, <a href="../engine/actor.html#bNetNotify">bNetNotify</a>, <a href="../engine/actor.html#bNetOwner">bNetOwner</a>, <a href="../engine/actor.html#bNetRelevant">bNetRelevant</a>, <a href="../engine/actor.html#bNetTemporary">bNetTemporary</a>, <a href="../engine/actor.html#bNetworkRelevancyVisible">bNetworkRelevancyVisible</a>, <a href="../engine/actor.html#bNoDelete">bNoDelete</a>, <a href="../engine/actor.html#bNoRepMesh">bNoRepMesh</a>, <a href="../engine/actor.html#bObsolete">bObsolete</a>, <a href="../engine/actor.html#bOnlyAffectCurrentZone">bOnlyAffectCurrentZone</a>, <a href="../engine/actor.html#bOnlyAffectPawns">bOnlyAffectPawns</a>, <a href="../engine/actor.html#bOnlyDirtyReplication">bOnlyDirtyReplication</a>, <a href="../engine/actor.html#bOnlyDrawIfAttached">bOnlyDrawIfAttached</a>, <a href="../engine/actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="../engine/actor.html#bOnlyRelevantToOwner">bOnlyRelevantToOwner</a>, <a href="../engine/actor.html#bOrientOnSlope">bOrientOnSlope</a>, <a href="../engine/actor.html#bOverruleNavigationRelevant">bOverruleNavigationRelevant</a>, <a href="../engine/actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="../engine/actor.html#bPathColliding">bPathColliding</a>, <a href="../engine/actor.html#bPathTemp">bPathTemp</a>, <a href="../engine/actor.html#bPendingDelete">bPendingDelete</a>, <a href="../engine/actor.html#bProjectile">bProjectile</a>, <a href="../engine/actor.html#bProjTarget">bProjTarget</a>, <a href="../engine/actor.html#bRepClientDemo">bRepClientDemo</a>, <a href="../engine/actor.html#bReplicateAnimations">bReplicateAnimations</a>, <a href="../engine/actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="../engine/actor.html#bReplicateLabel">bReplicateLabel</a>, <a href="../engine/actor.html#bReplicateMovement">bReplicateMovement</a>, <a href="../engine/actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="../engine/actor.html#Brush">Brush</a>, <a href="../engine/actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="../engine/actor.html#bSelected">bSelected</a>, <a href="../engine/actor.html#bSendDestructionNotification">bSendDestructionNotification</a>, <a href="../engine/actor.html#bShadowCast">bShadowCast</a>, <a href="../engine/actor.html#bShouldBaseAtStartup">bShouldBaseAtStartup</a>, <a href="../engine/actor.html#bShowOctreeNodes">bShowOctreeNodes</a>, <a href="../engine/actor.html#bSkipActorPropertyReplication">bSkipActorPropertyReplication</a>, <a href="../engine/actor.html#bSkipEncroachment">bSkipEncroachment</a>, <a href="../engine/actor.html#bSpecialLit">bSpecialLit</a>, <a href="../engine/actor.html#bStasis">bStasis</a>, <a href="../engine/actor.html#bStatic">bStatic</a>, <a href="../engine/actor.html#bStaticLighting">bStaticLighting</a>, <a href="../engine/actor.html#bSuperHighDetail">bSuperHighDetail</a>, <a href="../engine/actor.html#bTearOff">bTearOff</a>, <a href="../engine/actor.html#bTempEditor">bTempEditor</a>, <a href="../engine/actor.html#bTimerLoop">bTimerLoop</a>, <a href="../engine/actor.html#bTrailerAllowRotation">bTrailerAllowRotation</a>, <a href="../engine/actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="../engine/actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="../engine/actor.html#bTravel">bTravel</a>, <a href="../engine/actor.html#bTriggerEffectEventsBeforeGameStarts">bTriggerEffectEventsBeforeGameStarts</a>, <a href="../engine/actor.html#BumpmapLODScale">BumpmapLODScale</a>, <a href="../engine/actor.html#bUnifiedPositionChanged">bUnifiedPositionChanged</a>, <a href="../engine/actor.html#bUnifiedVelocityChanged">bUnifiedVelocityChanged</a>, <a href="../engine/actor.html#bUnlit">bUnlit</a>, <a href="../engine/actor.html#Buoyancy">Buoyancy</a>, <a href="../engine/actor.html#bUpdateSimulatedPosition">bUpdateSimulatedPosition</a>, <a href="../engine/actor.html#bUseCylinderCollision">bUseCylinderCollision</a>, <a href="../engine/actor.html#bUseDynamicLights">bUseDynamicLights</a>, <a href="../engine/actor.html#bUseLightingFromBase">bUseLightingFromBase</a>, <a href="../engine/actor.html#bUseRootMotionBound">bUseRootMotionBound</a>, <a href="../engine/actor.html#bVolumetricShadowCast">bVolumetricShadowCast</a>, <a href="../engine/actor.html#bWasSNFiltered">bWasSNFiltered</a>, <a href="../engine/actor.html#bWorldGeometry">bWorldGeometry</a>, <a href="../engine/actor.html#CachedLocalToWorld">CachedLocalToWorld</a>, <a href="../engine/actor.html#CachedLocation">CachedLocation</a>, <a href="../engine/actor.html#CachedRotation">CachedRotation</a>, <a href="../engine/actor.html#CollisionHeight">CollisionHeight</a>, <a href="../engine/actor.html#CollisionRadius">CollisionRadius</a>, <a href="../engine/actor.html#CollisionTag">CollisionTag</a>, <a href="../engine/actor.html#ColLocation">ColLocation</a>, <a href="../engine/actor.html#CullDistance">CullDistance</a>, <a href="../engine/actor.html#Deleted">Deleted</a>, <a href="../engine/actor.html#DesiredRotation">DesiredRotation</a>, <a href="../engine/actor.html#DrawScale">DrawScale</a>, <a href="../engine/actor.html#DrawScale3D">DrawScale3D</a>, <a href="../engine/actor.html#DrawType">DrawType</a>, <a href="../engine/actor.html#Event">Event</a>, <a href="../engine/actor.html#exclusiveToGameInfo">exclusiveToGameInfo</a>, <a href="../engine/actor.html#forceAccumulator">forceAccumulator</a>, <a href="../engine/actor.html#ForcedVisibilityZoneTag">ForcedVisibilityZoneTag</a>, <a href="../engine/actor.html#ForceRadius">ForceRadius</a>, <a href="../engine/actor.html#ForceScale">ForceScale</a>, <a href="../engine/actor.html#ForceType">ForceType</a>, <a href="../engine/actor.html#gameInfoExclusions">gameInfoExclusions</a>, <a href="../engine/actor.html#gameInfoInclusions">gameInfoInclusions</a>, <a href="../engine/actor.html#GravityScale">GravityScale</a>, <a href="../engine/actor.html#Group">Group</a>, <a href="../engine/actor.html#HardRelMatrix">HardRelMatrix</a>, <a href="../engine/actor.html#havokAngularVelocity">havokAngularVelocity</a>, <a href="../engine/actor.html#HavokData">HavokData</a>, <a href="../engine/actor.html#havokDataClass">havokDataClass</a>, <a href="../engine/actor.html#havokGameTickForce">havokGameTickForce</a>, <a href="../engine/actor.html#havokGameTickForcePosition">havokGameTickForcePosition</a>, <a href="../engine/actor.html#havokSkeletalRotationSpeed">havokSkeletalRotationSpeed</a>, <a href="../engine/actor.html#InitialState">InitialState</a>, <a href="../engine/actor.html#Instigator">Instigator</a>, <a href="../engine/actor.html#JoinedTag">JoinedTag</a>, <a href="../engine/actor.html#Label">Label</a>, <a href="../engine/actor.html#LastRenderTime">LastRenderTime</a>, <a href="../engine/actor.html#LastTick">LastTick</a>, <a href="../engine/actor.html#LatentAnimChannelCount">LatentAnimChannelCount</a>, <a href="../engine/actor.html#LatentFloat">LatentFloat</a>, <a href="../engine/actor.html#LatentStackLocations">LatentStackLocations</a>, <a href="../engine/actor.html#Leaves">Leaves</a>, <a href="../engine/actor.html#Level">Level</a>, <a href="../engine/actor.html#LifeSpan">LifeSpan</a>, <a href="../engine/actor.html#LightBrightness">LightBrightness</a>, <a href="../engine/actor.html#LightCone">LightCone</a>, <a href="../engine/actor.html#LightEffect">LightEffect</a>, <a href="../engine/actor.html#LightHue">LightHue</a>, <a href="../engine/actor.html#LightPeriod">LightPeriod</a>, <a href="../engine/actor.html#LightPhase">LightPhase</a>, <a href="../engine/actor.html#LightRadius">LightRadius</a>, <a href="../engine/actor.html#LightRenderData">LightRenderData</a>, <a href="../engine/actor.html#LightSaturation">LightSaturation</a>, <a href="../engine/actor.html#LightType">LightType</a>, <a href="../engine/actor.html#Location">Location</a>, <a href="../engine/actor.html#LODBias">LODBias</a>, <a href="../engine/actor.html#Mass">Mass</a>, <a href="../engine/actor.html#maxDifficulty">maxDifficulty</a>, <a href="../engine/actor.html#MaxLights">MaxLights</a>, <a href="../engine/actor.html#maxNumPlayers">maxNumPlayers</a>, <a href="../engine/actor.html#MaxTraceDistance">MaxTraceDistance</a>, <a href="../engine/actor.html#Mesh">Mesh</a>, <a href="../engine/actor.html#MeshInstance">MeshInstance</a>, <a href="../engine/actor.html#MessageClass">MessageClass</a>, <a href="../engine/actor.html#minDifficulty">minDifficulty</a>, <a href="../engine/actor.html#minNumPlayers">minNumPlayers</a>, <a href="../engine/actor.html#movementObject">movementObject</a>, <a href="../engine/actor.html#MovementObjectClass">MovementObjectClass</a>, <a href="../engine/actor.html#NetPriority">NetPriority</a>, <a href="../engine/actor.html#NetTag">NetTag</a>, <a href="../engine/actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="../engine/actor.html#NetUpdateTime">NetUpdateTime</a>, <a href="../engine/actor.html#OctreeBox">OctreeBox</a>, <a href="../engine/actor.html#OctreeBoxCenter">OctreeBoxCenter</a>, <a href="../engine/actor.html#OctreeBoxRadii">OctreeBoxRadii</a>, <a href="../engine/actor.html#OctreeNodes">OctreeNodes</a>, <a href="../engine/actor.html#Owner">Owner</a>, <a href="../engine/actor.html#OwnerGroups">OwnerGroups</a>, <a href="../engine/actor.html#PendingTouch">PendingTouch</a>, <a href="../engine/actor.html#Physics">Physics</a>, <a href="../engine/actor.html#PhysicsVolume">PhysicsVolume</a>, <a href="../engine/actor.html#PrePivot">PrePivot</a>, <a href="../engine/actor.html#Projectors">Projectors</a>, <a href="../engine/actor.html#Region">Region</a>, <a href="../engine/actor.html#RelativeLocation">RelativeLocation</a>, <a href="../engine/actor.html#RelativeRotation">RelativeRotation</a>, <a href="../engine/actor.html#RemoteRole">RemoteRole</a>, <a href="../engine/actor.html#RenderRevision">RenderRevision</a>, <a href="../engine/actor.html#RepSkin">RepSkin</a>, <a href="../engine/actor.html#Role">Role</a>, <a href="../engine/actor.html#Rotation">Rotation</a>, <a href="../engine/actor.html#RotationRate">RotationRate</a>, <a href="../engine/actor.html#ScaleGlow">ScaleGlow</a>, <a href="../engine/actor.html#SimAnim">SimAnim</a>, <a href="../engine/actor.html#Skins">Skins</a>, <a href="../engine/actor.html#SoundOcclusion">SoundOcclusion</a>, <a href="../engine/actor.html#SpeechTag">SpeechTag</a>, <a href="../engine/actor.html#StaticFilterState">StaticFilterState</a>, <a href="../engine/actor.html#StaticMesh">StaticMesh</a>, <a href="../engine/actor.html#StaticMeshInstance">StaticMeshInstance</a>, <a href="../engine/actor.html#StaticMeshProjectors">StaticMeshProjectors</a>, <a href="../engine/actor.html#StaticSectionBatches">StaticSectionBatches</a>, <a href="../engine/actor.html#Style">Style</a>, <a href="../engine/actor.html#Tag">Tag</a>, <a href="../engine/actor.html#Texture">Texture</a>, <a href="../engine/actor.html#TimerCounter">TimerCounter</a>, <a href="../engine/actor.html#TimerRate">TimerRate</a>, <a href="../engine/actor.html#torqueAccumulator">torqueAccumulator</a>, <a href="../engine/actor.html#Touching">Touching</a>, <a href="../engine/actor.html#TriggeredBy">TriggeredBy</a>, <a href="../engine/actor.html#unifiedPosition">unifiedPosition</a>, <a href="../engine/actor.html#unifiedVelocity">unifiedVelocity</a>, <a href="../engine/actor.html#UsesSubVisibility">UsesSubVisibility</a>, <a href="../engine/actor.html#Velocity">Velocity</a>, <a href="../engine/actor.html#XLevel">XLevel</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_DLM_MovementMode" name="DLM_MovementMode" title="go to the details">DLM_MovementMode</a><br /><span class="small">DLMMM_WALKING,
+DLMMM_JETPACKING,
+DLMMM_SKIING</span></td></tr>
+<tr><td><a href="#_DLM_ReturnCodes" name="DLM_ReturnCodes" title="go to the details">DLM_ReturnCodes</a><br /><span class="small">DLM_SUCCESS,
+DLM_CANT_FIND_PATH,
+DLM_IRREVERSIBLY_OFF_COURSE,
+DLM_TIME_LIMIT_EXCEEDED,
+DLM_INSUFFICIENT_ENERGY,
+DLM_DESTINATION_ENCROACHED,
+DLM_ALL_RESOURCES_DIED</span></td></tr>
+<tr><td><a href="#_DZGLM_ReturnCodes" name="DZGLM_ReturnCodes" title="go to the details">DZGLM_ReturnCodes</a><br /><span class="small">DZGLM_SUCCESS</span></td></tr>
+<tr><td><a href="#_LOA_AvoidDirections" name="LOA_AvoidDirections" title="go to the details">LOA_AvoidDirections</a><br /><span class="small">LOA_DONTCARE,
+LOA_LEFT,
+LOA_RIGHT,
+LOA_UP</span></td></tr>
+<tr><td><a href="#_VDLM_ReturnCodes" name="VDLM_ReturnCodes" title="go to the details">VDLM_ReturnCodes</a><br /><span class="small">VDLM_SUCCESS,
+VDLM_TIMED_OUT</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#FindPathResult">FindPathResult</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#EDetailMode">EDetailMode</a>, <a href="../engine/actor.html#EDoubleClickDir">EDoubleClickDir</a>, <a href="../engine/actor.html#EDrawType">EDrawType</a>, <a href="../engine/actor.html#EFilterState">EFilterState</a>, <a href="../engine/actor.html#EForceType">EForceType</a>, <a href="../engine/actor.html#ELightEffect">ELightEffect</a>, <a href="../engine/actor.html#ELightType">ELightType</a>, <a href="../engine/actor.html#EMusicTransition">EMusicTransition</a>, <a href="../engine/actor.html#ENetRole">ENetRole</a>, <a href="../engine/actor.html#EPhysics">EPhysics</a>, <a href="../engine/actor.html#ERenderStyle">ERenderStyle</a>, <a href="../engine/actor.html#ESoundOcclusion">ESoundOcclusion</a>, <a href="../engine/actor.html#ETravelType">ETravelType</a>, <a href="../engine/actor.html#SocketCoordinates">SocketCoordinates</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_TerrainSample" name="TerrainSample" title="go to the details">TerrainSample</a><br /><span class="small">location, normal, velocity, bTerrain, bDownSlope, bBeforeSkiRouteStart</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#FindPathAIProperties">FindPathAIProperties</a>, <a href="../engine/controller.html#RouteCacheElement">RouteCacheElement</a>, <a href="../engine/controller.html#TraversalLineCheck">TraversalLineCheck</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#ActorRenderDataPtr">ActorRenderDataPtr</a>, <a href="../engine/actor.html#AnimRep">AnimRep</a>, <a href="../engine/actor.html#BatchReference">BatchReference</a>, <a href="../engine/actor.html#HavokRigidBodyState">HavokRigidBodyState</a>, <a href="../engine/actor.html#KRBVec">KRBVec</a>, <a href="../engine/actor.html#KRigidBodyState">KRigidBodyState</a>, <a href="../engine/actor.html#LightRenderDataPtr">LightRenderDataPtr</a>, <a href="../engine/actor.html#PointRegion">PointRegion</a>, <a href="../engine/actor.html#ProjectorRenderInfoPtr">ProjectorRenderInfoPtr</a>, <a href="../engine/actor.html#StaticMeshProjectorRenderInfoPtr">StaticMeshProjectorRenderInfoPtr</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AircraftDoLocalMove-" name="AircraftDoLocalMove" title="go to the details">AircraftDoLocalMove</a> (<a href="../tyrion/aircraftdolocalmove.html">AircraftDoLocalMove</a> action)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_bSuitableTerrainForSkiing-" name="bSuitableTerrainForSkiing" title="go to the details">bSuitableTerrainForSkiing</a> (<a href="../core/object.html#Vector">Vector</a> destination, float energy)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_canJetToPoint-" name="canJetToPoint" title="go to the details">canJetToPoint</a> (<a href="../gameplay/character.html">Character</a> c, <a href="../core/object.html#Vector">Vector</a> startLoc, <a href="../core/object.html#Vector">Vector</a> endLoc, float energy)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canPointBeReached-" name="canPointBeReached" title="go to the details">canPointBeReached</a> (<a href="../core/object.html#Vector">Vector</a> startPoint, <a href="../core/object.html#Vector">Vector</a> endPoint, <a href="../engine/pawn.html">Pawn</a> pawn, array&lt;<a href="../engine/actor.html">Actor</a>&gt; ignore, optional out <a href="../core/object.html#Vector">vector</a> lastValidLocation, optional out float traversedDistanceXY)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canPointBeReachedUsingAircraft-" name="canPointBeReachedUsingAircraft" title="go to the details">canPointBeReachedUsingAircraft</a> (<a href="../core/object.html#Vector">Vector</a> startPoint, <a href="../core/object.html#Vector">Vector</a> endPoint, <a href="../engine/pawn.html">Pawn</a> aircraft)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canPointBeReachedUsingJetpack-" name="canPointBeReachedUsingJetpack" title="go to the details">canPointBeReachedUsingJetpack</a> (<a href="../core/object.html#Vector">Vector</a> startPoint, <a href="../core/object.html#Vector">Vector</a> endPoint, <a href="../engine/pawn.html">Pawn</a> pawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CarDoLocalMove-" name="CarDoLocalMove" title="go to the details">CarDoLocalMove</a> (<a href="../tyrion/cardolocalmove.html">CarDoLocalMove</a> action)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_copyTerrainProfileDebug-" name="copyTerrainProfileDebug" title="go to the details">copyTerrainProfileDebug</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_deleteRemovedActions-" name="deleteRemovedActions" title="go to the details">deleteRemovedActions</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayDebug-" name="DisplayDebug" title="go to the details">DisplayDebug</a> (<a href="../engine/canvas.html">Canvas</a> Canvas, out float YL, out float YPos))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_displayNavigationDebug-" name="displayNavigationDebug" title="go to the details">displayNavigationDebug</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_displayWorldSpaceDebug-" name="displayWorldSpaceDebug" title="go to the details">displayWorldSpaceDebug</a> (<a href="../engine/hud.html">HUD</a> displayHUD))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_doLocalMove-" name="doLocalMove" title="go to the details">doLocalMove</a> (<a href="../tyrion/ns_dolocalmove.html">NS_DoLocalMove</a> dlm)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_doZeroGravityLocalMove-" name="doZeroGravityLocalMove" title="go to the details">doZeroGravityLocalMove</a> (<a href="../tyrion/ns_dozerogravitylocalmove.html">NS_DoZeroGravityLocalMove</a> action)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_drawDebug-" name="drawDebug" title="go to the details">drawDebug</a> (<a href="../engine/canvas.html">Canvas</a> canvas, HUD <a href="../engine/hud.html">hud</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_drawJettingSkiingDebug-" name="drawJettingSkiingDebug" title="go to the details">drawJettingSkiingDebug</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_drawLOADebug-" name="drawLOADebug" title="go to the details">drawLOADebug</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_drawRouteCache-" name="drawRouteCache" title="go to the details">drawRouteCache</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_findLandingSpot-" name="findLandingSpot" title="go to the details">findLandingSpot</a> (<a href="../core/object.html#Vector">Vector</a> destination, float energy, Character.JetCompetencyLevels jetCompetency, int nSamples)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_generateReverseSkiRoute-" name="generateReverseSkiRoute" title="go to the details">generateReverseSkiRoute</a> (<a href="../gameplay/character.html">Character</a> character, <a href="../core/object.html#Vector">Vector</a> endPoint, <a href="../core/object.html#Vector">Vector</a> endVelocity)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_getNodesWithinSphere-" name="getNodesWithinSphere" title="go to the details">getNodesWithinSphere</a> (<a href="../core/object.html#Vector">vector</a> origin, float radius, out array&lt;<a href="../core/object.html#Vector">vector</a>&gt; nodes)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_getRandomLocation-" name="getRandomLocation" title="go to the details">getRandomLocation</a> (<a href="../engine/pawn.html">Pawn</a> pawn, <a href="../core/object.html#Vector">Vector</a> center, float outerRadius, float innerRadius, optional bool bJetpack)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_getTerrainHeight-" name="getTerrainHeight" title="go to the details">getTerrainHeight</a> (<a href="../core/object.html#Vector">Vector</a> point)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isPointEncroachedForMovement-" name="isPointEncroachedForMovement" title="go to the details">isPointEncroachedForMovement</a> (<a href="../engine/pawn.html">Pawn</a> pawn, <a href="../core/object.html#Vector">Vector</a> point)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/actor.html">Actor</a>&nbsp;</td><td><a href="#_jetLookAhead-" name="jetLookAhead" title="go to the details">jetLookAhead</a> (<a href="../core/object.html#Vector">Vector</a> loc1, <a href="../core/object.html#Vector">Vector</a> loc2)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_logSkiRoute-" name="logSkiRoute" title="go to the details">logSkiRoute</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyTakeHit-" name="NotifyTakeHit" title="go to the details">NotifyTakeHit</a> (<a href="../engine/pawn.html">pawn</a> InstigatedBy, <a href="../core/object.html#Vector">vector</a> HitLocation, int Damage, class&lt;<a href="../engine/damagetype.html">DamageType</a>&gt; damageType, <a href="../core/object.html#Vector">vector</a> Momentum))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_offersCover-" name="offersCover" title="go to the details">offersCover</a> (<a href="../engine/pawn.html">Pawn</a> enemy, <a href="../core/object.html#Vector">Vector</a> point)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_OnHearSound-" name="OnHearSound" title="go to the details">OnHearSound</a> (<a href="../engine/actor.html">Actor</a> SoundMaker, <a href="../core/object.html#Vector">vector</a> SoundOrigin, Name SoundCategory))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnDied-" name="PawnDied" title="go to the details">PawnDied</a> (<a href="../engine/pawn.html">Pawn</a> p))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setAlertnessLevel-" name="setAlertnessLevel" title="go to the details">setAlertnessLevel</a> (AlertnessLevels newLevel, optional bool bDontHandleSquadMembers ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_speedInDirection-" name="speedInDirection" title="go to the details">speedInDirection</a> (<a href="../core/object.html#Vector">Vector</a> velocity, <a href="../core/object.html#Vector">Vector</a> direction)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_stopActions-" name="stopActions" title="go to the details">stopActions</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_stopMove-" name="stopMove" title="go to the details">stopMove</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float delta ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnPossess-" name="UnPossess" title="go to the details">UnPossess</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_wasJustHit-" name="wasJustHit" title="go to the details">wasJustHit</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#AddController">AddController</a>, <a href="../engine/controller.html#AdjustView">AdjustView</a>, <a href="../engine/controller.html#AIHearSound">AIHearSound</a>, <a href="../engine/controller.html#AutoTaunt">AutoTaunt</a>, <a href="../engine/controller.html#BeginState">BeginState</a>, <a href="../engine/controller.html#ChangedWeapon">ChangedWeapon</a>, <a href="../engine/controller.html#CheckFutureSight">CheckFutureSight</a>, <a href="../engine/controller.html#ClientDying">ClientDying</a>, <a href="../engine/controller.html#ClientGameEnded">ClientGameEnded</a>, <a href="../engine/controller.html#ClientSetLocation">ClientSetLocation</a>, <a href="../engine/controller.html#ClientSetRotation">ClientSetRotation</a>, <a href="../engine/controller.html#ContinueFindPath">ContinueFindPath</a>, <a href="../engine/controller.html#DebugTraversalCheck">DebugTraversalCheck</a>, <a href="../engine/controller.html#Destroyed">Destroyed</a>, <a href="../engine/controller.html#DiscardFindPath">DiscardFindPath</a>, <a href="../engine/controller.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/controller.html#displayWorldSpaceDebug">displayWorldSpaceDebug</a>, <a href="../engine/controller.html#DontReuseTaunt">DontReuseTaunt</a>, <a href="../engine/controller.html#DrawPathDebug">DrawPathDebug</a>, <a href="../engine/controller.html#FindPath">FindPath</a>, <a href="../engine/controller.html#GameHasEnded">GameHasEnded</a>, <a href="../engine/controller.html#GetFacingDirection">GetFacingDirection</a>, <a href="../engine/controller.html#GetFindPathResult">GetFindPathResult</a>, <a href="../engine/controller.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../engine/controller.html#GetViewRotation">GetViewRotation</a>, <a href="../engine/controller.html#HearNoise">HearNoise</a>, <a href="../engine/controller.html#InitPlayerReplicationInfo">InitPlayerReplicationInfo</a>, <a href="../engine/controller.html#InLatentExecution">InLatentExecution</a>, <a href="../engine/controller.html#IsFindPathComplete">IsFindPathComplete</a>, <a href="../engine/controller.html#LineOfSightTo">LineOfSightTo</a>, <a href="../engine/controller.html#LongFall">LongFall</a>, <a href="../engine/controller.html#MayFall">MayFall</a>, <a href="../engine/controller.html#NotifyBump">NotifyBump</a>, <a href="../engine/controller.html#NotifyHeadVolumeChange">NotifyHeadVolumeChange</a>, <a href="../engine/controller.html#NotifyHitMover">NotifyHitMover</a>, <a href="../engine/controller.html#NotifyHitWall">NotifyHitWall</a>, <a href="../engine/controller.html#NotifyJumpApex">NotifyJumpApex</a>, <a href="../engine/controller.html#NotifyKilled">NotifyKilled</a>, <a href="../engine/controller.html#NotifyLanded">NotifyLanded</a>, <a href="../engine/controller.html#NotifyMissedJump">NotifyMissedJump</a>, <a href="../engine/controller.html#NotifyPhysicsVolumeChange">NotifyPhysicsVolumeChange</a>, <a href="../engine/controller.html#NotifyTakeHit">NotifyTakeHit</a>, <a href="../engine/controller.html#PathDiagnostics">PathDiagnostics</a>, <a href="../engine/controller.html#PawnDied">PawnDied</a>, <a href="../engine/controller.html#PawnIsInPain">PawnIsInPain</a>, <a href="../engine/controller.html#PendingStasis">PendingStasis</a>, <a href="../engine/controller.html#Possess">Possess</a>, <a href="../engine/controller.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/controller.html#PostLoadGame">PostLoadGame</a>, <a href="../engine/controller.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/controller.html#RemoveController">RemoveController</a>, <a href="../engine/controller.html#RenderOverlays">RenderOverlays</a>, <a href="../engine/controller.html#Reset">Reset</a>, <a href="../engine/controller.html#Restart">Restart</a>, <a href="../engine/controller.html#SameTeamAs">SameTeamAs</a>, <a href="../engine/controller.html#ServerGivePawn">ServerGivePawn</a>, <a href="../engine/controller.html#ServerReStartPlayer">ServerReStartPlayer</a>, <a href="../engine/controller.html#SetFall">SetFall</a>, <a href="../engine/controller.html#SetPawnClass">SetPawnClass</a>, <a href="../engine/controller.html#ShakeView">ShakeView</a>, <a href="../engine/controller.html#SoakStop">SoakStop</a>, <a href="../engine/controller.html#UnPossess">UnPossess</a>, <a href="../engine/controller.html#WantsSmoothedView">WantsSmoothedView</a>, <a href="../engine/controller.html#WasKilledBy">WasKilledBy</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/actor.html#*">*</a>, <a href="../engine/actor.html#+">+</a>, <a href="../engine/actor.html#-">-</a>, <a href="../engine/actor.html#actorLabel">actorLabel</a>, <a href="../engine/actor.html#AddContextForNextEffectEvent">AddContextForNextEffectEvent</a>, <a href="../engine/actor.html#AddDebugMessage">AddDebugMessage</a>, <a href="../engine/actor.html#AITrace">AITrace</a>, <a href="../engine/actor.html#AllActors">AllActors</a>, <a href="../engine/actor.html#Allocate">Allocate</a>, <a href="../engine/actor.html#AnimBlendParams">AnimBlendParams</a>, <a href="../engine/actor.html#AnimBlendToAlpha">AnimBlendToAlpha</a>, <a href="../engine/actor.html#AnimEnd">AnimEnd</a>, <a href="../engine/actor.html#AnimIsInGroup">AnimIsInGroup</a>, <a href="../engine/actor.html#AnimStopLooping">AnimStopLooping</a>, <a href="../engine/actor.html#Attach">Attach</a>, <a href="../engine/actor.html#AttachToBone">AttachToBone</a>, <a href="../engine/actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="../engine/actor.html#BaseChange">BaseChange</a>, <a href="../engine/actor.html#BasedActors">BasedActors</a>, <a href="../engine/actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="../engine/actor.html#BeginEvent">BeginEvent</a>, <a href="../engine/actor.html#BeginPlay">BeginPlay</a>, <a href="../engine/actor.html#BoneRefresh">BoneRefresh</a>, <a href="../engine/actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="../engine/actor.html#Bump">Bump</a>, <a href="../engine/actor.html#CanSplash">CanSplash</a>, <a href="../engine/actor.html#checkSocket">checkSocket</a>, <a href="../engine/actor.html#ChildActors">ChildActors</a>, <a href="../engine/actor.html#classConstruct">classConstruct</a>, <a href="../engine/actor.html#clientDispatchMessage">clientDispatchMessage</a>, <a href="../engine/actor.html#Clock">Clock</a>, <a href="../engine/actor.html#CollidingActors">CollidingActors</a>, <a href="../engine/actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="../engine/actor.html#Construct">Construct</a>, <a href="../engine/actor.html#CurrentLIPSincAnim">CurrentLIPSincAnim</a>, <a href="../engine/actor.html#DebugClock">DebugClock</a>, <a href="../engine/actor.html#DebugUnclock">DebugUnclock</a>, <a href="../engine/actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="../engine/actor.html#Destroy">Destroy</a>, <a href="../engine/actor.html#Destroyed">Destroyed</a>, <a href="../engine/actor.html#Detach">Detach</a>, <a href="../engine/actor.html#DetachFromBone">DetachFromBone</a>, <a href="../engine/actor.html#dispatchMessage">dispatchMessage</a>, <a href="../engine/actor.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/actor.html#DrawDebugLine">DrawDebugLine</a>, <a href="../engine/actor.html#DynamicActors">DynamicActors</a>, <a href="../engine/actor.html#EffectIsRelevant">EffectIsRelevant</a>, <a href="../engine/actor.html#EnableChannelNotify">EnableChannelNotify</a>, <a href="../engine/actor.html#EncroachedBy">EncroachedBy</a>, <a href="../engine/actor.html#EncroachingOn">EncroachingOn</a>, <a href="../engine/actor.html#EndedRotation">EndedRotation</a>, <a href="../engine/actor.html#EndEvent">EndEvent</a>, <a href="../engine/actor.html#Error">Error</a>, <a href="../engine/actor.html#Falling">Falling</a>, <a href="../engine/actor.html#FastTrace">FastTrace</a>, <a href="../engine/actor.html#findByLabel">findByLabel</a>, <a href="../engine/actor.html#findStaticByLabel">findStaticByLabel</a>, <a href="../engine/actor.html#FinishAnim">FinishAnim</a>, <a href="../engine/actor.html#FinishedInterpolation">FinishedInterpolation</a>, <a href="../engine/actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="../engine/actor.html#ForceFeedbackSupported">ForceFeedbackSupported</a>, <a href="../engine/actor.html#FreezeAnimAt">FreezeAnimAt</a>, <a href="../engine/actor.html#GainedChild">GainedChild</a>, <a href="../engine/actor.html#GetAnimLength">GetAnimLength</a>, <a href="../engine/actor.html#GetAnimParams">GetAnimParams</a>, <a href="../engine/actor.html#GetBoneCoords">GetBoneCoords</a>, <a href="../engine/actor.html#GetBoneRotation">GetBoneRotation</a>, <a href="../engine/actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="../engine/actor.html#GetClosestBone">GetClosestBone</a>, <a href="../engine/actor.html#GetCollisionExtent">GetCollisionExtent</a>, <a href="../engine/actor.html#GetCurrentMaterial">GetCurrentMaterial</a>, <a href="../engine/actor.html#GetDebugName">GetDebugName</a>, <a href="../engine/actor.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../engine/actor.html#getHurtRadiusParent">getHurtRadiusParent</a>, <a href="../engine/actor.html#GetItemName">GetItemName</a>, <a href="../engine/actor.html#GetLIPSincAnimDuration">GetLIPSincAnimDuration</a>, <a href="../engine/actor.html#GetLocalString">GetLocalString</a>, <a href="../engine/actor.html#GetMapName">GetMapName</a>, <a href="../engine/actor.html#GetMaterial">GetMaterial</a>, <a href="../engine/actor.html#GetMeshName">GetMeshName</a>, <a href="../engine/actor.html#GetMeshOrigin">GetMeshOrigin</a>, <a href="../engine/actor.html#GetNextInt">GetNextInt</a>, <a href="../engine/actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="../engine/actor.html#GetNextSkin">GetNextSkin</a>, <a href="../engine/actor.html#GetNotifyChannel">GetNotifyChannel</a>, <a href="../engine/actor.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../engine/actor.html#GetRadarInfoClass">GetRadarInfoClass</a>, <a href="../engine/actor.html#getReceiveDamageRadius">getReceiveDamageRadius</a>, <a href="../engine/actor.html#GetRenderBoundingSphere">GetRenderBoundingSphere</a>, <a href="../engine/actor.html#GetRootLocation">GetRootLocation</a>, <a href="../engine/actor.html#GetRootLocationDelta">GetRootLocationDelta</a>, <a href="../engine/actor.html#GetRootRotation">GetRootRotation</a>, <a href="../engine/actor.html#GetRootRotationDelta">GetRootRotationDelta</a>, <a href="../engine/actor.html#getSocket">getSocket</a>, <a href="../engine/actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="../engine/actor.html#GetURLMap">GetURLMap</a>, <a href="../engine/actor.html#GetUrlOption">GetUrlOption</a>, <a href="../engine/actor.html#HasAnim">HasAnim</a>, <a href="../engine/actor.html#HasLIPSincAnim">HasLIPSincAnim</a>, <a href="../engine/actor.html#HavokActivate">HavokActivate</a>, <a href="../engine/actor.html#HavokCollisionGroupChange">HavokCollisionGroupChange</a>, <a href="../engine/actor.html#HavokGetAngularVelocity">HavokGetAngularVelocity</a>, <a href="../engine/actor.html#HavokGetCenterOfMass">HavokGetCenterOfMass</a>, <a href="../engine/actor.html#HavokGetLastTracedBone">HavokGetLastTracedBone</a>, <a href="../engine/actor.html#HavokGetLinearVelocity">HavokGetLinearVelocity</a>, <a href="../engine/actor.html#HavokGetPosition">HavokGetPosition</a>, <a href="../engine/actor.html#HavokGetState">HavokGetState</a>, <a href="../engine/actor.html#HavokImpartCOMImpulse">HavokImpartCOMImpulse</a>, <a href="../engine/actor.html#HavokImpartForce">HavokImpartForce</a>, <a href="../engine/actor.html#HavokImpartImpulse">HavokImpartImpulse</a>, <a href="../engine/actor.html#HavokImpartLinearForceAll">HavokImpartLinearForceAll</a>, <a href="../engine/actor.html#HavokIsActive">HavokIsActive</a>, <a href="../engine/actor.html#HavokReturnSkeletalActorToAnimationSystem">HavokReturnSkeletalActorToAnimationSystem</a>, <a href="../engine/actor.html#HavokSetAngularDamping">HavokSetAngularDamping</a>, <a href="../engine/actor.html#HavokSetAngularVelocity">HavokSetAngularVelocity</a>, <a href="../engine/actor.html#HavokSetBlocking">HavokSetBlocking</a>, <a href="../engine/actor.html#HavokSetCOM">HavokSetCOM</a>, <a href="../engine/actor.html#HavokSetGameTickForce">HavokSetGameTickForce</a>, <a href="../engine/actor.html#HavokSetLinearDamping">HavokSetLinearDamping</a>, <a href="../engine/actor.html#HavokSetLinearVelocity">HavokSetLinearVelocity</a>, <a href="../engine/actor.html#HavokSetLinearVelocityAll">HavokSetLinearVelocityAll</a>, <a href="../engine/actor.html#HavokSetPosition">HavokSetPosition</a>, <a href="../engine/actor.html#HavokSetRotation">HavokSetRotation</a>, <a href="../engine/actor.html#HavokSlowSetCollisionEnabled">HavokSlowSetCollisionEnabled</a>, <a href="../engine/actor.html#HavokUpdateState">HavokUpdateState</a>, <a href="../engine/actor.html#Hide">Hide</a>, <a href="../engine/actor.html#HitWall">HitWall</a>, <a href="../engine/actor.html#HurtRadius">HurtRadius</a>, <a href="../engine/actor.html#InterruptSound">InterruptSound</a>, <a href="../engine/actor.html#IsAnimating">IsAnimating</a>, <a href="../engine/actor.html#IsInPain">IsInPain</a>, <a href="../engine/actor.html#IsInVolume">IsInVolume</a>, <a href="../engine/actor.html#IsOverlapping">IsOverlapping</a>, <a href="../engine/actor.html#IsPlayingLIPSincAnim">IsPlayingLIPSincAnim</a>, <a href="../engine/actor.html#IsTweening">IsTweening</a>, <a href="../engine/actor.html#KilledBy">KilledBy</a>, <a href="../engine/actor.html#Landed">Landed</a>, <a href="../engine/actor.html#LinkMesh">LinkMesh</a>, <a href="../engine/actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="../engine/actor.html#LIPSincAnimEnd">LIPSincAnimEnd</a>, <a href="../engine/actor.html#LocalizeMapText">LocalizeMapText</a>, <a href="../engine/actor.html#LockRootMotion">LockRootMotion</a>, <a href="../engine/actor.html#LoopAnim">LoopAnim</a>, <a href="../engine/actor.html#LostChild">LostChild</a>, <a href="../engine/actor.html#makeDormant">makeDormant</a>, <a href="../engine/actor.html#MakeNoise">MakeNoise</a>, <a href="../engine/actor.html#MatchStarting">MatchStarting</a>, <a href="../engine/actor.html#Move">Move</a>, <a href="../engine/actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="../engine/actor.html#MoveSmooth">MoveSmooth</a>, <a href="../engine/actor.html#nearbyControlledPawns">nearbyControlledPawns</a>, <a href="../engine/actor.html#NearSpot">NearSpot</a>, <a href="../engine/actor.html#OnGameStarted">OnGameStarted</a>, <a href="../engine/actor.html#OnHidden">OnHidden</a>, <a href="../engine/actor.html#OnlyAffectPawns">OnlyAffectPawns</a>, <a href="../engine/actor.html#onMessage">onMessage</a>, <a href="../engine/actor.html#OnOptimizedIn">OnOptimizedIn</a>, <a href="../engine/actor.html#OnOptimizedOut">OnOptimizedOut</a>, <a href="../engine/actor.html#OnShown">OnShown</a>, <a href="../engine/actor.html#OptimizeIn">OptimizeIn</a>, <a href="../engine/actor.html#OptimizeOut">OptimizeOut</a>, <a href="../engine/actor.html#PauseSound">PauseSound</a>, <a href="../engine/actor.html#PhysicsVolumeChange">PhysicsVolumeChange</a>, <a href="../engine/actor.html#PlayAnim">PlayAnim</a>, <a href="../engine/actor.html#PlayAnimAdditive">PlayAnimAdditive</a>, <a href="../engine/actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="../engine/actor.html#PlayFeedbackEffect">PlayFeedbackEffect</a>, <a href="../engine/actor.html#PlayLIPSincAnim">PlayLIPSincAnim</a>, <a href="../engine/actor.html#PlayLoopedSound">PlayLoopedSound</a>, <a href="../engine/actor.html#PlayMusic">PlayMusic</a>, <a href="../engine/actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="../engine/actor.html#PlayScriptedAnim">PlayScriptedAnim</a>, <a href="../engine/actor.html#PlaySound">PlaySound</a>, <a href="../engine/actor.html#PlayStream">PlayStream</a>, <a href="../engine/actor.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="../engine/actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/actor.html#PostLoadGame">PostLoadGame</a>, <a href="../engine/actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../engine/actor.html#PostNetReceive">PostNetReceive</a>, <a href="../engine/actor.html#PostTakeDamage">PostTakeDamage</a>, <a href="../engine/actor.html#PostTeleport">PostTeleport</a>, <a href="../engine/actor.html#PostTouch">PostTouch</a>, <a href="../engine/actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/actor.html#PrecacheSpeech">PrecacheSpeech</a>, <a href="../engine/actor.html#PreScriptedTextureRendered">PreScriptedTextureRendered</a>, <a href="../engine/actor.html#PreTeleport">PreTeleport</a>, <a href="../engine/actor.html#PreTrigger">PreTrigger</a>, <a href="../engine/actor.html#processHurtRadiusVictim">processHurtRadiusVictim</a>, <a href="../engine/actor.html#ProjectileTouch">ProjectileTouch</a>, <a href="../engine/actor.html#RadiusActors">RadiusActors</a>, <a href="../engine/actor.html#registerClientMessage">registerClientMessage</a>, <a href="../engine/actor.html#registerMessage">registerMessage</a>, <a href="../engine/actor.html#RegisterNotifyGameStarted">RegisterNotifyGameStarted</a>, <a href="../engine/actor.html#RenderOverlays">RenderOverlays</a>, <a href="../engine/actor.html#RenderTexture">RenderTexture</a>, <a href="../engine/actor.html#ReplaceText">ReplaceText</a>, <a href="../engine/actor.html#Reset">Reset</a>, <a href="../engine/actor.html#ResumeSound">ResumeSound</a>, <a href="../engine/actor.html#SetAnimFrame">SetAnimFrame</a>, <a href="../engine/actor.html#SetBase">SetBase</a>, <a href="../engine/actor.html#SetBoneDirection">SetBoneDirection</a>, <a href="../engine/actor.html#SetBoneLocation">SetBoneLocation</a>, <a href="../engine/actor.html#SetBoneRotation">SetBoneRotation</a>, <a href="../engine/actor.html#SetBoneScale">SetBoneScale</a>, <a href="../engine/actor.html#SetCollision">SetCollision</a>, <a href="../engine/actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="../engine/actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="../engine/actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="../engine/actor.html#SetDrawScale">SetDrawScale</a>, <a href="../engine/actor.html#SetDrawScale3D">SetDrawScale3D</a>, <a href="../engine/actor.html#SetDrawType">SetDrawType</a>, <a href="../engine/actor.html#SetGRI">SetGRI</a>, <a href="../engine/actor.html#SetInitialState">SetInitialState</a>, <a href="../engine/actor.html#SetLocation">SetLocation</a>, <a href="../engine/actor.html#SetOwner">SetOwner</a>, <a href="../engine/actor.html#SetPhysics">SetPhysics</a>, <a href="../engine/actor.html#SetRelativeLocation">SetRelativeLocation</a>, <a href="../engine/actor.html#SetRelativeRotation">SetRelativeRotation</a>, <a href="../engine/actor.html#SetRotation">SetRotation</a>, <a href="../engine/actor.html#SetStaticMesh">SetStaticMesh</a>, <a href="../engine/actor.html#SetTimer">SetTimer</a>, <a href="../engine/actor.html#ShallowCopyMaterial">ShallowCopyMaterial</a>, <a href="../engine/actor.html#ShouldActorsBlockSplash">ShouldActorsBlockSplash</a>, <a href="../engine/actor.html#ShouldProjectileHit">ShouldProjectileHit</a>, <a href="../engine/actor.html#Show">Show</a>, <a href="../engine/actor.html#Spawn">Spawn</a>, <a href="../engine/actor.html#SpecialHandling">SpecialHandling</a>, <a href="../engine/actor.html#StartInterpolation">StartInterpolation</a>, <a href="../engine/actor.html#staticActorLabel">staticActorLabel</a>, <a href="../engine/actor.html#StopAllMusic">StopAllMusic</a>, <a href="../engine/actor.html#StopAnimating">StopAnimating</a>, <a href="../engine/actor.html#StopFeedbackEffect">StopFeedbackEffect</a>, <a href="../engine/actor.html#StopLIPSincAnim">StopLIPSincAnim</a>, <a href="../engine/actor.html#StopMusic">StopMusic</a>, <a href="../engine/actor.html#SuggestFallVelocity">SuggestFallVelocity</a>, <a href="../engine/actor.html#TakeDamage">TakeDamage</a>, <a href="../engine/actor.html#TestMove">TestMove</a>, <a href="../engine/actor.html#Tick">Tick</a>, <a href="../engine/actor.html#Timer">Timer</a>, <a href="../engine/actor.html#TornOff">TornOff</a>, <a href="../engine/actor.html#Touch">Touch</a>, <a href="../engine/actor.html#TouchingActor">TouchingActor</a>, <a href="../engine/actor.html#TouchingActors">TouchingActors</a>, <a href="../engine/actor.html#Trace">Trace</a>, <a href="../engine/actor.html#TraceActors">TraceActors</a>, <a href="../engine/actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="../engine/actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="../engine/actor.html#Trigger">Trigger</a>, <a href="../engine/actor.html#TriggerEffectEvent">TriggerEffectEvent</a>, <a href="../engine/actor.html#TriggerEvent">TriggerEvent</a>, <a href="../engine/actor.html#TweenAnim">TweenAnim</a>, <a href="../engine/actor.html#UnClock">UnClock</a>, <a href="../engine/actor.html#unifiedAddForce">unifiedAddForce</a>, <a href="../engine/actor.html#unifiedAddForceAtPosition">unifiedAddForceAtPosition</a>, <a href="../engine/actor.html#unifiedAddImpulse">unifiedAddImpulse</a>, <a href="../engine/actor.html#unifiedAddImpulseAtPosition">unifiedAddImpulseAtPosition</a>, <a href="../engine/actor.html#unifiedAddTorque">unifiedAddTorque</a>, <a href="../engine/actor.html#unifiedAddVelocity">unifiedAddVelocity</a>, <a href="../engine/actor.html#unifiedGetAcceleration">unifiedGetAcceleration</a>, <a href="../engine/actor.html#unifiedGetCOMPosition">unifiedGetCOMPosition</a>, <a href="../engine/actor.html#unifiedGetGravity">unifiedGetGravity</a>, <a href="../engine/actor.html#unifiedGetMass">unifiedGetMass</a>, <a href="../engine/actor.html#unifiedGetNaturalCOMPosition">unifiedGetNaturalCOMPosition</a>, <a href="../engine/actor.html#unifiedGetPosition">unifiedGetPosition</a>, <a href="../engine/actor.html#unifiedGetVelocity">unifiedGetVelocity</a>, <a href="../engine/actor.html#unifiedSetAcceleration">unifiedSetAcceleration</a>, <a href="../engine/actor.html#unifiedSetAngularVelocity">unifiedSetAngularVelocity</a>, <a href="../engine/actor.html#unifiedSetMass">unifiedSetMass</a>, <a href="../engine/actor.html#unifiedSetPosition">unifiedSetPosition</a>, <a href="../engine/actor.html#unifiedSetRotation">unifiedSetRotation</a>, <a href="../engine/actor.html#unifiedSetVelocity">unifiedSetVelocity</a>, <a href="../engine/actor.html#UnTouch">UnTouch</a>, <a href="../engine/actor.html#UnTrigger">UnTrigger</a>, <a href="../engine/actor.html#UnTriggerEffectEvent">UnTriggerEffectEvent</a>, <a href="../engine/actor.html#UnTriggerEvent">UnTriggerEvent</a>, <a href="../engine/actor.html#UpdateAttachmentLocations">UpdateAttachmentLocations</a>, <a href="../engine/actor.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a>, <a href="../engine/actor.html#UpdateURL">UpdateURL</a>, <a href="../engine/actor.html#UsedBy">UsedBy</a>, <a href="../engine/actor.html#VisibleActors">VisibleActors</a>, <a href="../engine/actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="../engine/actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ALERTNESS_ALERT_TIME" class="hidden"></a>ALERTNESS_ALERT_TIME <a href="../Source_tyrion/ai_controller.html#83" class="small">Source code</a></h4>
+<div class="declaration">const ALERTNESS_ALERT_TIME = <span class="source_int">20.0f</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ALERTNESS_COMBAT_TIME" class="hidden"></a>ALERTNESS_COMBAT_TIME <a href="../Source_tyrion/ai_controller.html#84" class="small">Source code</a></h4>
+<div class="declaration">const ALERTNESS_COMBAT_TIME = <span class="source_int">10.0f</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DEBUGAI_X" class="hidden"></a>DEBUGAI_X <a href="../Source_tyrion/ai_controller.html#24" class="small">Source code</a></h4>
+<div class="declaration">const DEBUGAI_X = <span class="source_int">20</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DEBUGAI_Y" class="hidden"></a>DEBUGAI_Y <a href="../Source_tyrion/ai_controller.html#25" class="small">Source code</a></h4>
+<div class="declaration">const DEBUGAI_Y = <span class="source_int">100</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DONT_CARE" class="hidden"></a>DONT_CARE <a href="../Source_tyrion/ai_controller.html#80" class="small">Source code</a></h4>
+<div class="declaration">const DONT_CARE = -<span class="source_int">99999.0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DO_LOCAL_MOVE_NUMBER" class="hidden"></a>DO_LOCAL_MOVE_NUMBER <a href="../Source_tyrion/ai_controller.html#21" class="small">Source code</a></h4>
+<div class="declaration">const DO_LOCAL_MOVE_NUMBER = <span class="source_int">2200</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MAX_TICKS_TO_PROCESS_PAIN" class="hidden"></a>MAX_TICKS_TO_PROCESS_PAIN <a href="../Source_tyrion/ai_controller.html#86" class="small">Source code</a></h4>
+<div class="declaration">const MAX_TICKS_TO_PROCESS_PAIN = <span class="source_int">5</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_actorHit" class="hidden"></a>actorHit <a href="../Source_tyrion/ai_controller.html#110" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> actorHit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_aircraftAttacking" class="hidden"></a>aircraftAttacking <a href="../Source_tyrion/ai_controller.html#137" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> aircraftAttacking;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_aircraftLocalMoveAction" class="hidden"></a>aircraftLocalMoveAction <a href="../Source_tyrion/ai_controller.html#136" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/aircraftdolocalmove.html" class="source">AircraftDoLocalMove</a></span> aircraftLocalMoveAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_avoidDirection" class="hidden"></a>avoidDirection <a href="../Source_tyrion/ai_controller.html#113" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> avoidDirection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_avoidDistance" class="hidden"></a>avoidDistance <a href="../Source_tyrion/ai_controller.html#112" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">float</span> avoidDistance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAiming" class="hidden"></a>bAiming <a href="../Source_tyrion/ai_controller.html#126" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAiming;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAvoiding" class="hidden"></a>bAvoiding <a href="../Source_tyrion/ai_controller.html#118" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">bool</span> bAvoiding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bJetpacking" class="hidden"></a>bJetpacking <a href="../Source_tyrion/ai_controller.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bJetpacking;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bJetSkiManager" class="hidden"></a>bJetSkiManager <a href="../Source_tyrion/ai_controller.html#152" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bJetSkiManager;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNoLOA" class="hidden"></a>bNoLOA <a href="../Source_tyrion/ai_controller.html#119" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNoLOA;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPatrolling" class="hidden"></a>bPatrolling <a href="../Source_tyrion/ai_controller.html#149" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bPatrolling;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShouldJetpack" class="hidden"></a>bShouldJetpack <a href="../Source_tyrion/ai_controller.html#156" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShouldJetpack;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSkiTo" class="hidden"></a>bSkiTo <a href="../Source_tyrion/ai_controller.html#153" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bSkiTo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTerminate" class="hidden"></a>bTerminate <a href="../Source_tyrion/ai_controller.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bTerminate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_carLocalMoveAction" class="hidden"></a>carLocalMoveAction <a href="../Source_tyrion/ai_controller.html#135" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/cardolocalmove.html" class="source">CarDoLocalMove</a></span> carLocalMoveAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentSpeed" class="hidden"></a>currentSpeed <a href="../Source_tyrion/ai_controller.html#141" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> currentSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dirSwitch" class="hidden"></a>dirSwitch <a href="../Source_tyrion/ai_controller.html#116" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../tyrion/ai_controller.html#LOA_AvoidDirections" class="source">LOA_AvoidDirections</a></span> dirSwitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_disableSmoothing" class="hidden"></a>disableSmoothing <a href="../Source_tyrion/ai_controller.html#122" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> disableSmoothing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dlm" class="hidden"></a>dlm <a href="../Source_tyrion/ai_controller.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ns_dolocalmove.html" class="source">NS_DoLocalMove</a></span> dlm;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dlmMovementMode" class="hidden"></a>dlmMovementMode <a href="../Source_tyrion/ai_controller.html#106" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_controller.html#DLM_MovementMode" class="source">DLM_MovementMode</a></span> dlmMovementMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dlmReturnValue" class="hidden"></a>dlmReturnValue <a href="../Source_tyrion/ai_controller.html#105" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_controller.html#DLM_ReturnCodes" class="source">DLM_ReturnCodes</a></span> dlmReturnValue;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dodgeDisplacement" class="hidden"></a>dodgeDisplacement <a href="../Source_tyrion/ai_controller.html#131" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> dodgeDisplacement;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dodgeExpirationTime" class="hidden"></a>dodgeExpirationTime <a href="../Source_tyrion/ai_controller.html#129" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> dodgeExpirationTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dodgeStartTime" class="hidden"></a>dodgeStartTime <a href="../Source_tyrion/ai_controller.html#130" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> dodgeStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_elevatorCentreXY" class="hidden"></a>elevatorCentreXY <a href="../Source_tyrion/ai_controller.html#145" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> elevatorCentreXY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_followedActor" class="hidden"></a>followedActor <a href="../Source_tyrion/ai_controller.html#111" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> followedActor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_idleActions" class="hidden"></a>idleActions <a href="../Source_tyrion/ai_controller.html#161" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span>&gt; idleActions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastActorHit" class="hidden"></a>lastActorHit <a href="../Source_tyrion/ai_controller.html#114" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> lastActorHit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastActorLocation" class="hidden"></a>lastActorLocation <a href="../Source_tyrion/ai_controller.html#115" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> lastActorLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastErrorCode" class="hidden"></a>lastErrorCode <a href="../Source_tyrion/ai_controller.html#164" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> lastErrorCode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastLocation" class="hidden"></a>LastLocation <a href="../Source_tyrion/ai_controller.html#132" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> LastLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveDirection" class="hidden"></a>localMoveDirection <a href="../Source_tyrion/ai_controller.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> localMoveDirection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveDistance" class="hidden"></a>localMoveDistance <a href="../Source_tyrion/ai_controller.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> localMoveDistance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveNextDirection" class="hidden"></a>localMoveNextDirection <a href="../Source_tyrion/ai_controller.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> localMoveNextDirection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveNextDirectionXY" class="hidden"></a>localMoveNextDirectionXY <a href="../Source_tyrion/ai_controller.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> localMoveNextDirectionXY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveNextDistance" class="hidden"></a>localMoveNextDistance <a href="../Source_tyrion/ai_controller.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> localMoveNextDistance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveNextDistanceXY" class="hidden"></a>localMoveNextDistanceXY <a href="../Source_tyrion/ai_controller.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> localMoveNextDistanceXY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveOrigin" class="hidden"></a>localMoveOrigin <a href="../Source_tyrion/ai_controller.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> localMoveOrigin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveStartTimeSeconds" class="hidden"></a>localMoveStartTimeSeconds <a href="../Source_tyrion/ai_controller.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> localMoveStartTimeSeconds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localMoveTimeLimitSeconds" class="hidden"></a>localMoveTimeLimitSeconds <a href="../Source_tyrion/ai_controller.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> localMoveTimeLimitSeconds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localSmoothMoveDestination" class="hidden"></a>localSmoothMoveDestination <a href="../Source_tyrion/ai_controller.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> localSmoothMoveDestination;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localSmoothMoveDestinationValid" class="hidden"></a>localSmoothMoveDestinationValid <a href="../Source_tyrion/ai_controller.html#103" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> localSmoothMoveDestinationValid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maximumDuration" class="hidden"></a>maximumDuration <a href="../Source_tyrion/ai_controller.html#139" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> maximumDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_moveStartTime" class="hidden"></a>moveStartTime <a href="../Source_tyrion/ai_controller.html#138" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> moveStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_previousSmoothingFactor" class="hidden"></a>previousSmoothingFactor <a href="../Source_tyrion/ai_controller.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> previousSmoothingFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_removedActions" class="hidden"></a>removedActions <a href="../Source_tyrion/ai_controller.html#163" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span>&gt; removedActions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_runningActions" class="hidden"></a>runningActions <a href="../Source_tyrion/ai_controller.html#162" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span>&gt; runningActions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_smoothingStarted" class="hidden"></a>smoothingStarted <a href="../Source_tyrion/ai_controller.html#123" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> smoothingStarted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_terrainSamples" class="hidden"></a>terrainSamples <a href="../Source_tyrion/ai_controller.html#157" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../tyrion/ai_controller.html#TerrainSample" class="source">TerrainSample</a></span>&gt; terrainSamples;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_terrainSamplesDebug" class="hidden"></a>terrainSamplesDebug <a href="../Source_tyrion/ai_controller.html#158" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../tyrion/ai_controller.html#TerrainSample" class="source">TerrainSample</a></span>&gt; terrainSamplesDebug;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ticksElapsedWithNoProgress" class="hidden"></a>ticksElapsedWithNoProgress <a href="../Source_tyrion/ai_controller.html#117" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">int</span> ticksElapsedWithNoProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tickTimeUpdateRange" class="hidden"></a>tickTimeUpdateRange <a href="../Source_tyrion/ai_controller.html#167" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Range" class="source">Range</a></span> tickTimeUpdateRange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleDoLocalMoveResult" class="hidden"></a>vehicleDoLocalMoveResult <a href="../Source_tyrion/ai_controller.html#107" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_controller.html#VDLM_ReturnCodes" class="source">VDLM_ReturnCodes</a></span> vehicleDoLocalMoveResult;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleNavigationFunctionIndex" class="hidden"></a>vehicleNavigationFunctionIndex <a href="../Source_tyrion/ai_controller.html#140" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> vehicleNavigationFunctionIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_zeroGravityMoveAction" class="hidden"></a>zeroGravityMoveAction <a href="../Source_tyrion/ai_controller.html#144" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ns_dozerogravitylocalmove.html" class="source">NS_DoZeroGravityLocalMove</a></span> zeroGravityMoveAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_zeroGravityMoveResult" class="hidden"></a>zeroGravityMoveResult <a href="../Source_tyrion/ai_controller.html#146" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_controller.html#DZGLM_ReturnCodes" class="source">DZGLM_ReturnCodes</a></span> zeroGravityMoveResult;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DLM_MovementMode" class="hidden"></a>DLM_MovementMode <a href="../Source_tyrion/ai_controller.html#72" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tyrion/ai_controller.html#DLM_MovementMode" class="source">DLM_MovementMode</a></span><br />
+{<blockquote>DLMMM_WALKING,
+DLMMM_JETPACKING,
+DLMMM_SKIING</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DLM_ReturnCodes" class="hidden"></a>DLM_ReturnCodes <a href="../Source_tyrion/ai_controller.html#38" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tyrion/ai_controller.html#DLM_ReturnCodes" class="source">DLM_ReturnCodes</a></span><br />
+{<blockquote>DLM_SUCCESS,
+DLM_CANT_FIND_PATH,
+DLM_IRREVERSIBLY_OFF_COURSE,
+DLM_TIME_LIMIT_EXCEEDED,
+DLM_INSUFFICIENT_ENERGY,
+DLM_DESTINATION_ENCROACHED,
+DLM_ALL_RESOURCES_DIED</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DZGLM_ReturnCodes" class="hidden"></a>DZGLM_ReturnCodes <a href="../Source_tyrion/ai_controller.html#50" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tyrion/ai_controller.html#DZGLM_ReturnCodes" class="source">DZGLM_ReturnCodes</a></span><br />
+{<blockquote>DZGLM_SUCCESS</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LOA_AvoidDirections" class="hidden"></a>LOA_AvoidDirections <a href="../Source_tyrion/ai_controller.html#63" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tyrion/ai_controller.html#LOA_AvoidDirections" class="source">LOA_AvoidDirections</a></span><br />
+{<blockquote>LOA_DONTCARE,
+LOA_LEFT,
+LOA_RIGHT,
+LOA_UP</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VDLM_ReturnCodes" class="hidden"></a>VDLM_ReturnCodes <a href="../Source_tyrion/ai_controller.html#56" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tyrion/ai_controller.html#VDLM_ReturnCodes" class="source">VDLM_ReturnCodes</a></span><br />
+{<blockquote>VDLM_SUCCESS,
+VDLM_TIMED_OUT</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_TerrainSample" class="hidden"></a>TerrainSample <a href="../Source_tyrion/ai_controller.html#27" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../tyrion/ai_controller.html#TerrainSample" class="source">TerrainSample</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> bBeforeSkiRouteStart;<br />
+var <span class="source_type">bool</span> bDownSlope;<br />
+var <span class="source_type">bool</span> bTerrain;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> location;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> normal;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> velocity;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AircraftDoLocalMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AircraftDoLocalMove <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#420" class="small">Source code</a></h4>
+<div class="declaration">native final latent <span class="source_type">function</span>  <span class="source_type"><a href="../tyrion/aircraftdolocalmove.html" class="source">AircraftDoLocalMove</a></span> ( <span class="source_type"><a href="../tyrion/aircraftdolocalmove.html" class="source">AircraftDoLocalMove</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSuitableTerrainForSkiing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> bSuitableTerrainForSkiing <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#432" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type">bool</span> bSuitableTerrainForSkiing ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> destination, <span class="source_type">float</span> energy )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canJetToPoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canJetToPoint <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#464" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">float</span> canJetToPoint ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> c, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> startLoc, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> endLoc, <span class="source_type">float</span> energy )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canPointBeReached-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canPointBeReached <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#448" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> canPointBeReached ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> startPoint, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> endPoint, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>, array&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt; ignore,
+								optional out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> lastValidLocation, optional out <span class="source_type">float</span> traversedDistanceXY )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canPointBeReachedUsingAircraft-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canPointBeReachedUsingAircraft <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#453" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> canPointBeReachedUsingAircraft ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> startPoint, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> endPoint, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> aircraft )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canPointBeReachedUsingJetpack-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canPointBeReachedUsingJetpack <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#458" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> canPointBeReachedUsingJetpack ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> startPoint, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> endPoint, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CarDoLocalMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CarDoLocalMove <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#419" class="small">Source code</a></h4>
+<div class="declaration">native final latent <span class="source_type">function</span>  <span class="source_type"><a href="../tyrion/cardolocalmove.html" class="source">CarDoLocalMove</a></span> ( <span class="source_type"><a href="../tyrion/cardolocalmove.html" class="source">CarDoLocalMove</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_copyTerrainProfileDebug-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> copyTerrainProfileDebug <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#444" class="small">Source code</a></h4>
+<div class="declaration">native final event  copyTerrainProfileDebug (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deleteRemovedActions-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> deleteRemovedActions <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#244" class="small">Source code</a></h4>
+<div class="declaration"> event  deleteRemovedActions ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayDebug <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#501" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DisplayDebug ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, out <span class="source_type">float</span> YL, out <span class="source_type">float</span> YPos) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_displayNavigationDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> displayNavigationDebug <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#648" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  displayNavigationDebug ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_displayWorldSpaceDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> displayWorldSpaceDebug <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#516" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  displayWorldSpaceDebug ( <span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span> displayHUD) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_doLocalMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> doLocalMove <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#412" class="small">Source code</a></h4>
+<div class="declaration">native final latent <span class="source_type">function</span>  doLocalMove ( <span class="source_type"><a href="../tyrion/ns_dolocalmove.html" class="source">NS_DoLocalMove</a></span> dlm )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_doZeroGravityLocalMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> doZeroGravityLocalMove <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#414" class="small">Source code</a></h4>
+<div class="declaration">native final latent <span class="source_type">function</span>  doZeroGravityLocalMove ( <span class="source_type"><a href="../tyrion/ns_dozerogravitylocalmove.html" class="source">NS_DoZeroGravityLocalMove</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_drawDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> drawDebug <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#668" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  drawDebug ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>, <span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span> <span class="source_type"><a href="../engine/hud.html" class="source">hud</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_drawJettingSkiingDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> drawJettingSkiingDebug <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#578" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  drawJettingSkiingDebug ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_drawLOADebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> drawLOADebug <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#555" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  drawLOADebug ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_drawRouteCache-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> drawRouteCache <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#523" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  drawRouteCache ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_findLandingSpot-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> findLandingSpot <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#428" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> findLandingSpot ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> destination, <span class="source_type">float</span> energy, <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.JetCompetencyLevels jetCompetency, <span class="source_type">int</span> nSamples )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_generateReverseSkiRoute-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> generateReverseSkiRoute <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#436" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  generateReverseSkiRoute ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> endPoint, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> endVelocity )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getNodesWithinSphere-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getNodesWithinSphere <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#496" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  getNodesWithinSphere ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> origin, <span class="source_type">float</span> radius, out array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>&gt; nodes )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getRandomLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getRandomLocation <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#478" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> getRandomLocation ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> center, <span class="source_type">float</span> outerRadius, <span class="source_type">float</span> innerRadius, optional <span class="source_type">bool</span> bJetpack )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getTerrainHeight-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getTerrainHeight <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#487" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type">float</span> getTerrainHeight ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> point )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isPointEncroachedForMovement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isPointEncroachedForMovement <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#474" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> isPointEncroachedForMovement ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> point )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_jetLookAhead-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> jetLookAhead <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#424" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> jetLookAhead ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> loc1, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> loc2 )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_logSkiRoute-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> logSkiRoute <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#440" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  logSkiRoute (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyTakeHit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyTakeHit <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#350" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  NotifyTakeHit ( <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> InstigatedBy, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> HitLocation, <span class="source_type">int</span> Damage, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Momentum) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_offersCover-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> offersCover <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#469" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> offersCover ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> enemy, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> point )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnHearSound-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OnHearSound <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#638" class="small">Source code</a></h4>
+<div class="declaration"> event  OnHearSound ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> SoundMaker, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> SoundOrigin, <span class="source_type">Name</span> SoundCategory) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnDied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnDied <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#214" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PawnDied ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setAlertnessLevel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setAlertnessLevel <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#274" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setAlertnessLevel ( <span class="source_type">AlertnessLevels</span> newLevel, optional <span class="source_type">bool</span> <span class="source_type">bDontHandleSquadMembers</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_speedInDirection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> speedInDirection <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#482" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span> <span class="source_type">float</span> speedInDirection ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> velocity, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> direction )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_stopActions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> stopActions <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#227" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  stopActions ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_stopMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> stopMove <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#491" class="small">Source code</a></h4>
+<div class="declaration">native final <span class="source_type">function</span>  stopMove (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#175" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Tick ( <span class="source_type">float</span> <span class="source_type">delta</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#322" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnPossess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnPossess <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#264" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UnPossess ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_wasJustHit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> wasJustHit <span class="function_state"></span> <a href="../Source_tyrion/ai_controller.html#395" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> wasJustHit ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	localSmoothMoveDestinationValid = false
+
+	tickTimeUpdateRange			= (Min=<span class="source_int">0.095</span>,Max=<span class="source_int">0.105</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_controller.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Controller">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_commonsensesensoraction.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_directattack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:26.640 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

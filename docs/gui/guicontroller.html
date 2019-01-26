@@ -1,0 +1,1542 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - GUI.GUIController</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gui/guicontroller.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GUIController">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gui/guicontextmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gui/guidlg.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gui/guicontroller.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gui/gui-overview.html">GUI</a>.GUIController</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/baseguicontroller.html">BaseGUIController</a></dd>
+<dt>Modifiers</dt><dd>Config ( GuiBase ) HideCategories ( Menu , Object ) Native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interactions.html">Interactions</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interaction.html">Interaction</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/baseguicontroller.html">BaseGUIController</a>
+         |   
+         +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guicontroller.html">GUIController</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/tribesguicontrollerbase.html">TribesGUIControllerBase</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gui/guicomponent.html">GUIComponent</a>&gt;</td><td width="66%"><a href="#_InterestedResolutionChanged" name="InterestedResolutionChanged" title="go to the details">InterestedResolutionChanged</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Byte</td><td width="66%"><a href="#_JoyButtons[64]" name="JoyButtons[64]" title="go to the details">JoyButtons[64]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_JoyControlsDelta[16]" name="JoyControlsDelta[16]" title="go to the details">JoyControlsDelta[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Float</td><td width="66%"><a href="#_JoyLeftXAxis[4]" name="JoyLeftXAxis[4]" title="go to the details">JoyLeftXAxis[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Float</td><td width="66%"><a href="#_JoyLeftYAxis[4]" name="JoyLeftYAxis[4]" title="go to the details">JoyLeftYAxis[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Float</td><td width="66%"><a href="#_JoyRightXAxis[4]" name="JoyRightXAxis[4]" title="go to the details">JoyRightXAxis[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Float</td><td width="66%"><a href="#_JoyRightYAxis[4]" name="JoyRightYAxis[4]" title="go to the details">JoyRightYAxis[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_WhiteBorder" name="WhiteBorder" title="go to the details">WhiteBorder</a></td></tr>
+<tr><th colspan="2" class="small">ActorAdjustments</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GUI_TO_WORLD_X" name="GUI_TO_WORLD_X" title="go to the details">GUI_TO_WORLD_X</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GUI_TO_WORLD_Y" name="GUI_TO_WORLD_Y" title="go to the details">GUI_TO_WORLD_Y</a></td></tr>
+<tr><th colspan="2" class="small">Clipboard</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicomponent.html">GUIComponent</a></td><td width="66%"><a href="#_SaveControl" name="SaveControl" title="go to the details">SaveControl</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guistyles.html">GUIStyles</a></td><td width="66%"><a href="#_SaveStyle" name="SaveStyle" title="go to the details">SaveStyle</a></td></tr>
+<tr><th colspan="2" class="small">Cursors</th></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../core/object.html#Vector">vector</a>&gt;</td><td width="66%"><a href="#_MouseCursorOffset" name="MouseCursorOffset" title="go to the details">MouseCursorOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../engine/material.html">Material</a>&gt;</td><td width="66%"><a href="#_MouseCursors" name="MouseCursors" title="go to the details">MouseCursors</a></td></tr>
+<tr><th colspan="2" class="small">DEBUG</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_CaptureScriptExec" name="CaptureScriptExec" title="go to the details">CaptureScriptExec</a></td></tr>
+<tr><th colspan="2" class="small">EditorState</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guipage.html">GUIPage</a></td><td width="66%"><a href="#_ActivePage" name="ActivePage" title="go to the details">ActivePage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bComponentMenu" name="bComponentMenu" title="go to the details">bComponentMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEditing" name="bEditing" title="go to the details">bEditing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHasLoadedPackages" name="bHasLoadedPackages" title="go to the details">bHasLoadedPackages</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHelpDisplay" name="bHelpDisplay" title="go to the details">bHelpDisplay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLastScaled" name="bLastScaled" title="go to the details">bLastScaled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMemberDisplay" name="bMemberDisplay" title="go to the details">bMemberDisplay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMemberEdit" name="bMemberEdit" title="go to the details">bMemberEdit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMousePositioning" name="bMousePositioning" title="go to the details">bMousePositioning</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowConfigMembers" name="bShowConfigMembers" title="go to the details">bShowConfigMembers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowGUIMembers" name="bShowGUIMembers" title="go to the details">bShowGUIMembers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowPageList" name="bShowPageList" title="go to the details">bShowPageList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStyleCreate" name="bStyleCreate" title="go to the details">bStyleCreate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStylesDisplay" name="bStylesDisplay" title="go to the details">bStylesDisplay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CurrentMember" name="CurrentMember" title="go to the details">CurrentMember</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CurrentMemberObjName" name="CurrentMemberObjName" title="go to the details">CurrentMemberObjName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_CurrentMemberObjValue" name="CurrentMemberObjValue" title="go to the details">CurrentMemberObjValue</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gui/guifont.html">GUIFont</a>&gt;</td><td width="66%"><a href="#_FontStack" name="FontStack" title="go to the details">FontStack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MemberEditLevel" name="MemberEditLevel" title="go to the details">MemberEditLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MemberEditPosition" name="MemberEditPosition" title="go to the details">MemberEditPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gui/guipage.html">GUIPage</a>&gt;</td><td width="66%"><a href="#_MenuStack" name="MenuStack" title="go to the details">MenuStack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gui/guicontroller.html#sMoveGroup">sMoveGroup</a>&gt;</td><td width="66%"><a href="#_MoveGroups" name="MoveGroups" title="go to the details">MoveGroups</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gui/guistyles.html">GUIStyles</a>&gt;</td><td width="66%"><a href="#_StyleStack" name="StyleStack" title="go to the details">StyleStack</a></td></tr>
+<tr><th colspan="2" class="small">Grid</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSnapToGrid" name="bSnapToGrid" title="go to the details">bSnapToGrid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_GridSize" name="GridSize" title="go to the details">GridSize</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ResolutionX" name="ResolutionX" title="go to the details">ResolutionX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ResolutionY" name="ResolutionY" title="go to the details">ResolutionY</a></td></tr>
+<tr><th colspan="2" class="small">GUIController</th></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gui/gui.html#ControlSpec">GUI.ControlSpec</a>&gt;</td><td width="66%"><a href="#_AutoLoad" name="AutoLoad" title="go to the details">AutoLoad</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_ComponentClassList" name="ComponentClassList" title="go to the details">ComponentClassList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_FontNames" name="FontNames" title="go to the details">FontNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_HelpStack" name="HelpStack" title="go to the details">HelpStack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_PackageNames" name="PackageNames" title="go to the details">PackageNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_StyleNames" name="StyleNames" title="go to the details">StyleNames</a></td></tr>
+<tr><th colspan="2" class="small">GUIPages</th></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gui/guicomponent.html">GUIComponent</a>&gt;</td><td width="66%"><a href="#_PersistentStack" name="PersistentStack" title="go to the details">PersistentStack</a></td></tr>
+<tr><th colspan="2" class="small">Misc</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEmulatedJoypad" name="bEmulatedJoypad" title="go to the details">bEmulatedJoypad</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideMouseCursor" name="bHideMouseCursor" title="go to the details">bHideMouseCursor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bJoyMouse" name="bJoyMouse" title="go to the details">bJoyMouse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_JoyDeadZone" name="JoyDeadZone" title="go to the details">JoyDeadZone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MenuMouseSens" name="MenuMouseSens" title="go to the details">MenuMouseSens</a></td></tr>
+<tr><th colspan="2" class="small">MiscState</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicomponent.html">GUIComponent</a></td><td width="66%"><a href="#_ActiveControl" name="ActiveControl" title="go to the details">ActiveControl</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_AltPressed" name="AltPressed" title="go to the details">AltPressed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDesignMode" name="bDesignMode" title="go to the details">bDesignMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDontDisplayHelpText" name="bDontDisplayHelpText" title="go to the details">bDontDisplayHelpText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bForceMouseCheck" name="bForceMouseCheck" title="go to the details">bForceMouseCheck</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHighlightCurrent" name="bHighlightCurrent" title="go to the details">bHighlightCurrent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bModAuthor" name="bModAuthor" title="go to the details">bModAuthor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPlayerDesignMode" name="bPlayerDesignMode" title="go to the details">bPlayerDesignMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSwallowNextKeyType" name="bSwallowNextKeyType" title="go to the details">bSwallowNextKeyType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ButtonRepeatDelay" name="ButtonRepeatDelay" title="go to the details">ButtonRepeatDelay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_ControllerId" name="ControllerId" title="go to the details">ControllerId</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_ControllerMask" name="ControllerMask" title="go to the details">ControllerMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_CtrlPressed" name="CtrlPressed" title="go to the details">CtrlPressed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CursorFade" name="CursorFade" title="go to the details">CursorFade</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CursorStep" name="CursorStep" title="go to the details">CursorStep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DblClickWindow" name="DblClickWindow" title="go to the details">DblClickWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FastCursorFade" name="FastCursorFade" title="go to the details">FastCursorFade</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_FastCursorStep" name="FastCursorStep" title="go to the details">FastCursorStep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicomponent.html">GUIComponent</a></td><td width="66%"><a href="#_FocusedControl" name="FocusedControl" title="go to the details">FocusedControl</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastClickTime" name="LastClickTime" title="go to the details">LastClickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastClickX" name="LastClickX" title="go to the details">LastClickX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastClickY" name="LastClickY" title="go to the details">LastClickY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastMouseX" name="LastMouseX" title="go to the details">LastMouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastMouseY" name="LastMouseY" title="go to the details">LastMouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MouseX" name="MouseX" title="go to the details">MouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MouseY" name="MouseY" title="go to the details">MouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicomponent.html">GUIComponent</a></td><td width="66%"><a href="#_MoveControl" name="MoveControl" title="go to the details">MoveControl</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RepeatDelta[4]" name="RepeatDelta[4]" title="go to the details">RepeatDelta[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_RepeatKey[4]" name="RepeatKey[4]" title="go to the details">RepeatKey[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RepeatTime[4]" name="RepeatTime[4]" title="go to the details">RepeatTime[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SavedMoveOffsetX" name="SavedMoveOffsetX" title="go to the details">SavedMoveOffsetX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SavedMoveOffsetY" name="SavedMoveOffsetY" title="go to the details">SavedMoveOffsetY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_ShiftPressed" name="ShiftPressed" title="go to the details">ShiftPressed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicomponent.html">GUIComponent</a></td><td width="66%"><a href="#_SkipControl" name="SkipControl" title="go to the details">SkipControl</a></td></tr>
+<tr><th colspan="2" class="small">Sounds</th></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_ClickSound" name="ClickSound" title="go to the details">ClickSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_DownSound" name="DownSound" title="go to the details">DownSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_EditSound" name="EditSound" title="go to the details">EditSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_MouseOverSound" name="MouseOverSound" title="go to the details">MouseOverSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_UpSound" name="UpSound" title="go to the details">UpSound</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/baseguicontroller.html">BaseGUIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/baseguicontroller.html#bHackDoNotRenderGUIPages">bHackDoNotRenderGUIPages</a>, <a href="../engine/baseguicontroller.html#bIsConsole">bIsConsole</a>, <a href="../engine/baseguicontroller.html#DefaultPens[3]">DefaultPens[3]</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interaction.html">Interaction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/interaction.html#bActive">bActive</a>, <a href="../engine/interaction.html#bNativeEvents">bNativeEvents</a>, <a href="../engine/interaction.html#bRequiresTick">bRequiresTick</a>, <a href="../engine/interaction.html#bVisible">bVisible</a>, <a href="../engine/interaction.html#Master">Master</a>, <a href="../engine/interaction.html#ViewportOwner">ViewportOwner</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eComponentAlign" name="eComponentAlign" title="go to the details">eComponentAlign</a><br /><span class="small">cALIGN_Left,
+cALIGN_Right,
+cALIGN_Top,
+cALIGN_Bottom,
+</span></td></tr>
+<tr><td><a href="#_eComponentSize" name="eComponentSize" title="go to the details">eComponentSize</a><br /><span class="small">cSIZE_Width,
+cSIZE_Height,
+</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_sMoveGroup" name="sMoveGroup" title="go to the details">sMoveGroup</a><br /><span class="small">CtrlGroup</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Delegates Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_delegate.gif" alt="delegate" title="delegate"></td><td>bool&nbsp;</td><td><a href="#_OnNeedRawKeyPress+" name="OnNeedRawKeyPress" title="go to the details">OnNeedRawKeyPress</a> (byte NewKey)</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Delegates from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/baseguicontroller.html">BaseGUIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/baseguicontroller.html#OnAdminReply">OnAdminReply</a>, <a href="../engine/baseguicontroller.html#OnPostPrecache">OnPostPrecache</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_AlignControlsInGroup-" name="AlignControlsInGroup" title="go to the details">AlignControlsInGroup</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, eComponentAlign align ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_AutoLoadMenus-" name="AutoLoadMenus" title="go to the details">AutoLoadMenus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CenterOfControl-" name="CenterOfControl" title="go to the details">CenterOfControl</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, out float left, out float top ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeActiveStyle-" name="ChangeActiveStyle" title="go to the details">ChangeActiveStyle</a> (String newStyle))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ChangeFocus-" name="ChangeFocus" title="go to the details">ChangeFocus</a> (<a href="../gui/guicomponent.html">GUIComponent</a> NewFocus))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeGridSize-" name="ChangeGridSize" title="go to the details">ChangeGridSize</a> (int newSize))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeResolutionX-" name="ChangeResolutionX" title="go to the details">ChangeResolutionX</a> (int newSize))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeResolutionY-" name="ChangeResolutionY" title="go to the details">ChangeResolutionY</a> (int newSize))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_CloseAll-" name="CloseAll" title="go to the details">CloseAll</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CloseMenu-" name="CloseMenu" title="go to the details">CloseMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ComponentIsRegisteredForResolutionChanged-" name="ComponentIsRegisteredForResolutionChanged" title="go to the details">ComponentIsRegisteredForResolutionChanged</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Component))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../gui/guicomponent.html">GUIComponent</a>&nbsp;</td><td><a href="#_CreateComponent-" name="CreateComponent" title="go to the details">CreateComponent</a> (string ComponentClass, ptional string ComponentName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../gui/guipage.html">GUIPage</a>&nbsp;</td><td><a href="#_CreateMenu-" name="CreateMenu" title="go to the details">CreateMenu</a> (string NewMenuName, ptional string MenuNameOverride))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoScalingOnComponent-" name="DoScalingOnComponent" title="go to the details">DoScalingOnComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, bool bScaleIt, optional bool bPropagate ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../gui/guicomponent.html">GUIComponent</a>&nbsp;</td><td><a href="#_FindPersistentComponent-" name="FindPersistentComponent" title="go to the details">FindPersistentComponent</a> (string theName, optional bool bExact ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_FixGUIComponentName-" name="FixGUIComponentName" title="go to the details">FixGUIComponentName</a> (String ComponentName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetCurrentRes-" name="GetCurrentRes" title="go to the details">GetCurrentRes</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_GetDEMHeader-" name="GetDEMHeader" title="go to the details">GetDEMHeader</a> (string DemoName, out string MapName, out string GameType, out int ScoreLimit, out int TimeLimit, out int ClientSide, out string RecordedBy, out string Timestamp, out String ReqPackages)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetDEMList-" name="GetDEMList" title="go to the details">GetDEMList</a> (out array&lt;string&gt; DEMFiles)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GetGuiResolution-" name="GetGuiResolution" title="go to the details">GetGuiResolution</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetMapList-" name="GetMapList" title="go to the details">GetMapList</a> (string Prefix, <a href="../gui/guilist.html">GUIList</a> list)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../gui/guifont.html">GUIFont</a>&nbsp;</td><td><a href="#_GetMenuFont-" name="GetMenuFont" title="go to the details">GetMenuFont</a> (string FontName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../gui/guistyles.html">GUIStyles</a>&nbsp;</td><td><a href="#_GetStyle-" name="GetStyle" title="go to the details">GetStyle</a> (string StyleName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GroupControl-" name="GroupControl" title="go to the details">GroupControl</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, int group ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_HasMouseMoved-" name="HasMouseMoved" title="go to the details">HasMouseMoved</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_InitializeController-" name="InitializeController" title="go to the details">InitializeController</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_InternalOpenMenu-" name="InternalOpenMenu" title="go to the details">InternalOpenMenu</a> (<a href="../gui/guipage.html">GUIPage</a> NewMenu, optional string Param1, optional string Param2, optional int param3 ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_IsPageActive-" name="IsPageActive" title="go to the details">IsPageActive</a> (string MenuClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_KillControlGroup-" name="KillControlGroup" title="go to the details">KillControlGroup</a> (int group ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/levelsummary.html">LevelSummary</a>&nbsp;</td><td><a href="#_LoadLevelSummary-" name="LoadLevelSummary" title="go to the details">LoadLevelSummary</a> (string LevelSummaryName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadLocalizedPerObjectConfig-" name="LoadLocalizedPerObjectConfig" title="go to the details">LoadLocalizedPerObjectConfig</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadLocalizedPerObjectConfigGUI-" name="LoadLocalizedPerObjectConfigGUI" title="go to the details">LoadLocalizedPerObjectConfigGUI</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_LogGUI-" name="LogGUI" title="go to the details">LogGUI</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_LogGUIComponent-" name="LogGUIComponent" title="go to the details">LogGUIComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, optional int level ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_LogGUIPage-" name="LogGUIPage" title="go to the details">LogGUIPage</a> (GUIPage Page ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MakeMoveGroup-" name="MakeMoveGroup" title="go to the details">MakeMoveGroup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseEmulation-" name="MouseEmulation" title="go to the details">MouseEmulation</a> (bool On)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_MoveControlGroup-" name="MoveControlGroup" title="go to the details">MoveControlGroup</a> (int fromGroup, int toGroup ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_MoveFocused-" name="MoveFocused" title="go to the details">MoveFocused</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, int bmLeft, int bmTop, int bmWidth, int bmHeight, float ClipX, float ClipY, optional bool bMoveGroup))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NotifyLevelChange-" name="NotifyLevelChange" title="go to the details">NotifyLevelChange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onGameplayMessage-" name="onGameplayMessage" title="go to the details">onGameplayMessage</a> (<a href="../engine/message.html">Message</a> msg))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnProgress-" name="OnProgress" title="go to the details">OnProgress</a> (string Str1, string Str2))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_OnResolutionChanged-" name="OnResolutionChanged" title="go to the details">OnResolutionChanged</a> (int OldResolutionX, int OldResolutionY, int NewResolutionX, int NewResolutionY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_OpenMenu-" name="OpenMenu" title="go to the details">OpenMenu</a> (string NewMenuName, optional string MenuNameOverride, optional string Param1, optional string Param2, optional int param3))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PaintProgress-" name="PaintProgress" title="go to the details">PaintProgress</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gui/guipage.html">GUIPage</a>&nbsp;</td><td><a href="#_ParentPage-" name="ParentPage" title="go to the details">ParentPage</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostLevelChange-" name="PostLevelChange" title="go to the details">PostLevelChange</a> (<a href="../engine/levelinfo.html">LevelInfo</a> newLevel, bool bSaveGame))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PreLevelChange-" name="PreLevelChange" title="go to the details">PreLevelChange</a> (string DestURL, <a href="../engine/levelsummary.html">LevelSummary</a> NewSummary))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_RedoActiveComponent-" name="RedoActiveComponent" title="go to the details">RedoActiveComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, optional bool bMoveGroup))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_RegisterFont-" name="RegisterFont" title="go to the details">RegisterFont</a> (String FontClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterNotifyResolutionChanged-" name="RegisterNotifyResolutionChanged" title="go to the details">RegisterNotifyResolutionChanged</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Component))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_RegisterStyle-" name="RegisterStyle" title="go to the details">RegisterStyle</a> (String StyleClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ReloadGUI-" name="ReloadGUI" title="go to the details">ReloadGUI</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveMenu-" name="RemoveMenu" title="go to the details">RemoveMenu</a> (string MenuName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemovePersistentComponent-" name="RemovePersistentComponent" title="go to the details">RemovePersistentComponent</a> (GUIComponent Ctrl ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_ReplaceMenu-" name="ReplaceMenu" title="go to the details">ReplaceMenu</a> (string NewMenuName, optional string MenuNameOverride, optional string Param1, optional string Param2, optional int param3))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetFocus-" name="ResetFocus" title="go to the details">ResetFocus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetKeyboard-" name="ResetKeyboard" title="go to the details">ResetKeyboard</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResolutionToScale-" name="ResolutionToScale" title="go to the details">ResolutionToScale</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, optional bool bPropagate))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SaveActiveComponent-" name="SaveActiveComponent" title="go to the details">SaveActiveComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, optional bool bMoveGroup))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveComponent-" name="SaveComponent" title="go to the details">SaveComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ScaleToResolution-" name="ScaleToResolution" title="go to the details">ScaleToResolution</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, optional bool bPropagate))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SelectNextControlInMoveGroup-" name="SelectNextControlInMoveGroup" title="go to the details">SelectNextControlInMoveGroup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetCaptureScriptExec-" name="SetCaptureScriptExec" title="go to the details">SetCaptureScriptExec</a> (bool bCapture))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetChildrenDirty-" name="SetChildrenDirty" title="go to the details">SetChildrenDirty</a> (<a href="../gui/guimulticomponent.html">GUIMultiComponent</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetControllerStatus-" name="SetControllerStatus" title="go to the details">SetControllerStatus</a> (bool On))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetFocusedPos-" name="SetFocusedPos" title="go to the details">SetFocusedPos</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, float bmLeft, float bmTop, int ClipX, int ClipY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetGuiResolution-" name="SetGuiResolution" title="go to the details">SetGuiResolution</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SizeControlsInGroup-" name="SizeControlsInGroup" title="go to the details">SizeControlsInGroup</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, eComponentSize size ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SizeOfControl-" name="SizeOfControl" title="go to the details">SizeOfControl</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, out float size ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SnapToGrid-" name="SnapToGrid" title="go to the details">SnapToGrid</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, bool bResized))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ToggleActiveComponentSizing-" name="ToggleActiveComponentSizing" title="go to the details">ToggleActiveComponentSizing</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, optional bool bPropagate, optional bool bMoveGroup))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ToggleSnapToGrid-" name="ToggleSnapToGrid" title="go to the details">ToggleSnapToGrid</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gui/guipage.html">GUIPage</a>&nbsp;</td><td><a href="#_TopPage-" name="TopPage" title="go to the details">TopPage</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UndoActiveComponent-" name="UndoActiveComponent" title="go to the details">UndoActiveComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, optional bool bMoveGroup))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnRegisterNotifyResolutionChanged-" name="UnRegisterNotifyResolutionChanged" title="go to the details">UnRegisterNotifyResolutionChanged</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Component))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UpdateControl-" name="UpdateControl" title="go to the details">UpdateControl</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Ctrl, bool bResized))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/baseguicontroller.html">BaseGUIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/baseguicontroller.html#AutoLoadMenuClass">AutoLoadMenuClass</a>, <a href="../engine/baseguicontroller.html#AutoLoadMenus">AutoLoadMenus</a>, <a href="../engine/baseguicontroller.html#CloseAll">CloseAll</a>, <a href="../engine/baseguicontroller.html#CloseMenu">CloseMenu</a>, <a href="../engine/baseguicontroller.html#InitializeController">InitializeController</a>, <a href="../engine/baseguicontroller.html#IsPageActive">IsPageActive</a>, <a href="../engine/baseguicontroller.html#onGameplayMessage">onGameplayMessage</a>, <a href="../engine/baseguicontroller.html#OnMojoFinished">OnMojoFinished</a>, <a href="../engine/baseguicontroller.html#OnNetworkBrowse">OnNetworkBrowse</a>, <a href="../engine/baseguicontroller.html#OnProgress">OnProgress</a>, <a href="../engine/baseguicontroller.html#OpenMenu">OpenMenu</a>, <a href="../engine/baseguicontroller.html#PostLevelChange">PostLevelChange</a>, <a href="../engine/baseguicontroller.html#PostPrecache">PostPrecache</a>, <a href="../engine/baseguicontroller.html#PreLevelChange">PreLevelChange</a>, <a href="../engine/baseguicontroller.html#RemoveMenu">RemoveMenu</a>, <a href="../engine/baseguicontroller.html#ReplaceMenu">ReplaceMenu</a>, <a href="../engine/baseguicontroller.html#SetControllerStatus">SetControllerStatus</a>, <a href="../engine/baseguicontroller.html#ShouldSuppressLevelRender">ShouldSuppressLevelRender</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interaction.html">Interaction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/interaction.html#ConsoleCommand">ConsoleCommand</a>, <a href="../engine/interaction.html#Initialize">Initialize</a>, <a href="../engine/interaction.html#Initialized">Initialized</a>, <a href="../engine/interaction.html#KeyEvent">KeyEvent</a>, <a href="../engine/interaction.html#KeyType">KeyType</a>, <a href="../engine/interaction.html#Message">Message</a>, <a href="../engine/interaction.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/interaction.html#PostRender">PostRender</a>, <a href="../engine/interaction.html#PreRender">PreRender</a>, <a href="../engine/interaction.html#ScreenToWorld">ScreenToWorld</a>, <a href="../engine/interaction.html#SetFocus">SetFocus</a>, <a href="../engine/interaction.html#Tick">Tick</a>, <a href="../engine/interaction.html#WorldToScreen">WorldToScreen</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_InterestedResolutionChanged" class="hidden"></a>InterestedResolutionChanged <a href="../Source_gui/guicontroller.html#168" class="small">Source code</a></h4>
+<div class="declaration">var private array&lt;<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span>&gt; InterestedResolutionChanged;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoyButtons[64]" class="hidden"></a>JoyButtons[64] <a href="../Source_gui/guicontroller.html#181" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Byte</span> JoyButtons[<span class="source_int">64</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoyControlsDelta[16]" class="hidden"></a>JoyControlsDelta[16] <a href="../Source_gui/guicontroller.html#183" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> JoyControlsDelta[<span class="source_int">16</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoyLeftXAxis[4]" class="hidden"></a>JoyLeftXAxis[4] <a href="../Source_gui/guicontroller.html#177" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Float</span> JoyLeftXAxis[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoyLeftYAxis[4]" class="hidden"></a>JoyLeftYAxis[4] <a href="../Source_gui/guicontroller.html#178" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Float</span> JoyLeftYAxis[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoyRightXAxis[4]" class="hidden"></a>JoyRightXAxis[4] <a href="../Source_gui/guicontroller.html#179" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Float</span> JoyRightXAxis[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoyRightYAxis[4]" class="hidden"></a>JoyRightYAxis[4] <a href="../Source_gui/guicontroller.html#180" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Float</span> JoyRightYAxis[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WhiteBorder" class="hidden"></a>WhiteBorder <a href="../Source_gui/guicontroller.html#186" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> WhiteBorder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">ActorAdjustments</h3>
+<h4><a name="_GUI_TO_WORLD_X" class="hidden"></a>GUI_TO_WORLD_X <a href="../Source_gui/guicontroller.html#79" class="small">Source code</a></h4>
+<div class="declaration">var(ActorAdjustments) config <span class="source_type">float</span> GUI_TO_WORLD_X;</div>
+<blockquote class="comment">
+minor adjustment to all actors in the X direction
+</blockquote>
+<hr class="small" />
+<h4><a name="_GUI_TO_WORLD_Y" class="hidden"></a>GUI_TO_WORLD_Y <a href="../Source_gui/guicontroller.html#80" class="small">Source code</a></h4>
+<div class="declaration">var(ActorAdjustments) config <span class="source_type">float</span> GUI_TO_WORLD_Y;</div>
+<blockquote class="comment">
+minor adjustment to all actors in the Y direction
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Clipboard</h3>
+<h4><a name="_SaveControl" class="hidden"></a>SaveControl <a href="../Source_gui/guicontroller.html#144" class="small">Source code</a></h4>
+<div class="declaration">var(Clipboard) EditConst Editinline <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> SaveControl;</div>
+<blockquote class="comment">
+The Clipboard component for storing component's config members
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveStyle" class="hidden"></a>SaveStyle <a href="../Source_gui/guicontroller.html#145" class="small">Source code</a></h4>
+<div class="declaration">var(Clipboard) EditConst Editinline <span class="source_type"><a href="../gui/guistyles.html" class="source">GUIStyles</a></span> SaveStyle;</div>
+<blockquote class="comment">
+The Clipboard style for storing style's config members
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Cursors</h3>
+<h4><a name="_MouseCursorOffset" class="hidden"></a>MouseCursorOffset <a href="../Source_gui/guicontroller.html#95" class="small">Source code</a></h4>
+<div class="declaration">var(Cursors) editinline config Array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>&gt; MouseCursorOffset;</div>
+<blockquote class="comment">
+Only X,Y used, between 0 and 1. 'Hot Spot' of cursor material.
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseCursors" class="hidden"></a>MouseCursors <a href="../Source_gui/guicontroller.html#94" class="small">Source code</a></h4>
+<div class="declaration">var(Cursors) editinline config Array&lt;<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>&gt; MouseCursors;</div>
+<blockquote class="comment">
+Holds a list of all possible mouse
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">DEBUG</h3>
+<h4><a name="_CaptureScriptExec" class="hidden"></a>CaptureScriptExec <a href="../Source_gui/guicontroller.html#188" class="small">Source code</a></h4>
+<div class="declaration">var(DEBUG) private <span class="source_type">bool</span> CaptureScriptExec;</div>
+<blockquote class="comment">
+When non-zero, does not allow other interactions to process script exec functions
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">EditorState</h3>
+<h4><a name="_ActivePage" class="hidden"></a>ActivePage <a href="../Source_gui/guicontroller.html#89" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst Editinline <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span> ActivePage;</div>
+<blockquote class="comment">
+Points to the currently active page
+</blockquote>
+<hr class="small" />
+<h4><a name="_bComponentMenu" class="hidden"></a>bComponentMenu <a href="../Source_gui/guicontroller.html#142" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bComponentMenu;</div>
+<blockquote class="comment">
+Are we showing the available components?
+</blockquote>
+<hr class="small" />
+<h4><a name="_bEditing" class="hidden"></a>bEditing <a href="../Source_gui/guicontroller.html#137" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bEditing;</div>
+<blockquote class="comment">
+Are we currently editing a member's properties
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHasLoadedPackages" class="hidden"></a>bHasLoadedPackages <a href="../Source_gui/guicontroller.html#84" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) editconst <span class="source_type">bool</span> bHasLoadedPackages;</div>
+<blockquote class="comment">
+will only load packages the first time (when this is false)
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHelpDisplay" class="hidden"></a>bHelpDisplay <a href="../Source_gui/guicontroller.html#138" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bHelpDisplay;</div>
+<blockquote class="comment">
+Are we showing the help menu
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLastScaled" class="hidden"></a>bLastScaled <a href="../Source_gui/guicontroller.html#81" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bLastScaled;</div>
+<blockquote class="comment">
+used for pagewide scale toggling
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMemberDisplay" class="hidden"></a>bMemberDisplay <a href="../Source_gui/guicontroller.html#135" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bMemberDisplay;</div>
+<blockquote class="comment">
+Are we displaying member properties
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMemberEdit" class="hidden"></a>bMemberEdit <a href="../Source_gui/guicontroller.html#136" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bMemberEdit;</div>
+<blockquote class="comment">
+Are we editing member properties
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMousePositioning" class="hidden"></a>bMousePositioning <a href="../Source_gui/guicontroller.html#78" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bMousePositioning;</div>
+<blockquote class="comment">
+the mouse is being used to position a component
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowConfigMembers" class="hidden"></a>bShowConfigMembers <a href="../Source_gui/guicontroller.html#139" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bShowConfigMembers;</div>
+<blockquote class="comment">
+Are we showing the Config members?
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowGUIMembers" class="hidden"></a>bShowGUIMembers <a href="../Source_gui/guicontroller.html#140" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bShowGUIMembers;</div>
+<blockquote class="comment">
+Are we showing the GUI members?
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowPageList" class="hidden"></a>bShowPageList <a href="../Source_gui/guicontroller.html#141" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bShowPageList;</div>
+<blockquote class="comment">
+Are we showing the page list?
+</blockquote>
+<hr class="small" />
+<h4><a name="_bStyleCreate" class="hidden"></a>bStyleCreate <a href="../Source_gui/guicontroller.html#133" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bStyleCreate;</div>
+<blockquote class="comment">
+Are we creating a new style
+</blockquote>
+<hr class="small" />
+<h4><a name="_bStylesDisplay" class="hidden"></a>bStylesDisplay <a href="../Source_gui/guicontroller.html#134" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">bool</span> bStylesDisplay;</div>
+<blockquote class="comment">
+Are we displaying available styles/fonts
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentMember" class="hidden"></a>CurrentMember <a href="../Source_gui/guicontroller.html#148" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">int</span> CurrentMember;</div>
+<blockquote class="comment">
+current position in member list
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentMemberObjName" class="hidden"></a>CurrentMemberObjName <a href="../Source_gui/guicontroller.html#146" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">string</span> CurrentMemberObjName;</div>
+<blockquote class="comment">
+currently active (for edit) member
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentMemberObjValue" class="hidden"></a>CurrentMemberObjValue <a href="../Source_gui/guicontroller.html#147" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst array&lt;<span class="source_type">string</span>&gt; CurrentMemberObjValue;</div>
+<blockquote class="comment">
+current text entry for current member
+</blockquote>
+<hr class="small" />
+<h4><a name="_FontStack" class="hidden"></a>FontStack <a href="../Source_gui/guicontroller.html#91" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst Editinline Array&lt;<span class="source_type"><a href="../gui/guifont.html" class="source">GUIFont</a></span>&gt; FontStack;</div>
+<blockquote class="comment">
+Holds all the possible fonts
+</blockquote>
+<hr class="small" />
+<h4><a name="_MemberEditLevel" class="hidden"></a>MemberEditLevel <a href="../Source_gui/guicontroller.html#149" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">int</span> MemberEditLevel;</div>
+<blockquote class="comment">
+current position in edit history
+</blockquote>
+<hr class="small" />
+<h4><a name="_MemberEditPosition" class="hidden"></a>MemberEditPosition <a href="../Source_gui/guicontroller.html#150" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst <span class="source_type">int</span> MemberEditPosition;</div>
+<blockquote class="comment">
+current position in edit string
+</blockquote>
+<hr class="small" />
+<h4><a name="_MenuStack" class="hidden"></a>MenuStack <a href="../Source_gui/guicontroller.html#88" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst Editinline export array&lt;<span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span>&gt; MenuStack;</div>
+<blockquote class="comment">
+Holds the stack of menus
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveGroups" class="hidden"></a>MoveGroups <a href="../Source_gui/guicontroller.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditInline EditConst array&lt;<span class="source_type"><a href="../gui/guicontroller.html#sMoveGroup" class="source">sMoveGroup</a></span>&gt; MoveGroups;</div>
+<blockquote class="comment">
+Array of groups of controls
+</blockquote>
+<hr class="small" />
+<h4><a name="_StyleStack" class="hidden"></a>StyleStack <a href="../Source_gui/guicontroller.html#92" class="small">Source code</a></h4>
+<div class="declaration">var(EditorState) EditConst Editinline Array&lt;<span class="source_type"><a href="../gui/guistyles.html" class="source">GUIStyles</a></span>&gt; StyleStack;</div>
+<blockquote class="comment">
+Holds all of the possible styles
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Grid</h3>
+<h4><a name="_bSnapToGrid" class="hidden"></a>bSnapToGrid <a href="../Source_gui/guicontroller.html#75" class="small">Source code</a></h4>
+<div class="declaration">var(Grid) config <span class="source_type">bool</span> bSnapToGrid;</div>
+<blockquote class="comment">
+If set will snap to grid in edit mode
+</blockquote>
+<hr class="small" />
+<h4><a name="_GridSize" class="hidden"></a>GridSize <a href="../Source_gui/guicontroller.html#74" class="small">Source code</a></h4>
+<div class="declaration">var(Grid) config <span class="source_type">int</span> GridSize;</div>
+<blockquote class="comment">
+Size of grid
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResolutionX" class="hidden"></a>ResolutionX <a href="../Source_gui/guicontroller.html#76" class="small">Source code</a></h4>
+<div class="declaration">var(Grid) EditConst config <span class="source_type">int</span> ResolutionX;</div>
+<blockquote class="comment">
+Screen width in pixels.  Set using console command "SetGuiRes X Y"
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResolutionY" class="hidden"></a>ResolutionY <a href="../Source_gui/guicontroller.html#77" class="small">Source code</a></h4>
+<div class="declaration">var(Grid) EditConst config <span class="source_type">int</span> ResolutionY;</div>
+<blockquote class="comment">
+Screen height in pixels.  Set using console command "SetGuiRes X Y"
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">GUIController</h3>
+<h4><a name="_AutoLoad" class="hidden"></a>AutoLoad <a href="../Source_gui/guicontroller.html#166" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>) editinline config array&lt;<span class="source_type"><a href="../gui/gui.html" class="source">GUI</a></span>.<span class="source_type"><a href="../gui/gui.html#ControlSpec" class="source">ControlSpec</a></span>&gt; AutoLoad;</div>
+<blockquote class="comment">
+Any components specified in here will be automatically loaded on startup, usefull for pages, panels, and other intensively functional components
+</blockquote>
+<hr class="small" />
+<h4><a name="_ComponentClassList" class="hidden"></a>ComponentClassList <a href="../Source_gui/guicontroller.html#152" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>) editinline config array&lt;<span class="source_type">string</span>&gt; ComponentClassList;</div>
+<blockquote class="comment">
+List of available GUI components
+</blockquote>
+<hr class="small" />
+<h4><a name="_FontNames" class="hidden"></a>FontNames <a href="../Source_gui/guicontroller.html#90" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>) editinline config Array&lt;<span class="source_type">String</span>&gt; FontNames;</div>
+<blockquote class="comment">
+Holds all the possible font names
+</blockquote>
+<hr class="small" />
+<h4><a name="_HelpStack" class="hidden"></a>HelpStack <a href="../Source_gui/guicontroller.html#151" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>) editinline config localized array&lt;<span class="source_type">string</span>&gt; HelpStack;</div>
+<blockquote class="comment">
+List of GUI editor commands
+</blockquote>
+<hr class="small" />
+<h4><a name="_PackageNames" class="hidden"></a>PackageNames <a href="../Source_gui/guicontroller.html#83" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>) config array&lt;<span class="source_type">string</span>&gt; PackageNames;</div>
+<blockquote class="comment">
+FileNames of packages to autoload when running the gui editor
+</blockquote>
+<hr class="small" />
+<h4><a name="_StyleNames" class="hidden"></a>StyleNames <a href="../Source_gui/guicontroller.html#93" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>) editinline config Array&lt;<span class="source_type">string</span>&gt; StyleNames;</div>
+<blockquote class="comment">
+Holds the name of all styles to use
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">GUIPages</h3>
+<h4><a name="_PersistentStack" class="hidden"></a>PersistentStack <a href="../Source_gui/guicontroller.html#87" class="small">Source code</a></h4>
+<div class="declaration">var(GUIPages) Editinline EditConst Array&lt;<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span>&gt; PersistentStack;</div>
+<blockquote class="comment">
+Holds the set of Components which are persistent across close/open/reopen; only instanciated once
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Misc</h3>
+<h4><a name="_bEmulatedJoypad" class="hidden"></a>bEmulatedJoypad <a href="../Source_gui/guicontroller.html#172" class="small">Source code</a></h4>
+<div class="declaration">var(Misc) config <span class="source_type">bool</span> bEmulatedJoypad;</div>
+<blockquote class="comment">
+Have the cursor keys emulate a XBox controller
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHideMouseCursor" class="hidden"></a>bHideMouseCursor <a href="../Source_gui/guicontroller.html#174" class="small">Source code</a></h4>
+<div class="declaration">var(Misc) config <span class="source_type">bool</span> bHideMouseCursor;</div>
+<blockquote class="comment">
+When true, the mouse cursor will be hidden
+</blockquote>
+<hr class="small" />
+<h4><a name="_bJoyMouse" class="hidden"></a>bJoyMouse <a href="../Source_gui/guicontroller.html#173" class="small">Source code</a></h4>
+<div class="declaration">var(Misc) config <span class="source_type">bool</span> bJoyMouse;</div>
+<blockquote class="comment">
+When true, right control stick acts as a 1 button mouse
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoyDeadZone" class="hidden"></a>JoyDeadZone <a href="../Source_gui/guicontroller.html#175" class="small">Source code</a></h4>
+<div class="declaration">var(Misc) config <span class="source_type">float</span> JoyDeadZone;</div>
+<blockquote class="comment">
+The DeadZone for joysticks
+</blockquote>
+<hr class="small" />
+<h4><a name="_MenuMouseSens" class="hidden"></a>MenuMouseSens <a href="../Source_gui/guicontroller.html#154" class="small">Source code</a></h4>
+<div class="declaration">var(Misc) config <span class="source_type">float</span> MenuMouseSens;</div>
+<blockquote class="comment">
+Mouse Sensitivity in the gui
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">MiscState</h3>
+<h4><a name="_ActiveControl" class="hidden"></a>ActiveControl <a href="../Source_gui/guicontroller.html#121" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> ActiveControl;</div>
+<blockquote class="comment">
+Which control is currently active
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltPressed" class="hidden"></a>AltPressed <a href="../Source_gui/guicontroller.html#103" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> AltPressed;</div>
+<blockquote class="comment">
+Alt key is being held
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDesignMode" class="hidden"></a>bDesignMode <a href="../Source_gui/guicontroller.html#129" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> bDesignMode;</div>
+<blockquote class="comment">
+Are we in design mode
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDontDisplayHelpText" class="hidden"></a>bDontDisplayHelpText <a href="../Source_gui/guicontroller.html#70" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) config <span class="source_type">bool</span> bDontDisplayHelpText;</div>
+<blockquote class="comment">
+If true, help text will never be displayed for this page
+</blockquote>
+<hr class="small" />
+<h4><a name="_bForceMouseCheck" class="hidden"></a>bForceMouseCheck <a href="../Source_gui/guicontroller.html#163" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> bForceMouseCheck;</div>
+<blockquote class="comment">
+Forces the gui to check the mouse immediately following the open/close of a page to get what is underneath
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHighlightCurrent" class="hidden"></a>bHighlightCurrent <a href="../Source_gui/guicontroller.html#131" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> bHighlightCurrent;</div>
+<blockquote class="comment">
+Highlight the current control being edited
+</blockquote>
+<hr class="small" />
+<h4><a name="_bModAuthor" class="hidden"></a>bModAuthor <a href="../Source_gui/guicontroller.html#128" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) config <span class="source_type">bool</span> bModAuthor;</div>
+<blockquote class="comment">
+Allows bDesign Mode
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPlayerDesignMode" class="hidden"></a>bPlayerDesignMode <a href="../Source_gui/guicontroller.html#130" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> bPlayerDesignMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSwallowNextKeyType" class="hidden"></a>bSwallowNextKeyType <a href="../Source_gui/guicontroller.html#164" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> bSwallowNextKeyType;</div>
+<blockquote class="comment">
+Forces the gui to drop and swallow the next key type
+</blockquote>
+<hr class="small" />
+<h4><a name="_ButtonRepeatDelay" class="hidden"></a>ButtonRepeatDelay <a href="../Source_gui/guicontroller.html#110" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> ButtonRepeatDelay;</div>
+<blockquote class="comment">
+The amount of delay for faking button repeats
+</blockquote>
+<hr class="small" />
+<h4><a name="_ControllerId" class="hidden"></a>ControllerId <a href="../Source_gui/guicontroller.html#98" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">byte</span> ControllerId;</div>
+<blockquote class="comment">
+The current Controller ID #
+</blockquote>
+<hr class="small" />
+<h4><a name="_ControllerMask" class="hidden"></a>ControllerMask <a href="../Source_gui/guicontroller.html#97" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">byte</span> ControllerMask;</div>
+<blockquote class="comment">
+Used to mask input for various Controllers
+</blockquote>
+<hr class="small" />
+<h4><a name="_CtrlPressed" class="hidden"></a>CtrlPressed <a href="../Source_gui/guicontroller.html#104" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> CtrlPressed;</div>
+<blockquote class="comment">
+Ctrl key is being held
+</blockquote>
+<hr class="small" />
+<h4><a name="_CursorFade" class="hidden"></a>CursorFade <a href="../Source_gui/guicontroller.html#115" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> CursorFade;</div>
+<blockquote class="comment">
+How visible is the cursor
+</blockquote>
+<hr class="small" />
+<h4><a name="_CursorStep" class="hidden"></a>CursorStep <a href="../Source_gui/guicontroller.html#116" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">int</span> CursorStep;</div>
+<blockquote class="comment">
+Are we fading in or out
+</blockquote>
+<hr class="small" />
+<h4><a name="_DblClickWindow" class="hidden"></a>DblClickWindow <a href="../Source_gui/guicontroller.html#106" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Config <span class="source_type">float</span> DblClickWindow;</div>
+<blockquote class="comment">
+How long do you have for a double click
+</blockquote>
+<hr class="small" />
+<h4><a name="_FastCursorFade" class="hidden"></a>FastCursorFade <a href="../Source_gui/guicontroller.html#117" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> FastCursorFade;</div>
+<blockquote class="comment">
+How visible is the cursor
+</blockquote>
+<hr class="small" />
+<h4><a name="_FastCursorStep" class="hidden"></a>FastCursorStep <a href="../Source_gui/guicontroller.html#118" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">int</span> FastCursorStep;</div>
+<blockquote class="comment">
+Are we fading in or out
+</blockquote>
+<hr class="small" />
+<h4><a name="_FocusedControl" class="hidden"></a>FocusedControl <a href="../Source_gui/guicontroller.html#120" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> FocusedControl;</div>
+<blockquote class="comment">
+Top most Focused control
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastClickTime" class="hidden"></a>LastClickTime <a href="../Source_gui/guicontroller.html#107" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> LastClickTime;</div>
+<blockquote class="comment">
+When did the last click occur
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastClickX" class="hidden"></a>LastClickX <a href="../Source_gui/guicontroller.html#108" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">int</span> LastClickX;</div>
+<blockquote class="comment">
+Who was the active component
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastClickY" class="hidden"></a>LastClickY <a href="../Source_gui/guicontroller.html#108" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">int</span> LastClickY;</div>
+<blockquote class="comment">
+Who was the active component
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastMouseX" class="hidden"></a>LastMouseX <a href="../Source_gui/guicontroller.html#100" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> LastMouseX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastMouseY" class="hidden"></a>LastMouseY <a href="../Source_gui/guicontroller.html#100" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> LastMouseY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseX" class="hidden"></a>MouseX <a href="../Source_gui/guicontroller.html#99" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> MouseX;</div>
+<blockquote class="comment">
+Where is the mouse currently located
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseY" class="hidden"></a>MouseY <a href="../Source_gui/guicontroller.html#99" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> MouseY;</div>
+<blockquote class="comment">
+Where is the mouse currently located
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveControl" class="hidden"></a>MoveControl <a href="../Source_gui/guicontroller.html#123" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MoveControl;</div>
+<blockquote class="comment">
+Used for visual design
+</blockquote>
+<hr class="small" />
+<h4><a name="_RepeatDelta[4]" class="hidden"></a>RepeatDelta[4] <a href="../Source_gui/guicontroller.html#112" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> RepeatDelta[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+Data var
+</blockquote>
+<hr class="small" />
+<h4><a name="_RepeatKey[4]" class="hidden"></a>RepeatKey[4] <a href="../Source_gui/guicontroller.html#111" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">byte</span> RepeatKey[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+Used to determine what should repeat
+</blockquote>
+<hr class="small" />
+<h4><a name="_RepeatTime[4]" class="hidden"></a>RepeatTime[4] <a href="../Source_gui/guicontroller.html#113" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> RepeatTime[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+How long until the next repeat;
+</blockquote>
+<hr class="small" />
+<h4><a name="_SavedMoveOffsetX" class="hidden"></a>SavedMoveOffsetX <a href="../Source_gui/guicontroller.html#125" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> SavedMoveOffsetX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SavedMoveOffsetY" class="hidden"></a>SavedMoveOffsetY <a href="../Source_gui/guicontroller.html#126" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">float</span> SavedMoveOffsetY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShiftPressed" class="hidden"></a>ShiftPressed <a href="../Source_gui/guicontroller.html#102" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type">bool</span> ShiftPressed;</div>
+<blockquote class="comment">
+Shift key is being held
+</blockquote>
+<hr class="small" />
+<h4><a name="_SkipControl" class="hidden"></a>SkipControl <a href="../Source_gui/guicontroller.html#122" class="small">Source code</a></h4>
+<div class="declaration">var(MiscState) Editconst <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> SkipControl;</div>
+<blockquote class="comment">
+This control should be skipped over and drawn at the end
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Sounds</h3>
+<h4><a name="_ClickSound" class="hidden"></a>ClickSound <a href="../Source_gui/guicontroller.html#158" class="small">Source code</a></h4>
+<div class="declaration">var(Sounds) config <span class="source_type">sound</span> ClickSound;</div>
+<blockquote class="comment">
+Sound played when the mouse clicks something
+</blockquote>
+<hr class="small" />
+<h4><a name="_DownSound" class="hidden"></a>DownSound <a href="../Source_gui/guicontroller.html#161" class="small">Source code</a></h4>
+<div class="declaration">var(Sounds) config <span class="source_type">sound</span> DownSound;</div>
+<blockquote class="comment">
+Sound played on a down-click
+</blockquote>
+<hr class="small" />
+<h4><a name="_EditSound" class="hidden"></a>EditSound <a href="../Source_gui/guicontroller.html#159" class="small">Source code</a></h4>
+<div class="declaration">var(Sounds) config <span class="source_type">sound</span> EditSound;</div>
+<blockquote class="comment">
+Sound played when a change is made
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseOverSound" class="hidden"></a>MouseOverSound <a href="../Source_gui/guicontroller.html#157" class="small">Source code</a></h4>
+<div class="declaration">var(Sounds) config <span class="source_type">sound</span> MouseOverSound;</div>
+<blockquote class="comment">
+Sound played when the mouse moves over something
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpSound" class="hidden"></a>UpSound <a href="../Source_gui/guicontroller.html#160" class="small">Source code</a></h4>
+<div class="declaration">var(Sounds) config <span class="source_type">sound</span> UpSound;</div>
+<blockquote class="comment">
+Sound played on an up-click
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eComponentAlign" class="hidden"></a>eComponentAlign <a href="../Source_gui/guicontroller.html#51" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gui/guicontroller.html#eComponentAlign" class="source">eComponentAlign</a></span><br />
+{<blockquote>cALIGN_Left,
+cALIGN_Right,
+cALIGN_Top,
+cALIGN_Bottom,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_eComponentSize" class="hidden"></a>eComponentSize <a href="../Source_gui/guicontroller.html#59" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gui/guicontroller.html#eComponentSize" class="source">eComponentSize</a></span><br />
+{<blockquote>cSIZE_Width,
+cSIZE_Height,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_sMoveGroup" class="hidden"></a>sMoveGroup <a href="../Source_gui/guicontroller.html#65" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gui/guicontroller.html#sMoveGroup" class="source">sMoveGroup</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span>) Editinline EditConst array&lt;<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span>&gt; CtrlGroup;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+<b>CtrlGroup</b>:
+<blockquote>
+	Group of controls that can be moved/sized together
+</blockquote>
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Delegates Detail</th>
+</tr>
+</table>
+
+<h4><a name="_OnNeedRawKeyPress+" class="hidden"></a><img src="../img_delegate.gif" alt="" title="delegate"> OnNeedRawKeyPress <a href="../Source_gui/guicontroller.html#210" class="small">Source code</a></h4>
+<div class="declaration"> delegate <span class="source_type">bool</span> OnNeedRawKeyPress ( <span class="source_type">byte</span> NewKey )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AlignControlsInGroup-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> AlignControlsInGroup <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#749" class="small">Source code</a></h4>
+<div class="declaration"> event  AlignControlsInGroup ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type"><a href="../gui/guicontroller.html#eComponentAlign" class="source">eComponentAlign</a></span> <span class="source_type">align</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AutoLoadMenus-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> AutoLoadMenus <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#304" class="small">Source code</a></h4>
+<div class="declaration"> event  AutoLoadMenus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CenterOfControl-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CenterOfControl <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1214" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CenterOfControl ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, out <span class="source_type">float</span> left, out <span class="source_type">float</span> <span class="source_type">top</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeActiveStyle-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeActiveStyle <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1155" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ChangeActiveStyle ( <span class="source_type">String</span> newStyle) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeFocus-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ChangeFocus <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#653" class="small">Source code</a></h4>
+<div class="declaration"> event  ChangeFocus ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> NewFocus) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeGridSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeGridSize <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1161" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ChangeGridSize ( <span class="source_type">int</span> newSize) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeResolutionX-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeResolutionX <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1166" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ChangeResolutionX ( <span class="source_type">int</span> newSize) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeResolutionY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeResolutionY <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1171" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ChangeResolutionY ( <span class="source_type">int</span> newSize) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CloseAll-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CloseAll <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#589" class="small">Source code</a></h4>
+<div class="declaration"> event  CloseAll ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CloseMenu-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CloseMenu <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#547" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CloseMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ComponentIsRegisteredForResolutionChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ComponentIsRegisteredForResolutionChanged <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#965" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> ComponentIsRegisteredForResolutionChanged ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Component) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateComponent-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CreateComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#361" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> CreateComponent ( <span class="source_type">string</span> ComponentClass,optional <span class="source_type">string</span> <span class="source_type">ComponentName</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateMenu-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CreateMenu <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#425" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span> CreateMenu ( <span class="source_type">string</span> NewMenuName,optional <span class="source_type">string</span> MenuNameOverride) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoScalingOnComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoScalingOnComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1007" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  DoScalingOnComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type">bool</span> bScaleIt, optional <span class="source_type">bool</span> <span class="source_type">bPropagate</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindPersistentComponent-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> FindPersistentComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#431" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> FindPersistentComponent ( <span class="source_type">string</span> theName, optional <span class="source_type">bool</span> <span class="source_type">bExact</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FixGUIComponentName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FixGUIComponentName <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#348" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">String</span> FixGUIComponentName ( <span class="source_type">String</span> <span class="source_type">ComponentName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentRes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentRes <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#192" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">string</span> GetCurrentRes (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDEMHeader-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDEMHeader <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#203" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> GetDEMHeader ( <span class="source_type">string</span> DemoName, out <span class="source_type">string</span> MapName, out <span class="source_type">string</span> GameType,
+								  out <span class="source_type">int</span> ScoreLimit, out <span class="source_type">int</span> TimeLimit, out <span class="source_type">int</span> ClientSide,
+                                  out <span class="source_type">string</span> RecordedBy, out <span class="source_type">string</span> Timestamp, out <span class="source_type">String</span> ReqPackages )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDEMList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDEMList <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#202" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  GetDEMList ( out array&lt;<span class="source_type">string</span>&gt; DEMFiles )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGuiResolution-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetGuiResolution <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#912" class="small">Source code</a></h4>
+<div class="declaration"> event  GetGuiResolution ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMapList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMapList <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#196" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  GetMapList ( <span class="source_type">string</span> Prefix, <span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span> list )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMenuFont-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetMenuFont <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#190" class="small">Source code</a></h4>
+<div class="declaration">native event <span class="source_type"><a href="../gui/guifont.html" class="source">GUIFont</a></span> GetMenuFont ( <span class="source_type">string</span> FontName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetStyle-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetStyle <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#191" class="small">Source code</a></h4>
+<div class="declaration">native event <span class="source_type"><a href="../gui/guistyles.html" class="source">GUIStyles</a></span> GetStyle ( <span class="source_type">string</span> StyleName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GroupControl-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GroupControl <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#700" class="small">Source code</a></h4>
+<div class="declaration"> event  GroupControl ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type">int</span> <span class="source_type">group</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasMouseMoved-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasMouseMoved <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1242" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> HasMouseMoved ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitializeController-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> InitializeController <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#217" class="small">Source code</a></h4>
+<div class="declaration"> event  InitializeController ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOpenMenu-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> InternalOpenMenu <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#468" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> InternalOpenMenu ( <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span> NewMenu, optional <span class="source_type">string</span> Param1, optional <span class="source_type">string</span> Param2, optional <span class="source_type">int</span> <span class="source_type">param3</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsPageActive-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> IsPageActive <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1365" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> IsPageActive ( <span class="source_type">string</span> MenuClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KillControlGroup-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> KillControlGroup <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#728" class="small">Source code</a></h4>
+<div class="declaration"> event  KillControlGroup ( <span class="source_type">int</span> <span class="source_type">group</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadLevelSummary-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadLevelSummary <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#208" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span> LoadLevelSummary ( <span class="source_type">string</span> LevelSummaryName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadLocalizedPerObjectConfig-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadLocalizedPerObjectConfig <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1304" class="small">Source code</a></h4>
+<div class="declaration">exec <span class="source_type">function</span>  LoadLocalizedPerObjectConfig ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadLocalizedPerObjectConfigGUI-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadLocalizedPerObjectConfigGUI <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1331" class="small">Source code</a></h4>
+<div class="declaration">exec <span class="source_type">function</span>  LoadLocalizedPerObjectConfigGUI ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogGUI-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> LogGUI <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1265" class="small">Source code</a></h4>
+<div class="declaration"> event  LogGUI ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogGUIComponent-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> LogGUIComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1281" class="small">Source code</a></h4>
+<div class="declaration"> event  LogGUIComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, optional <span class="source_type">int</span> <span class="source_type">level</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogGUIPage-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> LogGUIPage <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1273" class="small">Source code</a></h4>
+<div class="declaration"> event  LogGUIPage ( <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span> <span class="source_type">Page</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MakeMoveGroup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MakeMoveGroup <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#694" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MakeMoveGroup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseEmulation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseEmulation <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#199" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  MouseEmulation ( <span class="source_type">bool</span> On )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveControlGroup-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> MoveControlGroup <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#741" class="small">Source code</a></h4>
+<div class="declaration"> event  MoveControlGroup ( <span class="source_type">int</span> fromGroup, <span class="source_type">int</span> <span class="source_type">toGroup</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveFocused-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> MoveFocused <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#823" class="small">Source code</a></h4>
+<div class="declaration"> event  MoveFocused ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type">int</span> bmLeft, <span class="source_type">int</span> bmTop, <span class="source_type">int</span> bmWidth, <span class="source_type">int</span> bmHeight, <span class="source_type">float</span> ClipX, <span class="source_type">float</span> ClipY, optional <span class="source_type">bool</span> bMoveGroup) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyLevelChange-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyLevelChange <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1250" class="small">Source code</a></h4>
+<div class="declaration"> event  NotifyLevelChange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onGameplayMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onGameplayMessage <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#327" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onGameplayMessage ( <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span> msg) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnProgress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnProgress <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1358" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnProgress ( <span class="source_type">string</span> Str1, <span class="source_type">string</span> Str2) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnResolutionChanged-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OnResolutionChanged <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#941" class="small">Source code</a></h4>
+<div class="declaration"> event  OnResolutionChanged ( <span class="source_type">int</span> OldResolutionX, <span class="source_type">int</span> OldResolutionY, <span class="source_type">int</span> NewResolutionX, <span class="source_type">int</span> NewResolutionY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OpenMenu-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OpenMenu <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#463" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> OpenMenu ( <span class="source_type">string</span> NewMenuName, optional <span class="source_type">string</span> MenuNameOverride, optional <span class="source_type">string</span> Param1, optional <span class="source_type">string</span> Param2, optional <span class="source_type">int</span> <span class="source_type">param3</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PaintProgress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PaintProgress <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1356" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  PaintProgress (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ParentPage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ParentPage <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#619" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span> ParentPage ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostLevelChange-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostLevelChange <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#635" class="small">Source code</a></h4>
+<div class="declaration"> event  PostLevelChange ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> newLevel, <span class="source_type">bool</span> bSaveGame) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreLevelChange-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PreLevelChange <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#630" class="small">Source code</a></h4>
+<div class="declaration"> event  PreLevelChange ( <span class="source_type">string</span> DestURL, <span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span> NewSummary) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RedoActiveComponent-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> RedoActiveComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1193" class="small">Source code</a></h4>
+<div class="declaration"> event  RedoActiveComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, optional <span class="source_type">bool</span> bMoveGroup) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterFont-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> RegisterFont <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#251" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> RegisterFont ( <span class="source_type">String</span> FontClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterNotifyResolutionChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterNotifyResolutionChanged <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#955" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RegisterNotifyResolutionChanged ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Component) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterStyle-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> RegisterStyle <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#267" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> RegisterStyle ( <span class="source_type">String</span> StyleClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReloadGUI-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ReloadGUI <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#418" class="small">Source code</a></h4>
+<div class="declaration"> event  ReloadGUI ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveMenu <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1258" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  RemoveMenu ( <span class="source_type">string</span> MenuName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemovePersistentComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemovePersistentComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#444" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RemovePersistentComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReplaceMenu-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ReplaceMenu <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#508" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> ReplaceMenu ( <span class="source_type">string</span> NewMenuName, optional <span class="source_type">string</span> MenuNameOverride, optional <span class="source_type">string</span> Param1, optional <span class="source_type">string</span> Param2, optional <span class="source_type">int</span> <span class="source_type">param3</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetFocus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetFocus <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#663" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ResetFocus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetKeyboard-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetKeyboard <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#198" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  ResetKeyboard (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResolutionToScale-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResolutionToScale <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1002" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ResolutionToScale ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, optional <span class="source_type">bool</span> <span class="source_type">bPropagate</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveActiveComponent-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SaveActiveComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1133" class="small">Source code</a></h4>
+<div class="declaration"> event  SaveActiveComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, optional <span class="source_type">bool</span> bMoveGroup) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1150" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SaveComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ScaleToResolution-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ScaleToResolution <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#997" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ScaleToResolution ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, optional <span class="source_type">bool</span> <span class="source_type">bPropagate</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectNextControlInMoveGroup-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SelectNextControlInMoveGroup <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#803" class="small">Source code</a></h4>
+<div class="declaration"> event  SelectNextControlInMoveGroup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetCaptureScriptExec-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetCaptureScriptExec <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#681" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetCaptureScriptExec ( <span class="source_type">bool</span> bCapture) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetChildrenDirty-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetChildrenDirty <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#929" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetChildrenDirty ( <span class="source_type"><a href="../gui/guimulticomponent.html" class="source">GUIMultiComponent</a></span> C) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetControllerStatus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetControllerStatus <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#285" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetControllerStatus ( <span class="source_type">bool</span> On) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetFocusedPos-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetFocusedPos <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#881" class="small">Source code</a></h4>
+<div class="declaration"> event  SetFocusedPos ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type">float</span> bmLeft, <span class="source_type">float</span> bmTop, <span class="source_type">int</span> ClipX, <span class="source_type">int</span> ClipY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGuiResolution-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGuiResolution <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#991" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetGuiResolution ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SizeControlsInGroup-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SizeControlsInGroup <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#779" class="small">Source code</a></h4>
+<div class="declaration"> event  SizeControlsInGroup ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type"><a href="../gui/guicontroller.html#eComponentSize" class="source">eComponentSize</a></span> <span class="source_type">size</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SizeOfControl-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SizeOfControl <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1225" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SizeOfControl ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, out <span class="source_type">float</span> <span class="source_type">size</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SnapToGrid-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SnapToGrid <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1044" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SnapToGrid ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type">bool</span> bResized) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleActiveComponentSizing-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ToggleActiveComponentSizing <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1107" class="small">Source code</a></h4>
+<div class="declaration"> event  ToggleActiveComponentSizing ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, optional <span class="source_type">bool</span> <span class="source_type">bPropagate</span>, optional <span class="source_type">bool</span> bMoveGroup) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleSnapToGrid-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ToggleSnapToGrid <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1038" class="small">Source code</a></h4>
+<div class="declaration"> event  ToggleSnapToGrid ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TopPage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TopPage <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#614" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span> TopPage ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UndoActiveComponent-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UndoActiveComponent <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#1176" class="small">Source code</a></h4>
+<div class="declaration"> event  UndoActiveComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, optional <span class="source_type">bool</span> bMoveGroup) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnRegisterNotifyResolutionChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnRegisterNotifyResolutionChanged <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#977" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UnRegisterNotifyResolutionChanged ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Component) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateControl-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UpdateControl <span class="function_state"></span> <a href="../Source_gui/guicontroller.html#904" class="small">Source code</a></h4>
+<div class="declaration"> event  UpdateControl ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Ctrl</span>, <span class="source_type">bool</span> bResized) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	ButtonRepeatDelay=<span class="source_int">0.25</span>
+	CursorStep=<span class="source_int">3</span>
+	FastCursorStep=<span class="source_int">3</span>
+	
+	WhiteBorder=<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span><span class="source_name">'GUITribes.Outline'</span>
+ 	DblClickWindow=<span class="source_int">0.5</span>
+
+	MenuMouseSens=<span class="source_int">1.0</span>
+	bHighlightCurrent=true
+
+    ControllerMask=<span class="source_int">255</span>
+	bEmulatedJoypad=false
+	bJoyMouse=false
+    bHideMouseCursor=false
+    JoyDeadZone=<span class="source_int">0.3</span>
+
+    GridSize=<span class="source_int">2</span>
+    bSnapToGrid=false
+    ResolutionX=<span class="source_int">720</span>
+    ResolutionY=<span class="source_int">540</span>
+    bMousePositioning=false
+    GUI_TO_WORLD_X=<span class="source_int">160.0</span>
+    GUI_TO_WORLD_Y=<span class="source_int">125.0</span>
+    bShowGUIMembers=true
+    bDontDisplayHelpText=true
+    CaptureScriptExec=<span class="source_int">0</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gui/guicontroller.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GUIController">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gui/guicontextmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gui/guidlg.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:30.136 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

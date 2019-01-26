@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: TribesWebAdmin.TribesWebQueryCurrent</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribeswebadmin/tribeswebadmin-overview.html">Package</a></td>
+	<td class="header"><a href="../tribeswebadmin/tribeswebquerycurrent.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesWebQueryCurrent">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribeswebadmin/tribeswebqueryadmins.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribeswebadmin/tribeswebquerydefaults.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tribeswebadmin/tribeswebquerycurrent.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribeswebadmin/tribeswebadmin-overview.html">TribesWebAdmin</a>.<a href="../tribeswebadmin/tribeswebquerycurrent.html">TribesWebQueryCurrent</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../tribeswebadmin/tribeswebquerycurrent.html" class="source">TribesWebQueryCurrent</a></span> extends <span class="source_type"><a href="../tribeswebadmin/tribeswebqueryhandler.html" class="source">TribesWebQueryHandler</a></span>;
+<a name="2"></a>
+<a name="3"></a>var config <span class="source_type">string</span> CurrentIndexPage;		<span class="source_comment">// This is the page with the Menu
+</span><a name="4"></a>var config <span class="source_type">string</span> CurrentPlayersPage;
+<a name="5"></a>var config <span class="source_type">string</span> CurrentGamePage;
+<a name="6"></a>var config <span class="source_type">string</span> CurrentConsolePage;
+<a name="7"></a>var config <span class="source_type">string</span> CurrentConsoleLogPage;
+<a name="8"></a>var config <span class="source_type">string</span> CurrentConsoleSendPage;
+<a name="9"></a>var config <span class="source_type">string</span> CurrentMutatorsPage;
+<a name="10"></a>var config <span class="source_type">string</span> CurrentRestartPage;
+<a name="11"></a>var config <span class="source_type">string</span> DefaultSendText;		<span class="source_comment">// TODO : Move to Defaults
+</span><a name="12"></a>
+<a name="13"></a>var localized <span class="source_type">string</span> NoteGamePage;
+<a name="14"></a>var localized <span class="source_type">string</span> NotePlayersPage;
+<a name="15"></a>var localized <span class="source_type">string</span> NoteConsolePage;
+<a name="16"></a>var localized <span class="source_type">string</span> NoteMutatorsPage;
+<a name="17"></a>
+<a name="18"></a>var <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span>	SpeciesNames;
+<a name="19"></a>
+<a name="20"></a><span class="source_type">function</span> <span class="source_type">bool</span> Query(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="21"></a>{
+<a name="22"></a>    log(<span class="source_string">"Current.Query"</span>);
+<a name="23"></a>
+<a name="24"></a>	switch (Mid(Request.URI, <span class="source_int">1</span>))
+<a name="25"></a>	{
+<a name="26"></a>	    case DefaultPage:			QueryCurrentFrame(Request, <span class="source_type">Response</span>); return true;
+<a name="27"></a>	    case CurrentIndexPage:		QueryCurrentMenu(Request, <span class="source_type">Response</span>); return true;
+<a name="28"></a>	    case CurrentPlayersPage:	if (!<span class="source_type">owner</span>.MapIsChanging()) QueryCurrentPlayers(Request, <span class="source_type">Response</span>); return true;
+<a name="29"></a>	    case CurrentGamePage:		if (!<span class="source_type">owner</span>.MapIsChanging()) QueryCurrentGame(Request, <span class="source_type">Response</span>); return true;
+<a name="30"></a>	    case CurrentConsolePage: 	if (!<span class="source_type">owner</span>.MapIsChanging()) QueryCurrentConsole(Request, <span class="source_type">Response</span>); return true;
+<a name="31"></a>	    case CurrentConsoleLogPage:	if (!<span class="source_type">owner</span>.MapIsChanging()) QueryCurrentConsoleLog(Request, <span class="source_type">Response</span>); return true;
+<a name="32"></a>	    case CurrentConsoleSendPage:	QueryCurrentConsoleSend(Request, <span class="source_type">Response</span>); return true;
+<a name="33"></a>	    case CurrentMutatorsPage:	if (!<span class="source_type">owner</span>.MapIsChanging()) QueryCurrentMutators(Request, <span class="source_type">Response</span>); return true;
+<a name="34"></a>	    case CurrentRestartPage:	if (!<span class="source_type">owner</span>.MapIsChanging()) <span class="source_type">owner</span>.QueryRestartPage(Request, <span class="source_type">Response</span>); return true;
+<a name="35"></a>	}
+<a name="36"></a>	return false;
+<a name="37"></a>}		
+<a name="38"></a>
+<a name="39"></a><span class="source_comment">//*****************************************************************************
+</span><a name="40"></a><span class="source_type">function</span> QueryCurrentFrame(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="41"></a>{
+<a name="42"></a>local <span class="source_type">String</span> <span class="source_type">Page</span>;
+<a name="43"></a>	
+<a name="44"></a>    log(<span class="source_string">"Current.QueryCurrentFrame"</span>);
+<a name="45"></a>
+<a name="46"></a>	<span class="source_comment">// if no page specified, use the default
+</span><a name="47"></a>	<span class="source_type">Page</span> = Request.GetVariable(<span class="source_string">"Page"</span>, CurrentGamePage);
+<a name="48"></a>
+<a name="49"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"IndexURI"</span>, 	CurrentIndexPage$<span class="source_string">"?Page="</span>$<span class="source_type">Page</span>);
+<a name="50"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"MainURI"</span>, 	<span class="source_type">Page</span>);
+<a name="51"></a>	
+<a name="52"></a>	<span class="source_type">owner</span>.ShowFrame(<span class="source_type">Response</span>, DefaultPage);
+<a name="53"></a>}
+<a name="54"></a>
+<a name="55"></a><span class="source_type">function</span> QueryCurrentMenu(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="56"></a>{
+<a name="57"></a>	local <span class="source_type">String</span> <span class="source_type">Page</span>;
+<a name="58"></a>	
+<a name="59"></a>    log(<span class="source_string">"Current.QueryCurrentMenu"</span>);
+<a name="60"></a>
+<a name="61"></a>	<span class="source_type">Page</span> = Request.GetVariable(<span class="source_string">"Page"</span>, CurrentGamePage);
+<a name="62"></a>		
+<a name="63"></a>	<span class="source_comment">// set background colors
+</span><a name="64"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"DefaultBG"</span>, <span class="source_type">owner</span>.DefaultBG);	<span class="source_comment">// for unused tabs
+</span><a name="65"></a>
+<a name="66"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"PlayersBG"</span>, <span class="source_type">owner</span>.DefaultBG);
+<a name="67"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"GameBG"</span>, 	<span class="source_type">owner</span>.DefaultBG);
+<a name="68"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"ConsoleBG"</span>,	<span class="source_type">owner</span>.DefaultBG);
+<a name="69"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorsBG"</span>,<span class="source_type">owner</span>.DefaultBG);
+<a name="70"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"RestartBG"</span>, <span class="source_type">owner</span>.DefaultBG);
+<a name="71"></a>	
+<a name="72"></a>	switch(<span class="source_type">Page</span>) {
+<a name="73"></a>	case CurrentPlayersPage:
+<a name="74"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PlayersBG"</span>,	<span class="source_type">owner</span>.HighlightedBG); break;
+<a name="75"></a>	case CurrentGamePage:
+<a name="76"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"GameBG"</span>, 	<span class="source_type">owner</span>.HighlightedBG); break;
+<a name="77"></a>	case CurrentConsolePage:
+<a name="78"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"ConsoleBG"</span>,	<span class="source_type">owner</span>.HighlightedBG); break;
+<a name="79"></a>	case CurrentMutatorsPage:
+<a name="80"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorsBG"</span>,<span class="source_type">owner</span>.HighlightedBG); break;
+<a name="81"></a>	case CurrentRestartPage:
+<a name="82"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"RestartBG"</span>, <span class="source_type">owner</span>.HighlightedBG); break;
+<a name="83"></a>	}
+<a name="84"></a>
+<a name="85"></a>	<span class="source_comment">// Set URIs
+</span><a name="86"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"PlayersURI"</span>, 	DefaultPage$<span class="source_string">"?Page="</span>$CurrentPlayersPage);
+<a name="87"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"GameURI"</span>,		DefaultPage$<span class="source_string">"?Page="</span>$CurrentGamePage);
+<a name="88"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"ConsoleURI"</span>, 	DefaultPage$<span class="source_string">"?Page="</span>$CurrentConsolePage);
+<a name="89"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorsURI"</span>, 	DefaultPage$<span class="source_string">"?Page="</span>$CurrentMutatorsPage);
+<a name="90"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"RestartURI"</span>, 	DefaultPage$<span class="source_string">"?Page="</span>$CurrentRestartPage);
+<a name="91"></a>	
+<a name="92"></a>	<span class="source_type">owner</span>.ShowPage(<span class="source_type">Response</span>, CurrentIndexPage);
+<a name="93"></a>}
+<a name="94"></a>
+<a name="95"></a><span class="source_type">function</span> QueryCurrentPlayers(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="96"></a>{
+<a name="97"></a>local <span class="source_type">string</span> Sort, PlayerListSubst, TempStr, TempTag, TempData, TeamName;
+<a name="98"></a>local <span class="source_type">string</span> KickButtonText[<span class="source_int">3</span>], TableHeaders;
+<a name="99"></a>local <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span>	PlayerList;
+<a name="100"></a>local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="101"></a>local <span class="source_type">int</span> <span class="source_type">i</span>, Cols;
+<a name="102"></a>local <span class="source_type">string</span> IP;
+<a name="103"></a>local <span class="source_type">bool</span> bCanKick, bCanBan;
+<a name="104"></a>
+<a name="105"></a>    log(<span class="source_string">"Current.QueryCurrentPlayers"</span>);
+<a name="106"></a>
+<a name="107"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"Section"</span>, <span class="source_string">"Player List"</span>);
+<a name="108"></a>	<span class="source_type">Response</span>.Subst(<span class="source_string">"PostAction"</span>, CurrentPlayersPage);
+<a name="109"></a>
+<a name="110"></a>	if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Xp|Kp|Kb|Mb"</span>))
+<a name="111"></a>	{	
+<a name="112"></a>		PlayerList = new(None) <span class="source_type">class</span><span class="source_name">'SortedStringArray'</span>;
+<a name="113"></a>	
+<a name="114"></a>		Sort = Request.GetVariable(<span class="source_string">"Sort"</span>, <span class="source_string">"Name"</span>);
+<a name="115"></a>		Cols = <span class="source_int">0</span>;
+<a name="116"></a>	
+<a name="117"></a>		bCanKick = <span class="source_type">owner</span>.CanPerform(<span class="source_string">"Kp|Mb"</span>);
+<a name="118"></a>		bCanBan = <span class="source_type">owner</span>.CanPerform(<span class="source_string">"Kb"</span>);
+<a name="119"></a>		
+<a name="120"></a>		if (bCanKick || bCanBan)
+<a name="121"></a>		{
+<a name="122"></a>			for ( <span class="source_type">P</span>=<span class="source_type">owner</span>.<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="123"></a>			{
+<a name="124"></a>				if(		<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>) != None 
+<a name="125"></a>					&&	<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != None
+<a name="126"></a>					&&	NetConnection(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>).<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) != None)
+<a name="127"></a>				{
+<a name="128"></a>					if ( bCanBan && Request.GetVariable(<span class="source_string">"BanPlayer"</span>$<span class="source_type">string</span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.<span class="source_type">PlayerID</span>)) != <span class="source_string">""</span> )
+<a name="129"></a>						<span class="source_type">owner</span>.<span class="source_type">Level</span>.Game.<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.KickBanPlayer(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>));
+<a name="130"></a>					else if ( bCanKick && Request.GetVariable(<span class="source_string">"KickPlayer"</span>$<span class="source_type">string</span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.<span class="source_type">PlayerID</span>)) != <span class="source_string">""</span> )
+<a name="131"></a>						<span class="source_type">P</span>.Destroy();
+<a name="132"></a>				}
+<a name="133"></a>			}
+<a name="134"></a>			
+<a name="135"></a>			KickButtonText[<span class="source_int">0</span>] = <span class="source_string">"Kick"</span>;
+<a name="136"></a>			KickButtonText[<span class="source_int">1</span>] = <span class="source_string">"Ban"</span>;
+<a name="137"></a>			KickButtonText[<span class="source_int">2</span>] = <span class="source_string">"Kick/Ban"</span>;
+<a name="138"></a>			if (bCanKick) Cols += <span class="source_int">1</span>;
+<a name="139"></a>			if (bCanBan) Cols += <span class="source_int">2</span>;
+<a name="140"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"KickButton"</span>, <span class="source_string">"&lt;input class=button type='submit' name='Kick' value='"</span>$KickButtonText[Cols-<span class="source_int">1</span>]$<span class="source_string">"'&gt;"</span>);
+<a name="141"></a>			
+<a name="142"></a>			<span class="source_comment">// Build of valid TableHeaders
+</span><a name="143"></a>			TableHeaders = <span class="source_string">""</span>;
+<a name="144"></a>			if (bCanKick)
+<a name="145"></a>			{
+<a name="146"></a>				<span class="source_type">Response</span>.Subst(<span class="source_string">"HeadTitle"</span>, <span class="source_string">"Kick"</span>);
+<a name="147"></a>				TableHeaders = TableHeaders$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_list_head"</span>);
+<a name="148"></a>			}
+<a name="149"></a>			
+<a name="150"></a>			if (bCanBan)
+<a name="151"></a>			{
+<a name="152"></a>				<span class="source_type">Response</span>.Subst(<span class="source_string">"HeadTitle"</span>, <span class="source_string">"Ban"</span>);
+<a name="153"></a>				TableHeaders = TableHeaders$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_list_head"</span>);
+<a name="154"></a>			}
+<a name="155"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"HeadTitle"</span>, <span class="source_string">"Name"</span>);
+<a name="156"></a>			TableHeaders = TableHeaders$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_list_head_link"</span>);
+<a name="157"></a>			
+<a name="158"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"HeadTitle"</span>, <span class="source_string">"Team"</span>);
+<a name="159"></a>			TableHeaders = TableHeaders$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_list_head_link"</span>);
+<a name="160"></a>			
+<a name="161"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"HeadTitle"</span>, <span class="source_string">"Ping"</span>);
+<a name="162"></a>			TableHeaders = TableHeaders$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_list_head_link"</span>);
+<a name="163"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"HeadTitle"</span>, <span class="source_string">"Score"</span>);
+<a name="164"></a>			TableHeaders = TableHeaders$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_list_head_link"</span>);
+<a name="165"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"HeadTitle"</span>, <span class="source_string">"IP"</span>);
+<a name="166"></a>			TableHeaders = TableHeaders$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_list_head"</span>);
+<a name="167"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"TableHeaders"</span>, TableHeaders);
+<a name="168"></a>		}
+<a name="169"></a>
+<a name="170"></a>		for (<span class="source_type">P</span>=<span class="source_type">owner</span>.<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController)
+<a name="171"></a>		{
+<a name="172"></a>			if (!<span class="source_type">P</span>.bDeleteMe && <span class="source_type">P</span>.bIsPlayer && <span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != None)
+<a name="173"></a>			{
+<a name="174"></a>				TempData = <span class="source_string">"&lt;tr&gt;"</span>;
+<a name="175"></a>				
+<a name="176"></a>				<span class="source_type">Response</span>.Subst(<span class="source_string">"PlayerId"</span>, <span class="source_type">string</span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.<span class="source_type">PlayerID</span>));
+<a name="177"></a>				if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Kp"</span>))
+<a name="178"></a>					TempData = TempData$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_kick_col"</span>);
+<a name="179"></a>
+<a name="180"></a>				if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Kb"</span>))
+<a name="181"></a>				{
+<a name="182"></a>					if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>) != None)
+<a name="183"></a>						TempData = TempData$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_ban_col"</span>);
+<a name="184"></a>					else
+<a name="185"></a>						TempData = TempData$<span class="source_type">owner</span>.WebInclude(CurrentPlayersPage$<span class="source_string">"_empty_col"</span>);
+<a name="186"></a>				}
+<a name="187"></a>
+<a name="188"></a>                if (<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsSpectator)
+<a name="189"></a>					TempStr = <span class="source_string">"&nbsp;(Spectator)"</span>;
+<a name="190"></a>				else
+<a name="191"></a>					TempStr = <span class="source_string">"&nbsp;"</span>;
+<a name="192"></a>
+<a name="193"></a>				if( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>) != None )
+<a name="194"></a>				{
+<a name="195"></a>					IP = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>).GetPlayerNetworkAddress();
+<a name="196"></a>					if (IP!=<span class="source_string">""</span>)
+<a name="197"></a>    					IP = Left(IP, InStr(IP, <span class="source_string">":"</span>));
+<a name="198"></a>    				else
+<a name="199"></a>    				    IP = <span class="source_string">"localhost"</span>;
+<a name="200"></a>				}
+<a name="201"></a>				else
+<a name="202"></a>					IP = <span class="source_string">""</span>;
+<a name="203"></a>
+<a name="204"></a>				TempData = TempData$<span class="source_string">"&lt;td&gt;&lt;div align=\"left\" nowrap&gt;"</span>$<span class="source_type">owner</span>.HtmlEncode(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.<span class="source_type">PlayerName</span>)$TempStr$<span class="source_string">"&lt;/div&gt;&lt;/td&gt;"</span>;
+<a name="205"></a>				
+<a name="206"></a>				TeamName = <span class="source_type">owner</span>.HtmlEncode(<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>).team.localizedName);
+<a name="207"></a>				TempData = TempData$<span class="source_string">"&lt;td nowrap align=center&gt;"</span>$TeamName$<span class="source_string">"&nbsp;&lt;/td&gt;"</span>;
+<a name="208"></a>
+<a name="209"></a>				TempData = TempData$<span class="source_string">"&lt;td&gt;&lt;div align=\"center\"&gt;"</span>$<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Ping$<span class="source_string">"&lt;/div&gt;&lt;/td&gt;"</span>;
+<a name="210"></a>				TempData = TempData$<span class="source_string">"&lt;td&gt;&lt;div align=\"center\"&gt;"</span>$<span class="source_type">int</span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Score)$<span class="source_string">"&lt;/div&gt;&lt;/td&gt;"</span>;
+<a name="211"></a>				TempData = TempData$<span class="source_string">"&lt;td&gt;&lt;div align=\"center\"&gt;"</span>$IP$<span class="source_string">"&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;"</span>;
+<a name="212"></a>
+<a name="213"></a>				switch (Sort)
+<a name="214"></a>				{
+<a name="215"></a>					case <span class="source_string">"Name"</span>:
+<a name="216"></a>						TempTag = <span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.<span class="source_type">PlayerName</span>; break;
+<a name="217"></a>					case <span class="source_string">"Team"</span>:	<span class="source_comment">// Ordered by Team + TeamId
+</span><a name="218"></a>						TempTag = TeamName; break;
+<a name="219"></a>					case <span class="source_string">"Ping"</span>:
+<a name="220"></a>						TempTag = Right(<span class="source_string">"0000"</span>$<span class="source_type">string</span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Ping), <span class="source_int">5</span>); break;
+<a name="221"></a>					default:
+<a name="222"></a>						TempTag = Right(<span class="source_string">"000"</span>$<span class="source_type">string</span>(<span class="source_type">int</span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Score)), <span class="source_int">4</span>); break;
+<a name="223"></a>				}
+<a name="224"></a>
+<a name="225"></a>				PlayerList.<span class="source_type">Add</span>(TempData, TempTag);
+<a name="226"></a>			}
+<a name="227"></a>		}
+<a name="228"></a>		PlayerListSubst = <span class="source_string">""</span>;
+<a name="229"></a>		if (PlayerList.Count() &gt; <span class="source_int">0</span>)
+<a name="230"></a>		{
+<a name="231"></a>			for ( <span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;PlayerList.Count(); <span class="source_type">i</span>++)
+<a name="232"></a>			{
+<a name="233"></a>				if (Sort ~= <span class="source_string">"Score"</span>)
+<a name="234"></a>					PlayerListSubst = PlayerList.GetItem(<span class="source_type">i</span>)$PlayerListSubst;
+<a name="235"></a>				else
+<a name="236"></a>					PlayerListSubst = PlayerListSubst$PlayerList.GetItem(<span class="source_type">i</span>);
+<a name="237"></a>			}
+<a name="238"></a>		}
+<a name="239"></a>		else
+<a name="240"></a>			PlayerListSubst = <span class="source_string">"&lt;tr align=\"center\"&gt;&lt;td colspan=\"5\"&gt;** No Players Connected **&lt;/td&gt;&lt;/tr&gt;"</span>;
+<a name="241"></a>
+<a name="242"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PlayerList"</span>, PlayerListSubst);
+<a name="243"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"Sort"</span>, Sort);
+<a name="244"></a>
+<a name="245"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PageHelp"</span>, NotePlayersPage);
+<a name="246"></a>		<span class="source_type">owner</span>.MapTitle(<span class="source_type">Response</span>);
+<a name="247"></a>		<span class="source_type">owner</span>.ShowPage(<span class="source_type">Response</span>, CurrentPlayersPage);
+<a name="248"></a>	}
+<a name="249"></a>	else
+<a name="250"></a>		<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);	
+<a name="251"></a>}
+<a name="252"></a>
+<a name="253"></a><span class="source_type">function</span> QueryCurrentGame(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="254"></a>{
+<a name="255"></a>local <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span>	ExcludeMaps, IncludeMaps, MovedMaps;
+<a name="256"></a>local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>&gt; GameClass;
+<a name="257"></a>local <span class="source_type">string</span> NewGameType, SwitchButtonName;
+<a name="258"></a>local <span class="source_type">bool</span> bMakeChanges;
+<a name="259"></a>
+<a name="260"></a>    log(<span class="source_string">"Current.QueryCurrentGame"</span>);
+<a name="261"></a>
+<a name="262"></a>	if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Mt|Mm"</span>))
+<a name="263"></a>	{
+<a name="264"></a>		if (Request.GetVariable(<span class="source_string">"SwitchGameTypeAndMap"</span>, <span class="source_string">""</span>) != <span class="source_string">""</span>)
+<a name="265"></a>		{
+<a name="266"></a>			if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Mt"</span>))
+<a name="267"></a>			{
+<a name="268"></a>				<span class="source_type">owner</span>.ServerChangeMap(Request, <span class="source_type">Response</span>, Request.GetVariable(<span class="source_string">"MapSelect"</span>), Request.GetVariable(<span class="source_string">"GameTypeSelect"</span>));
+<a name="269"></a>			}
+<a name="270"></a>			else
+<a name="271"></a>				<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);
+<a name="272"></a>			
+<a name="273"></a>			return;
+<a name="274"></a>		}
+<a name="275"></a>		else if (Request.GetVariable(<span class="source_string">"SwitchMap"</span>, <span class="source_string">""</span>) != <span class="source_string">""</span>)
+<a name="276"></a>		{
+<a name="277"></a>			if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Mm|Mt"</span>))
+<a name="278"></a>			{
+<a name="279"></a>				<span class="source_comment">// TODO: Add a check to see if already changing
+</span><a name="280"></a>				<span class="source_type">owner</span>.<span class="source_type">Level</span>.ServerTravel(Request.GetVariable(<span class="source_string">"MapSelect"</span>)$<span class="source_string">"?game="</span>$<span class="source_type">owner</span>.<span class="source_type">Level</span>.Game.<span class="source_type">Class</span>$<span class="source_string">"?mutator="</span>$<span class="source_type">owner</span>.UsedMutators(), false);
+<a name="281"></a>				<span class="source_type">owner</span>.ShowMessage(<span class="source_type">Response</span>, <span class="source_string">"Please Wait"</span>, <span class="source_string">"The server is now switching to map '"</span>$Request.GetVariable(<span class="source_string">"MapSelect"</span>)$<span class="source_string">"'.    Please allow 10-15 seconds while the server changes levels."</span>);
+<a name="282"></a>			}
+<a name="283"></a>			else
+<a name="284"></a>				<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);
+<a name="285"></a>			
+<a name="286"></a>			return;
+<a name="287"></a>		}
+<a name="288"></a>
+<a name="289"></a>		bMakeChanges = (Request.GetVariable(<span class="source_string">"ApplySettings"</span>, <span class="source_string">""</span>) != <span class="source_string">""</span>);
+<a name="290"></a>
+<a name="291"></a>		if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Mt"</span>) && (bMakeChanges || Request.GetVariable(<span class="source_string">"SwitchGameType"</span>, <span class="source_string">""</span>) != <span class="source_string">""</span>))
+<a name="292"></a>		{
+<a name="293"></a>			NewGameType = Request.GetVariable(<span class="source_string">"GameTypeSelect"</span>);
+<a name="294"></a>			GameClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>&gt;(DynamicLoadObject(NewGameType, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="295"></a>		}
+<a name="296"></a>		else
+<a name="297"></a>			GameClass = None;
+<a name="298"></a>		
+<a name="299"></a>		if (GameClass == None)
+<a name="300"></a>		{
+<a name="301"></a>   			GameClass = <span class="source_type">owner</span>.<span class="source_type">Level</span>.Game.<span class="source_type">Class</span>;
+<a name="302"></a>			NewGameType = <span class="source_type">String</span>(GameClass);
+<a name="303"></a>		}
+<a name="304"></a>
+<a name="305"></a>		ExcludeMaps = <span class="source_type">owner</span>.ReloadExcludeMaps(NewGameType);
+<a name="306"></a>		IncludeMaps = <span class="source_type">owner</span>.ReloadIncludeMaps(ExcludeMaps, NewGameType);
+<a name="307"></a>
+<a name="308"></a>		if (GameClass == <span class="source_type">owner</span>.<span class="source_type">Level</span>.Game.<span class="source_type">Class</span>)
+<a name="309"></a>		{
+<a name="310"></a>			SwitchButtonName=<span class="source_string">"SwitchMap"</span>;
+<a name="311"></a>			MovedMaps = New(None) <span class="source_type">Class</span><span class="source_name">'SortedStringArray'</span>;
+<a name="312"></a>			MovedMaps.CopyFromId(IncludeMaps, IncludeMaps.FindItemId(Left(<span class="source_type">string</span>(<span class="source_type">owner</span>.<span class="source_type">Level</span>), InStr(<span class="source_type">string</span>(<span class="source_type">owner</span>.<span class="source_type">Level</span>), <span class="source_string">"."</span>))$<span class="source_string">".unr"</span>));
+<a name="313"></a>		}
+<a name="314"></a>		else
+<a name="315"></a>			SwitchButtonName=<span class="source_string">"SwitchGameTypeAndMap"</span>;
+<a name="316"></a>	
+<a name="317"></a>		if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Mt"</span>))
+<a name="318"></a>		{
+<a name="319"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"GameTypeSelect"</span>, <span class="source_string">"&lt;select name=\"GameTypeSelect\"&gt;"</span>$<span class="source_type">owner</span>.GenerateGameTypeOptions(NewGameType)$<span class="source_string">"&lt;/select&gt;"</span>);
+<a name="320"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"GameTypeButton"</span>, <span class="source_string">"&lt;input class=button type='submit' name='SwitchGameType' value='Switch'&gt;"</span>);
+<a name="321"></a>		}
+<a name="322"></a>		else
+<a name="323"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"GameTypeSelect"</span>, <span class="source_type">owner</span>.<span class="source_type">Level</span>.Game.Default.GameName);
+<a name="324"></a>		
+<a name="325"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"MapButton"</span>, <span class="source_string">"&lt;input class=button type='submit' name='"</span>$SwitchButtonName$<span class="source_string">"' value='Switch'&gt;"</span>);
+<a name="326"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"MapSelect"</span>, <span class="source_type">owner</span>.GenerateMapListSelect(IncludeMaps, MovedMaps ));
+<a name="327"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PostAction"</span>, CurrentGamePage);
+<a name="328"></a>	
+<a name="329"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"Section"</span>, <span class="source_string">"Current Game"</span>);
+<a name="330"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PageHelp"</span>, NoteGamePage);
+<a name="331"></a>		<span class="source_type">owner</span>.MapTitle(<span class="source_type">Response</span>);
+<a name="332"></a>		<span class="source_type">owner</span>.ShowPage(<span class="source_type">Response</span>, CurrentGamePage);
+<a name="333"></a>	}
+<a name="334"></a>	else
+<a name="335"></a>		<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);
+<a name="336"></a>}
+<a name="337"></a>
+<a name="338"></a><span class="source_type">function</span> QueryCurrentConsole(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="339"></a>{
+<a name="340"></a>local <span class="source_type">String</span> SendStr, OutStr;
+<a name="341"></a>
+<a name="342"></a>    log(<span class="source_string">"Current.QueryCurrentConsole"</span>);
+<a name="343"></a>
+<a name="344"></a>	if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Xc"</span>))
+<a name="345"></a>	{
+<a name="346"></a>		SendStr = Request.GetVariable(<span class="source_string">"SendText"</span>, <span class="source_string">""</span>);
+<a name="347"></a>		if (SendStr != <span class="source_string">""</span> && !(Left(SendStr, <span class="source_int">6</span>) ~= <span class="source_string">"debug "</span> || SendStr ~= <span class="source_string">"debug"</span>))
+<a name="348"></a>		{
+<a name="349"></a>			if (Left(SendStr, <span class="source_int">4</span>) ~= <span class="source_string">"say "</span>)
+<a name="350"></a>				<span class="source_type">owner</span>.<span class="source_type">Level</span>.Game.Broadcast(<span class="source_type">owner</span>.Spectator, Mid(SendStr, <span class="source_int">4</span>), <span class="source_name">'Say'</span>);
+<a name="351"></a>			else if (SendStr ~= <span class="source_string">"dump"</span>)
+<a name="352"></a>				<span class="source_type">owner</span>.Spectator.Dump();
+<a name="353"></a>			else
+<a name="354"></a>			{
+<a name="355"></a>				OutStr = <span class="source_type">owner</span>.<span class="source_type">Level</span>.ConsoleCommand(SendStr);
+<a name="356"></a>				if (OutStr != <span class="source_string">""</span>)
+<a name="357"></a>					<span class="source_type">owner</span>.Spectator.AddMessage(None, OutStr, <span class="source_name">'Console'</span>);
+<a name="358"></a>			}
+<a name="359"></a>		}
+<a name="360"></a>		
+<a name="361"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"LogURI"</span>, CurrentConsoleLogPage);
+<a name="362"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"SayURI"</span>, CurrentConsoleSendPage);
+<a name="363"></a>		<span class="source_type">owner</span>.ShowPage(<span class="source_type">Response</span>, CurrentConsolePage);
+<a name="364"></a>	}
+<a name="365"></a>	else
+<a name="366"></a>		<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);
+<a name="367"></a>}
+<a name="368"></a>
+<a name="369"></a><span class="source_type">function</span> QueryCurrentConsoleLog(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="370"></a>{
+<a name="371"></a>local <span class="source_type">String</span> LogSubst, LogStr;
+<a name="372"></a>local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="373"></a>
+<a name="374"></a>
+<a name="375"></a>    log(<span class="source_string">"Current.QueryCurrentConsoleLog"</span>);
+<a name="376"></a>
+<a name="377"></a>	if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Xc"</span>))
+<a name="378"></a>	{
+<a name="379"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"Section"</span>, <span class="source_string">"Server Console"</span>);
+<a name="380"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"SubTitle"</span>, <span class="source_type">owner</span>.<span class="source_type">Level</span>.Game.<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.GameName$<span class="source_string">" in "</span>$<span class="source_type">owner</span>.<span class="source_type">Level</span>.Title);
+<a name="381"></a><span class="source_comment">//		Spectator.Dump();
+</span><a name="382"></a>		<span class="source_type">i</span> = <span class="source_type">owner</span>.Spectator.LastMessage();
+<a name="383"></a>		LogStr = <span class="source_type">owner</span>.HtmlEncode(<span class="source_type">owner</span>.Spectator.NextMessage(<span class="source_type">i</span>));
+<a name="384"></a>		while (LogStr  != <span class="source_string">""</span>)
+<a name="385"></a>		{
+<a name="386"></a>			LogSubst = LogSubst$<span class="source_string">"&gt; "</span>$LogStr$<span class="source_string">"&lt;br&gt;"</span>;
+<a name="387"></a>			LogStr = <span class="source_type">owner</span>.HtmlEncode(<span class="source_type">owner</span>.Spectator.NextMessage(<span class="source_type">i</span>));
+<a name="388"></a>		}
+<a name="389"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"RefreshMeta"</span>, <span class="source_string">"&lt;meta http-equiv=\"refresh\" CONTENT=\"5; URL="</span>$<span class="source_type">owner</span>.<span class="source_type"><a href="../uweb/webserver.html" class="source">WebServer</a></span>.ServerURL$<span class="source_type">owner</span>.Path$<span class="source_string">"/"</span>$CurrentConsoleLogPage$<span class="source_string">"#END\"&gt;"</span>);
+<a name="390"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"LogText"</span>, LogSubst);
+<a name="391"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PageHelp"</span>, NoteConsolePage);
+<a name="392"></a>		<span class="source_type">owner</span>.MapTitle(<span class="source_type">Response</span>);
+<a name="393"></a>		<span class="source_type">owner</span>.ShowPage(<span class="source_type">Response</span>, CurrentConsoleLogPage);
+<a name="394"></a>	}
+<a name="395"></a>	else
+<a name="396"></a>		<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);
+<a name="397"></a>}
+<a name="398"></a>
+<a name="399"></a><span class="source_type">function</span> QueryCurrentConsoleSend(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="400"></a>{
+<a name="401"></a>    log(<span class="source_string">"Current.QueryCurrentConsoleSend"</span>);
+<a name="402"></a>
+<a name="403"></a>	if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Xc"</span>))
+<a name="404"></a>	{
+<a name="405"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"DefaultSendText"</span>, DefaultSendText);
+<a name="406"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PostAction"</span>, CurrentConsolePage);
+<a name="407"></a>		<span class="source_type">owner</span>.ShowPage(<span class="source_type">Response</span>, CurrentConsoleSendPage);
+<a name="408"></a>	}
+<a name="409"></a>	else
+<a name="410"></a>		<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);
+<a name="411"></a>}
+<a name="412"></a>
+<a name="413"></a><span class="source_type">function</span> QueryCurrentMutators(<span class="source_type"><a href="../uweb/webrequest.html" class="source">WebRequest</a></span> Request, <span class="source_type"><a href="../uweb/webresponse.html" class="source">WebResponse</a></span> <span class="source_type">Response</span>)
+<a name="414"></a>{
+<a name="415"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>, j, k, l, id;
+<a name="416"></a>    local <span class="source_type">bool</span> bHasSelected;
+<a name="417"></a>    local <span class="source_type">string</span> selectedmutes, lastgroup, nextgroup, thisgroup;
+<a name="418"></a>    local <span class="source_type">string</span> GrpValue;
+<a name="419"></a>    local <span class="source_type"><a href="../tribeswebadmin/stringarray.html" class="source">StringArray</a></span>	GroupedMutators;
+<a name="420"></a>
+<a name="421"></a>	if (<span class="source_type">owner</span>.CanPerform(<span class="source_string">"Mu"</span>))
+<a name="422"></a>	{
+<a name="423"></a>	    <span class="source_comment">// glenn: workaround for stupid unreal code
+</span><a name="424"></a>	    
+<a name="425"></a>	    <span class="source_type">owner</span>.LoadMutators();
+<a name="426"></a>	
+<a name="427"></a>	    GroupedMutators = new(None) <span class="source_type">class</span><span class="source_name">'SortedStringArray'</span>;
+<a name="428"></a>		if (Request.GetVariable(<span class="source_string">"SetMutes"</span>, <span class="source_string">""</span>) != <span class="source_string">""</span>)
+<a name="429"></a>		{
+<a name="430"></a>			<span class="source_type">owner</span>.AIncMutators.<span class="source_type">Reset</span>();
+<a name="431"></a>			lastgroup = <span class="source_string">""</span>;
+<a name="432"></a>			for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type">owner</span>.AExcMutators.Count(); <span class="source_type">i</span>++)
+<a name="433"></a>			{
+<a name="434"></a>				j = <span class="source_type">int</span>(<span class="source_type">owner</span>.AExcMutators.GetItem(<span class="source_type">i</span>));
+<a name="435"></a>				
+<a name="436"></a>				thisgroup = <span class="source_type">owner</span>.AllMutators[j].GroupName;
+<a name="437"></a>
+<a name="438"></a>				if (Request.GetVariable(<span class="source_type">owner</span>.AExcMutators.GetTag(<span class="source_type">i</span>), <span class="source_string">""</span>) != <span class="source_string">""</span> || Request.GetVariable(thisgroup) == <span class="source_type">owner</span>.AllMutators[j].<span class="source_type">ClassName</span>)
+<a name="439"></a>					<span class="source_type">owner</span>.AIncMutators.<span class="source_type">Add</span>(<span class="source_type">owner</span>.AExcMutators.GetItem(<span class="source_type">i</span>), <span class="source_type">owner</span>.AExcMutators.GetTag(<span class="source_type">i</span>));
+<a name="440"></a>			}
+<a name="441"></a>		}
+<a name="442"></a>		
+<a name="443"></a>		<span class="source_comment">// Make a list sorted by groupname.classname
+</span><a name="444"></a>		for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type">owner</span>.AExcMutators.Count(); <span class="source_type">i</span>++)
+<a name="445"></a>		{
+<a name="446"></a>			j = <span class="source_type">int</span>(<span class="source_type">owner</span>.AExcMutators.GetItem(<span class="source_type">i</span>));
+<a name="447"></a>			GroupedMutators.<span class="source_type">Add</span>(<span class="source_type">string</span>(j), <span class="source_type">owner</span>.AllMutators[j].GroupName$<span class="source_string">"."</span>$<span class="source_type">owner</span>.AllMutators[j].<span class="source_type">ClassName</span>);
+<a name="448"></a>			
+<a name="449"></a>			log(<span class="source_string">"grouped mutators add: "</span>$<span class="source_type">string</span>(j)$<span class="source_string">", "</span>$<span class="source_type">owner</span>.AllMutators[j].GroupName$<span class="source_string">"."</span>$<span class="source_type">owner</span>.AllMutators[j].<span class="source_type">ClassName</span>);
+<a name="450"></a>		}
+<a name="451"></a>
+<a name="452"></a>		<span class="source_comment">// First, Display Selected Mutators, 1 per line
+</span><a name="453"></a>		selectedmutes = <span class="source_string">""</span>;
+<a name="454"></a>		for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type">owner</span>.AIncMutators.Count(); <span class="source_type">i</span>++)
+<a name="455"></a>		{
+<a name="456"></a>		j = <span class="source_type">int</span>(<span class="source_type">owner</span>.AIncMutators.GetItem(<span class="source_type">i</span>));
+<a name="457"></a>
+<a name="458"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorName"</span>, <span class="source_type">owner</span>.HtmlEncode(<span class="source_type">owner</span>.AllMutators[j].FriendlyName));
+<a name="459"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorDesc"</span>, <span class="source_type">owner</span>.HtmlEncode(<span class="source_type">owner</span>.AllMutators[j].Description));
+<a name="460"></a>
+<a name="461"></a>			selectedmutes = selectedmutes$<span class="source_type">owner</span>.WebInclude(<span class="source_string">"current_mutators_selected"</span>);
+<a name="462"></a>		}
+<a name="463"></a>		if (selectedmutes != <span class="source_string">""</span>)
+<a name="464"></a>		{
+<a name="465"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"TableTitle"</span>, <span class="source_string">"Selected Mutators"</span>);
+<a name="466"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"TableRows"</span>, selectedmutes);
+<a name="467"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"SelectedTable"</span>, <span class="source_type">owner</span>.WebInclude(<span class="source_string">"current_mutators_table"</span>));
+<a name="468"></a>		}
+<a name="469"></a>
+<a name="470"></a>
+<a name="471"></a>		<span class="source_comment">// Then, Display All mutators with CheckBoxes/Radio Buttons based on Groups
+</span><a name="472"></a>		lastgroup = <span class="source_string">""</span>;
+<a name="473"></a>		selectedmutes=<span class="source_string">""</span>;
+<a name="474"></a>		for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span>&lt;GroupedMutators.Count(); <span class="source_type">i</span>++)
+<a name="475"></a>		{
+<a name="476"></a>			j = <span class="source_type">int</span>(GroupedMutators.GetItem(<span class="source_type">i</span>));
+<a name="477"></a>
+<a name="478"></a>			if ( (<span class="source_type">i</span> + <span class="source_int">1</span>) == GroupedMutators.Count())
+<a name="479"></a>				nextgroup = <span class="source_string">""</span>;
+<a name="480"></a>			else
+<a name="481"></a>			{
+<a name="482"></a>				k = <span class="source_type">int</span>(GroupedMutators.GetItem(<span class="source_type">i</span> + <span class="source_int">1</span>));
+<a name="483"></a>				nextgroup = <span class="source_type">owner</span>.AllMutators[k].GroupName;
+<a name="484"></a>			}
+<a name="485"></a>
+<a name="486"></a>			thisgroup = <span class="source_type">owner</span>.AllMutators[j].GroupName;
+<a name="487"></a>
+<a name="488"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"GroupName"</span>, nextgroup);
+<a name="489"></a>			if (lastgroup != thisgroup && thisgroup == nextgroup)
+<a name="490"></a>			{
+<a name="491"></a>				bHasSelected = false;
+<a name="492"></a>				GrpValue = <span class="source_string">"None"</span>;
+<a name="493"></a>				<span class="source_comment">// See if any items in group is selected
+</span><a name="494"></a>				for (k = <span class="source_type">i</span>; k&lt;GroupedMutators.Count(); k++)
+<a name="495"></a>				{
+<a name="496"></a>					l = <span class="source_type">int</span>(GroupedMutators.GetItem(k));
+<a name="497"></a>					if (<span class="source_type">owner</span>.AllMutators[l].GroupName != nextgroup)
+<a name="498"></a>						break;
+<a name="499"></a>
+<a name="500"></a>					id = <span class="source_type">owner</span>.AIncMutators.FindTagId(<span class="source_type">owner</span>.AllMutators[l].<span class="source_type">ClassName</span>);
+<a name="501"></a>
+<a name="502"></a>					if (id != -<span class="source_int">1</span>)
+<a name="503"></a>					{
+<a name="504"></a>						GrpValue = <span class="source_type">owner</span>.AllMutators[l].<span class="source_type">ClassName</span>;
+<a name="505"></a>						bHasSelected = true;
+<a name="506"></a>						break;
+<a name="507"></a>					}
+<a name="508"></a>				}
+<a name="509"></a>
+<a name="510"></a>				<span class="source_comment">// Output Group Row + None Row
+</span><a name="511"></a>				<span class="source_type">Response</span>.Subst(<span class="source_string">"GroupValue"</span>, GrpValue);
+<a name="512"></a>				if (GrpValue == <span class="source_string">"None"</span>)
+<a name="513"></a>					<span class="source_type">Response</span>.Subst(<span class="source_string">"Checked"</span>, <span class="source_string">"checked"</span>);
+<a name="514"></a>
+<a name="515"></a>				selectedmutes = selectedmutes$<span class="source_type">owner</span>.WebInclude(<span class="source_string">"current_mutators_group"</span>);
+<a name="516"></a>			}
+<a name="517"></a>
+<a name="518"></a>			id = <span class="source_type">owner</span>.AIncMutators.FindTagId(<span class="source_type">owner</span>.AllMutators[j].<span class="source_type">ClassName</span>);
+<a name="519"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"Checked"</span>, <span class="source_string">""</span>);
+<a name="520"></a>			if (id &gt;= <span class="source_int">0</span>)
+<a name="521"></a>				<span class="source_type">Response</span>.Subst(<span class="source_string">"Checked"</span>, <span class="source_string">"checked"</span>);
+<a name="522"></a>
+<a name="523"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorClass"</span>, <span class="source_type">owner</span>.AllMutators[j].<span class="source_type">ClassName</span>);
+<a name="524"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorName"</span>, <span class="source_type">owner</span>.AllMutators[j].FriendlyName);
+<a name="525"></a>			<span class="source_type">Response</span>.Subst(<span class="source_string">"MutatorDesc"</span>, <span class="source_type">owner</span>.AllMutators[j].Description);
+<a name="526"></a>			if (nextgroup == thisgroup || thisgroup == lastgroup)
+<a name="527"></a>				selectedmutes = selectedmutes$<span class="source_type">owner</span>.WebInclude(<span class="source_string">"current_mutators_group_row"</span>);
+<a name="528"></a>			else
+<a name="529"></a>				selectedmutes = selectedmutes$<span class="source_type">owner</span>.WebInclude(<span class="source_string">"current_mutators_row"</span>);
+<a name="530"></a>
+<a name="531"></a>			lastgroup = thisgroup;
+<a name="532"></a>		}
+<a name="533"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"TableTitle"</span>, <span class="source_string">"Pick your Mutators"</span>);
+<a name="534"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"TableRows"</span>, selectedmutes);
+<a name="535"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"ChooseTable"</span>, <span class="source_type">owner</span>.WebInclude(<span class="source_string">"current_mutators_table"</span>));
+<a name="536"></a>
+<a name="537"></a>
+<a name="538"></a>		<span class="source_type">owner</span>.MapTitle(<span class="source_type">Response</span>);
+<a name="539"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"Section"</span>, <span class="source_string">"Mutators"</span>);
+<a name="540"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PageHelp"</span>, NoteMutatorsPage);
+<a name="541"></a>		<span class="source_type">Response</span>.Subst(<span class="source_string">"PostAction"</span>, CurrentMutatorsPage);
+<a name="542"></a>		<span class="source_type">owner</span>.ShowPage(<span class="source_type">Response</span>, CurrentMutatorsPage);
+<a name="543"></a>	}
+<a name="544"></a>	else
+<a name="545"></a>		<span class="source_type">owner</span>.AccessDenied(<span class="source_type">Response</span>);
+<a name="546"></a>}
+<a name="547"></a>
+<a name="548"></a><span class="source_type">function</span> <span class="source_type">string</span> GetTeamColor(<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> Team)
+<a name="549"></a>{
+<a name="550"></a>    <span class="source_comment">// ADMIN TODO - team color (blue, yellow, red)
+</span><a name="551"></a>
+<a name="552"></a>    <span class="source_comment">/*
+<a name="553"></a>	if (Team == None)
+<a name="554"></a>		return "";
+<a name="555"></a>
+<a name="556"></a>	if (Team.TeamIndex &lt; 4)
+<a name="557"></a>		return Team.ColorNames[Team.TeamIndex];
+<a name="558"></a>		*/</span>
+<a name="559"></a>
+<a name="560"></a>	return <span class="source_string">"#CCCCCC"</span>;
+<a name="561"></a>}
+<a name="562"></a>
+<a name="563"></a><span class="source_type">function</span> <span class="source_type">string</span> GetTeamName(<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> Team)
+<a name="564"></a>{
+<a name="565"></a>	if (Team == None)
+<a name="566"></a>		return <span class="source_string">""</span>;
+<a name="567"></a>
+<a name="568"></a>	return Team.GetHumanReadableName();
+<a name="569"></a>}
+<a name="570"></a>
+<a name="571"></a>
+<a name="572"></a>defaultproperties
+<a name="573"></a>{
+<a name="574"></a>	Title=<span class="source_string">"Current"</span>
+<a name="575"></a>	DefaultPage=<span class="source_string">"currentframe"</span>
+<a name="576"></a>    CurrentIndexPage=<span class="source_string">"current_menu"</span>
+<a name="577"></a>    CurrentPlayersPage=<span class="source_string">"current_players"</span>
+<a name="578"></a>    CurrentGamePage=<span class="source_string">"current_game"</span>
+<a name="579"></a>    CurrentConsolePage=<span class="source_string">"current_console"</span>
+<a name="580"></a>    CurrentConsoleLogPage=<span class="source_string">"current_console_log"</span>
+<a name="581"></a>    CurrentConsoleSendPage=<span class="source_string">"current_console_send"</span>
+<a name="582"></a>    CurrentMutatorsPage=<span class="source_string">"current_mutators"</span>
+<a name="583"></a>    CurrentRestartPage=<span class="source_string">"current_restart"</span>
+<a name="584"></a>    DefaultSendText=<span class="source_string">"say "</span>
+<a name="585"></a>	NoteGamePage=<span class="source_string">"Choose a game type and/or maps then click on the corresponding change button."</span>
+<a name="586"></a>	NotePlayersPage=<span class="source_string">"Shows you who is currently playing. You can kick and ban players. Use the checkboxes to choose who gets evicted."</span>
+<a name="587"></a>	NoteConsolePage=<span class="source_string">"Here you you tell the players when you intend to make some changes or restart with a different map. You can also see what the players are saying, as long as its not team only messages."</span>
+<a name="588"></a>	NoteMutatorsPage=<span class="source_string">"Select which mutators you want to be used when you hit the Restart Server Link"</span>
+<a name="589"></a>}
+<a name="590"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribeswebadmin/tribeswebadmin-overview.html">Package</a></td>
+	<td class="header"><a href="../tribeswebadmin/tribeswebquerycurrent.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesWebQueryCurrent">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribeswebadmin/tribeswebqueryadmins.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribeswebadmin/tribeswebquerydefaults.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:58.000 - Creation time: st 23.5.2018 00:10:49.127 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

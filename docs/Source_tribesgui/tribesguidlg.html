@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: TribesGUI.TribesGUIDlg</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesguidlg.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesGUIDlg">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesguicontroller.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribesguipage.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tribesgui/tribesguidlg.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguidlg.html">TribesGUIDlg</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// ====================================================================
+</span><a name="2"></a><span class="source_comment">//  Class:  TribesGUIDlg
+</span><a name="3"></a><span class="source_comment">//
+</span><a name="4"></a><span class="source_comment">//	GUIDlg s are quick popup menus with simple yes/no type questions and
+</span><a name="5"></a><span class="source_comment">//   a text string
+</span><a name="6"></a><span class="source_comment">//
+</span><a name="7"></a><span class="source_comment">//  Written by Dan Kaplan
+</span><a name="8"></a><span class="source_comment">//  (c) 2003, Irrational Games, Inc.  All Rights Reserved
+</span><a name="9"></a><span class="source_comment">// ====================================================================
+</span><a name="10"></a>
+<a name="11"></a><span class="source_type">class</span> <span class="source_type"><a href="../tribesgui/tribesguidlg.html" class="source">TribesGUIDlg</a></span> extends <span class="source_type"><a href="../gui/gui.html" class="source">GUI</a></span>.<span class="source_type"><a href="../gui/guidlg.html" class="source">GUIDlg</a></span>;
+<a name="12"></a>
+<a name="13"></a>var(TribesGui)	<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> borderMaterial;
+<a name="14"></a>var <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> borderImage;
+<a name="15"></a>
+<a name="16"></a>var localized <span class="source_type">string</span> OKText;
+<a name="17"></a>var localized <span class="source_type">string</span> YesText;
+<a name="18"></a>var localized <span class="source_type">string</span> ContinueText;
+<a name="19"></a>var localized <span class="source_type">string</span> RetryText;
+<a name="20"></a>var localized <span class="source_type">string</span> IgnoreText;
+<a name="21"></a>var localized <span class="source_type">string</span> NoText;
+<a name="22"></a>var localized <span class="source_type">string</span> AbortText;
+<a name="23"></a>var localized <span class="source_type">string</span> CancelText;
+<a name="24"></a>
+<a name="25"></a><span class="source_macro">#exec LOAD FILE=GUITribes.pkg
+</span><a name="26"></a>
+<a name="27"></a><span class="source_type">function</span> InitComponent(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner)
+<a name="28"></a>{
+<a name="29"></a>	Super.InitComponent(MyOwner);
+<a name="30"></a>}
+<a name="31"></a>
+<a name="32"></a><span class="source_comment">//note that this MUST be called before the first PreDraw of this component
+</span><a name="33"></a><span class="source_type">function</span> SetupDlg(<span class="source_type">string</span> theCaption, <span class="source_type">string</span> thePassback, <span class="source_type">int</span> Options, optional <span class="source_type">float</span> <span class="source_type">TimeOut</span>)
+<a name="34"></a>{
+<a name="35"></a>    <span class="source_comment">//since this Dialog is dynamically created, the label should be also
+</span><a name="36"></a>	MyLabel=<span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span>(AddComponent( <span class="source_string">"GUI.GUILabel"</span> , self.<span class="source_type">Name</span>$<span class="source_string">"_CaptionLabel"</span>, true));
+<a name="37"></a>    Assert( MyLabel != None );
+<a name="38"></a>
+<a name="39"></a>    MyLabel.SetCaption( theCaption );
+<a name="40"></a>	MyLabel.<span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span>=TXTA_Center;
+<a name="41"></a>	MyLabel.bMultiLine=true;
+<a name="42"></a>
+<a name="43"></a>	borderImage=<span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span>(AddComponent( <span class="source_string">"GUI.GUIImage"</span>, self.<span class="source_type">Name</span>$<span class="source_string">"_borderImage"</span>, true));
+<a name="44"></a>	Assert( borderImage != None);
+<a name="45"></a>	borderImage.bScaleToParent=false;
+<a name="46"></a>	borderImage.Image=borderMaterial;
+<a name="47"></a>	borderImage.ImageStyle=ISTY_Stretched;
+<a name="48"></a>	borderImage.WinWidth=WinWidth;
+<a name="49"></a>	borderImage.WinHeight=WinHeight;
+<a name="50"></a>	borderImage.WinLeft=<span class="source_int">0</span>;
+<a name="51"></a>	borderImage.WinTop=<span class="source_int">0</span>;
+<a name="52"></a>	borderImage.bSwallowAllKeyEvents=true;
+<a name="53"></a>	borderImage.bAcceptsInput=true;
+<a name="54"></a>	borderImage.bCaptureMouse=true;
+<a name="55"></a>
+<a name="56"></a>    <span class="source_type">Passback</span> = thePassback;
+<a name="57"></a>    if( (Options & QBTN_Ok) != <span class="source_int">0</span> || Options == <span class="source_int">0</span> )
+<a name="58"></a>        AddButton( QBTN_Ok, OKText );
+<a name="59"></a>    if( (Options & QBTN_Yes) != <span class="source_int">0</span> )
+<a name="60"></a>        AddButton( QBTN_Yes, YesText );
+<a name="61"></a>    if( (Options & QBTN_Continue) != <span class="source_int">0</span> )
+<a name="62"></a>        AddButton( QBTN_Continue, ContinueText );
+<a name="63"></a>    if( (Options & QBTN_Retry) != <span class="source_int">0</span> )
+<a name="64"></a>        AddButton( QBTN_Retry, RetryText );
+<a name="65"></a>    if( (Options & QBTN_Ignore) != <span class="source_int">0</span> )
+<a name="66"></a>        AddButton( QBTN_Ignore, IgnoreText );
+<a name="67"></a>    if( (Options & QBTN_No) != <span class="source_int">0</span> )
+<a name="68"></a>        AddButton( QBTN_No, NoText );
+<a name="69"></a>    if( (Options & QBTN_Abort) != <span class="source_int">0</span> )
+<a name="70"></a>        AddButton( QBTN_Abort, AbortText );
+<a name="71"></a>    if( (Options & QBTN_Cancel) != <span class="source_int">0</span> )
+<a name="72"></a>        AddButton( QBTN_Cancel, CancelText );
+<a name="73"></a>        
+<a name="74"></a>    <span class="source_comment">//focus the last button by default
+</span><a name="75"></a>    <span class="source_comment">//MyButtons[MyButtons.Length-1].Focus();
+</span><a name="76"></a>    
+<a name="77"></a>    if( <span class="source_type">TimeOut</span> &gt; <span class="source_int">0</span> )
+<a name="78"></a>        SetTimer( <span class="source_type">TimeOut</span> );
+<a name="79"></a>
+<a name="80"></a><span class="source_comment">//	Background=Texture'GUITribes.BackgroundBlack';
+</span><a name="81"></a>}
+<a name="82"></a>
+<a name="83"></a><span class="source_type">function</span> AddButton( <span class="source_type">int</span> inValue, <span class="source_type">string</span> <span class="source_type">inCaption</span> )
+<a name="84"></a>{
+<a name="85"></a>    local <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> theButton;
+<a name="86"></a>    theButton = <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>(AddComponent(<span class="source_string">"GUI.GUIButton"</span>,self.<span class="source_type">Name</span>$<span class="source_string">"_"</span>$<span class="source_type">inCaption</span>, true));
+<a name="87"></a>    MyButtons[MyButtons.Length]=theButton;
+<a name="88"></a>    theButton.SetCaption( <span class="source_type">inCaption</span> );
+<a name="89"></a>    theButton.<span class="source_type">Value</span> = inValue;
+<a name="90"></a>    theButton.OnClick = InternalOnClick;
+<a name="91"></a>    theButton.EnableComponent();
+<a name="92"></a>	theButton.StyleName = <span class="source_string">"STY_RoundButton"</span>;
+<a name="93"></a>}
+<a name="94"></a>
+<a name="95"></a><span class="source_type">function</span> InternalOnClick(<span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> <span class="source_type">Sender</span>)
+<a name="96"></a>{
+<a name="97"></a>    Selection = <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span>(<span class="source_type">Sender</span>).<span class="source_type">Value</span>;
+<a name="98"></a>    <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span>(MenuOwner).DlgReturned( self );
+<a name="99"></a>}
+<a name="100"></a>
+<a name="101"></a>event <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span>()
+<a name="102"></a>{
+<a name="103"></a>    Selection = QBTN_TimeOut;
+<a name="104"></a>    <span class="source_type"><a href="../gui/guipage.html" class="source">GUIPage</a></span>(MenuOwner).DlgReturned( self );
+<a name="105"></a>}
+<a name="106"></a>
+<a name="107"></a>event DeActivate()
+<a name="108"></a>{
+<a name="109"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="110"></a>    KillTimer();
+<a name="111"></a>	SetFocusInstead(None);
+<a name="112"></a>    MyLabel=None;
+<a name="113"></a>    MyButtons.Remove( <span class="source_int">0</span>, MyButtons.Length );
+<a name="114"></a>    for( <span class="source_type">i</span> = Controls.length-<span class="source_int">1</span>; <span class="source_type">i</span> &gt;= <span class="source_int">0</span> ; <span class="source_type">i</span>-- )
+<a name="115"></a>    {
+<a name="116"></a>        RemoveComponent(Controls[<span class="source_type">i</span>]);
+<a name="117"></a>    }
+<a name="118"></a>    <span class="source_comment">//ensure controls array is emptied
+</span><a name="119"></a>    Controls.Remove( <span class="source_int">0</span>, Controls.Length );
+<a name="120"></a>    Super.DeActivate();
+<a name="121"></a>
+<a name="122"></a>    <span class="source_comment">//remove the dialog after it has been closed and processed
+</span><a name="123"></a>    <span class="source_type"><a href="../gui/guimulticomponent.html" class="source">GUIMultiComponent</a></span>(MenuOwner).RemoveComponent( self );
+<a name="124"></a>}
+<a name="125"></a>
+<a name="126"></a>defaultproperties
+<a name="127"></a>{
+<a name="128"></a>	WinWidth=<span class="source_int">0.7</span>
+<a name="129"></a>	WinHeight=<span class="source_int">0.35</span>
+<a name="130"></a>	WinLeft=<span class="source_int">0.15</span>
+<a name="131"></a>	WinTop=<span class="source_int">0.35</span>
+<a name="132"></a>
+<a name="133"></a>    RenderWeight=<span class="source_int">0.999</span>
+<a name="134"></a>    ButtonPercentX=<span class="source_int">0.4</span>
+<a name="135"></a>    ButtonPercentY=<span class="source_int">0.3</span>
+<a name="136"></a>	bAcceptsInput=true
+<a name="137"></a>	bPersistent=false
+<a name="138"></a>	bScaleToParent=false
+<a name="139"></a>	bBoundToParent=false
+<a name="140"></a>	bSwallowAllKeyEvents=true
+<a name="141"></a>	borderMaterial=<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span><span class="source_name">'GUITribes.DialogueBox'</span>
+<a name="142"></a>
+<a name="143"></a>    OKText=<span class="source_string">"OK"</span>
+<a name="144"></a>    YesText=<span class="source_string">"Yes"</span>
+<a name="145"></a>    ContinueText=<span class="source_string">"Continue"</span>
+<a name="146"></a>    RetryText=<span class="source_string">"Retry"</span>
+<a name="147"></a>    IgnoreText=<span class="source_string">"Ignore"</span>
+<a name="148"></a>    NoText=<span class="source_string">"No"</span>
+<a name="149"></a>    AbortText=<span class="source_string">"Abort"</span>
+<a name="150"></a>    CancelText=<span class="source_string">"Cancel"</span>
+<a name="151"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribesguidlg.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesGUIDlg">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesguicontroller.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribesguipage.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: st 16.4.2014 10:20:44.000 - Creation time: st 23.5.2018 00:10:48.278 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

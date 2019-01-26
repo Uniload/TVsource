@@ -1,0 +1,1850 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: UWindow.UWindowWindow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="../uwindow/uwindowwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_uwindow/uwindowwin95lookandfeel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_uwindow/uwindowwrappedtextarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_uwindow/uwindowwindow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074<br />01075<br />01076<br />01077<br />01078<br />01079<br />01080<br />
+01081<br />01082<br />01083<br />01084<br />01085<br />01086<br />01087<br />01088<br />01089<br />01090<br />01091<br />01092<br />01093<br />01094<br />01095<br />01096<br />01097<br />01098<br />01099<br />01100<br />
+01101<br />01102<br />01103<br />01104<br />01105<br />01106<br />01107<br />01108<br />01109<br />01110<br />01111<br />01112<br />01113<br />01114<br />01115<br />01116<br />01117<br />01118<br />01119<br />01120<br />
+01121<br />01122<br />01123<br />01124<br />01125<br />01126<br />01127<br />01128<br />01129<br />01130<br />01131<br />01132<br />01133<br />01134<br />01135<br />01136<br />01137<br />01138<br />01139<br />01140<br />
+01141<br />01142<br />01143<br />01144<br />01145<br />01146<br />01147<br />01148<br />01149<br />01150<br />01151<br />01152<br />01153<br />01154<br />01155<br />01156<br />01157<br />01158<br />01159<br />01160<br />
+01161<br />01162<br />01163<br />01164<br />01165<br />01166<br />01167<br />01168<br />01169<br />01170<br />01171<br />01172<br />01173<br />01174<br />01175<br />01176<br />01177<br />01178<br />01179<br />01180<br />
+01181<br />01182<br />01183<br />01184<br />01185<br />01186<br />01187<br />01188<br />01189<br />01190<br />01191<br />01192<br />01193<br />01194<br />01195<br />01196<br />01197<br />01198<br />01199<br />01200<br />
+01201<br />01202<br />01203<br />01204<br />01205<br />01206<br />01207<br />01208<br />01209<br />01210<br />01211<br />01212<br />01213<br />01214<br />01215<br />01216<br />01217<br />01218<br />01219<br />01220<br />
+01221<br />01222<br />01223<br />01224<br />01225<br />01226<br />01227<br />01228<br />01229<br />01230<br />01231<br />01232<br />01233<br />01234<br />01235<br />01236<br />01237<br />01238<br />01239<br />01240<br />
+01241<br />01242<br />01243<br />01244<br />01245<br />01246<br />01247<br />01248<br />01249<br />01250<br />01251<br />01252<br />01253<br />01254<br />01255<br />01256<br />01257<br />01258<br />01259<br />01260<br />
+01261<br />01262<br />01263<br />01264<br />01265<br />01266<br />01267<br />01268<br />01269<br />01270<br />01271<br />01272<br />01273<br />01274<br />01275<br />01276<br />01277<br />01278<br />01279<br />01280<br />
+01281<br />01282<br />01283<br />01284<br />01285<br />01286<br />01287<br />01288<br />01289<br />01290<br />01291<br />01292<br />01293<br />01294<br />01295<br />01296<br />01297<br />01298<br />01299<br />01300<br />
+01301<br />01302<br />01303<br />01304<br />01305<br />01306<br />01307<br />01308<br />01309<br />01310<br />01311<br />01312<br />01313<br />01314<br />01315<br />01316<br />01317<br />01318<br />01319<br />01320<br />
+01321<br />01322<br />01323<br />01324<br />01325<br />01326<br />01327<br />01328<br />01329<br />01330<br />01331<br />01332<br />01333<br />01334<br />01335<br />01336<br />01337<br />01338<br />01339<br />01340<br />
+01341<br />01342<br />01343<br />01344<br />01345<br />01346<br />01347<br />01348<br />01349<br />01350<br />01351<br />01352<br />01353<br />01354<br />01355<br />01356<br />01357<br />01358<br />01359<br />01360<br />
+01361<br />01362<br />01363<br />01364<br />01365<br />01366<br />01367<br />01368<br />01369<br />01370<br />01371<br />01372<br />01373<br />01374<br />01375<br />01376<br />01377<br />01378<br />01379<br />01380<br />
+01381<br />01382<br />01383<br />01384<br />01385<br />01386<br />01387<br />01388<br />01389<br />01390<br />01391<br />01392<br />01393<br />01394<br />01395<br />01396<br />01397<br />01398<br />01399<br />01400<br />
+01401<br />01402<br />01403<br />01404<br />01405<br />01406<br />01407<br />01408<br />01409<br />01410<br />01411<br />01412<br />01413<br />01414<br />01415<br />01416<br />01417<br />01418<br />01419<br />01420<br />
+01421<br />01422<br />01423<br />01424<br />01425<br />01426<br />01427<br />01428<br />01429<br />01430<br />01431<br />01432<br />01433<br />01434<br />01435<br />01436<br />01437<br />01438<br />01439<br />01440<br />
+01441<br />01442<br />01443<br />01444<br />01445<br />01446<br />01447<br />01448<br />01449<br />01450<br />01451<br />01452<br />01453<br />01454<br />01455<br />01456<br />01457<br />01458<br />01459<br />01460<br />
+01461<br />01462<br />01463<br />01464<br />01465<br />01466<br />01467<br />01468<br />01469<br />01470<br />01471<br />01472<br />01473<br />01474<br />01475<br />01476<br />01477<br />01478<br />01479<br />01480<br />
+01481<br />01482<br />01483<br />01484<br />01485<br />01486<br />01487<br />01488<br />01489<br />01490<br />01491<br />01492<br />01493<br />01494<br />01495<br />01496<br />01497<br />01498<br />01499<br />01500<br />
+01501<br />01502<br />01503<br />01504<br />01505<br />01506<br />01507<br />01508<br />01509<br />01510<br />01511<br />01512<br />01513<br />01514<br />01515<br />01516<br />01517<br />01518<br />01519<br />01520<br />
+01521<br />01522<br />01523<br />01524<br />01525<br />01526<br />01527<br />01528<br />01529<br />01530<br />01531<br />01532<br />01533<br />01534<br />01535<br />01536<br />01537<br />01538<br />01539<br />01540<br />
+01541<br />01542<br />01543<br />01544<br />01545<br />01546<br />01547<br />01548<br />01549<br />01550<br />01551<br />01552<br />01553<br />01554<br />01555<br />01556<br />01557<br />01558<br />01559<br />01560<br />
+01561<br />01562<br />01563<br />01564<br />01565<br />01566<br />01567<br />01568<br />01569<br />01570<br />01571<br />01572<br />01573<br />01574<br />01575<br />01576<br />01577<br />01578<br />01579<br />01580<br />
+01581<br />01582<br />01583<br />01584<br />01585<br />01586<br />01587<br />01588<br />01589<br />01590<br />01591<br />01592<br />01593<br />01594<br />01595<br />01596<br />01597<br />01598<br />01599<br />01600<br />
+01601<br />01602<br />01603<br />01604<br />01605<br />01606<br />01607<br />01608<br />01609<br />01610<br />01611<br />01612<br />01613<br />01614<br />01615<br />01616<br />01617<br />01618<br />01619<br />01620<br />
+01621<br />01622<br />01623<br />01624<br />01625<br />01626<br />01627<br />01628<br />01629<br />01630<br />01631<br />01632<br />01633<br />01634<br />01635<br />01636<br />01637<br />01638<br />01639<br />01640<br />
+01641<br />01642<br />01643<br />01644<br />01645<br />01646<br />01647<br />01648<br />01649<br />01650<br />01651<br />01652<br />01653<br />01654<br />01655<br />01656<br />01657<br />01658<br />01659<br />01660<br />
+01661<br />01662<br />01663<br />01664<br />01665<br />01666<br />01667<br />01668<br />01669<br />01670<br />01671<br />01672<br />01673<br />01674<br />01675<br />01676<br />01677<br />01678<br />01679<br />01680<br />
+01681<br />01682<br />01683<br />01684<br />01685<br />01686<br />01687<br />01688<br />01689<br />01690<br />01691<br />01692<br />01693<br />01694<br />01695<br />01696<br />01697<br />01698<br />01699<br />01700<br />
+01701<br />01702<br />01703<br />01704<br />01705<br />01706<br />01707</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">// UWindowWindow - the parent class for all Window objects
+</span><a name="3"></a><span class="source_comment">//=============================================================================
+</span><a name="4"></a><span class="source_type">class</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> extends <span class="source_type"><a href="../uwindow/uwindowbase.html" class="source">UWindowBase</a></span>;
+<a name="5"></a>
+<a name="6"></a><span class="source_comment">// Dimensions, offset relative to parent.
+</span><a name="7"></a>var <span class="source_type">float</span>				WinLeft;
+<a name="8"></a>var <span class="source_type">float</span>				WinTop;
+<a name="9"></a>var <span class="source_type">float</span>				WinWidth;
+<a name="10"></a>var <span class="source_type">float</span>				WinHeight;
+<a name="11"></a>
+<a name="12"></a><span class="source_comment">// Relationships to other windows
+</span><a name="13"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		ParentWindow;			<span class="source_comment">// Parent window
+</span><a name="14"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		FirstChildWindow;		<span class="source_comment">// First child window - bottom window first
+</span><a name="15"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		LastChildWindow;		<span class="source_comment">// Last child window - WinTop window first
+</span><a name="16"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		NextSiblingWindow;		<span class="source_comment">// sibling window - next window above us
+</span><a name="17"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		PrevSiblingWindow;		<span class="source_comment">// previous sibling window - next window below us
+</span><a name="18"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		ActiveWindow;			<span class="source_comment">// The child of ours which is currently active
+</span><a name="19"></a>var <span class="source_type"><a href="../uwindow/uwindowrootwindow.html" class="source">UWindowRootWindow</a></span>	Root;					<span class="source_comment">// The root window
+</span><a name="20"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		OwnerWindow;			<span class="source_comment">// Some arbitary owner window
+</span><a name="21"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		ModalWindow;			<span class="source_comment">// Some window we've opened modally.
+</span><a name="22"></a>
+<a name="23"></a>var <span class="source_type">bool</span>				bWindowVisible;
+<a name="24"></a>var <span class="source_type">bool</span>				bNoClip;				<span class="source_comment">// Clipping disabled for this window?
+</span><a name="25"></a>var <span class="source_type">bool</span>				bMouseDown;				<span class="source_comment">// Pressed down in this window?
+</span><a name="26"></a>var <span class="source_type">bool</span>				bRMouseDown;			<span class="source_comment">// Pressed down in this window?
+</span><a name="27"></a>var <span class="source_type">bool</span>				bMMouseDown;			<span class="source_comment">// Pressed down in this window?
+</span><a name="28"></a>var <span class="source_type">bool</span>				bAlwaysBehind;			<span class="source_comment">// Window doesn't bring to front on click.
+</span><a name="29"></a>var <span class="source_type">bool</span>				bAcceptsFocus;			<span class="source_comment">// Accepts key messages
+</span><a name="30"></a>var <span class="source_type">bool</span>				bAlwaysOnTop;			<span class="source_comment">// Always on top
+</span><a name="31"></a>var <span class="source_type">bool</span>				bLeaveOnscreen;			<span class="source_comment">// Window is left onscreen when UWindow isn't active.
+</span><a name="32"></a>var <span class="source_type">bool</span>				bUWindowActive;			<span class="source_comment">// Is UWindow active?
+</span><a name="33"></a>var <span class="source_type">bool</span>				bTransient;				<span class="source_comment">// Never the active window. Used for combo dropdowns7
+</span><a name="34"></a>var <span class="source_type">bool</span>				bAcceptsHotKeys;		<span class="source_comment">// Does this window accept hotkeys?
+</span><a name="35"></a>var <span class="source_type">bool</span>				bIgnoreLDoubleClick;
+<a name="36"></a>var <span class="source_type">bool</span>				bIgnoreMDoubleClick;
+<a name="37"></a>var <span class="source_type">bool</span>				bIgnoreRDoubleClick;
+<a name="38"></a>
+<a name="39"></a>var <span class="source_type">float</span>				ClickTime;
+<a name="40"></a>var <span class="source_type">float</span>				MClickTime;
+<a name="41"></a>var <span class="source_type">float</span>				RClickTime;
+<a name="42"></a>var <span class="source_type">float</span>				ClickX;
+<a name="43"></a>var <span class="source_type">float</span>				ClickY;
+<a name="44"></a>var <span class="source_type">float</span>				MClickX;
+<a name="45"></a>var <span class="source_type">float</span>				MClickY;
+<a name="46"></a>var <span class="source_type">float</span>				RClickX;
+<a name="47"></a>var <span class="source_type">float</span>				RClickY;
+<a name="48"></a>
+<a name="49"></a>var <span class="source_type"><a href="../uwindow/uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></span>	LookAndFeel;
+<a name="50"></a>
+<a name="51"></a>var <span class="source_type"><a href="../uwindow/uwindowbase.html#Region" class="source">Region</a></span>	ClippingRegion;
+<a name="52"></a>
+<a name="53"></a>struct <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span>
+<a name="54"></a>{
+<a name="55"></a>	var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">tex</span>;
+<a name="56"></a>	var <span class="source_type">int</span> HotX;
+<a name="57"></a>	var <span class="source_type">int</span> HotY;
+<a name="58"></a>	var <span class="source_type">byte</span> WindowsCursor;
+<a name="59"></a>};
+<a name="60"></a>
+<a name="61"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span> Cursor;
+<a name="62"></a>
+<a name="63"></a>enum <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span>
+<a name="64"></a>{
+<a name="65"></a>	WM_LMouseDown,
+<a name="66"></a>	WM_LMouseUp,
+<a name="67"></a>	WM_MMouseDown,
+<a name="68"></a>	WM_MMouseUp,
+<a name="69"></a>	WM_RMouseDown,
+<a name="70"></a>	WM_RMouseUp,
+<a name="71"></a>	WM_KeyUp,
+<a name="72"></a>	WM_KeyDown,
+<a name="73"></a>	WM_KeyType,
+<a name="74"></a>	WM_Paint	<span class="source_comment">// Window needs painting
+</span><a name="75"></a>};
+<a name="76"></a>
+<a name="77"></a><span class="source_comment">// Dialog messages
+</span><a name="78"></a>const DE_Created = <span class="source_int">0</span>;
+<a name="79"></a>const DE_Change	 = <span class="source_int">1</span>;
+<a name="80"></a>const DE_Click	 = <span class="source_int">2</span>;
+<a name="81"></a>const DE_Enter	 = <span class="source_int">3</span>;
+<a name="82"></a>const DE_Exit	 = <span class="source_int">4</span>;
+<a name="83"></a>const DE_MClick	 = <span class="source_int">5</span>;
+<a name="84"></a>const DE_RClick	 = <span class="source_int">6</span>;
+<a name="85"></a>const DE_EnterPressed = <span class="source_int">7</span>;
+<a name="86"></a>const DE_MouseMove = <span class="source_int">8</span>;
+<a name="87"></a>const DE_MouseLeave = <span class="source_int">9</span>;
+<a name="88"></a>const DE_LMouseDown = <span class="source_int">10</span>;
+<a name="89"></a>const DE_DoubleClick = <span class="source_int">11</span>;
+<a name="90"></a>const DE_MouseEnter = <span class="source_int">12</span>;
+<a name="91"></a>const DE_HelpChanged = <span class="source_int">13</span>;
+<a name="92"></a>const DE_WheelUpPressed = <span class="source_int">14</span>;
+<a name="93"></a>const DE_WheelDownPressed = <span class="source_int">15</span>;
+<a name="94"></a>
+<a name="95"></a><span class="source_comment">// Ideally Key would be a EInputKey but I can't see that class here.
+</span><a name="96"></a><span class="source_type">function</span> WindowEvent(<span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>) 
+<a name="97"></a>{
+<a name="98"></a>	switch(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>)
+<a name="99"></a>	{
+<a name="100"></a>	case WM_Paint:
+<a name="101"></a>		Paint(<span class="source_type">C</span>, X, <span class="source_type">Y</span>);
+<a name="102"></a>		PaintClients(<span class="source_type">C</span>, X, <span class="source_type">Y</span>);
+<a name="103"></a>		break;
+<a name="104"></a>	case WM_LMouseDown:
+<a name="105"></a>		if(!Root.CheckCaptureMouseDown())
+<a name="106"></a>		{
+<a name="107"></a>			if(!MessageClients(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>)) 
+<a name="108"></a>				LMouseDown(X, <span class="source_type">Y</span>);
+<a name="109"></a>		}
+<a name="110"></a>		break;	
+<a name="111"></a>	case WM_LMouseUp:
+<a name="112"></a>		if(!Root.CheckCaptureMouseUp())
+<a name="113"></a>		{
+<a name="114"></a>			if(!MessageClients(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>))
+<a name="115"></a>				LMouseUp(X, <span class="source_type">Y</span>);
+<a name="116"></a>		}
+<a name="117"></a>		break;	
+<a name="118"></a>	case WM_RMouseDown:
+<a name="119"></a>		if(!MessageClients(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>)) RMouseDown(X, <span class="source_type">Y</span>);
+<a name="120"></a>		break;	
+<a name="121"></a>	case WM_RMouseUp:
+<a name="122"></a>		if(!MessageClients(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>)) RMouseUp(X, <span class="source_type">Y</span>);
+<a name="123"></a>		break;	
+<a name="124"></a>	case WM_MMouseDown:
+<a name="125"></a>		if(!MessageClients(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>)) MMouseDown(X, <span class="source_type">Y</span>);
+<a name="126"></a>		break;	
+<a name="127"></a>	case WM_MMouseUp:
+<a name="128"></a>		if(!MessageClients(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>)) MMouseUp(X, <span class="source_type">Y</span>);
+<a name="129"></a>		break;	
+<a name="130"></a>	case WM_KeyDown:
+<a name="131"></a>		if(!PropagateKey(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>))
+<a name="132"></a>		{
+<a name="133"></a>			KeyDown(<span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, X, <span class="source_type">Y</span>);
+<a name="134"></a>		}
+<a name="135"></a>		break;	
+<a name="136"></a>	case WM_KeyUp:
+<a name="137"></a>		if(!PropagateKey(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>))
+<a name="138"></a>		{
+<a name="139"></a>			KeyUp(<span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, X, <span class="source_type">Y</span>);
+<a name="140"></a>		}
+<a name="141"></a>		break;	
+<a name="142"></a>	case WM_KeyType:
+<a name="143"></a>		if(!PropagateKey(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>))
+<a name="144"></a>			KeyPressed(<span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, X, <span class="source_type">Y</span>);
+<a name="145"></a>		break;	
+<a name="146"></a>	default:
+<a name="147"></a>		break;
+<a name="148"></a>	}
+<a name="149"></a>}
+<a name="150"></a>
+<a name="151"></a><span class="source_type">function</span> SaveConfigs()
+<a name="152"></a>{
+<a name="153"></a>
+<a name="154"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="155"></a>}
+<a name="156"></a>
+<a name="157"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> GetPlayerOwner()
+<a name="158"></a>{
+<a name="159"></a>	return Root.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>;
+<a name="160"></a>}
+<a name="161"></a>
+<a name="162"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> GetLevel()
+<a name="163"></a>{
+<a name="164"></a>	return Root.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>;
+<a name="165"></a>}
+<a name="166"></a>
+<a name="167"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> GetEntryLevel()
+<a name="168"></a>{
+<a name="169"></a>	return Root.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetEntryLevel();
+<a name="170"></a>}
+<a name="171"></a>
+<a name="172"></a><span class="source_type">function</span> Resized()
+<a name="173"></a>{
+<a name="174"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="175"></a>}
+<a name="176"></a>
+<a name="177"></a><span class="source_type">function</span> BeforePaint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="178"></a>{
+<a name="179"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="180"></a>}
+<a name="181"></a>
+<a name="182"></a><span class="source_type">function</span> AfterPaint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="183"></a>{
+<a name="184"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="185"></a>}
+<a name="186"></a>
+<a name="187"></a><span class="source_type">function</span> Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="188"></a>{
+<a name="189"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="190"></a>}
+<a name="191"></a>
+<a name="192"></a><span class="source_type">function</span> Click(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="193"></a>{
+<a name="194"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="195"></a>}
+<a name="196"></a>
+<a name="197"></a>
+<a name="198"></a><span class="source_type">function</span> MClick(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="199"></a>{
+<a name="200"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="201"></a>}
+<a name="202"></a>
+<a name="203"></a><span class="source_type">function</span> RClick(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="204"></a>{
+<a name="205"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="206"></a>}
+<a name="207"></a>
+<a name="208"></a><span class="source_type">function</span> DoubleClick(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="209"></a>{
+<a name="210"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="211"></a>}
+<a name="212"></a>
+<a name="213"></a><span class="source_type">function</span> MDoubleClick(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="214"></a>{
+<a name="215"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="216"></a>}
+<a name="217"></a>
+<a name="218"></a><span class="source_type">function</span> RDoubleClick(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="219"></a>{
+<a name="220"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="221"></a>}
+<a name="222"></a>
+<a name="223"></a><span class="source_type">function</span> BeginPlay()
+<a name="224"></a>{
+<a name="225"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="226"></a>}
+<a name="227"></a>
+<a name="228"></a><span class="source_type">function</span> BeforeCreate()
+<a name="229"></a>{
+<a name="230"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="231"></a>}
+<a name="232"></a>
+<a name="233"></a><span class="source_type">function</span> Created()
+<a name="234"></a>{
+<a name="235"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="236"></a>}
+<a name="237"></a>
+<a name="238"></a><span class="source_type">function</span> AfterCreate()
+<a name="239"></a>{
+<a name="240"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="241"></a>}
+<a name="242"></a>
+<a name="243"></a><span class="source_type">function</span> MouseEnter()
+<a name="244"></a>{
+<a name="245"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="246"></a>}
+<a name="247"></a>
+<a name="248"></a><span class="source_type">function</span> Activated()
+<a name="249"></a>{
+<a name="250"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="251"></a>}
+<a name="252"></a>
+<a name="253"></a><span class="source_type">function</span> Deactivated()
+<a name="254"></a>{
+<a name="255"></a>	<span class="source_comment">// Implemented in a child class
+</span><a name="256"></a>}
+<a name="257"></a>
+<a name="258"></a><span class="source_type">function</span> MouseLeave()
+<a name="259"></a>{
+<a name="260"></a>	bMouseDown = False;
+<a name="261"></a>	bMMouseDown = False;
+<a name="262"></a>	bRMouseDown = False;
+<a name="263"></a>}
+<a name="264"></a>
+<a name="265"></a><span class="source_type">function</span> MouseMove(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="266"></a>{
+<a name="267"></a>}
+<a name="268"></a>
+<a name="269"></a><span class="source_type">function</span> KeyUp(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="270"></a>{
+<a name="271"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="272"></a>}
+<a name="273"></a>
+<a name="274"></a><span class="source_type">function</span> KeyDown(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="275"></a>{
+<a name="276"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="277"></a>}
+<a name="278"></a>
+<a name="279"></a><span class="source_type">function</span> <span class="source_type">bool</span> HotKeyDown(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="280"></a>{
+<a name="281"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="282"></a>	<span class="source_comment">//Log("UWindowWindow: Checking HotKeyDown for "$Self);
+</span><a name="283"></a>	return False;
+<a name="284"></a>}
+<a name="285"></a>
+<a name="286"></a><span class="source_type">function</span> <span class="source_type">bool</span> HotKeyUp(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="287"></a>{
+<a name="288"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="289"></a>	<span class="source_comment">//Log("UWindowWindow: Checking HotKeyUp for "$Self);
+</span><a name="290"></a>	return False;
+<a name="291"></a>}
+<a name="292"></a>
+<a name="293"></a><span class="source_type">function</span> KeyPressed(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="294"></a>{
+<a name="295"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><span class="source_type">function</span> ProcessMenuKey(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">string</span> KeyName)
+<a name="299"></a>{
+<a name="300"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="301"></a>}
+<a name="302"></a>
+<a name="303"></a><span class="source_type">function</span> KeyFocusEnter()
+<a name="304"></a>{
+<a name="305"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="306"></a>}
+<a name="307"></a>
+<a name="308"></a><span class="source_type">function</span> KeyFocusExit()
+<a name="309"></a>{
+<a name="310"></a>	<span class="source_comment">// Implemented in child class
+</span><a name="311"></a>}
+<a name="312"></a>
+<a name="313"></a>
+<a name="314"></a><span class="source_type">function</span> RMouseDown(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) 
+<a name="315"></a>{
+<a name="316"></a>	ActivateWindow(<span class="source_int">0</span>, False);
+<a name="317"></a>	bRMouseDown = True;
+<a name="318"></a>}
+<a name="319"></a>
+<a name="320"></a><span class="source_type">function</span> RMouseUp(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) 
+<a name="321"></a>{
+<a name="322"></a>	if(bRMouseDown)
+<a name="323"></a>	{
+<a name="324"></a>		if(!bIgnoreRDoubleClick && Abs(X-RClickX) &lt;= <span class="source_int">1</span> && Abs(<span class="source_type">Y</span>-RClickY) &lt;= <span class="source_int">1</span> && GetLevel().TimeSeconds &lt; RClickTime + <span class="source_int">0.600</span>)
+<a name="325"></a>		{
+<a name="326"></a>			RDoubleClick(X, <span class="source_type">Y</span>);
+<a name="327"></a>			RClickTime = <span class="source_int">0</span>;
+<a name="328"></a>		}
+<a name="329"></a>		else
+<a name="330"></a>		{
+<a name="331"></a>			RClickTime = GetLevel().TimeSeconds;
+<a name="332"></a>			RClickX = X;
+<a name="333"></a>			RClickY = <span class="source_type">Y</span>;
+<a name="334"></a>			RClick(X, <span class="source_type">Y</span>);
+<a name="335"></a>		}
+<a name="336"></a>	}
+<a name="337"></a>	bRMouseDown = False;
+<a name="338"></a>
+<a name="339"></a>}
+<a name="340"></a>
+<a name="341"></a><span class="source_type">function</span> MMouseDown(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) 
+<a name="342"></a>{
+<a name="343"></a>	ActivateWindow(<span class="source_int">0</span>, False);
+<a name="344"></a>	<span class="source_comment">/* DEBUG
+<a name="345"></a>	HideWindow();
+<a name="346"></a>	*/</span>
+<a name="347"></a>	bMMouseDown = True;
+<a name="348"></a>}
+<a name="349"></a>
+<a name="350"></a><span class="source_type">function</span> MMouseUp(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) 
+<a name="351"></a>{
+<a name="352"></a>	if(bMMouseDown)
+<a name="353"></a>	{
+<a name="354"></a>		if(!bIgnoreMDoubleClick && Abs(X-MClickX) &lt;= <span class="source_int">1</span> && (<span class="source_type">Y</span>-MClickY)&lt;=<span class="source_int">1</span> && GetLevel().TimeSeconds &lt; MClickTime + <span class="source_int">0.600</span>)
+<a name="355"></a>		{
+<a name="356"></a>			MDoubleClick(X, <span class="source_type">Y</span>);
+<a name="357"></a>			MClickTime = <span class="source_int">0</span>;
+<a name="358"></a>		}
+<a name="359"></a>		else
+<a name="360"></a>		{
+<a name="361"></a>			MClickTime = GetLevel().TimeSeconds;
+<a name="362"></a>			MClickX = X;
+<a name="363"></a>			MClickY = <span class="source_type">Y</span>;
+<a name="364"></a>			MClick(X, <span class="source_type">Y</span>);
+<a name="365"></a>		}
+<a name="366"></a>	}
+<a name="367"></a>	bMMouseDown = False;
+<a name="368"></a>}
+<a name="369"></a>
+<a name="370"></a>
+<a name="371"></a><span class="source_type">function</span> LMouseDown(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="372"></a>{
+<a name="373"></a>	ActivateWindow(<span class="source_int">0</span>, False);
+<a name="374"></a>	bMouseDown = True;
+<a name="375"></a>}
+<a name="376"></a>
+<a name="377"></a><span class="source_type">function</span> LMouseUp(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="378"></a>{
+<a name="379"></a>	if(bMouseDown)
+<a name="380"></a>	{
+<a name="381"></a>		if(!bIgnoreLDoubleClick && Abs(X-ClickX) &lt;= <span class="source_int">1</span> && (<span class="source_type">Y</span>-ClickY) &lt;= <span class="source_int">1</span> && GetLevel().TimeSeconds &lt; ClickTime + <span class="source_int">0.600</span>)
+<a name="382"></a>		{
+<a name="383"></a>			DoubleClick(X, <span class="source_type">Y</span>);
+<a name="384"></a>			ClickTime = <span class="source_int">0</span>;
+<a name="385"></a>		}
+<a name="386"></a>		else
+<a name="387"></a>		{
+<a name="388"></a>			ClickTime = GetLevel().TimeSeconds;
+<a name="389"></a>			ClickX = X;
+<a name="390"></a>			ClickY = <span class="source_type">Y</span>;
+<a name="391"></a>			Click(X, <span class="source_type">Y</span>);
+<a name="392"></a>		}
+<a name="393"></a>	}
+<a name="394"></a>	bMouseDown = False;
+<a name="395"></a>}
+<a name="396"></a>
+<a name="397"></a><span class="source_type">function</span> FocusWindow()
+<a name="398"></a>{
+<a name="399"></a>	if(Root.FocusedWindow != None && Root.FocusedWindow != Self)
+<a name="400"></a>		Root.FocusedWindow.FocusOtherWindow(Self);
+<a name="401"></a>
+<a name="402"></a>	Root.FocusedWindow = Self;
+<a name="403"></a>}
+<a name="404"></a>
+<a name="405"></a><span class="source_type">function</span> FocusOtherWindow(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W)
+<a name="406"></a>{
+<a name="407"></a>}
+<a name="408"></a>
+<a name="409"></a><span class="source_type">function</span> EscClose()
+<a name="410"></a>{
+<a name="411"></a>	Close();
+<a name="412"></a>}
+<a name="413"></a>
+<a name="414"></a><span class="source_type">function</span> Close(optional <span class="source_type">bool</span> bByParent)
+<a name="415"></a>{
+<a name="416"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> Prev, <span class="source_type">Child</span>;
+<a name="417"></a>
+<a name="418"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = Prev)
+<a name="419"></a>	{
+<a name="420"></a>		Prev = <span class="source_type">Child</span>.PrevSiblingWindow;
+<a name="421"></a>		<span class="source_type">Child</span>.Close(True);
+<a name="422"></a>	}
+<a name="423"></a>	SaveConfigs();
+<a name="424"></a>	if(!bByParent)
+<a name="425"></a>		HideWindow();
+<a name="426"></a>}
+<a name="427"></a>
+<a name="428"></a>final <span class="source_type">function</span> SetSize(<span class="source_type">float</span> W, <span class="source_type">float</span> H)
+<a name="429"></a>{
+<a name="430"></a>	if(WinWidth != W || WinHeight != H)
+<a name="431"></a>	{
+<a name="432"></a>		WinWidth = W;
+<a name="433"></a>		WinHeight = H;
+<a name="434"></a>		Resized();
+<a name="435"></a>	}
+<a name="436"></a>}
+<a name="437"></a>
+<a name="438"></a><span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="439"></a>{
+<a name="440"></a>}
+<a name="441"></a>
+<a name="442"></a>final <span class="source_type">function</span> DoTick(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="443"></a>{
+<a name="444"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="445"></a>
+<a name="446"></a>	<span class="source_type">Tick</span>(<span class="source_type">Delta</span>);
+<a name="447"></a>
+<a name="448"></a>	<span class="source_type">Child</span> = FirstChildWindow;
+<a name="449"></a>
+<a name="450"></a>	while(<span class="source_type">Child</span> != None)
+<a name="451"></a>	{
+<a name="452"></a>		<span class="source_type">Child</span>.bUWindowActive = bUWindowActive;
+<a name="453"></a>
+<a name="454"></a>		if(bLeaveOnScreen)
+<a name="455"></a>			<span class="source_type">Child</span>.bLeaveOnscreen = True;
+<a name="456"></a>
+<a name="457"></a>		if(bUWindowActive || <span class="source_type">Child</span>.bLeaveOnscreen)
+<a name="458"></a>		{
+<a name="459"></a>			<span class="source_type">Child</span>.DoTick(<span class="source_type">Delta</span>);
+<a name="460"></a>		}
+<a name="461"></a>
+<a name="462"></a>		<span class="source_type">Child</span> = <span class="source_type">Child</span>.NextSiblingWindow;
+<a name="463"></a>	}
+<a name="464"></a>}
+<a name="465"></a>
+<a name="466"></a>final <span class="source_type">function</span> PaintClients(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="467"></a>{
+<a name="468"></a>	local <span class="source_type">float</span>   OrgX, OrgY;   
+<a name="469"></a>	local <span class="source_type">float</span>   ClipX, <span class="source_type">ClipY</span>; 
+<a name="470"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="471"></a>
+<a name="472"></a>	OrgX = <span class="source_type">C</span>.OrgX;
+<a name="473"></a>	OrgY = <span class="source_type">C</span>.OrgY;
+<a name="474"></a>	ClipX = <span class="source_type">C</span>.ClipX;
+<a name="475"></a>	<span class="source_type">ClipY</span> = <span class="source_type">C</span>.<span class="source_type">ClipY</span>;
+<a name="476"></a>
+<a name="477"></a>	<span class="source_type">Child</span> = FirstChildWindow;
+<a name="478"></a>
+<a name="479"></a>	while(<span class="source_type">Child</span> != None)
+<a name="480"></a>	{
+<a name="481"></a>		<span class="source_type">Child</span>.bUWindowActive = bUWindowActive;
+<a name="482"></a>
+<a name="483"></a>		<span class="source_type">C</span>.SetPos(<span class="source_int">0</span>,<span class="source_int">0</span>);
+<a name="484"></a>		<span class="source_type">C</span>.Style = GetPlayerOwner().<span class="source_type"><a href="../engine/actor.html#ERenderStyle" class="source">ERenderStyle</a></span>.STY_Normal;
+<a name="485"></a>		<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>,<span class="source_int">255</span>,<span class="source_int">255</span>);
+<a name="486"></a>		<span class="source_type">C</span>.SpaceX = <span class="source_int">0</span>;
+<a name="487"></a>		<span class="source_type">C</span>.SpaceY = <span class="source_int">0</span>;
+<a name="488"></a>
+<a name="489"></a>		<span class="source_type">Child</span>.BeforePaint(<span class="source_type">C</span>, X - <span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span> - <span class="source_type">Child</span>.WinTop);
+<a name="490"></a>
+<a name="491"></a>		if(bLeaveOnScreen)
+<a name="492"></a>			<span class="source_type">Child</span>.bLeaveOnscreen = True;
+<a name="493"></a>
+<a name="494"></a>		if(bUWindowActive || <span class="source_type">Child</span>.bLeaveOnscreen)
+<a name="495"></a>		{
+<a name="496"></a>
+<a name="497"></a>			<span class="source_type">C</span>.OrgX = <span class="source_type">C</span>.OrgX + <span class="source_type">Child</span>.WinLeft*Root.GUIScale;
+<a name="498"></a>			<span class="source_type">C</span>.OrgY = <span class="source_type">C</span>.OrgY + <span class="source_type">Child</span>.WinTop*Root.GUIScale;
+<a name="499"></a>
+<a name="500"></a>			if(!<span class="source_type">Child</span>.bNoClip)
+<a name="501"></a>			{
+<a name="502"></a>				<span class="source_type">C</span>.ClipX = FMin(WinWidth - <span class="source_type">Child</span>.WinLeft, <span class="source_type">Child</span>.WinWidth)*Root.GUIScale;
+<a name="503"></a>				<span class="source_type">C</span>.<span class="source_type">ClipY</span> = FMin(WinHeight - <span class="source_type">Child</span>.WinTop, <span class="source_type">Child</span>.WinHeight)*Root.GUIScale;
+<a name="504"></a>
+<a name="505"></a>
+<a name="506"></a>				<span class="source_comment">// Translate to child's co-ordinate system
+</span><a name="507"></a>				<span class="source_type">Child</span>.ClippingRegion.X = ClippingRegion.X - <span class="source_type">Child</span>.WinLeft;
+<a name="508"></a>				<span class="source_type">Child</span>.ClippingRegion.<span class="source_type">Y</span> = ClippingRegion.<span class="source_type">Y</span> - <span class="source_type">Child</span>.WinTop;
+<a name="509"></a>				<span class="source_type">Child</span>.ClippingRegion.W = ClippingRegion.W;
+<a name="510"></a>				<span class="source_type">Child</span>.ClippingRegion.H = ClippingRegion.H;
+<a name="511"></a>
+<a name="512"></a>				if(<span class="source_type">Child</span>.ClippingRegion.X &lt; <span class="source_int">0</span>)
+<a name="513"></a>				{
+<a name="514"></a>					<span class="source_type">Child</span>.ClippingRegion.W += <span class="source_type">Child</span>.ClippingRegion.X;
+<a name="515"></a>					<span class="source_type">Child</span>.ClippingRegion.X = <span class="source_int">0</span>;
+<a name="516"></a>				}
+<a name="517"></a>
+<a name="518"></a>				if(<span class="source_type">Child</span>.ClippingRegion.<span class="source_type">Y</span> &lt; <span class="source_int">0</span>)
+<a name="519"></a>				{
+<a name="520"></a>					<span class="source_type">Child</span>.ClippingRegion.H += <span class="source_type">Child</span>.ClippingRegion.<span class="source_type">Y</span>;
+<a name="521"></a>					<span class="source_type">Child</span>.ClippingRegion.<span class="source_type">Y</span> = <span class="source_int">0</span>;
+<a name="522"></a>				}
+<a name="523"></a>
+<a name="524"></a>				if(<span class="source_type">Child</span>.ClippingRegion.W &gt; <span class="source_type">Child</span>.WinWidth - <span class="source_type">Child</span>.ClippingRegion.X)
+<a name="525"></a>				{
+<a name="526"></a>					<span class="source_type">Child</span>.ClippingRegion.W = <span class="source_type">Child</span>.WinWidth - <span class="source_type">Child</span>.ClippingRegion.X;
+<a name="527"></a>				}
+<a name="528"></a>
+<a name="529"></a>				if(<span class="source_type">Child</span>.ClippingRegion.H &gt; <span class="source_type">Child</span>.WinHeight - <span class="source_type">Child</span>.ClippingRegion.<span class="source_type">Y</span>)
+<a name="530"></a>				{
+<a name="531"></a>					<span class="source_type">Child</span>.ClippingRegion.H = <span class="source_type">Child</span>.WinHeight - <span class="source_type">Child</span>.ClippingRegion.<span class="source_type">Y</span>;
+<a name="532"></a>				}
+<a name="533"></a>			}
+<a name="534"></a>
+<a name="535"></a>			if(<span class="source_type">Child</span>.ClippingRegion.W &gt; <span class="source_int">0</span> && <span class="source_type">Child</span>.ClippingRegion.H &gt; <span class="source_int">0</span>) 
+<a name="536"></a>			{		
+<a name="537"></a>				<span class="source_type">Child</span>.WindowEvent(WM_Paint, <span class="source_type">C</span>, X - <span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span> - <span class="source_type">Child</span>.WinTop, <span class="source_int">0</span>);
+<a name="538"></a>				<span class="source_type">Child</span>.AfterPaint(<span class="source_type">C</span>, X - <span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span> - <span class="source_type">Child</span>.WinTop);
+<a name="539"></a>			}
+<a name="540"></a>	
+<a name="541"></a>			<span class="source_type">C</span>.OrgX = OrgX;
+<a name="542"></a>			<span class="source_type">C</span>.OrgY = OrgY;
+<a name="543"></a>		}
+<a name="544"></a>
+<a name="545"></a>		<span class="source_type">Child</span> = <span class="source_type">Child</span>.NextSiblingWindow;
+<a name="546"></a>	}
+<a name="547"></a>
+<a name="548"></a>	<span class="source_type">C</span>.ClipX = ClipX;
+<a name="549"></a>	<span class="source_type">C</span>.<span class="source_type">ClipY</span> = <span class="source_type">ClipY</span>;
+<a name="550"></a>}
+<a name="551"></a>
+<a name="552"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> FindWindowUnder(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="553"></a>{
+<a name="554"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="555"></a>
+<a name="556"></a>	<span class="source_comment">// go from Topmost downwards
+</span><a name="557"></a>	<span class="source_type">Child</span> = LastChildWindow;
+<a name="558"></a>
+<a name="559"></a>	while(<span class="source_type">Child</span> != None)
+<a name="560"></a>	{
+<a name="561"></a>		<span class="source_type">Child</span>.bUWindowActive = bUWindowActive;
+<a name="562"></a>
+<a name="563"></a>		if(bLeaveOnScreen)
+<a name="564"></a>			<span class="source_type">Child</span>.bLeaveOnscreen = True;
+<a name="565"></a>
+<a name="566"></a>		if(bUWindowActive || <span class="source_type">Child</span>.bLeaveOnscreen)
+<a name="567"></a>		{
+<a name="568"></a>			if((X &gt;= <span class="source_type">Child</span>.WinLeft) && (X &lt;= <span class="source_type">Child</span>.WinLeft+<span class="source_type">Child</span>.WinWidth) &&
+<a name="569"></a>			   (<span class="source_type">Y</span> &gt;= <span class="source_type">Child</span>.WinTop) && (<span class="source_type">Y</span> &lt;= <span class="source_type">Child</span>.WinTop+<span class="source_type">Child</span>.WinHeight) &&
+<a name="570"></a>			   (!<span class="source_type">Child</span>.CheckMousePassThrough(X-<span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span>-<span class="source_type">Child</span>.WinTop)))
+<a name="571"></a>			{
+<a name="572"></a>				return <span class="source_type">Child</span>.FindWindowUnder(X - <span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span> - <span class="source_type">Child</span>.WinTop);
+<a name="573"></a>			}
+<a name="574"></a>		}
+<a name="575"></a>	
+<a name="576"></a>		<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow;
+<a name="577"></a>	}
+<a name="578"></a>
+<a name="579"></a>	<span class="source_comment">// Doesn't correspond to any children - it's us.
+</span><a name="580"></a>	return Self;
+<a name="581"></a>}
+<a name="582"></a>
+<a name="583"></a>final <span class="source_type">function</span> <span class="source_type">bool</span> PropagateKey(<span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>)
+<a name="584"></a>{
+<a name="585"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="586"></a>
+<a name="587"></a>	<span class="source_comment">// Check from WinTopmost for windows which accept focus
+</span><a name="588"></a>	<span class="source_type">Child</span> = LastChildWindow;
+<a name="589"></a>
+<a name="590"></a>	<span class="source_comment">// HACK for always on top windows...need a better solution
+</span><a name="591"></a>	if(ActiveWindow != None && <span class="source_type">Child</span> != ActiveWindow && !<span class="source_type">Child</span>.bTransient)
+<a name="592"></a>		<span class="source_type">Child</span> = ActiveWindow;
+<a name="593"></a>	
+<a name="594"></a>	while(<span class="source_type">Child</span> != None)
+<a name="595"></a>	{
+<a name="596"></a>		<span class="source_type">Child</span>.bUWindowActive = bUWindowActive;
+<a name="597"></a>
+<a name="598"></a>		if(bLeaveOnScreen)
+<a name="599"></a>			<span class="source_type">Child</span>.bLeaveOnscreen = True;
+<a name="600"></a>
+<a name="601"></a>		if((bUWindowActive || <span class="source_type">Child</span>.bLeaveOnscreen) && <span class="source_type">Child</span>.bAcceptsFocus)
+<a name="602"></a>		{
+<a name="603"></a><span class="source_comment">//			Log("Sending keystrokes from: "$self$" to:  "$Child$" in state "$Child.GetStateName()$" from state "$GetStateName());
+</span><a name="604"></a>			<span class="source_type">Child</span>.WindowEvent(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X - <span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span> - <span class="source_type">Child</span>.WinTop, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>);
+<a name="605"></a><span class="source_comment">//			log("Returned from "$Child);
+</span><a name="606"></a>			return True;		
+<a name="607"></a>		}
+<a name="608"></a>		<span class="source_comment">//else
+</span><a name="609"></a>			<span class="source_comment">//Log("Ignoring child:  "$Child);
+</span><a name="610"></a>		<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow;
+<a name="611"></a>	}
+<a name="612"></a>	return False;
+<a name="613"></a>}
+<a name="614"></a>
+<a name="615"></a>final <span class="source_type">function</span> <span class="source_type">bool</span> PropagateMessage( coerce <span class="source_type">string</span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">float</span> <span class="source_type">MsgLife</span>)
+<a name="616"></a>{
+<a name="617"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="618"></a>
+<a name="619"></a>	<span class="source_type">Child</span> = LastChildWindow;
+<a name="620"></a>
+<a name="621"></a>	if(ActiveWindow != None && <span class="source_type">Child</span> != ActiveWindow && !<span class="source_type">Child</span>.bTransient)
+<a name="622"></a>		<span class="source_type">Child</span> = ActiveWindow;
+<a name="623"></a>	
+<a name="624"></a>	while(<span class="source_type">Child</span> != None)
+<a name="625"></a>	{
+<a name="626"></a>		<span class="source_type">Child</span>.bUWindowActive = bUWindowActive;
+<a name="627"></a>
+<a name="628"></a>		if(bLeaveOnScreen)
+<a name="629"></a>			<span class="source_type">Child</span>.bLeaveOnscreen = True;
+<a name="630"></a>
+<a name="631"></a>		if((bUWindowActive || <span class="source_type">Child</span>.bLeaveOnscreen) && <span class="source_type">Child</span>.bAcceptsFocus)
+<a name="632"></a>		{
+<a name="633"></a>			<span class="source_type">Child</span>.<span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>,<span class="source_type">MsgLife</span>);		
+<a name="634"></a>			<span class="source_type">Child</span>.PropagateMessage(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">MsgLife</span>);
+<a name="635"></a>			return True;		
+<a name="636"></a>		}
+<a name="637"></a>		<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow;
+<a name="638"></a>	}
+<a name="639"></a>
+<a name="640"></a>	return False;
+<a name="641"></a>}
+<a name="642"></a>
+<a name="643"></a>
+<a name="644"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> CheckKeyFocusWindow()
+<a name="645"></a>{
+<a name="646"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="647"></a>
+<a name="648"></a>	<span class="source_comment">// Check from WinTopmost for windows which accept key focus
+</span><a name="649"></a>	<span class="source_type">Child</span> = LastChildWindow;
+<a name="650"></a>
+<a name="651"></a>	if(ActiveWindow != None && <span class="source_type">Child</span> != ActiveWindow && !<span class="source_type">Child</span>.bTransient)
+<a name="652"></a>		<span class="source_type">Child</span> = ActiveWindow;
+<a name="653"></a>
+<a name="654"></a>	while(<span class="source_type">Child</span> != None)
+<a name="655"></a>	{
+<a name="656"></a>		<span class="source_type">Child</span>.bUWindowActive = bUWindowActive;
+<a name="657"></a>
+<a name="658"></a>		if(bLeaveOnScreen)
+<a name="659"></a>			<span class="source_type">Child</span>.bLeaveOnscreen = True;
+<a name="660"></a>
+<a name="661"></a>		if(bUWindowActive || <span class="source_type">Child</span>.bLeaveOnscreen)
+<a name="662"></a>		{
+<a name="663"></a>			if(<span class="source_type">Child</span>.bAcceptsFocus)
+<a name="664"></a>			{
+<a name="665"></a>				return <span class="source_type">Child</span>.CheckKeyFocusWindow();
+<a name="666"></a>			}
+<a name="667"></a>		}
+<a name="668"></a>		<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow;
+<a name="669"></a>	}
+<a name="670"></a>
+<a name="671"></a>	return Self;
+<a name="672"></a>}
+<a name="673"></a>
+<a name="674"></a>final <span class="source_type">function</span> <span class="source_type">bool</span> MessageClients(<span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>)
+<a name="675"></a>{
+<a name="676"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="677"></a>
+<a name="678"></a>	<span class="source_comment">// go from topmost downwards
+</span><a name="679"></a>	<span class="source_type">Child</span> = LastChildWindow;
+<a name="680"></a>
+<a name="681"></a>	while(<span class="source_type">Child</span> != None)
+<a name="682"></a>	{
+<a name="683"></a>		<span class="source_type">Child</span>.bUWindowActive = bUWindowActive;
+<a name="684"></a>
+<a name="685"></a>		if(bLeaveOnScreen)
+<a name="686"></a>			<span class="source_type">Child</span>.bLeaveOnscreen = True;
+<a name="687"></a>
+<a name="688"></a>		if(bUWindowActive || <span class="source_type">Child</span>.bLeaveOnscreen)
+<a name="689"></a>		{
+<a name="690"></a>			if((X &gt;= <span class="source_type">Child</span>.WinLeft) && (X &lt;= <span class="source_type">Child</span>.WinLeft+<span class="source_type">Child</span>.WinWidth) &&
+<a name="691"></a>			   (<span class="source_type">Y</span> &gt;= <span class="source_type">Child</span>.WinTop) && (<span class="source_type">Y</span> &lt;= <span class="source_type">Child</span>.WinTop+<span class="source_type">Child</span>.WinHeight)  &&
+<a name="692"></a>			   (!<span class="source_type">Child</span>.CheckMousePassThrough(X-<span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span>-<span class="source_type">Child</span>.WinTop))) 
+<a name="693"></a>			{
+<a name="694"></a>				<span class="source_type">Child</span>.WindowEvent(<span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">C</span>, X - <span class="source_type">Child</span>.WinLeft, <span class="source_type">Y</span> - <span class="source_type">Child</span>.WinTop, <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>);
+<a name="695"></a>				return True;
+<a name="696"></a>			}
+<a name="697"></a>		}
+<a name="698"></a>	
+<a name="699"></a>		<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow;
+<a name="700"></a>	}
+<a name="701"></a>
+<a name="702"></a>	return False;
+<a name="703"></a>}
+<a name="704"></a>
+<a name="705"></a>final <span class="source_type">function</span> ActivateWindow(<span class="source_type">int</span> Depth, <span class="source_type">bool</span> bTransientNoDeactivate)
+<a name="706"></a>{
+<a name="707"></a>	if(Self == Root)
+<a name="708"></a>	{
+<a name="709"></a>		if(Depth == <span class="source_int">0</span>)
+<a name="710"></a>			FocusWindow();
+<a name="711"></a>		return;
+<a name="712"></a>	}
+<a name="713"></a>
+<a name="714"></a>	if(WaitModal()) return;
+<a name="715"></a>
+<a name="716"></a>	if(!bAlwaysBehind)
+<a name="717"></a>	{
+<a name="718"></a>		ParentWindow.HideChildWindow(Self);
+<a name="719"></a>		ParentWindow.ShowChildWindow(Self);
+<a name="720"></a>	}
+<a name="721"></a>	
+<a name="722"></a>	<span class="source_comment">//Log("Activating Window "$Self);
+</span><a name="723"></a>	
+<a name="724"></a>	if(!(bTransient || bTransientNoDeactivate))
+<a name="725"></a>	{
+<a name="726"></a>		if(ParentWindow.ActiveWindow != None && ParentWindow.ActiveWindow != Self)
+<a name="727"></a>		{
+<a name="728"></a>			ParentWindow.ActiveWindow.Deactivated();
+<a name="729"></a>		}
+<a name="730"></a>
+<a name="731"></a>		ParentWindow.ActiveWindow = Self;
+<a name="732"></a>		ParentWindow.ActivateWindow(Depth + <span class="source_int">1</span>, False);
+<a name="733"></a>
+<a name="734"></a>		Activated();
+<a name="735"></a>	}
+<a name="736"></a>	else
+<a name="737"></a>	{
+<a name="738"></a>		ParentWindow.ActivateWindow(Depth + <span class="source_int">1</span>, True);
+<a name="739"></a>	}
+<a name="740"></a>
+<a name="741"></a>	if(Depth == <span class="source_int">0</span>)
+<a name="742"></a>		FocusWindow();
+<a name="743"></a>}
+<a name="744"></a>
+<a name="745"></a>final <span class="source_type">function</span> BringToFront()
+<a name="746"></a>{
+<a name="747"></a>	if(Self == Root)
+<a name="748"></a>		return;
+<a name="749"></a>
+<a name="750"></a>	if(!bAlwaysBehind && !WaitModal())
+<a name="751"></a>	{
+<a name="752"></a>		ParentWindow.HideChildWindow(Self);
+<a name="753"></a>		ParentWindow.ShowChildWindow(Self);
+<a name="754"></a>	}
+<a name="755"></a>	ParentWindow.BringToFront();
+<a name="756"></a>}
+<a name="757"></a>
+<a name="758"></a>final <span class="source_type">function</span> SendToBack()
+<a name="759"></a>{
+<a name="760"></a>	ParentWindow.HideChildWindow(Self);
+<a name="761"></a>	ParentWindow.ShowChildWindow(Self, True);
+<a name="762"></a>}
+<a name="763"></a>
+<a name="764"></a>final <span class="source_type">function</span> HideChildWindow(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>)
+<a name="765"></a>{
+<a name="766"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> Window;
+<a name="767"></a>
+<a name="768"></a>	if(!<span class="source_type">Child</span>.bWindowVisible) return;
+<a name="769"></a>	<span class="source_type">Child</span>.bWindowVisible = False;
+<a name="770"></a>
+<a name="771"></a>	if(<span class="source_type">Child</span>.bAcceptsHotKeys)
+<a name="772"></a>		Root.RemoveHotkeyWindow(<span class="source_type">Child</span>);
+<a name="773"></a>
+<a name="774"></a>	<span class="source_comment">// Check WinTopmost
+</span><a name="775"></a>	if(LastChildWindow == <span class="source_type">Child</span>) 
+<a name="776"></a>	{
+<a name="777"></a>		LastChildWindow = <span class="source_type">Child</span>.PrevSiblingWindow;
+<a name="778"></a>		if(LastChildWindow != None)
+<a name="779"></a>		{
+<a name="780"></a>			LastChildWindow.NextSiblingWindow = None;
+<a name="781"></a>		}
+<a name="782"></a>		else
+<a name="783"></a>		{
+<a name="784"></a>			FirstChildWindow = None;
+<a name="785"></a>		}
+<a name="786"></a>	} 
+<a name="787"></a>	else if(FirstChildWindow == <span class="source_type">Child</span>) <span class="source_comment">// Check bottommost
+</span><a name="788"></a>	{ 
+<a name="789"></a>		FirstChildWindow = <span class="source_type">Child</span>.NextSiblingWindow;
+<a name="790"></a>		if(FirstChildWindow != None)
+<a name="791"></a>		{
+<a name="792"></a>			FirstChildWindow.PrevSiblingWindow = None;
+<a name="793"></a>		}
+<a name="794"></a>		else
+<a name="795"></a>		{
+<a name="796"></a>			LastChildWindow = None;
+<a name="797"></a>		}
+<a name="798"></a>	} 
+<a name="799"></a>	else 
+<a name="800"></a>	{
+<a name="801"></a>		<span class="source_comment">// you mean I have to go looking for it???
+</span><a name="802"></a>		Window = FirstChildWindow;
+<a name="803"></a>		while(Window != None)
+<a name="804"></a>		{
+<a name="805"></a>			if(Window.NextSiblingWindow == <span class="source_type">Child</span>)
+<a name="806"></a>			{
+<a name="807"></a>				Window.NextSiblingWindow = <span class="source_type">Child</span>.NextSiblingWindow;
+<a name="808"></a>				Window.NextSiblingWindow.PrevSiblingWindow = Window;
+<a name="809"></a>				break;
+<a name="810"></a>			}
+<a name="811"></a>			Window = Window.NextSiblingWindow;
+<a name="812"></a>		}
+<a name="813"></a>	}
+<a name="814"></a>
+<a name="815"></a>	<span class="source_comment">// Set the active window
+</span><a name="816"></a>	ActiveWindow = None;
+<a name="817"></a>	Window = LastChildWindow;
+<a name="818"></a>	while(Window != None)
+<a name="819"></a>	{
+<a name="820"></a>		if(!Window.bAlwaysOnTop)
+<a name="821"></a>		{
+<a name="822"></a>			ActiveWindow = Window;
+<a name="823"></a>			break;
+<a name="824"></a>		}
+<a name="825"></a>		Window = Window.PrevSiblingWindow;
+<a name="826"></a>	}
+<a name="827"></a>	if(ActiveWindow == None) ActiveWindow = LastChildWindow;
+<a name="828"></a>}
+<a name="829"></a>
+<a name="830"></a>final <span class="source_type">function</span> SetAcceptsFocus()
+<a name="831"></a>{
+<a name="832"></a>	if(bAcceptsFocus) return;
+<a name="833"></a>	bAcceptsFocus = True;
+<a name="834"></a>
+<a name="835"></a>	if(Self != Root)
+<a name="836"></a>		ParentWindow.SetAcceptsFocus();
+<a name="837"></a>}
+<a name="838"></a>
+<a name="839"></a>final <span class="source_type">function</span> CancelAcceptsFocus()
+<a name="840"></a>{
+<a name="841"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="842"></a>
+<a name="843"></a>	for(<span class="source_type">Child</span> = LastChildWindow; <span class="source_type">Child</span> != None; <span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="844"></a>		<span class="source_type">Child</span>.CancelAcceptsFocus();
+<a name="845"></a>
+<a name="846"></a>	bAcceptsFocus = False;
+<a name="847"></a>}
+<a name="848"></a>
+<a name="849"></a>final <span class="source_type">function</span> GetMouseXY(out <span class="source_type">float</span> X, out <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="850"></a>{
+<a name="851"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">P</span>;
+<a name="852"></a>
+<a name="853"></a>	X = <span class="source_type">Int</span>(Root.MouseX);
+<a name="854"></a>	<span class="source_type">Y</span> = <span class="source_type">Int</span>(Root.<span class="source_type">MouseY</span>);
+<a name="855"></a>	
+<a name="856"></a>	<span class="source_type">P</span> = Self;
+<a name="857"></a>	while(<span class="source_type">P</span> != Root)
+<a name="858"></a>	{		
+<a name="859"></a>		X = X - <span class="source_type">P</span>.WinLeft;
+<a name="860"></a>		<span class="source_type">Y</span> = <span class="source_type">Y</span> - <span class="source_type">P</span>.WinTop;
+<a name="861"></a>		<span class="source_type">P</span> = <span class="source_type">P</span>.ParentWindow;
+<a name="862"></a>	}
+<a name="863"></a>}
+<a name="864"></a>
+<a name="865"></a>final <span class="source_type">function</span> GlobalToWindow(<span class="source_type">float</span> GlobalX, <span class="source_type">float</span> GlobalY, out <span class="source_type">float</span> WinX, out <span class="source_type">float</span> WinY)
+<a name="866"></a>{
+<a name="867"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">P</span>;
+<a name="868"></a>
+<a name="869"></a>	WinX = GlobalX;
+<a name="870"></a>	WinY = GlobalY;
+<a name="871"></a>
+<a name="872"></a>	<span class="source_type">P</span> = Self;
+<a name="873"></a>	while(<span class="source_type">P</span> != Root)
+<a name="874"></a>	{		
+<a name="875"></a>		WinX -= <span class="source_type">P</span>.WinLeft;
+<a name="876"></a>		WinY -= <span class="source_type">P</span>.WinTop;
+<a name="877"></a>		<span class="source_type">P</span> = <span class="source_type">P</span>.ParentWindow;
+<a name="878"></a>	}
+<a name="879"></a>}
+<a name="880"></a>
+<a name="881"></a>final <span class="source_type">function</span> WindowToGlobal(<span class="source_type">float</span> WinX, <span class="source_type">float</span> WinY, out <span class="source_type">float</span> GlobalX, out <span class="source_type">float</span> GlobalY)
+<a name="882"></a>{
+<a name="883"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">P</span>;
+<a name="884"></a>
+<a name="885"></a>	GlobalX = WinX;
+<a name="886"></a>	GlobalY = WinY;
+<a name="887"></a>
+<a name="888"></a>	<span class="source_type">P</span> = Self;
+<a name="889"></a>	while(<span class="source_type">P</span> != Root)
+<a name="890"></a>	{		
+<a name="891"></a>		GlobalX += <span class="source_type">P</span>.WinLeft;
+<a name="892"></a>		GlobalY += <span class="source_type">P</span>.WinTop;
+<a name="893"></a>		<span class="source_type">P</span> = <span class="source_type">P</span>.ParentWindow;
+<a name="894"></a>	}
+<a name="895"></a>}
+<a name="896"></a>
+<a name="897"></a>final <span class="source_type">function</span> ShowChildWindow(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>, optional <span class="source_type">bool</span> bAtBack)
+<a name="898"></a>{
+<a name="899"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W;
+<a name="900"></a>	
+<a name="901"></a>	if(!<span class="source_type">Child</span>.bTransient) ActiveWindow = <span class="source_type">Child</span>;
+<a name="902"></a>
+<a name="903"></a>	if(<span class="source_type">Child</span>.bWindowVisible) return;
+<a name="904"></a>	<span class="source_type">Child</span>.bWindowVisible = True;
+<a name="905"></a>
+<a name="906"></a>	if(<span class="source_type">Child</span>.bAcceptsHotKeys)
+<a name="907"></a>		Root.AddHotkeyWindow(<span class="source_type">Child</span>);
+<a name="908"></a>
+<a name="909"></a>	if(bAtBack)
+<a name="910"></a>	{
+<a name="911"></a>		if(FirstChildWindow == None)
+<a name="912"></a>		{
+<a name="913"></a>			<span class="source_type">Child</span>.NextSiblingWindow = None;
+<a name="914"></a>			<span class="source_type">Child</span>.PrevSiblingWindow = None;
+<a name="915"></a>			LastChildWindow = <span class="source_type">Child</span>;
+<a name="916"></a>			FirstChildWindow = <span class="source_type">Child</span>;
+<a name="917"></a>		}
+<a name="918"></a>		else
+<a name="919"></a>		{
+<a name="920"></a>			FirstChildWindow.PrevSiblingWindow = <span class="source_type">Child</span>;
+<a name="921"></a>			<span class="source_type">Child</span>.NextSiblingWindow = FirstChildWindow;
+<a name="922"></a>			<span class="source_type">Child</span>.PrevSiblingWindow = None;
+<a name="923"></a>			FirstChildWindow = <span class="source_type">Child</span>;
+<a name="924"></a>		}
+<a name="925"></a>	}
+<a name="926"></a>	else
+<a name="927"></a>	{
+<a name="928"></a>		W = LastChildWindow;
+<a name="929"></a>		while(True) 
+<a name="930"></a>		{
+<a name="931"></a>			if((<span class="source_type">Child</span>.bAlwaysOnTop) || (W == None) || (!W.bAlwaysOnTop))
+<a name="932"></a>			{
+<a name="933"></a>				if(W == None)
+<a name="934"></a>				{	
+<a name="935"></a>					if(LastChildWindow == None)
+<a name="936"></a>					{
+<a name="937"></a>						<span class="source_comment">// We're the only window
+</span><a name="938"></a>						<span class="source_type">Child</span>.NextSiblingWindow = None;
+<a name="939"></a>						<span class="source_type">Child</span>.PrevSiblingWindow = None;
+<a name="940"></a>						LastChildWindow = <span class="source_type">Child</span>;
+<a name="941"></a>						FirstChildWindow = <span class="source_type">Child</span>;
+<a name="942"></a>					}
+<a name="943"></a>					else
+<a name="944"></a>					{
+<a name="945"></a>						<span class="source_comment">// We feel off the end of the list, we're the bottom (first) child window.
+</span><a name="946"></a>						<span class="source_type">Child</span>.NextSiblingWindow = FirstChildWindow;
+<a name="947"></a>						<span class="source_type">Child</span>.PrevSiblingWindow = None;
+<a name="948"></a>						FirstChildWindow.PrevSiblingWindow = <span class="source_type">Child</span>;
+<a name="949"></a>						FirstChildWindow = <span class="source_type">Child</span>;
+<a name="950"></a>					}
+<a name="951"></a>				}
+<a name="952"></a>				else
+<a name="953"></a>				{
+<a name="954"></a>					<span class="source_comment">// We're either the new topmost (last) or we need to be inserted in the list.
+</span><a name="955"></a>
+<a name="956"></a>					<span class="source_type">Child</span>.NextSiblingWindow = W.NextSiblingWindow;
+<a name="957"></a>					<span class="source_type">Child</span>.PrevSiblingWindow = W;
+<a name="958"></a>					if(W.NextSiblingWindow != None)
+<a name="959"></a>					{
+<a name="960"></a>						W.NextSiblingWindow.PrevSiblingWindow = <span class="source_type">Child</span>;
+<a name="961"></a>					}
+<a name="962"></a>					else
+<a name="963"></a>					{
+<a name="964"></a>						LastChildWindow = <span class="source_type">Child</span>;
+<a name="965"></a>					}
+<a name="966"></a>					W.NextSiblingWindow = <span class="source_type">Child</span>;
+<a name="967"></a>				}
+<a name="968"></a>				
+<a name="969"></a>				<span class="source_comment">// We're done.
+</span><a name="970"></a>				break;
+<a name="971"></a>			}
+<a name="972"></a>			
+<a name="973"></a>			W = W.PrevSiblingWindow;
+<a name="974"></a>		}
+<a name="975"></a>	}
+<a name="976"></a>}
+<a name="977"></a>
+<a name="978"></a><span class="source_type">function</span> ShowWindow()
+<a name="979"></a>{
+<a name="980"></a>	ParentWindow.ShowChildWindow(Self);
+<a name="981"></a>	WindowShown();
+<a name="982"></a>}
+<a name="983"></a>
+<a name="984"></a><span class="source_type">function</span> HideWindow()
+<a name="985"></a>{
+<a name="986"></a>	WindowHidden();
+<a name="987"></a>	ParentWindow.HideChildWindow(Self);
+<a name="988"></a>}
+<a name="989"></a>
+<a name="990"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> CreateWindow(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>&gt; WndClass, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> OwnerW, optional <span class="source_type">bool</span> bUnique, optional <span class="source_type">name</span> ObjectName)
+<a name="991"></a>{
+<a name="992"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="993"></a>
+<a name="994"></a>	if(bUnique)
+<a name="995"></a>	{
+<a name="996"></a>		<span class="source_type">Child</span> = Root.FindChildWindow(WndClass, True);
+<a name="997"></a>
+<a name="998"></a>		if(<span class="source_type">Child</span> != None)
+<a name="999"></a>		{
+<a name="1000"></a>			<span class="source_type">Child</span>.ShowWindow();
+<a name="1001"></a>			<span class="source_type">Child</span>.BringToFront();
+<a name="1002"></a>			return <span class="source_type">Child</span>;
+<a name="1003"></a>		}
+<a name="1004"></a>	}
+<a name="1005"></a>
+<a name="1006"></a>	if(ObjectName != <span class="source_name">''</span>)
+<a name="1007"></a>		<span class="source_type">Child</span> = New(None, <span class="source_type">string</span>(ObjectName)) WndClass;
+<a name="1008"></a>	else
+<a name="1009"></a>		<span class="source_type">Child</span> = New(None) WndClass;
+<a name="1010"></a>
+<a name="1011"></a>		
+<a name="1012"></a>	<span class="source_type">Child</span>.BeginPlay();
+<a name="1013"></a>	<span class="source_type">Child</span>.WinTop = <span class="source_type">Y</span>;
+<a name="1014"></a>	<span class="source_type">Child</span>.WinLeft = X;
+<a name="1015"></a>	<span class="source_type">Child</span>.WinWidth = W;
+<a name="1016"></a>	<span class="source_type">Child</span>.WinHeight = H;
+<a name="1017"></a>	<span class="source_type">Child</span>.Root = Root;
+<a name="1018"></a>	<span class="source_type">Child</span>.ParentWindow = Self;
+<a name="1019"></a>	<span class="source_type">Child</span>.OwnerWindow = OwnerW;
+<a name="1020"></a>	if(<span class="source_type">Child</span>.OwnerWindow == None)
+<a name="1021"></a>		<span class="source_type">Child</span>.OwnerWindow = Self;
+<a name="1022"></a>		
+<a name="1023"></a>	<span class="source_type">Child</span>.Cursor = Cursor;
+<a name="1024"></a>	<span class="source_type">Child</span>.bAlwaysBehind = False;
+<a name="1025"></a>	<span class="source_type">Child</span>.LookAndFeel = LookAndFeel;
+<a name="1026"></a>	<span class="source_type">Child</span>.BeforeCreate();
+<a name="1027"></a>	<span class="source_type">Child</span>.Created();
+<a name="1028"></a>
+<a name="1029"></a>	
+<a name="1030"></a>	
+<a name="1031"></a>	<span class="source_comment">// Now add it at the WinTop of the Z-Order and then adjust child list.
+</span><a name="1032"></a>	ShowChildWindow(<span class="source_type">Child</span>);
+<a name="1033"></a>
+<a name="1034"></a>	<span class="source_type">Child</span>.AfterCreate();
+<a name="1035"></a>
+<a name="1036"></a>	return <span class="source_type">Child</span>;
+<a name="1037"></a>}
+<a name="1038"></a>
+<a name="1039"></a>final <span class="source_type">function</span> Tile(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>)
+<a name="1040"></a>{
+<a name="1041"></a>	local <span class="source_type">int</span> X, <span class="source_type">Y</span>;
+<a name="1042"></a>
+<a name="1043"></a>	X = <span class="source_int">0</span>;
+<a name="1044"></a>	<span class="source_type">Y</span> = <span class="source_int">0</span>;
+<a name="1045"></a>
+<a name="1046"></a>	While(X &lt; WinWidth)
+<a name="1047"></a>	{
+<a name="1048"></a>		While(<span class="source_type">Y</span> &lt; WinHeight)
+<a name="1049"></a>		{
+<a name="1050"></a>			DrawClippedTexture( <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type">T</span> );
+<a name="1051"></a>			<span class="source_type">Y</span> += <span class="source_type">T</span>.VSize;
+<a name="1052"></a>		}
+<a name="1053"></a>		X += <span class="source_type">T</span>.USize;
+<a name="1054"></a>		<span class="source_type">Y</span> = <span class="source_int">0</span>;
+<a name="1055"></a>	}
+<a name="1056"></a>}
+<a name="1057"></a>
+<a name="1058"></a>final <span class="source_type">function</span> DrawHorizTiledPieces( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> DestX, <span class="source_type">float</span> DestY, <span class="source_type">float</span> DestW, <span class="source_type">float</span> DestH, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T1, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T2, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T3, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T4, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T5, <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> )
+<a name="1059"></a>{
+<a name="1060"></a>	local <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> Pieces[<span class="source_int">5</span>], <span class="source_type">R</span>;
+<a name="1061"></a>	local <span class="source_type">int</span> PieceCount;
+<a name="1062"></a>	local <span class="source_type">int</span> j;
+<a name="1063"></a>	local <span class="source_type">float</span> X, L;
+<a name="1064"></a>
+<a name="1065"></a>	Pieces[<span class="source_int">0</span>] = T1; if(T1.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">1</span>;
+<a name="1066"></a>	Pieces[<span class="source_int">1</span>] = T2; if(T2.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">2</span>;
+<a name="1067"></a>	Pieces[<span class="source_int">2</span>] = T3; if(T3.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">3</span>;
+<a name="1068"></a>	Pieces[<span class="source_int">3</span>] = T4; if(T4.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">4</span>;
+<a name="1069"></a>	Pieces[<span class="source_int">4</span>] = T5; if(T5.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">5</span>;
+<a name="1070"></a>
+<a name="1071"></a>	j = <span class="source_int">0</span>;
+<a name="1072"></a>	X = DestX;
+<a name="1073"></a>	while( X &lt; DestX + DestW )
+<a name="1074"></a>	{
+<a name="1075"></a>		L = DestW - (X - DestX);
+<a name="1076"></a>		<span class="source_type">R</span> = Pieces[j];
+<a name="1077"></a>		DrawStretchedTextureSegment( <span class="source_type">C</span>, X, DestY, FMin(<span class="source_type">R</span>.W*<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>, L), <span class="source_type">R</span>.H*<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, FMin(<span class="source_type">R</span>.W, L/<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>), <span class="source_type">R</span>.H, <span class="source_type">R</span>.<span class="source_type">T</span> );
+<a name="1078"></a>		X += FMin(<span class="source_type">R</span>.W*<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>, L);
+<a name="1079"></a>		j = (j+<span class="source_int">1</span>)%PieceCount;
+<a name="1080"></a>	}
+<a name="1081"></a>}
+<a name="1082"></a>
+<a name="1083"></a>final <span class="source_type">function</span> DrawVertTiledPieces( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> DestX, <span class="source_type">float</span> DestY, <span class="source_type">float</span> DestW, <span class="source_type">float</span> DestH, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T1, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T2, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T3, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T4, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T5, <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> )
+<a name="1084"></a>{
+<a name="1085"></a>	local <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> Pieces[<span class="source_int">5</span>], <span class="source_type">R</span>;
+<a name="1086"></a>	local <span class="source_type">int</span> PieceCount;
+<a name="1087"></a>	local <span class="source_type">int</span> j;
+<a name="1088"></a>	local <span class="source_type">float</span> <span class="source_type">Y</span>, L;
+<a name="1089"></a>
+<a name="1090"></a>	Pieces[<span class="source_int">0</span>] = T1; if(T1.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">1</span>;
+<a name="1091"></a>	Pieces[<span class="source_int">1</span>] = T2; if(T2.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">2</span>;
+<a name="1092"></a>	Pieces[<span class="source_int">2</span>] = T3; if(T3.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">3</span>;
+<a name="1093"></a>	Pieces[<span class="source_int">3</span>] = T4; if(T4.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">4</span>;
+<a name="1094"></a>	Pieces[<span class="source_int">4</span>] = T5; if(T5.<span class="source_type">T</span> != None) PieceCount = <span class="source_int">5</span>;
+<a name="1095"></a>
+<a name="1096"></a>	j = <span class="source_int">0</span>;
+<a name="1097"></a>	<span class="source_type">Y</span> = DestY;
+<a name="1098"></a>	while( <span class="source_type">Y</span> &lt; DestY + DestH )
+<a name="1099"></a>	{
+<a name="1100"></a>		L = DestH - (<span class="source_type">Y</span> - DestY);
+<a name="1101"></a>		<span class="source_type">R</span> = Pieces[j];
+<a name="1102"></a>		DrawStretchedTextureSegment( <span class="source_type">C</span>, DestX, <span class="source_type">Y</span>, <span class="source_type">R</span>.W*<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>, FMin(<span class="source_type">R</span>.H*<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>, L), <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, FMin(<span class="source_type">R</span>.H, L/<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>), <span class="source_type">R</span>.<span class="source_type">T</span> );
+<a name="1103"></a>		<span class="source_type">Y</span> += FMin(<span class="source_type">R</span>.H*<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>, L);
+<a name="1104"></a>		j = (j+<span class="source_int">1</span>)%PieceCount;
+<a name="1105"></a>	}
+<a name="1106"></a>}
+<a name="1107"></a>
+<a name="1108"></a>
+<a name="1109"></a>final <span class="source_type">function</span> DrawClippedTexture( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> <span class="source_type">Tex</span> )
+<a name="1110"></a>{
+<a name="1111"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type">Tex</span>.USize, <span class="source_type">Tex</span>.VSize, <span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_type">Tex</span>.USize, <span class="source_type">Tex</span>.VSize, <span class="source_type">Tex</span>);
+<a name="1112"></a>}
+<a name="1113"></a>
+<a name="1114"></a>final <span class="source_type">function</span> DrawStretchedTexture( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> <span class="source_type">Tex</span> )
+<a name="1115"></a>{
+<a name="1116"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span>, W, H, <span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_type">Tex</span>.USize, <span class="source_type">Tex</span>.VSize, <span class="source_type">Tex</span>);
+<a name="1117"></a>}
+<a name="1118"></a>
+<a name="1119"></a>final <span class="source_type">function</span> DrawStretchedTextureSegment( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, 
+<a name="1120"></a>									  <span class="source_type">float</span> tX, <span class="source_type">float</span> tY, <span class="source_type">float</span> tW, <span class="source_type">float</span> tH, <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> <span class="source_type">Tex</span> ) 
+<a name="1121"></a>{
+<a name="1122"></a>	local <span class="source_type">float</span> OrgX, OrgY, ClipX, <span class="source_type">ClipY</span>;
+<a name="1123"></a>
+<a name="1124"></a>	OrgX = <span class="source_type">C</span>.OrgX;
+<a name="1125"></a>	OrgY = <span class="source_type">C</span>.OrgY;
+<a name="1126"></a>	ClipX = <span class="source_type">C</span>.ClipX;
+<a name="1127"></a>	<span class="source_type">ClipY</span> = <span class="source_type">C</span>.<span class="source_type">ClipY</span>;
+<a name="1128"></a>
+<a name="1129"></a>	<span class="source_type">C</span>.SetOrigin(OrgX + ClippingRegion.X*Root.GUIScale, OrgY + ClippingRegion.<span class="source_type">Y</span>*Root.GUIScale);
+<a name="1130"></a>	<span class="source_type">C</span>.SetClip(ClippingRegion.W*Root.GUIScale, ClippingRegion.H*Root.GUIScale);
+<a name="1131"></a>
+<a name="1132"></a>	<span class="source_type">C</span>.SetPos((X - ClippingRegion.X)*Root.GUIScale, (<span class="source_type">Y</span> - ClippingRegion.<span class="source_type">Y</span>)*Root.GUIScale);
+<a name="1133"></a>	<span class="source_type">C</span>.DrawTileClipped( <span class="source_type">Tex</span>, W*Root.GUIScale, H*Root.GUIScale, tX, tY, tW, tH);
+<a name="1134"></a>	
+<a name="1135"></a>	<span class="source_type">C</span>.SetClip(ClipX, <span class="source_type">ClipY</span>);
+<a name="1136"></a>	<span class="source_type">C</span>.SetOrigin(OrgX, OrgY);
+<a name="1137"></a>}
+<a name="1138"></a>
+<a name="1139"></a>final <span class="source_type">function</span> ClipText(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">bool</span> bCheckHotkey)
+<a name="1140"></a>{
+<a name="1141"></a>	local <span class="source_type">float</span> OrgX, OrgY, ClipX, <span class="source_type">ClipY</span>;
+<a name="1142"></a>
+<a name="1143"></a>	OrgX = <span class="source_type">C</span>.OrgX;
+<a name="1144"></a>	OrgY = <span class="source_type">C</span>.OrgY;
+<a name="1145"></a>	ClipX = <span class="source_type">C</span>.ClipX;
+<a name="1146"></a>	<span class="source_type">ClipY</span> = <span class="source_type">C</span>.<span class="source_type">ClipY</span>;
+<a name="1147"></a>
+<a name="1148"></a>	<span class="source_type">C</span>.SetOrigin(OrgX + ClippingRegion.X*Root.GUIScale, OrgY + ClippingRegion.<span class="source_type">Y</span>*Root.GUIScale);
+<a name="1149"></a>	<span class="source_type">C</span>.SetClip(ClippingRegion.W*Root.GUIScale, ClippingRegion.H*Root.GUIScale);
+<a name="1150"></a>
+<a name="1151"></a>	<span class="source_type">C</span>.SetPos((X - ClippingRegion.X)*Root.GUIScale, (<span class="source_type">Y</span> - ClippingRegion.<span class="source_type">Y</span>)*Root.GUIScale);
+<a name="1152"></a>	<span class="source_type">C</span>.DrawTextClipped(<span class="source_type">S</span>, bCheckHotKey);
+<a name="1153"></a>
+<a name="1154"></a>	<span class="source_type">C</span>.SetClip(ClipX, <span class="source_type">ClipY</span>);
+<a name="1155"></a>	<span class="source_type">C</span>.SetOrigin(OrgX, OrgY);
+<a name="1156"></a>}
+<a name="1157"></a>
+<a name="1158"></a>final <span class="source_type">function</span> <span class="source_type">int</span> WrapClipText(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">bool</span> bCheckHotkey, optional <span class="source_type">int</span> Length, optional <span class="source_type">int</span> PaddingLength, optional <span class="source_type">bool</span> bNoDraw)
+<a name="1159"></a>{
+<a name="1160"></a>	local <span class="source_type">float</span> W, H;
+<a name="1161"></a>	local <span class="source_type">int</span> SpacePos, CRPos, WordPos, TotalPos;
+<a name="1162"></a>	local <span class="source_type">string</span> Out, Temp, Padding;
+<a name="1163"></a>	local <span class="source_type">bool</span> bCR, bSentry;
+<a name="1164"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1165"></a>	local <span class="source_type">int</span> NumLines;
+<a name="1166"></a>	local <span class="source_type">float</span> pW, pH;
+<a name="1167"></a>
+<a name="1168"></a>	<span class="source_comment">// replace \\n's with Chr(13)'s
+</span><a name="1169"></a>	<span class="source_type">i</span> = InStr(<span class="source_type">S</span>, <span class="source_string">"\\n"</span>);
+<a name="1170"></a>	while(<span class="source_type">i</span> != -<span class="source_int">1</span>)
+<a name="1171"></a>	{
+<a name="1172"></a>		<span class="source_type">S</span> = Left(<span class="source_type">S</span>, <span class="source_type">i</span>) $ Chr(<span class="source_int">13</span>) $ Mid(<span class="source_type">S</span>, <span class="source_type">i</span> + <span class="source_int">2</span>);
+<a name="1173"></a>		<span class="source_type">i</span> = InStr(<span class="source_type">S</span>, <span class="source_string">"\\n"</span>);
+<a name="1174"></a>	}
+<a name="1175"></a>
+<a name="1176"></a>	<span class="source_type">i</span> = <span class="source_int">0</span>;
+<a name="1177"></a>	bSentry = True;
+<a name="1178"></a>	Out = <span class="source_string">""</span>;
+<a name="1179"></a>	NumLines = <span class="source_int">1</span>;
+<a name="1180"></a>	while( bSentry && <span class="source_type">Y</span> &lt; WinHeight )
+<a name="1181"></a>	{
+<a name="1182"></a>		<span class="source_comment">// Get the line to be drawn.
+</span><a name="1183"></a>		if(Out == <span class="source_string">""</span>)
+<a name="1184"></a>		{
+<a name="1185"></a>			<span class="source_type">i</span>++;
+<a name="1186"></a>			if (Length &gt; <span class="source_int">0</span>)
+<a name="1187"></a>				Out = Left(<span class="source_type">S</span>, Length);
+<a name="1188"></a>			else
+<a name="1189"></a>				Out = <span class="source_type">S</span>;
+<a name="1190"></a>		}
+<a name="1191"></a>
+<a name="1192"></a>		<span class="source_comment">// Find the word boundary.
+</span><a name="1193"></a>		SpacePos = InStr(Out, <span class="source_string">" "</span>);
+<a name="1194"></a>		CRPos = InStr(Out, Chr(<span class="source_int">13</span>));
+<a name="1195"></a>		
+<a name="1196"></a>		bCR = False;
+<a name="1197"></a>		if(CRPos != -<span class="source_int">1</span> && (CRPos &lt; SpacePos || SpacePos == -<span class="source_int">1</span>))
+<a name="1198"></a>		{
+<a name="1199"></a>			WordPos = CRPos;
+<a name="1200"></a>			bCR = True;
+<a name="1201"></a>		}
+<a name="1202"></a>		else
+<a name="1203"></a>		{
+<a name="1204"></a>			WordPos = SpacePos;
+<a name="1205"></a>		}
+<a name="1206"></a>		
+<a name="1207"></a>		<span class="source_comment">// Get the current word.
+</span><a name="1208"></a>		<span class="source_type">C</span>.SetPos(<span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="1209"></a>		if(WordPos == -<span class="source_int">1</span>)
+<a name="1210"></a>			Temp = Out;
+<a name="1211"></a>		else
+<a name="1212"></a>			Temp = Left(Out, WordPos)$<span class="source_string">" "</span>;
+<a name="1213"></a>		TotalPos += WordPos;
+<a name="1214"></a>
+<a name="1215"></a>		TextSize(<span class="source_type">C</span>, Temp, W, H);
+<a name="1216"></a>
+<a name="1217"></a>		<span class="source_comment">// Calculate draw offset.
+</span><a name="1218"></a>		if ( (Mid(Out, <span class="source_type">Len</span>(Temp)) == <span class="source_string">""</span>) && (PaddingLength &gt; <span class="source_int">0</span>) )
+<a name="1219"></a>		{
+<a name="1220"></a>			Padding = Mid(<span class="source_type">S</span>, Length, PaddingLength);
+<a name="1221"></a>			TextSize(<span class="source_type">C</span>, Padding, pW, pH);
+<a name="1222"></a>			if(W + X + pW &gt; WinWidth && X &gt; <span class="source_int">0</span>)
+<a name="1223"></a>			{
+<a name="1224"></a>				X = <span class="source_int">0</span>;
+<a name="1225"></a>				<span class="source_type">Y</span> += H;
+<a name="1226"></a>				NumLines++;
+<a name="1227"></a>			}
+<a name="1228"></a>		}
+<a name="1229"></a>		else
+<a name="1230"></a>		{
+<a name="1231"></a>			if(W + X &gt; WinWidth && X &gt; <span class="source_int">0</span>)
+<a name="1232"></a>			{
+<a name="1233"></a>				X = <span class="source_int">0</span>;
+<a name="1234"></a>				<span class="source_type">Y</span> += H;
+<a name="1235"></a>				NumLines++;
+<a name="1236"></a>			}
+<a name="1237"></a>		}
+<a name="1238"></a>
+<a name="1239"></a>		<span class="source_comment">// Draw the line.
+</span><a name="1240"></a>		if(!bNoDraw)
+<a name="1241"></a>			ClipText(<span class="source_type">C</span>, X, <span class="source_type">Y</span>, Temp, bCheckHotKey);
+<a name="1242"></a>
+<a name="1243"></a>		<span class="source_comment">// Increment the draw offset.
+</span><a name="1244"></a>		X += W;
+<a name="1245"></a>		if(bCR)
+<a name="1246"></a>		{
+<a name="1247"></a>			X =<span class="source_int">0</span>;
+<a name="1248"></a>			<span class="source_type">Y</span> += H;
+<a name="1249"></a>			NumLines++;
+<a name="1250"></a>		}
+<a name="1251"></a>		Out = Mid(Out, <span class="source_type">Len</span>(Temp));
+<a name="1252"></a>		if ((Out == <span class="source_string">""</span>) && (<span class="source_type">i</span> &gt; <span class="source_int">0</span>))
+<a name="1253"></a>			bSentry = False;
+<a name="1254"></a>	}
+<a name="1255"></a>	return NumLines;
+<a name="1256"></a>}
+<a name="1257"></a>
+<a name="1258"></a>final <span class="source_type">function</span> ClipTextWidth(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">float</span> W)
+<a name="1259"></a>{
+<a name="1260"></a>	ClipText(<span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type">S</span>);
+<a name="1261"></a>}
+<a name="1262"></a>
+<a name="1263"></a>final <span class="source_type">function</span> DrawClippedActor( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">A</span>, <span class="source_type">bool</span> WireFrame, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> RotOffset, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">LocOffset</span> )
+<a name="1264"></a>{
+<a name="1265"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> MeshLoc;
+<a name="1266"></a>	local <span class="source_type">float</span> FOV;
+<a name="1267"></a>
+<a name="1268"></a>	FOV = GetPlayerOwner().FOVAngle * Pi / <span class="source_int">180</span>;
+<a name="1269"></a>	
+<a name="1270"></a>	MeshLoc.X = <span class="source_int">4</span> / tan(FOV/<span class="source_int">2</span>);
+<a name="1271"></a>	MeshLoc.<span class="source_type">Y</span> = <span class="source_int">0</span>;
+<a name="1272"></a>	MeshLoc.Z = <span class="source_int">0</span>;
+<a name="1273"></a>
+<a name="1274"></a>	<span class="source_type">A</span>.SetRotation(RotOffset);
+<a name="1275"></a>	<span class="source_type">A</span>.SetLocation(MeshLoc + <span class="source_type">LocOffset</span>);
+<a name="1276"></a>
+<a name="1277"></a>	<span class="source_comment">// C.DrawClippedActor(A, WireFrame, ClippingRegion.W * Root.GUIScale, ClippingRegion.H * Root.GUIScale, C.OrgX + ClippingRegion.X * Root.GUIScale, C.OrgY + ClippingRegion.Y * Root.GUIScale, True);
+</span><a name="1278"></a>}
+<a name="1279"></a>
+<a name="1280"></a>final <span class="source_type">function</span> DrawUpBevel( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>)
+<a name="1281"></a>{
+<a name="1282"></a>	local <span class="source_type"><a href="../uwindow/uwindowbase.html#Region" class="source">Region</a></span> <span class="source_type">R</span>;
+<a name="1283"></a>
+<a name="1284"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpTL;
+<a name="1285"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1286"></a>
+<a name="1287"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpT;
+<a name="1288"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X+LookAndFeel.BevelUpTL.W, <span class="source_type">Y</span>, 
+<a name="1289"></a>									W - LookAndFeel.BevelUpTL.W
+<a name="1290"></a>									- LookAndFeel.BevelUpTR.W,
+<a name="1291"></a>									<span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1292"></a>
+<a name="1293"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpTR;
+<a name="1294"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + W - <span class="source_type">R</span>.W, <span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1295"></a>	
+<a name="1296"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpL;
+<a name="1297"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span> + LookAndFeel.BevelUpTL.H,
+<a name="1298"></a>									<span class="source_type">R</span>.W,  
+<a name="1299"></a>									H - LookAndFeel.BevelUpTL.H
+<a name="1300"></a>									- LookAndFeel.BevelUpBL.H,
+<a name="1301"></a>									<span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1302"></a>
+<a name="1303"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpR;
+<a name="1304"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + W - <span class="source_type">R</span>.W, <span class="source_type">Y</span> + LookAndFeel.BevelUpTL.H,
+<a name="1305"></a>									<span class="source_type">R</span>.W,  
+<a name="1306"></a>									H - LookAndFeel.BevelUpTL.H
+<a name="1307"></a>									- LookAndFeel.BevelUpBL.H,
+<a name="1308"></a>									<span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1309"></a>
+<a name="1310"></a>	
+<a name="1311"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpBL;
+<a name="1312"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span> + H - <span class="source_type">R</span>.H, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1313"></a>
+<a name="1314"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpB;
+<a name="1315"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + LookAndFeel.BevelUpBL.W, <span class="source_type">Y</span> + H - <span class="source_type">R</span>.H, 
+<a name="1316"></a>									W - LookAndFeel.BevelUpBL.W
+<a name="1317"></a>									- LookAndFeel.BevelUpBR.W,
+<a name="1318"></a>									<span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1319"></a>
+<a name="1320"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpBR;
+<a name="1321"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + W - <span class="source_type">R</span>.W, <span class="source_type">Y</span> + H - <span class="source_type">R</span>.H, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, 
+<a name="1322"></a>									<span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1323"></a>
+<a name="1324"></a>	<span class="source_type">R</span> = LookAndFeel.BevelUpArea;
+<a name="1325"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + LookAndFeel.BevelUpTL.W,
+<a name="1326"></a>	                                <span class="source_type">Y</span> + LookAndFeel.BevelUpTL.H,
+<a name="1327"></a>									W - LookAndFeel.BevelUpBL.W
+<a name="1328"></a>									- LookAndFeel.BevelUpBR.W,
+<a name="1329"></a>									H - LookAndFeel.BevelUpTL.H
+<a name="1330"></a>									- LookAndFeel.BevelUpBL.H,
+<a name="1331"></a>									<span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1332"></a>	
+<a name="1333"></a>}
+<a name="1334"></a>
+<a name="1335"></a>final <span class="source_type">function</span> DrawMiscBevel( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>, <span class="source_type">int</span> BevelType)
+<a name="1336"></a>{
+<a name="1337"></a>	local <span class="source_type"><a href="../uwindow/uwindowbase.html#Region" class="source">Region</a></span> <span class="source_type">R</span>;
+<a name="1338"></a>
+<a name="1339"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelTL[BevelType];
+<a name="1340"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1341"></a>
+<a name="1342"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelT[BevelType];
+<a name="1343"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X+LookAndFeel.MiscBevelTL[BevelType].W, <span class="source_type">Y</span>, 
+<a name="1344"></a>									W - LookAndFeel.MiscBevelTL[BevelType].W
+<a name="1345"></a>									- LookAndFeel.MiscBevelTR[BevelType].W,
+<a name="1346"></a>									<span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1347"></a>
+<a name="1348"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelTR[BevelType];
+<a name="1349"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + W - <span class="source_type">R</span>.W, <span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1350"></a>	
+<a name="1351"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelL[BevelType];
+<a name="1352"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span> + LookAndFeel.MiscBevelTL[BevelType].H,
+<a name="1353"></a>									<span class="source_type">R</span>.W,  
+<a name="1354"></a>									H - LookAndFeel.MiscBevelTL[BevelType].H
+<a name="1355"></a>									- LookAndFeel.MiscBevelBL[BevelType].H,
+<a name="1356"></a>									<span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1357"></a>
+<a name="1358"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelR[BevelType];
+<a name="1359"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + W - <span class="source_type">R</span>.W, <span class="source_type">Y</span> + LookAndFeel.MiscBevelTL[BevelType].H,
+<a name="1360"></a>									<span class="source_type">R</span>.W,  
+<a name="1361"></a>									H - LookAndFeel.MiscBevelTL[BevelType].H
+<a name="1362"></a>									- LookAndFeel.MiscBevelBL[BevelType].H,
+<a name="1363"></a>									<span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1364"></a>
+<a name="1365"></a>	
+<a name="1366"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelBL[BevelType];
+<a name="1367"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X, <span class="source_type">Y</span> + H - <span class="source_type">R</span>.H, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1368"></a>
+<a name="1369"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelB[BevelType];
+<a name="1370"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + LookAndFeel.MiscBevelBL[BevelType].W, <span class="source_type">Y</span> + H - <span class="source_type">R</span>.H, 
+<a name="1371"></a>									W - LookAndFeel.MiscBevelBL[BevelType].W
+<a name="1372"></a>									- LookAndFeel.MiscBevelBR[BevelType].W,
+<a name="1373"></a>									<span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1374"></a>
+<a name="1375"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelBR[BevelType];
+<a name="1376"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + W - <span class="source_type">R</span>.W, <span class="source_type">Y</span> + H - <span class="source_type">R</span>.H, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, 
+<a name="1377"></a>									<span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1378"></a>
+<a name="1379"></a>	<span class="source_type">R</span> = LookAndFeel.MiscBevelArea[BevelType];
+<a name="1380"></a>	DrawStretchedTextureSegment( <span class="source_type">C</span>, X + LookAndFeel.MiscBevelTL[BevelType].W,
+<a name="1381"></a>	                                <span class="source_type">Y</span> + LookAndFeel.MiscBevelTL[BevelType].H,
+<a name="1382"></a>									W - LookAndFeel.MiscBevelBL[BevelType].W
+<a name="1383"></a>									- LookAndFeel.MiscBevelBR[BevelType].W,
+<a name="1384"></a>									H - LookAndFeel.MiscBevelTL[BevelType].H
+<a name="1385"></a>									- LookAndFeel.MiscBevelBL[BevelType].H,
+<a name="1386"></a>									<span class="source_type">R</span>.X, <span class="source_type">R</span>.<span class="source_type">Y</span>, <span class="source_type">R</span>.W, <span class="source_type">R</span>.H, <span class="source_type">T</span> );
+<a name="1387"></a>}
+<a name="1388"></a>
+<a name="1389"></a>final <span class="source_type">function</span> <span class="source_type">string</span> RemoveAmpersand(<span class="source_type">string</span> <span class="source_type">S</span>)
+<a name="1390"></a>{
+<a name="1391"></a>	local <span class="source_type">string</span> <span class="source_type">Result</span>;
+<a name="1392"></a>	local <span class="source_type">string</span> Underline;
+<a name="1393"></a>
+<a name="1394"></a>	ParseAmpersand(<span class="source_type">S</span>, <span class="source_type">Result</span>, Underline, False);
+<a name="1395"></a>
+<a name="1396"></a>	return <span class="source_type">Result</span>;
+<a name="1397"></a>}
+<a name="1398"></a>
+<a name="1399"></a>final <span class="source_type">function</span> <span class="source_type">byte</span> ParseAmpersand(<span class="source_type">string</span> <span class="source_type">S</span>, out <span class="source_type">string</span> <span class="source_type">Result</span>, out <span class="source_type">string</span> Underline, <span class="source_type">bool</span> bCalcUnderline)
+<a name="1400"></a>{
+<a name="1401"></a>	local <span class="source_type">string</span> Temp;
+<a name="1402"></a>	local <span class="source_type">int</span> Pos, NewPos;
+<a name="1403"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1404"></a>	local <span class="source_type">byte</span> HotKey;
+<a name="1405"></a>	
+<a name="1406"></a>	HotKey = <span class="source_int">0</span>;
+<a name="1407"></a>	Pos = <span class="source_int">0</span>;
+<a name="1408"></a>	<span class="source_type">Result</span> = <span class="source_string">""</span>;
+<a name="1409"></a>	Underline = <span class="source_string">""</span>;
+<a name="1410"></a>
+<a name="1411"></a>	while(True)
+<a name="1412"></a>	{
+<a name="1413"></a>		Temp = Mid(<span class="source_type">S</span>, Pos);
+<a name="1414"></a>
+<a name="1415"></a>		NewPos = InStr(Temp, <span class="source_string">"&"</span>);
+<a name="1416"></a>		
+<a name="1417"></a>		if(NewPos == -<span class="source_int">1</span>) break;
+<a name="1418"></a>		Pos += NewPos;
+<a name="1419"></a>
+<a name="1420"></a>		if(Mid(Temp, NewPos + <span class="source_int">1</span>, <span class="source_int">1</span>) == <span class="source_string">"&"</span>)
+<a name="1421"></a>		{
+<a name="1422"></a>			<span class="source_comment">// It's a double &, lets add one to the output.
+</span><a name="1423"></a>			<span class="source_type">Result</span> = <span class="source_type">Result</span> $ Left(Temp, NewPos) $ <span class="source_string">"&"</span>;
+<a name="1424"></a>			
+<a name="1425"></a>			if(bCalcUnderline) 
+<a name="1426"></a>				Underline = Underline $ <span class="source_string">" "</span>;
+<a name="1427"></a>
+<a name="1428"></a>			Pos++;
+<a name="1429"></a>		}
+<a name="1430"></a>		else
+<a name="1431"></a>		{
+<a name="1432"></a>			if(HotKey == <span class="source_int">0</span>)
+<a name="1433"></a>				HotKey = Asc(Caps(Mid(Temp, NewPos + <span class="source_int">1</span>, <span class="source_int">1</span>)));
+<a name="1434"></a>
+<a name="1435"></a>			<span class="source_type">Result</span> = <span class="source_type">Result</span> $ Left(Temp, NewPos);
+<a name="1436"></a>			
+<a name="1437"></a>			if(bCalcUnderline)
+<a name="1438"></a>			{
+<a name="1439"></a>				for(<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;NewPos - <span class="source_int">1</span>;<span class="source_type">i</span>++) 
+<a name="1440"></a>					Underline = Underline $ <span class="source_string">" "</span>;
+<a name="1441"></a>				Underline = Underline $ <span class="source_string">"_"</span>;
+<a name="1442"></a>			}
+<a name="1443"></a>		}
+<a name="1444"></a>
+<a name="1445"></a>		Pos++;
+<a name="1446"></a>	}
+<a name="1447"></a>	<span class="source_type">Result</span> = <span class="source_type">Result</span> $ Temp;
+<a name="1448"></a>
+<a name="1449"></a>	return HotKey;
+<a name="1450"></a>}
+<a name="1451"></a>
+<a name="1452"></a>final <span class="source_type">function</span> <span class="source_type">bool</span> MouseIsOver()
+<a name="1453"></a>{
+<a name="1454"></a>	return (Root.MouseWindow == Self);
+<a name="1455"></a>}
+<a name="1456"></a>
+<a name="1457"></a><span class="source_type">function</span> ToolTip(<span class="source_type">string</span> strTip) 
+<a name="1458"></a>{
+<a name="1459"></a>	if(ParentWindow != Root) ParentWindow.ToolTip(strTip);
+<a name="1460"></a>}
+<a name="1461"></a>
+<a name="1462"></a><span class="source_comment">// Sets mouse window for mouse capture.
+</span><a name="1463"></a>final <span class="source_type">function</span> SetMouseWindow()
+<a name="1464"></a>{
+<a name="1465"></a>	Root.MouseWindow = Self;
+<a name="1466"></a>}
+<a name="1467"></a>
+<a name="1468"></a><span class="source_type">function</span> <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> GetLookAndFeelTexture()
+<a name="1469"></a>{
+<a name="1470"></a>	return ParentWindow.GetLookAndFeelTexture();
+<a name="1471"></a>}
+<a name="1472"></a>
+<a name="1473"></a><span class="source_type">function</span> <span class="source_type">bool</span> IsActive()
+<a name="1474"></a>{
+<a name="1475"></a>	return ParentWindow.IsActive();
+<a name="1476"></a>}
+<a name="1477"></a>
+<a name="1478"></a><span class="source_type">function</span> SetAcceptsHotKeys(<span class="source_type">bool</span> bNewAccpetsHotKeys)
+<a name="1479"></a>{
+<a name="1480"></a>	if(bNewAccpetsHotKeys && !bAcceptsHotKeys && bWindowVisible)
+<a name="1481"></a>		Root.AddHotkeyWindow(Self);
+<a name="1482"></a>	
+<a name="1483"></a>	if(!bNewAccpetsHotKeys && bAcceptsHotKeys && bWindowVisible)
+<a name="1484"></a>		Root.RemoveHotkeyWindow(Self);
+<a name="1485"></a>
+<a name="1486"></a>	bAcceptsHotKeys = bNewAccpetsHotKeys;
+<a name="1487"></a>}
+<a name="1488"></a>
+<a name="1489"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> GetParent(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>&gt; ParentClass, optional <span class="source_type">bool</span> bExactClass)
+<a name="1490"></a>{
+<a name="1491"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">P</span>;
+<a name="1492"></a>
+<a name="1493"></a>	<span class="source_type">P</span> = ParentWindow;
+<a name="1494"></a>	while(<span class="source_type">P</span> != Root)
+<a name="1495"></a>	{
+<a name="1496"></a>		if(bExactClass)
+<a name="1497"></a>		{
+<a name="1498"></a>			if(<span class="source_type">P</span>.<span class="source_type">Class</span> == ParentClass)
+<a name="1499"></a>				return <span class="source_type">P</span>;
+<a name="1500"></a>		}
+<a name="1501"></a>		else
+<a name="1502"></a>		{
+<a name="1503"></a>			if(ClassIsChildOf(<span class="source_type">P</span>.<span class="source_type">Class</span>, ParentClass))
+<a name="1504"></a>				return <span class="source_type">P</span>;
+<a name="1505"></a>		}
+<a name="1506"></a>		<span class="source_type">P</span> = <span class="source_type">P</span>.ParentWindow;
+<a name="1507"></a>	}
+<a name="1508"></a>
+<a name="1509"></a>	return None;
+<a name="1510"></a>}
+<a name="1511"></a>
+<a name="1512"></a>final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> FindChildWindow(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>&gt; ChildClass, optional <span class="source_type">bool</span> bExactClass)
+<a name="1513"></a>{
+<a name="1514"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>, Found;
+<a name="1515"></a>
+<a name="1516"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1517"></a>	{
+<a name="1518"></a>		if(bExactClass)
+<a name="1519"></a>		{
+<a name="1520"></a>			if(<span class="source_type">Child</span>.<span class="source_type">Class</span> == ChildClass) return <span class="source_type">Child</span>;
+<a name="1521"></a>		}
+<a name="1522"></a>		else
+<a name="1523"></a>		{
+<a name="1524"></a>			if(ClassIsChildOf(<span class="source_type">Child</span>.<span class="source_type">Class</span>, ChildClass)) return <span class="source_type">Child</span>;
+<a name="1525"></a>		}
+<a name="1526"></a>
+<a name="1527"></a>		Found = <span class="source_type">Child</span>.FindChildWindow(ChildClass);
+<a name="1528"></a>		if(Found != None) return Found;
+<a name="1529"></a>	}
+<a name="1530"></a>
+<a name="1531"></a>	return None;
+<a name="1532"></a>}
+<a name="1533"></a>
+<a name="1534"></a><span class="source_type">function</span> GetDesiredDimensions(out <span class="source_type">float</span> W, out <span class="source_type">float</span> H)
+<a name="1535"></a>{
+<a name="1536"></a>	local <span class="source_type">float</span> MaxW, MaxH, TW, TH;
+<a name="1537"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1538"></a>	
+<a name="1539"></a>	MaxW = <span class="source_int">0</span>;
+<a name="1540"></a>	MaxH = <span class="source_int">0</span>;
+<a name="1541"></a>
+<a name="1542"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1543"></a>	{
+<a name="1544"></a>		<span class="source_type">Child</span>.GetDesiredDimensions(TW, TH);
+<a name="1545"></a>		<span class="source_comment">//Log("Calling: "$GetPlayerOwner().GetItemName(string(Child)));
+</span><a name="1546"></a>		
+<a name="1547"></a>
+<a name="1548"></a>		if(TW &gt; MaxW) MaxW = TW;
+<a name="1549"></a>		if(TH &gt; MaxH) MaxH = TH;
+<a name="1550"></a>	}
+<a name="1551"></a>	W = MaxW;
+<a name="1552"></a>	H = MaxH;
+<a name="1553"></a>	<span class="source_comment">//Log(GetPlayerOwner().GetItemName(string(Self))$": DesiredHeight: "$H);
+</span><a name="1554"></a>}
+<a name="1555"></a>
+<a name="1556"></a>final <span class="source_type">function</span> TextSize(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, out <span class="source_type">float</span> W, out <span class="source_type">float</span> H)
+<a name="1557"></a>{
+<a name="1558"></a>	<span class="source_type">C</span>.SetPos(<span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="1559"></a>	<span class="source_type">C</span>.TextSize(<span class="source_type">Text</span>, W, H);
+<a name="1560"></a>	W = W / Root.GUIScale;
+<a name="1561"></a>	H = H / Root.GUIScale;
+<a name="1562"></a>}
+<a name="1563"></a>
+<a name="1564"></a><span class="source_type">function</span> ResolutionChanged(<span class="source_type">float</span> W, <span class="source_type">float</span> H)
+<a name="1565"></a>{
+<a name="1566"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1567"></a>
+<a name="1568"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1569"></a>	{
+<a name="1570"></a>		<span class="source_type">Child</span>.ResolutionChanged(W, H);
+<a name="1571"></a>	}
+<a name="1572"></a>}
+<a name="1573"></a>
+<a name="1574"></a><span class="source_type">function</span> ShowModal(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W)
+<a name="1575"></a>{
+<a name="1576"></a>	ModalWindow = W;
+<a name="1577"></a>	W.ShowWindow();
+<a name="1578"></a>	W.BringToFront();		
+<a name="1579"></a>}
+<a name="1580"></a>
+<a name="1581"></a><span class="source_type">function</span> <span class="source_type">bool</span> WaitModal()
+<a name="1582"></a>{
+<a name="1583"></a>	if(ModalWindow != None && ModalWindow.bWindowVisible)
+<a name="1584"></a>		return True;
+<a name="1585"></a>
+<a name="1586"></a>	ModalWindow = None;
+<a name="1587"></a>
+<a name="1588"></a>	return False;
+<a name="1589"></a>}
+<a name="1590"></a>
+<a name="1591"></a><span class="source_type">function</span> WindowHidden()
+<a name="1592"></a>{
+<a name="1593"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1594"></a>
+<a name="1595"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1596"></a>		<span class="source_type">Child</span>.WindowHidden();
+<a name="1597"></a>}
+<a name="1598"></a>
+<a name="1599"></a><span class="source_type">function</span> WindowShown()
+<a name="1600"></a>{
+<a name="1601"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1602"></a>
+<a name="1603"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1604"></a>		<span class="source_type">Child</span>.WindowShown();
+<a name="1605"></a>}
+<a name="1606"></a>
+<a name="1607"></a><span class="source_comment">// Should mouse events at these co-ordinates be passed through to underlying windows?
+</span><a name="1608"></a><span class="source_type">function</span> <span class="source_type">bool</span> CheckMousePassThrough(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="1609"></a>{
+<a name="1610"></a>	return False;
+<a name="1611"></a>}
+<a name="1612"></a>
+<a name="1613"></a>final <span class="source_type">function</span> <span class="source_type">bool</span> WindowIsVisible()
+<a name="1614"></a>{
+<a name="1615"></a>	if(Self == Root)
+<a name="1616"></a>		return True;
+<a name="1617"></a>
+<a name="1618"></a>	if(!bWindowVisible)
+<a name="1619"></a>		return False;
+<a name="1620"></a>	return ParentWindow.WindowIsVisible();
+<a name="1621"></a>}
+<a name="1622"></a>
+<a name="1623"></a><span class="source_type">function</span> SetParent(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> NewParent)
+<a name="1624"></a>{
+<a name="1625"></a>	HideWindow();
+<a name="1626"></a>	ParentWindow = NewParent;
+<a name="1627"></a>	ShowWindow();
+<a name="1628"></a>}
+<a name="1629"></a>
+<a name="1630"></a><span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowmessagebox.html" class="source">UWindowMessageBox</a></span> MessageBox(<span class="source_type">string</span> Title, <span class="source_type">string</span> <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxButtons" class="source">MessageBoxButtons</a></span> Buttons, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> ESCResult, optional <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> EnterResult, optional <span class="source_type">int</span> <span class="source_type">TimeOut</span>)
+<a name="1631"></a>{
+<a name="1632"></a>	local <span class="source_type"><a href="../uwindow/uwindowmessagebox.html" class="source">UWindowMessageBox</a></span> W;
+<a name="1633"></a>	local <span class="source_type"><a href="../uwindow/uwindowframedwindow.html" class="source">UWindowFramedWindow</a></span> <span class="source_type">F</span>;
+<a name="1634"></a>	
+<a name="1635"></a>	W = <span class="source_type"><a href="../uwindow/uwindowmessagebox.html" class="source">UWindowMessageBox</a></span>(Root.CreateWindow(<span class="source_type">class</span><span class="source_name">'UWindowMessageBox'</span>, <span class="source_int">100</span>, <span class="source_int">100</span>, <span class="source_int">100</span>, <span class="source_int">100</span>, Self));
+<a name="1636"></a>	W.SetupMessageBox(Title, <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>, Buttons, ESCResult, EnterResult, <span class="source_type">TimeOut</span>);
+<a name="1637"></a>	<span class="source_type">F</span> = <span class="source_type"><a href="../uwindow/uwindowframedwindow.html" class="source">UWindowFramedWindow</a></span>(GetParent(<span class="source_type">class</span><span class="source_name">'UWindowFramedWindow'</span>));
+<a name="1638"></a>
+<a name="1639"></a>	if(<span class="source_type">F</span>!= None)
+<a name="1640"></a>		<span class="source_type">F</span>.ShowModal(W);
+<a name="1641"></a>	else
+<a name="1642"></a>		Root.ShowModal(W);
+<a name="1643"></a>
+<a name="1644"></a>	return W;
+<a name="1645"></a>}
+<a name="1646"></a>
+<a name="1647"></a><span class="source_type">function</span> MessageBoxDone(<span class="source_type"><a href="../uwindow/uwindowmessagebox.html" class="source">UWindowMessageBox</a></span> W, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> <span class="source_type">Result</span>)
+<a name="1648"></a>{
+<a name="1649"></a>}
+<a name="1650"></a>
+<a name="1651"></a><span class="source_type">function</span> NotifyQuitUnreal()
+<a name="1652"></a>{
+<a name="1653"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1654"></a>
+<a name="1655"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1656"></a>		<span class="source_type">Child</span>.NotifyQuitUnreal();
+<a name="1657"></a>}
+<a name="1658"></a>
+<a name="1659"></a><span class="source_type">function</span> NotifyBeforeLevelChange()
+<a name="1660"></a>{
+<a name="1661"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1662"></a>
+<a name="1663"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1664"></a>		<span class="source_type">Child</span>.NotifyBeforeLevelChange();
+<a name="1665"></a>}
+<a name="1666"></a>
+<a name="1667"></a><span class="source_type">function</span> SetCursor(<span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span> <span class="source_type">C</span>)
+<a name="1668"></a>{
+<a name="1669"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1670"></a>
+<a name="1671"></a>	Cursor = <span class="source_type">C</span>;
+<a name="1672"></a>
+<a name="1673"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1674"></a>		<span class="source_type">Child</span>.SetCursor(<span class="source_type">C</span>);
+<a name="1675"></a>}
+<a name="1676"></a>
+<a name="1677"></a><span class="source_type">function</span> NotifyAfterLevelChange()
+<a name="1678"></a>{
+<a name="1679"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>;
+<a name="1680"></a>
+<a name="1681"></a>	for(<span class="source_type">Child</span> = LastChildWindow;<span class="source_type">Child</span> != None;<span class="source_type">Child</span> = <span class="source_type">Child</span>.PrevSiblingWindow)
+<a name="1682"></a>		<span class="source_type">Child</span>.NotifyAfterLevelChange();
+<a name="1683"></a>}
+<a name="1684"></a>
+<a name="1685"></a>final <span class="source_type">function</span> ReplaceText(out <span class="source_type">string</span> <span class="source_type">Text</span>, <span class="source_type">string</span> Replace, <span class="source_type">string</span> With)
+<a name="1686"></a>{
+<a name="1687"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1688"></a>	local <span class="source_type">string</span> Input;
+<a name="1689"></a>		
+<a name="1690"></a>	Input = <span class="source_type">Text</span>;
+<a name="1691"></a>	<span class="source_type">Text</span> = <span class="source_string">""</span>;
+<a name="1692"></a>	<span class="source_type">i</span> = InStr(Input, Replace);
+<a name="1693"></a>	while(<span class="source_type">i</span> != -<span class="source_int">1</span>)
+<a name="1694"></a>	{	
+<a name="1695"></a>		<span class="source_type">Text</span> = <span class="source_type">Text</span> $ Left(Input, <span class="source_type">i</span>) $ With;
+<a name="1696"></a>		Input = Mid(Input, <span class="source_type">i</span> + <span class="source_type">Len</span>(Replace));	
+<a name="1697"></a>		<span class="source_type">i</span> = InStr(Input, Replace);
+<a name="1698"></a>	}
+<a name="1699"></a>	<span class="source_type">Text</span> = <span class="source_type">Text</span> $ Input;
+<a name="1700"></a>}
+<a name="1701"></a>
+<a name="1702"></a><span class="source_type">function</span> StripCRLF(out <span class="source_type">string</span> <span class="source_type">Text</span>)
+<a name="1703"></a>{
+<a name="1704"></a>	ReplaceText(<span class="source_type">Text</span>, Chr(<span class="source_int">13</span>)$Chr(<span class="source_int">10</span>), <span class="source_string">""</span>);
+<a name="1705"></a>	ReplaceText(<span class="source_type">Text</span>, Chr(<span class="source_int">13</span>), <span class="source_string">""</span>);
+<a name="1706"></a>	ReplaceText(<span class="source_type">Text</span>, Chr(<span class="source_int">10</span>), <span class="source_string">""</span>);
+<a name="1707"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="../uwindow/uwindowwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_uwindow/uwindowwin95lookandfeel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_uwindow/uwindowwrappedtextarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:32.000 - Creation time: st 23.5.2018 00:10:50.346 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

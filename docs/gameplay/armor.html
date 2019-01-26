@@ -1,0 +1,672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.Armor</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/armor.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Armor">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/arcprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/arms.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/armor.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.Armor</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/armor.html">Armor</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/testarmor.html">TestArmor</a>, <a href="../tmod/tmodarmorheavy.html">tmodArmorHeavy</a>, <a href="../tmod/tmodarmorlight.html">tmodArmorLight</a>, <a href="../tmod/tmodarmormedium.html">tmodArmorMedium</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRestrictions" name="bRestrictions" title="go to the details">bRestrictions</a></td></tr>
+<tr><th colspan="2" class="small">Armor</th></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/armor.html#QuantityConsumable">QuantityConsumable</a>&gt;</td><td width="66%"><a href="#_AllowedConsumables" name="AllowedConsumables" title="go to the details">AllowedConsumables</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/armor.html#QuantityDeployable">QuantityDeployable</a>&gt;</td><td width="66%"><a href="#_AllowedDeployables" name="AllowedDeployables" title="go to the details">AllowedDeployables</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&lt;<a href="../gameplay/vehicle.html">Vehicle</a>&gt;&gt;</td><td width="66%"><a href="#_AllowedDriver" name="AllowedDriver" title="go to the details">AllowedDriver</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/armor.html#QuantityGrenades">QuantityGrenades</a></td><td width="66%"><a href="#_AllowedGrenades" name="AllowedGrenades" title="go to the details">AllowedGrenades</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&lt;<a href="../gameplay/pack.html">Pack</a>&gt;&gt;</td><td width="66%"><a href="#_AllowedPacks" name="AllowedPacks" title="go to the details">AllowedPacks</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&lt;<a href="../gameplay/vehicle.html">Vehicle</a>&gt;&gt;</td><td width="66%"><a href="#_AllowedPassenger" name="AllowedPassenger" title="go to the details">AllowedPassenger</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/armor.html#QuantityWeapon">QuantityWeapon</a>&gt;</td><td width="66%"><a href="#_AllowedWeapons" name="AllowedWeapons" title="go to the details">AllowedWeapons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ammoMod" name="ammoMod" title="go to the details">ammoMod</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_armorName" name="armorName" title="go to the details">armorName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanUseTurrets" name="bCanUseTurrets" title="go to the details">bCanUseTurrets</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_breathingDurationMod" name="breathingDurationMod" title="go to the details">breathingDurationMod</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseAlternateWeaponMesh" name="bUseAlternateWeaponMesh" title="go to the details">bUseAlternateWeaponMesh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_collisionDamageMod" name="collisionDamageMod" title="go to the details">collisionDamageMod</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_collisionHeight" name="collisionHeight" title="go to the details">collisionHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_collisionRadius" name="collisionRadius" title="go to the details">collisionRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_energy" name="energy" title="go to the details">energy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_eyeHeight" name="eyeHeight" title="go to the details">eyeHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt;</td><td width="66%"><a href="#_fallbackWeaponClass" name="fallbackWeaponClass" title="go to the details">fallbackWeaponClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/havokskeletalsystem.html">HavokSkeletalSystem</a>&gt;</td><td width="66%"><a href="#_HavokParamsClass" name="HavokParamsClass" title="go to the details">HavokParamsClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_headFraction" name="headFraction" title="go to the details">headFraction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_health" name="health" title="go to the details">health</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_heightIndex" name="heightIndex" title="go to the details">heightIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_hudIcon" name="hudIcon" title="go to the details">hudIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_infoString" name="infoString" title="go to the details">infoString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_jetPackNoise" name="jetPackNoise" title="go to the details">jetPackNoise</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_knockbackScale" name="knockbackScale" title="go to the details">knockbackScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_maxCarriedWeapons" name="maxCarriedWeapons" title="go to the details">maxCarriedWeapons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_movementConfiguration" name="movementConfiguration" title="go to the details">movementConfiguration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_movementConfigurationFastActive" name="movementConfigurationFastActive" title="go to the details">movementConfigurationFastActive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_movementConfigurationFastPassive" name="movementConfigurationFastPassive" title="go to the details">movementConfigurationFastPassive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/movementcrushingdamagetype.html">MovementCrushingDamageType</a>&gt;</td><td width="66%"><a href="#_movementCrushingDamageTypeClass" name="movementCrushingDamageTypeClass" title="go to the details">movementCrushingDamageTypeClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/movementcollisiondamagetype.html">MovementCollisionDamageType</a>&gt;</td><td width="66%"><a href="#_movementDamageOtherTypeClass" name="movementDamageOtherTypeClass" title="go to the details">movementDamageOtherTypeClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/movementcollisiondamagetype.html">MovementCollisionDamageType</a>&gt;</td><td width="66%"><a href="#_movementDamageTypeClass" name="movementDamageTypeClass" title="go to the details">movementDamageTypeClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_noise" name="noise" title="go to the details">noise</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/shield.html">Shield</a>&gt;</td><td width="66%"><a href="#_personalShieldClass" name="personalShieldClass" title="go to the details">personalShieldClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/radarinfo.html">RadarInfo</a>&gt;</td><td width="66%"><a href="#_radarInfoClass" name="radarInfoClass" title="go to the details">radarInfoClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_speechTag" name="speechTag" title="go to the details">speechTag</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/damagetype.html">DamageType</a>&gt;</td><td width="66%"><a href="#_suicideDamageTypeClass" name="suicideDamageTypeClass" title="go to the details">suicideDamageTypeClass</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_QuantityConsumable" name="QuantityConsumable" title="go to the details">QuantityConsumable</a><br /><span class="small">typeClass, quantity</span></td></tr>
+<tr><td><a href="#_QuantityDeployable" name="QuantityDeployable" title="go to the details">QuantityDeployable</a><br /><span class="small">typeClass, quantity</span></td></tr>
+<tr><td><a href="#_QuantityGrenades" name="QuantityGrenades" title="go to the details">QuantityGrenades</a><br /><span class="small">typeClass, quantity</span></td></tr>
+<tr><td><a href="#_QuantityWeapon" name="QuantityWeapon" title="go to the details">QuantityWeapon</a><br /><span class="small">typeClass, quantity</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_equip-" name="equip" title="go to the details">equip</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>class&lt;<a href="../gameplay/handgrenade.html">HandGrenade</a>&gt;&nbsp;</td><td><a href="#_getHandGrenadeClass-" name="getHandGrenadeClass" title="go to the details">getHandGrenadeClass</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>class&lt;<a href="../gameplay/consumable.html">Consumable</a>&gt;&nbsp;</td><td><a href="#_getHealthKitClass-" name="getHealthKitClass" title="go to the details">getHealthKitClass</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isConsumableAllowed-" name="isConsumableAllowed" title="go to the details">isConsumableAllowed</a> (class&lt;<a href="../gameplay/consumable.html">Consumable</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isDeployableAllowed-" name="isDeployableAllowed" title="go to the details">isDeployableAllowed</a> (class&lt;<a href="../gameplay/deployable.html">Deployable</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isDriverAllowed-" name="isDriverAllowed" title="go to the details">isDriverAllowed</a> (class&lt;<a href="../gameplay/vehicle.html">Vehicle</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isPackAllowed-" name="isPackAllowed" title="go to the details">isPackAllowed</a> (class&lt;<a href="../gameplay/pack.html">Pack</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isPassengerAllowed-" name="isPassengerAllowed" title="go to the details">isPassengerAllowed</a> (class&lt;<a href="../gameplay/vehicle.html">Vehicle</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isWeaponAllowed-" name="isWeaponAllowed" title="go to the details">isWeaponAllowed</a> (class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_maxAmmo-" name="maxAmmo" title="go to the details">maxAmmo</a> (class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_maxConsumable-" name="maxConsumable" title="go to the details">maxConsumable</a> (class&lt;<a href="../gameplay/consumable.html">Consumable</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_maxDeployable-" name="maxDeployable" title="go to the details">maxDeployable</a> (class&lt;<a href="../core/object.html">Object</a>&gt; typeClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_maxGrenades-" name="maxGrenades" title="go to the details">maxGrenades</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_maxHealthKits-" name="maxHealthKits" title="go to the details">maxHealthKits</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_useAlternateWeaponMesh-" name="useAlternateWeaponMesh" title="go to the details">useAlternateWeaponMesh</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bRestrictions" class="hidden"></a>bRestrictions <a href="../Source_gameplay/armor.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bRestrictions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Armor</h3>
+<h4><a name="_AllowedConsumables" class="hidden"></a>AllowedConsumables <a href="../Source_gameplay/armor.html#68" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) private editinline Array&lt;<span class="source_type"><a href="../gameplay/armor.html#QuantityConsumable" class="source">QuantityConsumable</a></span>&gt; AllowedConsumables;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowedDeployables" class="hidden"></a>AllowedDeployables <a href="../Source_gameplay/armor.html#67" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) private editinline Array&lt;<span class="source_type"><a href="../gameplay/armor.html#QuantityDeployable" class="source">QuantityDeployable</a></span>&gt; AllowedDeployables;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowedDriver" class="hidden"></a>AllowedDriver <a href="../Source_gameplay/armor.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) private Array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>&gt;&gt; AllowedDriver;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowedGrenades" class="hidden"></a>AllowedGrenades <a href="../Source_gameplay/armor.html#65" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) private editinline <span class="source_type"><a href="../gameplay/armor.html#QuantityGrenades" class="source">QuantityGrenades</a></span> AllowedGrenades;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowedPacks" class="hidden"></a>AllowedPacks <a href="../Source_gameplay/armor.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) private Array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt;&gt; AllowedPacks;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowedPassenger" class="hidden"></a>AllowedPassenger <a href="../Source_gameplay/armor.html#70" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) private Array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>&gt;&gt; AllowedPassenger;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowedWeapons" class="hidden"></a>AllowedWeapons <a href="../Source_gameplay/armor.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) private editinline Array&lt;<span class="source_type"><a href="../gameplay/armor.html#QuantityWeapon" class="source">QuantityWeapon</a></span>&gt; AllowedWeapons;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ammoMod" class="hidden"></a>ammoMod <a href="../Source_gameplay/armor.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> ammoMod;</div>
+<blockquote class="comment">
+Multiplier applied to the amount of ammunition bought from an inventory station (NOT IMPLEMENTED)
+</blockquote>
+<hr class="small" />
+<h4><a name="_armorName" class="hidden"></a>armorName <a href="../Source_gameplay/armor.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) localized <span class="source_type">string</span> armorName;</div>
+<blockquote class="comment">
+Name to display to the user, eg: 'Light'
+</blockquote>
+<hr class="small" />
+<h4><a name="_bCanUseTurrets" class="hidden"></a>bCanUseTurrets <a href="../Source_gameplay/armor.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">bool</span> bCanUseTurrets;</div>
+<blockquote class="comment">
+Whether the armor can get into turrets or not
+</blockquote>
+<hr class="small" />
+<h4><a name="_breathingDurationMod" class="hidden"></a>breathingDurationMod <a href="../Source_gameplay/armor.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> breathingDurationMod;</div>
+<blockquote class="comment">
+Multiplier for the character's breathing duration (NOT IMPLEMENTED)
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseAlternateWeaponMesh" class="hidden"></a>bUseAlternateWeaponMesh <a href="../Source_gameplay/armor.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">bool</span> bUseAlternateWeaponMesh;</div>
+<blockquote class="comment">
+The the alternate mesh defined for a weapon
+</blockquote>
+<hr class="small" />
+<h4><a name="_collisionDamageMod" class="hidden"></a>collisionDamageMod <a href="../Source_gameplay/armor.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> collisionDamageMod;</div>
+<blockquote class="comment">
+Multiplier affecting collision damage (NOT IMPLEMENTED)
+</blockquote>
+<hr class="small" />
+<h4><a name="_collisionHeight" class="hidden"></a>collisionHeight <a href="../Source_gameplay/armor.html#6" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> collisionHeight;</div>
+<blockquote class="comment">
+The height of the character's collision cylinder while wearing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_collisionRadius" class="hidden"></a>collisionRadius <a href="../Source_gameplay/armor.html#5" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> collisionRadius;</div>
+<blockquote class="comment">
+The radius of the character's collision cylinder while wearing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_energy" class="hidden"></a>energy <a href="../Source_gameplay/armor.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> energy;</div>
+<blockquote class="comment">
+The amount of energy the character has while wearing the armour *THIS SHOULD MATCH THE MOVEMENT CONFIG*
+</blockquote>
+<hr class="small" />
+<h4><a name="_eyeHeight" class="hidden"></a>eyeHeight <a href="../Source_gameplay/armor.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> eyeHeight;</div>
+<blockquote class="comment">
+The eye-height of the first person camera while wearing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_fallbackWeaponClass" class="hidden"></a>fallbackWeaponClass <a href="../Source_gameplay/armor.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; fallbackWeaponClass;</div>
+<blockquote class="comment">
+The weapon used when all else fails
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokParamsClass" class="hidden"></a>HavokParamsClass <a href="../Source_gameplay/armor.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/havokskeletalsystem.html" class="source">HavokSkeletalSystem</a></span>&gt; HavokParamsClass;</div>
+<blockquote class="comment">
+The Havok Ragdoll parameters that the character will assume while wearing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_headFraction" class="hidden"></a>headFraction <a href="../Source_gameplay/armor.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> headFraction;</div>
+<blockquote class="comment">
+The fraction of the collision height that represents the head of the character while wearing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_health" class="hidden"></a>health <a href="../Source_gameplay/armor.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> health;</div>
+<blockquote class="comment">
+The amount of health the character has while wearing the armour
+</blockquote>
+<hr class="small" />
+<h4><a name="_heightIndex" class="hidden"></a>heightIndex <a href="../Source_gameplay/armor.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">int</span> heightIndex;</div>
+<blockquote class="comment">
+An index representingthe height ofthe armour, used for aligning the InventoryStation arm
+</blockquote>
+<hr class="small" />
+<h4><a name="_hudIcon" class="hidden"></a>hudIcon <a href="../Source_gameplay/armor.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> <span class="source_type"><a href="../tribesgui/hudicon.html" class="source">hudIcon</a></span>;</div>
+<blockquote class="comment">
+The icon displayed in the player's hud while wearing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_infoString" class="hidden"></a>infoString <a href="../Source_gameplay/armor.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) localized <span class="source_type">String</span> infoString;</div>
+<blockquote class="comment">
+String shown in the inventory screen describing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_jetPackNoise" class="hidden"></a>jetPackNoise <a href="../Source_gameplay/armor.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> jetPackNoise;</div>
+<blockquote class="comment">
+How much noise the jet-pack makes (NOT IMPLEMENTED)
+</blockquote>
+<hr class="small" />
+<h4><a name="_knockbackScale" class="hidden"></a>knockbackScale <a href="../Source_gameplay/armor.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> knockbackScale;</div>
+<blockquote class="comment">
+Scales the amount of knockback from weapons and explosions
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxCarriedWeapons" class="hidden"></a>maxCarriedWeapons <a href="../Source_gameplay/armor.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">int</span> maxCarriedWeapons;</div>
+<blockquote class="comment">
+The maximum number of weapons that can be carried
+</blockquote>
+<hr class="small" />
+<h4><a name="_movementConfiguration" class="hidden"></a>movementConfiguration <a href="../Source_gameplay/armor.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">String</span> movementConfiguration;</div>
+<blockquote class="comment">
+The movement configuration that the character will assume while wearing the armor
+</blockquote>
+<hr class="small" />
+<h4><a name="_movementConfigurationFastActive" class="hidden"></a>movementConfigurationFastActive <a href="../Source_gameplay/armor.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">String</span> movementConfigurationFastActive;</div>
+<blockquote class="comment">
+The movement configuration that the character will assume when activating a Speed Pack
+</blockquote>
+<hr class="small" />
+<h4><a name="_movementConfigurationFastPassive" class="hidden"></a>movementConfigurationFastPassive <a href="../Source_gameplay/armor.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">String</span> movementConfigurationFastPassive;</div>
+<blockquote class="comment">
+The movement configuration that the character will assume when wearing a Speed Pack
+</blockquote>
+<hr class="small" />
+<h4><a name="_movementCrushingDamageTypeClass" class="hidden"></a>movementCrushingDamageTypeClass <a href="../Source_gameplay/armor.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/movementcrushingdamagetype.html" class="source">MovementCrushingDamageType</a></span>&gt; movementCrushingDamageTypeClass;</div>
+<blockquote class="comment">
+Damage type used for movement crushing damage eg. large havok objects landing on your head (not vehicles)
+</blockquote>
+<hr class="small" />
+<h4><a name="_movementDamageOtherTypeClass" class="hidden"></a>movementDamageOtherTypeClass <a href="../Source_gameplay/armor.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/movementcollisiondamagetype.html" class="source">MovementCollisionDamageType</a></span>&gt; movementDamageOtherTypeClass;</div>
+<blockquote class="comment">
+Damage type used for when you hit another character and damage them. allows an icon for a heavy splatting a light etc.
+</blockquote>
+<hr class="small" />
+<h4><a name="_movementDamageTypeClass" class="hidden"></a>movementDamageTypeClass <a href="../Source_gameplay/armor.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/movementcollisiondamagetype.html" class="source">MovementCollisionDamageType</a></span>&gt; movementDamageTypeClass;</div>
+<blockquote class="comment">
+Damage type used for movement collision damage
+</blockquote>
+<hr class="small" />
+<h4><a name="_noise" class="hidden"></a>noise <a href="../Source_gameplay/armor.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">float</span> noise;</div>
+<blockquote class="comment">
+How much noise the armor makes when moving (i.e. footsteps). This affects how easily the player can be detected by the AI and human players (NOT IMPLEMENTED)
+</blockquote>
+<hr class="small" />
+<h4><a name="_personalShieldClass" class="hidden"></a>personalShieldClass <a href="../Source_gameplay/armor.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/shield.html" class="source">Shield</a></span>&gt; personalShieldClass;</div>
+<blockquote class="comment">
+The class of shield to use for this armor, or None to disable
+</blockquote>
+<hr class="small" />
+<h4><a name="_radarInfoClass" class="hidden"></a>radarInfoClass <a href="../Source_gameplay/armor.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt; radarInfoClass;</div>
+<blockquote class="comment">
+Radar info class defineing how this object is marked in the hud
+</blockquote>
+<hr class="small" />
+<h4><a name="_speechTag" class="hidden"></a>speechTag <a href="../Source_gameplay/armor.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">String</span> speechTag;</div>
+<blockquote class="comment">
+The loopup tag when pooling dynamic speech based on armor conditions (eg: Light, Medium..)
+</blockquote>
+<hr class="small" />
+<h4><a name="_suicideDamageTypeClass" class="hidden"></a>suicideDamageTypeClass <a href="../Source_gameplay/armor.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; suicideDamageTypeClass;</div>
+<blockquote class="comment">
+Damage type used for when a player suicides on purpose
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_QuantityConsumable" class="hidden"></a>QuantityConsumable <a href="../Source_gameplay/armor.html#58" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/armor.html#QuantityConsumable" class="source">QuantityConsumable</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">int</span> quantity;<br />
+var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/consumable.html" class="source">Consumable</a></span>&gt; typeClass;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QuantityDeployable" class="hidden"></a>QuantityDeployable <a href="../Source_gameplay/armor.html#52" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/armor.html#QuantityDeployable" class="source">QuantityDeployable</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">int</span> quantity;<br />
+var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>&gt; typeClass;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QuantityGrenades" class="hidden"></a>QuantityGrenades <a href="../Source_gameplay/armor.html#46" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/armor.html#QuantityGrenades" class="source">QuantityGrenades</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">int</span> quantity;<br />
+var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/handgrenade.html" class="source">HandGrenade</a></span>&gt; typeClass;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QuantityWeapon" class="hidden"></a>QuantityWeapon <a href="../Source_gameplay/armor.html#40" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/armor.html#QuantityWeapon" class="source">QuantityWeapon</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">int</span> quantity;<br />
+var(<span class="source_type"><a href="../gameplay/armor.html" class="source">Armor</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; typeClass;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_equip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> equip <span class="function_state"></span> <a href="../Source_gameplay/armor.html#276" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span>  equip ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> c) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getHandGrenadeClass-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getHandGrenadeClass <span class="function_state"></span> <a href="../Source_gameplay/armor.html#269" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/handgrenade.html" class="source">HandGrenade</a></span>&gt; getHandGrenadeClass ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getHealthKitClass-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getHealthKitClass <span class="function_state"></span> <a href="../Source_gameplay/armor.html#251" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/consumable.html" class="source">Consumable</a></span>&gt; getHealthKitClass ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isConsumableAllowed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isConsumableAllowed <span class="function_state"></span> <a href="../Source_gameplay/armor.html#127" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> isConsumableAllowed ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/consumable.html" class="source">Consumable</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isDeployableAllowed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isDeployableAllowed <span class="function_state"></span> <a href="../Source_gameplay/armor.html#110" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> isDeployableAllowed ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isDriverAllowed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isDriverAllowed <span class="function_state"></span> <a href="../Source_gameplay/armor.html#144" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> isDriverAllowed ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isPackAllowed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isPackAllowed <span class="function_state"></span> <a href="../Source_gameplay/armor.html#93" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> isPackAllowed ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isPassengerAllowed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isPassengerAllowed <span class="function_state"></span> <a href="../Source_gameplay/armor.html#161" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> isPassengerAllowed ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isWeaponAllowed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isWeaponAllowed <span class="function_state"></span> <a href="../Source_gameplay/armor.html#76" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> isWeaponAllowed ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> maxAmmo <span class="function_state"></span> <a href="../Source_gameplay/armor.html#179" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">int</span> maxAmmo ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxConsumable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> maxConsumable <span class="function_state"></span> <a href="../Source_gameplay/armor.html#215" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">int</span> maxConsumable ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/consumable.html" class="source">Consumable</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxDeployable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> maxDeployable <span class="function_state"></span> <a href="../Source_gameplay/armor.html#197" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">int</span> maxDeployable ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../core/object.html" class="source">Object</a></span>&gt; typeClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxGrenades-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> maxGrenades <span class="function_state"></span> <a href="../Source_gameplay/armor.html#264" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">int</span> maxGrenades ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxHealthKits-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> maxHealthKits <span class="function_state"></span> <a href="../Source_gameplay/armor.html#233" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">int</span> maxHealthKits ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_useAlternateWeaponMesh-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> useAlternateWeaponMesh <span class="function_state"></span> <a href="../Source_gameplay/armor.html#303" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> useAlternateWeaponMesh ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	eyeHeight			= <span class="source_int">64</span>
+	headFraction		= <span class="source_int">0.2</span>
+	<span class="source_type"><a href="../tribesgui/hudicon.html" class="source">hudIcon</a></span>				= <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span><span class="source_name">'Engine_res.S_Actor'</span>
+	maxCarriedWeapons	= <span class="source_int">3</span>
+	heightIndex			= <span class="source_int">1</span>
+	armorName			= <span class="source_string">"Light"</span>
+	speechTag			= <span class="source_string">"Light"</span>
+	infoString			= <span class="source_string">"[Info not available]"</span>
+	bRestrictions		= true
+	radarInfoClass		= <span class="source_type">class</span><span class="source_name">'Gameplay.RadarInfo'</span>
+	bCanUseTurrets		= true
+	knockbackScale      = <span class="source_int">1.0</span>
+
+	suicideDamageTypeClass = <span class="source_type">class</span><span class="source_name">'Engine.Suicided'</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/armor.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Armor">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/arcprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/arms.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:28.271 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

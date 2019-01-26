@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: TribesGUI.TribesHelpHUDScript</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribeshelphudscript.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesHelpHUDScript">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesguipanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribeshelpscreen.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tribesgui/tribeshelphudscript.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribeshelphudscript.html">TribesHelpHUDScript</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../tribesgui/tribeshelphudscript.html" class="source">TribesHelpHUDScript</a></span> extends <span class="source_type"><a href="../tribesgui/tribeshudscript.html" class="source">TribesHUDScript</a></span>;
+<a name="2"></a>
+<a name="3"></a><span class="source_comment">// health & energy indicators
+</span><a name="4"></a>var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> healthEnergyContainer;
+<a name="5"></a>var <span class="source_type"><a href="../tribesgui/hudhealthbar.html" class="source">HUDHealthBar</a></span> health;
+<a name="6"></a>var <span class="source_type"><a href="../tribesgui/hudenergybar.html" class="source">HUDEnergyBar</a></span> energy;
+<a name="7"></a>
+<a name="8"></a><span class="source_comment">// radar & misc stuff
+</span><a name="9"></a>var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> radarContainer;
+<a name="10"></a>var <span class="source_type"><a href="../tribesgui/hudradar.html" class="source">HUDRadar</a></span> radar;
+<a name="11"></a>var <span class="source_type"><a href="../tribesgui/hudobjectivenotification.html" class="source">HUDObjectiveNotification</a></span> objectiveNotify;
+<a name="12"></a>
+<a name="13"></a><span class="source_comment">// scoreboard
+</span><a name="14"></a>var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> scoreboardGroup;
+<a name="15"></a>var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamOneScoreLabel;
+<a name="16"></a>var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamOneLabel;
+<a name="17"></a>var <span class="source_type"><a href="../tribesgui/hudicon.html" class="source">HUDIcon</a></span> teamOneIcon;
+<a name="18"></a>var <span class="source_type"><a href="../tribesgui/hudcountdown.html" class="source">HUDCountDown</a></span> countDown;
+<a name="19"></a>var <span class="source_type"><a href="../tribesgui/hudicon.html" class="source">HUDIcon</a></span> teamTwoIcon;
+<a name="20"></a>var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamTwoLabel;
+<a name="21"></a>var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span> teamTwoScoreLabel;
+<a name="22"></a>
+<a name="23"></a><span class="source_comment">// weapons
+</span><a name="24"></a>var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> weaponContainer;
+<a name="25"></a>var <span class="source_type"><a href="../tribesgui/hudweaponicon.html" class="source">HUDWeaponIcon</a></span> fallbackWeapon;
+<a name="26"></a>var <span class="source_type"><a href="../tribesgui/hudweaponicon.html" class="source">HUDWeaponIcon</a></span> weapons[<span class="source_int">3</span>];
+<a name="27"></a>var <span class="source_type"><a href="../tribesgui/huddeployableicon.html" class="source">HUDDeployableIcon</a></span> <span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>;
+<a name="28"></a>var <span class="source_type"><a href="../tribesgui/hudcarryableicon.html" class="source">HUDCarryableIcon</a></span> carryable;
+<a name="29"></a>
+<a name="30"></a><span class="source_comment">// other items
+</span><a name="31"></a>var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> itemContainer;
+<a name="32"></a>var <span class="source_type"><a href="../tribesgui/hudhealthkiticon.html" class="source">HUDHealthKitIcon</a></span> <span class="source_type"><a href="../gameplay/healthkit.html" class="source">healthKit</a></span>;
+<a name="33"></a>var <span class="source_type"><a href="../tribesgui/hudpackicon.html" class="source">HUDPackIcon</a></span> <span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>;
+<a name="34"></a>var <span class="source_type"><a href="../tribesgui/hudgrenadesicon.html" class="source">HUDGrenadesIcon</a></span> grenades;
+<a name="35"></a>
+<a name="36"></a>var <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>		messageContainer;
+<a name="37"></a>var <span class="source_type"><a href="../tribesgui/hudmessagewindow.html" class="source">HUDMessageWindow</a></span>	messageWindow;
+<a name="38"></a>
+<a name="39"></a><span class="source_comment">//
+</span><a name="40"></a><span class="source_comment">// Initalises the component
+</span><a name="41"></a><span class="source_comment">//
+</span><a name="42"></a>overloaded <span class="source_type">function</span> Construct()
+<a name="43"></a>{
+<a name="44"></a>	<span class="source_comment">// health & energy
+</span><a name="45"></a>	healthEnergyContainer	= <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>(AddClonedElement(<span class="source_string">"TribesGUI.HUDContainer"</span>, <span class="source_string">"default_healthEnergyGroup"</span>));
+<a name="46"></a>	health = <span class="source_type"><a href="../tribesgui/hudhealthbar.html" class="source">HUDHealthBar</a></span>(healthEnergyContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDHealthBar"</span>, <span class="source_string">"default_health"</span>));
+<a name="47"></a>	energy = <span class="source_type"><a href="../tribesgui/hudenergybar.html" class="source">HUDEnergyBar</a></span>(healthEnergyContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDEnergyBar"</span>, <span class="source_string">"default_energy"</span>));
+<a name="48"></a>
+<a name="49"></a>	<span class="source_comment">// radar
+</span><a name="50"></a>	radarContainer = <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>(AddClonedElement(<span class="source_string">"TribesGUI.HUDContainer"</span>, <span class="source_string">"default_radarContainer"</span>));
+<a name="51"></a>	radar = <span class="source_type"><a href="../tribesgui/hudradar.html" class="source">HUDRadar</a></span>(radarContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDRadar"</span>, <span class="source_string">"default_radar"</span>));
+<a name="52"></a>	objectiveNotify = <span class="source_type"><a href="../tribesgui/hudobjectivenotification.html" class="source">HUDObjectiveNotification</a></span>(radarContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDObjectiveNotification"</span>, <span class="source_string">"default_ObjectiveNotification"</span>));
+<a name="53"></a>
+<a name="54"></a>	messageContainer = <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>(AddClonedElement(<span class="source_string">"TribesGUI.HUDContainer"</span>, <span class="source_string">"default_MessageContainer"</span>));
+<a name="55"></a>	messageWindow = <span class="source_type"><a href="../tribesgui/hudmessagewindow.html" class="source">HUDMessageWindow</a></span>(messageContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDMessageWindow"</span>, <span class="source_string">"default_MessageWindow"</span>));
+<a name="56"></a>
+<a name="57"></a>	<span class="source_comment">// weapon bar
+</span><a name="58"></a>	weaponContainer = <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>(AddClonedElement(<span class="source_string">"TribesGUI.HUDContainer"</span>, <span class="source_string">"default_weaponContainer"</span>));
+<a name="59"></a>	fallbackWeapon = <span class="source_type"><a href="../tribesgui/hudweaponicon.html" class="source">HUDWeaponIcon</a></span>(weaponContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDWeaponIcon"</span>, <span class="source_string">"default_FallbackWeapon"</span>));
+<a name="60"></a>	fallbackWeapon.weaponIdx = -<span class="source_int">1</span>;
+<a name="61"></a>	fallbackWeapon.bDrawQuantity = false;
+<a name="62"></a>	weapons[<span class="source_int">0</span>] = <span class="source_type"><a href="../tribesgui/hudweaponicon.html" class="source">HUDWeaponIcon</a></span>(weaponContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDWeaponIcon"</span>, <span class="source_string">"default_weapon0"</span>));
+<a name="63"></a>	weapons[<span class="source_int">0</span>].weaponIdx = <span class="source_int">0</span>;
+<a name="64"></a>	weapons[<span class="source_int">0</span>].bDrawQuantity = false;
+<a name="65"></a>	weapons[<span class="source_int">1</span>] = <span class="source_type"><a href="../tribesgui/hudweaponicon.html" class="source">HUDWeaponIcon</a></span>(weaponContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDWeaponIcon"</span>, <span class="source_string">"default_weapon1"</span>));
+<a name="66"></a>	weapons[<span class="source_int">1</span>].weaponIdx = <span class="source_int">1</span>;
+<a name="67"></a>	weapons[<span class="source_int">1</span>].bDrawQuantity = false;
+<a name="68"></a>	weapons[<span class="source_int">2</span>] = <span class="source_type"><a href="../tribesgui/hudweaponicon.html" class="source">HUDWeaponIcon</a></span>(weaponContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDWeaponIcon"</span>, <span class="source_string">"default_weapon2"</span>));
+<a name="69"></a>	weapons[<span class="source_int">2</span>].weaponIdx = <span class="source_int">2</span>;
+<a name="70"></a>	weapons[<span class="source_int">2</span>].bDrawQuantity = false;
+<a name="71"></a>	<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span> = <span class="source_type"><a href="../tribesgui/huddeployableicon.html" class="source">HUDDeployableIcon</a></span>(weaponContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDDeployableIcon"</span>, <span class="source_string">"default_deployable"</span>));
+<a name="72"></a>	<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>.bDrawQuantity = false;
+<a name="73"></a>	carryable = <span class="source_type"><a href="../tribesgui/hudcarryableicon.html" class="source">HUDCarryableIcon</a></span>(weaponContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDCarryableIcon"</span>, <span class="source_string">"default_Carryable"</span>));
+<a name="74"></a>	carryable.bDrawQuantity = false;
+<a name="75"></a>
+<a name="76"></a>	<span class="source_comment">// item bar
+</span><a name="77"></a>	itemContainer = <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>(AddClonedElement(<span class="source_string">"TribesGUI.HUDContainer"</span>, <span class="source_string">"default_itemContainer"</span>));
+<a name="78"></a>	<span class="source_type"><a href="../gameplay/healthkit.html" class="source">healthKit</a></span> = <span class="source_type"><a href="../tribesgui/hudhealthkiticon.html" class="source">HUDHealthKitIcon</a></span>(itemContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDHealthKitIcon"</span>, <span class="source_string">"default_healthKit"</span>));
+<a name="79"></a>	<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span> = <span class="source_type"><a href="../tribesgui/hudpackicon.html" class="source">HUDPackIcon</a></span>(itemContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDPackIcon"</span>, <span class="source_string">"default_pack"</span>));
+<a name="80"></a>	<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.bDrawQuantity = false;
+<a name="81"></a>	grenades = <span class="source_type"><a href="../tribesgui/hudgrenadesicon.html" class="source">HUDGrenadesIcon</a></span>(itemContainer.AddClonedElement(<span class="source_string">"TribesGUI.HUDGrenadesIcon"</span>, <span class="source_string">"default_grenades"</span>));
+<a name="82"></a>	grenades.bDrawQuantity = false;
+<a name="83"></a>
+<a name="84"></a>	scoreboardGroup	= <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>(AddClonedElement(<span class="source_string">"TribesGUI.HUDContainer"</span>, <span class="source_string">"default_scoreboardGroup"</span>));
+<a name="85"></a>	teamOneScoreLabel = <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span>(scoreboardGroup.AddClonedElement(<span class="source_string">"TribesGUI.LabelElement"</span>, <span class="source_string">"default_teamOneScore"</span>));
+<a name="86"></a>	teamOneLabel = <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span>(scoreboardGroup.AddClonedElement(<span class="source_string">"TribesGUI.LabelElement"</span>, <span class="source_string">"default_teamOneLabel"</span>));
+<a name="87"></a>	countDown = <span class="source_type"><a href="../tribesgui/hudcountdown.html" class="source">HUDCountDown</a></span>(scoreboardGroup.AddClonedElement(<span class="source_string">"TribesGUI.HUDCountDown"</span>, <span class="source_string">"default_countDown"</span>));
+<a name="88"></a>	teamTwoLabel = <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span>(scoreboardGroup.AddClonedElement(<span class="source_string">"TribesGUI.LabelElement"</span>, <span class="source_string">"default_teamTwoLabel"</span>));
+<a name="89"></a>	teamTwoScoreLabel = <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span>(scoreboardGroup.AddClonedElement(<span class="source_string">"TribesGUI.LabelElement"</span>, <span class="source_string">"default_teamTwoScore"</span>));
+<a name="90"></a>
+<a name="91"></a>	<span class="source_comment">// add help labels
+</span><a name="92"></a>	health.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_Health"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="93"></a>	energy.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_Energy"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="94"></a>	radar.HelpLabel	= static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_Radar"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="95"></a>	messageWindow.HelpLabel	= static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_ChatWindow"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="96"></a>	fallbackWeapon.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_FallbackWeapon"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="97"></a>	weapons[<span class="source_int">0</span>].HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_WeaponOne"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="98"></a>	weapons[<span class="source_int">1</span>].HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_WeaponTwo"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="99"></a>	weapons[<span class="source_int">2</span>].HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_WeaponThree"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="100"></a>	<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_Deployable"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="101"></a>	carryable.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_Carryable"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="102"></a>	<span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_Pack"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="103"></a>	grenades.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_HandGrenades"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="104"></a>	scoreboardGroup.HelpLabel = static.Localize(<span class="source_string">"HelpLabels"</span>, <span class="source_string">"MSG_HelpLabels_Scoreboard"</span>, <span class="source_string">"Localisation\\GUI\\HelpLabels"</span>);
+<a name="105"></a>}
+<a name="106"></a>
+<a name="107"></a>defaultproperties
+<a name="108"></a>{
+<a name="109"></a>	bIsChatEnabled = true
+<a name="110"></a>	bIsQuickChatEnabled = false
+<a name="111"></a>	bEventMessagesEnabled = false
+<a name="112"></a>	bIsAnnouncmentsEnabled = false
+<a name="113"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/tribeshelphudscript.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TribesHelpHUDScript">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/tribesguipanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/tribeshelpscreen.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: st 16.4.2014 10:20:46.000 - Creation time: st 23.5.2018 00:10:48.297 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

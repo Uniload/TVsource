@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.MPGoal</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/mpgoal.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#MPGoal">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/mpgameannouncermessages.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/mpmetacarryable.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/mpgoal.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpgoal.html">MPGoal</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/mpgoal.html" class="source">MPGoal</a></span> extends <span class="source_type"><a href="../gameplay/mpactor.html" class="source">MPActor</a></span>;
+<a name="2"></a>
+<a name="3"></a>var() <span class="source_type">int</span>		teamGoalScore			<span class="source_string">"The number of points an attacker scores for his team when a goal is scored"</span>;
+<a name="4"></a>var() <span class="source_type">int</span>		individualGoalScore		<span class="source_string">"The number of points an attacker scores for himself when a goal is scored"</span>;
+<a name="5"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>	goalMaterial			<span class="source_string">"The material the ball must touch in order to score a goal"</span>;
+<a name="6"></a>
+<a name="7"></a><span class="source_comment">// Effects
+</span><a name="8"></a>var <span class="source_type">bool</span> bGoalEffect;
+<a name="9"></a>var <span class="source_type">bool</span> bLocalGoalEffect;
+<a name="10"></a>var() <span class="source_type">name</span> goalScoredAnimation			<span class="source_string">"The name of an animation to play when a goal is scored"</span>;
+<a name="11"></a>var(EffectEvents) <span class="source_type">name</span> goalScoredEffectEvent	<span class="source_string">"The name of an effect event that plays once on the goal when a goal is scored."</span>;
+<a name="12"></a>var <span class="source_type"><a href="../gameplay/mpball.html" class="source">MPBall</a></span> ballRef;
+<a name="13"></a>var <span class="source_type">bool</span> bInitialization;
+<a name="14"></a>
+<a name="15"></a>replication
+<a name="16"></a>{
+<a name="17"></a>	reliable if (Role == ROLE_Authority)
+<a name="18"></a>		bGoalEffect;
+<a name="19"></a>}
+<a name="20"></a>
+<a name="21"></a><span class="source_comment">// PostBeginPlay
+</span><a name="22"></a><span class="source_type">function</span> PostBeginPlay()
+<a name="23"></a>{
+<a name="24"></a>	Super.PostBeginPlay();
+<a name="25"></a>}
+<a name="26"></a>
+<a name="27"></a>simulated <span class="source_type">function</span> PostNetReceive()
+<a name="28"></a>{
+<a name="29"></a>	Super.PostNetReceive();
+<a name="30"></a>
+<a name="31"></a>	updateGoalEffects();
+<a name="32"></a>}
+<a name="33"></a>
+<a name="34"></a>simulated <span class="source_type">function</span> updateGoalEffects()
+<a name="35"></a>{
+<a name="36"></a>	if (bGoalEffect != bLocalGoalEffect)
+<a name="37"></a>	{
+<a name="38"></a>		bLocalGoalEffect = bGoalEffect;
+<a name="39"></a>
+<a name="40"></a>		if (!bInitialization)
+<a name="41"></a>		{
+<a name="42"></a>			if (team() != None)
+<a name="43"></a>				TriggerEffectEvent(goalScoredEffectEvent,,,,,,,,team().<span class="source_type">Class</span>.<span class="source_type">name</span>);
+<a name="44"></a>			else
+<a name="45"></a>				TriggerEffectEvent(goalScoredEffectEvent);
+<a name="46"></a>			if (hasAnim(goalScoredAnimation))
+<a name="47"></a>				PlayAnim(goalScoredAnimation);
+<a name="48"></a>		}
+<a name="49"></a>	}
+<a name="50"></a>	
+<a name="51"></a>	bInitialization = false;
+<a name="52"></a>}
+<a name="53"></a>
+<a name="54"></a><span class="source_comment">// Bump
+</span><a name="55"></a><span class="source_type">function</span> Touch(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>)
+<a name="56"></a>{
+<a name="57"></a>	local <span class="source_type"><a href="../gameplay/mpball.html" class="source">MPBall</a></span> ball;
+<a name="58"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>;
+<a name="59"></a>    local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">HitLocation</span>, HitNormal, <span class="source_type">StartTrace</span>, EndTrace;
+<a name="60"></a>	local <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Check;
+<a name="61"></a>    local <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> MaterialHit;
+<a name="62"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="63"></a>
+<a name="64"></a>	ball = <span class="source_type"><a href="../gameplay/mpball.html" class="source">MPBall</a></span>(<span class="source_type">Other</span>);
+<a name="65"></a>	if (ball == None)
+<a name="66"></a>		return;
+<a name="67"></a>
+<a name="68"></a>	<span class="source_comment">// Check for goal by determining the material the ball hit
+</span><a name="69"></a>	<span class="source_type">StartTrace</span> = <span class="source_type">Other</span>.Location;
+<a name="70"></a>	EndTrace = Location;<span class="source_comment">// + (Normal(Other.Velocity) * 100.0);
+</span><a name="71"></a>
+<a name="72"></a>	Check = <span class="source_type">Other</span>.Trace( <span class="source_type">HitLocation</span>, HitNormal, EndTrace, <span class="source_type">StartTrace</span>, true, vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>), MaterialHit );
+<a name="73"></a>	
+<a name="74"></a>	<span class="source_comment">//Log("GOAL check ="$Check$", mat = "$MaterialHit$", start = "$StartTrace$", end = "$EndTrace$", vel = "$Other.Velocity);
+</span><a name="75"></a> 
+<a name="76"></a>	if (MaterialHit != goalMaterial)
+<a name="77"></a>	{
+<a name="78"></a>		<span class="source_comment">//Other.HitWall(HitNormal, self);
+</span><a name="79"></a>		<span class="source_comment">// Remove from touching array so that touch is called again
+</span><a name="80"></a>		for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;Touching.Length; <span class="source_type">i</span>++)
+<a name="81"></a>		{
+<a name="82"></a>			if (Touching[<span class="source_type">i</span>] == ball)
+<a name="83"></a>				Touching.Remove(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="84"></a>		}
+<a name="85"></a>
+<a name="86"></a>		return;
+<a name="87"></a>	}
+<a name="88"></a>
+<a name="89"></a>	<span class="source_comment">// Hide the ball and wait half a second before returning it
+</span><a name="90"></a>	<span class="source_comment">// This is partly to handle the case where someone scores from point blank range, which
+</span><a name="91"></a>	<span class="source_comment">// can result in state confusion
+</span><a name="92"></a>	ball.bHidden = true;
+<a name="93"></a>	ballRef = ball;
+<a name="94"></a>	SetTimer(<span class="source_int">0.5</span>, false);
+<a name="95"></a>	bGoalEffect = !bGoalEffect;
+<a name="96"></a>	updateGoalEffects();
+<a name="97"></a>
+<a name="98"></a>	if (ball.lastCarrier.team() != team())
+<a name="99"></a>	{
+<a name="100"></a>		scoreTeam(teamGoalScore, ball.lastCarrier.team());
+<a name="101"></a>		scoreIndividual(ball.lastCarrier, individualGoalScore);
+<a name="102"></a>		<span class="source_comment">//Level.Game.Broadcast(self, "GOOOOOOOOOOOOOOAAAAL!!!");
+</span><a name="103"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ball.<span class="source_type">Class</span>.default.CarryableMessageClass, <span class="source_int">5</span>, ball.lastCarrier.team());
+<a name="104"></a>
+<a name="105"></a>		if (ball.<span class="source_type">Class</span>.default.SecondaryMessageClass != None)
+<a name="106"></a>			<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ball.<span class="source_type">Class</span>.default.SecondaryMessageClass, <span class="source_int">5</span>, ball.lastCarrier.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">playerReplicationInfo</a></span>);
+<a name="107"></a>
+<a name="108"></a>		dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageGoalScored'</span>(label, ball.lastCarrier.label, ball.lastCarrier.getTeamLabel(), ball.label));
+<a name="109"></a>	}
+<a name="110"></a>	else
+<a name="111"></a>	{
+<a name="112"></a>		<span class="source_comment">// If someone scores on their own team's goal, all other teams get a point
+</span><a name="113"></a>		ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'TeamInfo'</span>, <span class="source_type">t</span>)
+<a name="114"></a>		{
+<a name="115"></a>			if (<span class="source_type">t</span> != ball.lastCarrier.team())
+<a name="116"></a>			{
+<a name="117"></a>				dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageGoalScored'</span>(label, ball.lastCarrier.label, <span class="source_type">t</span>.label, ball.label));
+<a name="118"></a>				scoreTeam(teamGoalScore, <span class="source_type">t</span>);
+<a name="119"></a>			}
+<a name="120"></a>		}
+<a name="121"></a>	}
+<a name="122"></a>}
+<a name="123"></a>
+<a name="124"></a><span class="source_type">function</span> <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span>()
+<a name="125"></a>{
+<a name="126"></a>	ballRef.onGoal(self);
+<a name="127"></a>	ballRef.bHidden = false;
+<a name="128"></a>	ballRef = None;
+<a name="129"></a>}
+<a name="130"></a>
+<a name="131"></a>defaultproperties
+<a name="132"></a>{
+<a name="133"></a>	DrawType				= DT_StaticMesh
+<a name="134"></a>	<span class="source_type">StaticMesh</span>				= <span class="source_type">StaticMesh</span><span class="source_name">'MPGameObjects.goal'</span>
+<a name="135"></a>	bCollideActors			= true
+<a name="136"></a>	bCollideWorld			= true
+<a name="137"></a>	bBlockActors			= true
+<a name="138"></a>	bBlockPlayers			= true
+<a name="139"></a>	bMovable				= false
+<a name="140"></a>	bNetNotify				= true
+<a name="141"></a>	<span class="source_comment">//bUseCylinderCollision	= true
+</span><a name="142"></a>
+<a name="143"></a>	teamGoalScore			= <span class="source_int">1</span>
+<a name="144"></a>	individualGoalScore		= <span class="source_int">10</span>
+<a name="145"></a>
+<a name="146"></a>	goalMaterial			= <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span><span class="source_name">'MPGameObjects.GoalMouthShader'</span>
+<a name="147"></a>	goalScoredEffectEvent	= Scored
+<a name="148"></a>
+<a name="149"></a>	bSkipEncroachment		= true
+<a name="150"></a>
+<a name="151"></a>	bInitialization = true
+<a name="152"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/mpgoal.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#MPGoal">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/mpgameannouncermessages.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/mpmetacarryable.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:18.000 - Creation time: st 23.5.2018 00:10:45.929 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

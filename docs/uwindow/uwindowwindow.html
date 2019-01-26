@@ -1,0 +1,1409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - UWindow.UWindowWindow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_uwindow/uwindowwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../uwindow/uwindowwin95lookandfeel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../uwindow/uwindowwrappedtextarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#uwindow/uwindowwindow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../uwindow/uwindow-overview.html">UWindow</a>.UWindowWindow</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uwindow/uwindowbase.html">UWindowBase</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interactions.html">Interactions</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interaction.html">Interaction</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../uwindow/uwindowbitmap.html">UWindowBitmap</a>, <a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a>, <a href="../uwindow/uwindowcontrolframe.html">UWindowControlFrame</a>, <a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a>, <a href="../uwindow/uwindowframedwindow.html">UWindowFramedWindow</a>, <a href="../uwindow/uwindowgrid.html">UWindowGrid</a>, <a href="../uwindow/uwindowgridclient.html">UWindowGridClient</a>, <a href="../uwindow/uwindowgridcolumn.html">UWindowGridColumn</a>, <a href="../uwindow/uwindowhscrollbar.html">UWindowHScrollBar</a>, <a href="../uwindow/uwindowhsplitter.html">UWindowHSplitter</a>, <a href="../uwindow/uwindowmessageboxarea.html">UWindowMessageBoxArea</a>, <a href="../uwindow/uwindowprogressbar.html">UWindowProgressBar</a>, <a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a>, <a href="../uwindow/uwindowtabcontroltabarea.html">UWindowTabControlTabArea</a>, <a href="../uwindow/uwindowvscrollbar.html">UWindowVScrollBar</a>, <a href="../uwindow/uwindowvsplitter.html">UWindowVSplitter</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_DE_Change" name="DE_Change" title="go to the details">DE_Change</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+<tr><td width="40%"><a href="#_DE_Click" name="DE_Click" title="go to the details">DE_Click</a></td><td width="10%">=</td><td width="50%">2</td></tr>
+<tr><td width="40%"><a href="#_DE_Created" name="DE_Created" title="go to the details">DE_Created</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+<tr><td width="40%"><a href="#_DE_DoubleClick" name="DE_DoubleClick" title="go to the details">DE_DoubleClick</a></td><td width="10%">=</td><td width="50%">11</td></tr>
+<tr><td width="40%"><a href="#_DE_Enter" name="DE_Enter" title="go to the details">DE_Enter</a></td><td width="10%">=</td><td width="50%">3</td></tr>
+<tr><td width="40%"><a href="#_DE_EnterPressed" name="DE_EnterPressed" title="go to the details">DE_EnterPressed</a></td><td width="10%">=</td><td width="50%">7</td></tr>
+<tr><td width="40%"><a href="#_DE_Exit" name="DE_Exit" title="go to the details">DE_Exit</a></td><td width="10%">=</td><td width="50%">4</td></tr>
+<tr><td width="40%"><a href="#_DE_HelpChanged" name="DE_HelpChanged" title="go to the details">DE_HelpChanged</a></td><td width="10%">=</td><td width="50%">13</td></tr>
+<tr><td width="40%"><a href="#_DE_LMouseDown" name="DE_LMouseDown" title="go to the details">DE_LMouseDown</a></td><td width="10%">=</td><td width="50%">10</td></tr>
+<tr><td width="40%"><a href="#_DE_MClick" name="DE_MClick" title="go to the details">DE_MClick</a></td><td width="10%">=</td><td width="50%">5</td></tr>
+<tr><td width="40%"><a href="#_DE_MouseEnter" name="DE_MouseEnter" title="go to the details">DE_MouseEnter</a></td><td width="10%">=</td><td width="50%">12</td></tr>
+<tr><td width="40%"><a href="#_DE_MouseLeave" name="DE_MouseLeave" title="go to the details">DE_MouseLeave</a></td><td width="10%">=</td><td width="50%">9</td></tr>
+<tr><td width="40%"><a href="#_DE_MouseMove" name="DE_MouseMove" title="go to the details">DE_MouseMove</a></td><td width="10%">=</td><td width="50%">8</td></tr>
+<tr><td width="40%"><a href="#_DE_RClick" name="DE_RClick" title="go to the details">DE_RClick</a></td><td width="10%">=</td><td width="50%">6</td></tr>
+<tr><td width="40%"><a href="#_DE_WheelDownPressed" name="DE_WheelDownPressed" title="go to the details">DE_WheelDownPressed</a></td><td width="10%">=</td><td width="50%">15</td></tr>
+<tr><td width="40%"><a href="#_DE_WheelUpPressed" name="DE_WheelUpPressed" title="go to the details">DE_WheelUpPressed</a></td><td width="10%">=</td><td width="50%">14</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#F_Bold">F_Bold</a>, <a href="../uwindow/uwindowbase.html#F_Large">F_Large</a>, <a href="../uwindow/uwindowbase.html#F_LargeBold">F_LargeBold</a>, <a href="../uwindow/uwindowbase.html#F_Normal">F_Normal</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_ActiveWindow" name="ActiveWindow" title="go to the details">ActiveWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAcceptsFocus" name="bAcceptsFocus" title="go to the details">bAcceptsFocus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAcceptsHotKeys" name="bAcceptsHotKeys" title="go to the details">bAcceptsHotKeys</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAlwaysBehind" name="bAlwaysBehind" title="go to the details">bAlwaysBehind</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAlwaysOnTop" name="bAlwaysOnTop" title="go to the details">bAlwaysOnTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIgnoreLDoubleClick" name="bIgnoreLDoubleClick" title="go to the details">bIgnoreLDoubleClick</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIgnoreMDoubleClick" name="bIgnoreMDoubleClick" title="go to the details">bIgnoreMDoubleClick</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIgnoreRDoubleClick" name="bIgnoreRDoubleClick" title="go to the details">bIgnoreRDoubleClick</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLeaveOnscreen" name="bLeaveOnscreen" title="go to the details">bLeaveOnscreen</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMMouseDown" name="bMMouseDown" title="go to the details">bMMouseDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMouseDown" name="bMouseDown" title="go to the details">bMouseDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoClip" name="bNoClip" title="go to the details">bNoClip</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRMouseDown" name="bRMouseDown" title="go to the details">bRMouseDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTransient" name="bTransient" title="go to the details">bTransient</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUWindowActive" name="bUWindowActive" title="go to the details">bUWindowActive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bWindowVisible" name="bWindowVisible" title="go to the details">bWindowVisible</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ClickTime" name="ClickTime" title="go to the details">ClickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ClickX" name="ClickX" title="go to the details">ClickX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ClickY" name="ClickY" title="go to the details">ClickY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#Region">Region</a></td><td width="66%"><a href="#_ClippingRegion" name="ClippingRegion" title="go to the details">ClippingRegion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html#MouseCursor">MouseCursor</a></td><td width="66%"><a href="#_Cursor" name="Cursor" title="go to the details">Cursor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_FirstChildWindow" name="FirstChildWindow" title="go to the details">FirstChildWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_LastChildWindow" name="LastChildWindow" title="go to the details">LastChildWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowlookandfeel.html">UWindowLookAndFeel</a></td><td width="66%"><a href="#_LookAndFeel" name="LookAndFeel" title="go to the details">LookAndFeel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MClickTime" name="MClickTime" title="go to the details">MClickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MClickX" name="MClickX" title="go to the details">MClickX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MClickY" name="MClickY" title="go to the details">MClickY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_ModalWindow" name="ModalWindow" title="go to the details">ModalWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_NextSiblingWindow" name="NextSiblingWindow" title="go to the details">NextSiblingWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_OwnerWindow" name="OwnerWindow" title="go to the details">OwnerWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_ParentWindow" name="ParentWindow" title="go to the details">ParentWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_PrevSiblingWindow" name="PrevSiblingWindow" title="go to the details">PrevSiblingWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RClickTime" name="RClickTime" title="go to the details">RClickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RClickX" name="RClickX" title="go to the details">RClickX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RClickY" name="RClickY" title="go to the details">RClickY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></td><td width="66%"><a href="#_Root" name="Root" title="go to the details">Root</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_WinHeight" name="WinHeight" title="go to the details">WinHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_WinLeft" name="WinLeft" title="go to the details">WinLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_WinTop" name="WinTop" title="go to the details">WinTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_WinWidth" name="WinWidth" title="go to the details">WinWidth</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interaction.html">Interaction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/interaction.html#bActive">bActive</a>, <a href="../engine/interaction.html#bNativeEvents">bNativeEvents</a>, <a href="../engine/interaction.html#bRequiresTick">bRequiresTick</a>, <a href="../engine/interaction.html#bVisible">bVisible</a>, <a href="../engine/interaction.html#Master">Master</a>, <a href="../engine/interaction.html#ViewportOwner">ViewportOwner</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_WinMessage" name="WinMessage" title="go to the details">WinMessage</a><br /><span class="small">WM_LMouseDown,
+WM_LMouseUp,
+WM_MMouseDown,
+WM_MMouseUp,
+WM_RMouseDown,
+WM_RMouseUp,
+WM_KeyUp,
+WM_KeyDown,
+WM_KeyType,
+WM_Paint</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#FrameHitTest">FrameHitTest</a>, <a href="../uwindow/uwindowbase.html#MenuSound">MenuSound</a>, <a href="../uwindow/uwindowbase.html#MessageBoxButtons">MessageBoxButtons</a>, <a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a>, <a href="../uwindow/uwindowbase.html#PropertyCondition">PropertyCondition</a>, <a href="../uwindow/uwindowbase.html#TextAlign">TextAlign</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_MouseCursor" name="MouseCursor" title="go to the details">MouseCursor</a><br /><span class="small">tex, HotX, HotY, WindowsCursor</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#HTMLStyle">HTMLStyle</a>, <a href="../uwindow/uwindowbase.html#Region">Region</a>, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Activated-" name="Activated" title="go to the details">Activated</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ActivateWindow-" name="ActivateWindow" title="go to the details">ActivateWindow</a> (int Depth, bool bTransientNoDeactivate))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AfterCreate-" name="AfterCreate" title="go to the details">AfterCreate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AfterPaint-" name="AfterPaint" title="go to the details">AfterPaint</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeforeCreate-" name="BeforeCreate" title="go to the details">BeforeCreate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeforePaint-" name="BeforePaint" title="go to the details">BeforePaint</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginPlay-" name="BeginPlay" title="go to the details">BeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BringToFront-" name="BringToFront" title="go to the details">BringToFront</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CancelAcceptsFocus-" name="CancelAcceptsFocus" title="go to the details">CancelAcceptsFocus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&nbsp;</td><td><a href="#_CheckKeyFocusWindow-" name="CheckKeyFocusWindow" title="go to the details">CheckKeyFocusWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CheckMousePassThrough-" name="CheckMousePassThrough" title="go to the details">CheckMousePassThrough</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Click-" name="Click" title="go to the details">Click</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClipText-" name="ClipText" title="go to the details">ClipText</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, coerce string S, optional bool bCheckHotkey))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClipTextWidth-" name="ClipTextWidth" title="go to the details">ClipTextWidth</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, coerce string S, float W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Close-" name="Close" title="go to the details">Close</a> (optional bool bByParent))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&nbsp;</td><td><a href="#_CreateWindow-" name="CreateWindow" title="go to the details">CreateWindow</a> (class&lt;<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&gt; WndClass, float X, float Y, float W, float H, optional <a href="../uwindow/uwindowwindow.html">UWindowWindow</a> OwnerW, optional bool bUnique, optional name ObjectName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Deactivated-" name="Deactivated" title="go to the details">Deactivated</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoTick-" name="DoTick" title="go to the details">DoTick</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoubleClick-" name="DoubleClick" title="go to the details">DoubleClick</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawClippedActor-" name="DrawClippedActor" title="go to the details">DrawClippedActor</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, <a href="../engine/actor.html">Engine.Actor</a> A, bool WireFrame, <a href="../core/object.html#Rotator">rotator</a> RotOffset, vector LocOffset ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawClippedTexture-" name="DrawClippedTexture" title="go to the details">DrawClippedTexture</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, texture Tex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawHorizTiledPieces-" name="DrawHorizTiledPieces" title="go to the details">DrawHorizTiledPieces</a> (<a href="../engine/canvas.html">Canvas</a> C, float DestX, float DestY, float DestW, float DestH, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T1, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T2, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T3, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T4, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T5, float <a href="../core/object.html#Scale">Scale</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawMiscBevel-" name="DrawMiscBevel" title="go to the details">DrawMiscBevel</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, float W, float H, <a href="../engine/texture.html">Texture</a> T, int BevelType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawStretchedTexture-" name="DrawStretchedTexture" title="go to the details">DrawStretchedTexture</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, float W, float H, texture Tex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawStretchedTextureSegment-" name="DrawStretchedTextureSegment" title="go to the details">DrawStretchedTextureSegment</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, float W, float H, float tX, float tY, float tW, float tH, texture Tex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawUpBevel-" name="DrawUpBevel" title="go to the details">DrawUpBevel</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, float W, float H, <a href="../engine/texture.html">Texture</a> T))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawVertTiledPieces-" name="DrawVertTiledPieces" title="go to the details">DrawVertTiledPieces</a> (<a href="../engine/canvas.html">Canvas</a> C, float DestX, float DestY, float DestW, float DestH, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T1, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T2, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T3, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T4, <a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T5, float <a href="../core/object.html#Scale">Scale</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EscClose-" name="EscClose" title="go to the details">EscClose</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&nbsp;</td><td><a href="#_FindChildWindow-" name="FindChildWindow" title="go to the details">FindChildWindow</a> (class&lt;<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&gt; ChildClass, optional bool bExactClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&nbsp;</td><td><a href="#_FindWindowUnder-" name="FindWindowUnder" title="go to the details">FindWindowUnder</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FocusOtherWindow-" name="FocusOtherWindow" title="go to the details">FocusOtherWindow</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FocusWindow-" name="FocusWindow" title="go to the details">FocusWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetDesiredDimensions-" name="GetDesiredDimensions" title="go to the details">GetDesiredDimensions</a> (out float W, out float H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/levelinfo.html">Engine.LevelInfo</a>&nbsp;</td><td><a href="#_GetEntryLevel-" name="GetEntryLevel" title="go to the details">GetEntryLevel</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/levelinfo.html">Engine.LevelInfo</a>&nbsp;</td><td><a href="#_GetLevel-" name="GetLevel" title="go to the details">GetLevel</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/texture.html">Texture</a>&nbsp;</td><td><a href="#_GetLookAndFeelTexture-" name="GetLookAndFeelTexture" title="go to the details">GetLookAndFeelTexture</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetMouseXY-" name="GetMouseXY" title="go to the details">GetMouseXY</a> (out float X, out float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&nbsp;</td><td><a href="#_GetParent-" name="GetParent" title="go to the details">GetParent</a> (class&lt;<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>&gt; ParentClass, optional bool bExactClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/playercontroller.html">Engine.PlayerController</a>&nbsp;</td><td><a href="#_GetPlayerOwner-" name="GetPlayerOwner" title="go to the details">GetPlayerOwner</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GlobalToWindow-" name="GlobalToWindow" title="go to the details">GlobalToWindow</a> (float GlobalX, float GlobalY, out float WinX, out float WinY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HideChildWindow-" name="HideChildWindow" title="go to the details">HideChildWindow</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> Child))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HideWindow-" name="HideWindow" title="go to the details">HideWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_HotKeyDown-" name="HotKeyDown" title="go to the details">HotKeyDown</a> (int Key, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_HotKeyUp-" name="HotKeyUp" title="go to the details">HotKeyUp</a> (int Key, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsActive-" name="IsActive" title="go to the details">IsActive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyDown-" name="KeyDown" title="go to the details">KeyDown</a> (int Key, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyFocusEnter-" name="KeyFocusEnter" title="go to the details">KeyFocusEnter</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyFocusExit-" name="KeyFocusExit" title="go to the details">KeyFocusExit</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyPressed-" name="KeyPressed" title="go to the details">KeyPressed</a> (int Key, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyUp-" name="KeyUp" title="go to the details">KeyUp</a> (int Key, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseDown-" name="LMouseDown" title="go to the details">LMouseDown</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseUp-" name="LMouseUp" title="go to the details">LMouseUp</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MClick-" name="MClick" title="go to the details">MClick</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MDoubleClick-" name="MDoubleClick" title="go to the details">MDoubleClick</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowmessagebox.html">UWindowMessageBox</a>&nbsp;</td><td><a href="#_MessageBox-" name="MessageBox" title="go to the details">MessageBox</a> (string Title, string Message, <a href="../uwindow/uwindowbase.html#MessageBoxButtons">MessageBoxButtons</a> Buttons, <a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a> ESCResult, optional <a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a> EnterResult, optional int TimeOut))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MessageBoxDone-" name="MessageBoxDone" title="go to the details">MessageBoxDone</a> (<a href="../uwindow/uwindowmessagebox.html">UWindowMessageBox</a> W, <a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a> Result))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_MessageClients-" name="MessageClients" title="go to the details">MessageClients</a> (<a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a> Msg, <a href="../engine/canvas.html">Canvas</a> C, float X, float Y, int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MMouseDown-" name="MMouseDown" title="go to the details">MMouseDown</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MMouseUp-" name="MMouseUp" title="go to the details">MMouseUp</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseEnter-" name="MouseEnter" title="go to the details">MouseEnter</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_MouseIsOver-" name="MouseIsOver" title="go to the details">MouseIsOver</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseLeave-" name="MouseLeave" title="go to the details">MouseLeave</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseMove-" name="MouseMove" title="go to the details">MouseMove</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyAfterLevelChange-" name="NotifyAfterLevelChange" title="go to the details">NotifyAfterLevelChange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyBeforeLevelChange-" name="NotifyBeforeLevelChange" title="go to the details">NotifyBeforeLevelChange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyQuitUnreal-" name="NotifyQuitUnreal" title="go to the details">NotifyQuitUnreal</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PaintClients-" name="PaintClients" title="go to the details">PaintClients</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>byte&nbsp;</td><td><a href="#_ParseAmpersand-" name="ParseAmpersand" title="go to the details">ParseAmpersand</a> (string S, out string Result, out string Underline, bool bCalcUnderline))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessMenuKey-" name="ProcessMenuKey" title="go to the details">ProcessMenuKey</a> (int Key, string KeyName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_PropagateKey-" name="PropagateKey" title="go to the details">PropagateKey</a> (<a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a> Msg, <a href="../engine/canvas.html">Canvas</a> C, float X, float Y, int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_PropagateMessage-" name="PropagateMessage" title="go to the details">PropagateMessage</a> (coerce string Msg, float MsgLife))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RClick-" name="RClick" title="go to the details">RClick</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RDoubleClick-" name="RDoubleClick" title="go to the details">RDoubleClick</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_RemoveAmpersand-" name="RemoveAmpersand" title="go to the details">RemoveAmpersand</a> (string S))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReplaceText-" name="ReplaceText" title="go to the details">ReplaceText</a> (out string Text, string Replace, string With))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Resized-" name="Resized" title="go to the details">Resized</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResolutionChanged-" name="ResolutionChanged" title="go to the details">ResolutionChanged</a> (float W, float H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RMouseDown-" name="RMouseDown" title="go to the details">RMouseDown</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RMouseUp-" name="RMouseUp" title="go to the details">RMouseUp</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveConfigs-" name="SaveConfigs" title="go to the details">SaveConfigs</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SendToBack-" name="SendToBack" title="go to the details">SendToBack</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetAcceptsFocus-" name="SetAcceptsFocus" title="go to the details">SetAcceptsFocus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetAcceptsHotKeys-" name="SetAcceptsHotKeys" title="go to the details">SetAcceptsHotKeys</a> (bool bNewAccpetsHotKeys))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetCursor-" name="SetCursor" title="go to the details">SetCursor</a> (<a href="../uwindow/uwindowwindow.html#MouseCursor">MouseCursor</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMouseWindow-" name="SetMouseWindow" title="go to the details">SetMouseWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetParent-" name="SetParent" title="go to the details">SetParent</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> NewParent))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetSize-" name="SetSize" title="go to the details">SetSize</a> (float W, float H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowChildWindow-" name="ShowChildWindow" title="go to the details">ShowChildWindow</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> Child, optional bool bAtBack))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowModal-" name="ShowModal" title="go to the details">ShowModal</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowWindow-" name="ShowWindow" title="go to the details">ShowWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StripCRLF-" name="StripCRLF" title="go to the details">StripCRLF</a> (out string Text))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TextSize-" name="TextSize" title="go to the details">TextSize</a> (<a href="../engine/canvas.html">Canvas</a> C, string Text, out float W, out float H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tile-" name="Tile" title="go to the details">Tile</a> (<a href="../engine/canvas.html">Canvas</a> C, <a href="../engine/texture.html">Texture</a> T))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToolTip-" name="ToolTip" title="go to the details">ToolTip</a> (string strTip))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_WaitModal-" name="WaitModal" title="go to the details">WaitModal</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WindowEvent-" name="WindowEvent" title="go to the details">WindowEvent</a> (<a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a> Msg, <a href="../engine/canvas.html">Canvas</a> C, float X, float Y, int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WindowHidden-" name="WindowHidden" title="go to the details">WindowHidden</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_WindowIsVisible-" name="WindowIsVisible" title="go to the details">WindowIsVisible</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WindowShown-" name="WindowShown" title="go to the details">WindowShown</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WindowToGlobal-" name="WindowToGlobal" title="go to the details">WindowToGlobal</a> (float WinX, float WinY, out float GlobalX, out float GlobalY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_WrapClipText-" name="WrapClipText" title="go to the details">WrapClipText</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y, coerce string S, optional bool bCheckHotkey, optional int Length, optional int PaddingLength, optional bool bNoDraw))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowbase.html#BuildObjectWithProperties">BuildObjectWithProperties</a>, <a href="../uwindow/uwindowbase.html#GetRegion">GetRegion</a>, <a href="../uwindow/uwindowbase.html#InStrAfter">InStrAfter</a>, <a href="../uwindow/uwindowbase.html#NewRegion">NewRegion</a>, <a href="../uwindow/uwindowbase.html#NewTexRegion">NewTexRegion</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/interaction.html">Interaction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/interaction.html#ConsoleCommand">ConsoleCommand</a>, <a href="../engine/interaction.html#Initialize">Initialize</a>, <a href="../engine/interaction.html#Initialized">Initialized</a>, <a href="../engine/interaction.html#KeyEvent">KeyEvent</a>, <a href="../engine/interaction.html#KeyType">KeyType</a>, <a href="../engine/interaction.html#Message">Message</a>, <a href="../engine/interaction.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/interaction.html#PostRender">PostRender</a>, <a href="../engine/interaction.html#PreRender">PreRender</a>, <a href="../engine/interaction.html#ScreenToWorld">ScreenToWorld</a>, <a href="../engine/interaction.html#SetFocus">SetFocus</a>, <a href="../engine/interaction.html#Tick">Tick</a>, <a href="../engine/interaction.html#WorldToScreen">WorldToScreen</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DE_Change" class="hidden"></a>DE_Change <a href="../Source_uwindow/uwindowwindow.html#79" class="small">Source code</a></h4>
+<div class="declaration">const DE_Change = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_Click" class="hidden"></a>DE_Click <a href="../Source_uwindow/uwindowwindow.html#80" class="small">Source code</a></h4>
+<div class="declaration">const DE_Click = <span class="source_int">2</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_Created" class="hidden"></a>DE_Created <a href="../Source_uwindow/uwindowwindow.html#78" class="small">Source code</a></h4>
+<div class="declaration">const DE_Created = <span class="source_int">0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_DoubleClick" class="hidden"></a>DE_DoubleClick <a href="../Source_uwindow/uwindowwindow.html#89" class="small">Source code</a></h4>
+<div class="declaration">const DE_DoubleClick = <span class="source_int">11</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_Enter" class="hidden"></a>DE_Enter <a href="../Source_uwindow/uwindowwindow.html#81" class="small">Source code</a></h4>
+<div class="declaration">const DE_Enter = <span class="source_int">3</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_EnterPressed" class="hidden"></a>DE_EnterPressed <a href="../Source_uwindow/uwindowwindow.html#85" class="small">Source code</a></h4>
+<div class="declaration">const DE_EnterPressed = <span class="source_int">7</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_Exit" class="hidden"></a>DE_Exit <a href="../Source_uwindow/uwindowwindow.html#82" class="small">Source code</a></h4>
+<div class="declaration">const DE_Exit = <span class="source_int">4</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_HelpChanged" class="hidden"></a>DE_HelpChanged <a href="../Source_uwindow/uwindowwindow.html#91" class="small">Source code</a></h4>
+<div class="declaration">const DE_HelpChanged = <span class="source_int">13</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_LMouseDown" class="hidden"></a>DE_LMouseDown <a href="../Source_uwindow/uwindowwindow.html#88" class="small">Source code</a></h4>
+<div class="declaration">const DE_LMouseDown = <span class="source_int">10</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_MClick" class="hidden"></a>DE_MClick <a href="../Source_uwindow/uwindowwindow.html#83" class="small">Source code</a></h4>
+<div class="declaration">const DE_MClick = <span class="source_int">5</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_MouseEnter" class="hidden"></a>DE_MouseEnter <a href="../Source_uwindow/uwindowwindow.html#90" class="small">Source code</a></h4>
+<div class="declaration">const DE_MouseEnter = <span class="source_int">12</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_MouseLeave" class="hidden"></a>DE_MouseLeave <a href="../Source_uwindow/uwindowwindow.html#87" class="small">Source code</a></h4>
+<div class="declaration">const DE_MouseLeave = <span class="source_int">9</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_MouseMove" class="hidden"></a>DE_MouseMove <a href="../Source_uwindow/uwindowwindow.html#86" class="small">Source code</a></h4>
+<div class="declaration">const DE_MouseMove = <span class="source_int">8</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_RClick" class="hidden"></a>DE_RClick <a href="../Source_uwindow/uwindowwindow.html#84" class="small">Source code</a></h4>
+<div class="declaration">const DE_RClick = <span class="source_int">6</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_WheelDownPressed" class="hidden"></a>DE_WheelDownPressed <a href="../Source_uwindow/uwindowwindow.html#93" class="small">Source code</a></h4>
+<div class="declaration">const DE_WheelDownPressed = <span class="source_int">15</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DE_WheelUpPressed" class="hidden"></a>DE_WheelUpPressed <a href="../Source_uwindow/uwindowwindow.html#92" class="small">Source code</a></h4>
+<div class="declaration">const DE_WheelUpPressed = <span class="source_int">14</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ActiveWindow" class="hidden"></a>ActiveWindow <a href="../Source_uwindow/uwindowwindow.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> ActiveWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAcceptsFocus" class="hidden"></a>bAcceptsFocus <a href="../Source_uwindow/uwindowwindow.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAcceptsFocus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAcceptsHotKeys" class="hidden"></a>bAcceptsHotKeys <a href="../Source_uwindow/uwindowwindow.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAcceptsHotKeys;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAlwaysBehind" class="hidden"></a>bAlwaysBehind <a href="../Source_uwindow/uwindowwindow.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAlwaysBehind;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAlwaysOnTop" class="hidden"></a>bAlwaysOnTop <a href="../Source_uwindow/uwindowwindow.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAlwaysOnTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIgnoreLDoubleClick" class="hidden"></a>bIgnoreLDoubleClick <a href="../Source_uwindow/uwindowwindow.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIgnoreLDoubleClick;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIgnoreMDoubleClick" class="hidden"></a>bIgnoreMDoubleClick <a href="../Source_uwindow/uwindowwindow.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIgnoreMDoubleClick;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIgnoreRDoubleClick" class="hidden"></a>bIgnoreRDoubleClick <a href="../Source_uwindow/uwindowwindow.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIgnoreRDoubleClick;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLeaveOnscreen" class="hidden"></a>bLeaveOnscreen <a href="../Source_uwindow/uwindowwindow.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLeaveOnscreen;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMMouseDown" class="hidden"></a>bMMouseDown <a href="../Source_uwindow/uwindowwindow.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bMMouseDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMouseDown" class="hidden"></a>bMouseDown <a href="../Source_uwindow/uwindowwindow.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bMouseDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNoClip" class="hidden"></a>bNoClip <a href="../Source_uwindow/uwindowwindow.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNoClip;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRMouseDown" class="hidden"></a>bRMouseDown <a href="../Source_uwindow/uwindowwindow.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bRMouseDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTransient" class="hidden"></a>bTransient <a href="../Source_uwindow/uwindowwindow.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bTransient;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUWindowActive" class="hidden"></a>bUWindowActive <a href="../Source_uwindow/uwindowwindow.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bUWindowActive;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bWindowVisible" class="hidden"></a>bWindowVisible <a href="../Source_uwindow/uwindowwindow.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bWindowVisible;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClickTime" class="hidden"></a>ClickTime <a href="../Source_uwindow/uwindowwindow.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ClickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClickX" class="hidden"></a>ClickX <a href="../Source_uwindow/uwindowwindow.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ClickX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClickY" class="hidden"></a>ClickY <a href="../Source_uwindow/uwindowwindow.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ClickY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClippingRegion" class="hidden"></a>ClippingRegion <a href="../Source_uwindow/uwindowwindow.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowbase.html#Region" class="source">Region</a></span> ClippingRegion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Cursor" class="hidden"></a>Cursor <a href="../Source_uwindow/uwindowwindow.html#61" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span> Cursor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstChildWindow" class="hidden"></a>FirstChildWindow <a href="../Source_uwindow/uwindowwindow.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> FirstChildWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastChildWindow" class="hidden"></a>LastChildWindow <a href="../Source_uwindow/uwindowwindow.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> LastChildWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LookAndFeel" class="hidden"></a>LookAndFeel <a href="../Source_uwindow/uwindowwindow.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></span> LookAndFeel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MClickTime" class="hidden"></a>MClickTime <a href="../Source_uwindow/uwindowwindow.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MClickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MClickX" class="hidden"></a>MClickX <a href="../Source_uwindow/uwindowwindow.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MClickX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MClickY" class="hidden"></a>MClickY <a href="../Source_uwindow/uwindowwindow.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> MClickY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ModalWindow" class="hidden"></a>ModalWindow <a href="../Source_uwindow/uwindowwindow.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> ModalWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextSiblingWindow" class="hidden"></a>NextSiblingWindow <a href="../Source_uwindow/uwindowwindow.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> NextSiblingWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OwnerWindow" class="hidden"></a>OwnerWindow <a href="../Source_uwindow/uwindowwindow.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> OwnerWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ParentWindow" class="hidden"></a>ParentWindow <a href="../Source_uwindow/uwindowwindow.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> ParentWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrevSiblingWindow" class="hidden"></a>PrevSiblingWindow <a href="../Source_uwindow/uwindowwindow.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> PrevSiblingWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RClickTime" class="hidden"></a>RClickTime <a href="../Source_uwindow/uwindowwindow.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> RClickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RClickX" class="hidden"></a>RClickX <a href="../Source_uwindow/uwindowwindow.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> RClickX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RClickY" class="hidden"></a>RClickY <a href="../Source_uwindow/uwindowwindow.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> RClickY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Root" class="hidden"></a>Root <a href="../Source_uwindow/uwindowwindow.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowrootwindow.html" class="source">UWindowRootWindow</a></span> Root;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WinHeight" class="hidden"></a>WinHeight <a href="../Source_uwindow/uwindowwindow.html#10" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> WinHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WinLeft" class="hidden"></a>WinLeft <a href="../Source_uwindow/uwindowwindow.html#7" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> WinLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WinTop" class="hidden"></a>WinTop <a href="../Source_uwindow/uwindowwindow.html#8" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> WinTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WinWidth" class="hidden"></a>WinWidth <a href="../Source_uwindow/uwindowwindow.html#9" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> WinWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_WinMessage" class="hidden"></a>WinMessage <a href="../Source_uwindow/uwindowwindow.html#63" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span><br />
+{<blockquote>WM_LMouseDown,
+WM_LMouseUp,
+WM_MMouseDown,
+WM_MMouseUp,
+WM_RMouseDown,
+WM_RMouseUp,
+WM_KeyUp,
+WM_KeyDown,
+WM_KeyType,
+WM_Paint</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_MouseCursor" class="hidden"></a>MouseCursor <a href="../Source_uwindow/uwindowwindow.html#53" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span><br />
+{<blockquote>var <span class="source_type">int</span> HotX;<br />
+var <span class="source_type">int</span> HotY;<br />
+var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">tex</span>;<br />
+var <span class="source_type">byte</span> WindowsCursor;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Activated-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Activated <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#248" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Activated ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ActivateWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ActivateWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#705" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  ActivateWindow ( <span class="source_type">int</span> Depth, <span class="source_type">bool</span> bTransientNoDeactivate) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AfterCreate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AfterCreate <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#238" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AfterCreate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AfterPaint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AfterPaint <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#182" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AfterPaint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeforeCreate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeforeCreate <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#228" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeforeCreate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeforePaint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeforePaint <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#177" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeforePaint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginPlay <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#223" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BringToFront-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BringToFront <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#745" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  BringToFront ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CancelAcceptsFocus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CancelAcceptsFocus <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#839" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  CancelAcceptsFocus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckKeyFocusWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckKeyFocusWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#644" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> CheckKeyFocusWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckMousePassThrough-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckMousePassThrough <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1608" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> CheckMousePassThrough ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Click-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Click <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#192" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Click ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClipText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClipText <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1139" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  ClipText ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">bool</span> bCheckHotkey) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClipTextWidth-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClipTextWidth <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1258" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  ClipTextWidth ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">float</span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Close-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Close <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#414" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Close ( optional <span class="source_type">bool</span> bByParent) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#233" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#990" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> CreateWindow ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>&gt; WndClass, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> OwnerW, optional <span class="source_type">bool</span> bUnique, optional <span class="source_type">name</span> ObjectName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Deactivated-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Deactivated <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#253" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Deactivated ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoTick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoTick <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#442" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DoTick ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoubleClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoubleClick <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#208" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DoubleClick ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawClippedActor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawClippedActor <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1263" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawClippedActor ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">A</span>, <span class="source_type">bool</span> WireFrame, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> RotOffset, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">LocOffset</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawClippedTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawClippedTexture <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1109" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawClippedTexture ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> <span class="source_type">Tex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawHorizTiledPieces-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawHorizTiledPieces <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1058" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawHorizTiledPieces ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> DestX, <span class="source_type">float</span> DestY, <span class="source_type">float</span> DestW, <span class="source_type">float</span> DestH, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T1, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T2, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T3, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T4, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T5, <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawMiscBevel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawMiscBevel <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1335" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawMiscBevel ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>, <span class="source_type">int</span> BevelType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawStretchedTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawStretchedTexture <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1114" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawStretchedTexture ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> <span class="source_type">Tex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawStretchedTextureSegment-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawStretchedTextureSegment <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1119" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawStretchedTextureSegment ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, 
+									  <span class="source_type">float</span> tX, <span class="source_type">float</span> tY, <span class="source_type">float</span> tW, <span class="source_type">float</span> tH, <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> <span class="source_type">Tex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawUpBevel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawUpBevel <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1280" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawUpBevel ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> H, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawVertTiledPieces-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawVertTiledPieces <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1083" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  DrawVertTiledPieces ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> DestX, <span class="source_type">float</span> DestY, <span class="source_type">float</span> DestW, <span class="source_type">float</span> DestH, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T1, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T2, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T3, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T4, <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> T5, <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EscClose-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EscClose <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#409" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EscClose ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindChildWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindChildWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1512" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> FindChildWindow ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>&gt; ChildClass, optional <span class="source_type">bool</span> bExactClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindWindowUnder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindWindowUnder <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#552" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> FindWindowUnder ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FocusOtherWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FocusOtherWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#405" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  FocusOtherWindow ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FocusWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FocusWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#397" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  FocusWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDesiredDimensions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDesiredDimensions <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1534" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GetDesiredDimensions ( out <span class="source_type">float</span> W, out <span class="source_type">float</span> H) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetEntryLevel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetEntryLevel <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#167" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> GetEntryLevel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLevel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLevel <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#162" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> GetLevel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLookAndFeelTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLookAndFeelTexture <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1468" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> GetLookAndFeelTexture ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMouseXY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMouseXY <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#849" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  GetMouseXY ( out <span class="source_type">float</span> X, out <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetParent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetParent <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1489" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> GetParent ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>&gt; ParentClass, optional <span class="source_type">bool</span> bExactClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerOwner-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerOwner <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#157" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> GetPlayerOwner ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GlobalToWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GlobalToWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#865" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  GlobalToWindow ( <span class="source_type">float</span> GlobalX, <span class="source_type">float</span> GlobalY, out <span class="source_type">float</span> WinX, out <span class="source_type">float</span> WinY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideChildWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HideChildWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#764" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  HideChildWindow ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HideWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#984" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  HideWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HotKeyDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HotKeyDown <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#279" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> HotKeyDown ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HotKeyUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HotKeyUp <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#286" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> HotKeyUp ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsActive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsActive <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1473" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> IsActive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyDown <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#274" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  KeyDown ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyFocusEnter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyFocusEnter <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#303" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  KeyFocusEnter ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyFocusExit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyFocusExit <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#308" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  KeyFocusExit ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyPressed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyPressed <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#293" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  KeyPressed ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyUp <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#269" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  KeyUp ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseDown <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#371" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LMouseDown ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseUp <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#377" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LMouseUp ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MClick <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#198" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MClick ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MDoubleClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MDoubleClick <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#213" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MDoubleClick ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MessageBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MessageBox <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1630" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../uwindow/uwindowmessagebox.html" class="source">UWindowMessageBox</a></span> MessageBox ( <span class="source_type">string</span> Title, <span class="source_type">string</span> <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span>, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxButtons" class="source">MessageBoxButtons</a></span> Buttons, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> ESCResult, optional <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> EnterResult, optional <span class="source_type">int</span> <span class="source_type">TimeOut</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MessageBoxDone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MessageBoxDone <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1647" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MessageBoxDone ( <span class="source_type"><a href="../uwindow/uwindowmessagebox.html" class="source">UWindowMessageBox</a></span> W, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> <span class="source_type">Result</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MessageClients-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MessageClients <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#674" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">bool</span> MessageClients ( <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MMouseDown <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#341" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MMouseDown ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MMouseUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MMouseUp <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#350" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MMouseUp ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseEnter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseEnter <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#243" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MouseEnter ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseIsOver-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseIsOver <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1452" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">bool</span> MouseIsOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseLeave-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseLeave <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#258" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MouseLeave ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseMove <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#265" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MouseMove ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyAfterLevelChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyAfterLevelChange <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1677" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  NotifyAfterLevelChange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyBeforeLevelChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyBeforeLevelChange <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1659" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  NotifyBeforeLevelChange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyQuitUnreal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyQuitUnreal <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1651" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  NotifyQuitUnreal ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#187" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PaintClients-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PaintClients <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#466" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  PaintClients ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ParseAmpersand-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ParseAmpersand <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1399" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">byte</span> ParseAmpersand ( <span class="source_type">string</span> <span class="source_type">S</span>, out <span class="source_type">string</span> <span class="source_type">Result</span>, out <span class="source_type">string</span> Underline, <span class="source_type">bool</span> bCalcUnderline) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessMenuKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessMenuKey <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#298" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ProcessMenuKey ( <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type">string</span> KeyName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PropagateKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PropagateKey <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#583" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">bool</span> PropagateKey ( <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PropagateMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PropagateMessage <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#615" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">bool</span> PropagateMessage ( coerce <span class="source_type">string</span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type">float</span> <span class="source_type">MsgLife</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RClick <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#203" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RClick ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RDoubleClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RDoubleClick <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#218" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RDoubleClick ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveAmpersand-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveAmpersand <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1389" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">string</span> RemoveAmpersand ( <span class="source_type">string</span> <span class="source_type">S</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReplaceText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReplaceText <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1685" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  ReplaceText ( out <span class="source_type">string</span> <span class="source_type">Text</span>, <span class="source_type">string</span> Replace, <span class="source_type">string</span> With) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Resized-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Resized <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#172" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Resized ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResolutionChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResolutionChanged <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1564" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ResolutionChanged ( <span class="source_type">float</span> W, <span class="source_type">float</span> H) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RMouseDown <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#314" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RMouseDown ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RMouseUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RMouseUp <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#320" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RMouseUp ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveConfigs-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveConfigs <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#151" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SaveConfigs ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SendToBack-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SendToBack <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#758" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  SendToBack ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAcceptsFocus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetAcceptsFocus <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#830" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  SetAcceptsFocus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAcceptsHotKeys-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetAcceptsHotKeys <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1478" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetAcceptsHotKeys ( <span class="source_type">bool</span> bNewAccpetsHotKeys) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetCursor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetCursor <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1667" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetCursor ( <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMouseWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMouseWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1463" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  SetMouseWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetParent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetParent <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1623" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetParent ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> NewParent) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetSize <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#428" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  SetSize ( <span class="source_type">float</span> W, <span class="source_type">float</span> H) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowChildWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowChildWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#897" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  ShowChildWindow ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> <span class="source_type">Child</span>, optional <span class="source_type">bool</span> bAtBack) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowModal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowModal <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1574" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ShowModal ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowWindow <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#978" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ShowWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StripCRLF-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StripCRLF <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1702" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  StripCRLF ( out <span class="source_type">string</span> <span class="source_type">Text</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TextSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TextSize <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1556" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  TextSize ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, out <span class="source_type">float</span> W, out <span class="source_type">float</span> H) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#438" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tile <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1039" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  Tile ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToolTip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToolTip <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1457" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ToolTip ( <span class="source_type">string</span> strTip) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WaitModal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WaitModal <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1581" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> WaitModal ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowEvent <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#96" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  WindowEvent ( <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type"><a href="../gameplay/mpsecondarymessage.html#msg" class="source">Msg</a></span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowHidden-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowHidden <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1591" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  WindowHidden ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowIsVisible-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowIsVisible <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1613" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">bool</span> WindowIsVisible ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowShown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowShown <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1599" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  WindowShown ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowToGlobal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowToGlobal <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#881" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span>  WindowToGlobal ( <span class="source_type">float</span> WinX, <span class="source_type">float</span> WinY, out <span class="source_type">float</span> GlobalX, out <span class="source_type">float</span> GlobalY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WrapClipText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WrapClipText <span class="function_state"></span> <a href="../Source_uwindow/uwindowwindow.html#1158" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">int</span> WrapClipText ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">bool</span> bCheckHotkey, optional <span class="source_type">int</span> Length, optional <span class="source_type">int</span> PaddingLength, optional <span class="source_type">bool</span> bNoDraw) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_uwindow/uwindowwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../uwindow/uwindowwin95lookandfeel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../uwindow/uwindowwrappedtextarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:38.816 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

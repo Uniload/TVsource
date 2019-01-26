@@ -1,0 +1,1509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.ClientSideCharacter</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/clientsidecharacter.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ClientSideCharacter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/checkpoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/cloakpack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/clientsidecharacter.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.ClientSideCharacter</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/refcount.html">RefCount</a></dd>
+<dt>Modifiers</dt><dd>dependsOn ( ObjectiveInfo ) dependsOn ( Deployable ) dependsOn ( RadarInfo ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a>
+   |   
+   +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/clientsidecharacter.html">ClientSideCharacter</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_MAX_SPAWN_AREAS" name="MAX_SPAWN_AREAS" title="go to the details">MAX_SPAWN_AREAS</a></td><td width="10%">=</td><td width="50%">20</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo">HUDWeaponInfo</a></td><td width="66%"><a href="#_activeWeapon" name="activeWeapon" title="go to the details">activeWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_activeWeaponIdx" name="activeWeaponIdx" title="go to the details">activeWeaponIdx</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_aHeadIsTalking" name="aHeadIsTalking" title="go to the details">aHeadIsTalking</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_Announcements" name="Announcements" title="go to the details">Announcements</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAwaitingTournamentStart" name="bAwaitingTournamentStart" title="go to the details">bAwaitingTournamentStart</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanBeUsed" name="bCanBeUsed" title="go to the details">bCanBeUsed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanExitRespawnHUD" name="bCanExitRespawnHUD" title="go to the details">bCanExitRespawnHUD</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDeployableActive" name="bDeployableActive" title="go to the details">bDeployableActive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDisplayChatWindow" name="bDisplayChatWindow" title="go to the details">bDisplayChatWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEnabledForUse" name="bEnabledForUse" title="go to the details">bEnabledForUse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHitObject" name="bHitObject" title="go to the details">bHitObject</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHotkeysUpdated" name="bHotkeysUpdated" title="go to the details">bHotkeysUpdated</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInstantRespawnMode" name="bInstantRespawnMode" title="go to the details">bInstantRespawnMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLoadoutSelection" name="bLoadoutSelection" title="go to the details">bLoadoutSelection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNeedCountDownTimer" name="bNeedCountDownTimer" title="go to the details">bNeedCountDownTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoMoreCarryables" name="bNoMoreCarryables" title="go to the details">bNoMoreCarryables</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bQuickChat" name="bQuickChat" title="go to the details">bQuickChat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRoundCountingDown" name="bRoundCountingDown" title="go to the details">bRoundCountingDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSensorGridFunctional" name="bSensorGridFunctional" title="go to the details">bSensorGridFunctional</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowEnergyBar" name="bShowEnergyBar" title="go to the details">bShowEnergyBar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowRespawnMap" name="bShowRespawnMap" title="go to the details">bShowRespawnMap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTalk" name="bTalk" title="go to the details">bTalk</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTeamTalk" name="bTeamTalk" title="go to the details">bTeamTalk</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseableObjectPowered" name="bUseableObjectPowered" title="go to the details">bUseableObjectPowered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseableObjectSwitch" name="bUseableObjectSwitch" title="go to the details">bUseableObjectSwitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bWaitingForRoundEnd" name="bWaitingForRoundEnd" title="go to the details">bWaitingForRoundEnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bZoomed" name="bZoomed" title="go to the details">bZoomed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/mpcarryable.html">MPCarryable</a>&gt;</td><td width="66%"><a href="#_carryable" name="carryable" title="go to the details">carryable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_carryableHotkey" name="carryableHotkey" title="go to the details">carryableHotkey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_charLocation" name="charLocation" title="go to the details">charLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">Rotator</a></td><td width="66%"><a href="#_charRotation" name="charRotation" title="go to the details">charRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ChatScrollDelta" name="ChatScrollDelta" title="go to the details">ChatScrollDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_countDown" name="countDown" title="go to the details">countDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CurrentChatWindowSize" name="CurrentChatWindowSize" title="go to the details">CurrentChatWindowSize</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_DamageAmounts[7]" name="DamageAmounts[7]" title="go to the details">DamageAmounts[7]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_DefenseScore" name="DefenseScore" title="go to the details">DefenseScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/deployable.html">Deployable</a>&gt;</td><td width="66%"><a href="#_deployable" name="deployable" title="go to the details">deployable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_deployableHotkey" name="deployableHotkey" title="go to the details">deployableHotkey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/deployable.html#eDeployableInfo">Deployable.eDeployableInfo</a></td><td width="66%"><a href="#_deployableState" name="deployableState" title="go to the details">deployableState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_deployableUseTime" name="deployableUseTime" title="go to the details">deployableUseTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&gt;</td><td width="66%"><a href="#_detectedAlliesClass" name="detectedAlliesClass" title="go to the details">detectedAlliesClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;int&gt;</td><td width="66%"><a href="#_detectedAlliesHeight" name="detectedAlliesHeight" title="go to the details">detectedAlliesHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_detectedAlliesState" name="detectedAlliesState" title="go to the details">detectedAlliesState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;float&gt;</td><td width="66%"><a href="#_detectedAlliesXPosition" name="detectedAlliesXPosition" title="go to the details">detectedAlliesXPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;float&gt;</td><td width="66%"><a href="#_detectedAlliesYPosition" name="detectedAlliesYPosition" title="go to the details">detectedAlliesYPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&gt;</td><td width="66%"><a href="#_detectedEnemiesClass" name="detectedEnemiesClass" title="go to the details">detectedEnemiesClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;int&gt;</td><td width="66%"><a href="#_detectedEnemiesHeight" name="detectedEnemiesHeight" title="go to the details">detectedEnemiesHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;int&gt;</td><td width="66%"><a href="#_detectedEnemiesScreenX" name="detectedEnemiesScreenX" title="go to the details">detectedEnemiesScreenX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;int&gt;</td><td width="66%"><a href="#_detectedEnemiesScreenY" name="detectedEnemiesScreenY" title="go to the details">detectedEnemiesScreenY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_detectedEnemiesState" name="detectedEnemiesState" title="go to the details">detectedEnemiesState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;class&lt;<a href="../gameplay/teaminfo.html">TeamInfo</a>&gt;&gt;</td><td width="66%"><a href="#_detectedEnemiesTeam" name="detectedEnemiesTeam" title="go to the details">detectedEnemiesTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;float&gt;</td><td width="66%"><a href="#_detectedEnemiesXPosition" name="detectedEnemiesXPosition" title="go to the details">detectedEnemiesXPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;float&gt;</td><td width="66%"><a href="#_detectedEnemiesYPosition" name="detectedEnemiesYPosition" title="go to the details">detectedEnemiesYPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_energy" name="energy" title="go to the details">energy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_energyMaximum" name="energyMaximum" title="go to the details">energyMaximum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_energyWeaponDepleted" name="energyWeaponDepleted" title="go to the details">energyWeaponDepleted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#EventMessage">EventMessage</a>&gt;</td><td width="66%"><a href="#_EventMessages" name="EventMessages" title="go to the details">EventMessages</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ExitRespawnKeyBinding" name="ExitRespawnKeyBinding" title="go to the details">ExitRespawnKeyBinding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_ExitRespawnKeyText" name="ExitRespawnKeyText" title="go to the details">ExitRespawnKeyText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo">HUDWeaponInfo</a></td><td width="66%"><a href="#_fallbackWeapon" name="fallbackWeapon" title="go to the details">fallbackWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/gameinfo.html">GameInfo</a>&gt;</td><td width="66%"><a href="#_gameClass" name="gameClass" title="go to the details">gameClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo">HUDWeaponInfo</a></td><td width="66%"><a href="#_grenades" name="grenades" title="go to the details">grenades</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_health" name="health" title="go to the details">health</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_healthInjectionAmount" name="healthInjectionAmount" title="go to the details">healthInjectionAmount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/healthkit.html">HealthKit</a>&gt;</td><td width="66%"><a href="#_healthKit" name="healthKit" title="go to the details">healthKit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_healthKitHotkey" name="healthKitHotkey" title="go to the details">healthKitHotkey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_healthKitQuantity" name="healthKitQuantity" title="go to the details">healthKitQuantity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_healthMaximum" name="healthMaximum" title="go to the details">healthMaximum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_lastHitObjectTime" name="lastHitObjectTime" title="go to the details">lastHitObjectTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_levelDescription" name="levelDescription" title="go to the details">levelDescription</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_levelTimeSeconds" name="levelTimeSeconds" title="go to the details">levelTimeSeconds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_livesLeft" name="livesLeft" title="go to the details">livesLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;byte&gt;</td><td width="66%"><a href="#_loadoutEnabled" name="loadoutEnabled" title="go to the details">loadoutEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_loadoutNames" name="loadoutNames" title="go to the details">loadoutNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_mapExtent" name="mapExtent" title="go to the details">mapExtent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_mapOrigin" name="mapOrigin" title="go to the details">mapOrigin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#MarkerData">MarkerData</a>&gt;</td><td width="66%"><a href="#_markers" name="markers" title="go to the details">markers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_matchScoreLimit" name="matchScoreLimit" title="go to the details">matchScoreLimit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#HUDMessage">HUDMessage</a>&gt;</td><td width="66%"><a href="#_Messages" name="Messages" title="go to the details">Messages</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MouseX" name="MouseX" title="go to the details">MouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MouseY" name="MouseY" title="go to the details">MouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_neutralColor" name="neutralColor" title="go to the details">neutralColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_neutralHighlightColor" name="neutralHighlightColor" title="go to the details">neutralHighlightColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numCarryables" name="numCarryables" title="go to the details">numCarryables</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#ClientObjectiveActorInfo">ClientObjectiveActorInfo</a>&gt;</td><td width="66%"><a href="#_ObjectiveActorData" name="ObjectiveActorData" title="go to the details">ObjectiveActorData</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#ClientObjectiveInfo">ClientObjectiveInfo</a>&gt;</td><td width="66%"><a href="#_ObjectiveData" name="ObjectiveData" title="go to the details">ObjectiveData</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_OffenseScore" name="OffenseScore" title="go to the details">OffenseScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_otherTeam" name="otherTeam" title="go to the details">otherTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_otherTeamColor" name="otherTeamColor" title="go to the details">otherTeamColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_otherTeamHighlightColor" name="otherTeamHighlightColor" title="go to the details">otherTeamHighlightColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_otherTeamIcon" name="otherTeamIcon" title="go to the details">otherTeamIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_otherTeamScore" name="otherTeamScore" title="go to the details">otherTeamScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ownTeam" name="ownTeam" title="go to the details">ownTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_ownTeamColor" name="ownTeamColor" title="go to the details">ownTeamColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_ownTeamHighlightColor" name="ownTeamHighlightColor" title="go to the details">ownTeamHighlightColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_ownTeamIcon" name="ownTeamIcon" title="go to the details">ownTeamIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ownTeamScore" name="ownTeamScore" title="go to the details">ownTeamScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/pack.html">Pack</a>&gt;</td><td width="66%"><a href="#_pack" name="pack" title="go to the details">pack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_packHotkey" name="packHotkey" title="go to the details">packHotkey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_packProgressRatio" name="packProgressRatio" title="go to the details">packProgressRatio</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html#ePackState">ePackState</a></td><td width="66%"><a href="#_packState" name="packState" title="go to the details">packState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#HUDMessage">HUDMessage</a>&gt;</td><td width="66%"><a href="#_PersonalMessages" name="PersonalMessages" title="go to the details">PersonalMessages</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ping" name="ping" title="go to the details">ping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#POIInfo">POIInfo</a>&gt;</td><td width="66%"><a href="#_POIData" name="POIData" title="go to the details">POIData</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_promptText" name="promptText" title="go to the details">promptText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/equipment.html">Equipment</a>&gt;</td><td width="66%"><a href="#_questItem" name="questItem" title="go to the details">questItem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_radarUnderlayMaterial" name="radarUnderlayMaterial" title="go to the details">radarUnderlayMaterial</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_relativeEnemyHighlightColor" name="relativeEnemyHighlightColor" title="go to the details">relativeEnemyHighlightColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_relativeEnemyTeamColor" name="relativeEnemyTeamColor" title="go to the details">relativeEnemyTeamColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_relativeFriendlyHighlightColor" name="relativeFriendlyHighlightColor" title="go to the details">relativeFriendlyHighlightColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_relativeFriendlyTeamColor" name="relativeFriendlyTeamColor" title="go to the details">relativeFriendlyTeamColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_respawnTime" name="respawnTime" title="go to the details">respawnTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_ShowCommandMapKeyText" name="ShowCommandMapKeyText" title="go to the details">ShowCommandMapKeyText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html#SpawnPointData">SpawnPointData</a></td><td width="66%"><a href="#_spawnAreas[MAX_SPAWN_AREAS]" name="spawnAreas[MAX_SPAWN_AREAS]" title="go to the details">spawnAreas[MAX_SPAWN_AREAS]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_StyleScore" name="StyleScore" title="go to the details">StyleScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_targetCanBeDamaged" name="targetCanBeDamaged" title="go to the details">targetCanBeDamaged</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_targetDistance" name="targetDistance" title="go to the details">targetDistance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_targetFunctionalHealthThreshold" name="targetFunctionalHealthThreshold" title="go to the details">targetFunctionalHealthThreshold</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_targetHealth" name="targetHealth" title="go to the details">targetHealth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_targetHealthMax" name="targetHealthMax" title="go to the details">targetHealthMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_targetLabel" name="targetLabel" title="go to the details">targetLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_targetShield" name="targetShield" title="go to the details">targetShield</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_targetShieldMax" name="targetShieldMax" title="go to the details">targetShieldMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/teaminfo.html">TeamInfo</a>&gt;</td><td width="66%"><a href="#_targetTeam" name="targetTeam" title="go to the details">targetTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html#ETeamAlignment">ETeamAlignment</a></td><td width="66%"><a href="#_targetTeamAlignment" name="targetTeamAlignment" title="go to the details">targetTeamAlignment</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class</td><td width="66%"><a href="#_targetType" name="targetType" title="go to the details">targetType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_throwForce" name="throwForce" title="go to the details">throwForce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_throwForceMax" name="throwForceMax" title="go to the details">throwForceMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_turretHealth" name="turretHealth" title="go to the details">turretHealth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_turretHealthMaximum" name="turretHealthMaximum" title="go to the details">turretHealthMaximum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_useableObjectLocation" name="useableObjectLocation" title="go to the details">useableObjectLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">EColorType</td><td width="66%"><a href="#_UserPrefColorType" name="UserPrefColorType" title="go to the details">UserPrefColorType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_vehicleHealth" name="vehicleHealth" title="go to the details">vehicleHealth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_vehicleHealthMaximum" name="vehicleHealthMaximum" title="go to the details">vehicleHealthMaximum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_vehicleManifestSchematic" name="vehicleManifestSchematic" title="go to the details">vehicleManifestSchematic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/clientsidecharacter.html#HUDPositionData">HUDPositionData</a>&gt;</td><td width="66%"><a href="#_vehiclePositionData" name="vehiclePositionData" title="go to the details">vehiclePositionData</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Velocity" name="Velocity" title="go to the details">Velocity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_watchedPlayerName" name="watchedPlayerName" title="go to the details">watchedPlayerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo">HUDWeaponInfo</a></td><td width="66%"><a href="#_weapons[3]" name="weapons[3]" title="go to the details">weapons[3]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_zoomFactor" name="zoomFactor" title="go to the details">zoomFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_zoomMagnificationLevel" name="zoomMagnificationLevel" title="go to the details">zoomMagnificationLevel</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/refcount.html#LatentStackLocations">LatentStackLocations</a>, <a href="../core/refcount.html#m_RefCount">m_RefCount</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EDirectionType" name="EDirectionType" title="go to the details">EDirectionType</a><br /><span class="small">DAMAGE_Front,
+DAMAGE_Rear,
+DAMAGE_Left,
+DAMAGE_Right,
+DAMAGE_Top,
+DAMAGE_Bottom,
+MAX_DAMAGE_DIRECTIONS</span></td></tr>
+<tr><td><a href="#_EMessageType" name="EMessageType" title="go to the details">EMessageType</a><br /><span class="small">MessageType_Global,
+MessageType_Ally,
+MessageType_Enemy,
+MessageType_Subtitle,
+MessageType_System,
+MessageType_StatHigh,
+MessageType_StatMedium,
+MessageType_StatLow,
+MessageType_StatPenalty,
+MAX_MESSAGE_TYPES</span></td></tr>
+<tr><td><a href="#_ePackState" name="ePackState" title="go to the details">ePackState</a><br /><span class="small">PS_Recharging,
+PS_Active,
+PS_Ready</span></td></tr>
+<tr><td><a href="#_ETeamAlignment" name="ETeamAlignment" title="go to the details">ETeamAlignment</a><br /><span class="small">TA_Neutral,
+TA_Friendly,
+TA_Enemy</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_ClientObjectiveActorInfo" name="ClientObjectiveActorInfo" title="go to the details">ClientObjectiveActorInfo</a><br /><span class="small">objectiveDataIndex, IsFriendly, TeamInfoClass, XPosition, YPosition, Distance, Height, ScreenX, ScreenY, bFlashing</span></td></tr>
+<tr><td><a href="#_ClientObjectiveInfo" name="ClientObjectiveInfo" title="go to the details">ClientObjectiveInfo</a><br /><span class="small">radarInfoClass, description, status, type, bFlashing, state, isFriendly, TeamInfoClass</span></td></tr>
+<tr><td><a href="#_EventMessage" name="EventMessage" title="go to the details">EventMessage</a><br /><span class="small">StringOne, StringOneType, StringTwo, StringTwoType, IconMaterial</span></td></tr>
+<tr><td><a href="#_HUDMessage" name="HUDMessage" title="go to the details">HUDMessage</a><br /><span class="small">Text, Type</span></td></tr>
+<tr><td><a href="#_HUDPositionData" name="HUDPositionData" title="go to the details">HUDPositionData</a><br /><span class="small">posX, posY, bOccupiedByPlayer, bOccupied, bNotLabelled, SwitchHotKey</span></td></tr>
+<tr><td><a href="#_HUDWeaponInfo" name="HUDWeaponInfo" title="go to the details">HUDWeaponInfo</a><br /><span class="small">type, ammo, hotkey, bCanFire, refireTime, timeSinceLastFire, Spread</span></td></tr>
+<tr><td><a href="#_MarkerData" name="MarkerData" title="go to the details">MarkerData</a><br /><span class="small">Type, ScreenX, ScreenY, State, Friendly, Team</span></td></tr>
+<tr><td><a href="#_POIInfo" name="POIInfo" title="go to the details">POIInfo</a><br /><span class="small">RadarInfoClass, Location, LabelText</span></td></tr>
+<tr><td><a href="#_SpawnPointData" name="SpawnPointData" title="go to the details">SpawnPointData</a><br /><span class="small">bValid, SpawnPointName, SpawnPointLocation</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/clientsidecharacter.html#SpawnPointData">SpawnPointData</a>&nbsp;</td><td><a href="#_GetSpawnArea-" name="GetSpawnArea" title="go to the details">GetSpawnArea</a> (int index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../gameplay/clientsidecharacter.html#ETeamAlignment">ETeamAlignment</a>&nbsp;</td><td><a href="#_GetTeamAlignment-" name="GetTeamAlignment" title="go to the details">GetTeamAlignment</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> localController, <a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a> PRI))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../core/object.html#Color">Color</a>&nbsp;</td><td><a href="#_GetTeamColor-" name="GetTeamColor" title="go to the details">GetTeamColor</a> (<a href="../gameplay/clientsidecharacter.html#ETeamAlignment">ETeamAlignment</a> alignment, optional bool bHighlight, optional class&lt;<a href="../gameplay/teaminfo.html">TeamInfo</a>&gt; ObjectTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetSpawnArea-" name="SetSpawnArea" title="go to the details">SetSpawnArea</a> (int index, <a href="../gameplay/clientsidecharacter.html#SpawnPointData">SpawnPointData</a> data))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/refcount.html#AddRef">AddRef</a>, <a href="../core/refcount.html#Release">Release</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_MAX_SPAWN_AREAS" class="hidden"></a>MAX_SPAWN_AREAS <a href="../Source_gameplay/clientsidecharacter.html#124" class="small">Source code</a></h4>
+<div class="declaration">const MAX_SPAWN_AREAS = <span class="source_int">20</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_activeWeapon" class="hidden"></a>activeWeapon <a href="../Source_gameplay/clientsidecharacter.html#84" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo" class="source">HUDWeaponInfo</a></span> activeWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_activeWeaponIdx" class="hidden"></a>activeWeaponIdx <a href="../Source_gameplay/clientsidecharacter.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> activeWeaponIdx;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_aHeadIsTalking" class="hidden"></a>aHeadIsTalking <a href="../Source_gameplay/clientsidecharacter.html#350" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> aHeadIsTalking;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Announcements" class="hidden"></a>Announcements <a href="../Source_gameplay/clientsidecharacter.html#331" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; Announcements;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAwaitingTournamentStart" class="hidden"></a>bAwaitingTournamentStart <a href="../Source_gameplay/clientsidecharacter.html#131" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bAwaitingTournamentStart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bCanBeUsed" class="hidden"></a>bCanBeUsed <a href="../Source_gameplay/clientsidecharacter.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bCanBeUsed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bCanExitRespawnHUD" class="hidden"></a>bCanExitRespawnHUD <a href="../Source_gameplay/clientsidecharacter.html#202" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bCanExitRespawnHUD;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDeployableActive" class="hidden"></a>bDeployableActive <a href="../Source_gameplay/clientsidecharacter.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDeployableActive;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDisplayChatWindow" class="hidden"></a>bDisplayChatWindow <a href="../Source_gameplay/clientsidecharacter.html#301" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDisplayChatWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bEnabledForUse" class="hidden"></a>bEnabledForUse <a href="../Source_gameplay/clientsidecharacter.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bEnabledForUse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHitObject" class="hidden"></a>bHitObject <a href="../Source_gameplay/clientsidecharacter.html#153" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bHitObject;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHotkeysUpdated" class="hidden"></a>bHotkeysUpdated <a href="../Source_gameplay/clientsidecharacter.html#61" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bHotkeysUpdated;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bInstantRespawnMode" class="hidden"></a>bInstantRespawnMode <a href="../Source_gameplay/clientsidecharacter.html#127" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bInstantRespawnMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLoadoutSelection" class="hidden"></a>bLoadoutSelection <a href="../Source_gameplay/clientsidecharacter.html#354" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLoadoutSelection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNeedCountDownTimer" class="hidden"></a>bNeedCountDownTimer <a href="../Source_gameplay/clientsidecharacter.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNeedCountDownTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNoMoreCarryables" class="hidden"></a>bNoMoreCarryables <a href="../Source_gameplay/clientsidecharacter.html#142" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNoMoreCarryables;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bQuickChat" class="hidden"></a>bQuickChat <a href="../Source_gameplay/clientsidecharacter.html#349" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bQuickChat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRoundCountingDown" class="hidden"></a>bRoundCountingDown <a href="../Source_gameplay/clientsidecharacter.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bRoundCountingDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSensorGridFunctional" class="hidden"></a>bSensorGridFunctional <a href="../Source_gameplay/clientsidecharacter.html#228" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bSensorGridFunctional;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowEnergyBar" class="hidden"></a>bShowEnergyBar <a href="../Source_gameplay/clientsidecharacter.html#56" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShowEnergyBar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowRespawnMap" class="hidden"></a>bShowRespawnMap <a href="../Source_gameplay/clientsidecharacter.html#126" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShowRespawnMap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTalk" class="hidden"></a>bTalk <a href="../Source_gameplay/clientsidecharacter.html#347" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bTalk;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTeamTalk" class="hidden"></a>bTeamTalk <a href="../Source_gameplay/clientsidecharacter.html#348" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bTeamTalk;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseableObjectPowered" class="hidden"></a>bUseableObjectPowered <a href="../Source_gameplay/clientsidecharacter.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bUseableObjectPowered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseableObjectSwitch" class="hidden"></a>bUseableObjectSwitch <a href="../Source_gameplay/clientsidecharacter.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bUseableObjectSwitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bWaitingForRoundEnd" class="hidden"></a>bWaitingForRoundEnd <a href="../Source_gameplay/clientsidecharacter.html#209" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bWaitingForRoundEnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bZoomed" class="hidden"></a>bZoomed <a href="../Source_gameplay/clientsidecharacter.html#66" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bZoomed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_carryable" class="hidden"></a>carryable <a href="../Source_gameplay/clientsidecharacter.html#89" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span>&gt; carryable;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_carryableHotkey" class="hidden"></a>carryableHotkey <a href="../Source_gameplay/clientsidecharacter.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> carryableHotkey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_charLocation" class="hidden"></a>charLocation <a href="../Source_gameplay/clientsidecharacter.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> charLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_charRotation" class="hidden"></a>charRotation <a href="../Source_gameplay/clientsidecharacter.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> charRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChatScrollDelta" class="hidden"></a>ChatScrollDelta <a href="../Source_gameplay/clientsidecharacter.html#305" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ChatScrollDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_countDown" class="hidden"></a>countDown <a href="../Source_gameplay/clientsidecharacter.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> countDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentChatWindowSize" class="hidden"></a>CurrentChatWindowSize <a href="../Source_gameplay/clientsidecharacter.html#304" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> CurrentChatWindowSize;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DamageAmounts[7]" class="hidden"></a>DamageAmounts[7] <a href="../Source_gameplay/clientsidecharacter.html#167" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> DamageAmounts[<span class="source_int">7</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefenseScore" class="hidden"></a>DefenseScore <a href="../Source_gameplay/clientsidecharacter.html#216" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> DefenseScore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deployable" class="hidden"></a>deployable <a href="../Source_gameplay/clientsidecharacter.html#91" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>&gt; <span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deployableHotkey" class="hidden"></a>deployableHotkey <a href="../Source_gameplay/clientsidecharacter.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> deployableHotkey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deployableState" class="hidden"></a>deployableState <a href="../Source_gameplay/clientsidecharacter.html#103" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>.<span class="source_type"><a href="../gameplay/deployable.html#eDeployableInfo" class="source">eDeployableInfo</a></span> deployableState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deployableUseTime" class="hidden"></a>deployableUseTime <a href="../Source_gameplay/clientsidecharacter.html#105" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> deployableUseTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedAlliesClass" class="hidden"></a>detectedAlliesClass <a href="../Source_gameplay/clientsidecharacter.html#240" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">class</span>&gt; detectedAlliesClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedAlliesHeight" class="hidden"></a>detectedAlliesHeight <a href="../Source_gameplay/clientsidecharacter.html#243" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">int</span>&gt; detectedAlliesHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedAlliesState" class="hidden"></a>detectedAlliesState <a href="../Source_gameplay/clientsidecharacter.html#244" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; detectedAlliesState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedAlliesXPosition" class="hidden"></a>detectedAlliesXPosition <a href="../Source_gameplay/clientsidecharacter.html#241" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">float</span>&gt; detectedAlliesXPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedAlliesYPosition" class="hidden"></a>detectedAlliesYPosition <a href="../Source_gameplay/clientsidecharacter.html#242" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">float</span>&gt; detectedAlliesYPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesClass" class="hidden"></a>detectedEnemiesClass <a href="../Source_gameplay/clientsidecharacter.html#248" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">class</span>&gt; detectedEnemiesClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesHeight" class="hidden"></a>detectedEnemiesHeight <a href="../Source_gameplay/clientsidecharacter.html#251" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">int</span>&gt; detectedEnemiesHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesScreenX" class="hidden"></a>detectedEnemiesScreenX <a href="../Source_gameplay/clientsidecharacter.html#252" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">int</span>&gt; detectedEnemiesScreenX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesScreenY" class="hidden"></a>detectedEnemiesScreenY <a href="../Source_gameplay/clientsidecharacter.html#253" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">int</span>&gt; detectedEnemiesScreenY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesState" class="hidden"></a>detectedEnemiesState <a href="../Source_gameplay/clientsidecharacter.html#254" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; detectedEnemiesState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesTeam" class="hidden"></a>detectedEnemiesTeam <a href="../Source_gameplay/clientsidecharacter.html#247" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt;&gt; detectedEnemiesTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesXPosition" class="hidden"></a>detectedEnemiesXPosition <a href="../Source_gameplay/clientsidecharacter.html#249" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">float</span>&gt; detectedEnemiesXPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_detectedEnemiesYPosition" class="hidden"></a>detectedEnemiesYPosition <a href="../Source_gameplay/clientsidecharacter.html#250" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">float</span>&gt; detectedEnemiesYPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_energy" class="hidden"></a>energy <a href="../Source_gameplay/clientsidecharacter.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> energy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_energyMaximum" class="hidden"></a>energyMaximum <a href="../Source_gameplay/clientsidecharacter.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> energyMaximum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_energyWeaponDepleted" class="hidden"></a>energyWeaponDepleted <a href="../Source_gameplay/clientsidecharacter.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> energyWeaponDepleted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EventMessages" class="hidden"></a>EventMessages <a href="../Source_gameplay/clientsidecharacter.html#345" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#EventMessage" class="source">EventMessage</a></span>&gt; EventMessages;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExitRespawnKeyBinding" class="hidden"></a>ExitRespawnKeyBinding <a href="../Source_gameplay/clientsidecharacter.html#204" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ExitRespawnKeyBinding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExitRespawnKeyText" class="hidden"></a>ExitRespawnKeyText <a href="../Source_gameplay/clientsidecharacter.html#203" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> ExitRespawnKeyText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fallbackWeapon" class="hidden"></a>fallbackWeapon <a href="../Source_gameplay/clientsidecharacter.html#86" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo" class="source">HUDWeaponInfo</a></span> fallbackWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gameClass" class="hidden"></a>gameClass <a href="../Source_gameplay/clientsidecharacter.html#130" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>&gt; gameClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_grenades" class="hidden"></a>grenades <a href="../Source_gameplay/clientsidecharacter.html#88" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo" class="source">HUDWeaponInfo</a></span> grenades;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_health" class="hidden"></a>health <a href="../Source_gameplay/clientsidecharacter.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> health;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthInjectionAmount" class="hidden"></a>healthInjectionAmount <a href="../Source_gameplay/clientsidecharacter.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> healthInjectionAmount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthKit" class="hidden"></a>healthKit <a href="../Source_gameplay/clientsidecharacter.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/healthkit.html" class="source">HealthKit</a></span>&gt; <span class="source_type"><a href="../gameplay/healthkit.html" class="source">healthKit</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthKitHotkey" class="hidden"></a>healthKitHotkey <a href="../Source_gameplay/clientsidecharacter.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> healthKitHotkey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthKitQuantity" class="hidden"></a>healthKitQuantity <a href="../Source_gameplay/clientsidecharacter.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> healthKitQuantity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_healthMaximum" class="hidden"></a>healthMaximum <a href="../Source_gameplay/clientsidecharacter.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> healthMaximum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastHitObjectTime" class="hidden"></a>lastHitObjectTime <a href="../Source_gameplay/clientsidecharacter.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> lastHitObjectTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_levelDescription" class="hidden"></a>levelDescription <a href="../Source_gameplay/clientsidecharacter.html#220" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> levelDescription;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_levelTimeSeconds" class="hidden"></a>levelTimeSeconds <a href="../Source_gameplay/clientsidecharacter.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> levelTimeSeconds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_livesLeft" class="hidden"></a>livesLeft <a href="../Source_gameplay/clientsidecharacter.html#208" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> livesLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_loadoutEnabled" class="hidden"></a>loadoutEnabled <a href="../Source_gameplay/clientsidecharacter.html#353" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">byte</span>&gt; loadoutEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_loadoutNames" class="hidden"></a>loadoutNames <a href="../Source_gameplay/clientsidecharacter.html#352" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">String</span>&gt; loadoutNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_mapExtent" class="hidden"></a>mapExtent <a href="../Source_gameplay/clientsidecharacter.html#225" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> mapExtent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_mapOrigin" class="hidden"></a>mapOrigin <a href="../Source_gameplay/clientsidecharacter.html#224" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> mapOrigin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_markers" class="hidden"></a>markers <a href="../Source_gameplay/clientsidecharacter.html#296" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#MarkerData" class="source">MarkerData</a></span>&gt; markers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_matchScoreLimit" class="hidden"></a>matchScoreLimit <a href="../Source_gameplay/clientsidecharacter.html#210" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> matchScoreLimit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Messages" class="hidden"></a>Messages <a href="../Source_gameplay/clientsidecharacter.html#328" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDMessage" class="source">HUDMessage</a></span>&gt; Messages;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseX" class="hidden"></a>MouseX <a href="../Source_gameplay/clientsidecharacter.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> MouseX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseY" class="hidden"></a>MouseY <a href="../Source_gameplay/clientsidecharacter.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> MouseY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_neutralColor" class="hidden"></a>neutralColor <a href="../Source_gameplay/clientsidecharacter.html#149" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> neutralColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_neutralHighlightColor" class="hidden"></a>neutralHighlightColor <a href="../Source_gameplay/clientsidecharacter.html#150" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> neutralHighlightColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_numCarryables" class="hidden"></a>numCarryables <a href="../Source_gameplay/clientsidecharacter.html#90" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> numCarryables;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ObjectiveActorData" class="hidden"></a>ObjectiveActorData <a href="../Source_gameplay/clientsidecharacter.html#284" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#ClientObjectiveActorInfo" class="source">ClientObjectiveActorInfo</a></span>&gt; ObjectiveActorData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ObjectiveData" class="hidden"></a>ObjectiveData <a href="../Source_gameplay/clientsidecharacter.html#283" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#ClientObjectiveInfo" class="source">ClientObjectiveInfo</a></span>&gt; ObjectiveData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OffenseScore" class="hidden"></a>OffenseScore <a href="../Source_gameplay/clientsidecharacter.html#215" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> OffenseScore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_otherTeam" class="hidden"></a>otherTeam <a href="../Source_gameplay/clientsidecharacter.html#135" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> otherTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_otherTeamColor" class="hidden"></a>otherTeamColor <a href="../Source_gameplay/clientsidecharacter.html#140" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> otherTeamColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_otherTeamHighlightColor" class="hidden"></a>otherTeamHighlightColor <a href="../Source_gameplay/clientsidecharacter.html#141" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> otherTeamHighlightColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_otherTeamIcon" class="hidden"></a>otherTeamIcon <a href="../Source_gameplay/clientsidecharacter.html#137" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> otherTeamIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_otherTeamScore" class="hidden"></a>otherTeamScore <a href="../Source_gameplay/clientsidecharacter.html#133" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> otherTeamScore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownTeam" class="hidden"></a>ownTeam <a href="../Source_gameplay/clientsidecharacter.html#134" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> ownTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownTeamColor" class="hidden"></a>ownTeamColor <a href="../Source_gameplay/clientsidecharacter.html#138" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> ownTeamColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownTeamHighlightColor" class="hidden"></a>ownTeamHighlightColor <a href="../Source_gameplay/clientsidecharacter.html#139" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> ownTeamHighlightColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownTeamIcon" class="hidden"></a>ownTeamIcon <a href="../Source_gameplay/clientsidecharacter.html#136" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> ownTeamIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownTeamScore" class="hidden"></a>ownTeamScore <a href="../Source_gameplay/clientsidecharacter.html#132" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ownTeamScore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pack" class="hidden"></a>pack <a href="../Source_gameplay/clientsidecharacter.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/pack.html" class="source">Pack</a></span>&gt; <span class="source_type"><a href="../gameplay/pack.html" class="source">pack</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_packHotkey" class="hidden"></a>packHotkey <a href="../Source_gameplay/clientsidecharacter.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> packHotkey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_packProgressRatio" class="hidden"></a>packProgressRatio <a href="../Source_gameplay/clientsidecharacter.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> packProgressRatio;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_packState" class="hidden"></a>packState <a href="../Source_gameplay/clientsidecharacter.html#108" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ePackState" class="source">ePackState</a></span> packState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PersonalMessages" class="hidden"></a>PersonalMessages <a href="../Source_gameplay/clientsidecharacter.html#334" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDMessage" class="source">HUDMessage</a></span>&gt; PersonalMessages;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ping" class="hidden"></a>ping <a href="../Source_gameplay/clientsidecharacter.html#212" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_POIData" class="hidden"></a>POIData <a href="../Source_gameplay/clientsidecharacter.html#237" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#POIInfo" class="source">POIInfo</a></span>&gt; POIData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_promptText" class="hidden"></a>promptText <a href="../Source_gameplay/clientsidecharacter.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> promptText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_questItem" class="hidden"></a>questItem <a href="../Source_gameplay/clientsidecharacter.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/equipment.html" class="source">Equipment</a></span>&gt; questItem;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_radarUnderlayMaterial" class="hidden"></a>radarUnderlayMaterial <a href="../Source_gameplay/clientsidecharacter.html#226" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> radarUnderlayMaterial;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_relativeEnemyHighlightColor" class="hidden"></a>relativeEnemyHighlightColor <a href="../Source_gameplay/clientsidecharacter.html#147" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> relativeEnemyHighlightColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_relativeEnemyTeamColor" class="hidden"></a>relativeEnemyTeamColor <a href="../Source_gameplay/clientsidecharacter.html#146" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> relativeEnemyTeamColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_relativeFriendlyHighlightColor" class="hidden"></a>relativeFriendlyHighlightColor <a href="../Source_gameplay/clientsidecharacter.html#145" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> relativeFriendlyHighlightColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_relativeFriendlyTeamColor" class="hidden"></a>relativeFriendlyTeamColor <a href="../Source_gameplay/clientsidecharacter.html#144" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> relativeFriendlyTeamColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_respawnTime" class="hidden"></a>respawnTime <a href="../Source_gameplay/clientsidecharacter.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> respawnTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowCommandMapKeyText" class="hidden"></a>ShowCommandMapKeyText <a href="../Source_gameplay/clientsidecharacter.html#205" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> ShowCommandMapKeyText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_spawnAreas[MAX_SPAWN_AREAS]" class="hidden"></a>spawnAreas[MAX_SPAWN_AREAS] <a href="../Source_gameplay/clientsidecharacter.html#125" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#SpawnPointData" class="source">SpawnPointData</a></span> spawnAreas[MAX_SPAWN_AREAS];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StyleScore" class="hidden"></a>StyleScore <a href="../Source_gameplay/clientsidecharacter.html#217" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> StyleScore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetCanBeDamaged" class="hidden"></a>targetCanBeDamaged <a href="../Source_gameplay/clientsidecharacter.html#180" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> targetCanBeDamaged;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetDistance" class="hidden"></a>targetDistance <a href="../Source_gameplay/clientsidecharacter.html#176" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> targetDistance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetFunctionalHealthThreshold" class="hidden"></a>targetFunctionalHealthThreshold <a href="../Source_gameplay/clientsidecharacter.html#177" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> targetFunctionalHealthThreshold;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetHealth" class="hidden"></a>targetHealth <a href="../Source_gameplay/clientsidecharacter.html#172" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> targetHealth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetHealthMax" class="hidden"></a>targetHealthMax <a href="../Source_gameplay/clientsidecharacter.html#173" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> targetHealthMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetLabel" class="hidden"></a>targetLabel <a href="../Source_gameplay/clientsidecharacter.html#171" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> targetLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetShield" class="hidden"></a>targetShield <a href="../Source_gameplay/clientsidecharacter.html#174" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> targetShield;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetShieldMax" class="hidden"></a>targetShieldMax <a href="../Source_gameplay/clientsidecharacter.html#175" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> targetShieldMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetTeam" class="hidden"></a>targetTeam <a href="../Source_gameplay/clientsidecharacter.html#179" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; targetTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetTeamAlignment" class="hidden"></a>targetTeamAlignment <a href="../Source_gameplay/clientsidecharacter.html#178" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ETeamAlignment" class="source">ETeamAlignment</a></span> targetTeamAlignment;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetType" class="hidden"></a>targetType <a href="../Source_gameplay/clientsidecharacter.html#170" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span> targetType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_throwForce" class="hidden"></a>throwForce <a href="../Source_gameplay/clientsidecharacter.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> throwForce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_throwForceMax" class="hidden"></a>throwForceMax <a href="../Source_gameplay/clientsidecharacter.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> throwForceMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretHealth" class="hidden"></a>turretHealth <a href="../Source_gameplay/clientsidecharacter.html#198" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> turretHealth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretHealthMaximum" class="hidden"></a>turretHealthMaximum <a href="../Source_gameplay/clientsidecharacter.html#199" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> turretHealthMaximum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_useableObjectLocation" class="hidden"></a>useableObjectLocation <a href="../Source_gameplay/clientsidecharacter.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> useableObjectLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UserPrefColorType" class="hidden"></a>UserPrefColorType <a href="../Source_gameplay/clientsidecharacter.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">EColorType</span> UserPrefColorType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleHealth" class="hidden"></a>vehicleHealth <a href="../Source_gameplay/clientsidecharacter.html#194" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> vehicleHealth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleHealthMaximum" class="hidden"></a>vehicleHealthMaximum <a href="../Source_gameplay/clientsidecharacter.html#195" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> vehicleHealthMaximum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleManifestSchematic" class="hidden"></a>vehicleManifestSchematic <a href="../Source_gameplay/clientsidecharacter.html#193" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> vehicleManifestSchematic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehiclePositionData" class="hidden"></a>vehiclePositionData <a href="../Source_gameplay/clientsidecharacter.html#192" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDPositionData" class="source">HUDPositionData</a></span>&gt; vehiclePositionData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Velocity" class="hidden"></a>Velocity <a href="../Source_gameplay/clientsidecharacter.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> Velocity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_watchedPlayerName" class="hidden"></a>watchedPlayerName <a href="../Source_gameplay/clientsidecharacter.html#211" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> watchedPlayerName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_weapons[3]" class="hidden"></a>weapons[3] <a href="../Source_gameplay/clientsidecharacter.html#87" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo" class="source">HUDWeaponInfo</a></span> weapons[<span class="source_int">3</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_zoomFactor" class="hidden"></a>zoomFactor <a href="../Source_gameplay/clientsidecharacter.html#227" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> zoomFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_zoomMagnificationLevel" class="hidden"></a>zoomMagnificationLevel <a href="../Source_gameplay/clientsidecharacter.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> zoomMagnificationLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EDirectionType" class="hidden"></a>EDirectionType <a href="../Source_gameplay/clientsidecharacter.html#157" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/clientsidecharacter.html#EDirectionType" class="source">EDirectionType</a></span><br />
+{<blockquote>DAMAGE_Front,
+DAMAGE_Rear,
+DAMAGE_Left,
+DAMAGE_Right,
+DAMAGE_Top,
+DAMAGE_Bottom,
+MAX_DAMAGE_DIRECTIONS</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EMessageType" class="hidden"></a>EMessageType <a href="../Source_gameplay/clientsidecharacter.html#307" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/clientsidecharacter.html#EMessageType" class="source">EMessageType</a></span><br />
+{<blockquote>MessageType_Global,
+MessageType_Ally,
+MessageType_Enemy,
+MessageType_Subtitle,
+MessageType_System,
+MessageType_StatHigh,
+MessageType_StatMedium,
+MessageType_StatLow,
+MessageType_StatPenalty,
+MAX_MESSAGE_TYPES</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ePackState" class="hidden"></a>ePackState <a href="../Source_gameplay/clientsidecharacter.html#108" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ePackState" class="source">ePackState</a></span><br />
+{<blockquote>PS_Recharging,
+PS_Active,
+PS_Ready</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ETeamAlignment" class="hidden"></a>ETeamAlignment <a href="../Source_gameplay/clientsidecharacter.html#14" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ETeamAlignment" class="source">ETeamAlignment</a></span><br />
+{<blockquote>TA_Neutral,
+TA_Friendly,
+TA_Enemy</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ClientObjectiveActorInfo" class="hidden"></a>ClientObjectiveActorInfo <a href="../Source_gameplay/clientsidecharacter.html#268" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ClientObjectiveActorInfo" class="source">ClientObjectiveActorInfo</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> bFlashing;<br />
+var <span class="source_type">float</span> Distance;<br />
+var <span class="source_type">int</span> Height;<br />
+var <span class="source_type">bool</span> IsFriendly;<br />
+var <span class="source_type">byte</span> objectiveDataIndex;<br />
+var <span class="source_type">int</span> ScreenX;<br />
+var <span class="source_type">int</span> ScreenY;<br />
+var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; TeamInfoClass;<br />
+var <span class="source_type">float</span> XPosition;<br />
+var <span class="source_type">float</span> YPosition;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientObjectiveInfo" class="hidden"></a>ClientObjectiveInfo <a href="../Source_gameplay/clientsidecharacter.html#256" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ClientObjectiveInfo" class="source">ClientObjectiveInfo</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> bFlashing;<br />
+var <span class="source_type">string</span> description;<br />
+var <span class="source_type">bool</span> isFriendly;<br />
+var <span class="source_type">class</span> radarInfoClass;<br />
+var <span class="source_type">byte</span> state;<br />
+var EObjectiveStatus status;<br />
+var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; TeamInfoClass;<br />
+var EObjectiveType <span class="source_type">type</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EventMessage" class="hidden"></a>EventMessage <a href="../Source_gameplay/clientsidecharacter.html#337" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#EventMessage" class="source">EventMessage</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> IconMaterial;<br />
+var <span class="source_type">String</span> StringOne;<br />
+var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#EMessageType" class="source">EMessageType</a></span> StringOneType;<br />
+var <span class="source_type">String</span> StringTwo;<br />
+var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#EMessageType" class="source">EMessageType</a></span> StringTwoType;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDMessage" class="hidden"></a>HUDMessage <a href="../Source_gameplay/clientsidecharacter.html#321" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDMessage" class="source">HUDMessage</a></span><br />
+{<blockquote>var <span class="source_type">String</span> Text;<br />
+var <span class="source_type"><a href="../gameplay/clientsidecharacter.html#EMessageType" class="source">EMessageType</a></span> <span class="source_type">Type</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDPositionData" class="hidden"></a>HUDPositionData <a href="../Source_gameplay/clientsidecharacter.html#183" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDPositionData" class="source">HUDPositionData</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> bNotLabelled;<br />
+var <span class="source_type">bool</span> bOccupied;<br />
+var <span class="source_type">bool</span> bOccupiedByPlayer;<br />
+var <span class="source_type">int</span> posX;<br />
+var <span class="source_type">int</span> posY;<br />
+var <span class="source_type">String</span> SwitchHotKey;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDWeaponInfo" class="hidden"></a>HUDWeaponInfo <a href="../Source_gameplay/clientsidecharacter.html#70" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#HUDWeaponInfo" class="source">HUDWeaponInfo</a></span><br />
+{<blockquote>var <span class="source_type">int</span> <span class="source_type"><a href="../gameplay/ammo.html" class="source">ammo</a></span>;<br />
+var <span class="source_type">bool</span> bCanFire;<br />
+var <span class="source_type">string</span> hotkey;<br />
+var <span class="source_type">float</span> refireTime;<br />
+var <span class="source_type">float</span> Spread;<br />
+var <span class="source_type">float</span> timeSinceLastFire;<br />
+var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; <span class="source_type">type</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MarkerData" class="hidden"></a>MarkerData <a href="../Source_gameplay/clientsidecharacter.html#287" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#MarkerData" class="source">MarkerData</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> Friendly;<br />
+var <span class="source_type">int</span> ScreenX;<br />
+var <span class="source_type">int</span> ScreenY;<br />
+var <span class="source_type">byte</span> State;<br />
+var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; Team;<br />
+var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt; <span class="source_type">Type</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_POIInfo" class="hidden"></a>POIInfo <a href="../Source_gameplay/clientsidecharacter.html#231" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#POIInfo" class="source">POIInfo</a></span><br />
+{<blockquote>var <span class="source_type">String</span> LabelText;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> Location;<br />
+var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt; RadarInfoClass;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpawnPointData" class="hidden"></a>SpawnPointData <a href="../Source_gameplay/clientsidecharacter.html#117" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/clientsidecharacter.html#SpawnPointData" class="source">SpawnPointData</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> bValid;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> SpawnPointLocation;<br />
+var <span class="source_type">String</span> SpawnPointName;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_GetSpawnArea-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSpawnArea <span class="function_state"></span> <a href="../Source_gameplay/clientsidecharacter.html#421" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/clientsidecharacter.html#SpawnPointData" class="source">SpawnPointData</a></span> GetSpawnArea ( <span class="source_type">int</span> index) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTeamAlignment-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetTeamAlignment <span class="function_state"></span> <a href="../Source_gameplay/clientsidecharacter.html#356" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ETeamAlignment" class="source">ETeamAlignment</a></span> GetTeamAlignment ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> localController, <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">PRI</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTeamColor-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetTeamColor <span class="function_state"></span> <a href="../Source_gameplay/clientsidecharacter.html#366" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> GetTeamColor ( <span class="source_type"><a href="../gameplay/clientsidecharacter.html#ETeamAlignment" class="source">ETeamAlignment</a></span> alignment, optional <span class="source_type">bool</span> bHighlight, optional <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; ObjectTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetSpawnArea-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetSpawnArea <span class="function_state"></span> <a href="../Source_gameplay/clientsidecharacter.html#428" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetSpawnArea ( <span class="source_type">int</span> index, <span class="source_type"><a href="../gameplay/clientsidecharacter.html#SpawnPointData" class="source">SpawnPointData</a></span> data) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	relativeFriendlyTeamColor=(<span class="source_type">R</span>=<span class="source_int">20</span>,G=<span class="source_int">220</span>,B=<span class="source_int">20</span>,A=<span class="source_int">255</span>)
+	relativeFriendlyHighlightColor=(<span class="source_type">R</span>=<span class="source_int">0</span>,B=<span class="source_int">0</span>,G=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+	relativeEnemyTeamColor=(<span class="source_type">R</span>=<span class="source_int">220</span>,G=<span class="source_int">20</span>,B=<span class="source_int">20</span>,A=<span class="source_int">255</span>)
+	relativeEnemyHighlightColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">0</span>,B=<span class="source_int">0</span>,A=<span class="source_int">255</span>)
+	
+	neutralColor=(<span class="source_type">R</span>=<span class="source_int">128</span>,G=<span class="source_int">128</span>,B=<span class="source_int">128</span>,A=<span class="source_int">255</span>)
+	neutralHighlightColor=(<span class="source_type">R</span>=<span class="source_int">196</span>,G=<span class="source_int">196</span>,B=<span class="source_int">196</span>,A=<span class="source_int">255</span>)
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/clientsidecharacter.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ClientSideCharacter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/checkpoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/cloakpack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:28.961 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,1634 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.MultiplayerGameInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/multiplayergameinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#MultiplayerGameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/multiplayercharacter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/multiplayerstart.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/multiplayergameinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/multiplayergameinfo.html">MultiplayerGameInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074<br />01075<br />01076<br />01077<br />01078<br />01079<br />01080<br />
+01081<br />01082<br />01083<br />01084<br />01085<br />01086<br />01087<br />01088<br />01089<br />01090<br />01091<br />01092<br />01093<br />01094<br />01095<br />01096<br />01097<br />01098<br />01099<br />01100<br />
+01101<br />01102<br />01103<br />01104<br />01105<br />01106<br />01107<br />01108<br />01109<br />01110<br />01111<br />01112<br />01113<br />01114<br />01115<br />01116<br />01117<br />01118<br />01119<br />01120<br />
+01121<br />01122<br />01123<br />01124<br />01125<br />01126<br />01127<br />01128<br />01129<br />01130<br />01131<br />01132<br />01133<br />01134<br />01135<br />01136<br />01137<br />01138<br />01139<br />01140<br />
+01141<br />01142<br />01143<br />01144<br />01145<br />01146<br />01147<br />01148<br />01149<br />01150<br />01151<br />01152<br />01153<br />01154<br />01155<br />01156<br />01157<br />01158<br />01159<br />01160<br />
+01161<br />01162<br />01163<br />01164<br />01165<br />01166<br />01167<br />01168<br />01169<br />01170<br />01171<br />01172<br />01173<br />01174<br />01175<br />01176<br />01177<br />01178<br />01179<br />01180<br />
+01181<br />01182<br />01183<br />01184<br />01185<br />01186<br />01187<br />01188<br />01189<br />01190<br />01191<br />01192<br />01193<br />01194<br />01195<br />01196<br />01197<br />01198<br />01199<br />01200<br />
+01201<br />01202<br />01203<br />01204<br />01205<br />01206<br />01207<br />01208<br />01209<br />01210<br />01211<br />01212<br />01213<br />01214<br />01215<br />01216<br />01217<br />01218<br />01219<br />01220<br />
+01221<br />01222<br />01223<br />01224<br />01225<br />01226<br />01227<br />01228<br />01229<br />01230<br />01231<br />01232<br />01233<br />01234<br />01235<br />01236<br />01237<br />01238<br />01239<br />01240<br />
+01241<br />01242<br />01243<br />01244<br />01245<br />01246<br />01247<br />01248<br />01249<br />01250<br />01251<br />01252<br />01253<br />01254<br />01255<br />01256<br />01257<br />01258<br />01259<br />01260<br />
+01261<br />01262<br />01263<br />01264<br />01265<br />01266<br />01267<br />01268<br />01269<br />01270<br />01271<br />01272<br />01273<br />01274<br />01275<br />01276<br />01277<br />01278<br />01279<br />01280<br />
+01281<br />01282<br />01283<br />01284<br />01285<br />01286<br />01287<br />01288<br />01289<br />01290<br />01291<br />01292<br />01293<br />01294<br />01295<br />01296<br />01297<br />01298<br />01299<br />01300<br />
+01301<br />01302<br />01303<br />01304<br />01305<br />01306<br />01307<br />01308<br />01309<br />01310<br />01311<br />01312<br />01313<br />01314<br />01315<br />01316<br />01317<br />01318<br />01319<br />01320<br />
+01321<br />01322<br />01323<br />01324<br />01325<br />01326<br />01327<br />01328<br />01329<br />01330<br />01331<br />01332<br />01333<br />01334<br />01335<br />01336<br />01337<br />01338<br />01339<br />01340<br />
+01341<br />01342<br />01343<br />01344<br />01345<br />01346<br />01347<br />01348<br />01349<br />01350<br />01351<br />01352<br />01353<br />01354<br />01355<br />01356<br />01357<br />01358<br />01359<br />01360<br />
+01361<br />01362<br />01363<br />01364<br />01365<br />01366<br />01367<br />01368<br />01369<br />01370<br />01371<br />01372<br />01373<br />01374<br />01375<br />01376<br />01377<br />01378<br />01379<br />01380<br />
+01381<br />01382<br />01383<br />01384<br />01385<br />01386<br />01387<br />01388<br />01389<br />01390<br />01391<br />01392<br />01393<br />01394<br />01395<br />01396<br />01397<br />01398<br />01399<br />01400<br />
+01401<br />01402<br />01403<br />01404<br />01405<br />01406<br />01407<br />01408<br />01409<br />01410<br />01411<br />01412<br />01413<br />01414<br />01415<br />01416<br />01417<br />01418<br />01419<br />01420<br />
+01421<br />01422<br />01423<br />01424<br />01425<br />01426<br />01427<br />01428<br />01429<br />01430<br />01431<br />01432<br />01433<br />01434<br />01435<br />01436<br />01437<br />01438<br />01439<br />01440<br />
+01441<br />01442<br />01443<br />01444<br />01445<br />01446<br />01447<br />01448<br />01449<br />01450<br />01451<br />01452<br />01453<br />01454<br />01455<br />01456<br />01457<br />01458<br />01459<br />01460<br />
+01461<br />01462<br />01463<br />01464<br />01465<br />01466<br />01467<br />01468<br />01469<br />01470<br />01471<br />01472<br />01473<br />01474<br />01475<br />01476<br />01477<br />01478<br />01479<br />01480<br />
+01481<br />01482<br />01483<br />01484<br />01485<br />01486<br />01487<br />01488<br />01489<br />01490<br />01491<br />01492<br />01493<br />01494<br />01495<br />01496<br />01497<br />01498<br />01499<br />01500<br />
+01501</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/multiplayergameinfo.html" class="source">MultiplayerGameInfo</a></span> extends <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>
+<a name="2"></a>	config;
+<a name="3"></a>
+<a name="4"></a>var() editinline <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">RoundInfo</a></span>&gt; roundInfoClass		<span class="source_string">"The rounds to use"</span>;
+<a name="5"></a>var() <span class="source_type">string</span> gameSummaryPage							<span class="source_string">"The name of the game summary page to use"</span>;
+<a name="6"></a>var() <span class="source_type">string</span> roundSummaryPage							<span class="source_string">"The name of the round summary page to use"</span>;
+<a name="7"></a>var() <span class="source_type">string</span> guiPackage									<span class="source_string">"The name of the package where the specified summary pages can be found"</span>;
+<a name="8"></a>var() config <span class="source_type">int</span> scoreLimit								<span class="source_string">"The match will end after this number of points are scored"</span>;
+<a name="9"></a>var() config <span class="source_type">int</span> minimumNumberOfPlayers					<span class="source_string">"The minimum number of players needed on the server in order to play"</span>;
+<a name="10"></a>var() globalconfig <span class="source_type">float</span> postGameDelay					<span class="source_string">"Wait for this number of seconds after the map ends before loading the next map"</span>;
+<a name="11"></a>var() globalconfig <span class="source_type">bool</span> bTournamentMode					<span class="source_string">"Tournament mode requires admins to change each player's team"</span>;
+<a name="12"></a>var() globalconfig <span class="source_type">float</span> tournamentCountdown			<span class="source_string">"The countdown duration for starting a match in tournament mode"</span>;
+<a name="13"></a>var() config <span class="source_type">bool</span> bUseMapScoreLimits					<span class="source_string">"If true, if a map specifies a score limit for this game type, it will be used"</span>;
+<a name="14"></a>var() <span class="source_type">int</span> numTeams										<span class="source_string">"Number of teams.  Only 1 and 2 are supported."</span>;
+<a name="15"></a>var() <span class="source_type">bool</span> bDontAllowEnemySpectating					<span class="source_string">"If true, you can spectate members of the other team"</span>;
+<a name="16"></a>var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/loadout.html" class="source">Loadout</a></span>&gt; defaultLoadoutOverride				<span class="source_string">"If provided, all multiplayer starts in this mode will use this loadout by default"</span>;
+<a name="17"></a>var() localized array&lt;<span class="source_type">string</span>&gt; gameHints					<span class="source_string">"Hints that are displayed when each map loads"</span>;
+<a name="18"></a>var() <span class="source_type">bool</span> bRepairBaseDevicesBetweenRounds					<span class="source_string">"If true, all base devices in the game will be fully repaired in-between rounds"</span>;
+<a name="19"></a>var(<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/tribeslocalmessage.html" class="source">TribesLocalMessage</a></span>&gt; GameAnnouncerMessageClass <span class="source_string">"The class to use for game announcement messages"</span>;
+<a name="20"></a>
+<a name="21"></a>var <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">RoundInfo</a></span>	<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>;
+<a name="22"></a>var <span class="source_type">bool</span>		bRoundStarted;
+<a name="23"></a>var <span class="source_type">Name</span>		playerRestartState;		<span class="source_comment">// if not '', the state that restarting players are set to
+</span><a name="24"></a>var <span class="source_type">int</span>			numPlayersLoggedIn;
+<a name="25"></a>var <span class="source_type">bool</span>		bPendingMatchEnd;
+<a name="26"></a>var <span class="source_type">bool</span>		bForceStart;
+<a name="27"></a>var <span class="source_type">float</span>		lastTournamentUpdateTime;
+<a name="28"></a>var <span class="source_type">bool</span>		bOnGameEndCalled;
+<a name="29"></a>var <span class="source_type">bool</span>		bServerTravelOverride;
+<a name="30"></a>var <span class="source_type">float</span>		lastTimeLeft;
+<a name="31"></a>var <span class="source_type">float</span>		clientTravelAtTime;
+<a name="32"></a>var <span class="source_type">string</span>		serverTravelURL;
+<a name="33"></a>var <span class="source_type">bool</span>		bWaitingForPlayers;
+<a name="34"></a>
+<a name="35"></a>var <span class="source_type">String</span>		GameSpyGameMode;
+<a name="36"></a>
+<a name="37"></a><span class="source_comment">// PreBeginPlay
+</span><a name="38"></a><span class="source_type">function</span> PreBeginPlay()
+<a name="39"></a>{
+<a name="40"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="41"></a>	Super.PreBeginPlay();
+<a name="42"></a>
+<a name="43"></a>	<span class="source_comment">// Search for a map-specific RoundInfo override
+</span><a name="44"></a>	ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'RoundInfo'</span>, <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>)
+<a name="45"></a>	{
+<a name="46"></a>		<span class="source_comment">// This sets roundInfo to first found instance
+</span><a name="47"></a>		break;
+<a name="48"></a>	}
+<a name="49"></a>
+<a name="50"></a>	<span class="source_comment">// If that doesn't exist, spawn a roundInfo according to this gameinfo's roundInfoClass
+</span><a name="51"></a>	if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span> == None && roundInfoClass != None)
+<a name="52"></a>	{
+<a name="53"></a>		<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span> = spawn(roundInfoClass);
+<a name="54"></a>	}
+<a name="55"></a>
+<a name="56"></a>	<span class="source_comment">// Failing that, default to a standard roundInfo
+</span><a name="57"></a>	if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span> == None)
+<a name="58"></a>	{
+<a name="59"></a>		LOG(<span class="source_string">"No RoundInfo found, spawning one"</span>);
+<a name="60"></a>		<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span> = spawn(<span class="source_type">class</span><span class="source_name">'RoundInfo'</span>);
+<a name="61"></a>
+<a name="62"></a>		<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds[<span class="source_int">0</span>] = new(<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>) <span class="source_type">class</span><span class="source_name">'RoundData'</span>;
+<a name="63"></a>		<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds[<span class="source_int">0</span>].duration = <span class="source_int">15</span>;
+<a name="64"></a>		<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds[<span class="source_int">0</span>].countdownDuration = <span class="source_int">5</span>;
+<a name="65"></a>	}
+<a name="66"></a>	else if (TimeLimit &gt; <span class="source_int">0</span>)
+<a name="67"></a>	{
+<a name="68"></a>		<span class="source_comment">// TimeLimit is an override for the duration of all rounds
+</span><a name="69"></a>		for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds.Length; <span class="source_type">i</span>++)
+<a name="70"></a>		{
+<a name="71"></a>			<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds[<span class="source_type">i</span>].duration = TimeLimit;
+<a name="72"></a>		}
+<a name="73"></a>	}
+<a name="74"></a>
+<a name="75"></a>	<span class="source_comment">// Make sure there's at least one PlayerStart placed for observers
+</span><a name="76"></a>	checkForObserverPlayerStart();
+<a name="77"></a>
+<a name="78"></a>	<span class="source_comment">// mp debugging
+</span><a name="79"></a>	if (<span class="source_type">class</span><span class="source_name">'GameEngine'</span>.default.EnableDevTools)
+<a name="80"></a>		CheatClass = <span class="source_type">class</span><span class="source_name">'TribesCheatManager'</span>;
+<a name="81"></a>
+<a name="82"></a>	<span class="source_comment">//LOG("Using RoundInfo "$roundInfo.Label);
+</span><a name="83"></a>}
+<a name="84"></a>
+<a name="85"></a><span class="source_type">function</span> PostBeginPlay()
+<a name="86"></a>{
+<a name="87"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>;
+<a name="88"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="89"></a>	local <span class="source_type"><a href="../gameplay/multiplayerstart.html" class="source">MultiplayerStart</a></span> mpstart;
+<a name="90"></a>
+<a name="91"></a>	Super.PostBeginPlay();
+<a name="92"></a>
+<a name="93"></a>	<span class="source_comment">// Assign team indices
+</span><a name="94"></a>	ForEach AllActors(<span class="source_type">class</span><span class="source_name">'Teaminfo'</span>, <span class="source_type">t</span>)
+<a name="95"></a>	{
+<a name="96"></a>		<span class="source_type">t</span>.TeamIndex = <span class="source_type">i</span>++;
+<a name="97"></a>	}
+<a name="98"></a>
+<a name="99"></a>	<span class="source_comment">// Loadout override
+</span><a name="100"></a>	if (defaultLoadoutOverride != None)
+<a name="101"></a>	{
+<a name="102"></a>		ForEach AllActors(<span class="source_type">class</span><span class="source_name">'MultiplayerStart'</span>, mpstart)
+<a name="103"></a>		{
+<a name="104"></a>			mpstart.loadoutOverride = defaultLoadoutOverride;
+<a name="105"></a>		}
+<a name="106"></a>	}
+<a name="107"></a>
+<a name="108"></a>	<span class="source_comment">// Allow map to override score limit for this game type
+</span><a name="109"></a>	if (bUseMapScoreLimits)
+<a name="110"></a>	{
+<a name="111"></a>		for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type">Level</span>.SupportedModes.Length; <span class="source_type">i</span>++)
+<a name="112"></a>		{
+<a name="113"></a>			if (<span class="source_type">Level</span>.SupportedModes[<span class="source_type">i</span>] == <span class="source_type">Class</span> && <span class="source_type">i</span> &lt; <span class="source_type">Level</span>.SupportedModesScoreLimits.Length && <span class="source_type">Level</span>.SupportedModesScoreLimits[<span class="source_type">i</span>] &gt; <span class="source_int">0</span>)
+<a name="114"></a>			{
+<a name="115"></a>				scoreLimit = <span class="source_type">Level</span>.SupportedModesScoreLimits[<span class="source_type">i</span>];
+<a name="116"></a>			}
+<a name="117"></a>		}
+<a name="118"></a>	}
+<a name="119"></a>}
+<a name="120"></a>
+<a name="121"></a>event <span class="source_type">bool</span> SaveAllowed()
+<a name="122"></a>{
+<a name="123"></a>	return false;
+<a name="124"></a>}
+<a name="125"></a>
+<a name="126"></a><span class="source_type">function</span> InitGameReplicationInfo()
+<a name="127"></a>{
+<a name="128"></a>	Super.InitGameReplicationInfo();
+<a name="129"></a>
+<a name="130"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.playerTeamDamagePercentage = playerTeamDamagePercentage;
+<a name="131"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.bTournamentMode = bTournamentMode;
+<a name="132"></a>	<span class="source_type"><a href="../gameplay/tribesgamereplicationinfo.html" class="source">TribesGameReplicationinfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).numTeams = numTeams;
+<a name="133"></a>}
+<a name="134"></a>
+<a name="135"></a><span class="source_comment">////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="136"></a><span class="source_comment">// PlayerStart   ///////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="137"></a>
+<a name="138"></a><span class="source_type">function</span> checkForObserverPlayerStart()
+<a name="139"></a>{
+<a name="140"></a>	local <span class="source_type"><a href="../engine/playerstart.html" class="source">PlayerStart</a></span> observerStart;
+<a name="141"></a>
+<a name="142"></a>	if (!observerStartExists())
+<a name="143"></a>	{
+<a name="144"></a>		observerStart = spawn(<span class="source_type">class</span><span class="source_name">'PlayerStart'</span>);
+<a name="145"></a>		observerStart.bObserverStart = true;
+<a name="146"></a>	}
+<a name="147"></a>}
+<a name="148"></a>
+<a name="149"></a><span class="source_type">function</span> <span class="source_type">bool</span> observerStartExists()
+<a name="150"></a>{
+<a name="151"></a>	local <span class="source_type"><a href="../engine/playerstart.html" class="source">PlayerStart</a></span> N;
+<a name="152"></a>
+<a name="153"></a>	foreach AllActors( <span class="source_type">class</span> <span class="source_name">'PlayerStart'</span>, N )
+<a name="154"></a>	{
+<a name="155"></a>		if (N.bObserverStart)
+<a name="156"></a>			return true;
+<a name="157"></a>	}
+<a name="158"></a>
+<a name="159"></a>	return false;
+<a name="160"></a>}
+<a name="161"></a>
+<a name="162"></a><span class="source_type">function</span> <span class="source_type">float</span> tribesRatePlayerStart(<span class="source_type"><a href="../engine/playerstart.html" class="source">PlayerStart</a></span> <span class="source_type">P</span>, <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> Team, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>)
+<a name="163"></a>{
+<a name="164"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>;
+<a name="165"></a>
+<a name="166"></a>	if (<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> != None)
+<a name="167"></a>		<span class="source_type">c</span> = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>);
+<a name="168"></a>
+<a name="169"></a>	<span class="source_comment">// Handle observer start point
+</span><a name="170"></a>	if (<span class="source_type">P</span>.bObserverStart)
+<a name="171"></a>	{
+<a name="172"></a>		if (<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> == None || <span class="source_type">c</span> == None)
+<a name="173"></a>		{
+<a name="174"></a>			<span class="source_comment">//Log("MJOBS:  Positive observer start rating for "$P$", player = "$Player$", c = "$c);
+</span><a name="175"></a>			return Rand(<span class="source_int">65535</span>);
+<a name="176"></a>		}
+<a name="177"></a>
+<a name="178"></a>		<span class="source_comment">// If Player is valid and not observing, don't spawn here
+</span><a name="179"></a>		return <span class="source_int">0</span>;
+<a name="180"></a>	}
+<a name="181"></a>
+<a name="182"></a>	if (<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> == None || <span class="source_type">c</span> == None)
+<a name="183"></a>		return <span class="source_int">0</span>;
+<a name="184"></a>
+<a name="185"></a>	if (<span class="source_type"><a href="../gameplay/multiplayerstart.html" class="source">MultiplayerStart</a></span>(<span class="source_type">P</span>) == None || <span class="source_type">P</span>.team != Team)
+<a name="186"></a>		return <span class="source_int">0</span>;
+<a name="187"></a>
+<a name="188"></a>	<span class="source_comment">// spawn only within the desired base, if specified
+</span><a name="189"></a>	if (<span class="source_type">c</span>.spawnBase != None)
+<a name="190"></a>	{
+<a name="191"></a>		if (<span class="source_type">P</span>.<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">baseInfo</a></span> != None && <span class="source_type">P</span>.<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">baseInfo</a></span> == <span class="source_type">c</span>.spawnBase)
+<a name="192"></a>			return Rand(<span class="source_int">65535</span>);
+<a name="193"></a>		else
+<a name="194"></a>			return <span class="source_int">0</span>;
+<a name="195"></a>	}
+<a name="196"></a>
+<a name="197"></a>	return Rand(<span class="source_int">65535</span>);
+<a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a><span class="source_comment">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="201"></a><span class="source_comment">// Login, logout and player initialization  ////////////////////////////////////////////////////////////////////////////
+</span><a name="202"></a>
+<a name="203"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> initialTeam()
+<a name="204"></a>{
+<a name="205"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>;
+<a name="206"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> smallestTeam;
+<a name="207"></a>	local <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span> <span class="source_type">r</span>;
+<a name="208"></a>	local <span class="source_type">int</span> teamNum;
+<a name="209"></a>	local <span class="source_type">int</span> smallestTeamNum;
+<a name="210"></a>
+<a name="211"></a>	smallestTeamNum = <span class="source_int">99999</span>;
+<a name="212"></a>
+<a name="213"></a>	<span class="source_comment">// assign the player to the team with the least players/score, but only if the
+</span><a name="214"></a>	<span class="source_comment">// team has playerStarts associated with it
+</span><a name="215"></a>	ForEach AllActors(<span class="source_type">class</span><span class="source_name">'TeamInfo'</span>, <span class="source_type">t</span>)
+<a name="216"></a>	{
+<a name="217"></a>		<span class="source_comment">//Log("Found team "$t$" in initialTeam() with numPlayerStarts = "$t.numPlayerStarts);
+</span><a name="218"></a>		if (<span class="source_type">t</span>.numPlayerStarts == <span class="source_int">0</span>)
+<a name="219"></a>			continue;
+<a name="220"></a>
+<a name="221"></a>		teamNum = <span class="source_int">0</span>;
+<a name="222"></a>
+<a name="223"></a>		ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'TribesReplicationInfo'</span>, <span class="source_type">r</span>)
+<a name="224"></a>		{
+<a name="225"></a>			if (<span class="source_type">r</span>.team == <span class="source_type">t</span>)
+<a name="226"></a>				teamNum++;
+<a name="227"></a>		}
+<a name="228"></a>
+<a name="229"></a>		if (teamNum &lt; smallestTeamNum 
+<a name="230"></a>				|| (teamNum == smallestTeamNum && smallestTeam != None && <span class="source_type">t</span>.score &lt; smallestTeam.score))
+<a name="231"></a>		{
+<a name="232"></a>			smallestTeamNum = teamNum;
+<a name="233"></a>			smallestTeam = <span class="source_type">t</span>;
+<a name="234"></a>		}
+<a name="235"></a>	}
+<a name="236"></a>
+<a name="237"></a>	return smallestTeam;
+<a name="238"></a>}
+<a name="239"></a>
+<a name="240"></a><span class="source_type">function</span> <span class="source_type">bool</span> enoughPlayersToStart()
+<a name="241"></a>{
+<a name="242"></a>	return numPlayersLoggedIn &gt;= minimumNumberOfPlayers;
+<a name="243"></a>}
+<a name="244"></a>
+<a name="245"></a>
+<a name="246"></a><span class="source_type">function</span> PostLogin(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">NewPlayer</span>)
+<a name="247"></a>{
+<a name="248"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>;
+<a name="249"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> PC;
+<a name="250"></a>	local <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span> TRI;
+<a name="251"></a>
+<a name="252"></a>	Super.PostLogin(<span class="source_type">NewPlayer</span>);
+<a name="253"></a>
+<a name="254"></a>	PC = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">NewPlayer</span>);
+<a name="255"></a>	if (PC == None)
+<a name="256"></a>	{
+<a name="257"></a>		Log(<span class="source_string">"Login error:  joining controller was None"</span>);
+<a name="258"></a>		return;
+<a name="259"></a>	}
+<a name="260"></a>	numPlayersLoggedIn++;
+<a name="261"></a>
+<a name="262"></a>	<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bWaitingPlayer = true;
+<a name="263"></a>
+<a name="264"></a>	<span class="source_comment">// Set the player's round info
+</span><a name="265"></a>	PC.<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span> = <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundinfo</a></span>;
+<a name="266"></a>
+<a name="267"></a>	TRI = <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>(PC.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>);
+<a name="268"></a>
+<a name="269"></a>	<span class="source_comment">// If game is in tournament mode, all connecting players are forced to be spectators and must
+</span><a name="270"></a>	<span class="source_comment">// be team'd by an admin
+</span><a name="271"></a>	if (bTournamentMode)
+<a name="272"></a>	{
+<a name="273"></a>		if (<span class="source_type"><a href="../gameplay/tribesgamereplicationinfo.html" class="source">TribesGameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).bAwaitingTournamentStart)
+<a name="274"></a>		{
+<a name="275"></a>			<span class="source_comment">//Log("Forcing "$NewPlayer$" into awaitingGameStart due to tourney", 'postlogin');
+</span><a name="276"></a>			<span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'AwaitingGameStart'</span>);
+<a name="277"></a>			<span class="source_type">NewPlayer</span>.ClientGotoState(<span class="source_name">'AwaitingGameStart'</span>);
+<a name="278"></a>		}
+<a name="279"></a>		else
+<a name="280"></a>		{
+<a name="281"></a>			<span class="source_comment">//Log("Forcing "$NewPlayer$" into spectator mode due to tourney", 'postlogin');
+</span><a name="282"></a>			<span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'TribesSpectating'</span>);
+<a name="283"></a>			<span class="source_type">NewPlayer</span>.ClientGotoState(<span class="source_name">'TribesSpectating'</span>);
+<a name="284"></a>		}
+<a name="285"></a>		return;
+<a name="286"></a>	}
+<a name="287"></a>
+<a name="288"></a>	<span class="source_comment">// Assign a team
+</span><a name="289"></a>	if(TRI.team == None)
+<a name="290"></a>	{
+<a name="291"></a>		<span class="source_type">t</span> = initialTeam();
+<a name="292"></a>		TRI.setTeam(<span class="source_type">t</span>);
+<a name="293"></a>		TRI.bTeamChanged = true;
+<a name="294"></a>	}
+<a name="295"></a>	<span class="source_comment">//Log("Team of "$NewPlayer$" set to "$TRI.team, 'postlogin');
+</span><a name="296"></a>
+<a name="297"></a>	if (bWaitingForPlayers)
+<a name="298"></a>	{
+<a name="299"></a>		<span class="source_comment">//Log("Forcing "$NewPlayer$" into awaitingGameStart mode due to not enough players", 'postlogin');
+</span><a name="300"></a>		<span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'AwaitingGameStart'</span>);
+<a name="301"></a>		<span class="source_type">NewPlayer</span>.ClientGotoState(<span class="source_name">'AwaitingGameStart'</span>);
+<a name="302"></a>		return;
+<a name="303"></a>	}
+<a name="304"></a>
+<a name="305"></a>	<span class="source_comment">// If a round with maxLives is in progress the player must wait until the next round
+</span><a name="306"></a>	if (GetStateName() == <span class="source_name">'GamePhase'</span> && <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().maxLives &gt; <span class="source_int">0</span>)
+<a name="307"></a>	{
+<a name="308"></a>		<span class="source_comment">//Log("Forcing "$NewPlayer$" to wait for next round", 'postlogin');
+</span><a name="309"></a>		PC.bWaitingForRoundEnd = true;
+<a name="310"></a>		
+<a name="311"></a>		<span class="source_comment">// New player has a team but make sure he's not allowed to spawn yet
+</span><a name="312"></a>		PC.livesLeft = <span class="source_int">0</span>;
+<a name="313"></a>
+<a name="314"></a>		<span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'AwaitingNextRound'</span>);
+<a name="315"></a>		<span class="source_type">NewPlayer</span>.ClientGotoState(<span class="source_name">'AwaitingNextRound'</span>);
+<a name="316"></a>		return;
+<a name="317"></a>	}
+<a name="318"></a>
+<a name="319"></a>	<span class="source_comment">// Reset livesLeft.  This is done between each round, but it needs to be done here as well to handle
+</span><a name="320"></a>	<span class="source_comment">// players who join during a round countdown
+</span><a name="321"></a>	if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound() != None && <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().maxLives &gt; <span class="source_int">0</span>)
+<a name="322"></a>	{
+<a name="323"></a>		PC.livesLeft = <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().maxLives;
+<a name="324"></a>	}
+<a name="325"></a>	else
+<a name="326"></a>		<span class="source_comment">// Otherwise ensure respawns are disabled for this player
+</span><a name="327"></a>		PC.livesLeft = -<span class="source_int">1</span>;
+<a name="328"></a>
+<a name="329"></a>	<span class="source_comment">//Log("Sending "$NewPlayer$" to PlayerRespawn on PostLogin");
+</span><a name="330"></a>
+<a name="331"></a>	<span class="source_comment">// In all other cases, allow the player to spawn
+</span><a name="332"></a>	<span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'PlayerRespawn'</span>);
+<a name="333"></a>	<span class="source_type">NewPlayer</span>.ClientGotoState(<span class="source_name">'PlayerRespawn'</span>);
+<a name="334"></a>}
+<a name="335"></a>
+<a name="336"></a><span class="source_type">function</span> Logout( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Exiting</span> )
+<a name="337"></a>{
+<a name="338"></a>	numPlayersLoggedIn--;
+<a name="339"></a>	BaseMutator.NotifyLogout(<span class="source_type">Exiting</span>);
+<a name="340"></a>	Super.Logout(<span class="source_type">Exiting</span>);
+<a name="341"></a>}
+<a name="342"></a>
+<a name="343"></a>
+<a name="344"></a>
+<a name="345"></a><span class="source_comment">////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="346"></a><span class="source_comment">// Restarting and respawning  //////////////////////////////////////////////////////////////////////////////////
+</span><a name="347"></a>
+<a name="348"></a><span class="source_type">function</span> RestartPlayer( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">aPlayer</span> )	
+<a name="349"></a>{
+<a name="350"></a>	local <span class="source_type"><a href="../gameplay/mutator.html" class="source">Mutator</a></span> <span class="source_type"><a href="../gameplay/mutator.html" class="source">mutator</a></span>;
+<a name="351"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/loadout.html" class="source">Loadout</a></span>&gt; mutatedLoadoutClass;
+<a name="352"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; mutatedCombatRoleClass;
+<a name="353"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pcc;
+<a name="354"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>;
+<a name="355"></a>	local <span class="source_type">bool</span> spectator;
+<a name="356"></a>	local <span class="source_type"><a href="../gameplay/multiplayerstart.html" class="source">MultiplayerStart</a></span> mpstart;
+<a name="357"></a>	local <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span> <span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span>;
+<a name="358"></a>	local <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span> vehicleTurret;
+<a name="359"></a>	local <span class="source_type"><a href="../gameplay/turret.html" class="source">Turret</a></span> <span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span>;
+<a name="360"></a>
+<a name="361"></a>	<span class="source_comment">//log("Restarting player "$aPlayer);
+</span><a name="362"></a>
+<a name="363"></a>    <span class="source_comment">// spectator controllers have a none pawn class (utserveradminspectator etc.)
+</span><a name="364"></a>    if (<span class="source_type">aPlayer</span>.PawnClass==None)
+<a name="365"></a>        spectator = true;
+<a name="366"></a>
+<a name="367"></a>	<span class="source_comment">// Properly kill the pawn before the superclass has a chance to destroy it - need to handle vehicle and turret case
+</span><a name="368"></a>	<span class="source_comment">// This forces the player to drop all equipment
+</span><a name="369"></a>	if ( (<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None) && (<span class="source_type">Level</span>.TimeSeconds - <span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.LastStartTime &gt; <span class="source_int">1</span>) )
+<a name="370"></a>	{
+<a name="371"></a>		<span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span> = <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="372"></a>		vehicleTurret = <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="373"></a>		<span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span> = <span class="source_type"><a href="../gameplay/turret.html" class="source">Turret</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="374"></a>		if (<span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span> != None)
+<a name="375"></a>		{
+<a name="376"></a>			<span class="source_comment">// vehicle case
+</span><a name="377"></a>			<span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span>.positions[<span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span>.driverIndex].occupant.KilledBy(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="378"></a>
+<a name="379"></a>			<span class="source_comment">// ... kick out dead body immediately
+</span><a name="380"></a>			<span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span>.driverLeave(true, <span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span>.driverIndex);
+<a name="381"></a>		}
+<a name="382"></a>		else if (vehicleTurret != None)
+<a name="383"></a>		{
+<a name="384"></a>			<span class="source_comment">// vehicle mounted turret case
+</span><a name="385"></a>			vehicleTurret.ownerVehicle.positions[vehicleTurret.<span class="source_type">positionIndex</span>].occupant.KilledBy(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="386"></a>
+<a name="387"></a>			<span class="source_comment">// ... kick out dead body immediately
+</span><a name="388"></a>			vehicleTurret.ownerVehicle.driverLeave(true, vehicleTurret.<span class="source_type">positionIndex</span>);
+<a name="389"></a>		}
+<a name="390"></a>		else if (<span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span> != None)
+<a name="391"></a>		{
+<a name="392"></a>			<span class="source_comment">// turret case
+</span><a name="393"></a>			<span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span>.driver.KilledBy(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="394"></a>
+<a name="395"></a>			<span class="source_comment">// ... kick out dead body immediately
+</span><a name="396"></a>			<span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span>.driverLeave(true);
+<a name="397"></a>		}
+<a name="398"></a>		else
+<a name="399"></a>			<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.KilledBy(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="400"></a>	}
+<a name="401"></a>
+<a name="402"></a>	Super.RestartPlayer(<span class="source_type">aPlayer</span>);
+<a name="403"></a>
+<a name="404"></a>    <span class="source_comment">// early exit for spectators (originally dont have a pawn)
+</span><a name="405"></a>    if (spectator)
+<a name="406"></a>    {
+<a name="407"></a>        log(<span class="source_string">"restarted spectator controller"</span>);
+<a name="408"></a>        return;
+<a name="409"></a>    }
+<a name="410"></a>
+<a name="411"></a>    <span class="source_comment">// post respawn initialization for pawns
+</span><a name="412"></a>	<span class="source_type"><a href="../gameplay/mutator.html" class="source">mutator</a></span> = <span class="source_type"><a href="../gameplay/mutator.html" class="source">Mutator</a></span>(BaseMutator);
+<a name="413"></a>	pcc = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">aPlayer</span>);
+<a name="414"></a>	<span class="source_type">c</span> = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="415"></a>
+<a name="416"></a>	<span class="source_comment">// force MP gamers' character to get the PRI bIsFemale flag
+</span><a name="417"></a>	<span class="source_type">c</span>.bIsFemale = pcc.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsFemale;
+<a name="418"></a>
+<a name="419"></a>	if (<span class="source_type">aPlayer</span>.StartSpot == None)
+<a name="420"></a>	{
+<a name="421"></a>		log(<span class="source_string">"Can't spawn multiplayer character: character has no start point. Did you set your start points' team fields?"</span>); 
+<a name="422"></a>		return;
+<a name="423"></a>	}
+<a name="424"></a>
+<a name="425"></a>	if (<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> == None)
+<a name="426"></a>	{
+<a name="427"></a>		log(<span class="source_string">"Can't spawn multiplayer character: character was not created"</span>); 
+<a name="428"></a>		return;
+<a name="429"></a>	}
+<a name="430"></a>	
+<a name="431"></a>	if (<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>).team == None)
+<a name="432"></a>	{
+<a name="433"></a>		log(<span class="source_string">"Can't spawn multiplayer character: character has no team"</span>); 
+<a name="434"></a>		return;
+<a name="435"></a>	}
+<a name="436"></a>
+<a name="437"></a>	mpstart = <span class="source_type"><a href="../gameplay/multiplayerstart.html" class="source">MultiplayerStart</a></span>(<span class="source_type">aPlayer</span>.StartSpot);
+<a name="438"></a>
+<a name="439"></a>	if (mpstart != None && !mpstart.canRespawn())
+<a name="440"></a>	{
+<a name="441"></a>		log(<span class="source_string">"Can't spawn multiplayer character:  disallowed by "</span>$mpstart);
+<a name="442"></a>		return;
+<a name="443"></a>	}
+<a name="444"></a>
+<a name="445"></a>	if (mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span> == None)
+<a name="446"></a>	{
+<a name="447"></a>		log(<span class="source_string">"NOTE: MultiplayerStart "</span>$<span class="source_type">aPlayer</span>.StartSpot.<span class="source_type">name</span>$<span class="source_string">" has no combat role defined"</span>);
+<a name="448"></a>	}
+<a name="449"></a>	else
+<a name="450"></a>	{
+<a name="451"></a>		if (<span class="source_type"><a href="../gameplay/mutator.html" class="source">mutator</a></span> != None)
+<a name="452"></a>		{
+<a name="453"></a>			mutatedLoadoutClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/loadout.html" class="source">Loadout</a></span>&gt;
+<a name="454"></a>				(DynamicLoadObject(<span class="source_type"><a href="../gameplay/mutator.html" class="source">mutator</a></span>.MutateSpawnLoadoutClass(<span class="source_type">c</span>), <span class="source_type">class</span><span class="source_name">'Class'</span>, true));
+<a name="455"></a>			mutatedCombatRoleClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt;
+<a name="456"></a>				(DynamicLoadObject(<span class="source_type"><a href="../gameplay/mutator.html" class="source">mutator</a></span>.MutateSpawnCombatRoleClass(<span class="source_type">c</span>), <span class="source_type">class</span><span class="source_name">'Class'</span>, true));
+<a name="457"></a>		}
+<a name="458"></a>
+<a name="459"></a>		if (mutatedLoadoutClass == None)
+<a name="460"></a>		{
+<a name="461"></a>			<span class="source_comment">// equip player with override loadout from spawn point, if defined
+</span><a name="462"></a>			if (mpstart.loadoutOverride != None)
+<a name="463"></a>			{
+<a name="464"></a>				pcc.newLoadout(new mpstart.loadoutOverride);
+<a name="465"></a>			}
+<a name="466"></a>			else if(!pcc.HasCurrentLoadout())
+<a name="467"></a>			{
+<a name="468"></a>				<span class="source_comment">// else equip player with default loadout from combat role
+</span><a name="469"></a>				pcc.newLoadout(new mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>.default.defaultLoadout);
+<a name="470"></a>			}
+<a name="471"></a>		}
+<a name="472"></a>		else
+<a name="473"></a>		{
+<a name="474"></a>			<span class="source_comment">// equip with mutated loadout class
+</span><a name="475"></a>			pcc.newLoadout(new mutatedLoadoutClass);
+<a name="476"></a>		}
+<a name="477"></a>
+<a name="478"></a>		if (mutatedCombatRoleClass == None)
+<a name="479"></a>		{
+<a name="480"></a>			<span class="source_comment">// take initial combat role from start spot
+</span><a name="481"></a>			<span class="source_type">c</span>.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span> = mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>;
+<a name="482"></a>		}
+<a name="483"></a>		else
+<a name="484"></a>		{
+<a name="485"></a>			<span class="source_comment">// equip with mutated combat role class
+</span><a name="486"></a>			<span class="source_type">c</span>.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span> = mutatedCombatRoleClass;
+<a name="487"></a>		}
+<a name="488"></a>
+<a name="489"></a>		<span class="source_comment">// equip player with armor from combat role
+</span><a name="490"></a>		mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>.default.armorClass.static.equip(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>));
+<a name="491"></a>
+<a name="492"></a>		<span class="source_comment">// Set the mesh of the player
+</span><a name="493"></a>		SetPlayerMesh(pcc);
+<a name="494"></a>
+<a name="495"></a>		<span class="source_comment">// update the new character's skin from the client's preference
+</span><a name="496"></a>		if (allowSkinChanges())
+<a name="497"></a>			pcc.clientGetSkinPreference(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>).<span class="source_type">Mesh</span>);
+<a name="498"></a>	}
+<a name="499"></a>
+<a name="500"></a>	pcc.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">playerReplicationInfo</a></span>.bIsSpectator = false;
+<a name="501"></a>
+<a name="502"></a>	pcc.equipCharacter();
+<a name="503"></a>	pcc.NextWeapon();
+<a name="504"></a>
+<a name="505"></a>	<span class="source_comment">// If the game is in countdown or waiting to start, the player must wait
+</span><a name="506"></a>	if (IsInState(<span class="source_name">'CountdownPhase'</span>) || IsInState(<span class="source_name">'StartGame'</span>))
+<a name="507"></a>	{
+<a name="508"></a>		<span class="source_comment">// Don't send client to this state since it's not needed
+</span><a name="509"></a>		pcc.GotoState(<span class="source_name">'TribesCountdown'</span>);
+<a name="510"></a>	}
+<a name="511"></a>	<span class="source_comment">// Otherwise, start the player
+</span><a name="512"></a>	else
+<a name="513"></a>		startPlayer(pcc);
+<a name="514"></a>
+<a name="515"></a>	<span class="source_comment">// Notify the playerStart so it can notify its baseInfo and spawnArray.
+</span><a name="516"></a>	<span class="source_comment">// Doing this in the parent RestartPlayer() didn't work because carryable containers
+</span><a name="517"></a>	<span class="source_comment">// depend on this callback for giving the player a carryable when he spawns. But the above
+</span><a name="518"></a>	<span class="source_comment">// code messes with your equipment in such a way that prevented you from accessing
+</span><a name="519"></a>	<span class="source_comment">// your carryables.  So this callback has to come after your equipment is given to you.
+</span><a name="520"></a>	mpstart.onPlayerSpawned(<span class="source_type">aPlayer</span>);
+<a name="521"></a>
+<a name="522"></a>	<span class="source_comment">// invoke mutator
+</span><a name="523"></a>	BaseMutator.ModifyPlayer(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="524"></a>}
+<a name="525"></a>
+<a name="526"></a><span class="source_type">function</span> SetPlayerMesh( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">aPlayer</span> )
+<a name="527"></a>{
+<a name="528"></a>	local <span class="source_type">Mesh</span> <span class="source_type">mesh</span>;
+<a name="529"></a>	local <span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span> <span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>;
+<a name="530"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span>&gt; mutatedJetpack;
+<a name="531"></a>	local <span class="source_type">Mesh</span> armsMesh;
+<a name="532"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>;
+<a name="533"></a>	local <span class="source_type"><a href="../gameplay/multiplayerstart.html" class="source">MultiplayerStart</a></span> mpstart;
+<a name="534"></a>
+<a name="535"></a>	if (<span class="source_type"><a href="../gameplay/mutator.html" class="source">Mutator</a></span>(BaseMutator) != None)
+<a name="536"></a>		<span class="source_type"><a href="../gameplay/mutator.html" class="source">Mutator</a></span>(BaseMutator).MutatePlayerMeshes(<span class="source_type">mesh</span>, mutatedJetpack, armsMesh);
+<a name="537"></a>
+<a name="538"></a>	<span class="source_type">c</span> = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="539"></a>	mpstart = <span class="source_type"><a href="../gameplay/multiplayerstart.html" class="source">MultiplayerStart</a></span>(<span class="source_type">aPlayer</span>.StartSpot);
+<a name="540"></a>
+<a name="541"></a>	<span class="source_comment">// set mesh from TeamInfo
+</span><a name="542"></a>	if (<span class="source_type">mesh</span> == None)
+<a name="543"></a>		<span class="source_type">mesh</span> = <span class="source_type">c</span>.team().getMeshForRole(mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>, <span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsFemale);
+<a name="544"></a>	if (<span class="source_type">mesh</span> != None)
+<a name="545"></a>	{
+<a name="546"></a>		<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.LinkMesh(<span class="source_type">mesh</span>);
+<a name="547"></a>	}
+<a name="548"></a>	else
+<a name="549"></a>	{
+<a name="550"></a>		log(<span class="source_string">"MultiplayerGameInfo: No mesh defined for combat role "</span>$mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>$
+<a name="551"></a>			<span class="source_string">", team "</span>$<span class="source_type">c</span>.team()$<span class="source_string">", bIsFemale "</span>$<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsFemale);
+<a name="552"></a>	}
+<a name="553"></a>
+<a name="554"></a>	<span class="source_comment">// set jetpack mesh for TeamInfo
+</span><a name="555"></a>	if (mutatedJetpack == None)
+<a name="556"></a>		<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> = <span class="source_type">c</span>.team().getJetpackForRole(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>, mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>, <span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsFemale);
+<a name="557"></a>	else
+<a name="558"></a>        <span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> = new mutatedJetpack;
+<a name="559"></a>	if (<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> != None)
+<a name="560"></a>	{
+<a name="561"></a>		<span class="source_type">c</span>.setJetpack(<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>);
+<a name="562"></a>	}
+<a name="563"></a>
+<a name="564"></a>	if (armsMesh == None)
+<a name="565"></a>		armsMesh = <span class="source_type">c</span>.team().getArmsMeshForRole(mpstart.<span class="source_type"><a href="../gameplay/combatrole.html" class="source">combatRole</a></span>);
+<a name="566"></a>	if (armsMesh != None)
+<a name="567"></a>	{
+<a name="568"></a>		<span class="source_type">c</span>.setArmsMesh(armsMesh);
+<a name="569"></a>	}
+<a name="570"></a>}
+<a name="571"></a>
+<a name="572"></a><span class="source_comment">// Set the state of all players who aren't spectating
+</span><a name="573"></a><span class="source_type">function</span> setAllActivePlayerStates(<span class="source_type">Name</span> newState, optional <span class="source_type">Name</span> stateTag, optional <span class="source_type">bool</span> bForceSpectators)
+<a name="574"></a>{
+<a name="575"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">C</span>;
+<a name="576"></a>
+<a name="577"></a>	<span class="source_comment">//Log("Setting state for all players to "$newState);
+</span><a name="578"></a>
+<a name="579"></a>	ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, <span class="source_type">C</span>)
+<a name="580"></a>	{
+<a name="581"></a>		<span class="source_comment">// Don't set spectator states
+</span><a name="582"></a>		if (!bForceSpectators && <span class="source_type">C</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsSpectator)
+<a name="583"></a>			continue;
+<a name="584"></a>
+<a name="585"></a>		if (<span class="source_type">C</span>.IsInState(newState))
+<a name="586"></a>		{
+<a name="587"></a>			<span class="source_comment">//Log("Player "$C$" is already in state "$newState);
+</span><a name="588"></a>			continue;
+<a name="589"></a>		}
+<a name="590"></a>
+<a name="591"></a>		<span class="source_type">C</span>.GotoState(newState, stateTag);
+<a name="592"></a>		<span class="source_type">C</span>.ClientGotoState(newState, stateTag);
+<a name="593"></a>	}
+<a name="594"></a>		
+<a name="595"></a>}
+<a name="596"></a>
+<a name="597"></a><span class="source_comment">// Set all players who aren't spectating to their movement state
+</span><a name="598"></a><span class="source_comment">// Players who haven't yet spawned in the world will not be started by calling this function
+</span><a name="599"></a><span class="source_type">function</span> startAllActivePlayers()
+<a name="600"></a>{
+<a name="601"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">C</span>;
+<a name="602"></a>
+<a name="603"></a>	<span class="source_comment">//Log("Starting all active players");
+</span><a name="604"></a>
+<a name="605"></a>	ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, <span class="source_type">C</span>)
+<a name="606"></a>	{
+<a name="607"></a>		startPlayer(<span class="source_type">C</span>);
+<a name="608"></a>	}
+<a name="609"></a>}
+<a name="610"></a>
+<a name="611"></a><span class="source_comment">// Set this player to his movement state.
+</span><a name="612"></a><span class="source_comment">// If the player has not yet spawned in the world, this function will try to spawn
+</span><a name="613"></a><span class="source_comment">// the player (and then be called again from RestartPlayer())
+</span><a name="614"></a><span class="source_type">function</span> startPlayer(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">C</span>)
+<a name="615"></a>{
+<a name="616"></a>	<span class="source_comment">// Don't start spectators
+</span><a name="617"></a>	if (<span class="source_type">C</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsSpectator)
+<a name="618"></a>		return;
+<a name="619"></a>
+<a name="620"></a>	<span class="source_comment">// If the player doesn't have a pawn, try to spawn one
+</span><a name="621"></a>	<span class="source_comment">// MJ TODO:  If the player gets forced out of inventory selection by this restart, they should
+</span><a name="622"></a>	<span class="source_comment">// get whatever equipment they had selected at the time of being forced out
+</span><a name="623"></a>	if (<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> == None)
+<a name="624"></a>	{
+<a name="625"></a>		RestartPlayer(<span class="source_type">C</span>);
+<a name="626"></a>
+<a name="627"></a>		<span class="source_comment">// Return because this function will get called again from RestartPlayer()
+</span><a name="628"></a>		return;
+<a name="629"></a>	}
+<a name="630"></a>
+<a name="631"></a>	if (<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None)
+<a name="632"></a>	{
+<a name="633"></a>		<span class="source_comment">// Put player in their expected movement state, i.e. let them start playing
+</span><a name="634"></a>		<span class="source_type">C</span>.GotoState(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>).playerControllerState);
+<a name="635"></a>		<span class="source_type">C</span>.ClientGotoState(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>).playerControllerState);
+<a name="636"></a>		<span class="source_type">C</span>.Restart();
+<a name="637"></a>	}
+<a name="638"></a>	else
+<a name="639"></a>	{
+<a name="640"></a>		<span class="source_comment">// This should never happen
+</span><a name="641"></a>		Log(<span class="source_string">"Not starting active player "</span>$<span class="source_type">C</span>$<span class="source_string">" due to no Pawn"</span>);
+<a name="642"></a>	}
+<a name="643"></a>}
+<a name="644"></a>
+<a name="645"></a><span class="source_type">function</span> killAllPlayers()
+<a name="646"></a>{
+<a name="647"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">C</span>;
+<a name="648"></a>
+<a name="649"></a>	<span class="source_comment">//Log("Killing all active players");
+</span><a name="650"></a>
+<a name="651"></a>	ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, <span class="source_type">C</span>)
+<a name="652"></a>	{
+<a name="653"></a>		if (<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None)
+<a name="654"></a>			<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.KilledBy(<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="655"></a>	}
+<a name="656"></a>}
+<a name="657"></a>
+<a name="658"></a><span class="source_comment">// playerPawnDestroyedState
+</span><a name="659"></a><span class="source_comment">// The state that the playercontroller is put into when the pawn dies
+</span><a name="660"></a><span class="source_type">function</span> <span class="source_type">Name</span> playerPawnDestroyedState()
+<a name="661"></a>{
+<a name="662"></a>	return <span class="source_name">'PlayerRespawn'</span>;
+<a name="663"></a>}
+<a name="664"></a>
+<a name="665"></a><span class="source_comment">// The state that the player is put into if he has no lives left
+</span><a name="666"></a><span class="source_type">function</span> <span class="source_type">Name</span> playerPawnNoRespawnState()
+<a name="667"></a>{
+<a name="668"></a>	return <span class="source_name">'AwaitingNextRound'</span>;
+<a name="669"></a>}
+<a name="670"></a>
+<a name="671"></a><span class="source_comment">// This function is called BEFORE the player actually respawns; if it returns
+</span><a name="672"></a><span class="source_comment">// before calling super.tryRespawn() then the player will NOT spawn
+</span><a name="673"></a><span class="source_type">function</span> <span class="source_type">bool</span> tryRespawn(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>)
+<a name="674"></a>{
+<a name="675"></a>	<span class="source_comment">//local TeamInfo t;
+</span><a name="676"></a>	<span class="source_comment">//local TribesReplicationInfo TRI;
+</span><a name="677"></a>
+<a name="678"></a>	<span class="source_comment">//Log("Global tryRespawn() called on "$c);
+</span><a name="679"></a>
+<a name="680"></a>	<span class="source_comment">// Don't allow respawn if respawnDelay has not yet elapsed
+</span><a name="681"></a>	if (<span class="source_type">c</span>.respawnDelay &gt; <span class="source_int">0</span> && ! <span class="source_type">c</span>.bForcedRespawn)
+<a name="682"></a>	{
+<a name="683"></a>		<span class="source_comment">//Log(c$" can't respawn due to respawnDelay = "$c.respawnDelay);
+</span><a name="684"></a>		return false;	<span class="source_comment">// can't respawn, waiting for delay
+</span><a name="685"></a>	}
+<a name="686"></a>
+<a name="687"></a>	<span class="source_comment">// Don't allow respawn if the player has run out of lives
+</span><a name="688"></a>	if (<span class="source_type">c</span>.livesLeft == <span class="source_int">0</span> && <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().maxLives != -<span class="source_int">1</span>)
+<a name="689"></a>	{
+<a name="690"></a>		<span class="source_comment">//Log(c$" can't respawn due to respawnsLeft");
+</span><a name="691"></a>		return false; <span class="source_comment">// can't respawn, none left
+</span><a name="692"></a>	}
+<a name="693"></a>
+<a name="694"></a>	<span class="source_type">c</span>.bWaitingForRoundEnd = false;
+<a name="695"></a>
+<a name="696"></a>	<span class="source_comment">// set the team if there is none
+</span><a name="697"></a>	<span class="source_comment">//TRI = TribesReplicationInfo(c.PlayerReplicationInfo);
+</span><a name="698"></a>	<span class="source_comment">//if(TRI.team == None)
+</span><a name="699"></a>	<span class="source_comment">//{
+</span><a name="700"></a>	<span class="source_comment">//	t = initialTeam();
+</span><a name="701"></a>	<span class="source_comment">//	c.dispatchMessage(new class'MessageClientChangedTeam'(c, t, TRI.team)); 
+</span><a name="702"></a>	<span class="source_comment">//	TRI.team = t;
+</span><a name="703"></a>	<span class="source_comment">//}
+</span><a name="704"></a>
+<a name="705"></a>	<span class="source_comment">// Show an inventory screen if applicable
+</span><a name="706"></a>	if(<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().bAllowEquipOnRespawn)
+<a name="707"></a>	{
+<a name="708"></a>		<span class="source_comment">// Log("Allowing equipment for controller "$c);
+</span><a name="709"></a>		<span class="source_type">c</span>.GotoState(<span class="source_name">'PlayerEquippingPreRestart'</span>);
+<a name="710"></a>		<span class="source_type">c</span>.ClientGotoState(<span class="source_name">'PlayerEquippingPreRestart'</span>);
+<a name="711"></a>
+<a name="712"></a>		<span class="source_comment">// Return now so the player doesn't respawn just yet
+</span><a name="713"></a>		return false;
+<a name="714"></a>	}
+<a name="715"></a>
+<a name="716"></a>	<span class="source_comment">// Superclass calls RestartPlayer()
+</span><a name="717"></a>	return Super.tryRespawn(<span class="source_type">c</span>);
+<a name="718"></a>}
+<a name="719"></a>
+<a name="720"></a>
+<a name="721"></a><span class="source_comment">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="722"></a><span class="source_comment">// State StartGame
+</span><a name="723"></a><span class="source_comment">// Gives a chance for players to connect, then starts the game if there are
+</span><a name="724"></a><span class="source_comment">// enough players.  If there aren't enough players, wait for them.
+</span><a name="725"></a>auto state StartGame
+<a name="726"></a>{
+<a name="727"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> allowMapVote()
+<a name="728"></a>	{
+<a name="729"></a>		return false;
+<a name="730"></a>	}
+<a name="731"></a>
+<a name="732"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> playersReady()
+<a name="733"></a>	{
+<a name="734"></a>		local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> PC;
+<a name="735"></a>		local <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> PRINotReady[<span class="source_int">3</span>];
+<a name="736"></a>		local <span class="source_type">int</span> numControllersNotReady;
+<a name="737"></a>		local <span class="source_type">bool</span> bOneActivePlayer;
+<a name="738"></a>
+<a name="739"></a>		<span class="source_comment">// Find out which players aren't ready
+</span><a name="740"></a>		ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'PlayerController'</span>, PC)
+<a name="741"></a>		{
+<a name="742"></a>			if (PC.IsInState(<span class="source_name">'TribesCountdown'</span>))
+<a name="743"></a>			{
+<a name="744"></a>				bOneActivePlayer = true;
+<a name="745"></a>				if (!<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>(PC.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>).bReady)
+<a name="746"></a>				{
+<a name="747"></a>					if (numControllersNotReady &lt; <span class="source_int">3</span>)
+<a name="748"></a>						PRINotReady[numControllersNotReady] = PC.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>;
+<a name="749"></a>					numControllersNotReady++;
+<a name="750"></a>				}
+<a name="751"></a>			}
+<a name="752"></a>		}
+<a name="753"></a>
+<a name="754"></a>		<span class="source_comment">// If only a few players are holding things up, broadcast a message with those player names
+</span><a name="755"></a>		if (numControllersNotReady &gt; <span class="source_int">0</span> && numControllersNotReady &lt;= <span class="source_int">3</span> && <span class="source_type">Level</span>.TimeSeconds - <span class="source_int">10</span> &gt; lastTournamentUpdateTime)
+<a name="756"></a>		{
+<a name="757"></a>			lastTournamentUpdateTime = <span class="source_type">Level</span>.TimeSeconds;
+<a name="758"></a>			BroadcastLocalized(self, GameMessageClass, <span class="source_int">22</span>, PRINotReady[<span class="source_int">0</span>], PRINotReady[<span class="source_int">1</span>], PRINotReady[<span class="source_int">2</span>]);
+<a name="759"></a>		}
+<a name="760"></a>		return bOneActivePlayer && numControllersNotReady == <span class="source_int">0</span>;
+<a name="761"></a>	}
+<a name="762"></a>
+<a name="763"></a>	<span class="source_comment">// Always allow team changes
+</span><a name="764"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> ChangeTeam(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, <span class="source_type">int</span> N, <span class="source_type">bool</span> bNewTeam)
+<a name="765"></a>	{
+<a name="766"></a>		return true;
+<a name="767"></a>	}
+<a name="768"></a>
+<a name="769"></a>	<span class="source_type">function</span> EndState()
+<a name="770"></a>	{
+<a name="771"></a>		<span class="source_comment">// Log("Ending state StartGame");
+</span><a name="772"></a>	}
+<a name="773"></a>Begin:
+<a name="774"></a>	<span class="source_comment">// Log("Entered state StartGame...");
+</span><a name="775"></a>
+<a name="776"></a>	<span class="source_comment">// If in tourney mode, wait for all players to be ready or an admin forced start, whichever comes first
+</span><a name="777"></a>	if (bTournamentMode)
+<a name="778"></a>	{
+<a name="779"></a>		GameSpyStateChange(<span class="source_string">"openwaiting"</span>);
+<a name="780"></a>
+<a name="781"></a>		<span class="source_comment">// Wait until all players are ready or an admin forces the match to start
+</span><a name="782"></a>		<span class="source_type"><a href="../gameplay/tribesgamereplicationinfo.html" class="source">TribesGameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).bAwaitingTournamentStart = true;
+<a name="783"></a>		while (!playersReady() && !bForceStart)
+<a name="784"></a>		{
+<a name="785"></a>			Sleep(<span class="source_int">1</span>);
+<a name="786"></a>		}
+<a name="787"></a>		<span class="source_type"><a href="../gameplay/tribesgamereplicationinfo.html" class="source">TribesGameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).bAwaitingTournamentStart = false;
+<a name="788"></a>		bForceStart = false;
+<a name="789"></a>
+<a name="790"></a>		<span class="source_comment">// If still in tourney mode, set countdown duration of first round to a special tourney value
+</span><a name="791"></a>		if (bTournamentMode)
+<a name="792"></a>			<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds[<span class="source_int">0</span>].countdownDuration = tournamentCountdown;
+<a name="793"></a>	}
+<a name="794"></a>
+<a name="795"></a>	GameSpyStateChange(<span class="source_string">"openplaying"</span>);
+<a name="796"></a>
+<a name="797"></a>	<span class="source_comment">// Goto the state that decides how to proceed to the next round
+</span><a name="798"></a>	GotoState(<span class="source_name">'InBetweenRounds'</span>);
+<a name="799"></a>}
+<a name="800"></a>
+<a name="801"></a>
+<a name="802"></a><span class="source_comment">////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="803"></a><span class="source_comment">// State InBetweenRound
+</span><a name="804"></a><span class="source_comment">// This state handles transitions between rounds, including the transition from start of game to the first round
+</span><a name="805"></a>state InBetweenRounds
+<a name="806"></a>{
+<a name="807"></a>
+<a name="808"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> CanSpectate( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Viewer, <span class="source_type">bool</span> bOnlySpectator, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">ViewTarget</span> )
+<a name="809"></a>	{
+<a name="810"></a>		<span class="source_comment">// Don't allow switching to spectator mode in this state
+</span><a name="811"></a>		return false;
+<a name="812"></a>	}
+<a name="813"></a>
+<a name="814"></a>
+<a name="815"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> ChangeTeam(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, <span class="source_type">int</span> N, <span class="source_type">bool</span> bNewTeam)
+<a name="816"></a>	{
+<a name="817"></a>		<span class="source_comment">// Don't allow changing teams in this state
+</span><a name="818"></a>		return false;
+<a name="819"></a>	}
+<a name="820"></a>
+<a name="821"></a>	<span class="source_type">function</span> showRoundSummary()
+<a name="822"></a>	{
+<a name="823"></a>		local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>;
+<a name="824"></a>
+<a name="825"></a>		<span class="source_comment">// Cause everyone to see a round summary
+</span><a name="826"></a>		ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, <span class="source_type">c</span>)
+<a name="827"></a>		{
+<a name="828"></a>			<span class="source_comment">// Inform of winning team
+</span><a name="829"></a>			<span class="source_type">c</span>.clientOpenMenu(guiPackage $ <span class="source_string">"."</span> $ roundSummaryPage, roundSummaryPage);
+<a name="830"></a>		}
+<a name="831"></a>	}
+<a name="832"></a>
+<a name="833"></a>	<span class="source_type">function</span> closeRoundSummary()
+<a name="834"></a>	{
+<a name="835"></a>		local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>;
+<a name="836"></a>
+<a name="837"></a>		<span class="source_comment">// Close everyone's round summaries
+</span><a name="838"></a>		ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, <span class="source_type">c</span>)
+<a name="839"></a>		{
+<a name="840"></a>			<span class="source_type">c</span>.clientCloseMenu();
+<a name="841"></a>		}
+<a name="842"></a>	}
+<a name="843"></a>
+<a name="844"></a>Begin:
+<a name="845"></a>	<span class="source_comment">//Log("Server entered state InBetweenRounds");
+</span><a name="846"></a>
+<a name="847"></a>	<span class="source_comment">// Check for a pending match end.  It's possible that this state was entered in the same tick that the
+</span><a name="848"></a>	<span class="source_comment">// match should've ended, thus overriding the GameEnd state.  This works but a better solution would
+</span><a name="849"></a>	<span class="source_comment">// be preferable.
+</span><a name="850"></a>	if (bPendingMatchEnd)
+<a name="851"></a>	{
+<a name="852"></a>		<span class="source_comment">//Log("Pending match end detected...forcing to GameEnd");
+</span><a name="853"></a>		GotoState(<span class="source_name">'GameEnd'</span>);
+<a name="854"></a>	}
+<a name="855"></a>
+<a name="856"></a>	<span class="source_comment">// If this isn't the first or last round, show a round summary
+</span><a name="857"></a>	if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRoundIdx &gt;= <span class="source_int">0</span> && <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRoundIdx &lt; <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds.Length - <span class="source_int">1</span>)
+<a name="858"></a>	{
+<a name="859"></a>		<span class="source_comment">//setAllActivePlayerStates('AwaitingNextRound');
+</span><a name="860"></a>		<span class="source_comment">// Wait a second before showing the summary
+</span><a name="861"></a>		<span class="source_comment">// This is a hacky way to help ensure the team scoring information gets replicated before
+</span><a name="862"></a>		<span class="source_comment">// the summary page is shown...consider a better solution
+</span><a name="863"></a>		Sleep(<span class="source_int">1</span>);
+<a name="864"></a>		showRoundSummary();
+<a name="865"></a>		Sleep(<span class="source_int">3</span>);
+<a name="866"></a>		closeRoundSummary();
+<a name="867"></a>	}
+<a name="868"></a>
+<a name="869"></a>	<span class="source_comment">// Go to the next round if applicable; otherwise, end the game
+</span><a name="870"></a>	if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.moreRoundsToPlay())
+<a name="871"></a>	{
+<a name="872"></a>		<span class="source_comment">// Check that the minimum number of players is satisfied; if not, wait until it is
+</span><a name="873"></a>		if (!enoughPlayersToStart())
+<a name="874"></a>		{
+<a name="875"></a>			bWaitingForPlayers = true;
+<a name="876"></a>			<span class="source_comment">// Make sure everyone is waiting
+</span><a name="877"></a>			setAllActivePlayerStates(<span class="source_name">'AwaitingGameStart'</span>);
+<a name="878"></a>
+<a name="879"></a>			<span class="source_comment">// Check the first round for minimumNumberOfPlayers and wait until there are enough
+</span><a name="880"></a>			<span class="source_comment">// players to satisfy this restriction
+</span><a name="881"></a>			while (!enoughPlayersToStart())
+<a name="882"></a>			{
+<a name="883"></a>				<span class="source_comment">//Log("Not enough players.  Waiting...");
+</span><a name="884"></a>				Sleep(<span class="source_int">5</span>);
+<a name="885"></a>			}
+<a name="886"></a>			bWaitingForPlayers = false;
+<a name="887"></a>			setAllActivePlayerStates(<span class="source_name">'PlayerRespawn'</span>, <span class="source_name">'Forced'</span>, true);
+<a name="888"></a>		}
+<a name="889"></a>
+<a name="890"></a>
+<a name="891"></a>		<span class="source_comment">// If the upcoming round isn't the first round, force all active players to spawn (make sure everyone's dead first)
+</span><a name="892"></a>		if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRoundIdx + <span class="source_int">1</span> &gt; <span class="source_int">0</span>)
+<a name="893"></a>		{
+<a name="894"></a>			killAllPlayers();
+<a name="895"></a>			setAllActivePlayerStates(<span class="source_name">'PlayerRespawn'</span>, <span class="source_name">'Forced'</span>);
+<a name="896"></a>		}
+<a name="897"></a>
+<a name="898"></a>		<span class="source_comment">// Repair everything if applicable
+</span><a name="899"></a>		if (bRepairBaseDevicesBetweenRounds)
+<a name="900"></a>			repairAllBaseDevices();
+<a name="901"></a>
+<a name="902"></a>		<span class="source_comment">// Start the next round
+</span><a name="903"></a>		<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.startNextRound();
+<a name="904"></a>
+<a name="905"></a>		<span class="source_comment">// Goto countdown phase if required; otherwise start the game immediately
+</span><a name="906"></a>		if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.needsCountdown())
+<a name="907"></a>		{
+<a name="908"></a>			GotoState(<span class="source_name">'CountdownPhase'</span>);
+<a name="909"></a>		}
+<a name="910"></a>		else
+<a name="911"></a>		{
+<a name="912"></a>			GotoState(<span class="source_name">'GamePhase'</span>);
+<a name="913"></a>		}
+<a name="914"></a>	}
+<a name="915"></a>	else
+<a name="916"></a>	{
+<a name="917"></a>		GotoState(<span class="source_name">'GameEnd'</span>);
+<a name="918"></a>	}
+<a name="919"></a>}
+<a name="920"></a>
+<a name="921"></a>
+<a name="922"></a>
+<a name="923"></a><span class="source_comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="924"></a><span class="source_comment">// State CountdownPhase
+</span><a name="925"></a><span class="source_comment">// Players already spawned, but are locked.  Newly connected players will be able to spawn, but will also be locked
+</span><a name="926"></a>state CountdownPhase
+<a name="927"></a>{
+<a name="928"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> allowMapVote()
+<a name="929"></a>	{
+<a name="930"></a>		return false;
+<a name="931"></a>	}
+<a name="932"></a>Begin:
+<a name="933"></a>	<span class="source_comment">//Log("Entering CountdownPhase");
+</span><a name="934"></a>	dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageRoundWarmup'</span>);
+<a name="935"></a>
+<a name="936"></a>	<span class="source_comment">// Loop until the countdown is finished
+</span><a name="937"></a>	while (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.isCountdown())
+<a name="938"></a>		Sleep(<span class="source_int">0.5</span>);
+<a name="939"></a>
+<a name="940"></a>	<span class="source_comment">// Set the countdown to an invalid number to indicate that it's over, then start the game
+</span><a name="941"></a>	<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.replicatedRemainingCountdown = -<span class="source_int">1</span>;
+<a name="942"></a>	GotoState(<span class="source_name">'GamePhase'</span>);
+<a name="943"></a>}
+<a name="944"></a>
+<a name="945"></a><span class="source_comment">// State GamePhase
+</span><a name="946"></a><span class="source_comment">// Actual gameplay
+</span><a name="947"></a>state GamePhase
+<a name="948"></a>{
+<a name="949"></a>	<span class="source_type">function</span> onDeath(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>)
+<a name="950"></a>	{
+<a name="951"></a>		if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound() != None)
+<a name="952"></a>		{
+<a name="953"></a>			<span class="source_comment">// Decrement the dead controller's number of lives, if applicable
+</span><a name="954"></a>			if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().maxLives &gt; <span class="source_int">0</span>)
+<a name="955"></a>			{
+<a name="956"></a>				<span class="source_type">c</span>.livesLeft--;
+<a name="957"></a>				<span class="source_comment">//Log("maxLives decremented, "$c$" now has "$c.livesLeft$" lives left");
+</span><a name="958"></a>			}
+<a name="959"></a>
+<a name="960"></a>			<span class="source_comment">// For each character death, check to see if the round should end as a result
+</span><a name="961"></a>			<span class="source_comment">// of that death
+</span><a name="962"></a>			if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().shouldEndAfterDeathOf(<span class="source_type">Level</span>, <span class="source_type">c</span>))
+<a name="963"></a>			{
+<a name="964"></a>				<span class="source_comment">//Log("Forcing selection of next round as a result of "$c$"'s death");
+</span><a name="965"></a>				<span class="source_type">Level</span>.Game.Broadcast(self, <span class="source_string">"Round ended due to one team being defeated!"</span>);
+<a name="966"></a>				GotoState(<span class="source_name">'InBetweenRounds'</span>);
+<a name="967"></a>			}
+<a name="968"></a>
+<a name="969"></a>			<span class="source_comment">// Assign the dying character a respawnDelay
+</span><a name="970"></a>			<span class="source_type">c</span>.respawnDelay = <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().getRespawnDelay();
+<a name="971"></a>		}
+<a name="972"></a>
+<a name="973"></a>		<span class="source_comment">//Log(c$" died, livesLeft = "$c.livesLeft);
+</span><a name="974"></a>	}
+<a name="975"></a>
+<a name="976"></a>	<span class="source_comment">// Called by MPActors whenever team points are scored
+</span><a name="977"></a>	<span class="source_comment">// This is used to prematurely end matches based on total number of points scored
+</span><a name="978"></a>	<span class="source_type">function</span> postTeamScored(<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>, <span class="source_type">int</span> numPoints, optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> EndGameFocus)
+<a name="979"></a>	{
+<a name="980"></a>		local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/player.html" class="source">player</a></span>;
+<a name="981"></a>		local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="982"></a>
+<a name="983"></a>		if (scoreLimit &gt; <span class="source_int">0</span> && <span class="source_type">t</span>.score &gt;= scoreLimit)
+<a name="984"></a>		{
+<a name="985"></a>			<span class="source_comment">//Log("Ending match due to scoreLimit reached");
+</span><a name="986"></a>			<span class="source_comment">//Level.Game.Broadcast(self, "Score limit for this match was reached!");
+</span><a name="987"></a>
+<a name="988"></a>			<span class="source_comment">// Set a flag to mark match end since game state might change before next tick
+</span><a name="989"></a>			bPendingMatchEnd = true;
+<a name="990"></a>
+<a name="991"></a>			<span class="source_comment">// If FocusRookOnWin provided, force everyone to view it
+</span><a name="992"></a>			if (EndGameFocus != None)
+<a name="993"></a>			{
+<a name="994"></a>				for ( <span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.nextController )
+<a name="995"></a>				{
+<a name="996"></a>					<span class="source_type"><a href="../engine/player.html" class="source">player</a></span> = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>);
+<a name="997"></a>					if ( <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> != None )
+<a name="998"></a>					{
+<a name="999"></a>						<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.ClientSetBehindView(true);
+<a name="1000"></a>						<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.CameraDist = <span class="source_int">11</span>;
+<a name="1001"></a>						<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.ClientSetViewTarget(EndGameFocus);
+<a name="1002"></a>						<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.SetViewTarget(EndGameFocus);
+<a name="1003"></a>					}
+<a name="1004"></a>				}
+<a name="1005"></a>				GotoState(<span class="source_name">'GameEnd'</span>, <span class="source_name">'Delayed'</span>);
+<a name="1006"></a>				return;
+<a name="1007"></a>			}
+<a name="1008"></a>
+<a name="1009"></a>			GotoState(<span class="source_name">'GameEnd'</span>);
+<a name="1010"></a>			return;
+<a name="1011"></a>		}
+<a name="1012"></a>
+<a name="1013"></a>		<span class="source_comment">// Check the current round's scoreLimit
+</span><a name="1014"></a>		if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound() != None && <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().shouldEndAfterTeamScored(<span class="source_type">Level</span>, <span class="source_type">t</span>))
+<a name="1015"></a>		{
+<a name="1016"></a>			<span class="source_comment">//Log("Ending round due to scoreLimit reached");
+</span><a name="1017"></a>			<span class="source_comment">//Level.Game.Broadcast(self, "Score limit for this round was reached!");
+</span><a name="1018"></a>			GotoState(<span class="source_name">'InBetweenRounds'</span>);
+<a name="1019"></a>		}
+<a name="1020"></a>	}
+<a name="1021"></a>
+<a name="1022"></a>	<span class="source_type">function</span> evaluateTimeLeft()
+<a name="1023"></a>	{
+<a name="1024"></a>		local <span class="source_type">float</span> timeLeft;
+<a name="1025"></a>
+<a name="1026"></a>		<span class="source_comment">// Play 1-minute and 10-second warnings
+</span><a name="1027"></a>		timeLeft = <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().timeLeft(<span class="source_type">Level</span>);
+<a name="1028"></a>
+<a name="1029"></a>		if (lastTimeLeft &gt;= <span class="source_int">61</span> && timeLeft &lt; <span class="source_int">61</span>)		
+<a name="1030"></a>		{
+<a name="1031"></a>			BroadcastLocalized(self, GameAnnouncerMessageClass, <span class="source_int">3</span>);
+<a name="1032"></a>		}
+<a name="1033"></a>		else if (lastTimeLeft &gt;= <span class="source_int">11</span> && timeLeft &lt; <span class="source_int">11</span>)
+<a name="1034"></a>		{
+<a name="1035"></a>			BroadcastLocalized(self, GameAnnouncerMessageClass, <span class="source_int">4</span>);
+<a name="1036"></a>		}
+<a name="1037"></a>		lastTimeLeft = timeLeft;
+<a name="1038"></a>	}
+<a name="1039"></a>
+<a name="1040"></a>Begin:
+<a name="1041"></a>	<span class="source_comment">//Log("Entering GamePhase");
+</span><a name="1042"></a>	if (!<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.isFinished())
+<a name="1043"></a>	{
+<a name="1044"></a>		<span class="source_comment">// Start all players who were waiting for this round
+</span><a name="1045"></a>		startAllActivePlayers();
+<a name="1046"></a>		dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageRoundStart'</span>);
+<a name="1047"></a>		BroadcastLocalized(self, GameAnnouncerMessageClass, <span class="source_int">5</span>);
+<a name="1048"></a>
+<a name="1049"></a>		<span class="source_comment">// Loop until the round is finished
+</span><a name="1050"></a>		while (!<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.isFinished())
+<a name="1051"></a>		{
+<a name="1052"></a>			Sleep(<span class="source_int">0.5</span>);
+<a name="1053"></a>			<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().advanceWaveTime(<span class="source_int">0.5</span>);
+<a name="1054"></a>			evaluateTimeLeft();
+<a name="1055"></a>		}
+<a name="1056"></a>	}
+<a name="1057"></a>	<span class="source_comment">//Log("Round "$roundInfo.currentRound()$" ended");
+</span><a name="1058"></a>
+<a name="1059"></a>	<span class="source_comment">// If more than 1 round exists, announce round winner here
+</span><a name="1060"></a>	<span class="source_comment">// Assume no round ends in a tie
+</span><a name="1061"></a>	if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.rounds.Length &gt; <span class="source_int">1</span>)
+<a name="1062"></a>	{
+<a name="1063"></a>		if (<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().winningTeam != None)
+<a name="1064"></a>			<span class="source_type">Level</span>.Game.BroadcastLocalized(self, GameAnnouncerMessageClass, <span class="source_int">1</span>, <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().winningTeam);
+<a name="1065"></a>	}
+<a name="1066"></a>
+<a name="1067"></a>	<span class="source_comment">// Go to the next round
+</span><a name="1068"></a>	dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageRoundEnd'</span>);
+<a name="1069"></a>	GotoState(<span class="source_name">'InBetweenRounds'</span>);
+<a name="1070"></a>}
+<a name="1071"></a>
+<a name="1072"></a>
+<a name="1073"></a><span class="source_comment">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="1074"></a><span class="source_comment">// State GameEnd
+</span><a name="1075"></a><span class="source_comment">// The game has ended, time to load a new map
+</span><a name="1076"></a>state GameEnd
+<a name="1077"></a>{
+<a name="1078"></a>	<span class="source_type">function</span> SendMPActorsToGameOver()
+<a name="1079"></a>	{
+<a name="1080"></a>		local <span class="source_type"><a href="../gameplay/mpactor.html" class="source">MPActor</a></span> <span class="source_type">a</span>;
+<a name="1081"></a>
+<a name="1082"></a>		<span class="source_comment">// Put all MPActors in GameOver state
+</span><a name="1083"></a>		ForEach <span class="source_type">Level</span>.AllActors(<span class="source_type">class</span><span class="source_name">'MPActor'</span>, <span class="source_type">a</span>)
+<a name="1084"></a>		{
+<a name="1085"></a>			<span class="source_type">a</span>.GotoState(<span class="source_name">'GameOver'</span>);
+<a name="1086"></a>		}
+<a name="1087"></a>	}
+<a name="1088"></a>
+<a name="1089"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> tryRespawn(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>)
+<a name="1090"></a>	{
+<a name="1091"></a>		<span class="source_comment">// MJ:  Should figure out why this function gets spammed at the end of a map
+</span><a name="1092"></a>		return false;
+<a name="1093"></a>	}
+<a name="1094"></a>
+<a name="1095"></a>	<span class="source_type">function</span> showGameSummary()
+<a name="1096"></a>	{
+<a name="1097"></a>		local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>;
+<a name="1098"></a>
+<a name="1099"></a>		<span class="source_comment">// Force everyone to see a GUIPage
+</span><a name="1100"></a>		ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, <span class="source_type">c</span>)
+<a name="1101"></a>		{
+<a name="1102"></a>			<span class="source_type">c</span>.clientOpenMenu(guiPackage $ <span class="source_string">"."</span> $ gameSummaryPage, gameSummaryPage);
+<a name="1103"></a>		}
+<a name="1104"></a>	}
+<a name="1105"></a>
+<a name="1106"></a>	<span class="source_type">function</span> closeGameSummary()
+<a name="1107"></a>	{
+<a name="1108"></a>		local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>;
+<a name="1109"></a>
+<a name="1110"></a>		<span class="source_comment">// Force everyone to close it
+</span><a name="1111"></a>		ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, <span class="source_type">c</span>)
+<a name="1112"></a>		{
+<a name="1113"></a>			<span class="source_type">c</span>.clientCloseMenu();
+<a name="1114"></a>		}
+<a name="1115"></a>	}
+<a name="1116"></a>
+<a name="1117"></a>	<span class="source_comment">// Don't allow team changes
+</span><a name="1118"></a>	<span class="source_type">function</span> <span class="source_type">bool</span> ChangeTeam(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, <span class="source_type">int</span> N, <span class="source_type">bool</span> bNewTeam)
+<a name="1119"></a>	{
+<a name="1120"></a>		return false;
+<a name="1121"></a>	}
+<a name="1122"></a>Delayed:
+<a name="1123"></a>	Sleep(<span class="source_int">6</span>);
+<a name="1124"></a>
+<a name="1125"></a>Begin:
+<a name="1126"></a>	GameSpyGameMode = <span class="source_string">"closedwaiting"</span>;
+<a name="1127"></a>
+<a name="1128"></a>	<span class="source_comment">//Log("Entering GameEnd");
+</span><a name="1129"></a>	OnGameEnd();
+<a name="1130"></a>
+<a name="1131"></a>	SendMPActorsToGameOver();
+<a name="1132"></a>
+<a name="1133"></a>	<span class="source_comment">// Notify that the game has ended
+</span><a name="1134"></a>	EndGame(None, <span class="source_string">""</span>);
+<a name="1135"></a>
+<a name="1136"></a>	<span class="source_comment">// Play announcement here
+</span><a name="1137"></a>	if (numTeams &gt; <span class="source_int">1</span>)
+<a name="1138"></a>	{
+<a name="1139"></a>		if (getWinningTeam() != getLosingTeam())
+<a name="1140"></a>			<span class="source_type">Level</span>.Game.BroadcastLocalized(self, GameAnnouncerMessageClass, <span class="source_int">0</span>, getWinningTeam());
+<a name="1141"></a>		else
+<a name="1142"></a>			<span class="source_type">Level</span>.Game.BroadcastLocalized(self, GameAnnouncerMessageClass, <span class="source_int">2</span>);
+<a name="1143"></a>	}
+<a name="1144"></a>
+<a name="1145"></a>	Sleep(<span class="source_int">2</span>);
+<a name="1146"></a>	showGameSummary();
+<a name="1147"></a>	Sleep(postGameDelay);
+<a name="1148"></a>	<span class="source_comment">//closeGameSummary();
+</span><a name="1149"></a>
+<a name="1150"></a>	if (!bServerTravelOverride)
+<a name="1151"></a>	{
+<a name="1152"></a>		RestartGame();	<span class="source_comment">// base class, loads next map
+</span><a name="1153"></a>	}
+<a name="1154"></a>	else
+<a name="1155"></a>	{
+<a name="1156"></a>		<span class="source_type">Level</span>.ServerTravel(serverTravelURL, false);
+<a name="1157"></a>	}
+<a name="1158"></a>}
+<a name="1159"></a>
+<a name="1160"></a><span class="source_type">function</span> OnGameEnd()
+<a name="1161"></a>{
+<a name="1162"></a>	bOnGameEndCalled = true;
+<a name="1163"></a>
+<a name="1164"></a>	<span class="source_comment">// Cleanup winningTeam in roundInfos to satisfy garbage collection
+</span><a name="1165"></a>	<span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.cleanup();
+<a name="1166"></a>}
+<a name="1167"></a>
+<a name="1168"></a><span class="source_comment">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</span><a name="1169"></a><span class="source_comment">// Miscellaneous
+</span><a name="1170"></a>
+<a name="1171"></a><span class="source_type">function</span> PostTeamScored(<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>, <span class="source_type">int</span> numPoints, optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> EndGameFocus)
+<a name="1172"></a>{
+<a name="1173"></a>}
+<a name="1174"></a>
+<a name="1175"></a><span class="source_type">function</span> onSpectate(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>)
+<a name="1176"></a>{
+<a name="1177"></a>	<span class="source_comment">//Log("Sending "$c$" to TribesSpectating");
+</span><a name="1178"></a>	if (<span class="source_type">c</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None)
+<a name="1179"></a>		<span class="source_type">c</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.KilledBy(<span class="source_type">c</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="1180"></a>	<span class="source_type">c</span>.unpossess();
+<a name="1181"></a>	<span class="source_type">c</span>.GotoState(<span class="source_name">'TribesSpectating'</span>);
+<a name="1182"></a>	<span class="source_type">c</span>.ClientGotoState(<span class="source_name">'TribesSpectating'</span>);
+<a name="1183"></a>}
+<a name="1184"></a>
+<a name="1185"></a><span class="source_type">function</span> onUnspectate(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>)
+<a name="1186"></a>{
+<a name="1187"></a>	local <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span> TRI;
+<a name="1188"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>;
+<a name="1189"></a>
+<a name="1190"></a>	TRI = <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>(<span class="source_type">c</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">playerReplicationInfo</a></span>);
+<a name="1191"></a>	<span class="source_comment">// Only allow unSpectating if you would normally be allowed to change teams
+</span><a name="1192"></a>	if (ChangeTeam(<span class="source_type">c</span>, <span class="source_int">0</span>, false))
+<a name="1193"></a>	{
+<a name="1194"></a>		if(TRI.team == None)
+<a name="1195"></a>		{
+<a name="1196"></a>			<span class="source_type">t</span> = initialTeam();
+<a name="1197"></a>			TRI.setTeam(<span class="source_type">t</span>);
+<a name="1198"></a>			TRI.bTeamChanged = true;
+<a name="1199"></a>		}
+<a name="1200"></a>		<span class="source_type">c</span>.GotoState(<span class="source_name">'PlayerRespawn'</span>);
+<a name="1201"></a>		<span class="source_type">c</span>.ClientGotoState(<span class="source_name">'PlayerRespawn'</span>);
+<a name="1202"></a>	}
+<a name="1203"></a>
+<a name="1204"></a>	<span class="source_comment">// MJ temp message
+</span><a name="1205"></a>	<span class="source_type">c</span>.ClientMessage(<span class="source_string">"Can't unspectate now"</span>);
+<a name="1206"></a>}
+<a name="1207"></a>
+<a name="1208"></a>
+<a name="1209"></a><span class="source_comment">// Returns team with highest score
+</span><a name="1210"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> getWinningTeam()
+<a name="1211"></a>{
+<a name="1212"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> team, winningTeam;
+<a name="1213"></a>
+<a name="1214"></a>	ForEach <span class="source_type">Level</span>.AllActors(<span class="source_type">class</span><span class="source_name">'TeamInfo'</span>, team)
+<a name="1215"></a>	{
+<a name="1216"></a>		if (winningTeam == None)
+<a name="1217"></a>			winningTeam = team;
+<a name="1218"></a>		else if (team.Score &gt; winningTeam.Score)
+<a name="1219"></a>			winningTeam = team;
+<a name="1220"></a>	}
+<a name="1221"></a>
+<a name="1222"></a>	return winningTeam;
+<a name="1223"></a>}
+<a name="1224"></a>
+<a name="1225"></a><span class="source_comment">// Returns team with lowest score
+</span><a name="1226"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> getLosingTeam()
+<a name="1227"></a>{
+<a name="1228"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> team, losingTeam;
+<a name="1229"></a>
+<a name="1230"></a>	ForEach <span class="source_type">Level</span>.AllActors(<span class="source_type">class</span><span class="source_name">'TeamInfo'</span>, team)
+<a name="1231"></a>	{
+<a name="1232"></a>		if (losingTeam == None)
+<a name="1233"></a>			losingTeam = team;
+<a name="1234"></a>		else if (team.Score &lt; losingTeam.Score)
+<a name="1235"></a>			losingTeam = team;
+<a name="1236"></a>	}
+<a name="1237"></a>
+<a name="1238"></a>	return losingTeam;
+<a name="1239"></a>}
+<a name="1240"></a>
+<a name="1241"></a><span class="source_type">function</span> <span class="source_type">bool</span> ChangeTeam(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, <span class="source_type">int</span> N, <span class="source_type">bool</span> bNewTeam)
+<a name="1242"></a>{
+<a name="1243"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pcc;
+<a name="1244"></a>	local <span class="source_type">bool</span> allowChangeTeam;
+<a name="1245"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>;
+<a name="1246"></a>	local <span class="source_type">bool</span> bTournamentActive;
+<a name="1247"></a>
+<a name="1248"></a>	pcc = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">Other</span>);
+<a name="1249"></a>	<span class="source_type">t</span> = pcc.getTeamInfo(N);
+<a name="1250"></a>
+<a name="1251"></a>	<span class="source_comment">// Don't allow team changes while the player is respawning, if the round has limited lives, if
+</span><a name="1252"></a>	<span class="source_comment">// a team has run out of carryables, or if the server has started a tournament
+</span><a name="1253"></a>	bTournamentActive = bTournamentMode && !<span class="source_type"><a href="../gameplay/tribesgamereplicationinfo.html" class="source">TribesGameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).bAwaitingTournamentStart;
+<a name="1254"></a>
+<a name="1255"></a>	allowChangeTeam = (pcc.respawnDelay &lt;= <span class="source_int">0</span> || pcc.respawnDelay == <span class="source_type"><a href="../gameplay/roundinfo.html" class="source">roundInfo</a></span>.currentRound().respawnDelay) &&
+<a name="1256"></a>					  !<span class="source_type">t</span>.bNoMoreCarryables &&
+<a name="1257"></a>					  !bTournamentActive;
+<a name="1258"></a>
+<a name="1259"></a>	<span class="source_comment">// Don't allow changing teams if maxLives is set and the game is in progress, but do allow changing
+</span><a name="1260"></a>	<span class="source_comment">// teams if the game is in between rounds
+</span><a name="1261"></a>	<span class="source_comment">//if (roundInfo.currentRound().maxLives &gt;= 0)
+</span><a name="1262"></a>	<span class="source_comment">//	allowChangeTeam = !IsInState('GamePhase');
+</span><a name="1263"></a>	
+<a name="1264"></a>	<span class="source_comment">//Log("Change team returning "$allowChangeTeam$" trying to change "$Other$" to "$t);
+</span><a name="1265"></a>	<span class="source_comment">//Log("respawnDelay = "$pcc.respawnDelay$", maxLives = "$roundInfo.currentRound().maxLives$", noCarry = "$t.bNoMoreCarryables$", tourney = "$bTournamentActive);
+</span><a name="1266"></a>	return allowChangeTeam;
+<a name="1267"></a>}
+<a name="1268"></a>
+<a name="1269"></a><span class="source_type">function</span> enableTournamentMode()
+<a name="1270"></a>{
+<a name="1271"></a>	bTournamentMode = true;
+<a name="1272"></a>	default.bTournamentMode = true;
+<a name="1273"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.bTournamentMode = true;
+<a name="1274"></a>	bChangeLevels = false;
+<a name="1275"></a>	<span class="source_type">Class</span>.static.StaticSaveConfig();
+<a name="1276"></a>	RestartGame();
+<a name="1277"></a>}
+<a name="1278"></a>
+<a name="1279"></a><span class="source_type">function</span> disableTournamentMode()
+<a name="1280"></a>{
+<a name="1281"></a>	bTournamentMode = false;
+<a name="1282"></a>	default.bTournamentMode = false;
+<a name="1283"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.bTournamentMode = false;
+<a name="1284"></a>	bForceStart = true;
+<a name="1285"></a>	bChangeLevels = true;
+<a name="1286"></a>	<span class="source_type">Class</span>.static.StaticSaveConfig();
+<a name="1287"></a>}
+<a name="1288"></a>
+<a name="1289"></a><span class="source_type">function</span> setPlayerTeamDamagePercentage(<span class="source_type">float</span> percentage)
+<a name="1290"></a>{
+<a name="1291"></a>	if (percentage &lt; <span class="source_int">0</span>)
+<a name="1292"></a>		percentage = <span class="source_int">0</span>;
+<a name="1293"></a>	else if (percentage &gt; <span class="source_int">1</span>)
+<a name="1294"></a>		percentage = <span class="source_int">1</span>;
+<a name="1295"></a>
+<a name="1296"></a>	default.playerTeamDamagePercentage = percentage;
+<a name="1297"></a>	playerTeamDamagePercentage = percentage;
+<a name="1298"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.playerTeamDamagePercentage = percentage;
+<a name="1299"></a>	<span class="source_type">Class</span>.static.StaticSaveConfig();
+<a name="1300"></a>}
+<a name="1301"></a>
+<a name="1302"></a><span class="source_comment">// returns the number of player controllers that have active pawns
+</span><a name="1303"></a><span class="source_type">function</span> <span class="source_type">int</span> numActivePlayers()
+<a name="1304"></a>{
+<a name="1305"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pc;
+<a name="1306"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1307"></a>
+<a name="1308"></a>	ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, pc)
+<a name="1309"></a>	{
+<a name="1310"></a>		if (pc.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None)
+<a name="1311"></a>			<span class="source_type">i</span>++;
+<a name="1312"></a>	}
+<a name="1313"></a>
+<a name="1314"></a>	return <span class="source_type">i</span>;
+<a name="1315"></a>}
+<a name="1316"></a>
+<a name="1317"></a><span class="source_type">function</span> <span class="source_type">bool</span> CanSpectate( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Viewer, <span class="source_type">bool</span> bOnlySpectator, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">ViewTarget</span> )
+<a name="1318"></a>{
+<a name="1319"></a>	local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">C</span>;
+<a name="1320"></a>	local <span class="source_type">bool</span> bAllow;
+<a name="1321"></a>
+<a name="1322"></a>	if (<span class="source_type"><a href="../gameplay/mpactor.html" class="source">MPActor</a></span>(<span class="source_type">ViewTarget</span>) != None)
+<a name="1323"></a>		return true;
+<a name="1324"></a>
+<a name="1325"></a>	<span class="source_type">C</span> = <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>(<span class="source_type">ViewTarget</span>);
+<a name="1326"></a>
+<a name="1327"></a>	<span class="source_comment">// can only spectate characters, occupied vehicles, occupied vehicle turrets
+</span><a name="1328"></a>	bAllow = Viewer == <span class="source_type">ViewTarget</span> || 
+<a name="1329"></a>			(<span class="source_type">C</span> != None && (<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>) != None || <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>) != None || <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>(<span class="source_type">C</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>) != None) && !<span class="source_type">C</span>.IsInState(<span class="source_name">'TribesSpectating'</span>));
+<a name="1330"></a>
+<a name="1331"></a>	if (bAllow && <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(<span class="source_type">ViewTarget</span>) != None && Viewer.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None && bDontAllowEnemySpectating)
+<a name="1332"></a>	{
+<a name="1333"></a>		bAllow = (<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(<span class="source_type">ViewTarget</span>).team() == <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(Viewer.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>).team());
+<a name="1334"></a>	}
+<a name="1335"></a>	return bAllow;
+<a name="1336"></a>}
+<a name="1337"></a>
+<a name="1338"></a><span class="source_type">function</span> <span class="source_type">bool</span> allowMapVote()
+<a name="1339"></a>{
+<a name="1340"></a>	return true;
+<a name="1341"></a>}
+<a name="1342"></a>
+<a name="1343"></a><span class="source_type">function</span> repairAllBaseDevices()
+<a name="1344"></a>{
+<a name="1345"></a>	local <span class="source_type"><a href="../gameplay/basedevice.html" class="source">BaseDevice</a></span> bd;
+<a name="1346"></a>
+<a name="1347"></a>	ForEach AllActors(<span class="source_type">class</span><span class="source_name">'BaseDevice'</span>, bd)
+<a name="1348"></a>	{
+<a name="1349"></a>		if (bd.bCanBeDamaged)
+<a name="1350"></a>			bd.Health = bd.default.Health;
+<a name="1351"></a>	}
+<a name="1352"></a>
+<a name="1353"></a>}
+<a name="1354"></a>
+<a name="1355"></a>
+<a name="1356"></a><span class="source_comment">/* ProcessServerTravel()
+<a name="1357"></a> Optional handling of ServerTravel for network games.
+<a name="1358"></a>*/</span>
+<a name="1359"></a><span class="source_type">function</span> ProcessServerTravel( <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, <span class="source_type">bool</span> <span class="source_type">bItems</span> )
+<a name="1360"></a>{
+<a name="1361"></a>	if (!bOnGameEndCalled)
+<a name="1362"></a>	{
+<a name="1363"></a>		bServerTravelOverride = true;
+<a name="1364"></a>		serverTravelURL = <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>;
+<a name="1365"></a>
+<a name="1366"></a>		<span class="source_type">Level</span>.bLevelChange = false;
+<a name="1367"></a>		<span class="source_type">Level</span>.NextURL = <span class="source_string">""</span>;
+<a name="1368"></a>		Log(<span class="source_string">"ProcessServerTravel called, sending to GameEnd"</span>);
+<a name="1369"></a>		GotoState(<span class="source_name">'GameEnd'</span>);
+<a name="1370"></a>	}
+<a name="1371"></a>	else
+<a name="1372"></a>	{
+<a name="1373"></a>		Log(<span class="source_string">"Calling super.ProcessServerTravel"</span>);
+<a name="1374"></a>		super.ProcessServerTravel(<span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, <span class="source_type">bItems</span>);
+<a name="1375"></a>	}
+<a name="1376"></a>}
+<a name="1377"></a>
+<a name="1378"></a>
+<a name="1379"></a><span class="source_comment">// Hints
+</span><a name="1380"></a>static <span class="source_type">function</span> <span class="source_type">string</span> GetLoadingHint( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Ref, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> HintColor, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> <span class="source_type">BindColor</span> )
+<a name="1381"></a>{
+<a name="1382"></a>	local <span class="source_type">string</span> Hint;
+<a name="1383"></a>	local <span class="source_type">int</span> Attempt;
+<a name="1384"></a>
+<a name="1385"></a>	if ( Ref == None )
+<a name="1386"></a>		return <span class="source_string">""</span>;
+<a name="1387"></a>
+<a name="1388"></a>	while ( Hint == <span class="source_string">""</span> && ++Attempt &lt; <span class="source_int">10</span> )
+<a name="1389"></a>		Hint = ParseLoadingHint(GetNextLoadHint(), Ref, HintColor, <span class="source_type">BindColor</span>);
+<a name="1390"></a>
+<a name="1391"></a>	return Hint;
+<a name="1392"></a>}
+<a name="1393"></a>
+<a name="1394"></a>static <span class="source_type">function</span> <span class="source_type">string</span> ParseLoadingHint(<span class="source_type">string</span> Hint, <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Ref, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> HintColor, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> <span class="source_type">BindColor</span>)
+<a name="1395"></a>{
+<a name="1396"></a>	local <span class="source_type">string</span> CurrentHint, <span class="source_type">Cmd</span>, <span class="source_type">Result</span>;
+<a name="1397"></a>	local <span class="source_type">int</span> pos;
+<a name="1398"></a>
+<a name="1399"></a>	pos = InStr(Hint, <span class="source_string">"%"</span>);
+<a name="1400"></a>	if ( pos == -<span class="source_int">1</span> )
+<a name="1401"></a>		return Hint;
+<a name="1402"></a>
+<a name="1403"></a>	do
+<a name="1404"></a>	{
+<a name="1405"></a>		<span class="source_type">Cmd</span> = <span class="source_string">""</span>;
+<a name="1406"></a>		<span class="source_type">Result</span> = <span class="source_string">""</span>;
+<a name="1407"></a>
+<a name="1408"></a>		CurrentHint $= Left(Hint,pos);
+<a name="1409"></a>		Hint = Mid(Hint, pos+<span class="source_int">1</span>);
+<a name="1410"></a>
+<a name="1411"></a>		pos = InStr(Hint, <span class="source_string">"%"</span>);
+<a name="1412"></a>		if ( pos == -<span class="source_int">1</span> )
+<a name="1413"></a>			break;
+<a name="1414"></a>
+<a name="1415"></a>		<span class="source_type">Cmd</span> = Left(Hint,pos);
+<a name="1416"></a>		Hint = Mid(Hint,pos+<span class="source_int">1</span>);
+<a name="1417"></a>
+<a name="1418"></a>		<span class="source_type">Result</span> = Ref.<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/interactionmaster.html" class="source">InteractionMaster</a></span>.GetKeyFromBinding(<span class="source_type">Cmd</span>, true);
+<a name="1419"></a>		if ( <span class="source_type">Result</span> == <span class="source_type">Cmd</span> || <span class="source_type">Result</span> == <span class="source_string">""</span> )
+<a name="1420"></a>			break;
+<a name="1421"></a>
+<a name="1422"></a>		CurrentHint $= MakeColorCode(<span class="source_type">BindColor</span>) $ <span class="source_type">Result</span> $ MakeColorCode(HintColor);
+<a name="1423"></a>		pos = InStr(Hint, <span class="source_string">"%"</span>);
+<a name="1424"></a>	} until ( Hint == <span class="source_string">""</span> || pos == -<span class="source_int">1</span> );
+<a name="1425"></a>
+<a name="1426"></a>	if ( <span class="source_type">Result</span> != <span class="source_string">""</span> && <span class="source_type">Result</span> != <span class="source_type">Cmd</span> )
+<a name="1427"></a>		return CurrentHint $ Hint;
+<a name="1428"></a>
+<a name="1429"></a>	return <span class="source_string">""</span>;
+<a name="1430"></a>}
+<a name="1431"></a>
+<a name="1432"></a>static <span class="source_type">function</span> <span class="source_type">string</span> GetNextLoadHint()
+<a name="1433"></a>{
+<a name="1434"></a>	local array&lt;<span class="source_type">string</span>&gt; Hints;
+<a name="1435"></a>
+<a name="1436"></a>	<span class="source_comment">// Higher chance that we'll pull a loading hint from our own gametype
+</span><a name="1437"></a>	if ( Rand(<span class="source_int">100</span>) &lt; <span class="source_int">75</span> )
+<a name="1438"></a>		Hints = GetAllLoadHints(true);
+<a name="1439"></a>	else Hints = GetAllLoadHints();
+<a name="1440"></a>
+<a name="1441"></a>	if ( Hints.Length &gt; <span class="source_int">0</span> )
+<a name="1442"></a>		return Hints[Rand(Hints.Length)];
+<a name="1443"></a>
+<a name="1444"></a>	return <span class="source_string">""</span>;
+<a name="1445"></a>}
+<a name="1446"></a>
+<a name="1447"></a>static <span class="source_type">function</span> array&lt;<span class="source_type">string</span>&gt; GetAllLoadHints(optional <span class="source_type">bool</span> bThisClassOnly)
+<a name="1448"></a>{
+<a name="1449"></a>	return default.gameHints;
+<a name="1450"></a>}
+<a name="1451"></a>
+<a name="1452"></a>static <span class="source_type">function</span> <span class="source_type">string</span> MakeColorCode(<span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> NewColor)
+<a name="1453"></a>{
+<a name="1454"></a>    <span class="source_comment">// Text colours use 1 as 0.
+</span><a name="1455"></a>    if(NewColor.<span class="source_type">R</span> == <span class="source_int">0</span>)
+<a name="1456"></a>        NewColor.<span class="source_type">R</span> = <span class="source_int">1</span>;
+<a name="1457"></a>
+<a name="1458"></a>    if(NewColor.G == <span class="source_int">0</span>)
+<a name="1459"></a>        NewColor.G = <span class="source_int">1</span>;
+<a name="1460"></a>
+<a name="1461"></a>    if(NewColor.<span class="source_type">B</span> == <span class="source_int">0</span>)
+<a name="1462"></a>        NewColor.<span class="source_type">B</span> = <span class="source_int">1</span>;
+<a name="1463"></a>
+<a name="1464"></a>    return Chr(<span class="source_int">0x1B</span>)$Chr(NewColor.<span class="source_type">R</span>)$Chr(NewColor.G)$Chr(NewColor.<span class="source_type">B</span>);
+<a name="1465"></a>}
+<a name="1466"></a>
+<a name="1467"></a><span class="source_type">function</span> <span class="source_type">String</span> GetGameSpyGameMode()
+<a name="1468"></a>{
+<a name="1469"></a>	return GameSpyGameMode;
+<a name="1470"></a>}
+<a name="1471"></a>
+<a name="1472"></a><span class="source_type">function</span> GameSpyStateChange(<span class="source_type">String</span> newGameMode)
+<a name="1473"></a>{
+<a name="1474"></a>	GameSpyGameMode = newGameMode;
+<a name="1475"></a>	<span class="source_type">Level</span>.GetGameSpyManager().SendGameSpyGameModeChange();
+<a name="1476"></a>}
+<a name="1477"></a>
+<a name="1478"></a>
+<a name="1479"></a>defaultproperties
+<a name="1480"></a>{
+<a name="1481"></a>	Label						= <span class="source_string">"GAMEINFO"</span>
+<a name="1482"></a>	PlayerControllerClassName	= <span class="source_string">"Gameplay.PlayerCharacterController"</span>
+<a name="1483"></a>	DefaultPlayerClassName		= <span class="source_string">"Gameplay.MultiplayerCharacter"</span>
+<a name="1484"></a>    bDelayedStart				= true
+<a name="1485"></a>	MapListType					= <span class="source_string">"Gameplay.MapList"</span>
+<a name="1486"></a>	CheatClass					= <span class="source_type">class</span><span class="source_name">'ConsoleCommandManager'</span>
+<a name="1487"></a>	gameSummaryPage				= <span class="source_string">"TribesMPGameSummaryMenu"</span>
+<a name="1488"></a>	roundSummaryPage			= <span class="source_string">"TribesMPRoundSummaryMenu"</span>
+<a name="1489"></a>	guiPackage					= <span class="source_string">"TribesGui"</span>
+<a name="1490"></a>	equipmentLifeTime			= <span class="source_int">15.0</span>
+<a name="1491"></a>	DeathMessageClass			= <span class="source_type">class</span><span class="source_name">'Gameplay.MPDeathMessages'</span>
+<a name="1492"></a>	GameMessageClass			= <span class="source_type">class</span><span class="source_name">'Gameplay.TribesGameMessage'</span>
+<a name="1493"></a>	postGameDelay				= <span class="source_int">8.0</span>
+<a name="1494"></a>	GameAnnouncerMessageClass	= <span class="source_type">class</span><span class="source_name">'Gameplay.MPGameAnnouncerMessages'</span>
+<a name="1495"></a>	tournamentCountdown			= <span class="source_int">30.0</span>
+<a name="1496"></a>	minimumNumberOfPlayers		= <span class="source_int">0</span>
+<a name="1497"></a>	numTeams					= <span class="source_int">2</span>
+<a name="1498"></a>	bPauseable					= false
+<a name="1499"></a>	GameSpyGameMode				= <span class="source_string">"closedwaiting"</span>
+<a name="1500"></a>}
+<a name="1501"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/multiplayergameinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#MultiplayerGameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/multiplayercharacter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/multiplayerstart.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: po 6.9.2004 08:38:12.000 - Creation time: st 23.5.2018 00:10:46.023 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

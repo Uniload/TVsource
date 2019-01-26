@@ -1,0 +1,655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Engine.RibbonEmitter</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/ribbonemitter.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#RibbonEmitter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/replicationinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/savedmove.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/ribbonemitter.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.RibbonEmitter</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/particleemitter.html">ParticleEmitter</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/particleemitter.html">ParticleEmitter</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/ribbonemitter.html">RibbonEmitter</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDecaying" name="bDecaying" title="go to the details">bDecaying</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bKilled" name="bKilled" title="go to the details">bKilled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DecayTimer" name="DecayTimer" title="go to the details">DecayTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastNumSplineKnotPoints" name="LastNumSplineKnotPoints" title="go to the details">LastNumSplineKnotPoints</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/ribbonemitter.html#RibbonPoint">RibbonPoint</a></td><td width="66%"><a href="#_LastSampledPoint" name="LastSampledPoint" title="go to the details">LastSampledPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastSplineDegree" name="LastSplineDegree" title="go to the details">LastSplineDegree</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RealDecayRate" name="RealDecayRate" title="go to the details">RealDecayRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RealSampleRate" name="RealSampleRate" title="go to the details">RealSampleRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RibbonDecayLength" name="RibbonDecayLength" title="go to the details">RibbonDecayLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/ribbonemitter.html#RibbonPoint">RibbonPoint</a>&gt;</td><td width="66%"><a href="#_RibbonPoints" name="RibbonPoints" title="go to the details">RibbonPoints</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;int&gt;</td><td width="66%"><a href="#_RibbonSplineKnots" name="RibbonSplineKnots" title="go to the details">RibbonSplineKnots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/ribbonemitter.html#RibbonPoint">RibbonPoint</a>&gt;</td><td width="66%"><a href="#_RibbonSplinePoints" name="RibbonSplinePoints" title="go to the details">RibbonSplinePoints</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SampleTimer" name="SampleTimer" title="go to the details">SampleTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SheetsUsed" name="SheetsUsed" title="go to the details">SheetsUsed</a></td></tr>
+<tr><th colspan="2" class="small">Ribbon</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_AxisNormal" name="AxisNormal" title="go to the details">AxisNormal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDecayPoints" name="bDecayPoints" title="go to the details">bDecayPoints</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDecayPointsWhenStopped" name="bDecayPointsWhenStopped" title="go to the details">bDecayPointsWhenStopped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMatchPawnVelocity" name="bMatchPawnVelocity" title="go to the details">bMatchPawnVelocity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRemainAttachedWhenStopped" name="bRemainAttachedWhenStopped" title="go to the details">bRemainAttachedWhenStopped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSamplePoints" name="bSamplePoints" title="go to the details">bSamplePoints</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSyncDecayWhenKilled" name="bSyncDecayWhenKilled" title="go to the details">bSyncDecayWhenKilled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSyncFadeOutWhenKilled" name="bSyncFadeOutWhenKilled" title="go to the details">bSyncFadeOutWhenKilled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DecayRate" name="DecayRate" title="go to the details">DecayRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/ribbonemitter.html#EGetPointAxis">EGetPointAxis</a></td><td width="66%"><a href="#_GetPointAxisFrom" name="GetPointAxisFrom" title="go to the details">GetPointAxisFrom</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinSampleDist" name="MinSampleDist" title="go to the details">MinSampleDist</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinSampleDot" name="MinSampleDot" title="go to the details">MinSampleDot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumPoints" name="NumPoints" title="go to the details">NumPoints</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PointOriginOffset" name="PointOriginOffset" title="go to the details">PointOriginOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RibbonNumSplinePoints" name="RibbonNumSplinePoints" title="go to the details">RibbonNumSplinePoints</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RibbonSplineDegree" name="RibbonSplineDegree" title="go to the details">RibbonSplineDegree</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RibbonWidth" name="RibbonWidth" title="go to the details">RibbonWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SampleRate" name="SampleRate" title="go to the details">SampleRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_VelocityLeadFactor" name="VelocityLeadFactor" title="go to the details">VelocityLeadFactor</a></td></tr>
+<tr><th colspan="2" class="small">RibbonBones</th></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_BoneNameEnd" name="BoneNameEnd" title="go to the details">BoneNameEnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_BoneNameStart" name="BoneNameStart" title="go to the details">BoneNameStart</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseBoneDistance" name="bUseBoneDistance" title="go to the details">bUseBoneDistance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseBones" name="bUseBones" title="go to the details">bUseBones</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_EndBoneOffset" name="EndBoneOffset" title="go to the details">EndBoneOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_StartBoneOffset" name="StartBoneOffset" title="go to the details">StartBoneOffset</a></td></tr>
+<tr><th colspan="2" class="small">RibbonSheets</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBillboardSheets" name="bBillboardSheets" title="go to the details">bBillboardSheets</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseSheetScale" name="bUseSheetScale" title="go to the details">bUseSheetScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumSheets" name="NumSheets" title="go to the details">NumSheets</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;float&gt;</td><td width="66%"><a href="#_SheetScale" name="SheetScale" title="go to the details">SheetScale</a></td></tr>
+<tr><th colspan="2" class="small">RibbonTexture</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLengthBasedTextureU" name="bLengthBasedTextureU" title="go to the details">bLengthBasedTextureU</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RibbonTextureUScale" name="RibbonTextureUScale" title="go to the details">RibbonTextureUScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RibbonTextureVScale" name="RibbonTextureVScale" title="go to the details">RibbonTextureVScale</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/particleemitter.html">ParticleEmitter</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/particleemitter.html#Acceleration">Acceleration</a>, <a href="../engine/particleemitter.html#AcceptsProjectors">AcceptsProjectors</a>, <a href="../engine/particleemitter.html#ActiveParticles">ActiveParticles</a>, <a href="../engine/particleemitter.html#AddLocationFromOtherEmitter">AddLocationFromOtherEmitter</a>, <a href="../engine/particleemitter.html#AddVelocityFromOtherEmitter">AddVelocityFromOtherEmitter</a>, <a href="../engine/particleemitter.html#AddVelocityMultiplierRange">AddVelocityMultiplierRange</a>, <a href="../engine/particleemitter.html#AllParticlesDead">AllParticlesDead</a>, <a href="../engine/particleemitter.html#AlphaRef">AlphaRef</a>, <a href="../engine/particleemitter.html#AlphaTest">AlphaTest</a>, <a href="../engine/particleemitter.html#AutoDestroy">AutoDestroy</a>, <a href="../engine/particleemitter.html#AutomaticInitialSpawning">AutomaticInitialSpawning</a>, <a href="../engine/particleemitter.html#AutoReset">AutoReset</a>, <a href="../engine/particleemitter.html#AutoResetTimeRange">AutoResetTimeRange</a>, <a href="../engine/particleemitter.html#BlendBetweenSubdivisions">BlendBetweenSubdivisions</a>, <a href="../engine/particleemitter.html#BoundingBox">BoundingBox</a>, <a href="../engine/particleemitter.html#CollisionPlanes">CollisionPlanes</a>, <a href="../engine/particleemitter.html#CollisionSound">CollisionSound</a>, <a href="../engine/particleemitter.html#CollisionSoundIndex">CollisionSoundIndex</a>, <a href="../engine/particleemitter.html#CollisionSoundProbability">CollisionSoundProbability</a>, <a href="../engine/particleemitter.html#ColorMultiplierRange">ColorMultiplierRange</a>, <a href="../engine/particleemitter.html#ColorScale">ColorScale</a>, <a href="../engine/particleemitter.html#ColorScaleRepeats">ColorScaleRepeats</a>, <a href="../engine/particleemitter.html#CoordinateSystem">CoordinateSystem</a>, <a href="../engine/particleemitter.html#CurrentCollisionSoundIndex">CurrentCollisionSoundIndex</a>, <a href="../engine/particleemitter.html#CurrentMeshSpawningIndex">CurrentMeshSpawningIndex</a>, <a href="../engine/particleemitter.html#CurrentSpawningSoundIndex">CurrentSpawningSoundIndex</a>, <a href="../engine/particleemitter.html#CurrentSpawnOnTrigger">CurrentSpawnOnTrigger</a>, <a href="../engine/particleemitter.html#DampingFactorRange">DampingFactorRange</a>, <a href="../engine/particleemitter.html#DampRotation">DampRotation</a>, <a href="../engine/particleemitter.html#DeferredParticles">DeferredParticles</a>, <a href="../engine/particleemitter.html#Disabled">Disabled</a>, <a href="../engine/particleemitter.html#DisableFogging">DisableFogging</a>, <a href="../engine/particleemitter.html#DrawStyle">DrawStyle</a>, <a href="../engine/particleemitter.html#EffectAxis">EffectAxis</a>, <a href="../engine/particleemitter.html#ExtentMultiplier">ExtentMultiplier</a>, <a href="../engine/particleemitter.html#FadeIn">FadeIn</a>, <a href="../engine/particleemitter.html#FadeInEndTime">FadeInEndTime</a>, <a href="../engine/particleemitter.html#FadeInFactor">FadeInFactor</a>, <a href="../engine/particleemitter.html#FadeOut">FadeOut</a>, <a href="../engine/particleemitter.html#FadeOutFactor">FadeOutFactor</a>, <a href="../engine/particleemitter.html#FadeOutStartTime">FadeOutStartTime</a>, <a href="../engine/particleemitter.html#ForceMinimumOneFrameLifetime">ForceMinimumOneFrameLifetime</a>, <a href="../engine/particleemitter.html#GetVelocityDirectionFrom">GetVelocityDirectionFrom</a>, <a href="../engine/particleemitter.html#GlobalOffset">GlobalOffset</a>, <a href="../engine/particleemitter.html#Inactive">Inactive</a>, <a href="../engine/particleemitter.html#InactiveTime">InactiveTime</a>, <a href="../engine/particleemitter.html#InheritOwnersVelocity">InheritOwnersVelocity</a>, <a href="../engine/particleemitter.html#InitialDelay">InitialDelay</a>, <a href="../engine/particleemitter.html#InitialDelayRange">InitialDelayRange</a>, <a href="../engine/particleemitter.html#Initialized">Initialized</a>, <a href="../engine/particleemitter.html#InitialParticlesPerSecond">InitialParticlesPerSecond</a>, <a href="../engine/particleemitter.html#InitialTimeRange">InitialTimeRange</a>, <a href="../engine/particleemitter.html#KillPending">KillPending</a>, <a href="../engine/particleemitter.html#LifetimeRange">LifetimeRange</a>, <a href="../engine/particleemitter.html#MaxAbsVelocity">MaxAbsVelocity</a>, <a href="../engine/particleemitter.html#MaxActiveParticles">MaxActiveParticles</a>, <a href="../engine/particleemitter.html#MaxCollisions">MaxCollisions</a>, <a href="../engine/particleemitter.html#MaxParticles">MaxParticles</a>, <a href="../engine/particleemitter.html#MaxSizeScale">MaxSizeScale</a>, <a href="../engine/particleemitter.html#MeshNormal">MeshNormal</a>, <a href="../engine/particleemitter.html#MeshNormalThresholdRange">MeshNormalThresholdRange</a>, <a href="../engine/particleemitter.html#MeshScaleRange">MeshScaleRange</a>, <a href="../engine/particleemitter.html#MeshSpawning">MeshSpawning</a>, <a href="../engine/particleemitter.html#MeshSpawningStaticMesh">MeshSpawningStaticMesh</a>, <a href="../engine/particleemitter.html#MeshVertsAndNormals">MeshVertsAndNormals</a>, <a href="../engine/particleemitter.html#MinSquaredVelocity">MinSquaredVelocity</a>, <a href="../engine/particleemitter.html#Name">Name</a>, <a href="../engine/particleemitter.html#OtherIndex">OtherIndex</a>, <a href="../engine/particleemitter.html#Owner">Owner</a>, <a href="../engine/particleemitter.html#ParticleIndex">ParticleIndex</a>, <a href="../engine/particleemitter.html#Particles">Particles</a>, <a href="../engine/particleemitter.html#ParticlesPerSecond">ParticlesPerSecond</a>, <a href="../engine/particleemitter.html#PPSFraction">PPSFraction</a>, <a href="../engine/particleemitter.html#PS2Data">PS2Data</a>, <a href="../engine/particleemitter.html#RealDisableFogging">RealDisableFogging</a>, <a href="../engine/particleemitter.html#RealExtentMultiplier">RealExtentMultiplier</a>, <a href="../engine/particleemitter.html#RealMeshNormal">RealMeshNormal</a>, <a href="../engine/particleemitter.html#RealVelocityLossRange">RealVelocityLossRange</a>, <a href="../engine/particleemitter.html#RelativeBoneIndexRange">RelativeBoneIndexRange</a>, <a href="../engine/particleemitter.html#RelativeWarmupTime">RelativeWarmupTime</a>, <a href="../engine/particleemitter.html#RenderableParticles">RenderableParticles</a>, <a href="../engine/particleemitter.html#ResetAfterChange">ResetAfterChange</a>, <a href="../engine/particleemitter.html#ResetOnTrigger">ResetOnTrigger</a>, <a href="../engine/particleemitter.html#RespawnDeadParticles">RespawnDeadParticles</a>, <a href="../engine/particleemitter.html#RevolutionCenterOffsetRange">RevolutionCenterOffsetRange</a>, <a href="../engine/particleemitter.html#RevolutionScale">RevolutionScale</a>, <a href="../engine/particleemitter.html#RevolutionScaleRepeats">RevolutionScaleRepeats</a>, <a href="../engine/particleemitter.html#RevolutionsPerSecondRange">RevolutionsPerSecondRange</a>, <a href="../engine/particleemitter.html#RotationDampingFactorRange">RotationDampingFactorRange</a>, <a href="../engine/particleemitter.html#RotationNormal">RotationNormal</a>, <a href="../engine/particleemitter.html#RotationOffset">RotationOffset</a>, <a href="../engine/particleemitter.html#SecondsBeforeInactive">SecondsBeforeInactive</a>, <a href="../engine/particleemitter.html#SizeScale">SizeScale</a>, <a href="../engine/particleemitter.html#SizeScaleRepeats">SizeScaleRepeats</a>, <a href="../engine/particleemitter.html#SkeletalMeshActor">SkeletalMeshActor</a>, <a href="../engine/particleemitter.html#SkeletalScale">SkeletalScale</a>, <a href="../engine/particleemitter.html#Sounds">Sounds</a>, <a href="../engine/particleemitter.html#SpawnAmount">SpawnAmount</a>, <a href="../engine/particleemitter.html#SpawnedVelocityScaleRange">SpawnedVelocityScaleRange</a>, <a href="../engine/particleemitter.html#SpawnFromOtherEmitter">SpawnFromOtherEmitter</a>, <a href="../engine/particleemitter.html#SpawningSound">SpawningSound</a>, <a href="../engine/particleemitter.html#SpawningSoundIndex">SpawningSoundIndex</a>, <a href="../engine/particleemitter.html#SpawningSoundProbability">SpawningSoundProbability</a>, <a href="../engine/particleemitter.html#SpawnOnlyInDirectionOfNormal">SpawnOnlyInDirectionOfNormal</a>, <a href="../engine/particleemitter.html#SpawnOnTriggerPPS">SpawnOnTriggerPPS</a>, <a href="../engine/particleemitter.html#SpawnOnTriggerRange">SpawnOnTriggerRange</a>, <a href="../engine/particleemitter.html#SphereRadiusRange">SphereRadiusRange</a>, <a href="../engine/particleemitter.html#SpinCCWorCW">SpinCCWorCW</a>, <a href="../engine/particleemitter.html#SpinParticles">SpinParticles</a>, <a href="../engine/particleemitter.html#SpinsPerSecondRange">SpinsPerSecondRange</a>, <a href="../engine/particleemitter.html#StartLocationOffset">StartLocationOffset</a>, <a href="../engine/particleemitter.html#StartLocationPolarRange">StartLocationPolarRange</a>, <a href="../engine/particleemitter.html#StartLocationRange">StartLocationRange</a>, <a href="../engine/particleemitter.html#StartLocationShape">StartLocationShape</a>, <a href="../engine/particleemitter.html#StartMassRange">StartMassRange</a>, <a href="../engine/particleemitter.html#StartSizeRange">StartSizeRange</a>, <a href="../engine/particleemitter.html#StartSpinRange">StartSpinRange</a>, <a href="../engine/particleemitter.html#StartVelocityRadialRange">StartVelocityRadialRange</a>, <a href="../engine/particleemitter.html#StartVelocityRange">StartVelocityRange</a>, <a href="../engine/particleemitter.html#SubdivisionEnd">SubdivisionEnd</a>, <a href="../engine/particleemitter.html#SubdivisionScale">SubdivisionScale</a>, <a href="../engine/particleemitter.html#SubdivisionStart">SubdivisionStart</a>, <a href="../engine/particleemitter.html#Texture">Texture</a>, <a href="../engine/particleemitter.html#TextureUSubdivisions">TextureUSubdivisions</a>, <a href="../engine/particleemitter.html#TextureVSubdivisions">TextureVSubdivisions</a>, <a href="../engine/particleemitter.html#TimeTillReset">TimeTillReset</a>, <a href="../engine/particleemitter.html#TriggerDisabled">TriggerDisabled</a>, <a href="../engine/particleemitter.html#UniformMeshScale">UniformMeshScale</a>, <a href="../engine/particleemitter.html#UniformSize">UniformSize</a>, <a href="../engine/particleemitter.html#UniformVelocityScale">UniformVelocityScale</a>, <a href="../engine/particleemitter.html#UseActorForces">UseActorForces</a>, <a href="../engine/particleemitter.html#UseCollision">UseCollision</a>, <a href="../engine/particleemitter.html#UseCollisionPlanes">UseCollisionPlanes</a>, <a href="../engine/particleemitter.html#UseColorFromMesh">UseColorFromMesh</a>, <a href="../engine/particleemitter.html#UseColorScale">UseColorScale</a>, <a href="../engine/particleemitter.html#UseMaxCollisions">UseMaxCollisions</a>, <a href="../engine/particleemitter.html#UseRandomSubdivision">UseRandomSubdivision</a>, <a href="../engine/particleemitter.html#UseRegularSizeScale">UseRegularSizeScale</a>, <a href="../engine/particleemitter.html#UseRevolution">UseRevolution</a>, <a href="../engine/particleemitter.html#UseRevolutionScale">UseRevolutionScale</a>, <a href="../engine/particleemitter.html#UseRotationFrom">UseRotationFrom</a>, <a href="../engine/particleemitter.html#UseSizeScale">UseSizeScale</a>, <a href="../engine/particleemitter.html#UseSkeletalLocationAs">UseSkeletalLocationAs</a>, <a href="../engine/particleemitter.html#UseSpawnedVelocityScale">UseSpawnedVelocityScale</a>, <a href="../engine/particleemitter.html#UseSubdivisionScale">UseSubdivisionScale</a>, <a href="../engine/particleemitter.html#UseVelocityScale">UseVelocityScale</a>, <a href="../engine/particleemitter.html#VelocityFromMesh">VelocityFromMesh</a>, <a href="../engine/particleemitter.html#VelocityLossRange">VelocityLossRange</a>, <a href="../engine/particleemitter.html#VelocityScale">VelocityScale</a>, <a href="../engine/particleemitter.html#VelocityScaleRange">VelocityScaleRange</a>, <a href="../engine/particleemitter.html#VelocityScaleRepeats">VelocityScaleRepeats</a>, <a href="../engine/particleemitter.html#WarmedUp">WarmedUp</a>, <a href="../engine/particleemitter.html#WarmupTicksPerSecond">WarmupTicksPerSecond</a>, <a href="../engine/particleemitter.html#ZTest">ZTest</a>, <a href="../engine/particleemitter.html#ZWrite">ZWrite</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EGetPointAxis" name="EGetPointAxis" title="go to the details">EGetPointAxis</a><br /><span class="small">PAXIS_OwnerX,
+PAXIS_OwnerY,
+PAXIS_OwnerZ,
+PAXIS_BoneNormal,
+PAXIS_StartBoneDirection,
+PAXIS_AxisNormal</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/particleemitter.html">ParticleEmitter</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/particleemitter.html#EBlendMode">EBlendMode</a>, <a href="../engine/particleemitter.html#EParticleCollisionSound">EParticleCollisionSound</a>, <a href="../engine/particleemitter.html#EParticleCoordinateSystem">EParticleCoordinateSystem</a>, <a href="../engine/particleemitter.html#EParticleDrawStyle">EParticleDrawStyle</a>, <a href="../engine/particleemitter.html#EParticleEffectAxis">EParticleEffectAxis</a>, <a href="../engine/particleemitter.html#EParticleMeshSpawning">EParticleMeshSpawning</a>, <a href="../engine/particleemitter.html#EParticleRotationSource">EParticleRotationSource</a>, <a href="../engine/particleemitter.html#EParticleStartLocationShape">EParticleStartLocationShape</a>, <a href="../engine/particleemitter.html#EParticleVelocityDirection">EParticleVelocityDirection</a>, <a href="../engine/particleemitter.html#ESkelLocationUpdate">ESkelLocationUpdate</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_RibbonPoint" name="RibbonPoint" title="go to the details">RibbonPoint</a><br /><span class="small">Location, AxisNormal, Width, Velocity, InterpolatedLocation</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/particleemitter.html">ParticleEmitter</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/particleemitter.html#Particle">Particle</a>, <a href="../engine/particleemitter.html#ParticleColorScale">ParticleColorScale</a>, <a href="../engine/particleemitter.html#ParticleRevolutionScale">ParticleRevolutionScale</a>, <a href="../engine/particleemitter.html#ParticleSound">ParticleSound</a>, <a href="../engine/particleemitter.html#ParticleTimeScale">ParticleTimeScale</a>, <a href="../engine/particleemitter.html#ParticleVelocityScale">ParticleVelocityScale</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/particleemitter.html">ParticleEmitter</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/particleemitter.html#ResetParticles">ResetParticles</a>, <a href="../engine/particleemitter.html#SpawnParticle">SpawnParticle</a>, <a href="../engine/particleemitter.html#Trigger">Trigger</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bDecaying" class="hidden"></a>bDecaying <a href="../Source_engine/ribbonemitter.html#81" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">bool</span> bDecaying;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bKilled" class="hidden"></a>bKilled <a href="../Source_engine/ribbonemitter.html#80" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">bool</span> bKilled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecayTimer" class="hidden"></a>DecayTimer <a href="../Source_engine/ribbonemitter.html#73" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">float</span> DecayTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastNumSplineKnotPoints" class="hidden"></a>LastNumSplineKnotPoints <a href="../Source_engine/ribbonemitter.html#83" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> LastNumSplineKnotPoints;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastSampledPoint" class="hidden"></a>LastSampledPoint <a href="../Source_engine/ribbonemitter.html#78" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type"><a href="../engine/ribbonemitter.html#RibbonPoint" class="source">RibbonPoint</a></span> LastSampledPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastSplineDegree" class="hidden"></a>LastSplineDegree <a href="../Source_engine/ribbonemitter.html#84" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> LastSplineDegree;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RealDecayRate" class="hidden"></a>RealDecayRate <a href="../Source_engine/ribbonemitter.html#75" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">float</span> RealDecayRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RealSampleRate" class="hidden"></a>RealSampleRate <a href="../Source_engine/ribbonemitter.html#74" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">float</span> RealSampleRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonDecayLength" class="hidden"></a>RibbonDecayLength <a href="../Source_engine/ribbonemitter.html#76" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">float</span> RibbonDecayLength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonPoints" class="hidden"></a>RibbonPoints <a href="../Source_engine/ribbonemitter.html#50" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/ribbonemitter.html#RibbonPoint" class="source">RibbonPoint</a></span>&gt; RibbonPoints;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonSplineKnots" class="hidden"></a>RibbonSplineKnots <a href="../Source_engine/ribbonemitter.html#53" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">int</span>&gt; RibbonSplineKnots;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonSplinePoints" class="hidden"></a>RibbonSplinePoints <a href="../Source_engine/ribbonemitter.html#54" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/ribbonemitter.html#RibbonPoint" class="source">RibbonPoint</a></span>&gt; RibbonSplinePoints;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SampleTimer" class="hidden"></a>SampleTimer <a href="../Source_engine/ribbonemitter.html#72" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">float</span> SampleTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SheetsUsed" class="hidden"></a>SheetsUsed <a href="../Source_engine/ribbonemitter.html#77" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> SheetsUsed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Ribbon</h3>
+<h4><a name="_AxisNormal" class="hidden"></a>AxisNormal <a href="../Source_engine/ribbonemitter.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> AxisNormal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDecayPoints" class="hidden"></a>bDecayPoints <a href="../Source_engine/ribbonemitter.html#59" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">bool</span> bDecayPoints;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDecayPointsWhenStopped" class="hidden"></a>bDecayPointsWhenStopped <a href="../Source_engine/ribbonemitter.html#60" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">bool</span> bDecayPointsWhenStopped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMatchPawnVelocity" class="hidden"></a>bMatchPawnVelocity <a href="../Source_engine/ribbonemitter.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">bool</span> bMatchPawnVelocity;</div>
+<blockquote class="comment">
+This will make a sub-emitter match the velocity of the actor to which the parent emitter is attached
+</blockquote>
+<hr class="small" />
+<h4><a name="_bRemainAttachedWhenStopped" class="hidden"></a>bRemainAttachedWhenStopped <a href="../Source_engine/ribbonemitter.html#62" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">bool</span> bRemainAttachedWhenStopped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSamplePoints" class="hidden"></a>bSamplePoints <a href="../Source_engine/ribbonemitter.html#58" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">bool</span> bSamplePoints;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSyncDecayWhenKilled" class="hidden"></a>bSyncDecayWhenKilled <a href="../Source_engine/ribbonemitter.html#61" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">bool</span> bSyncDecayWhenKilled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSyncFadeOutWhenKilled" class="hidden"></a>bSyncFadeOutWhenKilled <a href="../Source_engine/ribbonemitter.html#63" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">bool</span> bSyncFadeOutWhenKilled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecayRate" class="hidden"></a>DecayRate <a href="../Source_engine/ribbonemitter.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">float</span> DecayRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPointAxisFrom" class="hidden"></a>GetPointAxisFrom <a href="../Source_engine/ribbonemitter.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type"><a href="../engine/ribbonemitter.html#EGetPointAxis" class="source">EGetPointAxis</a></span> GetPointAxisFrom;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MinSampleDist" class="hidden"></a>MinSampleDist <a href="../Source_engine/ribbonemitter.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">float</span> MinSampleDist;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MinSampleDot" class="hidden"></a>MinSampleDot <a href="../Source_engine/ribbonemitter.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">float</span> MinSampleDot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumPoints" class="hidden"></a>NumPoints <a href="../Source_engine/ribbonemitter.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">int</span> NumPoints;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PointOriginOffset" class="hidden"></a>PointOriginOffset <a href="../Source_engine/ribbonemitter.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">float</span> PointOriginOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonNumSplinePoints" class="hidden"></a>RibbonNumSplinePoints <a href="../Source_engine/ribbonemitter.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">int</span> RibbonNumSplinePoints;</div>
+<blockquote class="comment">
+if this is 0, then the usual NumPoints are used, otherwise a spline with this many interpolated points is used
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonSplineDegree" class="hidden"></a>RibbonSplineDegree <a href="../Source_engine/ribbonemitter.html#52" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">int</span> RibbonSplineDegree;</div>
+<blockquote class="comment">
+this can be 2, 3, or 4. The spline's polynomial degree is this degree minus one, (i.e., use 4 for a cubic spline or 3 for a quadratic spline.)
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonWidth" class="hidden"></a>RibbonWidth <a href="../Source_engine/ribbonemitter.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">float</span> RibbonWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SampleRate" class="hidden"></a>SampleRate <a href="../Source_engine/ribbonemitter.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">float</span> SampleRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VelocityLeadFactor" class="hidden"></a>VelocityLeadFactor <a href="../Source_engine/ribbonemitter.html#65" class="small">Source code</a></h4>
+<div class="declaration">var(Ribbon) <span class="source_type">float</span> VelocityLeadFactor;</div>
+<blockquote class="comment">
+How much to follow the Pawn's velocity (usually 1.0)
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">RibbonBones</h3>
+<h4><a name="_BoneNameEnd" class="hidden"></a>BoneNameEnd <a href="../Source_engine/ribbonemitter.html#47" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonBones) <span class="source_type">name</span> BoneNameEnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BoneNameStart" class="hidden"></a>BoneNameStart <a href="../Source_engine/ribbonemitter.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonBones) <span class="source_type">name</span> BoneNameStart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseBoneDistance" class="hidden"></a>bUseBoneDistance <a href="../Source_engine/ribbonemitter.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonBones) <span class="source_type">bool</span> bUseBoneDistance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseBones" class="hidden"></a>bUseBones <a href="../Source_engine/ribbonemitter.html#68" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonBones) <span class="source_type">bool</span> bUseBones;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndBoneOffset" class="hidden"></a>EndBoneOffset <a href="../Source_engine/ribbonemitter.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonBones) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> EndBoneOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartBoneOffset" class="hidden"></a>StartBoneOffset <a href="../Source_engine/ribbonemitter.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonBones) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> StartBoneOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">RibbonSheets</h3>
+<h4><a name="_bBillboardSheets" class="hidden"></a>bBillboardSheets <a href="../Source_engine/ribbonemitter.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonSheets) <span class="source_type">bool</span> bBillboardSheets;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseSheetScale" class="hidden"></a>bUseSheetScale <a href="../Source_engine/ribbonemitter.html#67" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonSheets) <span class="source_type">bool</span> bUseSheetScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumSheets" class="hidden"></a>NumSheets <a href="../Source_engine/ribbonemitter.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonSheets) <span class="source_type">int</span> NumSheets;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SheetScale" class="hidden"></a>SheetScale <a href="../Source_engine/ribbonemitter.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonSheets) array&lt;<span class="source_type">float</span>&gt; SheetScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">RibbonTexture</h3>
+<h4><a name="_bLengthBasedTextureU" class="hidden"></a>bLengthBasedTextureU <a href="../Source_engine/ribbonemitter.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonTexture) <span class="source_type">bool</span> bLengthBasedTextureU;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonTextureUScale" class="hidden"></a>RibbonTextureUScale <a href="../Source_engine/ribbonemitter.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonTexture) <span class="source_type">float</span> RibbonTextureUScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RibbonTextureVScale" class="hidden"></a>RibbonTextureVScale <a href="../Source_engine/ribbonemitter.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(RibbonTexture) <span class="source_type">float</span> RibbonTextureVScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EGetPointAxis" class="hidden"></a>EGetPointAxis <a href="../Source_engine/ribbonemitter.html#13" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/ribbonemitter.html#EGetPointAxis" class="source">EGetPointAxis</a></span><br />
+{<blockquote>PAXIS_OwnerX,
+PAXIS_OwnerY,
+PAXIS_OwnerZ,
+PAXIS_BoneNormal,
+PAXIS_StartBoneDirection,
+PAXIS_AxisNormal</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_RibbonPoint" class="hidden"></a>RibbonPoint <a href="../Source_engine/ribbonemitter.html#4" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../engine/ribbonemitter.html#RibbonPoint" class="source">RibbonPoint</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../engine/ribbonemitter.html" class="source">RibbonEmitter</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> AxisNormal;<br />
+var(<span class="source_type"><a href="../engine/ribbonemitter.html" class="source">RibbonEmitter</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> InterpolatedLocation;<br />
+var(<span class="source_type"><a href="../engine/ribbonemitter.html" class="source">RibbonEmitter</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Location;<br />
+var(<span class="source_type"><a href="../engine/ribbonemitter.html" class="source">RibbonEmitter</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Velocity;<br />
+var(<span class="source_type"><a href="../engine/ribbonemitter.html" class="source">RibbonEmitter</a></span>) <span class="source_type">float</span> Width;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	NumPoints=<span class="source_int">20</span>
+
+	RibbonNumSplinePoints=<span class="source_int">0</span>
+	RibbonSplineDegree=<span class="source_int">3</span>
+
+	DecayRate=<span class="source_int">0.25</span>
+	SampleRate=<span class="source_int">0.05</span>
+	MaxParticles=<span class="source_int">1</span>
+	RibbonWidth=<span class="source_int">20.0</span>
+	bSamplePoints=True
+	RibbonTextureUScale=<span class="source_int">1.0</span>
+	RibbonTextureVScale=<span class="source_int">1.0</span>
+	AxisNormal=(Z=<span class="source_int">1.0</span>)
+	AutomaticInitialSpawning=False
+	GetPointAxisFrom=PAXIS_AxisNormal
+	StartSizeRange=(X=(Min=<span class="source_int">1</span>,Max=<span class="source_int">1</span>),<span class="source_type">Y</span>=(Min=<span class="source_int">1</span>,Max=<span class="source_int">1</span>),Z=(Min=<span class="source_int">1</span>,Max=<span class="source_int">1</span>))
+	UseRegularSizeScale=False
+	InitialParticlesPerSecond=<span class="source_int">10000</span>
+	PointOriginOffset=<span class="source_int">0.5</span>
+	bDecayPoints=True
+	bDecayPointsWhenStopped=False
+	MinSampleDist=<span class="source_int">1.0</span>
+	MinSampleDot=<span class="source_int">0.995</span>
+	bUseBones=False
+	ZWrite=False
+	bLengthBasedTextureU=False
+
+    bMatchPawnVelocity=True
+    VelocityLeadFactor=<span class="source_int">1.0</span>
+    LastNumSplineKnotPoints=-<span class="source_int">1</span>
+    LastSplineDegree=-<span class="source_int">1</span>
+
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/ribbonemitter.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#RibbonEmitter">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/replicationinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/savedmove.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:34.195 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

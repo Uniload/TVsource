@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Tyrion.AI_VehiclePatrol</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_vehiclepatrol.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_VehiclePatrol">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_vehiclemovetogoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_vehiclepatrolgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tyrion/ai_vehiclepatrol.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.AI_VehiclePatrol</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tyrion/ai_driveraction.html">AI_DriverAction</a></dd>
+<dt>Modifiers</dt><dd>editinlinenew </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/tyrion_actionbase.html">Tyrion_ActionBase</a>
+      |   
+      +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a>
+         |   
+         +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_runnableaction.html">AI_RunnableAction</a>
+            |   
+            +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_action.html">AI_Action</a>
+               |   
+               +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_driveraction.html">AI_DriverAction</a>
+                  |   
+                  +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_vehiclepatrol.html">AI_VehiclePatrol</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/rook.html">Rook</a></td><td width="66%"><a href="#_attackTarget" name="attackTarget" title="go to the details">attackTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_closestDistSquared" name="closestDistSquared" title="go to the details">closestDistSquared</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_closestIndex" name="closestIndex" title="go to the details">closestIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_distSquared" name="distSquared" title="go to the details">distSquared</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/actionbase.html#ACT_ErrorCodes">ACT_ErrorCodes</a></td><td width="66%"><a href="#_errorCode" name="errorCode" title="go to the details">errorCode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_node" name="node" title="go to the details">node</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_patrolIndex" name="patrolIndex" title="go to the details">patrolIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../core/object.html#Vector">Vector</a>&gt;</td><td width="66%"><a href="#_patrolPoints" name="patrolPoints" title="go to the details">patrolPoints</a></td></tr>
+<tr><th colspan="2" class="small">Parameters</th></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_attackTargetName" name="attackTargetName" title="go to the details">attackTargetName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bExecuteOnce" name="bExecuteOnce" title="go to the details">bExecuteOnce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_desiredSpeed" name="desiredSpeed" title="go to the details">desiredSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;Name&gt;</td><td width="66%"><a href="#_patrolPointNames" name="patrolPointNames" title="go to the details">patrolPointNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_skipIntermediateNodes" name="skipIntermediateNodes" title="go to the details">skipIntermediateNodes</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_action.html">AI_Action</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ai_action.html#achievingGoal">achievingGoal</a>, <a href="../tyrion/ai_action.html#childGoals">childGoals</a>, <a href="../tyrion/ai_action.html#heuristicValue">heuristicValue</a>, <a href="../tyrion/ai_action.html#nsChild">nsChild</a>, <a href="../tyrion/ai_action.html#resourceUsage">resourceUsage</a>, <a href="../tyrion/ai_action.html#satisfiesGoal">satisfiesGoal</a>, <a href="../tyrion/ai_action.html#waitingForGoalsN">waitingForGoalsN</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_actionFailedCB-" name="actionFailedCB" title="go to the details">actionFailedCB</a> (<a href="../tyrion/ns_action.html">NS_Action</a> child, ACT_ErrorCodes anErrorCode ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_actionSucceededCB-" name="actionSucceededCB" title="go to the details">actionSucceededCB</a> (NS_Action child ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_cleanup-" name="cleanup" title="go to the details">cleanup</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_driveraction.html">AI_DriverAction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ai_driveraction.html#classConstruct">classConstruct</a>, <a href="../tyrion/ai_driveraction.html#findResource">findResource</a>, <a href="../tyrion/ai_driveraction.html#getResourceClass">getResourceClass</a>, <a href="../tyrion/ai_driveraction.html#rook">rook</a>, <a href="../tyrion/ai_driveraction.html#runAction">runAction</a>, <a href="../tyrion/ai_driveraction.html#vehicle">vehicle</a>, <a href="../tyrion/ai_driveraction.html#vehicleResource">vehicleResource</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_action.html">AI_Action</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ai_action.html#fail">fail</a>, <a href="../tyrion/ai_action.html#getChildReference">getChildReference</a>, <a href="../tyrion/ai_action.html#getResource">getResource</a>, <a href="../tyrion/ai_action.html#goalAchievedCB">goalAchievedCB</a>, <a href="../tyrion/ai_action.html#goalNotAchievedCB">goalNotAchievedCB</a>, <a href="../tyrion/ai_action.html#initAction">initAction</a>, <a href="../tyrion/ai_action.html#instantFail">instantFail</a>, <a href="../tyrion/ai_action.html#instantSucceed">instantSucceed</a>, <a href="../tyrion/ai_action.html#interruptAction">interruptAction</a>, <a href="../tyrion/ai_action.html#interruptGoalIf">interruptGoalIf</a>, <a href="../tyrion/ai_action.html#myAddRef">myAddRef</a>, <a href="../tyrion/ai_action.html#OnSensorMessage">OnSensorMessage</a>, <a href="../tyrion/ai_action.html#removeAction">removeAction</a>, <a href="../tyrion/ai_action.html#removeChildReference">removeChildReference</a>, <a href="../tyrion/ai_action.html#resourceStolenCB">resourceStolenCB</a>, <a href="../tyrion/ai_action.html#runAction">runAction</a>, <a href="../tyrion/ai_action.html#selectionHeuristic">selectionHeuristic</a>, <a href="../tyrion/ai_action.html#setChildReference">setChildReference</a>, <a href="../tyrion/ai_action.html#succeed">succeed</a>, <a href="../tyrion/ai_action.html#waitForAllGoals">waitForAllGoals</a>, <a href="../tyrion/ai_action.html#waitForAllGoalsConsidered">waitForAllGoalsConsidered</a>, <a href="../tyrion/ai_action.html#waitForAllGoalsInList">waitForAllGoalsInList</a>, <a href="../tyrion/ai_action.html#waitForAnyGoal">waitForAnyGoal</a>, <a href="../tyrion/ai_action.html#waitForGoal">waitForGoal</a>, <a href="../tyrion/ai_action.html#waitForResourcesAvailable">waitForResourcesAvailable</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Running <a href="../Source_tyrion/ai_vehiclepatrol.html#64" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Running <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_attackTarget" class="hidden"></a>attackTarget <a href="../Source_tyrion/ai_vehiclepatrol.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> attackTarget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_closestDistSquared" class="hidden"></a>closestDistSquared <a href="../Source_tyrion/ai_vehiclepatrol.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> closestDistSquared;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_closestIndex" class="hidden"></a>closestIndex <a href="../Source_tyrion/ai_vehiclepatrol.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> closestIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_distSquared" class="hidden"></a>distSquared <a href="../Source_tyrion/ai_vehiclepatrol.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> distSquared;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_errorCode" class="hidden"></a>errorCode <a href="../Source_tyrion/ai_vehiclepatrol.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">errorCode</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_node" class="hidden"></a>node <a href="../Source_tyrion/ai_vehiclepatrol.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> node;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_patrolIndex" class="hidden"></a>patrolIndex <a href="../Source_tyrion/ai_vehiclepatrol.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> patrolIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_patrolPoints" class="hidden"></a>patrolPoints <a href="../Source_tyrion/ai_vehiclepatrol.html#19" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>&gt; patrolPoints;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Parameters</h3>
+<h4><a name="_attackTargetName" class="hidden"></a>attackTargetName <a href="../Source_tyrion/ai_vehiclepatrol.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) editinline <span class="source_type">Name</span> attackTargetName;</div>
+<blockquote class="comment">
+keep oriented towards this rook to be able to shoot at it (currently only used by the Pod)
+</blockquote>
+<hr class="small" />
+<h4><a name="_bExecuteOnce" class="hidden"></a>bExecuteOnce <a href="../Source_tyrion/ai_vehiclepatrol.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type">bool</span> bExecuteOnce;</div>
+<blockquote class="comment">
+Go through the patrol nodes just once
+</blockquote>
+<hr class="small" />
+<h4><a name="_desiredSpeed" class="hidden"></a>desiredSpeed <a href="../Source_tyrion/ai_vehiclepatrol.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) editinline <span class="source_type">float</span> desiredSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_patrolPointNames" class="hidden"></a>patrolPointNames <a href="../Source_tyrion/ai_vehiclepatrol.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) editconst array&lt;<span class="source_type">Name</span>&gt; patrolPointNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_skipIntermediateNodes" class="hidden"></a>skipIntermediateNodes <a href="../Source_tyrion/ai_vehiclepatrol.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(Parameters) <span class="source_type">bool</span> skipIntermediateNodes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_actionFailedCB-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> actionFailedCB <span class="function_state"></span> <a href="../Source_tyrion/ai_vehiclepatrol.html#38" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  actionFailedCB ( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span>, <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">anErrorCode</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_actionSucceededCB-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> actionSucceededCB <span class="function_state"></span> <a href="../Source_tyrion/ai_vehiclepatrol.html#32" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  actionSucceededCB ( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cleanup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> cleanup <span class="function_state"></span> <a href="../Source_tyrion/ai_vehiclepatrol.html#46" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  cleanup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	satisfiesGoal = <span class="source_type">class</span><span class="source_name">'AI_VehiclePatrolGoal'</span>
+
+	closestDistSquared = <span class="source_int">99999999999999.9f</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_vehiclepatrol.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_VehiclePatrol">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_vehiclemovetogoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_vehiclepatrolgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:27.938 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>
