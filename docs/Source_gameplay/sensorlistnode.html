@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.SensorListNode</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/sensorlistnode.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#SensorListNode">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/sensordeployable.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/sensortower.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/sensorlistnode.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/sensorlistnode.html">SensorListNode</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200
+</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/sensorlistnode.html" class="source">SensorListNode</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>;
+<a name="2"></a>
+<a name="3"></a><span class="source_comment">// Not replicated, only valid on server! This is used on the server
+</span><a name="4"></a><span class="source_comment">// to match SensorListNodes to the rook they represent.
+</span><a name="5"></a>var <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> sensedRook;
+<a name="6"></a>var <span class="source_type">class</span> sensedRookClass;
+<a name="7"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; sensedRookTeamClass;
+<a name="8"></a>
+<a name="9"></a>var <span class="source_type">bool</span> relevantLastUpdate;
+<a name="10"></a>
+<a name="11"></a>var <span class="source_type"><a href="../gameplay/sensorlistnode.html" class="source">SensorListNode</a></span> next;
+<a name="12"></a>
+<a name="13"></a><span class="source_comment">// Not replicated, only valid on server! The client only ever reads
+</span><a name="14"></a><span class="source_comment">// this list from beginning to end, so only needs the next property
+</span><a name="15"></a>var <span class="source_type"><a href="../gameplay/sensorlistnode.html" class="source">SensorListNode</a></span> prev;	
+<a name="16"></a>
+<a name="17"></a>enum <span class="source_type"><a href="../gameplay/sensorlistnode.html#EHeightDiff" class="source">EHeightDiff</a></span>
+<a name="18"></a>{
+<a name="19"></a>	HD_ABOVE,
+<a name="20"></a>	HD_LEVEL,
+<a name="21"></a>	HD_BELOW
+<a name="22"></a>};
+<a name="23"></a>
+<a name="24"></a>var private <span class="source_type"><a href="../gameplay/sensorlistnode.html#EHeightDiff" class="source">EHeightDiff</a></span> height;
+<a name="25"></a>
+<a name="26"></a>var <span class="source_type">byte</span> xPosition;
+<a name="27"></a>var <span class="source_type">byte</span> yPosition;
+<a name="28"></a>
+<a name="29"></a>var <span class="source_type">byte</span> localX;
+<a name="30"></a>var <span class="source_type">byte</span> localY;
+<a name="31"></a>
+<a name="32"></a>var <span class="source_type">float</span> xTime;
+<a name="33"></a>var <span class="source_type">float</span> yTime;
+<a name="34"></a>
+<a name="35"></a>var <span class="source_type">float</span> lastUpdateTimeX;
+<a name="36"></a>var <span class="source_type">float</span> lastUpdateTimeY;
+<a name="37"></a>
+<a name="38"></a>var <span class="source_type">float</span> xPos;
+<a name="39"></a>var <span class="source_type">float</span> yPos;
+<a name="40"></a>var <span class="source_type">float</span> xOld;
+<a name="41"></a>var <span class="source_type">float</span> yOld;
+<a name="42"></a>var <span class="source_type">float</span> xNew;
+<a name="43"></a>var <span class="source_type">float</span> yNew;
+<a name="44"></a>
+<a name="45"></a>replication
+<a name="46"></a>{
+<a name="47"></a>	reliable if (Role == ROLE_Authority && bNetOwner)
+<a name="48"></a>		relevantLastUpdate, next, sensedRookClass, sensedRookTeamClass, height, xPosition, yPosition;
+<a name="49"></a>}
+<a name="50"></a>
+<a name="51"></a>overloaded <span class="source_type">function</span> construct(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> _owner, <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> _sensedRook)
+<a name="52"></a>{
+<a name="53"></a>	super.construct(_owner);
+<a name="54"></a>
+<a name="55"></a>	set(_sensedRook);
+<a name="56"></a>}
+<a name="57"></a>
+<a name="58"></a>simulated <span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="59"></a>{
+<a name="60"></a>	local <span class="source_type">float</span> mapExtent;
+<a name="61"></a>
+<a name="62"></a>	if (<span class="source_type">Level</span>.NetMode == NM_DedicatedServer)
+<a name="63"></a>		return;
+<a name="64"></a>
+<a name="65"></a>	mapExtent = <span class="source_type">Level</span>.GetMapTextureExtent();
+<a name="66"></a>
+<a name="67"></a>	if (xPosition != localX)
+<a name="68"></a>	{
+<a name="69"></a>		xTime = <span class="source_int">0.0</span>;
+<a name="70"></a>			
+<a name="71"></a>		xNew = (<span class="source_type">float</span>(xPosition) / <span class="source_int">255.0</span>) * mapExtent - (mapExtent * <span class="source_int">0.5</span>);
+<a name="72"></a>
+<a name="73"></a>		xNew += <span class="source_type">Level</span>.GetMapTextureOrigin().X;
+<a name="74"></a>
+<a name="75"></a>		if (<span class="source_type">Level</span>.TimeSeconds - lastUpdateTimeX &gt; <span class="source_int">2.0</span>) <span class="source_comment">// Snap if we haven't received an update recently
+</span><a name="76"></a>			xOld = xNew;
+<a name="77"></a>		else
+<a name="78"></a>			xOld = xPos;
+<a name="79"></a>
+<a name="80"></a>		localX = xPosition;
+<a name="81"></a>
+<a name="82"></a>		lastUpdateTimeX = <span class="source_type">Level</span>.TimeSeconds;
+<a name="83"></a>	}
+<a name="84"></a>
+<a name="85"></a>	if (yPosition != localY)
+<a name="86"></a>	{
+<a name="87"></a>		yTime = <span class="source_int">0.0</span>;
+<a name="88"></a>
+<a name="89"></a>		yNew = (<span class="source_type">float</span>(yPosition) / <span class="source_int">255.0</span>) * mapExtent - (mapExtent * <span class="source_int">0.5</span>);
+<a name="90"></a>
+<a name="91"></a>		yNew += <span class="source_type">Level</span>.GetMapTextureOrigin().<span class="source_type">Y</span>;
+<a name="92"></a>
+<a name="93"></a>		if (<span class="source_type">Level</span>.TimeSeconds - lastUpdateTimeY &gt; <span class="source_int">2.0</span>) <span class="source_comment">// Snap if we haven't received an update recently
+</span><a name="94"></a>			yOld = yNew;
+<a name="95"></a>		else
+<a name="96"></a>			yOld = yPos;
+<a name="97"></a>
+<a name="98"></a>		localY = yPosition;
+<a name="99"></a>
+<a name="100"></a>		lastUpdateTimeY = <span class="source_type">Level</span>.TimeSeconds;
+<a name="101"></a>	}
+<a name="102"></a>
+<a name="103"></a>	if (xTime &lt; <span class="source_int">0.5</span>)
+<a name="104"></a>	{
+<a name="105"></a>		xPos = Lerp(xTime / <span class="source_int">0.5</span>, xOld, xNew);
+<a name="106"></a>		xTime += <span class="source_type">Delta</span>;
+<a name="107"></a>	}
+<a name="108"></a>
+<a name="109"></a>	if (yTime &lt; <span class="source_int">0.5</span>)
+<a name="110"></a>	{
+<a name="111"></a>		yPos = Lerp(yTime / <span class="source_int">0.5</span>, yOld, yNew);
+<a name="112"></a>		yTime += <span class="source_type">Delta</span>;
+<a name="113"></a>	}
+<a name="114"></a>}
+<a name="115"></a>
+<a name="116"></a><span class="source_type">function</span> update()
+<a name="117"></a>{
+<a name="118"></a>	local <span class="source_type">bool</span> isRelevant;
+<a name="119"></a>
+<a name="120"></a>	isRelevant = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">Owner</span>).isRookRelevant(sensedRook);
+<a name="121"></a>
+<a name="122"></a>	if (isRelevant || relevantLastUpdate)
+<a name="123"></a>		updateWhenRelevant();
+<a name="124"></a>
+<a name="125"></a>	relevantLastUpdate = isRelevant;
+<a name="126"></a>
+<a name="127"></a>	sensedRook.sensorUpdateFlag = true;
+<a name="128"></a>}
+<a name="129"></a>
+<a name="130"></a>protected <span class="source_type">function</span> updateWhenRelevant()
+<a name="131"></a>{
+<a name="132"></a>	local <span class="source_type">int</span> intHeight;
+<a name="133"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> mapSpaceLocation;
+<a name="134"></a>	local <span class="source_type">float</span> mapExtent;
+<a name="135"></a>	local <span class="source_type">float</span> halfMapExtent;
+<a name="136"></a>
+<a name="137"></a>	intHeight = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">Owner</span>).calculateHeight(sensedRook.Location.Z);
+<a name="138"></a>
+<a name="139"></a>	if (intHeight == <span class="source_int">1</span>)
+<a name="140"></a>		height = HD_ABOVE;
+<a name="141"></a>	else if (intHeight == -<span class="source_int">1</span>)
+<a name="142"></a>		height = HD_BELOW;
+<a name="143"></a>	else
+<a name="144"></a>		height = HD_LEVEL;
+<a name="145"></a>
+<a name="146"></a>	mapSpaceLocation = sensedRook.Location - <span class="source_type">Level</span>.GetMapTextureOrigin();
+<a name="147"></a>
+<a name="148"></a>	mapExtent = <span class="source_type">Level</span>.GetMapTextureExtent();
+<a name="149"></a>	halfMapExtent = mapExtent * <span class="source_int">0.5</span>;
+<a name="150"></a>
+<a name="151"></a>	xPosition = <span class="source_type">byte</span>(((mapSpaceLocation.X + halfMapExtent) / mapExtent) * <span class="source_int">255.0</span> + <span class="source_int">0.5</span>);
+<a name="152"></a>	yPosition = <span class="source_type">byte</span>(((mapSpaceLocation.<span class="source_type">Y</span> + halfMapExtent) / mapExtent) * <span class="source_int">255.0</span> + <span class="source_int">0.5</span>);
+<a name="153"></a>}
+<a name="154"></a>
+<a name="155"></a><span class="source_type">function</span> set(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> newRook)
+<a name="156"></a>{
+<a name="157"></a>	sensedRook = newRook;
+<a name="158"></a>	sensedRookClass = sensedRook.GetRadarInfoClass();
+<a name="159"></a>	sensedRookTeamClass = sensedRook.team().<span class="source_type">class</span>;
+<a name="160"></a>
+<a name="161"></a>	updateWhenRelevant();
+<a name="162"></a>}
+<a name="163"></a>
+<a name="164"></a><span class="source_type">function</span> detachNode()
+<a name="165"></a>{
+<a name="166"></a>	if (prev != None)
+<a name="167"></a>		prev.next = next;
+<a name="168"></a>
+<a name="169"></a>	if (next != None)
+<a name="170"></a>		next.prev = prev;
+<a name="171"></a>}
+<a name="172"></a>
+<a name="173"></a>simulated <span class="source_type">function</span> <span class="source_type">int</span> getHeight()
+<a name="174"></a>{
+<a name="175"></a>	if (height == HD_ABOVE)
+<a name="176"></a>		return <span class="source_int">1</span>;
+<a name="177"></a>	else if (height == HD_BELOW)
+<a name="178"></a>		return -<span class="source_int">1</span>;
+<a name="179"></a>
+<a name="180"></a>	return <span class="source_int">0</span>;
+<a name="181"></a>}
+<a name="182"></a>
+<a name="183"></a>simulated <span class="source_type">function</span> <span class="source_type">float</span> getXPosition()
+<a name="184"></a>{
+<a name="185"></a>	return xPos;
+<a name="186"></a>}
+<a name="187"></a>
+<a name="188"></a>simulated <span class="source_type">function</span> <span class="source_type">float</span> getYPosition()
+<a name="189"></a>{
+<a name="190"></a>	return yPos;
+<a name="191"></a>}
+<a name="192"></a>
+<a name="193"></a>defaultproperties
+<a name="194"></a>{
+<a name="195"></a>	RemoteRole = ROLE_SimulatedProxy
+<a name="196"></a>	bOnlyRelevantToOwner = true
+<a name="197"></a>	bReplicateMovement = false
+<a name="198"></a>
+<a name="199"></a>	bHidden = true
+<a name="200"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/sensorlistnode.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#SensorListNode">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/sensordeployable.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/sensortower.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: èt 9.9.2004 16:25:32.000 - Creation time: st 23.5.2018 00:10:46.886 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

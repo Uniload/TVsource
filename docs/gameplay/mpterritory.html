@@ -1,0 +1,905 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.MPTerritory</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/mpterritory.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MPTerritory">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/mpteamscoredecoration.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mpterritorymessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/mpterritory.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.MPTerritory</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/mparea.html">MPArea</a></dd>
+<dt>Modifiers</dt><dd>implements IRepairClient </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpterritory.html">MPTerritory</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bConquered" name="bConquered" title="go to the details">bConquered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bConquering" name="bConquering" title="go to the details">bConquering</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bContesting" name="bContesting" title="go to the details">bContesting</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDelayPermanentConquer" name="bDelayPermanentConquer" title="go to the details">bDelayPermanentConquer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIdle" name="bIdle" title="go to the details">bIdle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalConquered" name="bLocalConquered" title="go to the details">bLocalConquered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalConquering" name="bLocalConquering" title="go to the details">bLocalConquering</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalContesting" name="bLocalContesting" title="go to the details">bLocalContesting</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalIdle" name="bLocalIdle" title="go to the details">bLocalIdle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bReconquerable" name="bReconquerable" title="go to the details">bReconquerable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bReconquerNeedsPlayers" name="bReconquerNeedsPlayers" title="go to the details">bReconquerNeedsPlayers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/teaminfo.html">TeamInfo</a></td><td width="66%"><a href="#_conqueringTeam" name="conqueringTeam" title="go to the details">conqueringTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_currentConqueringTime" name="currentConqueringTime" title="go to the details">currentConqueringTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/teaminfo.html">TeamInfo</a></td><td width="66%"><a href="#_ownerTeam" name="ownerTeam" title="go to the details">ownerTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/teaminfo.html">TeamInfo</a></td><td width="66%"><a href="#_previousOwnerTeam" name="previousOwnerTeam" title="go to the details">previousOwnerTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/repairradius.html">RepairRadius</a></td><td width="66%"><a href="#_rr" name="rr" title="go to the details">rr</a></td></tr>
+<tr><th colspan="2" class="small">EffectEvents</th></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_conqueredEffectEvent" name="conqueredEffectEvent" title="go to the details">conqueredEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_conqueringEffectEvent" name="conqueringEffectEvent" title="go to the details">conqueringEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_contestingEffectEvent" name="contestingEffectEvent" title="go to the details">contestingEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_idleEffectEvent" name="idleEffectEvent" title="go to the details">idleEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_startedConqueringEffectEvent" name="startedConqueringEffectEvent" title="go to the details">startedConqueringEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_startedContestingEffectEvent" name="startedContestingEffectEvent" title="go to the details">startedContestingEffectEvent</a></td></tr>
+<tr><th colspan="2" class="small">MPTerritory</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bConquerOnce" name="bConquerOnce" title="go to the details">bConquerOnce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_conquerInterval" name="conquerInterval" title="go to the details">conquerInterval</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_conquerTime" name="conquerTime" title="go to the details">conquerTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_individualConquerBonusScale" name="individualConquerBonusScale" title="go to the details">individualConquerBonusScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_minimumConquerers" name="minimumConquerers" title="go to the details">minimumConquerers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/baseinfo.html">BaseInfo</a></td><td width="66%"><a href="#_ownerBase" name="ownerBase" title="go to the details">ownerBase</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_socketTarget" name="socketTarget" title="go to the details">socketTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_teamConquerScore" name="teamConquerScore" title="go to the details">teamConquerScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/localmessage.html">Engine.LocalMessage</a>&gt;</td><td width="66%"><a href="#_TerritoryMessageClass" name="TerritoryMessageClass" title="go to the details">TerritoryMessageClass</a></td></tr>
+<tr><th colspan="2" class="small">Skins</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_conqueringSkin" name="conqueringSkin" title="go to the details">conqueringSkin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_contestedSkin" name="contestedSkin" title="go to the details">contestedSkin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_idleSkin" name="idleSkin" title="go to the details">idleSkin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_titleSkinIndex" name="titleSkinIndex" title="go to the details">titleSkinIndex</a></td></tr>
+<tr><th colspan="2" class="small">Stats</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/stat.html">Stat</a>&gt;</td><td width="66%"><a href="#_conquerStat" name="conquerStat" title="go to the details">conquerStat</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mparea.html#areaOffset">areaOffset</a>, <a href="../gameplay/mparea.html#areaTrigger">areaTrigger</a>, <a href="../gameplay/mparea.html#areaTriggerClass">areaTriggerClass</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mpactor.html#attackRadius">attackRadius</a>, <a href="../gameplay/mpactor.html#attackStat">attackStat</a>, <a href="../gameplay/mpactor.html#bAllowSpectators">bAllowSpectators</a>, <a href="../gameplay/mpactor.html#defendRadius">defendRadius</a>, <a href="../gameplay/mpactor.html#defendStat">defendStat</a>, <a href="../gameplay/mpactor.html#idleAnim">idleAnim</a>, <a href="../gameplay/mpactor.html#localizedName">localizedName</a>, <a href="../gameplay/mpactor.html#primaryEnemyObjectiveDesc">primaryEnemyObjectiveDesc</a>, <a href="../gameplay/mpactor.html#primaryFriendlyObjectiveDesc">primaryFriendlyObjectiveDesc</a>, <a href="../gameplay/mpactor.html#primaryNeutralObjectiveDesc">primaryNeutralObjectiveDesc</a>, <a href="../gameplay/mpactor.html#secondaryMessageClass">secondaryMessageClass</a>, <a href="../gameplay/mpactor.html#spectatorList">spectatorList</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_allocatePoints-Conquering" name="allocatePoints" title="go to the details">allocatePoints</a> ()))<br /><span class="function_state">Conquering</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_beginRepair-" name="beginRepair" title="go to the details">beginRepair</a> (<a href="../gameplay/rook.html">Rook</a> r))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-AwaitingTeammates" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">AwaitingTeammates</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Conquered" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Conquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Conquering" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Conquering</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Contested" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Contested</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Ownerless" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Ownerless</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-PermanentlyConquered" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">PermanentlyConquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canRepair-" name="canRepair" title="go to the details">canRepair</a> (<a href="../gameplay/rook.html">Rook</a> r))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canRepair-Conquered" name="canRepair" title="go to the details">canRepair</a> ()))<br /><span class="function_state">Conquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canRepair-PermanentlyConquered" name="canRepair" title="go to the details">canRepair</a> ()))<br /><span class="function_state">PermanentlyConquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canStartFXTendril-" name="canStartFXTendril" title="go to the details">canStartFXTendril</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_cleanup-" name="cleanup" title="go to the details">cleanup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_destroyed-" name="destroyed" title="go to the details">destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_determineInitialState-Ownerless" name="determineInitialState" title="go to the details">determineInitialState</a> ()))<br /><span class="function_state">Ownerless</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_endRepair-" name="endRepair" title="go to the details">endRepair</a> (<a href="../gameplay/rook.html">Rook</a> r))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Conquered" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Conquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Conquering" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Conquering</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Contested" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Contested</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Ownerless" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Ownerless</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_enumBaseInfo-" name="enumBaseInfo" title="go to the details">enumBaseInfo</a> (<a href="../engine/levelinfo.html">Engine.LevelInfo</a> l, Array&lt;<a href="../gameplay/baseinfo.html">BaseInfo</a>&gt; a))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/pawn.html">Pawn</a>&nbsp;</td><td><a href="#_getFXOriginActor-" name="getFXOriginActor" title="go to the details">getFXOriginActor</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_getFXTendrilOrigin-" name="getFXTendrilOrigin" title="go to the details">getFXTendrilOrigin</a> (<a href="../core/object.html#Vector">Vector</a> targetPos))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_getFXTendrilTarget-" name="getFXTendrilTarget" title="go to the details">getFXTendrilTarget</a> (<a href="../engine/actor.html">Actor</a> target))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_getRepairRadius-" name="getRepairRadius" title="go to the details">getRepairRadius</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaEntered-" name="OnAreaEntered" title="go to the details">OnAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaEntered-AwaitingTeammates" name="OnAreaEntered" title="go to the details">OnAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">AwaitingTeammates</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaEntered-Conquered" name="OnAreaEntered" title="go to the details">OnAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Conquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaEntered-Conquering" name="OnAreaEntered" title="go to the details">OnAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Conquering</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaEntered-Ownerless" name="OnAreaEntered" title="go to the details">OnAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Ownerless</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaEntered-PermanentlyConquered" name="OnAreaEntered" title="go to the details">OnAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">PermanentlyConquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaExited-" name="OnAreaExited" title="go to the details">OnAreaExited</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaExited-Conquering" name="OnAreaExited" title="go to the details">OnAreaExited</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Conquering</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaExited-Contested" name="OnAreaExited" title="go to the details">OnAreaExited</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">Contested</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaExited-PermanentlyConquered" name="OnAreaExited" title="go to the details">OnAreaExited</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state">PermanentlyConquered</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaTick-" name="OnAreaTick" title="go to the details">OnAreaTick</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaTick-Conquering" name="OnAreaTick" title="go to the details">OnAreaTick</a> ()))<br /><span class="function_state">Conquering</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnConquered-" name="OnConquered" title="go to the details">OnConquered</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onTendrilCreate-" name="onTendrilCreate" title="go to the details">onTendrilCreate</a> (<a href="../gameplay/repairtendril.html">RepairTendril</a> t))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetReceive-" name="PostNetReceive" title="go to the details">PostNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setSkin-" name="setSkin" title="go to the details">setSkin</a> (<a href="../engine/material.html">Material</a> skin))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setTeam-" name="setTeam" title="go to the details">setTeam</a> (<a href="../gameplay/teaminfo.html">TeamInfo</a> t))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_shouldInteractWith-" name="shouldInteractWith" title="go to the details">shouldInteractWith</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateEffects-" name="updateEffects" title="go to the details">updateEffects</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mparea.html#cleanup">cleanup</a>, <a href="../gameplay/mparea.html#OnAreaEntered">OnAreaEntered</a>, <a href="../gameplay/mparea.html#OnAreaEnteredByActor">OnAreaEnteredByActor</a>, <a href="../gameplay/mparea.html#OnAreaExited">OnAreaExited</a>, <a href="../gameplay/mparea.html#OnAreaExitedByActor">OnAreaExitedByActor</a>, <a href="../gameplay/mparea.html#OnAreaTick">OnAreaTick</a>, <a href="../gameplay/mparea.html#PostBeginPlay">PostBeginPlay</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mpactor.html#addDefaultObjectives">addDefaultObjectives</a>, <a href="../gameplay/mpactor.html#addEnemyObjective">addEnemyObjective</a>, <a href="../gameplay/mpactor.html#addFriendlyObjective">addFriendlyObjective</a>, <a href="../gameplay/mpactor.html#addNeutralObjective">addNeutralObjective</a>, <a href="../gameplay/mpactor.html#addSpectator">addSpectator</a>, <a href="../gameplay/mpactor.html#awardStat">awardStat</a>, <a href="../gameplay/mpactor.html#cleanup">cleanup</a>, <a href="../gameplay/mpactor.html#contractLattice">contractLattice</a>, <a href="../gameplay/mpactor.html#evaluateObjectiveState">evaluateObjectiveState</a>, <a href="../gameplay/mpactor.html#expandLattice">expandLattice</a>, <a href="../gameplay/mpactor.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/mpactor.html#getNearest">getNearest</a>, <a href="../gameplay/mpactor.html#getPersonalObjectiveName">getPersonalObjectiveName</a>, <a href="../gameplay/mpactor.html#getUniqueObjectiveName">getUniqueObjectiveName</a>, <a href="../gameplay/mpactor.html#getViewTarget">getViewTarget</a>, <a href="../gameplay/mpactor.html#incrementStatAttempt">incrementStatAttempt</a>, <a href="../gameplay/mpactor.html#onAvailableToLattice">onAvailableToLattice</a>, <a href="../gameplay/mpactor.html#onPlayerKilled">onPlayerKilled</a>, <a href="../gameplay/mpactor.html#onUnavailableToLattice">onUnavailableToLattice</a>, <a href="../gameplay/mpactor.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/mpactor.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/mpactor.html#registerStats">registerStats</a>, <a href="../gameplay/mpactor.html#removeDefaultObjectives">removeDefaultObjectives</a>, <a href="../gameplay/mpactor.html#removePersonalObjective">removePersonalObjective</a>, <a href="../gameplay/mpactor.html#removeSpectator">removeSpectator</a>, <a href="../gameplay/mpactor.html#resetSpectatorViewTarget">resetSpectatorViewTarget</a>, <a href="../gameplay/mpactor.html#scoreIndividual">scoreIndividual</a>, <a href="../gameplay/mpactor.html#scoreTeam">scoreTeam</a>, <a href="../gameplay/mpactor.html#setObjectiveState">setObjectiveState</a>, <a href="../gameplay/mpactor.html#setObjectiveTally">setObjectiveTally</a>, <a href="../gameplay/mpactor.html#setPersonalObjective">setPersonalObjective</a>, <a href="../gameplay/mpactor.html#setSpectatorViewTarget">setSpectatorViewTarget</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>AwaitingTeammates <a href="../Source_gameplay/mpterritory.html#279" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> AwaitingTeammates <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+AwaitingTeammates">BeginState</a>, <a href="#_OnAreaEntered+AwaitingTeammates">OnAreaEntered</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Conquered <a href="../Source_gameplay/mpterritory.html#503" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Conquered <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Conquered">BeginState</a>, <a href="#_canRepair+Conquered">canRepair</a>, <a href="#_EndState+Conquered">EndState</a>, <a href="#_OnAreaEntered+Conquered">OnAreaEntered</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Conquering <a href="../Source_gameplay/mpterritory.html#311" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Conquering <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_allocatePoints+Conquering">allocatePoints</a>, <a href="#_BeginState+Conquering">BeginState</a>, <a href="#_EndState+Conquering">EndState</a>, <a href="#_OnAreaEntered+Conquering">OnAreaEntered</a>, <a href="#_OnAreaExited+Conquering">OnAreaExited</a>, <a href="#_OnAreaTick+Conquering">OnAreaTick</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Contested <a href="../Source_gameplay/mpterritory.html#440" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Contested <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Contested">BeginState</a>, <a href="#_EndState+Contested">EndState</a>, <a href="#_OnAreaExited+Contested">OnAreaExited</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Ownerless <a href="../Source_gameplay/mpterritory.html#202" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">auto state</span> Ownerless <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Ownerless">BeginState</a>, <a href="#_determineInitialState+Ownerless">determineInitialState</a>, <a href="#_EndState+Ownerless">EndState</a>, <a href="#_OnAreaEntered+Ownerless">OnAreaEntered</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>PermanentlyConquered <a href="../Source_gameplay/mpterritory.html#584" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> PermanentlyConquered <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+PermanentlyConquered">BeginState</a>, <a href="#_canRepair+PermanentlyConquered">canRepair</a>, <a href="#_OnAreaEntered+PermanentlyConquered">OnAreaEntered</a>, <a href="#_OnAreaExited+PermanentlyConquered">OnAreaExited</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bConquered" class="hidden"></a>bConquered <a href="../Source_gameplay/mpterritory.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bConquered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bConquering" class="hidden"></a>bConquering <a href="../Source_gameplay/mpterritory.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bConquering;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bContesting" class="hidden"></a>bContesting <a href="../Source_gameplay/mpterritory.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bContesting;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDelayPermanentConquer" class="hidden"></a>bDelayPermanentConquer <a href="../Source_gameplay/mpterritory.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDelayPermanentConquer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIdle" class="hidden"></a>bIdle <a href="../Source_gameplay/mpterritory.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bIdle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalConquered" class="hidden"></a>bLocalConquered <a href="../Source_gameplay/mpterritory.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalConquered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalConquering" class="hidden"></a>bLocalConquering <a href="../Source_gameplay/mpterritory.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalConquering;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalContesting" class="hidden"></a>bLocalContesting <a href="../Source_gameplay/mpterritory.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalContesting;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalIdle" class="hidden"></a>bLocalIdle <a href="../Source_gameplay/mpterritory.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalIdle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bReconquerable" class="hidden"></a>bReconquerable <a href="../Source_gameplay/mpterritory.html#9" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bReconquerable;</div>
+<blockquote class="comment">
+Can the Territory be conquered again for points after it has already been conquered?
+</blockquote>
+<hr class="small" />
+<h4><a name="_bReconquerNeedsPlayers" class="hidden"></a>bReconquerNeedsPlayers <a href="../Source_gameplay/mpterritory.html#10" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bReconquerNeedsPlayers;</div>
+<blockquote class="comment">
+If bReconquerable is true, does reconquering require players to be in the Territory?  If false, a team will reconquer their territory even when none of their players are in it.
+</blockquote>
+<hr class="small" />
+<h4><a name="_conqueringTeam" class="hidden"></a>conqueringTeam <a href="../Source_gameplay/mpterritory.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> conqueringTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentConqueringTime" class="hidden"></a>currentConqueringTime <a href="../Source_gameplay/mpterritory.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> currentConqueringTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownerTeam" class="hidden"></a>ownerTeam <a href="../Source_gameplay/mpterritory.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> ownerTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_previousOwnerTeam" class="hidden"></a>previousOwnerTeam <a href="../Source_gameplay/mpterritory.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> previousOwnerTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rr" class="hidden"></a>rr <a href="../Source_gameplay/mpterritory.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/repairradius.html" class="source">RepairRadius</a></span> rr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">EffectEvents</h3>
+<h4><a name="_conqueredEffectEvent" class="hidden"></a>conqueredEffectEvent <a href="../Source_gameplay/mpterritory.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> conqueredEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once on the territory when conquered
+</blockquote>
+<hr class="small" />
+<h4><a name="_conqueringEffectEvent" class="hidden"></a>conqueringEffectEvent <a href="../Source_gameplay/mpterritory.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> conqueringEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that loops on the territory when conquering
+</blockquote>
+<hr class="small" />
+<h4><a name="_contestingEffectEvent" class="hidden"></a>contestingEffectEvent <a href="../Source_gameplay/mpterritory.html#38" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> contestingEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that loops on the territory when contesting
+</blockquote>
+<hr class="small" />
+<h4><a name="_idleEffectEvent" class="hidden"></a>idleEffectEvent <a href="../Source_gameplay/mpterritory.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> idleEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that loops on the territory when conquering
+</blockquote>
+<hr class="small" />
+<h4><a name="_startedConqueringEffectEvent" class="hidden"></a>startedConqueringEffectEvent <a href="../Source_gameplay/mpterritory.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> startedConqueringEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once on the territory when conquering
+</blockquote>
+<hr class="small" />
+<h4><a name="_startedContestingEffectEvent" class="hidden"></a>startedContestingEffectEvent <a href="../Source_gameplay/mpterritory.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> startedContestingEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once on the territory when contesting
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">MPTerritory</h3>
+<h4><a name="_bConquerOnce" class="hidden"></a>bConquerOnce <a href="../Source_gameplay/mpterritory.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">bool</span> bConquerOnce;</div>
+<blockquote class="comment">
+When true, the territory can only be conquered once
+</blockquote>
+<hr class="small" />
+<h4><a name="_conquerInterval" class="hidden"></a>conquerInterval <a href="../Source_gameplay/mpterritory.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">float</span> conquerInterval;</div>
+<blockquote class="comment">
+The frequency with which the territory considers who is conquering it
+</blockquote>
+<hr class="small" />
+<h4><a name="_conquerTime" class="hidden"></a>conquerTime <a href="../Source_gameplay/mpterritory.html#4" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">int</span> conquerTime;</div>
+<blockquote class="comment">
+The amount of uninterrupted time it takes to conquer the territory
+</blockquote>
+<hr class="small" />
+<h4><a name="_individualConquerBonusScale" class="hidden"></a>individualConquerBonusScale <a href="../Source_gameplay/mpterritory.html#5" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">float</span> individualConquerBonusScale;</div>
+<blockquote class="comment">
+Each additional friend conquering a territory scales the conquering speed by this amount (1 has no effect)
+</blockquote>
+<hr class="small" />
+<h4><a name="_minimumConquerers" class="hidden"></a>minimumConquerers <a href="../Source_gameplay/mpterritory.html#6" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">int</span> minimumConquerers;</div>
+<blockquote class="comment">
+The mininum number of people needed in order to start conquering this territory
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownerBase" class="hidden"></a>ownerBase <a href="../Source_gameplay/mpterritory.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) editdisplay ( displayActorLabel ) editcombotype ( enumBaseInfo ) <span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span> ownerBase;</div>
+<blockquote class="comment">
+An optional BaseInfo to which this Territory is attached.  Capturing the Territory also captures this base.
+</blockquote>
+<hr class="small" />
+<h4><a name="_socketTarget" class="hidden"></a>socketTarget <a href="../Source_gameplay/mpterritory.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">Name</span> socketTarget;</div>
+<blockquote class="comment">
+The name of the socket to use when attaching the tendril effect to a target actor
+</blockquote>
+<hr class="small" />
+<h4><a name="_teamConquerScore" class="hidden"></a>teamConquerScore <a href="../Source_gameplay/mpterritory.html#3" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">int</span> teamConquerScore;</div>
+<blockquote class="comment">
+The number of points a team receives for conquering.  If bReconquerable is false, this amount is subtracted if a team loses the territory.
+</blockquote>
+<hr class="small" />
+<h4><a name="_TerritoryMessageClass" class="hidden"></a>TerritoryMessageClass <a href="../Source_gameplay/mpterritory.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpterritory.html" class="source">MPTerritory</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>&gt; TerritoryMessageClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Skins</h3>
+<h4><a name="_conqueringSkin" class="hidden"></a>conqueringSkin <a href="../Source_gameplay/mpterritory.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(Skins) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> conqueringSkin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_contestedSkin" class="hidden"></a>contestedSkin <a href="../Source_gameplay/mpterritory.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(Skins) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> contestedSkin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_idleSkin" class="hidden"></a>idleSkin <a href="../Source_gameplay/mpterritory.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(Skins) <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> idleSkin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_titleSkinIndex" class="hidden"></a>titleSkinIndex <a href="../Source_gameplay/mpterritory.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(Skins) <span class="source_type">int</span> titleSkinIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Stats</h3>
+<h4><a name="_conquerStat" class="hidden"></a>conquerStat <a href="../Source_gameplay/mpterritory.html#47" class="small">Source code</a></h4>
+<div class="declaration">var(Stats) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/stat.html" class="source">Stat</a></span>&gt; conquerStat;</div>
+<blockquote class="comment">
+Stat awarded when a player conquers a territory
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_allocatePoints-Conquering" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> allocatePoints <span class="function_state">Conquering</span> <a href="../Source_gameplay/mpterritory.html#345" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  allocatePoints ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_beginRepair-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> beginRepair <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#641" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  beginRepair ( <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">r</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-AwaitingTeammates" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">AwaitingTeammates</span> <a href="../Source_gameplay/mpterritory.html#281" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Conquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Conquered</span> <a href="../Source_gameplay/mpterritory.html#505" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Conquering" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Conquering</span> <a href="../Source_gameplay/mpterritory.html#313" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Contested" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Contested</span> <a href="../Source_gameplay/mpterritory.html#442" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Ownerless" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Ownerless</span> <a href="../Source_gameplay/mpterritory.html#204" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-PermanentlyConquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">PermanentlyConquered</span> <a href="../Source_gameplay/mpterritory.html#586" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canRepair-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canRepair <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#627" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> canRepair ( <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">r</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canRepair-Conquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canRepair <span class="function_state">Conquered</span> <a href="../Source_gameplay/mpterritory.html#577" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> canRepair ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canRepair-PermanentlyConquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canRepair <span class="function_state">PermanentlyConquered</span> <a href="../Source_gameplay/mpterritory.html#604" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> canRepair ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canStartFXTendril-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canStartFXTendril <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#677" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> canStartFXTendril ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cleanup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> cleanup <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#81" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  cleanup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> destroyed <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#75" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_determineInitialState-Ownerless" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> determineInitialState <span class="function_state">Ownerless</span> <a href="../Source_gameplay/mpterritory.html#239" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  determineInitialState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_endRepair-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> endRepair <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#645" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  endRepair ( <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">r</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Conquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Conquered</span> <a href="../Source_gameplay/mpterritory.html#569" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Conquering" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Conquering</span> <a href="../Source_gameplay/mpterritory.html#339" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Contested" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Contested</span> <a href="../Source_gameplay/mpterritory.html#453" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Ownerless" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Ownerless</span> <a href="../Source_gameplay/mpterritory.html#215" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_enumBaseInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> enumBaseInfo <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#610" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  enumBaseInfo ( <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> l, Array&lt;<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span>&gt; a) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getFXOriginActor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getFXOriginActor <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#650" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> getFXOriginActor ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getFXTendrilOrigin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getFXTendrilOrigin <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#655" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> getFXTendrilOrigin ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> targetPos) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getFXTendrilTarget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getFXTendrilTarget <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#660" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> getFXTendrilTarget ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">target</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getRepairRadius-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getRepairRadius <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#636" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">float</span> getRepairRadius ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaEntered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaEntered <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#172" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaEntered-AwaitingTeammates" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaEntered <span class="function_state">AwaitingTeammates</span> <a href="../Source_gameplay/mpterritory.html#286" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaEntered-Conquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaEntered <span class="function_state">Conquered</span> <a href="../Source_gameplay/mpterritory.html#544" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaEntered-Conquering" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaEntered <span class="function_state">Conquering</span> <a href="../Source_gameplay/mpterritory.html#387" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaEntered-Ownerless" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaEntered <span class="function_state">Ownerless</span> <a href="../Source_gameplay/mpterritory.html#221" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaEntered-PermanentlyConquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaEntered <span class="function_state">PermanentlyConquered</span> <a href="../Source_gameplay/mpterritory.html#593" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaExited-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaExited <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#177" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaExited ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaExited-Conquering" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaExited <span class="function_state">Conquering</span> <a href="../Source_gameplay/mpterritory.html#402" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaExited ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaExited-Contested" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaExited <span class="function_state">Contested</span> <a href="../Source_gameplay/mpterritory.html#459" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaExited ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaExited-PermanentlyConquered" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaExited <span class="function_state">PermanentlyConquered</span> <a href="../Source_gameplay/mpterritory.html#598" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaExited ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaTick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaTick <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#182" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaTick ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaTick-Conquering" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaTick <span class="function_state">Conquering</span> <a href="../Source_gameplay/mpterritory.html#358" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaTick ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnConquered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnConquered <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#55" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnConquered ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onTendrilCreate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onTendrilCreate <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#682" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  onTendrilCreate ( <span class="source_type"><a href="../gameplay/repairtendril.html" class="source">RepairTendril</a></span> <span class="source_type">t</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#59" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetReceive <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#69" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setSkin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setSkin <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#620" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  setSkin ( <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> skin) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setTeam <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#187" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setTeam ( <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_shouldInteractWith-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> shouldInteractWith <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#197" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> shouldInteractWith ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateEffects-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateEffects <span class="function_state"></span> <a href="../Source_gameplay/mpterritory.html#90" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  updateEffects ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DrawType				= DT_StaticMesh
+	<span class="source_type">StaticMesh</span>				= <span class="source_type">StaticMesh</span><span class="source_name">'Editor_res.TexPropCube'</span>
+	bCollideActors			= true
+	bCollideWorld			= true
+
+	bMovable				= false
+	NetUpdateFrequency		= <span class="source_int">2</span>
+	bNetNotify				= true
+	bAlwaysRelevant			= true
+
+	CollisionRadius			= <span class="source_int">200</span>
+	CollisionHeight			= <span class="source_int">200</span>
+
+	teamConquerScore		= <span class="source_int">1</span>
+	conquerTime				= <span class="source_int">10</span>
+	conquerInterval			= <span class="source_int">1</span>
+	individualConquerBonusScale = <span class="source_int">1</span>
+	minimumConquerers		= <span class="source_int">1</span>
+	bReconquerable			= false
+	bReconquerNeedsPlayers	= false
+	bConquerOnce			= false
+	TerritoryMessageClass	= <span class="source_type">class</span><span class="source_name">'MPTerritoryMessages'</span>
+
+	conqueringEffectEvent			= Conquering
+	startedConqueringEffectEvent	= StartedConquering
+	contestingEffectEvent			= Contesting
+	startedContestingEffectEvent	= StartedContesting
+	idleEffectEvent					= Idle
+	conqueredEffectEvent			= Conquered
+	idleAnim				= Idle
+
+	contestedSkin			= <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span><span class="source_name">'BaseObjects.CS_ContestedShader'</span>
+	conqueringSkin			= <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span><span class="source_name">'BaseObjects.CS_CapturedShader'</span>
+	idleSkin				= <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span><span class="source_name">'BaseObjects.CS_Dormant'</span>
+	titleSkinIndex			= <span class="source_int">1</span>
+	socketTarget			= <span class="source_string">"capture"</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/mpterritory.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MPTerritory">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/mpteamscoredecoration.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mpterritorymessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:33.089 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

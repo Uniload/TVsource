@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.Buggy</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/buggy.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Buggy">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/bucklerprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/buggyhavokdata.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/buggy.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.Buggy</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/havokcar.html">HavokCar</a></dd>
+<dt>Modifiers</dt><dd>implements InventoryStationAccessControl dependsOn ( InventoryStationAccess ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/havokcar.html">HavokCar</a>
+                  |   
+                  +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/buggy.html">Buggy</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_DRIVER_INDEX" name="DRIVER_INDEX" title="go to the details">DRIVER_INDEX</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+<tr><td width="40%"><a href="#_FORCE_DEACTIVATE_DISTANCE" name="FORCE_DEACTIVATE_DISTANCE" title="go to the details">FORCE_DEACTIVATE_DISTANCE</a></td><td width="10%">=</td><td width="50%">5</td></tr>
+<tr><td width="40%"><a href="#_FORCE_DEACTIVATE_TIME" name="FORCE_DEACTIVATE_TIME" title="go to the details">FORCE_DEACTIVATE_TIME</a></td><td width="10%">=</td><td width="50%">4</td></tr>
+<tr><td width="40%"><a href="#_GUNNER_INDEX" name="GUNNER_INDEX" title="go to the details">GUNNER_INDEX</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/havokcar.html">HavokCar</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/havokcar.html#HC_ANGULAR_VELOCITY_ACCURACY_FACTOR">HC_ANGULAR_VELOCITY_ACCURACY_FACTOR</a>, <a href="../gameplay/havokcar.html#HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR">HC_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a>, <a href="../gameplay/havokcar.html#HC_LINEAR_VELOCITY_ACCURACY_FACTOR">HC_LINEAR_VELOCITY_ACCURACY_FACTOR</a>, <a href="../gameplay/havokcar.html#HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR">HC_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_forceDeactivatePosition" name="forceDeactivatePosition" title="go to the details">forceDeactivatePosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_forceDeactivateTime" name="forceDeactivateTime" title="go to the details">forceDeactivateTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a>&gt;</td><td width="66%"><a href="#_inventoryStationAccess" name="inventoryStationAccess" title="go to the details">inventoryStationAccess</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_isRegisteredRespawnVehicle" name="isRegisteredRespawnVehicle" title="go to the details">isRegisteredRespawnVehicle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_maximumNumberInventoryStationPositions" name="maximumNumberInventoryStationPositions" title="go to the details">maximumNumberInventoryStationPositions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/vehiclemountedturret.html">VehicleMountedTurret</a></td><td width="66%"><a href="#_turret" name="turret" title="go to the details">turret</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/vehiclemountedturret.html">VehicleMountedTurret</a>&gt;</td><td width="66%"><a href="#_turretClass" name="turretClass" title="go to the details">turretClass</a></td></tr>
+<tr><th colspan="2" class="small">Boost</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/buggy.html">Buggy</a>&gt;</td><td width="66%"><a href="#_boostClass" name="boostClass" title="go to the details">boostClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/havokcarwheel.html">HavokCarWheel</a>&gt;</td><td width="66%"><a href="#_frontBoostWheelClass" name="frontBoostWheelClass" title="go to the details">frontBoostWheelClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/havokcarwheel.html">HavokCarWheel</a>&gt;</td><td width="66%"><a href="#_rearBoostWheelClass" name="rearBoostWheelClass" title="go to the details">rearBoostWheelClass</a></td></tr>
+<tr><th colspan="2" class="small">Buggy</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerAITurnRate" name="gunnerAITurnRate" title="go to the details">gunnerAITurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_gunnerCameraOffset" name="gunnerCameraOffset" title="go to the details">gunnerCameraOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerClientTurnRate" name="gunnerClientTurnRate" title="go to the details">gunnerClientTurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerMaximumPitch" name="gunnerMaximumPitch" title="go to the details">gunnerMaximumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_gunnerMinimumPitch" name="gunnerMinimumPitch" title="go to the details">gunnerMinimumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt;</td><td width="66%"><a href="#_gunnerWeaponClass" name="gunnerWeaponClass" title="go to the details">gunnerWeaponClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_gunnerWeaponOffset" name="gunnerWeaponOffset" title="go to the details">gunnerWeaponOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a>&gt;</td><td width="66%"><a href="#_inventoryStationAccessClass" name="inventoryStationAccessClass" title="go to the details">inventoryStationAccessClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_inventoryStationOffset" name="inventoryStationOffset" title="go to the details">inventoryStationOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numberInventoryStationPositions" name="numberInventoryStationPositions" title="go to the details">numberInventoryStationPositions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt;&gt;</td><td width="66%"><a href="#_spawnDefaultWeapons" name="spawnDefaultWeapons" title="go to the details">spawnDefaultWeapons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_turretBone" name="turretBone" title="go to the details">turretBone</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/havokcar.html">HavokCar</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/havokcar.html#AerodynamicsAirDensity">AerodynamicsAirDensity</a>, <a href="../gameplay/havokcar.html#AerodynamicsDragCoeff">AerodynamicsDragCoeff</a>, <a href="../gameplay/havokcar.html#AerodynamicsFrontalArea">AerodynamicsFrontalArea</a>, <a href="../gameplay/havokcar.html#AerodynamicsLiftCoeff">AerodynamicsLiftCoeff</a>, <a href="../gameplay/havokcar.html#applyHandbrakeSpeed">applyHandbrakeSpeed</a>, <a href="../gameplay/havokcar.html#ChassisMass">ChassisMass</a>, <a href="../gameplay/havokcar.html#ChassisUnitInertiaPitch">ChassisUnitInertiaPitch</a>, <a href="../gameplay/havokcar.html#ChassisUnitInertiaRoll">ChassisUnitInertiaRoll</a>, <a href="../gameplay/havokcar.html#ChassisUnitInertiaYaw">ChassisUnitInertiaYaw</a>, <a href="../gameplay/havokcar.html#CollisionSpinDamping">CollisionSpinDamping</a>, <a href="../gameplay/havokcar.html#CollisionThreshold">CollisionThreshold</a>, <a href="../gameplay/havokcar.html#commonSuspensionDampingCompression">commonSuspensionDampingCompression</a>, <a href="../gameplay/havokcar.html#commonSuspensionDampingRelaxation">commonSuspensionDampingRelaxation</a>, <a href="../gameplay/havokcar.html#commonSuspensionStrength">commonSuspensionStrength</a>, <a href="../gameplay/havokcar.html#commonSuspensionTravel">commonSuspensionTravel</a>, <a href="../gameplay/havokcar.html#commonWheelFriction">commonWheelFriction</a>, <a href="../gameplay/havokcar.html#commonWheelMass">commonWheelMass</a>, <a href="../gameplay/havokcar.html#commonWheelViscosityFriction">commonWheelViscosityFriction</a>, <a href="../gameplay/havokcar.html#EngineMaxRPM">EngineMaxRPM</a>, <a href="../gameplay/havokcar.html#EngineMinRPM">EngineMinRPM</a>, <a href="../gameplay/havokcar.html#EngineOptRPM">EngineOptRPM</a>, <a href="../gameplay/havokcar.html#EngineResistanceFactorAtMaxRPM">EngineResistanceFactorAtMaxRPM</a>, <a href="../gameplay/havokcar.html#EngineResistanceFactorAtMinRPM">EngineResistanceFactorAtMinRPM</a>, <a href="../gameplay/havokcar.html#EngineResistanceFactorAtOptRPM">EngineResistanceFactorAtOptRPM</a>, <a href="../gameplay/havokcar.html#EngineTorque">EngineTorque</a>, <a href="../gameplay/havokcar.html#EngineTorqueFactorAtMaxRPM">EngineTorqueFactorAtMaxRPM</a>, <a href="../gameplay/havokcar.html#EngineTorqueFactorAtMinRPM">EngineTorqueFactorAtMinRPM</a>, <a href="../gameplay/havokcar.html#ExtraGravity">ExtraGravity</a>, <a href="../gameplay/havokcar.html#FrictionEqualizer">FrictionEqualizer</a>, <a href="../gameplay/havokcar.html#GearClutchDelayTime">GearClutchDelayTime</a>, <a href="../gameplay/havokcar.html#GearDownshiftRPM">GearDownshiftRPM</a>, <a href="../gameplay/havokcar.html#GearRatios">GearRatios</a>, <a href="../gameplay/havokcar.html#GearReverseRatio">GearReverseRatio</a>, <a href="../gameplay/havokcar.html#GearUpshiftRPM">GearUpshiftRPM</a>, <a href="../gameplay/havokcar.html#havokCarWheelClasses">havokCarWheelClasses</a>, <a href="../gameplay/havokcar.html#hkVehicleDataPtr">hkVehicleDataPtr</a>, <a href="../gameplay/havokcar.html#leftFrontSkiddingEffectIndex">leftFrontSkiddingEffectIndex</a>, <a href="../gameplay/havokcar.html#leftFrontWheelIndex">leftFrontWheelIndex</a>, <a href="../gameplay/havokcar.html#leftRearSkiddingEffectIndex">leftRearSkiddingEffectIndex</a>, <a href="../gameplay/havokcar.html#leftRearWheelIndex">leftRearWheelIndex</a>, <a href="../gameplay/havokcar.html#MaxSpeedFullSteeringAngle">MaxSpeedFullSteeringAngle</a>, <a href="../gameplay/havokcar.html#occupiedApplyHandbrakeSpeed">occupiedApplyHandbrakeSpeed</a>, <a href="../gameplay/havokcar.html#OldReplicationCarState">OldReplicationCarState</a>, <a href="../gameplay/havokcar.html#ReplicationCarState">ReplicationCarState</a>, <a href="../gameplay/havokcar.html#rightFrontSkiddingEffectIndex">rightFrontSkiddingEffectIndex</a>, <a href="../gameplay/havokcar.html#rightFrontWheelIndex">rightFrontWheelIndex</a>, <a href="../gameplay/havokcar.html#rightRearSkiddingEffectIndex">rightRearSkiddingEffectIndex</a>, <a href="../gameplay/havokcar.html#rightRearWheelIndex">rightRearWheelIndex</a>, <a href="../gameplay/havokcar.html#skidEffectEnergyThreshold">skidEffectEnergyThreshold</a>, <a href="../gameplay/havokcar.html#SpinDamping">SpinDamping</a>, <a href="../gameplay/havokcar.html#systemHandbrake">systemHandbrake</a>, <a href="../gameplay/havokcar.html#TorqueExtraFactor">TorqueExtraFactor</a>, <a href="../gameplay/havokcar.html#TorquePitchFactor">TorquePitchFactor</a>, <a href="../gameplay/havokcar.html#TorqueRollFactor">TorqueRollFactor</a>, <a href="../gameplay/havokcar.html#TorqueYawFactor">TorqueYawFactor</a>, <a href="../gameplay/havokcar.html#wheelClasses">wheelClasses</a>, <a href="../gameplay/havokcar.html#Wheels">Wheels</a>, <a href="../gameplay/havokcar.html#wheelsOutput">wheelsOutput</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#carSteer">carSteer</a>, <a href="../gameplay/car.html#driveThrottleCoefficient">driveThrottleCoefficient</a>, <a href="../gameplay/car.html#effectAccelerating">effectAccelerating</a>, <a href="../gameplay/car.html#effectDeccelerating">effectDeccelerating</a>, <a href="../gameplay/car.html#Gear">Gear</a>, <a href="../gameplay/car.html#maximumYawChange">maximumYawChange</a>, <a href="../gameplay/car.html#minimumNavigationThrottle">minimumNavigationThrottle</a>, <a href="../gameplay/car.html#outputCarDirection">outputCarDirection</a>, <a href="../gameplay/car.html#SteeringMaxAngle">SteeringMaxAngle</a>, <a href="../gameplay/car.html#stopSteeringSize">stopSteeringSize</a>, <a href="../gameplay/car.html#StopThreshold">StopThreshold</a>, <a href="../gameplay/car.html#stopVelocitySize">stopVelocitySize</a>, <a href="../gameplay/car.html#strafeSteerAngleOffset">strafeSteerAngleOffset</a>, <a href="../gameplay/car.html#upsideDownDamagePerSecond">upsideDownDamagePerSecond</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/havokcar.html">HavokCar</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/havokcar.html#HavokCarReplicationState">HavokCarReplicationState</a>, <a href="../gameplay/havokcar.html#WheelOutput">WheelOutput</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_aboutToDie-" name="aboutToDie" title="go to the details">aboutToDie</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_aboutToSettleUpsideDown-" name="aboutToSettleUpsideDown" title="go to the details">aboutToSettleUpsideDown</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_accessFinished-" name="accessFinished" title="go to the details">accessFinished</a> (<a href="../gameplay/character.html">Character</a> user, bool returnToUsualMovment))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_accessNoLongerRequired-" name="accessNoLongerRequired" title="go to the details">accessNoLongerRequired</a> (<a href="../gameplay/character.html">Character</a> accessor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_accessRequired-" name="accessRequired" title="go to the details">accessRequired</a> (<a href="../gameplay/character.html">Character</a> accessor, <a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a> access, int armorIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canCharacterRespawnAt-" name="canCharacterRespawnAt" title="go to the details">canCharacterRespawnAt</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_changeApplied-" name="changeApplied" title="go to the details">changeApplied</a> (<a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a> access))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_directUsage-" name="directUsage" title="go to the details">directUsage</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_driverLeave-" name="driverLeave" title="go to the details">driverLeave</a> (bool bForceLeave, int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_getAccessIndex-" name="getAccessIndex" title="go to the details">getAccessIndex</a> (int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_getCurrentLoadoutWeapons-" name="getCurrentLoadoutWeapons" title="go to the details">getCurrentLoadoutWeapons</a> (out <a href="../gameplay/inventorystationaccess.html#InventoryStationLoadout">InventoryStationAccess.InventoryStationLoadout</a> weaponLoadout, <a href="../gameplay/character.html">Character</a> user))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_getMinorPositionEntryIndex-" name="getMinorPositionEntryIndex" title="go to the details">getMinorPositionEntryIndex</a> (int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/material.html">Material</a>&nbsp;</td><td><a href="#_getTeamSkin-" name="getTeamSkin" title="go to the details">getTeamSkin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/inventorystationaccess.html">InventoryStationAccess</a>&nbsp;</td><td><a href="#_getUnusedInventoryStation-" name="getUnusedInventoryStation" title="go to the details">getUnusedInventoryStation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_InventoryCalcView-" name="InventoryCalcView" title="go to the details">InventoryCalcView</a> (out <a href="../engine/actor.html">actor</a> viewActor, out <a href="../core/object.html#Vector">vector</a> cameraLocation, out <a href="../core/object.html#Rotator">rotator</a> cameraRotation))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_inventoryStationEnterProcessing-" name="inventoryStationEnterProcessing" title="go to the details">inventoryStationEnterProcessing</a> (<a href="../gameplay/character.html">Character</a> occupant, int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isAccessible-" name="isAccessible" title="go to the details">isAccessible</a> (<a href="../gameplay/character.html">Character</a> accessor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isFunctional-" name="isFunctional" title="go to the details">isFunctional</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isOnCharactersTeam-" name="isOnCharactersTeam" title="go to the details">isOnCharactersTeam</a> (<a href="../gameplay/character.html">Character</a> testCharacter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_kickInventoryStationUsers-" name="kickInventoryStationUsers" title="go to the details">kickInventoryStationUsers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_occupantEnter-" name="occupantEnter" title="go to the details">occupantEnter</a> (<a href="../gameplay/character.html">Character</a> occupant, int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_occupantSwitchPosition-" name="occupantSwitchPosition" title="go to the details">occupantSwitchPosition</a> (<a href="../gameplay/character.html">Character</a> occupant, int targetPositionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_postNetReceive-" name="postNetReceive" title="go to the details">postNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_settledUpsideDownChanged-" name="settledUpsideDownChanged" title="go to the details">settledUpsideDownChanged</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_ShouldProjectileHit-" name="ShouldProjectileHit" title="go to the details">ShouldProjectileHit</a> (<a href="../engine/actor.html">Actor</a> projInstigator))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_spawnCharacter-" name="spawnCharacter" title="go to the details">spawnCharacter</a> (<a href="../gameplay/character.html">Character</a> character))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateRespawnState-" name="updateRespawnState" title="go to the details">updateRespawnState</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_vehicleUpdateParams-" name="vehicleUpdateParams" title="go to the details">vehicleUpdateParams</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/havokcar.html">HavokCar</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/havokcar.html#EncroachedBy">EncroachedBy</a>, <a href="../gameplay/havokcar.html#FaceRotation">FaceRotation</a>, <a href="../gameplay/havokcar.html#havokCarSwitchClass">havokCarSwitchClass</a>, <a href="../gameplay/havokcar.html#HavokVehicleHasChanged">HavokVehicleHasChanged</a>, <a href="../gameplay/havokcar.html#initialiseEffects">initialiseEffects</a>, <a href="../gameplay/havokcar.html#isEffectCauserActive">isEffectCauserActive</a>, <a href="../gameplay/havokcar.html#isSettledUpsideDown">isSettledUpsideDown</a>, <a href="../gameplay/havokcar.html#needToPushStateToClient">needToPushStateToClient</a>, <a href="../gameplay/havokcar.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/havokcar.html#PreBeginPlay">PreBeginPlay</a>, <a href="../gameplay/havokcar.html#pushStateToClient">pushStateToClient</a>, <a href="../gameplay/havokcar.html#RemakeVehicle">RemakeVehicle</a>, <a href="../gameplay/havokcar.html#switchClass">switchClass</a>, <a href="../gameplay/havokcar.html#switchWheelClasses">switchWheelClasses</a>, <a href="../gameplay/havokcar.html#tick">tick</a>, <a href="../gameplay/havokcar.html#updateDynamicEffectStates">updateDynamicEffectStates</a>, <a href="../gameplay/havokcar.html#updateSkidEffect">updateSkidEffect</a>, <a href="../gameplay/havokcar.html#UpdateVehicle">UpdateVehicle</a>, <a href="../gameplay/havokcar.html#vehicleStateReceived">vehicleStateReceived</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#applyOutput">applyOutput</a>, <a href="../gameplay/car.html#Destroyed">Destroyed</a>, <a href="../gameplay/car.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/car.html#ProcessInput">ProcessInput</a>, <a href="../gameplay/car.html#tick">tick</a>, <a href="../gameplay/car.html#updateGear">updateGear</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DRIVER_INDEX" class="hidden"></a>DRIVER_INDEX <a href="../Source_gameplay/buggy.html#12" class="small">Source code</a></h4>
+<div class="declaration">const DRIVER_INDEX = <span class="source_int">0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FORCE_DEACTIVATE_DISTANCE" class="hidden"></a>FORCE_DEACTIVATE_DISTANCE <a href="../Source_gameplay/buggy.html#15" class="small">Source code</a></h4>
+<div class="declaration">const FORCE_DEACTIVATE_DISTANCE = <span class="source_int">5</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FORCE_DEACTIVATE_TIME" class="hidden"></a>FORCE_DEACTIVATE_TIME <a href="../Source_gameplay/buggy.html#16" class="small">Source code</a></h4>
+<div class="declaration">const FORCE_DEACTIVATE_TIME = <span class="source_int">4</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GUNNER_INDEX" class="hidden"></a>GUNNER_INDEX <a href="../Source_gameplay/buggy.html#13" class="small">Source code</a></h4>
+<div class="declaration">const GUNNER_INDEX = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_forceDeactivatePosition" class="hidden"></a>forceDeactivatePosition <a href="../Source_gameplay/buggy.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> forceDeactivatePosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forceDeactivateTime" class="hidden"></a>forceDeactivateTime <a href="../Source_gameplay/buggy.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> forceDeactivateTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_inventoryStationAccess" class="hidden"></a>inventoryStationAccess <a href="../Source_gameplay/buggy.html#23" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>&gt; <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">inventoryStationAccess</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isRegisteredRespawnVehicle" class="hidden"></a>isRegisteredRespawnVehicle <a href="../Source_gameplay/buggy.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> isRegisteredRespawnVehicle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maximumNumberInventoryStationPositions" class="hidden"></a>maximumNumberInventoryStationPositions <a href="../Source_gameplay/buggy.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> maximumNumberInventoryStationPositions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turret" class="hidden"></a>turret <a href="../Source_gameplay/buggy.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span> <span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretClass" class="hidden"></a>turretClass <a href="../Source_gameplay/buggy.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>&gt; turretClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Boost</h3>
+<h4><a name="_boostClass" class="hidden"></a>boostClass <a href="../Source_gameplay/buggy.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(Boost) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>&gt; boostClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_frontBoostWheelClass" class="hidden"></a>frontBoostWheelClass <a href="../Source_gameplay/buggy.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(Boost) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/havokcarwheel.html" class="source">HavokCarWheel</a></span>&gt; frontBoostWheelClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rearBoostWheelClass" class="hidden"></a>rearBoostWheelClass <a href="../Source_gameplay/buggy.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(Boost) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/havokcarwheel.html" class="source">HavokCarWheel</a></span>&gt; rearBoostWheelClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Buggy</h3>
+<h4><a name="_gunnerAITurnRate" class="hidden"></a>gunnerAITurnRate <a href="../Source_gameplay/buggy.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">float</span> gunnerAITurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerCameraOffset" class="hidden"></a>gunnerCameraOffset <a href="../Source_gameplay/buggy.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> gunnerCameraOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerClientTurnRate" class="hidden"></a>gunnerClientTurnRate <a href="../Source_gameplay/buggy.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">float</span> gunnerClientTurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerMaximumPitch" class="hidden"></a>gunnerMaximumPitch <a href="../Source_gameplay/buggy.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">float</span> gunnerMaximumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerMinimumPitch" class="hidden"></a>gunnerMinimumPitch <a href="../Source_gameplay/buggy.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">float</span> gunnerMinimumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerWeaponClass" class="hidden"></a>gunnerWeaponClass <a href="../Source_gameplay/buggy.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; gunnerWeaponClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gunnerWeaponOffset" class="hidden"></a>gunnerWeaponOffset <a href="../Source_gameplay/buggy.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> gunnerWeaponOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_inventoryStationAccessClass" class="hidden"></a>inventoryStationAccessClass <a href="../Source_gameplay/buggy.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>&gt; inventoryStationAccessClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_inventoryStationOffset" class="hidden"></a>inventoryStationOffset <a href="../Source_gameplay/buggy.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> inventoryStationOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_numberInventoryStationPositions" class="hidden"></a>numberInventoryStationPositions <a href="../Source_gameplay/buggy.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">int</span> numberInventoryStationPositions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_spawnDefaultWeapons" class="hidden"></a>spawnDefaultWeapons <a href="../Source_gameplay/buggy.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) array&lt;<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt;&gt; spawnDefaultWeapons;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretBone" class="hidden"></a>turretBone <a href="../Source_gameplay/buggy.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>) <span class="source_type">name</span> turretBone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_aboutToDie-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> aboutToDie <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#335" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  aboutToDie ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_aboutToSettleUpsideDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> aboutToSettleUpsideDown <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#342" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  aboutToSettleUpsideDown ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_accessFinished-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> accessFinished <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#364" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  accessFinished ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> user, <span class="source_type">bool</span> returnToUsualMovment) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_accessNoLongerRequired-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> accessNoLongerRequired <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#205" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  accessNoLongerRequired ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> accessor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_accessRequired-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> accessRequired <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#185" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  accessRequired ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> accessor, <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span> access, <span class="source_type">int</span> armorIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canCharacterRespawnAt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canCharacterRespawnAt <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#304" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> canCharacterRespawnAt ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_changeApplied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> changeApplied <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#200" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  changeApplied ( <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span> access) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Destroyed <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#145" class="small">Source code</a></h4>
+<div class="declaration">simulated event  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_directUsage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> directUsage <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#211" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> directUsage ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_driverLeave-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> driverLeave <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#174" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> driverLeave ( <span class="source_type">bool</span> bForceLeave, <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getAccessIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getAccessIndex <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#249" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> getAccessIndex ( <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getCurrentLoadoutWeapons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getCurrentLoadoutWeapons <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#496" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> getCurrentLoadoutWeapons ( out <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span>.InventoryStationLoadout weaponLoadout, <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> user) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getMinorPositionEntryIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getMinorPositionEntryIndex <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#57" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> getMinorPositionEntryIndex ( <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getTeamSkin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getTeamSkin <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#92" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> getTeamSkin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getUnusedInventoryStation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getUnusedInventoryStation <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#235" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/inventorystationaccess.html" class="source">InventoryStationAccess</a></span> getUnusedInventoryStation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InventoryCalcView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InventoryCalcView <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#461" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> InventoryCalcView ( out <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> viewActor, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> cameraLocation, out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> cameraRotation) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_inventoryStationEnterProcessing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> inventoryStationEnterProcessing <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#262" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  inventoryStationEnterProcessing ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> occupant, <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isAccessible-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isAccessible <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#190" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isAccessible ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> accessor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isFunctional-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isFunctional <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#195" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isFunctional ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isOnCharactersTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isOnCharactersTeam <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#216" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isOnCharactersTeam ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> testCharacter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_kickInventoryStationUsers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> kickInventoryStationUsers <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#349" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  kickInventoryStationUsers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_occupantEnter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> occupantEnter <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#221" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  occupantEnter ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> occupant, <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_occupantSwitchPosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> occupantSwitchPosition <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#228" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  occupantSwitchPosition ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> occupant, <span class="source_type">int</span> targetPositionIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#100" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_postNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> postNetReceive <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#81" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  postNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_settledUpsideDownChanged-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> settledUpsideDownChanged <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#279" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  settledUpsideDownChanged ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldProjectileHit-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ShouldProjectileHit <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#394" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> ShouldProjectileHit ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> projInstigator) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_spawnCharacter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> spawnCharacter <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#62" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  spawnCharacter ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#403" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateRespawnState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateRespawnState <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#284" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  updateRespawnState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleUpdateParams-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> vehicleUpdateParams <span class="function_state"></span> <a href="../Source_gameplay/buggy.html#385" class="small">Source code</a></h4>
+<div class="declaration">simulated event  vehicleUpdateParams ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DrawType=DT_Mesh
+	<span class="source_type">Mesh</span>=SkeletalMesh<span class="source_name">'Vehicles.Buggy'</span>
+
+	DrawScale=<span class="source_int">1.0</span>
+
+	Gear=<span class="source_int">1</span>
+	StopThreshold=<span class="source_int">40</span>
+
+	ChassisMass=<span class="source_int">750</span>
+
+	AirSpeed = <span class="source_int">5000</span>
+
+	Health=<span class="source_int">800</span>
+
+	bDrawDriverInTP = true
+
+	rootBone=<span class="source_type"><a href="../gameplay/buggy.html" class="source">Buggy</a></span>
+
+	inventoryStationAccessClass = <span class="source_type">class</span><span class="source_name">'Gameplay.InventoryStationAccess'</span>
+	inventoryStationOffset = (X=-<span class="source_int">250</span>,Y=<span class="source_int">0</span>,Z=<span class="source_int">150</span>)
+
+	
+	positions(<span class="source_int">0</span>)=(<span class="source_type">type</span>=VP_DRIVER,hideOccupant=false,occupantControllerState=TribesPlayerDriving,thirdPersonCamera=true,occupantAnimation=Buggy_Stand,occupantConnection=<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>,enterAnimation=HatchClosing,occupiedAnimation=HatchClosed,unoccupiedAnimation=HatchOpen,exitAnimation=HatchOpening,ManifestXPosition=<span class="source_int">50</span>,ManifestYPosition=<span class="source_int">20</span>)
+	positions(<span class="source_int">1</span>)=(<span class="source_type">type</span>=VP_GUNNER,hideOccupant=true,occupantControllerState=PlayerVehicleTurreting,thirdPersonCamera=false,ManifestXPosition=<span class="source_int">30</span>,ManifestYPosition=<span class="source_int">20</span>)
+	positions(<span class="source_int">2</span>)=(<span class="source_type">type</span>=VP_INVENTORY_STATION_ONE,hideOccupant=true,thirdPersonCamera=false,ManifestXPosition=<span class="source_int">33</span>,ManifestYPosition=<span class="source_int">53</span>,bNotLabelledInManifest=true)
+	positions(<span class="source_int">3</span>)=(<span class="source_type">type</span>=VP_INVENTORY_STATION_TWO,hideOccupant=true,thirdPersonCamera=false,ManifestXPosition=<span class="source_int">33</span>,ManifestYPosition=<span class="source_int">67</span>,bNotLabelledInManifest=true)
+	positions(<span class="source_int">4</span>)=(<span class="source_type">type</span>=VP_INVENTORY_STATION_THREE,hideOccupant=true,thirdPersonCamera=false,ManifestXPosition=<span class="source_int">47</span>,ManifestYPosition=<span class="source_int">53</span>,bNotLabelledInManifest=true)
+	positions(<span class="source_int">5</span>)=(<span class="source_type">type</span>=VP_INVENTORY_STATION_FOUR,hideOccupant=true,thirdPersonCamera=false,ManifestXPosition=<span class="source_int">47</span>,ManifestYPosition=<span class="source_int">67</span>,bNotLabelledInManifest=true)
+
+	turretClass = <span class="source_type">class</span><span class="source_name">'Gameplay.BuggyMountedTurret'</span>
+	gunnerWeaponClass = <span class="source_type">class</span><span class="source_name">'Gameplay.AntiAircraftWeapon'</span>
+	turretBone = <span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span>
+	gunnerCameraOffset = (X=<span class="source_int">0</span>,Y=<span class="source_int">0</span>,Z=<span class="source_int">50</span>)
+	gunnerWeaponOffset = (X=<span class="source_int">0</span>,Y=<span class="source_int">0</span>,Z=<span class="source_int">25</span>)
+	gunnerMaximumPitch = <span class="source_int">10000</span>
+	gunnerMinimumPitch = -<span class="source_int">3000</span>
+
+	motorClass = <span class="source_type">class</span><span class="source_name">'BuggyMotor'</span>
+
+	HavokDataClass = <span class="source_type">class</span><span class="source_name">'BuggyHavokData'</span>
+
+	numberInventoryStationPositions = <span class="source_int">4</span>
+	maximumNumberInventoryStationPositions = <span class="source_int">4</span>
+
+	gunnerClientTurnRate = <span class="source_int">30000</span>
+
+	flipTriggers(<span class="source_int">0</span>)=(radius=<span class="source_int">400</span>,height=<span class="source_int">400</span>,offset=(X=<span class="source_int">0</span>,Y=<span class="source_int">0</span>,Z=<span class="source_int">0</span>))
+
+	collisionDamageMagnitudeScale = <span class="source_int">0.00075</span>
+
+	gunnerAITurnRate = <span class="source_int">12000</span>
+
+	ManifestLayoutMaterial = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'HUD.RoverSchematic'</span>;
+
+	driveYawCoefficient = <span class="source_int">0.1</span>
+
+	bEnableHavokBackstep = true
+
+	localizedName = <span class="source_string">"rover"</span>
+
+	bVehicleCameraTrace = true
+
+	vehicleCameraTraceExtents = (X=<span class="source_int">10</span>,Y=<span class="source_int">10</span>,Z=<span class="source_int">10</span>)
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/buggy.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Buggy">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/bucklerprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/buggyhavokdata.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:28.589 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

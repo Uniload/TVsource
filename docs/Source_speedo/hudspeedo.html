@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Speedo.HUDSpeedo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../speedo/speedo-overview.html">Package</a></td>
+	<td class="header"><a href="../speedo/hudspeedo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HUDSpeedo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_speedo/hudspeedo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_speedo/hudspeedo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_speedo/hudspeedo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../speedo/speedo-overview.html">Speedo</a>.<a href="../speedo/hudspeedo.html">HUDSpeedo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//
+</span><a name="2"></a><span class="source_comment">// Shows a speedo in the hud
+</span><a name="3"></a><span class="source_comment">//
+</span><a name="4"></a><span class="source_type">class</span> <span class="source_type"><a href="../speedo/hudspeedo.html" class="source">HUDSpeedo</a></span> extends TribesGUI.<span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>;
+<a name="5"></a>
+<a name="6"></a><span class="source_comment">// sub components
+</span><a name="7"></a>var <span class="source_type"><a href="../tribesgui/hudnumerictexturelabel.html" class="source">HUDNumericTextureLabel</a></span>	SpeedLabel;
+<a name="8"></a>var <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span>			UnitsLabel;
+<a name="9"></a>
+<a name="10"></a><span class="source_comment">// unit configuration
+</span><a name="11"></a>var config <span class="source_type">String</span>	UnitsText;				<span class="source_comment">// text displayed after the value (eg: KM/h)
+</span><a name="12"></a>var config <span class="source_type">float</span>	UnitsRatio;				<span class="source_comment">// ratio of these units to unreal units
+</span><a name="13"></a>var config <span class="source_type">int</span>		VisibleThreshold;		<span class="source_comment">// Speed you have to be travelling for the speedo to be visible
+</span><a name="14"></a>var config <span class="source_type">int</span>		VisibleThresholdRange;	<span class="source_comment">// range below VisibleThreshold through which the speedo will fade in
+</span><a name="15"></a>
+<a name="16"></a>var <span class="source_type">int</span> Velocity;
+<a name="17"></a>
+<a name="18"></a><span class="source_type">function</span> InitElement()
+<a name="19"></a>{
+<a name="20"></a>	SpeedLabel = <span class="source_type"><a href="../tribesgui/hudnumerictexturelabel.html" class="source">HUDNumericTextureLabel</a></span>(AddElement(<span class="source_string">"TribesGUI.HUDNumericTextureLabel"</span>, <span class="source_string">"ext_Speedo_SpeedLabel"</span>));
+<a name="21"></a>	UnitsLabel = <span class="source_type"><a href="../tribesgui/labelelement.html" class="source">LabelElement</a></span>(AddElement(<span class="source_string">"TribesGUI.LabelElement"</span>, <span class="source_string">"ext_Speedo_UnitsLabel"</span>));
+<a name="22"></a>}
+<a name="23"></a>
+<a name="24"></a><span class="source_type">function</span> UpdateData(<span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> csc)
+<a name="25"></a>{
+<a name="26"></a>	local <span class="source_type">String</span> VelocityText;
+<a name="27"></a>
+<a name="28"></a>	Velocity = <span class="source_type">int</span>(csc.Velocity) * UnitsRatio;
+<a name="29"></a>	if( Velocity &lt; <span class="source_int">10</span> )
+<a name="30"></a>		VelocityText = <span class="source_string">"00"</span>$<span class="source_type">string</span>(Velocity);
+<a name="31"></a>	else if( Velocity &lt; <span class="source_int">100</span> )
+<a name="32"></a>		VelocityText = <span class="source_string">"0"</span>$<span class="source_type">string</span>(Velocity);
+<a name="33"></a>	else
+<a name="34"></a>		VelocityText = <span class="source_type">string</span>(Velocity);
+<a name="35"></a>
+<a name="36"></a>	SetAlpha(FClamp((Velocity - VisibleThreshold - VisibleThresholdRange) / VisibleThresholdRange, <span class="source_int">0.0</span>, <span class="source_int">1.0</span>));
+<a name="37"></a>
+<a name="38"></a>	SpeedLabel.SetDataString(VelocityText);
+<a name="39"></a>	UnitsLabel.SetText(UnitsText);
+<a name="40"></a>}
+<a name="41"></a>
+<a name="42"></a>defaultproperties
+<a name="43"></a>{
+<a name="44"></a>	UnitsText=<span class="source_string">"KM/h"</span>
+<a name="45"></a>	UnitsRatio=<span class="source_int">1.0</span>
+<a name="46"></a>	VisibleThreshold=<span class="source_int">30</span>
+<a name="47"></a>	VisibleThresholdRange=<span class="source_int">10</span>
+<a name="48"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../speedo/speedo-overview.html">Package</a></td>
+	<td class="header"><a href="../speedo/hudspeedo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HUDSpeedo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_speedo/hudspeedo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_speedo/hudspeedo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:46.000 - Creation time: st 23.5.2018 00:10:44.471 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

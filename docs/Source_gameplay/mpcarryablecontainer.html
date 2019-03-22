@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.MPCarryableContainer</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/mpcarryablecontainer.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#MPCarryableContainer">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/mpcarryable.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/mpcarryablemessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/mpcarryablecontainer.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpcarryablecontainer.html">MPCarryableContainer</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/mpcarryablecontainer.html" class="source">MPCarryableContainer</a></span> extends <span class="source_type"><a href="../gameplay/mparea.html" class="source">MPArea</a></span>;
+<a name="2"></a>
+<a name="3"></a>enum <span class="source_type"><a href="../gameplay/mpcarryablecontainer.html#EContainerObjectiveState" class="source">EContainerObjectiveState</a></span>
+<a name="4"></a>{
+<a name="5"></a>	COS_Empty,
+<a name="6"></a>	COS_HalfFull,	<span class="source_comment">// I'm an optimist
+</span><a name="7"></a>	COS_Full
+<a name="8"></a>};
+<a name="9"></a>
+<a name="10"></a>var() <span class="source_type">int</span> numCarryables					<span class="source_string">"The number of carryables this container starts with"</span>;
+<a name="11"></a>var() <span class="source_type">int</span> maxCarryables					<span class="source_string">"The maximum number of carryables this container can hold before becoming full"</span>;
+<a name="12"></a>var() <span class="source_type">int</span> carryablesPerTeamPoint		<span class="source_string">"The number of carryables needed to score a team point"</span>;
+<a name="13"></a>var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span>&gt; carryableClass	<span class="source_string">"The class which is stored in this container"</span>;
+<a name="14"></a>var() <span class="source_type">bool</span> bAcceptThrownCarryables		<span class="source_string">"Does this container allow carryables to be thrown into it?"</span>;
+<a name="15"></a>var() <span class="source_type">float</span> timeBetweenWithdrawals		<span class="source_string">"The number of seconds you must wait in between each carryable withdrawal"</span>;
+<a name="16"></a>var(<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/localmessage.html" class="source">Localmessage</a></span>&gt; ContainerMessageClass <span class="source_string">"The class used for playing effects and displaying messages"</span>;
+<a name="17"></a>
+<a name="18"></a>var() <span class="source_type">Name</span> deactivatedAnimation			<span class="source_string">"The animation to play when the container becomes inactive"</span>;
+<a name="19"></a>var() <span class="source_type">Name</span> activatedAnimation			<span class="source_string">"The looping animation to play while the container is active"</span>;
+<a name="20"></a>var() <span class="source_type">Name</span> fullAnimation				<span class="source_string">"The animation to play when the container becomes full"</span>;
+<a name="21"></a>var() <span class="source_type">Name</span> depositedAnimation			<span class="source_string">"The animation to play when the container accepts a deposit"</span>;
+<a name="22"></a>var() <span class="source_type">Name</span> withdrawnAnimation			<span class="source_string">"The animation to play when the container accepts a withdrawal"</span>;
+<a name="23"></a>var() <span class="source_type">int</span> fuelMaterialIndex				<span class="source_string">"The index at which the fuel material resides"</span>;
+<a name="24"></a>var() <span class="source_type">int</span> innerFuelMaterialIndex		<span class="source_string">"The index at which the inner fuel material resides"</span>;
+<a name="25"></a>var() <span class="source_type">int</span> numWithdrawnPerSpawn			<span class="source_string">"The number of carryables to withdraw from the container and give to a player each time the player spawns."</span>;
+<a name="26"></a>var() <span class="source_type">float</span>	nearlyEmptyWithdrawScale	<span class="source_string">"When the container is less than 25% full, time between withdrawals will be scaled by this amount"</span>;
+<a name="27"></a>var() <span class="source_type">float</span>	nearlyFullWithdrawScale		<span class="source_string">"When the container is more than 75% full, time between withdrawals will be scaled by this amount"</span>;
+<a name="28"></a>var() <span class="source_type">float</span>	halfFullWithdrawScale		<span class="source_string">"When the container is between 25% and 75% full, time between withdrawals will be scaled by this amount"</span>;
+<a name="29"></a>
+<a name="30"></a>var(EffectEvents) <span class="source_type">Name</span>	deactivatedEffectEvent	<span class="source_string">"The name of an effect event that plays once when the container becomes inactive"</span>;
+<a name="31"></a>var(EffectEvents) <span class="source_type">Name</span>	activatedEffectEvent	<span class="source_string">"The name of an effect event that plays once when the container becomes active"</span>;
+<a name="32"></a>var(EffectEvents) <span class="source_type">Name</span>	fullEffectEvent			<span class="source_string">"The name of an effect event that plays once when the container becomes full"</span>;
+<a name="33"></a>var(EffectEvents) <span class="source_type">Name</span>	depositedEffectEvent	<span class="source_string">"The name of an effect event that plays once when the container accepts a deposit"</span>;
+<a name="34"></a>var(EffectEvents) <span class="source_type">Name</span>	withdrawnEffectEvent	<span class="source_string">"The name of an effect event that plays once when the container accepts a withdrawal"</span>;
+<a name="35"></a>var(EffectEvents) <span class="source_type">Name</span>	activeEffectEvent		<span class="source_string">"The name of an effect event that loops while the container is active"</span>;
+<a name="36"></a>
+<a name="37"></a>var(Stats) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/stat.html" class="source">Stat</a></span>&gt;	depositStat					<span class="source_string">"The stat awarded for depositing each carryable in this container."</span>;
+<a name="38"></a>
+<a name="39"></a>var <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span> fuelShader;
+<a name="40"></a>var <span class="source_type"><a href="../gameplay/controllabletexturepanner.html" class="source">ControllableTexturePanner</a></span> fuelTexPanner;
+<a name="41"></a>var <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span> innerFuelShader;
+<a name="42"></a>var <span class="source_type"><a href="../gameplay/controllabletexturepanner.html" class="source">ControllableTexturePanner</a></span> innerFuelTexPanner;
+<a name="43"></a>
+<a name="44"></a>var Array&lt;<span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span>&gt; storedCarryables;
+<a name="45"></a>
+<a name="46"></a>var <span class="source_type">bool</span> bFull;
+<a name="47"></a>var <span class="source_type">float</span> lastWithdrawAnnouncementTime;
+<a name="48"></a>var() <span class="source_type">int</span>	timeBetweenWithdrawAnnouncements;
+<a name="49"></a>
+<a name="50"></a><span class="source_comment">// Effect bools
+</span><a name="51"></a>var <span class="source_type">bool</span>			bFullEffect;
+<a name="52"></a>var <span class="source_type">bool</span>			bLocalFullEffect;
+<a name="53"></a>var <span class="source_type">bool</span>			bDepositEffect;
+<a name="54"></a>var <span class="source_type">bool</span>			bLocalDepositEffect;
+<a name="55"></a>var <span class="source_type">bool</span>			bWithdrawEffect;
+<a name="56"></a>var <span class="source_type">bool</span>			bLocalWithdrawEffect;
+<a name="57"></a>var <span class="source_type">bool</span>			bInactiveEffect;
+<a name="58"></a>var <span class="source_type">bool</span>			bLocalInactiveEffect;
+<a name="59"></a>
+<a name="60"></a>replication
+<a name="61"></a>{
+<a name="62"></a>	reliable if (Role == ROLE_Authority)
+<a name="63"></a>		numCarryables, maxCarryables, bFullEffect, bDepositEffect, bWithdrawEffect, bInactiveEffect;
+<a name="64"></a>}
+<a name="65"></a>
+<a name="66"></a><span class="source_comment">// PostBeginPlay
+</span><a name="67"></a>simulated <span class="source_type">function</span> PostBeginPlay()
+<a name="68"></a>{
+<a name="69"></a>	local <span class="source_type">int</span> numStart;
+<a name="70"></a>
+<a name="71"></a>	Super.PostBeginPlay();
+<a name="72"></a>
+<a name="73"></a>	if (<span class="source_type">Level</span>.NetMode != NM_Client)
+<a name="74"></a>	{
+<a name="75"></a>		<span class="source_comment">// Handle the case where carryables were added in the editor.  AddNewCarryables() increases
+</span><a name="76"></a>		<span class="source_comment">// the value of numCarryables, so set it properly afterward
+</span><a name="77"></a>		numStart = numCarryables;
+<a name="78"></a>		numCarryables = <span class="source_int">0</span>;
+<a name="79"></a>		addNewCarryables(numStart);
+<a name="80"></a>		numCarryables = numStart;
+<a name="81"></a>	
+<a name="82"></a>		areaTrigger.setTriggerFrequency(<span class="source_int">0.2</span>);
+<a name="83"></a>	}
+<a name="84"></a>
+<a name="85"></a>	buildControllableSkin();
+<a name="86"></a>	evaluatePercentageContents(<span class="source_int">0</span>);
+<a name="87"></a>}
+<a name="88"></a>
+<a name="89"></a><span class="source_type">function</span> addNewCarryables(<span class="source_type">int</span> numToAdd)
+<a name="90"></a>{
+<a name="91"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="92"></a>	local <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> <span class="source_type">c</span>;
+<a name="93"></a>
+<a name="94"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;numToAdd; <span class="source_type">i</span>++)
+<a name="95"></a>	{
+<a name="96"></a>		<span class="source_comment">//Log("POST adding, i="$i$", numToAdd="$numToAdd);
+</span><a name="97"></a>		<span class="source_type">c</span> = spawn(carryableClass,,,Location);
+<a name="98"></a>		if (<span class="source_type">c</span> == None)
+<a name="99"></a>		{
+<a name="100"></a>			Log(<span class="source_string">"Container error:  could not spawn carryable of class "</span>$carryableClass);
+<a name="101"></a>			continue;
+<a name="102"></a>		}
+<a name="103"></a>		<span class="source_type">c</span>.GotoState(<span class="source_name">'Locked'</span>);
+<a name="104"></a>		<span class="source_type">c</span>.homeLocation = Location;
+<a name="105"></a>		addCarryable(<span class="source_type">c</span>);
+<a name="106"></a>	}
+<a name="107"></a>}
+<a name="108"></a>
+<a name="109"></a>simulated <span class="source_type">function</span> PostNetBeginPlay()
+<a name="110"></a>{
+<a name="111"></a>	super.PostNetBeginPlay();
+<a name="112"></a>
+<a name="113"></a>	<span class="source_comment">// Update panner whenever the territory comes into relevancy
+</span><a name="114"></a>	calcFuelPannerScale();
+<a name="115"></a>}
+<a name="116"></a>
+<a name="117"></a>simulated <span class="source_type">function</span> buildControllableSkin()
+<a name="118"></a>{
+<a name="119"></a>	<span class="source_comment">// Build a controllable texture panner for the fuel shader
+</span><a name="120"></a>	fuelShader = <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span>(ShallowCopyMaterial(GetMaterial(fuelMaterialIndex), self));
+<a name="121"></a>
+<a name="122"></a>	if (fuelShader != None)
+<a name="123"></a>	{
+<a name="124"></a>		fuelTexPanner = new <span class="source_type">class</span><span class="source_name">'ControllableTexturePanner'</span>;
+<a name="125"></a>		fuelTexPanner.PanDirection = <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>(<span class="source_type"><a href="../engine/texpanner.html" class="source">TexPanner</a></span>(fuelShader.SelfIllumination).PanDirection);
+<a name="126"></a>		fuelTexPanner.<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> = <span class="source_type"><a href="../engine/texpanner.html" class="source">TexPanner</a></span>(fuelShader.SelfIllumination).<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>;
+<a name="127"></a>
+<a name="128"></a>		fuelShader.Diffuse = fuelTexPanner;
+<a name="129"></a>		fuelShader.SelfIllumination = fuelTexPanner;
+<a name="130"></a>		fuelShader.SelfIlluminationMask = fuelTexPanner;
+<a name="131"></a>	}
+<a name="132"></a>
+<a name="133"></a>	Skins[fuelMaterialIndex] = fuelShader;
+<a name="134"></a>
+<a name="135"></a>	<span class="source_comment">// Build a controllable texture panner for the inner fuel shader
+</span><a name="136"></a>	<span class="source_comment">//innerFuelShader = Shader(ShallowCopyMaterial(GetMaterial(innerFuelMaterialIndex), self));
+</span><a name="137"></a>
+<a name="138"></a>	if (innerFuelShader != None)
+<a name="139"></a>	{
+<a name="140"></a>		innerFuelTexPanner = new <span class="source_type">class</span><span class="source_name">'ControllableTexturePanner'</span>;
+<a name="141"></a>		innerFuelTexPanner.PanDirection = <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>(<span class="source_type"><a href="../engine/texpanner.html" class="source">TexPanner</a></span>(<span class="source_type"><a href="../engine/combiner.html" class="source">Combiner</a></span>(innerFuelShader.SelfIllumination).Material2).PanDirection);
+<a name="142"></a>		innerFuelTexPanner.<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> = <span class="source_type"><a href="../engine/texpanner.html" class="source">TexPanner</a></span>(<span class="source_type"><a href="../engine/combiner.html" class="source">Combiner</a></span>(innerFuelShader.SelfIllumination).Material2).<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>;
+<a name="143"></a>
+<a name="144"></a>		innerFuelShader.Diffuse = innerFuelTexPanner;
+<a name="145"></a>		innerFuelShader.SelfIllumination = innerFuelTexPanner;
+<a name="146"></a>		innerFuelShader.SelfIlluminationMask = innerFuelTexPanner;
+<a name="147"></a>	}
+<a name="148"></a>
+<a name="149"></a>	Skins[innerFuelMaterialIndex] = innerFuelShader;
+<a name="150"></a>	calcFuelPannerScale();
+<a name="151"></a>}
+<a name="152"></a>
+<a name="153"></a>simulated <span class="source_type">function</span> calcFuelPannerScale()
+<a name="154"></a>{
+<a name="155"></a>	fuelTexPanner.<span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> = <span class="source_int">0.5</span> + <span class="source_type">float</span>(numCarryables) / <span class="source_type">float</span>(maxCarryables) / <span class="source_int">2.0</span>;
+<a name="156"></a>	<span class="source_comment">//innerFuelTexPanner.Scale = 0.5 + float(numCarryables) / float(maxCarryables) / 2.0;
+</span><a name="157"></a>	<span class="source_comment">//Log(self$" set panner scale to "$fuelTexPanner.Scale);
+</span><a name="158"></a>}
+<a name="159"></a>
+<a name="160"></a>simulated <span class="source_type">function</span> PostNetReceive()
+<a name="161"></a>{
+<a name="162"></a>	Super.PostNetReceive();
+<a name="163"></a>
+<a name="164"></a>	updateContainerEffects();
+<a name="165"></a>}
+<a name="166"></a>
+<a name="167"></a>simulated <span class="source_type">function</span> updateContainerEffects()
+<a name="168"></a>{
+<a name="169"></a>	if (bFullEffect != bLocalFullEffect)
+<a name="170"></a>	{
+<a name="171"></a>		bLocalFullEffect = bFullEffect;
+<a name="172"></a>		if (bFullEffect)
+<a name="173"></a>		{
+<a name="174"></a>			TriggerEffectEvent(fullEffectEvent);
+<a name="175"></a>			<span class="source_comment">//Log(self$" trying to play "$fullAnimation);
+</span><a name="176"></a>			if (hasAnim(fullAnimation))
+<a name="177"></a>			{
+<a name="178"></a>				<span class="source_comment">// Disable bWorldGeometry so that effect attachments in the Full animation work properly
+</span><a name="179"></a>				if (bWorldGeometry)
+<a name="180"></a>					bWorldGeometry = false;
+<a name="181"></a>				PlayAnim(fullAnimation);
+<a name="182"></a>			}
+<a name="183"></a>		}
+<a name="184"></a>		else
+<a name="185"></a>		{
+<a name="186"></a>			UnTriggerEffectEvent(fullEffectEvent);
+<a name="187"></a>		}
+<a name="188"></a>	}
+<a name="189"></a>
+<a name="190"></a>	if (bInactiveEffect != bLocalInactiveEffect)
+<a name="191"></a>	{
+<a name="192"></a>		bLocalInactiveEffect = bInactiveEffect;
+<a name="193"></a>
+<a name="194"></a>		if (bInactiveEffect)
+<a name="195"></a>		{
+<a name="196"></a>			TriggerEffectEvent(deactivatedEffectEvent);
+<a name="197"></a>			Log(self$<span class="source_string">" playing "</span>$deactivatedAnimation);
+<a name="198"></a>			if (hasAnim(deactivatedAnimation))
+<a name="199"></a>				PlayAnim(deactivatedAnimation);
+<a name="200"></a>		}
+<a name="201"></a>		else
+<a name="202"></a>		{
+<a name="203"></a>			if (hasAnim(activatedAnimation))
+<a name="204"></a>				PlayAnim(activatedAnimation);
+<a name="205"></a>		}
+<a name="206"></a>	}
+<a name="207"></a>
+<a name="208"></a>	if (bWithdrawEffect != bLocalWithdrawEffect)
+<a name="209"></a>	{
+<a name="210"></a>		bLocalWithdrawEffect = bWithdrawEffect;
+<a name="211"></a>		TriggerEffectEvent(withdrawnEffectEvent);
+<a name="212"></a>		if (hasAnim(withdrawnAnimation))
+<a name="213"></a>			PlayAnim(withdrawnAnimation);
+<a name="214"></a>
+<a name="215"></a>		<span class="source_comment">// Update the panner
+</span><a name="216"></a>		calcFuelPannerScale();
+<a name="217"></a>	}
+<a name="218"></a>
+<a name="219"></a>	if (bDepositEffect != bLocalDepositEffect)
+<a name="220"></a>	{
+<a name="221"></a>		bLocalDepositEffect = bDepositEffect;
+<a name="222"></a>		TriggerEffectEvent(depositedEffectEvent);
+<a name="223"></a>		if (hasAnim(depositedAnimation))
+<a name="224"></a>			PlayAnim(depositedAnimation);
+<a name="225"></a>
+<a name="226"></a>		<span class="source_comment">// Update the panner
+</span><a name="227"></a>		calcFuelPannerScale();
+<a name="228"></a>	}
+<a name="229"></a>}
+<a name="230"></a>
+<a name="231"></a><span class="source_type">function</span> evaluatePercentageContents(<span class="source_type">int</span> numAdded)
+<a name="232"></a>{
+<a name="233"></a>	local <span class="source_type">int</span> numStartedWith;
+<a name="234"></a>	local <span class="source_type">float</span> percentageStartedWith;
+<a name="235"></a>	local <span class="source_type">float</span> percentageLeft;
+<a name="236"></a>
+<a name="237"></a>	evaluateObjectiveState();
+<a name="238"></a>
+<a name="239"></a>	if (ContainerMessageClass == None || numAdded == <span class="source_int">0</span>)
+<a name="240"></a>		return;
+<a name="241"></a>
+<a name="242"></a>	numStartedWith = numCarryables - numAdded;
+<a name="243"></a>	percentageStartedWith = <span class="source_type">float</span>(numStartedWith) / <span class="source_type">float</span>(maxCarryables);
+<a name="244"></a>	percentageLeft = <span class="source_type">float</span>(numCarryables) / <span class="source_type">float</span>(maxCarryables);
+<a name="245"></a>
+<a name="246"></a>	<span class="source_comment">// Announce a change if the number of carryables passes the 25%, 50% or 75% mark
+</span><a name="247"></a>
+<a name="248"></a>	<span class="source_comment">// Decreases
+</span><a name="249"></a>	if (percentageLeft &lt;= <span class="source_int">0.25</span> && <span class="source_int">0.25</span> &lt; percentageStartedWith)
+<a name="250"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">3</span>, team());
+<a name="251"></a>	else if (percentageLeft &lt;= <span class="source_int">0.5</span> && <span class="source_int">0.5</span> &lt; percentageStartedWith)
+<a name="252"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">2</span>, team());
+<a name="253"></a>	else if (percentageLeft &lt;= <span class="source_int">0.75</span> && <span class="source_int">0.75</span> &lt; percentageStartedWith)
+<a name="254"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">1</span>, team());
+<a name="255"></a>
+<a name="256"></a>	<span class="source_comment">// Increases
+</span><a name="257"></a>	else if (percentageLeft &gt;= <span class="source_int">0.75</span> && <span class="source_int">0.75</span> &gt; percentageStartedWith)
+<a name="258"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">1</span>, team());
+<a name="259"></a>	else if (percentageLeft &gt;= <span class="source_int">0.5</span> && <span class="source_int">0.5</span> &gt; percentageStartedWith)
+<a name="260"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">2</span>, team());
+<a name="261"></a>	else if (percentageLeft &gt;= <span class="source_int">0.25</span> && <span class="source_int">0.25</span> &gt; percentageStartedWith)
+<a name="262"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">3</span>, team());
+<a name="263"></a>
+<a name="264"></a>	<span class="source_comment">// Empty
+</span><a name="265"></a>	else if (numCarryables == <span class="source_int">0</span>)
+<a name="266"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">4</span>, team());
+<a name="267"></a>}
+<a name="268"></a>
+<a name="269"></a><span class="source_type">function</span> evaluateObjectiveState()
+<a name="270"></a>{
+<a name="271"></a>	local <span class="source_type">float</span> percentageLeft;
+<a name="272"></a>
+<a name="273"></a>	percentageLeft = <span class="source_type">float</span>(numCarryables) / <span class="source_type">float</span>(maxCarryables);
+<a name="274"></a>
+<a name="275"></a>	setObjectiveTally(numCarryables, maxCarryables);
+<a name="276"></a>
+<a name="277"></a>	<span class="source_comment">// Set objective icon state
+</span><a name="278"></a>	if (percentageLeft &lt;= <span class="source_int">0.25</span>)
+<a name="279"></a>	{
+<a name="280"></a>		setObjectiveState(<span class="source_int">0</span>);
+<a name="281"></a>		timeBetweenWithdrawals = default.timeBetweenWithdrawals * nearlyEmptyWithdrawScale;
+<a name="282"></a>	}
+<a name="283"></a>	else if (percentageLeft &lt;= <span class="source_int">0.75</span>)
+<a name="284"></a>	{
+<a name="285"></a>		setObjectiveState(<span class="source_int">1</span>);
+<a name="286"></a>		timeBetweenWithdrawals = default.timeBetweenWithdrawals * halfFullWithdrawScale;
+<a name="287"></a>	}
+<a name="288"></a>	else
+<a name="289"></a>	{
+<a name="290"></a>		setObjectiveState(<span class="source_int">2</span>);
+<a name="291"></a>		timeBetweenWithdrawals = default.timeBetweenWithdrawals * nearlyFullWithdrawScale;
+<a name="292"></a>	}
+<a name="293"></a>}
+<a name="294"></a>
+<a name="295"></a><span class="source_type">function</span> cleanup()
+<a name="296"></a>{
+<a name="297"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>, numToRemove;
+<a name="298"></a>	local <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> <span class="source_type">c</span>;
+<a name="299"></a>
+<a name="300"></a>	<span class="source_comment">// Store in NumToRemove since numCarryables gets altered by removeCarryable()
+</span><a name="301"></a>	numToRemove = storedCarryables.Length;
+<a name="302"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;numToRemove; <span class="source_type">i</span>++)
+<a name="303"></a>	{
+<a name="304"></a>		<span class="source_type">c</span> = removeCarryable();
+<a name="305"></a>		<span class="source_type">c</span>.destroy();
+<a name="306"></a>	}
+<a name="307"></a>
+<a name="308"></a>	super.cleanup();
+<a name="309"></a>}
+<a name="310"></a>
+<a name="311"></a><span class="source_type">function</span> registerStats(<span class="source_type"><a href="../gameplay/stattracker.html" class="source">StatTracker</a></span> tracker)
+<a name="312"></a>{
+<a name="313"></a>	Super.registerStats(tracker);
+<a name="314"></a>
+<a name="315"></a>	tracker.registerStat(depositStat);
+<a name="316"></a>}
+<a name="317"></a>
+<a name="318"></a>
+<a name="319"></a><span class="source_type">function</span> addCarryable(<span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> <span class="source_type">c</span>)
+<a name="320"></a>{
+<a name="321"></a>	storedCarryables.Length = storedCarryables.Length + <span class="source_int">1</span>;
+<a name="322"></a>	storedCarryables[storedCarryables.Length-<span class="source_int">1</span>] = <span class="source_type">c</span>;
+<a name="323"></a>	numCarryables++;
+<a name="324"></a>	<span class="source_comment">//Log("Carryable stored "$c$", "$storedCarryables[numCarryables-1]$", len = "$storedCarryables.Length$", numCarryables = "$numCarryables);
+</span><a name="325"></a>
+<a name="326"></a>	<span class="source_comment">// If adding a carryable caused the number of carriers to increase beyond a scoring
+</span><a name="327"></a>	<span class="source_comment">// threshold, increase the number of team points
+</span><a name="328"></a>	if(numCarryables % carryablesPerTeamPoint == <span class="source_int">0</span> && team() != None)
+<a name="329"></a>		scoreTeam(<span class="source_int">1</span>);
+<a name="330"></a>
+<a name="331"></a>	<span class="source_comment">//dispatchMessage(new class'MessageContainerDeposit'(label, c.lastCarrier.label, c.lastCarrier.getTeamLabel(), 1));
+</span><a name="332"></a>	<span class="source_comment">//c.clearCarrier();
+</span><a name="333"></a>	<span class="source_type">c</span>.homeContainer = self;
+<a name="334"></a>	<span class="source_type">c</span>.SetCollision(false);
+<a name="335"></a>	<span class="source_type">c</span>.bHidden = true;
+<a name="336"></a>	<span class="source_type">c</span>.GotoState(<span class="source_name">'Locked'</span>);
+<a name="337"></a>	<span class="source_comment">//if (c.lastCarrier != None && c.lastCarrier.team() == team())
+</span><a name="338"></a>	<span class="source_comment">//{	
+</span><a name="339"></a>	<span class="source_comment">//	c.lastCarrier.ClientMessage("You threw a carryable into the container!");
+</span><a name="340"></a>	<span class="source_comment">//	scoreIndividual(c.lastCarrier, 1);
+</span><a name="341"></a>	<span class="source_comment">//}
+</span><a name="342"></a>
+<a name="343"></a>	if (team() != None)
+<a name="344"></a>		team().bNoMoreCarryables = !allowSpawn();
+<a name="345"></a>}
+<a name="346"></a>
+<a name="347"></a><span class="source_type">function</span> addMetaCarryable(<span class="source_type"><a href="../gameplay/mpmetacarryable.html" class="source">MPMetaCarryable</a></span> meta)
+<a name="348"></a>{
+<a name="349"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="350"></a>
+<a name="351"></a>	<span class="source_comment">// Just empty the metacarryable and put all contents into the container, even if this causes
+</span><a name="352"></a>	<span class="source_comment">// the container to overflow (ideally the overflow would break into denominations)
+</span><a name="353"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;meta.carryables.Length; <span class="source_type">i</span>++)
+<a name="354"></a>	{
+<a name="355"></a>		addCarryable(meta.carryables[<span class="source_type">i</span>]);
+<a name="356"></a>
+<a name="357"></a>		if (meta.carryables[<span class="source_type">i</span>].lastCarrier != None && meta.carryables[<span class="source_type">i</span>].lastCarrier.team() == team())
+<a name="358"></a>			awardStat(depositStat, meta.carryables[<span class="source_type">i</span>].lastCarrier);
+<a name="359"></a>	}
+<a name="360"></a>	meta.destroy();
+<a name="361"></a>}
+<a name="362"></a>
+<a name="363"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> removeCarryable()
+<a name="364"></a>{
+<a name="365"></a>	local <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> removedCarryable;
+<a name="366"></a>
+<a name="367"></a>	<span class="source_comment">// Just remove the last coin
+</span><a name="368"></a>	removedCarryable = storedCarryables[storedCarryables.Length-<span class="source_int">1</span>];
+<a name="369"></a>	storedCarryables.Length = storedCarryables.Length - <span class="source_int">1</span>;
+<a name="370"></a>	numCarryables--;
+<a name="371"></a>
+<a name="372"></a>	<span class="source_comment">// If removing a carryable caused the number of carriers to decrease beyond a scoring
+</span><a name="373"></a>	<span class="source_comment">// threshold, decrease the number of team points
+</span><a name="374"></a>	if((numCarryables + <span class="source_int">1</span>) % carryablesPerTeamPoint == <span class="source_int">0</span> && team() != None && team().score &gt; <span class="source_int">0</span>)
+<a name="375"></a>		scoreTeam(-<span class="source_int">1</span>);
+<a name="376"></a>
+<a name="377"></a>	removedCarryable.SetCollision(true);
+<a name="378"></a>
+<a name="379"></a>	<span class="source_comment">//Log("Container removing "$removedCarryable);
+</span><a name="380"></a>	return removedCarryable;
+<a name="381"></a>}
+<a name="382"></a>
+<a name="383"></a><span class="source_type">function</span> <span class="source_type">int</span> deposit(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="384"></a>{
+<a name="385"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>, numAdded;
+<a name="386"></a>
+<a name="387"></a>	<span class="source_comment">// Friendly touch:  deposit coins
+</span><a name="388"></a>
+<a name="389"></a>	<span class="source_comment">// Don't deposit the player's permanent carryables and don't deposit beyond this container's maximum
+</span><a name="390"></a>	for (<span class="source_type">i</span>=<span class="source_type">c</span>.numPermanentCarryables; <span class="source_type">i</span>&lt;<span class="source_type">c</span>.carryables.Length && numCarryables &lt; maxCarryables; <span class="source_type">i</span>++)
+<a name="391"></a>	{
+<a name="392"></a>		addCarryable(<span class="source_type">c</span>.carryables[<span class="source_type">i</span>]);
+<a name="393"></a>		<span class="source_comment">//Log("Deposited "$c.carryables[i]);
+</span><a name="394"></a>		numAdded++;
+<a name="395"></a>	}
+<a name="396"></a>
+<a name="397"></a>	awardStat(depositStat, <span class="source_type">c</span>, None, numAdded);
+<a name="398"></a>	<span class="source_comment">//c.ClientMessage("You deposited "$numAdded$" carryables!");
+</span><a name="399"></a>	dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageContainerDeposit'</span>(label, <span class="source_type">c</span>.label, getTeamLabel(), numAdded));
+<a name="400"></a>
+<a name="401"></a>	<span class="source_comment">// If all carryables were deposited by the character, cleanup the character completely
+</span><a name="402"></a>	if (<span class="source_type">c</span>.numPermanentCarryables == <span class="source_int">0</span> && numAdded == <span class="source_type">c</span>.numCarryables)
+<a name="403"></a>	{
+<a name="404"></a>		<span class="source_comment">//Log(c$" deposited ALL carryables = "$numAdded);
+</span><a name="405"></a>		<span class="source_type">c</span>.clearCarryables();
+<a name="406"></a>	}
+<a name="407"></a>	<span class="source_comment">// Otherwise, only remove the carryables that were deposited
+</span><a name="408"></a>	else
+<a name="409"></a>	{
+<a name="410"></a>		<span class="source_type">c</span>.carryables.Length = <span class="source_type">c</span>.carryables.Length - numAdded;
+<a name="411"></a>		<span class="source_type">c</span>.numCarryables = <span class="source_type">c</span>.carryables.Length;
+<a name="412"></a>
+<a name="413"></a>		<span class="source_comment">// Reset denomination attachment
+</span><a name="414"></a>		<span class="source_type">c</span>.carryableReference.attachDenomination();
+<a name="415"></a>		<span class="source_comment">//Log(c$" deposited SOME carryables = "$numAdded$", c.numCarryables = "$c.numCarryables$", len = "$c.carryables.Length$", ref = "$c.carryableReference);
+</span><a name="416"></a>	}
+<a name="417"></a>
+<a name="418"></a>	bDepositEffect = !bDepositEffect;
+<a name="419"></a>	updateContainerEffects();
+<a name="420"></a>	evaluateContents();
+<a name="421"></a>
+<a name="422"></a>	<span class="source_comment">//Log(self$" successfully deposited "$numAdded);
+</span><a name="423"></a>	return numAdded;
+<a name="424"></a>}
+<a name="425"></a>
+<a name="426"></a><span class="source_type">function</span> withdraw(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="427"></a>{
+<a name="428"></a>	local <span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> removedCarryable;
+<a name="429"></a>
+<a name="430"></a>	<span class="source_comment">// Enemy touch:  steal coins
+</span><a name="431"></a>	if (storedCarryables.Length &lt;= <span class="source_int">0</span>)
+<a name="432"></a>	{
+<a name="433"></a>		<span class="source_comment">//Log("Can't withdraw due to lack of carryables");
+</span><a name="434"></a>		return;
+<a name="435"></a>	}
+<a name="436"></a>
+<a name="437"></a>	if (<span class="source_type">c</span>.carryableReference != None && !<span class="source_type">c</span>.carryableReference.canCombineWith(carryableClass))
+<a name="438"></a>	{
+<a name="439"></a>		<span class="source_comment">//Log("Can't withdraw due to existing carryableReference = "$c.carryableReference$" and class "$carryableClass);
+</span><a name="440"></a>		return;
+<a name="441"></a>	}
+<a name="442"></a>
+<a name="443"></a>	removedCarryable = removeCarryable();
+<a name="444"></a>	<span class="source_comment">//Log(self$" attempting withdrawal of "$removedCarryable);
+</span><a name="445"></a>
+<a name="446"></a>	removedCarryable.attemptPickup(<span class="source_type">c</span>);
+<a name="447"></a>
+<a name="448"></a>	bWithdrawEffect = !bWithdrawEffect;
+<a name="449"></a>	updateContainerEffects();
+<a name="450"></a>
+<a name="451"></a>	<span class="source_comment">// Neutral containers become inactive when empty
+</span><a name="452"></a>	if (team() == None && storedCarryables.Length == <span class="source_int">0</span>)
+<a name="453"></a>		GotoState(<span class="source_name">'Inactive'</span>);
+<a name="454"></a>	else
+<a name="455"></a>	{
+<a name="456"></a>		evaluatePercentageContents(-<span class="source_int">1</span>);
+<a name="457"></a>	}
+<a name="458"></a>
+<a name="459"></a>	if (team() != None)
+<a name="460"></a>		team().bNoMoreCarryables = !allowSpawn();
+<a name="461"></a>}
+<a name="462"></a>
+<a name="463"></a><span class="source_type">function</span> <span class="source_type">bool</span> allowSpawn()
+<a name="464"></a>{
+<a name="465"></a>	if (numWithdrawnPerSpawn &gt; <span class="source_int">0</span>)
+<a name="466"></a>		return numCarryables &gt;= numWithdrawnPerSpawn;
+<a name="467"></a>
+<a name="468"></a>	return true;
+<a name="469"></a>}
+<a name="470"></a>
+<a name="471"></a><span class="source_type">function</span> evaluateContents()
+<a name="472"></a>{
+<a name="473"></a>	if (storedCarryables.Length &gt;= maxCarryables && team() != None)
+<a name="474"></a>	{
+<a name="475"></a>		GotoState(<span class="source_name">'Full'</span>);
+<a name="476"></a>	}
+<a name="477"></a>	else
+<a name="478"></a>	{
+<a name="479"></a>		evaluatePercentageContents(<span class="source_int">1</span>);
+<a name="480"></a>	}
+<a name="481"></a>}
+<a name="482"></a>
+<a name="483"></a><span class="source_type">function</span> onAreaEntered(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="484"></a>{
+<a name="485"></a>	<span class="source_comment">// Do nothing by default
+</span><a name="486"></a>}
+<a name="487"></a>
+<a name="488"></a><span class="source_type">function</span> onAreaExited(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="489"></a>{
+<a name="490"></a>	<span class="source_comment">// Do nothing by default
+</span><a name="491"></a>}
+<a name="492"></a>
+<a name="493"></a><span class="source_type">function</span> onAreaTick()
+<a name="494"></a>{
+<a name="495"></a>}
+<a name="496"></a>
+<a name="497"></a><span class="source_type">function</span> <span class="source_type">reset</span>()
+<a name="498"></a>{
+<a name="499"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="500"></a>
+<a name="501"></a>	<span class="source_comment">// Used in single player to reset the container
+</span><a name="502"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;storedCarryables.Length; <span class="source_type">i</span>++)
+<a name="503"></a>	{
+<a name="504"></a>		if (storedCarryables[<span class="source_type">i</span>] != None)
+<a name="505"></a>			storedCarryables[<span class="source_type">i</span>].destroy();
+<a name="506"></a>	}
+<a name="507"></a>	storedCarryables.Length = <span class="source_int">0</span>;
+<a name="508"></a>	numCarryables = <span class="source_int">0</span>;
+<a name="509"></a>	GotoState(<span class="source_name">'Active'</span>);
+<a name="510"></a>}
+<a name="511"></a>
+<a name="512"></a><span class="source_type">function</span> onPlayerSpawned(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="513"></a>{
+<a name="514"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="515"></a>
+<a name="516"></a>	<span class="source_comment">//Log("Withdrawing permanent carryables:  "$c.numPermanentCarryables);
+</span><a name="517"></a>	if (storedCarryables.Length &lt; <span class="source_type">c</span>.numPermanentCarryables)
+<a name="518"></a>	{
+<a name="519"></a>		Log(<span class="source_string">"Not enough carryables left for spawn withdrawal."</span>);
+<a name="520"></a>		return;
+<a name="521"></a>	}
+<a name="522"></a>
+<a name="523"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type">c</span>.numPermanentCarryables; <span class="source_type">i</span>++)
+<a name="524"></a>	{
+<a name="525"></a>		<span class="source_comment">//Log(self$" automatically withdrawing for spawn");
+</span><a name="526"></a>		withdraw(<span class="source_type">c</span>);
+<a name="527"></a>	}
+<a name="528"></a>}
+<a name="529"></a>
+<a name="530"></a><span class="source_comment">// The container accepts deposits and withdrawals
+</span><a name="531"></a> auto simulated state <span class="source_type">Active</span>
+<a name="532"></a>{
+<a name="533"></a>	simulated <span class="source_type">function</span> BeginState()
+<a name="534"></a>	{
+<a name="535"></a>		TriggerEffectEvent(activatedEffectEvent);
+<a name="536"></a>		if (hasAnim(activatedAnimation))
+<a name="537"></a>			LoopAnim(activatedAnimation);
+<a name="538"></a>	}
+<a name="539"></a>
+<a name="540"></a>	<span class="source_type">function</span> onAreaEntered(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="541"></a>	{
+<a name="542"></a>		if (<span class="source_type">c</span>.team() == team())
+<a name="543"></a>		{
+<a name="544"></a>			if (<span class="source_type">c</span>.carryableReference != None && <span class="source_type">c</span>.numCarryables &gt; <span class="source_type">c</span>.numPermanentCarryables && <span class="source_type">c</span>.carryableReference.canCombineWith(carryableClass))
+<a name="545"></a>			{
+<a name="546"></a>				<span class="source_comment">// Deposit all the character's carryables
+</span><a name="547"></a>				if (SecondaryMessageClass != None)
+<a name="548"></a>				{
+<a name="549"></a>					<span class="source_type">Level</span>.Game.BroadcastLocalized(self, SecondaryMessageClass, <span class="source_int">1</span>, <span class="source_type">c</span>.<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span>,,,<span class="source_type">string</span>(<span class="source_type">c</span>.numDroppableCarryables()));
+<a name="550"></a>				}
+<a name="551"></a>
+<a name="552"></a>				deposit(<span class="source_type">c</span>);
+<a name="553"></a>			}
+<a name="554"></a>		}
+<a name="555"></a>		else if (numCarryables &gt; <span class="source_int">0</span> && !<span class="source_type">c</span>.bDontAllowCarryablePickups && <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">c</span>.getMount()) == None && (<span class="source_type">c</span>.carryableReference == None || <span class="source_type">c</span>.numCarryables &lt; <span class="source_type">c</span>.carryableReference.maxCarried))
+<a name="556"></a>		{
+<a name="557"></a>			<span class="source_comment">// Announce withdrawal as soon as the player enters
+</span><a name="558"></a>			if (<span class="source_type">Level</span>.TimeSeconds - lastWithdrawAnnouncementTime &gt; timeBetweenWithdrawAnnouncements)
+<a name="559"></a>			{
+<a name="560"></a>				lastWithdrawAnnouncementTime = <span class="source_type">Level</span>.TimeSeconds;
+<a name="561"></a>				if (team() == None)
+<a name="562"></a>					<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">5</span>, <span class="source_type">c</span>.team());
+<a name="563"></a>				else
+<a name="564"></a>					<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">6</span>, <span class="source_type">c</span>.team());
+<a name="565"></a>			}
+<a name="566"></a>		}
+<a name="567"></a>	}
+<a name="568"></a>
+<a name="569"></a>	<span class="source_type">function</span> onAreaExited(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="570"></a>	{
+<a name="571"></a>		local <span class="source_type">int</span> carryableCount;
+<a name="572"></a>
+<a name="573"></a>		carryableCount = <span class="source_type">c</span>.numDroppableCarryables();
+<a name="574"></a>		if (<span class="source_type">c</span>.team() != team() && carryableCount &gt; <span class="source_int">1</span> && SecondaryMessageClass != None && carryableCount != <span class="source_type">c</span>.lastCarryableNumber)
+<a name="575"></a>		{
+<a name="576"></a>			<span class="source_type">c</span>.lastCarryableNumber = carryableCount;
+<a name="577"></a>			<span class="source_type">Level</span>.Game.BroadcastLocalized(self, SecondaryMessageClass, <span class="source_int">0</span>, <span class="source_type">c</span>.<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span>,,,<span class="source_type">string</span>(carryableCount));
+<a name="578"></a>		}
+<a name="579"></a>	}
+<a name="580"></a>
+<a name="581"></a>	<span class="source_type">function</span> onAreaTick()
+<a name="582"></a>	{
+<a name="583"></a>		local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>;
+<a name="584"></a>		<span class="source_comment">//local MPCarryable carryable;
+</span><a name="585"></a>		<span class="source_comment">//local MPMetaCarryable meta;
+</span><a name="586"></a>		<span class="source_comment">//local bool bAdded;
+</span><a name="587"></a>
+<a name="588"></a>		<span class="source_comment">// See if there are any characters withdrawing, or friendly players carrying fuel
+</span><a name="589"></a>		ForEach areaTrigger.TouchingActors(<span class="source_type">class</span><span class="source_name">'Character'</span>, <span class="source_type">c</span>)
+<a name="590"></a>		{
+<a name="591"></a>			if (<span class="source_type">c</span>.team() != team() && storedCarryables.Length &gt; <span class="source_int">0</span> && !<span class="source_type">c</span>.bDontAllowCarryablePickups && <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">c</span>.getMount()) == None)
+<a name="592"></a>			{
+<a name="593"></a>				<span class="source_comment">// Give all players who have been in here long enough a carryable
+</span><a name="594"></a>				if (areaTrigger.enoughTimeElapsedSinceMarkerTime(<span class="source_type">c</span>, timeBetweenWithdrawals, true) && <span class="source_type">c</span>.numDroppableCarryables() &lt; carryableClass.default.maxCarried)
+<a name="595"></a>				{
+<a name="596"></a>					<span class="source_comment">// Withdraw a carryable
+</span><a name="597"></a>					<span class="source_comment">//Log(self $" allowed carryable withdrawal");
+</span><a name="598"></a>					withdraw(<span class="source_type">c</span>);
+<a name="599"></a>
+<a name="600"></a>					if (<span class="source_type">Level</span>.TimeSeconds - lastWithdrawAnnouncementTime &gt; timeBetweenWithdrawAnnouncements)
+<a name="601"></a>					{
+<a name="602"></a>						lastWithdrawAnnouncementTime = <span class="source_type">Level</span>.TimeSeconds;
+<a name="603"></a>						if (team() == None)
+<a name="604"></a>							<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">5</span>, <span class="source_type">c</span>.team());
+<a name="605"></a>						else
+<a name="606"></a>							<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">6</span>, <span class="source_type">c</span>.team());
+<a name="607"></a>					}
+<a name="608"></a>				}
+<a name="609"></a>			}
+<a name="610"></a>
+<a name="611"></a>			<span class="source_comment">// Automatically deposit if friendly
+</span><a name="612"></a>			if (<span class="source_type">c</span>.team() == team() && <span class="source_type">c</span>.carryableReference != None && <span class="source_type">c</span>.numCarryables &gt; <span class="source_type">c</span>.numPermanentCarryables && <span class="source_type">c</span>.carryableReference.canCombineWith(carryableClass))
+<a name="613"></a>			{
+<a name="614"></a>				if (SecondaryMessageClass != None)
+<a name="615"></a>				{
+<a name="616"></a>					<span class="source_type">Level</span>.Game.BroadcastLocalized(self, SecondaryMessageClass, <span class="source_int">1</span>, <span class="source_type">c</span>.<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">tribesReplicationInfo</a></span>,,,<span class="source_type">string</span>(<span class="source_type">c</span>.numDroppableCarryables()));
+<a name="617"></a>				}
+<a name="618"></a>
+<a name="619"></a>				deposit(<span class="source_type">c</span>);
+<a name="620"></a>			}
+<a name="621"></a>		}
+<a name="622"></a>
+<a name="623"></a>		<span class="source_comment">// Eat any carryables inside the area
+</span><a name="624"></a>		<span class="source_comment">//ForEach areaTrigger.TouchingActors(class'MPCarryable', carryable)
+</span><a name="625"></a>		<span class="source_comment">//{
+</span><a name="626"></a>		<span class="source_comment">//	meta = MPMetaCarryable(carryable);
+</span><a name="627"></a>		<span class="source_comment">//	if (!carryable.bHidden && meta == None && carryable.canCombineWith(carryableClass) )
+</span><a name="628"></a>		<span class="source_comment">//	{
+</span><a name="629"></a>		<span class="source_comment">//		Log(self$" eating "$carryable);
+</span><a name="630"></a>		<span class="source_comment">//		addCarryable(carryable);
+</span><a name="631"></a>		<span class="source_comment">//		bAdded = true;
+</span><a name="632"></a>		<span class="source_comment">//	}
+</span><a name="633"></a>		<span class="source_comment">//	else if (meta != None && carryable.canCombineWith(carryableClass))
+</span><a name="634"></a>		<span class="source_comment">//	{
+</span><a name="635"></a>		<span class="source_comment">//		Log(self$" eating meta "$meta);
+</span><a name="636"></a>		<span class="source_comment">//		addMetaCarryable(meta);
+</span><a name="637"></a>		<span class="source_comment">//		bAdded = true;
+</span><a name="638"></a>		<span class="source_comment">//	}
+</span><a name="639"></a>
+<a name="640"></a>		<span class="source_comment">//	if (bAdded)
+</span><a name="641"></a>		<span class="source_comment">//		evaluateContents();
+</span><a name="642"></a>		<span class="source_comment">//}		
+</span><a name="643"></a>	}
+<a name="644"></a>
+<a name="645"></a>	simulated <span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="646"></a>	{
+<a name="647"></a>		super.<span class="source_type">Tick</span>(<span class="source_type">Delta</span>);
+<a name="648"></a>
+<a name="649"></a>		<span class="source_comment">// Occasionally update the panner
+</span><a name="650"></a>		calcFuelPannerScale();
+<a name="651"></a>	}
+<a name="652"></a>
+<a name="653"></a>	<span class="source_comment">//function OnAreaEnteredByActor(Actor a)
+</span><a name="654"></a>	<span class="source_comment">//{
+</span><a name="655"></a>	<span class="source_comment">//	local MPCarryable thrownCarryable;
+</span><a name="656"></a>	<span class="source_comment">//	local MPMetaCarryable meta;
+</span><a name="657"></a>
+<a name="658"></a>	<span class="source_comment">//	// Allow carryables to be thrown into the container, if applicable
+</span><a name="659"></a>	<span class="source_comment">//	thrownCarryable = MPCarryable(a);
+</span><a name="660"></a>
+<a name="661"></a>	<span class="source_comment">//	if (thrownCarryable != None && !thrownCarryable.bHidden && thrownCarryable.canCombineWith(carryableClass) && bAcceptThrownCarryables)
+</span><a name="662"></a>	<span class="source_comment">//	{
+</span><a name="663"></a>	<span class="source_comment">//		// If it's a metacarryable, empty it
+</span><a name="664"></a>	<span class="source_comment">//		// Assume it was THROWN since characters can't actually deposit metacarryables directly
+</span><a name="665"></a>	<span class="source_comment">//		meta = MPMetaCarryable(thrownCarryable);
+</span><a name="666"></a>	<span class="source_comment">//		if (meta != None)
+</span><a name="667"></a>	<span class="source_comment">//		{
+</span><a name="668"></a>	<span class="source_comment">//			addMetaCarryable(meta);
+</span><a name="669"></a>	<span class="source_comment">//		}
+</span><a name="670"></a>	<span class="source_comment">//		else
+</span><a name="671"></a>	<span class="source_comment">//		{
+</span><a name="672"></a>	<span class="source_comment">//			// It's not a metacarryable; just add it
+</span><a name="673"></a>	<span class="source_comment">//			addCarryable(thrownCarryable);
+</span><a name="674"></a>	<span class="source_comment">//			if (thrownCarryable.lastCarrier != None && thrownCarryable.lastCarrier.team() == team())
+</span><a name="675"></a>	<span class="source_comment">//				awardStat(depositStat, thrownCarryable.lastCarrier);
+</span><a name="676"></a>	<span class="source_comment">//		}
+</span><a name="677"></a>	<span class="source_comment">//		evaluateContents();
+</span><a name="678"></a>	<span class="source_comment">//	}
+</span><a name="679"></a>	<span class="source_comment">//}
+</span><a name="680"></a>}
+<a name="681"></a>
+<a name="682"></a><span class="source_comment">// The container, for whatever reason, doesn't accept deposits or withdrawals
+</span><a name="683"></a>state Inactive
+<a name="684"></a>{
+<a name="685"></a>	<span class="source_comment">// Handle cases where a sytem adds a carryable back in (for example when a dropped
+</span><a name="686"></a>	<span class="source_comment">// carryable returns here after the depot has become inactive)
+</span><a name="687"></a>	<span class="source_type">function</span> addCarryable(<span class="source_type"><a href="../gameplay/mpcarryable.html" class="source">MPCarryable</a></span> <span class="source_type">c</span>)
+<a name="688"></a>	{
+<a name="689"></a>		GotoState(<span class="source_name">'Active'</span>);
+<a name="690"></a>
+<a name="691"></a>		Global.addCarryable(<span class="source_type">c</span>);
+<a name="692"></a>	}
+<a name="693"></a>
+<a name="694"></a>	<span class="source_type">function</span> BeginState()
+<a name="695"></a>	{
+<a name="696"></a>		bInactiveEffect = true;
+<a name="697"></a>		updateContainerEffects();
+<a name="698"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">7</span>, team());
+<a name="699"></a>		dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageContainerEmpty'</span>(label, getTeamLabel()));
+<a name="700"></a>	}
+<a name="701"></a>
+<a name="702"></a>	<span class="source_type">function</span> EndState()
+<a name="703"></a>	{
+<a name="704"></a>		bInactiveEffect = false;
+<a name="705"></a>		updateContainerEffects();
+<a name="706"></a>	}
+<a name="707"></a>}
+<a name="708"></a>
+<a name="709"></a><span class="source_comment">// The container is full and will no longer accept deposits or withdrawals
+</span><a name="710"></a>state Full extends Inactive
+<a name="711"></a>{
+<a name="712"></a>	<span class="source_type">function</span> BeginState()
+<a name="713"></a>	{
+<a name="714"></a>		local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="715"></a>
+<a name="716"></a>		bFullEffect = true;
+<a name="717"></a>		bFull = true;
+<a name="718"></a>		updateContainerEffects();
+<a name="719"></a>		<span class="source_type">Level</span>.Game.BroadcastLocalized(self, ContainerMessageClass, <span class="source_int">0</span>, team());
+<a name="720"></a>		dispatchMessage(new <span class="source_type">class</span><span class="source_name">'MessageContainerFull'</span>(label, getTeamLabel()));
+<a name="721"></a>
+<a name="722"></a>		<span class="source_comment">// Destroy all the fuel that was in it
+</span><a name="723"></a>		for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;storedCarryables.Length; <span class="source_type">i</span>++)
+<a name="724"></a>		{
+<a name="725"></a>			if (storedCarryables[<span class="source_type">i</span>] != None)
+<a name="726"></a>				storedCarryables[<span class="source_type">i</span>].destroy();
+<a name="727"></a>		}
+<a name="728"></a>		storedCarryables.Length = <span class="source_int">0</span>;
+<a name="729"></a>	}
+<a name="730"></a>
+<a name="731"></a>	<span class="source_type">function</span> EndState()
+<a name="732"></a>	{
+<a name="733"></a>		bWorldGeometry = default.bWorldGeometry;
+<a name="734"></a>		bFullEffect = false;
+<a name="735"></a>		bFull = false;
+<a name="736"></a>		updateContainerEffects();
+<a name="737"></a>
+<a name="738"></a>		Super.EndState();
+<a name="739"></a>	}
+<a name="740"></a>
+<a name="741"></a>	<span class="source_comment">// Don't allow deposits or withdrawals in this state
+</span><a name="742"></a>	<span class="source_type">function</span> <span class="source_type">int</span> deposit(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="743"></a>	{
+<a name="744"></a>		return <span class="source_int">0</span>;
+<a name="745"></a>	}
+<a name="746"></a>
+<a name="747"></a>	<span class="source_type">function</span> withdraw(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>)
+<a name="748"></a>	{
+<a name="749"></a>	}
+<a name="750"></a>}
+<a name="751"></a>
+<a name="752"></a><span class="source_comment">// Don't allow deposits or withdrawals
+</span><a name="753"></a>state Paused
+<a name="754"></a>{
+<a name="755"></a>}
+<a name="756"></a>
+<a name="757"></a>defaultproperties
+<a name="758"></a>{
+<a name="759"></a>	DrawType				= DT_StaticMesh
+<a name="760"></a>	<span class="source_type">StaticMesh</span>				= <span class="source_type">StaticMesh</span><span class="source_name">'Editor_res.TexPropCube'</span>
+<a name="761"></a>	bCollideActors			= true
+<a name="762"></a>	bCollideWorld			= true
+<a name="763"></a><span class="source_comment">//	bBlockActors			= true
+</span><a name="764"></a>	bMovable				= false
+<a name="765"></a>	bUseCylinderCollision	= false
+<a name="766"></a>	bBlockPlayers			= false
+<a name="767"></a>	bNetNotify				= true
+<a name="768"></a>	carryablesPerTeamPoint		= <span class="source_int">10</span>
+<a name="769"></a>	carryableClass				= <span class="source_type">class</span><span class="source_name">'MPCarryable'</span>
+<a name="770"></a>	maxCarryables				= <span class="source_int">10</span>
+<a name="771"></a>	bAcceptThrownCarryables		= true
+<a name="772"></a>	timeBetweenWithdrawals	= <span class="source_int">2</span>
+<a name="773"></a>	fuelMaterialIndex		= <span class="source_int">2</span>
+<a name="774"></a>	ContainerMessageClass	= <span class="source_type">class</span><span class="source_name">'MPContainerMessages'</span>
+<a name="775"></a>	timeBetweenWithdrawAnnouncements = <span class="source_int">10</span>
+<a name="776"></a>	bAlwaysRelevant			= true
+<a name="777"></a>
+<a name="778"></a>	nearlyEmptyWithdrawScale = <span class="source_int">1.5</span>	
+<a name="779"></a>	nearlyFullWithdrawScale	= <span class="source_int">0.5</span>
+<a name="780"></a>	halfFullWithdrawScale	= <span class="source_int">1.0</span>	
+<a name="781"></a>
+<a name="782"></a>
+<a name="783"></a>	deactivatedEffectEvent	= Deactivated
+<a name="784"></a>	activatedEffectEvent	= Activated
+<a name="785"></a>	fullEffectEvent			= Full
+<a name="786"></a>	depositedEffectEvent	= Deposited
+<a name="787"></a>	withdrawnEffectEvent	= Withdrawn
+<a name="788"></a>	activeEffectEvent		= <span class="source_type">Active</span>
+<a name="789"></a>
+<a name="790"></a>	NetUpdateFrequency		= <span class="source_int">4</span>
+<a name="791"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/mpcarryablecontainer.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#MPCarryableContainer">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/mpcarryable.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/mpcarryablemessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:18.000 - Creation time: st 23.5.2018 00:10:45.853 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

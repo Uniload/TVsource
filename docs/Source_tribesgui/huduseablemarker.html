@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: TribesGUI.HUDUseableMarker</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/huduseablemarker.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HUDUseableMarker">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/hudthrowmeter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/hudvaluebar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tribesgui/huduseablemarker.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/huduseablemarker.html">HUDUseableMarker</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../tribesgui/huduseablemarker.html" class="source">HUDUseableMarker</a></span> extends <span class="source_type"><a href="../tribesgui/hudelement.html" class="source">HUDElement</a></span>;
+<a name="2"></a>
+<a name="3"></a>var() config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> MarkerMaterial;
+<a name="4"></a>var() config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> UseableMaterial;
+<a name="5"></a>var() config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> UnUseableMaterial;
+<a name="6"></a>var() config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> PowerDownMaterial;
+<a name="7"></a>var() config <span class="source_type">int</span> DrawSize;
+<a name="8"></a>
+<a name="9"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> CurrentScreenPos;
+<a name="10"></a>var <span class="source_type">bool</span> bPlayerCanUse;
+<a name="11"></a>var <span class="source_type">bool</span> bEnabledForUse;
+<a name="12"></a>var <span class="source_type">bool</span> bUnpowered;
+<a name="13"></a>
+<a name="14"></a><span class="source_type">function</span> UpdateData(<span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> <span class="source_type">c</span>)
+<a name="15"></a>{
+<a name="16"></a>	CurrentScreenPos = <span class="source_type">c</span>.useableObjectLocation;
+<a name="17"></a>
+<a name="18"></a>	<span class="source_comment">// visibility:
+</span><a name="19"></a>	bVisible = true;
+<a name="20"></a>	if(currentScreenPos.X &lt; <span class="source_int">0</span> || currentScreenPos.X &gt; screenWidth ||
+<a name="21"></a>	   currentScreenPos.<span class="source_type">Y</span> &lt; <span class="source_int">0</span> || currentScreenPos.<span class="source_type">Y</span> &gt; screenHeight)
+<a name="22"></a>			bVisible = false;
+<a name="23"></a>
+<a name="24"></a>	bPlayerCanUse = <span class="source_type">c</span>.bCanBeUsed;
+<a name="25"></a>	bEnabledForUse = <span class="source_type">c</span>.bEnabledForUse;
+<a name="26"></a>	bUnpowered = ! <span class="source_type">c</span>.bUseableObjectPowered;
+<a name="27"></a>}
+<a name="28"></a>
+<a name="29"></a><span class="source_comment">//
+</span><a name="30"></a><span class="source_comment">//
+</span><a name="31"></a><span class="source_type">function</span> RenderElement(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span>)
+<a name="32"></a>{
+<a name="33"></a>	<span class="source_type">c</span>.CurX = currentScreenPos.X - (DrawSize / <span class="source_int">2</span>);
+<a name="34"></a>	<span class="source_type">c</span>.CurY = currentScreenPos.<span class="source_type">Y</span> - (DrawSize / <span class="source_int">2</span>);
+<a name="35"></a>
+<a name="36"></a>	if(bPlayerCanUse)
+<a name="37"></a>		RenderHUDMaterial(<span class="source_type">c</span>, UseableMaterial, DrawSize, DrawSize);
+<a name="38"></a>	else
+<a name="39"></a>	{
+<a name="40"></a>		RenderHUDMaterial(<span class="source_type">c</span>, MarkerMaterial, DrawSize, DrawSize);
+<a name="41"></a>
+<a name="42"></a>		if(bUnpowered)
+<a name="43"></a>			RenderHUDMaterial(<span class="source_type">c</span>, PowerDownMaterial, DrawSize, DrawSize);
+<a name="44"></a>		else if(! bEnabledForUse)
+<a name="45"></a>			RenderHUDMaterial(<span class="source_type">c</span>, UnUseableMaterial, DrawSize, DrawSize);
+<a name="46"></a>	}
+<a name="47"></a>}
+<a name="48"></a>
+<a name="49"></a>defaultproperties
+<a name="50"></a>{
+<a name="51"></a>	MarkerMaterial=(<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'HUD.UseCorners'</span>,drawColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">170</span>),style=<span class="source_int">1</span>,bStretched=true)
+<a name="52"></a>	UseableMaterial=(<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'HUD.UseCorners'</span>,drawColor=(<span class="source_type">R</span>=<span class="source_int">50</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">50</span>,<span class="source_type">A</span>=<span class="source_int">255</span>),style=<span class="source_int">1</span>,bStretched=true)
+<a name="53"></a>	UnUseableMaterial=(<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span><span class="source_name">'HUD.ReticuleCross'</span>,drawColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>),style=<span class="source_int">1</span>)
+<a name="54"></a>	PowerDownMaterial=(<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span><span class="source_name">'HUD.UseNoPower'</span>,drawColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>),style=<span class="source_int">1</span>)
+<a name="55"></a>	DrawSize=<span class="source_int">50</span>
+<a name="56"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header"><a href="../tribesgui/huduseablemarker.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#HUDUseableMarker">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tribesgui/hudthrowmeter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tribesgui/hudvaluebar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: st 16.4.2014 10:20:46.000 - Creation time: st 23.5.2018 00:10:44.503 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

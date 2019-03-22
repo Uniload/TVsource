@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Tyrion.AI_AssaultShipAttack</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ai_assaultshipattack.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#AI_AssaultShipAttack">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ai_animategoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ai_attackgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tyrion/ai_assaultshipattack.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_assaultshipattack.html">AI_AssaultShipAttack</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=====================================================================
+</span><a name="2"></a><span class="source_comment">// AI_AssaultShipAttack
+</span><a name="3"></a><span class="source_comment">//=====================================================================
+</span><a name="4"></a>
+<a name="5"></a><span class="source_type">class</span> <span class="source_type"><a href="../tyrion/ai_assaultshipattack.html" class="source">AI_AssaultShipAttack</a></span> extends <span class="source_type"><a href="../tyrion/ai_vehicleaction.html" class="source">AI_VehicleAction</a></span>
+<a name="6"></a>	editinlinenew;
+<a name="7"></a>
+<a name="8"></a>import enum <span class="source_type"><a href="../gameplay/vehicle.html#VehiclePositionType" class="source">VehiclePositionType</a></span> from <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>;
+<a name="9"></a>
+<a name="10"></a><span class="source_comment">//=====================================================================
+</span><a name="11"></a><span class="source_comment">// Constants
+</span><a name="12"></a>
+<a name="13"></a>const CLOSING_RANGE = <span class="source_int">4000.0f</span>;			<span class="source_comment">// how close to get to target before starting fancy combat maneuvers
+</span><a name="14"></a>const ATTACK_SPEED = <span class="source_int">1500.0f</span>;			<span class="source_comment">// attack speed
+</span><a name="15"></a>const HEIGHT_ABOVE_TARGET = <span class="source_int">1500.0f</span>;	<span class="source_comment">// how high do you want to be above target when you attack?
+</span><a name="16"></a>const DIAGONAL_DISTANCE = <span class="source_int">5000</span>;
+<a name="17"></a>
+<a name="18"></a><span class="source_comment">//=====================================================================
+</span><a name="19"></a><span class="source_comment">// Variables
+</span><a name="20"></a>
+<a name="21"></a>var(Parameters) editinline <span class="source_type">Name</span> targetName <span class="source_string">"Label of target (any Pawn)"</span>;
+<a name="22"></a>
+<a name="23"></a>var(InternalParameters) editconst <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">target</span>;
+<a name="24"></a>var(InternalParameters) editconst <span class="source_type"><a href="../tyrion/ifollowfunction.html" class="source">IFollowFunction</a></span> followFunction;
+<a name="25"></a>
+<a name="26"></a>var <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span> v;
+<a name="27"></a>var <span class="source_type"><a href="../gameplay/vehicle.html#VehiclePositionType" class="source">VehiclePositionType</a></span> driverPosition;
+<a name="28"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">destination</span>;
+<a name="29"></a>
+<a name="30"></a>var <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> fireAtGoal;
+<a name="31"></a>var <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> followGoal;
+<a name="32"></a>var <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_Errorcodes</a></span> <span class="source_type">errorCode</span>;
+<a name="33"></a>var <span class="source_type"><a href="../tyrion/ai_targetmemorysensor.html" class="source">AI_TargetMemorySensor</a></span> targetMemorySensor;
+<a name="34"></a>
+<a name="35"></a><span class="source_comment">//=====================================================================
+</span><a name="36"></a><span class="source_comment">// Functions
+</span><a name="37"></a>
+<a name="38"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="39"></a><span class="source_comment">// callbacks from sub-goals;
+</span><a name="40"></a><span class="source_comment">// they are only used to stop the action when any success/failure message
+</span><a name="41"></a><span class="source_comment">// comes up that isn't an interruption
+</span><a name="42"></a><span class="source_comment">// todo: automate this process? A new flag on goals/waitForGoals?
+</span><a name="43"></a>
+<a name="44"></a><span class="source_type">function</span> goalAchievedCB( <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>, <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">child</span> )
+<a name="45"></a>{
+<a name="46"></a>	super.goalAchievedCB( <span class="source_type">goal</span>, <span class="source_type">child</span> );
+<a name="47"></a>
+<a name="48"></a>	<span class="source_type">errorCode</span> = ACT_SUCCESS;
+<a name="49"></a>	runAction();
+<a name="50"></a>}
+<a name="51"></a>
+<a name="52"></a><span class="source_type">function</span> goalNotAchievedCB( <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> <span class="source_type">goal</span>, <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">child</span>, <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">anErrorCode</span> ) 
+<a name="53"></a>{
+<a name="54"></a>	super.goalNotAchievedCB( <span class="source_type">goal</span>, <span class="source_type">child</span>, <span class="source_type">anErrorCode</span> );
+<a name="55"></a>
+<a name="56"></a>	<span class="source_type">errorCode</span> = <span class="source_type">anErrorCode</span>;
+<a name="57"></a>
+<a name="58"></a>	if ( <span class="source_type">errorCode</span> != ACT_INTERRUPTED )
+<a name="59"></a>		runAction();
+<a name="60"></a>}
+<a name="61"></a>
+<a name="62"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="63"></a>
+<a name="64"></a><span class="source_type">function</span> cleanup()
+<a name="65"></a>{
+<a name="66"></a>	super.cleanup();
+<a name="67"></a>
+<a name="68"></a>	followFunction = None;
+<a name="69"></a>
+<a name="70"></a>	if ( targetMemorySensor != None )
+<a name="71"></a>	{
+<a name="72"></a>		targetMemorySensor.deactivateSensor( self );
+<a name="73"></a>		targetMemorySensor = None;
+<a name="74"></a>	}
+<a name="75"></a>
+<a name="76"></a>	if ( followGoal != None )
+<a name="77"></a>	{
+<a name="78"></a>		followGoal.Release();
+<a name="79"></a>		followGoal = None;
+<a name="80"></a>	}
+<a name="81"></a>
+<a name="82"></a>	if (fireAtGoal != None )
+<a name="83"></a>	{
+<a name="84"></a>		fireAtGoal.Release();
+<a name="85"></a>		fireAtGoal = None;
+<a name="86"></a>	}
+<a name="87"></a>}
+<a name="88"></a>
+<a name="89"></a><span class="source_comment">//=====================================================================
+</span><a name="90"></a><span class="source_comment">// State code
+</span><a name="91"></a>
+<a name="92"></a>state Running
+<a name="93"></a>{
+<a name="94"></a>Begin:
+<a name="95"></a>	v = <span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span>();
+<a name="96"></a>
+<a name="97"></a>	if ( <span class="source_type">target</span> == None && targetName == <span class="source_name">''</span> )
+<a name="98"></a>	{
+<a name="99"></a>		log( <span class="source_string">"AI WARNING:"</span> @ <span class="source_type">name</span> @ <span class="source_string">"has no target"</span> );
+<a name="100"></a>		fail( ACT_INVALID_PARAMETERS, true );
+<a name="101"></a>	}
+<a name="102"></a>
+<a name="103"></a>	if ( <span class="source_type">target</span> == None )
+<a name="104"></a>		<span class="source_type">target</span> = <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(v.findByLabel( <span class="source_type">class</span><span class="source_name">'Pawn'</span>, targetName, true ));
+<a name="105"></a>
+<a name="106"></a>	if ( v.logTyrion )
+<a name="107"></a>		log( <span class="source_type">name</span> @ <span class="source_string">"started."</span> @ v.<span class="source_type">name</span> @ <span class="source_string">"is attacking"</span> @ <span class="source_type">target</span>.<span class="source_type">name</span> );
+<a name="108"></a>
+<a name="109"></a>	if ( <span class="source_type">target</span> == None )
+<a name="110"></a>	{
+<a name="111"></a>		log( <span class="source_string">"AI WARNING:"</span> @ <span class="source_type">name</span> @ <span class="source_string">"can't find specified rook"</span> );
+<a name="112"></a>		fail( ACT_INVALID_PARAMETERS, true );
+<a name="113"></a>	}
+<a name="114"></a>
+<a name="115"></a>	<span class="source_comment">// set up purely for VehiclePursue: memory function won't work on this sensor if it's always started from scratch
+</span><a name="116"></a>	targetMemorySensor = <span class="source_type"><a href="../tyrion/ai_targetmemorysensor.html" class="source">AI_TargetMemorySensor</a></span>( <span class="source_type">class</span><span class="source_name">'AI_Sensor'</span>.static.activateSensor( self, <span class="source_type">class</span><span class="source_name">'AI_TargetMemorySensor'</span>, vehicleResource() ) );
+<a name="117"></a>	targetMemorySensor.setParameters( <span class="source_type">target</span>, v.visionMemory );
+<a name="118"></a>
+<a name="119"></a>	<span class="source_comment">//waitForResourcesAvailable( achievingGoal.priority, achievingGoal.priority );
+</span><a name="120"></a>
+<a name="121"></a>	<span class="source_comment">// start shooting at target
+</span><a name="122"></a>	driverPosition = VP_DRIVER;		<span class="source_comment">// stupid assignment necessary or Unreal doesn't recognize the enum
+</span><a name="123"></a>	fireAtGoal = (new <span class="source_type">class</span><span class="source_name">'AI_GunnerFireAtGoal'</span>( gunnerResource(driverPosition), achievingGoal.priority,
+<a name="124"></a>					<span class="source_type">target</span>, driverPosition, false )).postGoal( self ).myAddRef();
+<a name="125"></a>
+<a name="126"></a>	while ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( v ) && <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( <span class="source_type">target</span> ) && (followGoal == None || !followGoal.wasNotAchieved() ))
+<a name="127"></a>	{
+<a name="128"></a>		<span class="source_comment">// 1. post followGoal - interrupt it if close to target
+</span><a name="129"></a>		if ( VSizeSquared2D( <span class="source_type">target</span>.Location - v.Location ) &gt; CLOSING_RANGE * CLOSING_RANGE )
+<a name="130"></a>		{
+<a name="131"></a>			if ( followGoal != None )
+<a name="132"></a>			{
+<a name="133"></a>				followGoal.Release();
+<a name="134"></a>				followGoal = None;
+<a name="135"></a>			}
+<a name="136"></a>
+<a name="137"></a>			<span class="source_comment">// move towards target
+</span><a name="138"></a>			followGoal = (new <span class="source_type">class</span><span class="source_name">'AI_VehiclePursueGoal'</span>( driverResource(), achievingGoal.priority, <span class="source_type">target</span>,
+<a name="139"></a>							 CLOSING_RANGE,,,, HEIGHT_ABOVE_TARGET, ATTACK_SPEED )).postGoal( self ).myAddRef();
+<a name="140"></a>
+<a name="141"></a>			while ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( v ) &&
+<a name="142"></a>					<span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( <span class="source_type">target</span> ) &&
+<a name="143"></a>					VSizeSquared2D( <span class="source_type">target</span>.Location - v.Location ) &gt; CLOSING_RANGE * CLOSING_RANGE &&
+<a name="144"></a>					!followGoal.wasNotAchieved() )
+<a name="145"></a>				yield();
+<a name="146"></a>
+<a name="147"></a>			followGoal.unPostGoal( self );
+<a name="148"></a>		}
+<a name="149"></a>
+<a name="150"></a>		<span class="source_comment">// 2. move to a point behind target - call doLocalMove *without* target flag set
+</span><a name="151"></a>		<span class="source_comment">//   (since assault ship just passes overhead and drops bombs)
+</span><a name="152"></a>		if ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( v ) && <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkAlive( <span class="source_type">target</span> ) && (followGoal == None || !followGoal.wasNotAchieved() ))
+<a name="153"></a>		{
+<a name="154"></a>			<span class="source_type">destination</span> = <span class="source_type">target</span>.Location - v.Location;
+<a name="155"></a>			<span class="source_type">destination</span>.Z = <span class="source_int">0</span>;
+<a name="156"></a>			<span class="source_type">destination</span> *= DIAGONAL_DISTANCE / VSize2D( <span class="source_type">destination</span> );
+<a name="157"></a>			<span class="source_type">destination</span> += <span class="source_type">target</span>.Location;
+<a name="158"></a>			<span class="source_type">destination</span>.Z += HEIGHT_ABOVE_TARGET;
+<a name="159"></a>	
+<a name="160"></a>			if ( followFunction == None || followFunction.validDestination( <span class="source_type">destination</span> ) )
+<a name="161"></a>			{
+<a name="162"></a>				waitForGoal( (new <span class="source_type">class</span><span class="source_name">'AI_VehicleLocalAttackGoal'</span>( driverResource(), achievingGoal.priority, 
+<a name="163"></a>									<span class="source_type">destination</span>, <span class="source_int">750</span>, ATTACK_SPEED, None )).postGoal( self ), true );
+<a name="164"></a>			}
+<a name="165"></a>		}
+<a name="166"></a>	}
+<a name="167"></a>
+<a name="168"></a>	if ( v.logTyrion )
+<a name="169"></a>		log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ v.<span class="source_type">name</span> @ <span class="source_string">") stopped with errorCode"</span> @ <span class="source_type">errorCode</span> );
+<a name="170"></a>
+<a name="171"></a>	if ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkDead( <span class="source_type">target</span> ) )
+<a name="172"></a>		succeed();
+<a name="173"></a>	else 
+<a name="174"></a>		fail( <span class="source_type">errorCode</span> );
+<a name="175"></a>}
+<a name="176"></a>
+<a name="177"></a><span class="source_comment">//=====================================================================
+</span><a name="178"></a>
+<a name="179"></a>defaultproperties
+<a name="180"></a>{
+<a name="181"></a>	satisfiesGoal = <span class="source_type">class</span><span class="source_name">'AI_VehicleAttackGoal'</span>
+<a name="182"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ai_assaultshipattack.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#AI_AssaultShipAttack">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ai_animategoal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ai_attackgoal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:58.000 - Creation time: st 23.5.2018 00:10:40.932 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

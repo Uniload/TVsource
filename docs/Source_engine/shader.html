@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Engine.Shader</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/shader.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Shader">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/security.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/shadowbitmapmaterial.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/shader.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/shader.html">Shader</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span> extends <span class="source_type"><a href="../engine/renderedmaterial.html" class="source">RenderedMaterial</a></span>
+<a name="2"></a>	editinlinenew
+<a name="3"></a>	native;
+<a name="4"></a>
+<a name="5"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> Diffuse;
+<a name="6"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> Opacity;
+<a name="7"></a>
+<a name="8"></a><span class="source_macro">#if IG_BUMPMAP // rowan: bumpmap Material params
+</span><a name="9"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>	NormalMap;
+<a name="10"></a>var() editinlineuse <span class="source_type"><a href="../engine/cubemap.html" class="source">Cubemap</a></span>		PerPixelReflection;
+<a name="11"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>	PerPixelReflectionMask;
+<a name="12"></a>var() enum <span class="source_type"><a href="../engine/shader.html#EPerPixelSpecular" class="source">EPerPixelSpecular</a></span>
+<a name="13"></a>{
+<a name="14"></a>	PP_None,
+<a name="15"></a>	PP_Low,
+<a name="16"></a>	PP_Medium,
+<a name="17"></a>	PP_High,
+<a name="18"></a>} PerPixelSpecular;
+<a name="19"></a>var() enum <span class="source_type"><a href="../engine/shader.html#EPerPixelSpecularType" class="source">EPerPixelSpecularType</a></span>
+<a name="20"></a>{
+<a name="21"></a>	ST_AlgorithmicRV,
+<a name="22"></a>	ST_AlgorithmicNH,
+<a name="23"></a>} PerPixelSpecularType;
+<a name="24"></a>var() <span class="source_type">byte</span> PerPixelSpecularBrightness;
+<a name="25"></a><span class="source_macro">#endif // IG
+</span><a name="26"></a> 
+<a name="27"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> Specular;
+<a name="28"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> SpecularityMask;
+<a name="29"></a>
+<a name="30"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> SelfIllumination;
+<a name="31"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> SelfIlluminationMask;
+<a name="32"></a>
+<a name="33"></a><span class="source_macro">#if IG_GLOW	// rowan: can override the selfiluum channel for glow effect if we want
+</span><a name="34"></a>var() <span class="source_type">byte</span> GlowBrightness;
+<a name="35"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> GlowMapOverride;
+<a name="36"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> GlowMaskOverride;
+<a name="37"></a><span class="source_macro">#endif
+</span><a name="38"></a>
+<a name="39"></a>var() editinlineuse <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> Detail;
+<a name="40"></a>var() <span class="source_type">float</span> DetailScale;
+<a name="41"></a>
+<a name="42"></a>var() enum <span class="source_type"><a href="../engine/shader.html#EOutputBlending" class="source">EOutputBlending</a></span>
+<a name="43"></a>{
+<a name="44"></a>	OB_Normal,
+<a name="45"></a>	OB_Masked,
+<a name="46"></a>	OB_Modulate,
+<a name="47"></a><span class="source_macro">#if IG_TRIBES3	// rowan: need this for flame effects
+</span><a name="48"></a>	OB_AlphaTranslucent,	
+<a name="49"></a><span class="source_macro">#endif
+</span><a name="50"></a>	OB_Translucent,
+<a name="51"></a>	OB_Invisible,
+<a name="52"></a>	OB_Brighten,
+<a name="53"></a>	OB_Darken,
+<a name="54"></a><span class="source_macro">#if IG_SHARED	// rowan: need this for foilage
+</span><a name="55"></a>	OB_Feathered,
+<a name="56"></a><span class="source_macro">#endif
+</span><a name="57"></a>} OutputBlending;
+<a name="58"></a>
+<a name="59"></a><span class="source_macro">#if IG_SHARED	// rowan: shader LOD settings
+</span><a name="60"></a>var(ShaderLOD) <span class="source_type">bool</span> bAllowSelfIlluminationLOD;
+<a name="61"></a><span class="source_macro">#endif
+</span><a name="62"></a>
+<a name="63"></a>var() <span class="source_type">bool</span> TwoSided;
+<a name="64"></a>var() <span class="source_type">bool</span> Wireframe;
+<a name="65"></a>var   <span class="source_type">bool</span> ModulateStaticLighting2X;
+<a name="66"></a>var() <span class="source_type">bool</span> PerformLightingOnSpecularPass;
+<a name="67"></a>
+<a name="68"></a><span class="source_macro">#if IG_SHARED	// Paul: functions to retreive the uSize & vSize of the material
+</span><a name="69"></a><span class="source_type">function</span> <span class="source_type">int</span> GetUSize()
+<a name="70"></a>{
+<a name="71"></a>	if( Diffuse != None)
+<a name="72"></a>		return Diffuse.GetUSize();
+<a name="73"></a>	if( SelfIllumination != None)
+<a name="74"></a>		return SelfIllumination.GetUSize();
+<a name="75"></a>
+<a name="76"></a>	return <span class="source_int">0</span>;
+<a name="77"></a>}
+<a name="78"></a>
+<a name="79"></a><span class="source_type">function</span> <span class="source_type">int</span> GetVSize()
+<a name="80"></a>{
+<a name="81"></a>	if( Diffuse != None)
+<a name="82"></a>		return Diffuse.GetVSize();
+<a name="83"></a>	if( SelfIllumination != None)
+<a name="84"></a>		return SelfIllumination.GetVSize();
+<a name="85"></a>
+<a name="86"></a>	return <span class="source_int">0</span>;
+<a name="87"></a>}
+<a name="88"></a><span class="source_macro">#endif
+</span><a name="89"></a>
+<a name="90"></a><span class="source_type">function</span> <span class="source_type">Reset</span>()
+<a name="91"></a>{
+<a name="92"></a>	if(Diffuse != None)
+<a name="93"></a>		Diffuse.<span class="source_type">Reset</span>();
+<a name="94"></a>	if(Opacity != None)
+<a name="95"></a>		Opacity.<span class="source_type">Reset</span>();
+<a name="96"></a>	if(Specular != None)
+<a name="97"></a>		Specular.<span class="source_type">Reset</span>();
+<a name="98"></a>	if(SpecularityMask != None)
+<a name="99"></a>		SpecularityMask.<span class="source_type">Reset</span>();
+<a name="100"></a>	if(SelfIllumination != None)
+<a name="101"></a>		SelfIllumination.<span class="source_type">Reset</span>();
+<a name="102"></a>	if(SelfIlluminationMask != None)
+<a name="103"></a>		SelfIlluminationMask.<span class="source_type">Reset</span>();
+<a name="104"></a>	if(FallbackMaterial != None)
+<a name="105"></a>		FallbackMaterial.<span class="source_type">Reset</span>();
+<a name="106"></a>}
+<a name="107"></a>
+<a name="108"></a><span class="source_type">function</span> <span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">EventInstigator</span> )
+<a name="109"></a>{
+<a name="110"></a>	if(Diffuse != None)
+<a name="111"></a>		Diffuse.<span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>(<span class="source_type">Other</span>,<span class="source_type">EventInstigator</span>);
+<a name="112"></a>	if(Opacity != None)
+<a name="113"></a>		Opacity.<span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>(<span class="source_type">Other</span>,<span class="source_type">EventInstigator</span>);
+<a name="114"></a>	if(Specular != None)
+<a name="115"></a>		Specular.<span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>(<span class="source_type">Other</span>,<span class="source_type">EventInstigator</span>);
+<a name="116"></a>	if(SpecularityMask != None)
+<a name="117"></a>		SpecularityMask.<span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>(<span class="source_type">Other</span>,<span class="source_type">EventInstigator</span>);
+<a name="118"></a>	if(SelfIllumination != None)
+<a name="119"></a>		SelfIllumination.<span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>(<span class="source_type">Other</span>,<span class="source_type">EventInstigator</span>);
+<a name="120"></a>	if(SelfIlluminationMask != None)
+<a name="121"></a>		SelfIlluminationMask.<span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>(<span class="source_type">Other</span>,<span class="source_type">EventInstigator</span>);
+<a name="122"></a>	if(FallbackMaterial != None)
+<a name="123"></a>		FallbackMaterial.<span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>(<span class="source_type">Other</span>,<span class="source_type">EventInstigator</span>);
+<a name="124"></a>}
+<a name="125"></a>
+<a name="126"></a>defaultproperties
+<a name="127"></a>{
+<a name="128"></a>	DetailScale=<span class="source_int">8.0</span>
+<a name="129"></a>
+<a name="130"></a><span class="source_comment">//#if IG_RENDERER	// rowan: set Materialtype for quick casts
+</span><a name="131"></a>	MaterialType = MT_Shader
+<a name="132"></a><span class="source_comment">//#endif
+</span><a name="133"></a>
+<a name="134"></a><span class="source_comment">//#if IG_BUMPMAP	// rowan: default specular brightness
+</span><a name="135"></a>	PerPixelSpecularBrightness = <span class="source_int">255</span>
+<a name="136"></a><span class="source_comment">//#endif
+</span><a name="137"></a>
+<a name="138"></a><span class="source_comment">//#if IG_GLOW		// rowan: default glow brightness
+</span><a name="139"></a>	GlowBrightness = <span class="source_int">127</span>
+<a name="140"></a><span class="source_comment">//#endif
+</span><a name="141"></a>
+<a name="142"></a>	bAllowSelfIlluminationLOD = true
+<a name="143"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/shader.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Shader">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/security.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/shadowbitmapmaterial.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:01:30.000 - Creation time: st 23.5.2018 00:10:46.971 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

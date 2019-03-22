@@ -1,0 +1,655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.TreadVehicle</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/treadvehicle.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TreadVehicle">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/timechargeupweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/tribescheatmanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/treadvehicle.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.TreadVehicle</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/car.html">Car</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/treadvehicle.html">TreadVehicle</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/tank.html">Tank</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_TV_ANGULAR_VELOCITY_ACCURACY_FACTOR" name="TV_ANGULAR_VELOCITY_ACCURACY_FACTOR" title="go to the details">TV_ANGULAR_VELOCITY_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+<tr><td width="40%"><a href="#_TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR" name="TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR" title="go to the details">TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+<tr><td width="40%"><a href="#_TV_LINEAR_VELOCITY_ACCURACY_FACTOR" name="TV_LINEAR_VELOCITY_ACCURACY_FACTOR" title="go to the details">TV_LINEAR_VELOCITY_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">100</td></tr>
+<tr><td width="40%"><a href="#_TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" name="TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" title="go to the details">TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR</a></td><td width="10%">=</td><td width="50%">0.01</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#CANNOT_STEAL_VEHICLE_PROMPT_INDEX">CANNOT_STEAL_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#DRIVER_PROMPT_INDEX">DRIVER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#ENEMY_INVENTORY_STATION_PROMPT_INDEX">ENEMY_INVENTORY_STATION_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#ENEMY_OCCUPIED_VEHICLE_PROMPT_INDEX">ENEMY_OCCUPIED_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#FLIP_PROMPT_INDEX">FLIP_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#FULL_VEHICLE_PROMPT_INDEX">FULL_VEHICLE_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#GUNNER_PROMPT_INDEX">GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#HEAVY_ATTEMPT_TO_PILOT">HEAVY_ATTEMPT_TO_PILOT</a>, <a href="../gameplay/vehicle.html#INVENTORY_STATION_PROMPT_INDEX">INVENTORY_STATION_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#LEFT_GUNNER_PROMPT_INDEX">LEFT_GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#MAXIMUM_NUMBER_POSITIONS">MAXIMUM_NUMBER_POSITIONS</a>, <a href="../gameplay/vehicle.html#NUMBER_MINOR_ENTRY_SIGNALS">NUMBER_MINOR_ENTRY_SIGNALS</a>, <a href="../gameplay/vehicle.html#RIGHT_GUNNER_PROMPT_INDEX">RIGHT_GUNNER_PROMPT_INDEX</a>, <a href="../gameplay/vehicle.html#VEHICLE_PROHIBITED_OBJECT_PROMPT_INDEX">VEHICLE_PROHIBITED_OBJECT_PROMPT_INDEX</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_leftTreadChannel" name="leftTreadChannel" title="go to the details">leftTreadChannel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_leftTreadContact" name="leftTreadContact" title="go to the details">leftTreadContact</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/shader.html">Shader</a></td><td width="66%"><a href="#_leftTreadShader" name="leftTreadShader" title="go to the details">leftTreadShader</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_leftTreadSpinSpeed" name="leftTreadSpinSpeed" title="go to the details">leftTreadSpinSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texmatrix.html">TexMatrix</a></td><td width="66%"><a href="#_leftTreadTexPanner" name="leftTreadTexPanner" title="go to the details">leftTreadTexPanner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/treadvehicle.html#TreadVehicleReplicationState">TreadVehicleReplicationState</a></td><td width="66%"><a href="#_oldReplicationTreadVehicleState" name="oldReplicationTreadVehicleState" title="go to the details">oldReplicationTreadVehicleState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/treadvehicle.html#TreadVehicleReplicationState">TreadVehicleReplicationState</a></td><td width="66%"><a href="#_replicationTreadVehicleState" name="replicationTreadVehicleState" title="go to the details">replicationTreadVehicleState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_rightTreadChannel" name="rightTreadChannel" title="go to the details">rightTreadChannel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_rightTreadContact" name="rightTreadContact" title="go to the details">rightTreadContact</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/shader.html">Shader</a></td><td width="66%"><a href="#_rightTreadShader" name="rightTreadShader" title="go to the details">rightTreadShader</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_rightTreadSpinSpeed" name="rightTreadSpinSpeed" title="go to the details">rightTreadSpinSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texmatrix.html">TexMatrix</a></td><td width="66%"><a href="#_rightTreadTexPanner" name="rightTreadTexPanner" title="go to the details">rightTreadTexPanner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_softThrottleSteering" name="softThrottleSteering" title="go to the details">softThrottleSteering</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_switchOffSoftThrottleSteeringTime" name="switchOffSoftThrottleSteeringTime" title="go to the details">switchOffSoftThrottleSteeringTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_treadVehiclePadding[1]" name="treadVehiclePadding[1]" title="go to the details">treadVehiclePadding[1]</a></td></tr>
+<tr><th colspan="2" class="small">TreadVehicle</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_animationRateToTexturePanRate" name="animationRateToTexturePanRate" title="go to the details">animationRateToTexturePanRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_centreOfMassHeightOffset" name="centreOfMassHeightOffset" title="go to the details">centreOfMassHeightOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_forceApplicationHeightOffset" name="forceApplicationHeightOffset" title="go to the details">forceApplicationHeightOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_leftForwardTreadAnimation" name="leftForwardTreadAnimation" title="go to the details">leftForwardTreadAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_leftReverseTreadAnimation" name="leftReverseTreadAnimation" title="go to the details">leftReverseTreadAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_leftTreadMaterialIndex" name="leftTreadMaterialIndex" title="go to the details">leftTreadMaterialIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_lowFriction" name="lowFriction" title="go to the details">lowFriction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_maximumTreadVelocityDelta" name="maximumTreadVelocityDelta" title="go to the details">maximumTreadVelocityDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_rightForwardTreadAnimation" name="rightForwardTreadAnimation" title="go to the details">rightForwardTreadAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_rightReverseTreadAnimation" name="rightReverseTreadAnimation" title="go to the details">rightReverseTreadAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_rightTreadMaterialIndex" name="rightTreadMaterialIndex" title="go to the details">rightTreadMaterialIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_softThrottleSteeringScale" name="softThrottleSteeringScale" title="go to the details">softThrottleSteeringScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_softThrottleSteeringStayOnPeriod" name="softThrottleSteeringStayOnPeriod" title="go to the details">softThrottleSteeringStayOnPeriod</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_spinSpeedToAnimationRate" name="spinSpeedToAnimationRate" title="go to the details">spinSpeedToAnimationRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_steerToVelocityFactor" name="steerToVelocityFactor" title="go to the details">steerToVelocityFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_throttleSteerToVelocityScaleFactor" name="throttleSteerToVelocityScaleFactor" title="go to the details">throttleSteerToVelocityScaleFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_throttleToVelocityFactor" name="throttleToVelocityFactor" title="go to the details">throttleToVelocityFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_treadGainFactor" name="treadGainFactor" title="go to the details">treadGainFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_treadGainFactorStopping" name="treadGainFactorStopping" title="go to the details">treadGainFactorStopping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_treadLength" name="treadLength" title="go to the details">treadLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_treadPositionOffset" name="treadPositionOffset" title="go to the details">treadPositionOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_treadRadius" name="treadRadius" title="go to the details">treadRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_treadVehicleGravityScale" name="treadVehicleGravityScale" title="go to the details">treadVehicleGravityScale</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#carSteer">carSteer</a>, <a href="../gameplay/car.html#driveThrottleCoefficient">driveThrottleCoefficient</a>, <a href="../gameplay/car.html#effectAccelerating">effectAccelerating</a>, <a href="../gameplay/car.html#effectDeccelerating">effectDeccelerating</a>, <a href="../gameplay/car.html#Gear">Gear</a>, <a href="../gameplay/car.html#maximumYawChange">maximumYawChange</a>, <a href="../gameplay/car.html#minimumNavigationThrottle">minimumNavigationThrottle</a>, <a href="../gameplay/car.html#outputCarDirection">outputCarDirection</a>, <a href="../gameplay/car.html#SteeringMaxAngle">SteeringMaxAngle</a>, <a href="../gameplay/car.html#stopSteeringSize">stopSteeringSize</a>, <a href="../gameplay/car.html#StopThreshold">StopThreshold</a>, <a href="../gameplay/car.html#stopVelocitySize">stopVelocitySize</a>, <a href="../gameplay/car.html#strafeSteerAngleOffset">strafeSteerAngleOffset</a>, <a href="../gameplay/car.html#upsideDownDamagePerSecond">upsideDownDamagePerSecond</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#abandonmentDestruction">abandonmentDestruction</a>, <a href="../gameplay/vehicle.html#abandonmentDestructionPeriod">abandonmentDestructionPeriod</a>, <a href="../gameplay/vehicle.html#animationFinishThenLoop">animationFinishThenLoop</a>, <a href="../gameplay/vehicle.html#bCanBeStolen">bCanBeStolen</a>, <a href="../gameplay/vehicle.html#bCollisionDamageEnabled">bCollisionDamageEnabled</a>, <a href="../gameplay/vehicle.html#bDisablePositionSwitching">bDisablePositionSwitching</a>, <a href="../gameplay/vehicle.html#bDrawDriverInTP">bDrawDriverInTP</a>, <a href="../gameplay/vehicle.html#bFlipping">bFlipping</a>, <a href="../gameplay/vehicle.html#bGodMode">bGodMode</a>, <a href="../gameplay/vehicle.html#bHasBeenOccupied">bHasBeenOccupied</a>, <a href="../gameplay/vehicle.html#bInvincible">bInvincible</a>, <a href="../gameplay/vehicle.html#bSettledUpsideDown">bSettledUpsideDown</a>, <a href="../gameplay/vehicle.html#bShowPhysicsDebug">bShowPhysicsDebug</a>, <a href="../gameplay/vehicle.html#bVehicleCameraTrace">bVehicleCameraTrace</a>, <a href="../gameplay/vehicle.html#cachedCameraLocation">cachedCameraLocation</a>, <a href="../gameplay/vehicle.html#cameraDistance">cameraDistance</a>, <a href="../gameplay/vehicle.html#cannotStealPrompt">cannotStealPrompt</a>, <a href="../gameplay/vehicle.html#clientInterpolationHard">clientInterpolationHard</a>, <a href="../gameplay/vehicle.html#clientInterpolationPeriod">clientInterpolationPeriod</a>, <a href="../gameplay/vehicle.html#clientInterpolationSnapDistance">clientInterpolationSnapDistance</a>, <a href="../gameplay/vehicle.html#clientPositions[MAXIMUM_NUMBER_POSITIONS]">clientPositions[MAXIMUM_NUMBER_POSITIONS]</a>, <a href="../gameplay/vehicle.html#collisionDamageMagnitudeScale">collisionDamageMagnitudeScale</a>, <a href="../gameplay/vehicle.html#cornerSlowDownDistance">cornerSlowDownDistance</a>, <a href="../gameplay/vehicle.html#cornerSlowDownMinimumCosAngle">cornerSlowDownMinimumCosAngle</a>, <a href="../gameplay/vehicle.html#cornerSlowDownSpeedCoefficient">cornerSlowDownSpeedCoefficient</a>, <a href="../gameplay/vehicle.html#CrushingDamageTypeClass">CrushingDamageTypeClass</a>, <a href="../gameplay/vehicle.html#currentAbandonmentDuration">currentAbandonmentDuration</a>, <a href="../gameplay/vehicle.html#currentDesiredHavokState">currentDesiredHavokState</a>, <a href="../gameplay/vehicle.html#currentSwitchClass">currentSwitchClass</a>, <a href="../gameplay/vehicle.html#customInertiaTensor">customInertiaTensor</a>, <a href="../gameplay/vehicle.html#customInertiaTensorDiagonal">customInertiaTensorDiagonal</a>, <a href="../gameplay/vehicle.html#dampingPlusEnabled">dampingPlusEnabled</a>, <a href="../gameplay/vehicle.html#dampingPlusNegativeZ">dampingPlusNegativeZ</a>, <a href="../gameplay/vehicle.html#dampingPlusPositiveZ">dampingPlusPositiveZ</a>, <a href="../gameplay/vehicle.html#dampingPlusXY">dampingPlusXY</a>, <a href="../gameplay/vehicle.html#destroyedExplosionClass">destroyedExplosionClass</a>, <a href="../gameplay/vehicle.html#destructionObjectClass">destructionObjectClass</a>, <a href="../gameplay/vehicle.html#distanceToMaximumDurationScale">distanceToMaximumDurationScale</a>, <a href="../gameplay/vehicle.html#DiveInput">DiveInput</a>, <a href="../gameplay/vehicle.html#doNotEjectOnFlip">doNotEjectOnFlip</a>, <a href="../gameplay/vehicle.html#drivePitchCoefficient">drivePitchCoefficient</a>, <a href="../gameplay/vehicle.html#driverIndex">driverIndex</a>, <a href="../gameplay/vehicle.html#driverMaximumPitch">driverMaximumPitch</a>, <a href="../gameplay/vehicle.html#driverMinimumPitch">driverMinimumPitch</a>, <a href="../gameplay/vehicle.html#driverPrompt">driverPrompt</a>, <a href="../gameplay/vehicle.html#driverWeapon">driverWeapon</a>, <a href="../gameplay/vehicle.html#driverWeaponClass">driverWeaponClass</a>, <a href="../gameplay/vehicle.html#driveYawCoefficient">driveYawCoefficient</a>, <a href="../gameplay/vehicle.html#effects">effects</a>, <a href="../gameplay/vehicle.html#enemyInventoryStationPrompt">enemyInventoryStationPrompt</a>, <a href="../gameplay/vehicle.html#enemyOccupiedPrompt">enemyOccupiedPrompt</a>, <a href="../gameplay/vehicle.html#engineIdlingEffectIndex">engineIdlingEffectIndex</a>, <a href="../gameplay/vehicle.html#entries">entries</a>, <a href="../gameplay/vehicle.html#exits">exits</a>, <a href="../gameplay/vehicle.html#flipMaximumRotationDuration">flipMaximumRotationDuration</a>, <a href="../gameplay/vehicle.html#flipPrompt">flipPrompt</a>, <a href="../gameplay/vehicle.html#flipPushUpDuration">flipPushUpDuration</a>, <a href="../gameplay/vehicle.html#flipPushUpImpulse">flipPushUpImpulse</a>, <a href="../gameplay/vehicle.html#flipRotateTime">flipRotateTime</a>, <a href="../gameplay/vehicle.html#flipRotationDamping">flipRotationDamping</a>, <a href="../gameplay/vehicle.html#flipRotationStrength">flipRotationStrength</a>, <a href="../gameplay/vehicle.html#flipRotationTimeOut">flipRotationTimeOut</a>, <a href="../gameplay/vehicle.html#flipTriggers">flipTriggers</a>, <a href="../gameplay/vehicle.html#fullVehiclePrompt">fullVehiclePrompt</a>, <a href="../gameplay/vehicle.html#gunnerPrompt">gunnerPrompt</a>, <a href="../gameplay/vehicle.html#healthModifier">healthModifier</a>, <a href="../gameplay/vehicle.html#heavyAttemptedToPilot">heavyAttemptedToPilot</a>, <a href="../gameplay/vehicle.html#heavyAttemptedToPilotSwitchPromptDuration">heavyAttemptedToPilotSwitchPromptDuration</a>, <a href="../gameplay/vehicle.html#initialInvincibilityDuration">initialInvincibilityDuration</a>, <a href="../gameplay/vehicle.html#inventoryStationPrompt">inventoryStationPrompt</a>, <a href="../gameplay/vehicle.html#inverseCosUprightAngle">inverseCosUprightAngle</a>, <a href="../gameplay/vehicle.html#invicibilityMaterial">invicibilityMaterial</a>, <a href="../gameplay/vehicle.html#lastOccupantTeam">lastOccupantTeam</a>, <a href="../gameplay/vehicle.html#lastStateReceiveTime">lastStateReceiveTime</a>, <a href="../gameplay/vehicle.html#leftGunnerPrompt">leftGunnerPrompt</a>, <a href="../gameplay/vehicle.html#localClientPositions[MAXIMUM_NUMBER_POSITIONS]">localClientPositions[MAXIMUM_NUMBER_POSITIONS]</a>, <a href="../gameplay/vehicle.html#localizedName">localizedName</a>, <a href="../gameplay/vehicle.html#localMoveDestination">localMoveDestination</a>, <a href="../gameplay/vehicle.html#localTeam">localTeam</a>, <a href="../gameplay/vehicle.html#loseInitialInvincibilityTime">loseInitialInvincibilityTime</a>, <a href="../gameplay/vehicle.html#ManifestLayoutMaterial">ManifestLayoutMaterial</a>, <a href="../gameplay/vehicle.html#maximumNetUpdateInterval">maximumNetUpdateInterval</a>, <a href="../gameplay/vehicle.html#maximumNextNetUpdateTime">maximumNextNetUpdateTime</a>, <a href="../gameplay/vehicle.html#minimumCollisionDamageMagnitude">minimumCollisionDamageMagnitude</a>, <a href="../gameplay/vehicle.html#minimumObstacleLookAhead">minimumObstacleLookAhead</a>, <a href="../gameplay/vehicle.html#minorPositionEntrySignals[NUMBER_MINOR_ENTRY_SIGNALS]">minorPositionEntrySignals[NUMBER_MINOR_ENTRY_SIGNALS]</a>, <a href="../gameplay/vehicle.html#motor">motor</a>, <a href="../gameplay/vehicle.html#motorClass">motorClass</a>, <a href="../gameplay/vehicle.html#obstacleLookAheadVeloocityScale">obstacleLookAheadVeloocityScale</a>, <a href="../gameplay/vehicle.html#padding[8]">padding[8]</a>, <a href="../gameplay/vehicle.html#positions">positions</a>, <a href="../gameplay/vehicle.html#retriggerEffectEvents">retriggerEffectEvents</a>, <a href="../gameplay/vehicle.html#rightGunnerPrompt">rightGunnerPrompt</a>, <a href="../gameplay/vehicle.html#rootBone">rootBone</a>, <a href="../gameplay/vehicle.html#RotationInput">RotationInput</a>, <a href="../gameplay/vehicle.html#settledUpsideDownCosAngle">settledUpsideDownCosAngle</a>, <a href="../gameplay/vehicle.html#settledUpsideDownSpeed">settledUpsideDownSpeed</a>, <a href="../gameplay/vehicle.html#spawning">spawning</a>, <a href="../gameplay/vehicle.html#stayUprightDamping">stayUprightDamping</a>, <a href="../gameplay/vehicle.html#stayUprightEnabled">stayUprightEnabled</a>, <a href="../gameplay/vehicle.html#stayUprightStrength">stayUprightStrength</a>, <a href="../gameplay/vehicle.html#stopForEnemies">stopForEnemies</a>, <a href="../gameplay/vehicle.html#StrafeInput">StrafeInput</a>, <a href="../gameplay/vehicle.html#strafeLeftEffectIndex">strafeLeftEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeLeftOrThrustEffectIndex">strafeLeftOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeRightEffectIndex">strafeRightEffectIndex</a>, <a href="../gameplay/vehicle.html#strafeRightOrThrustEffectIndex">strafeRightOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleBackEffectIndex">throttleBackEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleForwardEffectIndex">throttleForwardEffectIndex</a>, <a href="../gameplay/vehicle.html#throttleForwardOrThrustEffectIndex">throttleForwardOrThrustEffectIndex</a>, <a href="../gameplay/vehicle.html#ThrottleInput">ThrottleInput</a>, <a href="../gameplay/vehicle.html#thrustingEffectIndex">thrustingEffectIndex</a>, <a href="../gameplay/vehicle.html#ThrustInput">ThrustInput</a>, <a href="../gameplay/vehicle.html#TopSpeed">TopSpeed</a>, <a href="../gameplay/vehicle.html#TPCameraDistance">TPCameraDistance</a>, <a href="../gameplay/vehicle.html#TPCameraLookAt">TPCameraLookAt</a>, <a href="../gameplay/vehicle.html#vehicleCameraTraceExtents">vehicleCameraTraceExtents</a>, <a href="../gameplay/vehicle.html#vehicleEntries">vehicleEntries</a>, <a href="../gameplay/vehicle.html#vehicleFlipTriggers">vehicleFlipTriggers</a>, <a href="../gameplay/vehicle.html#vehicleProhibitedObjectPrompt">vehicleProhibitedObjectPrompt</a>, <a href="../gameplay/vehicle.html#velocityInheritOnExitScale">velocityInheritOnExitScale</a>, <a href="../gameplay/vehicle.html#waterDamagePerSecond">waterDamagePerSecond</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#VehiclePositionType">VehiclePositionType</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_TreadVehicleReplicationState" name="TreadVehicleReplicationState" title="go to the details">TreadVehicleReplicationState</a><br /><span class="small">Position, rotation, LinVel, AngVel, digitalThrottleInput, digitalStrafeInput, ServerSteering[2], ServerGripping, softThrottleSteering</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#ClientOccupantEnterData">ClientOccupantEnterData</a>, <a href="../gameplay/vehicle.html#ClientPositionData">ClientPositionData</a>, <a href="../gameplay/vehicle.html#DesiredHavokState">DesiredHavokState</a>, <a href="../gameplay/vehicle.html#ExitData">ExitData</a>, <a href="../gameplay/vehicle.html#VehicleEffect">VehicleEffect</a>, <a href="../gameplay/vehicle.html#VehicleEntryData">VehicleEntryData</a>, <a href="../gameplay/vehicle.html#VehicleFlipTriggerData">VehicleFlipTriggerData</a>, <a href="../gameplay/vehicle.html#VehiclePosition">VehiclePosition</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_needToPushStateToClient-" name="needToPushStateToClient" title="go to the details">needToPushStateToClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_processInput-" name="processInput" title="go to the details">processInput</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_pushStateToClient-" name="pushStateToClient" title="go to the details">pushStateToClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_vehicleStateReceived-" name="vehicleStateReceived" title="go to the details">vehicleStateReceived</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/car.html">Car</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/car.html#applyOutput">applyOutput</a>, <a href="../gameplay/car.html#Destroyed">Destroyed</a>, <a href="../gameplay/car.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/car.html#ProcessInput">ProcessInput</a>, <a href="../gameplay/car.html#tick">tick</a>, <a href="../gameplay/car.html#updateGear">updateGear</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehicle.html">Vehicle</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/vehicle.html#aboutToDie">aboutToDie</a>, <a href="../gameplay/vehicle.html#aboutToSettleUpsideDown">aboutToSettleUpsideDown</a>, <a href="../gameplay/vehicle.html#addEffect">addEffect</a>, <a href="../gameplay/vehicle.html#aimAdjustViewRotation">aimAdjustViewRotation</a>, <a href="../gameplay/vehicle.html#altFire">altFire</a>, <a href="../gameplay/vehicle.html#applyOutput">applyOutput</a>, <a href="../gameplay/vehicle.html#attachToVehicle">attachToVehicle</a>, <a href="../gameplay/vehicle.html#BaseChange">BaseChange</a>, <a href="../gameplay/vehicle.html#BeginState">BeginState</a>, <a href="../gameplay/vehicle.html#cameraTrace">cameraTrace</a>, <a href="../gameplay/vehicle.html#canArmorOccupy">canArmorOccupy</a>, <a href="../gameplay/vehicle.html#canArmourBeDriver">canArmourBeDriver</a>, <a href="../gameplay/vehicle.html#canArmourBePassenger">canArmourBePassenger</a>, <a href="../gameplay/vehicle.html#canBeRepairedBy">canBeRepairedBy</a>, <a href="../gameplay/vehicle.html#canCharacterRespawnAt">canCharacterRespawnAt</a>, <a href="../gameplay/vehicle.html#canOccupy">canOccupy</a>, <a href="../gameplay/vehicle.html#canSwitchPosition">canSwitchPosition</a>, <a href="../gameplay/vehicle.html#canTargetPoint">canTargetPoint</a>, <a href="../gameplay/vehicle.html#cleanupAI">cleanupAI</a>, <a href="../gameplay/vehicle.html#clientDriverLeave">clientDriverLeave</a>, <a href="../gameplay/vehicle.html#clientOccupantEnter">clientOccupantEnter</a>, <a href="../gameplay/vehicle.html#collisionDamage">collisionDamage</a>, <a href="../gameplay/vehicle.html#copyVehicleAIValuesToTurret">copyVehicleAIValuesToTurret</a>, <a href="../gameplay/vehicle.html#customFiredEffectProcessing">customFiredEffectProcessing</a>, <a href="../gameplay/vehicle.html#Destroyed">Destroyed</a>, <a href="../gameplay/vehicle.html#DisplayDebug">DisplayDebug</a>, <a href="../gameplay/vehicle.html#displayWorldSpaceDebug">displayWorldSpaceDebug</a>, <a href="../gameplay/vehicle.html#doCustomFiredEffectProcessing">doCustomFiredEffectProcessing</a>, <a href="../gameplay/vehicle.html#drawActorCollision">drawActorCollision</a>, <a href="../gameplay/vehicle.html#driverLeave">driverLeave</a>, <a href="../gameplay/vehicle.html#enableAbandonmentDestruction">enableAbandonmentDestruction</a>, <a href="../gameplay/vehicle.html#EncroachedBy">EncroachedBy</a>, <a href="../gameplay/vehicle.html#EncroachingOn">EncroachingOn</a>, <a href="../gameplay/vehicle.html#EyePosition">EyePosition</a>, <a href="../gameplay/vehicle.html#FaceRotation">FaceRotation</a>, <a href="../gameplay/vehicle.html#finishedSpawnFromVehicleSpawnPoint">finishedSpawnFromVehicleSpawnPoint</a>, <a href="../gameplay/vehicle.html#fire">fire</a>, <a href="../gameplay/vehicle.html#firingMotor">firingMotor</a>, <a href="../gameplay/vehicle.html#flip">flip</a>, <a href="../gameplay/vehicle.html#forceNetDirty">forceNetDirty</a>, <a href="../gameplay/vehicle.html#generateAIDeathSpeechEvents">generateAIDeathSpeechEvents</a>, <a href="../gameplay/vehicle.html#getAimLocation">getAimLocation</a>, <a href="../gameplay/vehicle.html#getAlternateAimAdjustStart">getAlternateAimAdjustStart</a>, <a href="../gameplay/vehicle.html#getAngle">getAngle</a>, <a href="../gameplay/vehicle.html#getAvailablePositionIndex">getAvailablePositionIndex</a>, <a href="../gameplay/vehicle.html#getCameraLookAt">getCameraLookAt</a>, <a href="../gameplay/vehicle.html#getControllingCharacter">getControllingCharacter</a>, <a href="../gameplay/vehicle.html#getCorrespondingInventoryStation">getCorrespondingInventoryStation</a>, <a href="../gameplay/vehicle.html#getDriver">getDriver</a>, <a href="../gameplay/vehicle.html#getEffectsBaseActor">getEffectsBaseActor</a>, <a href="../gameplay/vehicle.html#getEnergy">getEnergy</a>, <a href="../gameplay/vehicle.html#getFirstPersonEquippableLocation">getFirstPersonEquippableLocation</a>, <a href="../gameplay/vehicle.html#getFirstPersonEquippableRotation">getFirstPersonEquippableRotation</a>, <a href="../gameplay/vehicle.html#getHighByte">getHighByte</a>, <a href="../gameplay/vehicle.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/vehicle.html#getLowByte">getLowByte</a>, <a href="../gameplay/vehicle.html#getMinorPositionEntryIndex">getMinorPositionEntryIndex</a>, <a href="../gameplay/vehicle.html#getOccupantPositionIndex">getOccupantPositionIndex</a>, <a href="../gameplay/vehicle.html#getOccupantTeam">getOccupantTeam</a>, <a href="../gameplay/vehicle.html#getOut">getOut</a>, <a href="../gameplay/vehicle.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/vehicle.html#getPhysicalAttachment">getPhysicalAttachment</a>, <a href="../gameplay/vehicle.html#getPositionIndex">getPositionIndex</a>, <a href="../gameplay/vehicle.html#getPositionPromptIndex">getPositionPromptIndex</a>, <a href="../gameplay/vehicle.html#getProjectileSpawnLocation">getProjectileSpawnLocation</a>, <a href="../gameplay/vehicle.html#getPrompt">getPrompt</a>, <a href="../gameplay/vehicle.html#getTargetPositionIndex">getTargetPositionIndex</a>, <a href="../gameplay/vehicle.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/vehicle.html#getTeamSkin">getTeamSkin</a>, <a href="../gameplay/vehicle.html#getThirdPersonEquippableAttachment">getThirdPersonEquippableAttachment</a>, <a href="../gameplay/vehicle.html#getUnusedInventoryStation">getUnusedInventoryStation</a>, <a href="../gameplay/vehicle.html#getVehicleUseablePoint">getVehicleUseablePoint</a>, <a href="../gameplay/vehicle.html#getViewRotationFromMotor">getViewRotationFromMotor</a>, <a href="../gameplay/vehicle.html#getWeapon">getWeapon</a>, <a href="../gameplay/vehicle.html#GraphData">GraphData</a>, <a href="../gameplay/vehicle.html#InGodMode">InGodMode</a>, <a href="../gameplay/vehicle.html#initDriverAI">initDriverAI</a>, <a href="../gameplay/vehicle.html#initGunnerAI">initGunnerAI</a>, <a href="../gameplay/vehicle.html#initialiseEffects">initialiseEffects</a>, <a href="../gameplay/vehicle.html#initVehicleAI">initVehicleAI</a>, <a href="../gameplay/vehicle.html#interpolateRotation">interpolateRotation</a>, <a href="../gameplay/vehicle.html#isEffectCauserActive">isEffectCauserActive</a>, <a href="../gameplay/vehicle.html#isHavokCompletelyInitialised">isHavokCompletelyInitialised</a>, <a href="../gameplay/vehicle.html#isInventoryPosition">isInventoryPosition</a>, <a href="../gameplay/vehicle.html#isMajorPosition">isMajorPosition</a>, <a href="../gameplay/vehicle.html#isOccupant">isOccupant</a>, <a href="../gameplay/vehicle.html#isOccupied">isOccupied</a>, <a href="../gameplay/vehicle.html#isSettledUpsideDown">isSettledUpsideDown</a>, <a href="../gameplay/vehicle.html#isUpright">isUpright</a>, <a href="../gameplay/vehicle.html#needToPushStateToClient">needToPushStateToClient</a>, <a href="../gameplay/vehicle.html#occupantEnter">occupantEnter</a>, <a href="../gameplay/vehicle.html#occupantEnterAnimationProcessing">occupantEnterAnimationProcessing</a>, <a href="../gameplay/vehicle.html#occupantLeaveAnimationProcessing">occupantLeaveAnimationProcessing</a>, <a href="../gameplay/vehicle.html#occupantSwitchPosition">occupantSwitchPosition</a>, <a href="../gameplay/vehicle.html#onShotFiredNotification">onShotFiredNotification</a>, <a href="../gameplay/vehicle.html#otherClientOccupantEnter">otherClientOccupantEnter</a>, <a href="../gameplay/vehicle.html#otherClientOccupantLeave">otherClientOccupantLeave</a>, <a href="../gameplay/vehicle.html#packPitchAndYaw">packPitchAndYaw</a>, <a href="../gameplay/vehicle.html#performFlip">performFlip</a>, <a href="../gameplay/vehicle.html#PlayDying">PlayDying</a>, <a href="../gameplay/vehicle.html#playerMoveProcessing">playerMoveProcessing</a>, <a href="../gameplay/vehicle.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/vehicle.html#PostLoadGame">PostLoadGame</a>, <a href="../gameplay/vehicle.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/vehicle.html#postNetReceive">postNetReceive</a>, <a href="../gameplay/vehicle.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/vehicle.html#PrecacheVehicleMeshes">PrecacheVehicleMeshes</a>, <a href="../gameplay/vehicle.html#processInput">processInput</a>, <a href="../gameplay/vehicle.html#pushStateToClient">pushStateToClient</a>, <a href="../gameplay/vehicle.html#releaseAltFire">releaseAltFire</a>, <a href="../gameplay/vehicle.html#releaseFire">releaseFire</a>, <a href="../gameplay/vehicle.html#rematchGoals">rematchGoals</a>, <a href="../gameplay/vehicle.html#setFirePressed">setFirePressed</a>, <a href="../gameplay/vehicle.html#setSkin">setSkin</a>, <a href="../gameplay/vehicle.html#setTeam">setTeam</a>, <a href="../gameplay/vehicle.html#settledUpsideDownChanged">settledUpsideDownChanged</a>, <a href="../gameplay/vehicle.html#shouldFire">shouldFire</a>, <a href="../gameplay/vehicle.html#ShouldProjectileHit">ShouldProjectileHit</a>, <a href="../gameplay/vehicle.html#showPhysicsDebug">showPhysicsDebug</a>, <a href="../gameplay/vehicle.html#spawnCharacter">spawnCharacter</a>, <a href="../gameplay/vehicle.html#specialCalcView">specialCalcView</a>, <a href="../gameplay/vehicle.html#specialCalcViewProcessing">specialCalcViewProcessing</a>, <a href="../gameplay/vehicle.html#startedSpawnFromVehicleSpawnPoint">startedSpawnFromVehicleSpawnPoint</a>, <a href="../gameplay/vehicle.html#switchClass">switchClass</a>, <a href="../gameplay/vehicle.html#switchPosition">switchPosition</a>, <a href="../gameplay/vehicle.html#tick">tick</a>, <a href="../gameplay/vehicle.html#Timer">Timer</a>, <a href="../gameplay/vehicle.html#toggleShowPhysicsDebug">toggleShowPhysicsDebug</a>, <a href="../gameplay/vehicle.html#tryToDrive">tryToDrive</a>, <a href="../gameplay/vehicle.html#tryToOccupy">tryToOccupy</a>, <a href="../gameplay/vehicle.html#unpackPitchAndYaw">unpackPitchAndYaw</a>, <a href="../gameplay/vehicle.html#UnPossessed">UnPossessed</a>, <a href="../gameplay/vehicle.html#updateDynamicEffectStates">updateDynamicEffectStates</a>, <a href="../gameplay/vehicle.html#updateEffectsStates">updateEffectsStates</a>, <a href="../gameplay/vehicle.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a>, <a href="../gameplay/vehicle.html#updateTeamSkin">updateTeamSkin</a>, <a href="../gameplay/vehicle.html#useEnergy">useEnergy</a>, <a href="../gameplay/vehicle.html#vehicleCeaseFire">vehicleCeaseFire</a>, <a href="../gameplay/vehicle.html#vehicleFire">vehicleFire</a>, <a href="../gameplay/vehicle.html#VehicleStateReceived">VehicleStateReceived</a>, <a href="../gameplay/vehicle.html#vehicleTrace">vehicleTrace</a>, <a href="../gameplay/vehicle.html#vehicleTransitionTrace">vehicleTransitionTrace</a>, <a href="../gameplay/vehicle.html#VehicleUpdateParams">VehicleUpdateParams</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_TV_ANGULAR_VELOCITY_ACCURACY_FACTOR" class="hidden"></a>TV_ANGULAR_VELOCITY_ACCURACY_FACTOR <a href="../Source_gameplay/treadvehicle.html#36" class="small">Source code</a></h4>
+<div class="declaration">const TV_ANGULAR_VELOCITY_ACCURACY_FACTOR = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR" class="hidden"></a>TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR <a href="../Source_gameplay/treadvehicle.html#37" class="small">Source code</a></h4>
+<div class="declaration">const TV_ANGULAR_VELOCITY_INVERSE_ACCURACY_FACTOR = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TV_LINEAR_VELOCITY_ACCURACY_FACTOR" class="hidden"></a>TV_LINEAR_VELOCITY_ACCURACY_FACTOR <a href="../Source_gameplay/treadvehicle.html#33" class="small">Source code</a></h4>
+<div class="declaration">const TV_LINEAR_VELOCITY_ACCURACY_FACTOR = <span class="source_int">100</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR" class="hidden"></a>TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR <a href="../Source_gameplay/treadvehicle.html#34" class="small">Source code</a></h4>
+<div class="declaration">const TV_LINEAR_VELOCITY_INVERSE_ACCURACY_FACTOR = <span class="source_int">0.01</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_leftTreadChannel" class="hidden"></a>leftTreadChannel <a href="../Source_gameplay/treadvehicle.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> leftTreadChannel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftTreadContact" class="hidden"></a>leftTreadContact <a href="../Source_gameplay/treadvehicle.html#107" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> leftTreadContact;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftTreadShader" class="hidden"></a>leftTreadShader <a href="../Source_gameplay/treadvehicle.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span> leftTreadShader;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftTreadSpinSpeed" class="hidden"></a>leftTreadSpinSpeed <a href="../Source_gameplay/treadvehicle.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> leftTreadSpinSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftTreadTexPanner" class="hidden"></a>leftTreadTexPanner <a href="../Source_gameplay/treadvehicle.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texmatrix.html" class="source">TexMatrix</a></span> leftTreadTexPanner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_oldReplicationTreadVehicleState" class="hidden"></a>oldReplicationTreadVehicleState <a href="../Source_gameplay/treadvehicle.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/treadvehicle.html#TreadVehicleReplicationState" class="source">TreadVehicleReplicationState</a></span> oldReplicationTreadVehicleState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_replicationTreadVehicleState" class="hidden"></a>replicationTreadVehicleState <a href="../Source_gameplay/treadvehicle.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/treadvehicle.html#TreadVehicleReplicationState" class="source">TreadVehicleReplicationState</a></span> replicationTreadVehicleState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightTreadChannel" class="hidden"></a>rightTreadChannel <a href="../Source_gameplay/treadvehicle.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> rightTreadChannel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightTreadContact" class="hidden"></a>rightTreadContact <a href="../Source_gameplay/treadvehicle.html#108" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> rightTreadContact;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightTreadShader" class="hidden"></a>rightTreadShader <a href="../Source_gameplay/treadvehicle.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span> rightTreadShader;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightTreadSpinSpeed" class="hidden"></a>rightTreadSpinSpeed <a href="../Source_gameplay/treadvehicle.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> rightTreadSpinSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightTreadTexPanner" class="hidden"></a>rightTreadTexPanner <a href="../Source_gameplay/treadvehicle.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texmatrix.html" class="source">TexMatrix</a></span> rightTreadTexPanner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_softThrottleSteering" class="hidden"></a>softThrottleSteering <a href="../Source_gameplay/treadvehicle.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> softThrottleSteering;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_switchOffSoftThrottleSteeringTime" class="hidden"></a>switchOffSoftThrottleSteeringTime <a href="../Source_gameplay/treadvehicle.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> switchOffSoftThrottleSteeringTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_treadVehiclePadding[1]" class="hidden"></a>treadVehiclePadding[1] <a href="../Source_gameplay/treadvehicle.html#110" class="small">Source code</a></h4>
+<div class="declaration">var transient noexport private const <span class="source_type">int</span> treadVehiclePadding[<span class="source_int">1</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">TreadVehicle</h3>
+<h4><a name="_animationRateToTexturePanRate" class="hidden"></a>animationRateToTexturePanRate <a href="../Source_gameplay/treadvehicle.html#84" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> animationRateToTexturePanRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_centreOfMassHeightOffset" class="hidden"></a>centreOfMassHeightOffset <a href="../Source_gameplay/treadvehicle.html#105" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> centreOfMassHeightOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_forceApplicationHeightOffset" class="hidden"></a>forceApplicationHeightOffset <a href="../Source_gameplay/treadvehicle.html#86" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> forceApplicationHeightOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftForwardTreadAnimation" class="hidden"></a>leftForwardTreadAnimation <a href="../Source_gameplay/treadvehicle.html#75" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">name</span> leftForwardTreadAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftReverseTreadAnimation" class="hidden"></a>leftReverseTreadAnimation <a href="../Source_gameplay/treadvehicle.html#76" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">name</span> leftReverseTreadAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_leftTreadMaterialIndex" class="hidden"></a>leftTreadMaterialIndex <a href="../Source_gameplay/treadvehicle.html#94" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">int</span> leftTreadMaterialIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lowFriction" class="hidden"></a>lowFriction <a href="../Source_gameplay/treadvehicle.html#88" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> lowFriction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maximumTreadVelocityDelta" class="hidden"></a>maximumTreadVelocityDelta <a href="../Source_gameplay/treadvehicle.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> maximumTreadVelocityDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightForwardTreadAnimation" class="hidden"></a>rightForwardTreadAnimation <a href="../Source_gameplay/treadvehicle.html#78" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">name</span> rightForwardTreadAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightReverseTreadAnimation" class="hidden"></a>rightReverseTreadAnimation <a href="../Source_gameplay/treadvehicle.html#79" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">name</span> rightReverseTreadAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_rightTreadMaterialIndex" class="hidden"></a>rightTreadMaterialIndex <a href="../Source_gameplay/treadvehicle.html#98" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">int</span> rightTreadMaterialIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_softThrottleSteeringScale" class="hidden"></a>softThrottleSteeringScale <a href="../Source_gameplay/treadvehicle.html#102" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> softThrottleSteeringScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_softThrottleSteeringStayOnPeriod" class="hidden"></a>softThrottleSteeringStayOnPeriod <a href="../Source_gameplay/treadvehicle.html#103" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> softThrottleSteeringStayOnPeriod;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_spinSpeedToAnimationRate" class="hidden"></a>spinSpeedToAnimationRate <a href="../Source_gameplay/treadvehicle.html#83" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> spinSpeedToAnimationRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_steerToVelocityFactor" class="hidden"></a>steerToVelocityFactor <a href="../Source_gameplay/treadvehicle.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> steerToVelocityFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_throttleSteerToVelocityScaleFactor" class="hidden"></a>throttleSteerToVelocityScaleFactor <a href="../Source_gameplay/treadvehicle.html#68" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> throttleSteerToVelocityScaleFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_throttleToVelocityFactor" class="hidden"></a>throttleToVelocityFactor <a href="../Source_gameplay/treadvehicle.html#67" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> throttleToVelocityFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_treadGainFactor" class="hidden"></a>treadGainFactor <a href="../Source_gameplay/treadvehicle.html#70" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> treadGainFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_treadGainFactorStopping" class="hidden"></a>treadGainFactorStopping <a href="../Source_gameplay/treadvehicle.html#71" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> treadGainFactorStopping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_treadLength" class="hidden"></a>treadLength <a href="../Source_gameplay/treadvehicle.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> treadLength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_treadPositionOffset" class="hidden"></a>treadPositionOffset <a href="../Source_gameplay/treadvehicle.html#62" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> treadPositionOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_treadRadius" class="hidden"></a>treadRadius <a href="../Source_gameplay/treadvehicle.html#63" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> treadRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_treadVehicleGravityScale" class="hidden"></a>treadVehicleGravityScale <a href="../Source_gameplay/treadvehicle.html#90" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/treadvehicle.html" class="source">TreadVehicle</a></span>) <span class="source_type">float</span> treadVehicleGravityScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_TreadVehicleReplicationState" class="hidden"></a>TreadVehicleReplicationState <a href="../Source_gameplay/treadvehicle.html#39" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/treadvehicle.html#TreadVehicleReplicationState" class="source">TreadVehicleReplicationState</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> AngVel;<br />
+var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>.<span class="source_type"><a href="../gameplay/playercharactercontroller.html#EDigitalAxisInput" class="source">EDigitalAxisInput</a></span> digitalStrafeInput;<br />
+var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>.<span class="source_type"><a href="../gameplay/playercharactercontroller.html#EDigitalAxisInput" class="source">EDigitalAxisInput</a></span> digitalThrottleInput;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> LinVel;<br />
+var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Position</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Quat" class="source">quat</a></span> rotation;<br />
+var <span class="source_type">bool</span> ServerGripping;<br />
+var <span class="source_type">byte</span> ServerSteering[<span class="source_int">2</span>];<br />
+var <span class="source_type">bool</span> softThrottleSteering;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_needToPushStateToClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> needToPushStateToClient <span class="function_state"></span> <a href="../Source_gameplay/treadvehicle.html#215" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> needToPushStateToClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/treadvehicle.html#128" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_processInput-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> processInput <span class="function_state"></span> <a href="../Source_gameplay/treadvehicle.html#118" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  processInput ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pushStateToClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> pushStateToClient <span class="function_state"></span> <a href="../Source_gameplay/treadvehicle.html#241" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  pushStateToClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state"></span> <a href="../Source_gameplay/treadvehicle.html#189" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleStateReceived-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> vehicleStateReceived <span class="function_state"></span> <a href="../Source_gameplay/treadvehicle.html#259" class="small">Source code</a></h4>
+<div class="declaration">simulated event  vehicleStateReceived ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	treadPositionOffset = (X=-<span class="source_int">200</span>,<span class="source_type">Y</span>=<span class="source_int">200</span>,Z=<span class="source_int">60</span>)
+	treadLength = <span class="source_int">400</span>
+	treadRadius = <span class="source_int">100</span>
+
+	throttleToVelocityFactor = <span class="source_int">6</span>
+	throttleSteerToVelocityScaleFactor = <span class="source_int">1.5</span>
+	steerToVelocityFactor = <span class="source_int">4</span>
+	treadGainFactor = <span class="source_int">0.05</span>
+
+	leftTreadChannel = <span class="source_int">1</span>
+	leftForwardTreadAnimation = leftforward
+	leftReverseTreadAnimation = leftbackward
+	rightTreadChannel = <span class="source_int">3</span>
+	rightForwardTreadAnimation = rightforward
+	rightReverseTreadAnimation = rightbackward
+
+	spinSpeedToAnimationRate = <span class="source_int">0.15</span>
+	animationRateToTexturePanRate = <span class="source_int">3.1</span>
+
+	leftTreadMaterialIndex = <span class="source_int">3</span>
+	rightTreadMaterialIndex = <span class="source_int">2</span>
+
+	maximumTreadVelocityDelta = <span class="source_int">0.3</span>
+
+	treadVehicleGravityScale = <span class="source_int">8</span>
+
+	lowFriction = <span class="source_int">0.001</span>
+
+	treadGainFactorStopping = <span class="source_int">0.3</span>
+
+	softThrottleSteeringStayOnPeriod = <span class="source_int">0.75</span>
+	softThrottleSteeringScale = <span class="source_int">0.75</span>
+
+	centreOfMassHeightOffset = -<span class="source_int">100</span>
+	forceApplicationHeightOffset = -<span class="source_int">100</span>
+
+	clientInterpolationPeriod = <span class="source_int">0.125</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/treadvehicle.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TreadVehicle">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/timechargeupweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/tribescheatmanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:35.806 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

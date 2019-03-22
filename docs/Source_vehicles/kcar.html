@@ -1,0 +1,1038 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Vehicles.KCar</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../vehicles/vehicles-overview.html">Package</a></td>
+	<td class="header"><a href="../vehicles/kcar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#KCar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_vehicles/hoverbike.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_vehicles/lynx.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_vehicles/kcar.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../vehicles/vehicles-overview.html">Vehicles</a>.<a href="../vehicles/kcar.html">KCar</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// Base class for 4-wheeled vehicles using Karma
+</span><a name="2"></a><span class="source_comment">// Assumes negative-X is forward, negative-Y is right
+</span><a name="3"></a><span class="source_type">class</span> <span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/kvehicle.html" class="source">KVehicle</a></span>
+<a name="4"></a>    abstract;
+<a name="5"></a>
+<a name="6"></a>var <span class="source_type"><a href="../engine/ktire.html" class="source">KTire</a></span> frontLeft, frontRight, rearLeft, rearRight;
+<a name="7"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/ktire.html" class="source">KTire</a></span>&gt; FrontTireClass;
+<a name="8"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/ktire.html" class="source">KTire</a></span>&gt; RearTireClass;
+<a name="9"></a>
+<a name="10"></a><span class="source_comment">// Wheel positions
+</span><a name="11"></a>var const <span class="source_type">float</span> WheelFrontAlong;
+<a name="12"></a>var const <span class="source_type">float</span> WheelFrontAcross;
+<a name="13"></a>var const <span class="source_type">float</span> WheelRearAlong;
+<a name="14"></a>var const <span class="source_type">float</span> WheelRearAcross;
+<a name="15"></a>var const <span class="source_type">float</span> WheelVert;
+<a name="16"></a>
+<a name="17"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       MaxSteerAngle;   <span class="source_comment">// (65535 = 360 deg)
+</span><a name="18"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       MaxBrakeTorque;  <span class="source_comment">// Braking torque applied to all four wheels. Positive only.
+</span><a name="19"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TorqueSplit;     <span class="source_comment">// front/rear drive torque split. 1 is fully RWD, 0 is fully FWD. 0.5 is standard 4WD.
+</span><a name="20"></a>
+<a name="21"></a>
+<a name="22"></a><span class="source_comment">// KCarWheelJoint setting for steering (see KCarWheelJoint). Duplicated here for handiness.
+</span><a name="23"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SteerPropGap;
+<a name="24"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SteerTorque;
+<a name="25"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SteerSpeed;
+<a name="26"></a>
+<a name="27"></a><span class="source_comment">// KCarWheelSuspension setting
+</span><a name="28"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SuspStiffness;
+<a name="29"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SuspDamping;
+<a name="30"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SuspHighLimit;
+<a name="31"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SuspLowLimit;
+<a name="32"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       SuspRef;
+<a name="33"></a>
+<a name="34"></a><span class="source_comment">// KTire settings. Duplicated here for handy tuning.
+</span><a name="35"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireRollFriction;
+<a name="36"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireLateralFriction;
+<a name="37"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireRollSlip;
+<a name="38"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireLateralSlip;
+<a name="39"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireMinSlip;
+<a name="40"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireSlipRate;
+<a name="41"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireSoftness;
+<a name="42"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireAdhesion;
+<a name="43"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireRestitution;
+<a name="44"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       TireMass;
+<a name="45"></a>
+<a name="46"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>	   HandbrakeThresh; <span class="source_comment">// speed above which handbrake comes on =]
+</span><a name="47"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>	   TireHandbrakeSlip; <span class="source_comment">// Additional lateral slip when handbrake engaged
+</span><a name="48"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>	   TireHandbrakeFriction; <span class="source_comment">// Additional lateral friction when handbrake engaged
+</span><a name="49"></a>
+<a name="50"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>       ChassisMass;
+<a name="51"></a>
+<a name="52"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>	   StopThreshold; <span class="source_comment">// Forward velocity under which brakes become drive.
+</span><a name="53"></a>
+<a name="54"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type"><a href="../core/object.html#InterpCurve" class="source">InterpCurve</a></span>	TorqueCurve; <span class="source_comment">// Engine RPM in, Torque out.
+</span><a name="55"></a>
+<a name="56"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>		FlipTorque;
+<a name="57"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>		FlipTime;
+<a name="58"></a>
+<a name="59"></a>var (<span class="source_type"><a href="../vehicles/kcar.html" class="source">KCar</a></span>) <span class="source_type">float</span>		MaxNetUpdateInterval;
+<a name="60"></a>
+<a name="61"></a>var <span class="source_type">int</span>      Gear;  <span class="source_comment">// 1 is forward, -1 is backward. Currently symmetric power/torque curve
+</span><a name="62"></a>
+<a name="63"></a><span class="source_comment">// Car output
+</span><a name="64"></a>var <span class="source_type">float</span>              WheelSpinSpeed;  <span class="source_comment">// Current (averaged) RPM of rear wheels
+</span><a name="65"></a>var <span class="source_type">float</span>			   ForwardVel;		<span class="source_comment">// Component of cars velocity in its forward direction.
+</span><a name="66"></a>var <span class="source_type">bool</span>			   bIsInverted;     <span class="source_comment">// Updated in Tick - indicates if car is not upright.
+</span><a name="67"></a>
+<a name="68"></a><span class="source_comment">// Internal
+</span><a name="69"></a>var <span class="source_type">bool</span>			   IsDriving;
+<a name="70"></a>var <span class="source_type">float</span>			   FlipTimeLeft;
+<a name="71"></a>var <span class="source_type">float</span>			   NextNetUpdateTime;	<span class="source_comment">// Next time we should force an update of vehicles state.
+</span><a name="72"></a>
+<a name="73"></a><span class="source_comment">// Low-level drive data (this is replicated)
+</span><a name="74"></a>var <span class="source_type">bool</span>			   OutputBrake;
+<a name="75"></a>var <span class="source_type">float</span>			   OutputTorque;
+<a name="76"></a>var <span class="source_type">bool</span>			   OutputHandbrakeOn;
+<a name="77"></a>
+<a name="78"></a>
+<a name="79"></a><span class="source_comment">// Networking
+</span><a name="80"></a>struct <span class="source_type"><a href="../vehicles/kcar.html#KCarState" class="source">KCarState</a></span>
+<a name="81"></a>{
+<a name="82"></a>	<span class="source_comment">//var KRigidBodyState		ChassisState;
+</span><a name="83"></a>	var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span>				ChassisPosition;
+<a name="84"></a>	var <span class="source_type"><a href="../core/object.html#Quat" class="source">Quat</a></span>				ChassisQuaternion;
+<a name="85"></a>	var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span>				ChassisLinVel;
+<a name="86"></a>	var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span>				ChassisAngVel;
+<a name="87"></a>
+<a name="88"></a>	var <span class="source_type">float</span>				WheelHeight[<span class="source_int">4</span>]; <span class="source_comment">// FL, FR, RL, RR
+</span><a name="89"></a>	var <span class="source_type">float</span>				FrontWheelAng[<span class="source_int">2</span>]; <span class="source_comment">// FL, FR
+</span><a name="90"></a>
+<a name="91"></a>	var <span class="source_type">float</span>				WheelVertVel[<span class="source_int">4</span>];
+<a name="92"></a>	<span class="source_comment">//var float				WheelSpinVel[4];
+</span><a name="93"></a>
+<a name="94"></a>	var <span class="source_type">float</span>				ServerSteering;
+<a name="95"></a>
+<a name="96"></a>	var <span class="source_type">float</span>				ServerTorque;
+<a name="97"></a>	var <span class="source_type">bool</span>				ServerBrake;
+<a name="98"></a>	var <span class="source_type">bool</span>			    ServerHandbrakeOn;
+<a name="99"></a>
+<a name="100"></a>	var <span class="source_type">bool</span>				bNewState; <span class="source_comment">// Set to true whenever a new state is received and should be processed
+</span><a name="101"></a>};
+<a name="102"></a>
+<a name="103"></a>var <span class="source_type"><a href="../engine/actor.html#KRigidBodyState" class="source">KRigidBodyState</a></span>		ChassisState;
+<a name="104"></a>
+<a name="105"></a>var <span class="source_type"><a href="../vehicles/kcar.html#KCarState" class="source">KCarState</a></span>			CarState; <span class="source_comment">// This is replicated to the car, and processed to update all the parts.
+</span><a name="106"></a>var <span class="source_type">bool</span>				bNewCarState; <span class="source_comment">// Indicated there is new data processed, and chassis RBState should be updated.
+</span><a name="107"></a>
+<a name="108"></a>replication
+<a name="109"></a>{
+<a name="110"></a>	<span class="source_comment">// We replicate the Gear for brake-lights etc.
+</span><a name="111"></a>	unreliable if(Role == ROLE_Authority)
+<a name="112"></a>		CarState, Gear;
+<a name="113"></a>
+<a name="114"></a>	reliable if(Role == ROLE_Authority)
+<a name="115"></a>		FlipTimeLeft;
+<a name="116"></a>}
+<a name="117"></a>
+<a name="118"></a><span class="source_comment">// When new information is received, see if its new. If so, pass bits off the the wheels.
+</span><a name="119"></a><span class="source_comment">// Each part will then update its rigid body position via the KUpdateState event.
+</span><a name="120"></a><span class="source_comment">// JTODO: This is where clever unpacking would happen.
+</span><a name="121"></a>simulated event VehicleStateReceived()
+<a name="122"></a>{
+<a name="123"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> ChassisY, SteerY, ChassisZ, calcPos, WheelY, lPos;
+<a name="124"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> chassisPos, chassisLinVel, chassisAngVel, WheelLinVel, wPosRel;
+<a name="125"></a>	local <span class="source_type"><a href="../core/object.html#Quat" class="source">Quat</a></span> relQ, WheelQ;
+<a name="126"></a>
+<a name="127"></a>	if(!CarState.bNewState)
+<a name="128"></a>		return;
+<a name="129"></a>
+<a name="130"></a>	<span class="source_comment">// Don't do anything if car isn't started up.	
+</span><a name="131"></a>	if(frontLeft == None || frontRight == None || rearLeft == None || rearRight == None)
+<a name="132"></a>		return;
+<a name="133"></a>
+<a name="134"></a>	<span class="source_comment">// Get root chassis info
+</span><a name="135"></a>	ChassisState.<span class="source_type">Position</span> = CarState.ChassisPosition;
+<a name="136"></a>	ChassisState.Quaternion = CarState.ChassisQuaternion;
+<a name="137"></a>	ChassisState.LinVel = CarState.ChassisLinVel;
+<a name="138"></a>	ChassisState.AngVel = CarState.ChassisAngVel;
+<a name="139"></a>
+<a name="140"></a>	chassisPos = KRBVecToVector(CarState.ChassisPosition);
+<a name="141"></a>	chassisLinVel = KRBVecToVector(CarState.ChassisLinVel);
+<a name="142"></a>	chassisAngVel = KRBVecToVector(CarState.ChassisAngVel);
+<a name="143"></a>
+<a name="144"></a>	<span class="source_comment">// Calc chassis state axes
+</span><a name="145"></a>	ChassisY = QuatRotateVector(CarState.ChassisQuaternion, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="146"></a>	ChassisZ = QuatRotateVector(CarState.ChassisQuaternion, vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>));
+<a name="147"></a>
+<a name="148"></a>	<span class="source_comment">// Get root chassis info
+</span><a name="149"></a>	ChassisState.<span class="source_type">Position</span> = CarState.ChassisPosition;
+<a name="150"></a>	ChassisState.Quaternion = CarState.ChassisQuaternion;
+<a name="151"></a>	ChassisState.LinVel = CarState.ChassisLinVel;
+<a name="152"></a>	ChassisState.AngVel = CarState.ChassisAngVel;
+<a name="153"></a>	
+<a name="154"></a>
+<a name="155"></a>	<span class="source_comment">// Figure out new state of wheels
+</span><a name="156"></a>
+<a name="157"></a>	<span class="source_comment">// Wheel positions are only supplied with a chassis-space Z (vertical) value - X and Y are assumed no to change
+</span><a name="158"></a>	<span class="source_comment">// Rear wheel orientations are not supplied. The only constraint is their Y-axis (axle) is parallel to 
+</span><a name="159"></a>	<span class="source_comment">// the chassis Y-axis. A quaternion is calculated to go from current orientation to fulfil that criteria, which
+</span><a name="160"></a>	<span class="source_comment">// should produce minimum difference to the 'roll' of the wheel - which is allowed to differ on server and client.
+</span><a name="161"></a>	<span class="source_comment">// For front wheel we do send the current 'steering' angle. That is added after the above process as a quaternion 
+</span><a name="162"></a>	<span class="source_comment">// around chassis Z (up).
+</span><a name="163"></a>	<span class="source_comment">// For linear velocity of wheels - calculate based on linear and angular velocity of chassis, and add on vertical 
+</span><a name="164"></a>	<span class="source_comment">// component sent over the net.
+</span><a name="165"></a>
+<a name="166"></a>	<span class="source_comment">////////////////////////// FRONT LEFT //////////////////////////
+</span><a name="167"></a>	frontLeft.KGetRigidBodyState(frontLeft.ReceiveState);
+<a name="168"></a>
+<a name="169"></a>	<span class="source_comment">// Position
+</span><a name="170"></a>	lPos.X = WheelFrontAlong;
+<a name="171"></a>	lPos.<span class="source_type">Y</span> = WheelFrontAcross;
+<a name="172"></a>	lPos.Z = CarState.WheelHeight[<span class="source_int">0</span>];
+<a name="173"></a>	calcPos = chassisPos + QuatRotateVector(CarState.ChassisQuaternion, lPos); <span class="source_comment">// Convert from chassis state to world space
+</span><a name="174"></a>	frontLeft.ReceiveState.<span class="source_type">Position</span> = KRBVecFromVector(calcPos);
+<a name="175"></a>
+<a name="176"></a>	<span class="source_comment">// Rotation
+</span><a name="177"></a>	wheelQ = frontLeft.KGetRBQuaternion();
+<a name="178"></a>	WheelY = QuatRotateVector(wheelQ, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="179"></a>	SteerY = QuatRotateVector( QuatFromAxisAndAngle(ChassisZ, CarState.FrontWheelAng[<span class="source_int">0</span>]), ChassisY );
+<a name="180"></a>	relQ = QuatFindBetween(WheelY, SteerY);
+<a name="181"></a>	frontLeft.ReceiveState.Quaternion = QuatProduct(relQ, wheelQ);
+<a name="182"></a>
+<a name="183"></a>	<span class="source_comment">// Velocity
+</span><a name="184"></a>	wPosRel = calcPos - chassisPos;
+<a name="185"></a>	WheelLinVel = chassisLinVel + (chassisAngVel Cross wPosRel);
+<a name="186"></a>	WheelLinVel += CarState.WheelVertVel[<span class="source_int">0</span>] * ChassisZ;
+<a name="187"></a>	frontLeft.ReceiveState.LinVel = KRBVecFromVector(WheelLinVel);
+<a name="188"></a>
+<a name="189"></a>	<span class="source_comment">//frontLeft.ReceiveState.AngVel = KRBVecFromVector(chassisAngVel + (WheelY * CarState.WheelSpinVel[0]));
+</span><a name="190"></a>
+<a name="191"></a>	frontLeft.bReceiveStateNew = true;
+<a name="192"></a>
+<a name="193"></a>	<span class="source_comment">////////////////////////// FRONT RIGHT //////////////////////////
+</span><a name="194"></a>	frontRight.KGetRigidBodyState(frontRight.ReceiveState);
+<a name="195"></a>
+<a name="196"></a>	<span class="source_comment">// Position
+</span><a name="197"></a>	lPos.X = WheelFrontAlong;
+<a name="198"></a>	lPos.<span class="source_type">Y</span> = -WheelFrontAcross;
+<a name="199"></a>	lPos.Z = CarState.WheelHeight[<span class="source_int">1</span>];
+<a name="200"></a>	calcPos = chassisPos + QuatRotateVector(CarState.ChassisQuaternion, lPos);
+<a name="201"></a>	frontRight.ReceiveState.<span class="source_type">Position</span> = KRBVecFromVector(calcPos);
+<a name="202"></a>
+<a name="203"></a>
+<a name="204"></a>	<span class="source_comment">// Rotation
+</span><a name="205"></a>	wheelQ = frontRight.KGetRBQuaternion();
+<a name="206"></a>	WheelY = QuatRotateVector(wheelQ, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="207"></a>	SteerY = QuatRotateVector( QuatFromAxisAndAngle(ChassisZ, CarState.FrontWheelAng[<span class="source_int">1</span>]), ChassisY );
+<a name="208"></a>	relQ = QuatFindBetween(WheelY, SteerY);
+<a name="209"></a>	frontRight.ReceiveState.Quaternion = QuatProduct(relQ, wheelQ);
+<a name="210"></a>
+<a name="211"></a>	<span class="source_comment">// Velocity
+</span><a name="212"></a>	wPosRel = calcPos - chassisPos;
+<a name="213"></a>	WheelLinVel = chassisLinVel + (chassisAngVel Cross wPosRel);
+<a name="214"></a>	WheelLinVel += CarState.WheelVertVel[<span class="source_int">1</span>] * ChassisZ;
+<a name="215"></a>	frontRight.ReceiveState.LinVel = KRBVecFromVector(WheelLinVel);
+<a name="216"></a>
+<a name="217"></a>	<span class="source_comment">//frontRight.ReceiveState.AngVel = KRBVecFromVector(chassisAngVel + (WheelY * CarState.WheelSpinVel[1]));
+</span><a name="218"></a>
+<a name="219"></a>	frontRight.bReceiveStateNew = true;
+<a name="220"></a>
+<a name="221"></a>	<span class="source_comment">////////////////////////// REAR LEFT //////////////////////////
+</span><a name="222"></a>	rearLeft.KGetRigidBodyState(rearLeft.ReceiveState);
+<a name="223"></a>
+<a name="224"></a>	<span class="source_comment">// Position
+</span><a name="225"></a>	lPos.X = WheelRearAlong;
+<a name="226"></a>	lPos.<span class="source_type">Y</span> = WheelFrontAcross;
+<a name="227"></a>	lPos.Z = CarState.WheelHeight[<span class="source_int">2</span>];
+<a name="228"></a>	calcPos = chassisPos + QuatRotateVector(CarState.ChassisQuaternion, lPos);
+<a name="229"></a>	rearLeft.ReceiveState.<span class="source_type">Position</span> = KRBVecFromVector(calcPos);
+<a name="230"></a>
+<a name="231"></a>
+<a name="232"></a>	<span class="source_comment">// Rotation
+</span><a name="233"></a>	wheelQ = rearLeft.KGetRBQuaternion();
+<a name="234"></a>	WheelY = QuatRotateVector(wheelQ, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="235"></a>	relQ = QuatFindBetween(WheelY, ChassisY);
+<a name="236"></a>	rearLeft.ReceiveState.Quaternion = QuatProduct(relQ, wheelQ);
+<a name="237"></a>	
+<a name="238"></a>	<span class="source_comment">// Velocity
+</span><a name="239"></a>	wPosRel = calcPos - chassisPos;
+<a name="240"></a>	WheelLinVel = chassisLinVel + (chassisAngVel Cross wPosRel);
+<a name="241"></a>	WheelLinVel += CarState.WheelVertVel[<span class="source_int">2</span>] * ChassisZ;
+<a name="242"></a>	rearLeft.ReceiveState.LinVel = KRBVecFromVector(WheelLinVel);
+<a name="243"></a>
+<a name="244"></a>	<span class="source_comment">//rearLeft.ReceiveState.AngVel = KRBVecFromVector(chassisAngVel + (WheelY * CarState.WheelSpinVel[2]));
+</span><a name="245"></a>
+<a name="246"></a>	rearLeft.bReceiveStateNew = true;
+<a name="247"></a>
+<a name="248"></a>	<span class="source_comment">////////////////////////// REAR RIGHT //////////////////////////
+</span><a name="249"></a>	rearRight.KGetRigidBodyState(rearRight.ReceiveState);
+<a name="250"></a>
+<a name="251"></a>	<span class="source_comment">// Position
+</span><a name="252"></a>	lPos.X = WheelRearAlong;
+<a name="253"></a>	lPos.<span class="source_type">Y</span> = -WheelFrontAcross;
+<a name="254"></a>	lPos.Z = CarState.WheelHeight[<span class="source_int">3</span>];
+<a name="255"></a>	calcPos = chassisPos + QuatRotateVector(CarState.ChassisQuaternion, lPos);
+<a name="256"></a>	rearRight.ReceiveState.<span class="source_type">Position</span> = KRBVecFromVector(calcPos);
+<a name="257"></a>
+<a name="258"></a>	<span class="source_comment">// Rotation
+</span><a name="259"></a>	wheelQ = rearRight.KGetRBQuaternion();
+<a name="260"></a>	WheelY = QuatRotateVector(wheelQ, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="261"></a>	relQ = QuatFindBetween(WheelY, ChassisY);
+<a name="262"></a>	rearRight.ReceiveState.Quaternion = QuatProduct(relQ, wheelQ);
+<a name="263"></a>
+<a name="264"></a>	<span class="source_comment">// Velocity
+</span><a name="265"></a>	wPosRel = calcPos - chassisPos;
+<a name="266"></a>	WheelLinVel = chassisLinVel + (chassisAngVel Cross wPosRel);
+<a name="267"></a>	WheelLinVel += CarState.WheelVertVel[<span class="source_int">3</span>] * ChassisZ;
+<a name="268"></a>	rearRight.ReceiveState.LinVel = KRBVecFromVector(WheelLinVel);
+<a name="269"></a>
+<a name="270"></a>	<span class="source_comment">//rearRight.ReceiveState.AngVel = KRBVecFromVector(chassisAngVel + (WheelY * CarState.WheelSpinVel[3]));
+</span><a name="271"></a>
+<a name="272"></a>	rearRight.bReceiveStateNew = true;
+<a name="273"></a>
+<a name="274"></a>	<span class="source_comment">////// OTHER //////
+</span><a name="275"></a>
+<a name="276"></a>	<span class="source_comment">// Update control inputs
+</span><a name="277"></a>	Steering = CarState.ServerSteering;
+<a name="278"></a>	OutputTorque = CarState.ServerTorque;
+<a name="279"></a>	OutputBrake = CarState.ServerBrake;
+<a name="280"></a>	OutputHandbrakeOn = CarState.ServerHandbrakeOn;
+<a name="281"></a>
+<a name="282"></a>	<span class="source_comment">// Update flags
+</span><a name="283"></a>	CarState.bNewState = false;
+<a name="284"></a>	bNewCarState = true;
+<a name="285"></a>
+<a name="286"></a>	<span class="source_comment">// For debugging...
+</span><a name="287"></a>	<span class="source_comment">//KDrawRigidBodyState(ChassisState, false);
+</span><a name="288"></a>	<span class="source_comment">//KDrawRigidBodyState(frontLeft.ReceiveState, false);
+</span><a name="289"></a>	<span class="source_comment">//KDrawRigidBodyState(frontRight.ReceiveState, false);
+</span><a name="290"></a>	<span class="source_comment">//KDrawRigidBodyState(rearLeft.ReceiveState, false);
+</span><a name="291"></a>	<span class="source_comment">//KDrawRigidBodyState(rearRight.ReceiveState, false);
+</span><a name="292"></a>}
+<a name="293"></a>
+<a name="294"></a><span class="source_comment">// This only update the chassis. The wheels update themselves.
+</span><a name="295"></a>simulated event <span class="source_type">bool</span> KUpdateState(out <span class="source_type"><a href="../engine/actor.html#KRigidBodyState" class="source">KRigidBodyState</a></span> newState)
+<a name="296"></a>{
+<a name="297"></a>	<span class="source_comment">// This should never get called on the server - but just in case!
+</span><a name="298"></a>	if(Role == ROLE_Authority || !bNewCarState)
+<a name="299"></a>		return false;
+<a name="300"></a>		
+<a name="301"></a>	<span class="source_comment">// Apply received data as new position of car chassis.
+</span><a name="302"></a>	newState = ChassisState;
+<a name="303"></a>	bNewCarState = false;
+<a name="304"></a>
+<a name="305"></a>	return true;
+<a name="306"></a>	<span class="source_comment">//return false;
+</span><a name="307"></a>}
+<a name="308"></a>
+<a name="309"></a><span class="source_comment">// Pack current state of whole car into the state struct, to be sent to the client.
+</span><a name="310"></a><span class="source_comment">// Should only get called on the server.
+</span><a name="311"></a><span class="source_type">function</span> PackState()
+<a name="312"></a>{
+<a name="313"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> lPos, wPos, chassisPos, chassisLinVel, chassisAngVel, wPosRel, WheelLinVel;
+<a name="314"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> ChassisX, ChassisZ, WheelY, oldPos, oldLinVel;
+<a name="315"></a>	local <span class="source_type"><a href="../engine/actor.html#KRigidBodyState" class="source">KRigidBodyState</a></span> ChassisState, WheelState;
+<a name="316"></a>
+<a name="317"></a>	<span class="source_comment">// Get chassis state.
+</span><a name="318"></a>	KGetRigidBodyState(ChassisState);
+<a name="319"></a>
+<a name="320"></a>	chassisPos = KRBVecToVector(ChassisState.<span class="source_type">Position</span>);
+<a name="321"></a>	chassisLinVel = KRBVecToVector(ChassisState.LinVel);
+<a name="322"></a>	chassisAngVel = KRBVecToVector(ChassisState.AngVel);
+<a name="323"></a>
+<a name="324"></a>	<span class="source_comment">// Last position we sent
+</span><a name="325"></a>	oldPos = KRBVectoVector(CarState.ChassisPosition);
+<a name="326"></a>	oldLinVel = KRBVectoVector(CarState.ChassisLinVel);
+<a name="327"></a>
+<a name="328"></a>	<span class="source_comment">// See if state has changed enough, or enough time has passed, that we 
+</span><a name="329"></a>	<span class="source_comment">// should send out another update by updating the state struct.
+</span><a name="330"></a>	if( !KIsAwake() )
+<a name="331"></a>	{
+<a name="332"></a>		return; <span class="source_comment">// Never send updates if physics is at rest
+</span><a name="333"></a>	}
+<a name="334"></a>
+<a name="335"></a>	if( VSize(oldPos - chassisPos) &gt; <span class="source_int">5</span> ||
+<a name="336"></a>		VSize(oldLinVel - chassisLinVel) &gt; <span class="source_int">1</span> ||
+<a name="337"></a>		Abs(CarState.ServerTorque - OutputTorque) &gt; <span class="source_int">0.1</span> ||
+<a name="338"></a>		Abs(CarState.ServerSteering - Steering) &gt; <span class="source_int">0.1</span> ||
+<a name="339"></a>		<span class="source_type">Level</span>.TimeSeconds &gt; NextNetUpdateTime )
+<a name="340"></a>	{
+<a name="341"></a>		NextNetUpdateTime = <span class="source_type">Level</span>.TimeSeconds + MaxNetUpdateInterval;
+<a name="342"></a>	}
+<a name="343"></a>	else
+<a name="344"></a>	{
+<a name="345"></a>		return;
+<a name="346"></a>		<span class="source_comment">//NextNetUpdateTime = Level.TimeSeconds + MaxNetUpdateInterval;
+</span><a name="347"></a>	}
+<a name="348"></a>
+<a name="349"></a>	CarState.ChassisPosition = ChassisState.<span class="source_type">Position</span>;
+<a name="350"></a>	CarState.ChassisQuaternion = ChassisState.Quaternion;
+<a name="351"></a>	CarState.ChassisLinVel = ChassisState.LinVel;
+<a name="352"></a>	CarState.ChassisAngVel = ChassisState.AngVel;
+<a name="353"></a>
+<a name="354"></a>
+<a name="355"></a>	ChassisX = QuatRotateVector(CarState.ChassisQuaternion, vect(<span class="source_int">1</span>, <span class="source_int">0</span>, <span class="source_int">0</span>));
+<a name="356"></a>	ChassisZ = QuatRotateVector(CarState.ChassisQuaternion, vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>));
+<a name="357"></a>	<span class="source_comment">// Get each wheel state.
+</span><a name="358"></a>
+<a name="359"></a>	<span class="source_comment">////////////////////////// FRONT LEFT //////////////////////////
+</span><a name="360"></a>	frontLeft.KGetRigidBodyState(WheelState);
+<a name="361"></a>	wPos = KRBVecToVector(WheelState.<span class="source_type">Position</span>);
+<a name="362"></a>	lPos = QuatRotateVector(QuatInvert(CarState.ChassisQuaternion), wPos - chassisPos); <span class="source_comment">// Convert from world to chassis state space
+</span><a name="363"></a>	CarState.WheelHeight[<span class="source_int">0</span>] = lPos.Z; <span class="source_comment">// X should be WheelFrontAlong, Y should be WheelFrontAcross
+</span><a name="364"></a>
+<a name="365"></a>	<span class="source_comment">// For front wheels - we store their current angle around Z as well.
+</span><a name="366"></a>	WheelY = QuatRotateVector(WheelState.Quaternion, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="367"></a>	CarState.FrontWheelAng[<span class="source_int">0</span>] = -ASin(ChassisX Dot WheelY);
+<a name="368"></a>
+<a name="369"></a>	<span class="source_comment">// Find component of relative wheel linear velocity along suspension travel (chassisZ).
+</span><a name="370"></a>	wPosRel = KRBVecToVector(WheelState.<span class="source_type">Position</span>) - chassisPos;
+<a name="371"></a>	WheelLinVel = chassisLinVel + (chassisAngVel Cross wPosRel);
+<a name="372"></a>
+<a name="373"></a>	CarState.WheelVertVel[<span class="source_int">0</span>] = 
+<a name="374"></a>		((WheelState.LinVel.X - WheelLinVel.X)* ChassisZ.X) + 
+<a name="375"></a>		((WheelState.LinVel.<span class="source_type">Y</span> - WheelLinVel.<span class="source_type">Y</span>)* ChassisZ.<span class="source_type">Y</span>) + 
+<a name="376"></a>		((WheelState.LinVel.Z - WheelLinVel.Z)* ChassisZ.Z);
+<a name="377"></a>
+<a name="378"></a>	<span class="source_comment">//CarState.WheelSpinVel[0] = KRBVecToVector(WheelState.AngVel) Dot WheelY;
+</span><a name="379"></a>
+<a name="380"></a>	<span class="source_comment">////////////////////////// FRONT RIGHT //////////////////////////
+</span><a name="381"></a>	frontRight.KGetRigidBodyState(WheelState);
+<a name="382"></a>	wPos = KRBVecToVector(WheelState.<span class="source_type">Position</span>);
+<a name="383"></a>	lPos = QuatRotateVector(QuatInvert(CarState.ChassisQuaternion), wPos - chassisPos);
+<a name="384"></a>	CarState.WheelHeight[<span class="source_int">1</span>] = lPos.Z;
+<a name="385"></a>
+<a name="386"></a>	WheelY = QuatRotateVector(WheelState.Quaternion, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="387"></a>	CarState.FrontWheelAng[<span class="source_int">1</span>] = -ASin(ChassisX Dot WheelY);
+<a name="388"></a>
+<a name="389"></a>	CarState.WheelVertVel[<span class="source_int">1</span>] = 
+<a name="390"></a>		((WheelState.LinVel.X - WheelLinVel.X)* ChassisZ.X) + 
+<a name="391"></a>		((WheelState.LinVel.<span class="source_type">Y</span> - WheelLinVel.<span class="source_type">Y</span>)* ChassisZ.<span class="source_type">Y</span>) + 
+<a name="392"></a>		((WheelState.LinVel.Z - WheelLinVel.Z)* ChassisZ.Z);
+<a name="393"></a>
+<a name="394"></a>	<span class="source_comment">//CarState.WheelSpinVel[1] = KRBVecToVector(WheelState.AngVel) Dot WheelY;
+</span><a name="395"></a>
+<a name="396"></a>	<span class="source_comment">////////////////////////// REAR LEFT //////////////////////////
+</span><a name="397"></a>	rearLeft.KGetRigidBodyState(WheelState);
+<a name="398"></a>	wPos = KRBVecToVector(WheelState.<span class="source_type">Position</span>);
+<a name="399"></a>	lPos = QuatRotateVector(QuatInvert(CarState.ChassisQuaternion), wPos - chassisPos);
+<a name="400"></a>	CarState.WheelHeight[<span class="source_int">2</span>] = lPos.Z;
+<a name="401"></a>
+<a name="402"></a>	wPosRel = KRBVecToVector(WheelState.<span class="source_type">Position</span>) - chassisPos;
+<a name="403"></a>	WheelLinVel = chassisLinVel + (chassisAngVel Cross wPosRel);
+<a name="404"></a>
+<a name="405"></a>	CarState.WheelVertVel[<span class="source_int">2</span>] = 
+<a name="406"></a>		((WheelState.LinVel.X - WheelLinVel.X)* ChassisZ.X) + 
+<a name="407"></a>		((WheelState.LinVel.<span class="source_type">Y</span> - WheelLinVel.<span class="source_type">Y</span>)* ChassisZ.<span class="source_type">Y</span>) + 
+<a name="408"></a>		((WheelState.LinVel.Z - WheelLinVel.Z)* ChassisZ.Z);
+<a name="409"></a>
+<a name="410"></a>	WheelY = QuatRotateVector(WheelState.Quaternion, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="411"></a>	<span class="source_comment">//CarState.WheelSpinVel[2] = KRBVecToVector(WheelState.AngVel) Dot WheelY;
+</span><a name="412"></a>
+<a name="413"></a>	<span class="source_comment">////////////////////////// REAR RIGHT //////////////////////////
+</span><a name="414"></a>	rearRight.KGetRigidBodyState(WheelState);
+<a name="415"></a>	wPos = KRBVecToVector(WheelState.<span class="source_type">Position</span>);
+<a name="416"></a>	lPos = QuatRotateVector(QuatInvert(CarState.ChassisQuaternion), wPos - chassisPos);
+<a name="417"></a>	CarState.WheelHeight[<span class="source_int">3</span>] = lPos.Z;
+<a name="418"></a>
+<a name="419"></a>	wPosRel = KRBVecToVector(WheelState.<span class="source_type">Position</span>) - chassisPos;
+<a name="420"></a>	WheelLinVel = chassisLinVel + (chassisAngVel Cross wPosRel);
+<a name="421"></a>
+<a name="422"></a>	CarState.WheelVertVel[<span class="source_int">3</span>] = 
+<a name="423"></a>		((WheelState.LinVel.X - WheelLinVel.X)* ChassisZ.X) + 
+<a name="424"></a>		((WheelState.LinVel.<span class="source_type">Y</span> - WheelLinVel.<span class="source_type">Y</span>)* ChassisZ.<span class="source_type">Y</span>) + 
+<a name="425"></a>		((WheelState.LinVel.Z - WheelLinVel.Z)* ChassisZ.Z);
+<a name="426"></a>
+<a name="427"></a>	WheelY = QuatRotateVector(WheelState.Quaternion, vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>));
+<a name="428"></a>	<span class="source_comment">//CarState.WheelSpinVel[3] = KRBVecToVector(WheelState.AngVel) Dot WheelY;
+</span><a name="429"></a>
+<a name="430"></a>	<span class="source_comment">// OTHER
+</span><a name="431"></a>	CarState.ServerSteering = Steering;
+<a name="432"></a>	CarState.ServerTorque = OutputTorque;
+<a name="433"></a>	CarState.ServerBrake = OutputBrake;
+<a name="434"></a>	CarState.ServerHandbrakeOn = OutputHandbrakeOn;
+<a name="435"></a>
+<a name="436"></a>	<span class="source_comment">// This flag lets the client know this data is new.
+</span><a name="437"></a>	CarState.bNewState = true;
+<a name="438"></a>}
+<a name="439"></a>
+<a name="440"></a>simulated <span class="source_type">function</span> PostNetBeginPlay()
+<a name="441"></a>{
+<a name="442"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> RotX, RotY, RotZ, lPos;
+<a name="443"></a>
+<a name="444"></a>    Super.PostNetBeginPlay();
+<a name="445"></a>
+<a name="446"></a>    <span class="source_comment">// Set up suspension graphics
+</span><a name="447"></a>
+<a name="448"></a>    GetAxes(Rotation,RotX,RotY,RotZ);
+<a name="449"></a>
+<a name="450"></a>    <span class="source_comment">// Spawn wheels, and flip graphics where necessary
+</span><a name="451"></a>    frontLeft = spawn(FrontTireClass, self,, Location + WheelFrontAlong*RotX + WheelFrontAcross*RotY + WheelVert*RotZ, Rotation);
+<a name="452"></a>    <span class="source_comment">//frontLeft.SetDrawScale(1);
+</span><a name="453"></a>    frontLeft.SetDrawScale3D(vect(<span class="source_int">1</span>, <span class="source_int">1</span>, <span class="source_int">1</span>));
+<a name="454"></a>
+<a name="455"></a>    frontRight = spawn(FrontTireClass, self,, Location + WheelFrontAlong*RotX - WheelFrontAcross*RotY + WheelVert*RotZ, Rotation);
+<a name="456"></a>    frontRight.SetDrawScale3D(vect(<span class="source_int">1</span>, -<span class="source_int">1</span>, <span class="source_int">1</span>));
+<a name="457"></a>
+<a name="458"></a>    rearLeft = spawn(RearTireClass, self,, Location + WheelRearAlong*RotX + WheelRearAcross*RotY + WheelVert*RotZ, Rotation);
+<a name="459"></a>    <span class="source_comment">//rearLeft.SetDrawScale(1);
+</span><a name="460"></a>    rearLeft.SetDrawScale3D(vect(<span class="source_int">1</span>, <span class="source_int">1</span>, <span class="source_int">1</span>));
+<a name="461"></a>
+<a name="462"></a>    rearRight = spawn(RearTireClass, self,, Location + WheelRearAlong*RotX - WheelRearAcross*RotY + WheelVert*RotZ, Rotation);
+<a name="463"></a>    rearRight.SetDrawScale3D(vect(<span class="source_int">1</span>, -<span class="source_int">1</span>, <span class="source_int">1</span>));
+<a name="464"></a>
+<a name="465"></a>    <span class="source_comment">// Create joints
+</span><a name="466"></a>	lPos.X = WheelFrontAlong;
+<a name="467"></a>	lPos.<span class="source_type">Y</span> = WheelFrontAcross;
+<a name="468"></a>	lPos.Z = WheelVert;
+<a name="469"></a>    frontLeft.WheelJoint = spawn(<span class="source_type">class</span><span class="source_name">'KCarWheelJoint'</span>, self);
+<a name="470"></a>    frontLeft.WheelJoint.KPos1 = lPos/<span class="source_int">50</span>;
+<a name="471"></a>    frontLeft.WheelJoint.KPriAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="472"></a>    frontLeft.WheelJoint.KSecAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="473"></a>    frontLeft.WheelJoint.KConstraintActor1 = self;
+<a name="474"></a>    frontLeft.WheelJoint.KPos2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="475"></a>    frontLeft.WheelJoint.KPriAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="476"></a>    frontLeft.WheelJoint.KSecAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="477"></a>    frontLeft.WheelJoint.KConstraintActor2 = frontLeft;
+<a name="478"></a>    frontLeft.WheelJoint.SetPhysics(PHYS_Karma);
+<a name="479"></a>
+<a name="480"></a>	lPos.<span class="source_type">Y</span> = -WheelFrontAcross;
+<a name="481"></a>    frontRight.WheelJoint = spawn(<span class="source_type">class</span><span class="source_name">'KCarWheelJoint'</span>, self);
+<a name="482"></a>    frontRight.WheelJoint.KPos1 = lPos/<span class="source_int">50</span>;
+<a name="483"></a>    frontRight.WheelJoint.KPriAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="484"></a>    frontRight.WheelJoint.KSecAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="485"></a>    frontRight.WheelJoint.KConstraintActor1 = self;
+<a name="486"></a>    frontRight.WheelJoint.KPos2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="487"></a>    frontRight.WheelJoint.KPriAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="488"></a>    frontRight.WheelJoint.KSecAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="489"></a>    frontRight.WheelJoint.KConstraintActor2 = frontRight;
+<a name="490"></a>    frontRight.WheelJoint.SetPhysics(PHYS_Karma);
+<a name="491"></a>
+<a name="492"></a>	lPos.X = WheelRearAlong;
+<a name="493"></a>	lPos.<span class="source_type">Y</span> = WheelRearAcross;
+<a name="494"></a>    rearLeft.WheelJoint = spawn(<span class="source_type">class</span><span class="source_name">'KCarWheelJoint'</span>, self);
+<a name="495"></a>    rearLeft.WheelJoint.KPos1 = lPos/<span class="source_int">50</span>;
+<a name="496"></a>    rearLeft.WheelJoint.KPriAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="497"></a>    rearLeft.WheelJoint.KSecAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="498"></a>    rearLeft.WheelJoint.KConstraintActor1 = self;
+<a name="499"></a>    rearLeft.WheelJoint.KPos2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="500"></a>    rearLeft.WheelJoint.KPriAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="501"></a>    rearLeft.WheelJoint.KSecAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="502"></a>    rearLeft.WheelJoint.KConstraintActor2 = rearLeft;
+<a name="503"></a>    rearLeft.WheelJoint.SetPhysics(PHYS_Karma);
+<a name="504"></a>
+<a name="505"></a>    lPos.<span class="source_type">Y</span> = -WheelRearAcross;
+<a name="506"></a>	rearRight.WheelJoint = spawn(<span class="source_type">class</span><span class="source_name">'KCarWheelJoint'</span>, self);
+<a name="507"></a>    rearRight.WheelJoint.KPos1 = lPos/<span class="source_int">50</span>;
+<a name="508"></a>    rearRight.WheelJoint.KPriAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="509"></a>    rearRight.WheelJoint.KSecAxis1 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="510"></a>    rearRight.WheelJoint.KConstraintActor1 = self;
+<a name="511"></a>    rearRight.WheelJoint.KPos2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="512"></a>    rearRight.WheelJoint.KPriAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>);
+<a name="513"></a>    rearRight.WheelJoint.KSecAxis2 = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>);
+<a name="514"></a>    rearRight.WheelJoint.KConstraintActor2 = rearRight;
+<a name="515"></a>    rearRight.WheelJoint.SetPhysics(PHYS_Karma);
+<a name="516"></a>
+<a name="517"></a>	<span class="source_comment">// Initially make sure parameters are sync'ed with Karma
+</span><a name="518"></a>	KVehicleUpdateParams();
+<a name="519"></a>}
+<a name="520"></a>
+<a name="521"></a><span class="source_comment">// Clean up wheels etc.
+</span><a name="522"></a>simulated event Destroyed()
+<a name="523"></a>{
+<a name="524"></a>	<span class="source_comment">// Destroy joints holding wheels to car
+</span><a name="525"></a>	frontLeft.WheelJoint.Destroy();
+<a name="526"></a>	frontRight.WheelJoint.Destroy();
+<a name="527"></a>	rearLeft.WheelJoint.Destroy();
+<a name="528"></a>	rearRight.WheelJoint.Destroy();
+<a name="529"></a>
+<a name="530"></a>	<span class="source_comment">// Destroy wheels themselves.
+</span><a name="531"></a>	frontLeft.Destroy();
+<a name="532"></a>	frontRight.Destroy();
+<a name="533"></a>	rearLeft.Destroy();
+<a name="534"></a>	rearRight.Destroy();
+<a name="535"></a>
+<a name="536"></a>	Super.Destroyed();
+<a name="537"></a>}
+<a name="538"></a>
+<a name="539"></a><span class="source_comment">// Call this if you change any parameters (tire, suspension etc.) and they
+</span><a name="540"></a><span class="source_comment">// will be passed down to each wheel/joint.
+</span><a name="541"></a>
+<a name="542"></a>simulated event KVehicleUpdateParams()
+<a name="543"></a>{
+<a name="544"></a>	Super.KVehicleUpdateParams();
+<a name="545"></a>
+<a name="546"></a>    rearLeft.WheelJoint.bKSteeringLocked = true;
+<a name="547"></a>    rearRight.WheelJoint.bKSteeringLocked = true;
+<a name="548"></a>    
+<a name="549"></a>    frontLeft.WheelJoint.bKSteeringLocked = false;
+<a name="550"></a>    frontLeft.WheelJoint.KProportionalGap = SteerPropGap;
+<a name="551"></a>    frontLeft.WheelJoint.KMaxSteerTorque = SteerTorque;
+<a name="552"></a>    frontLeft.WheelJoint.KMaxSteerSpeed = SteerSpeed;
+<a name="553"></a>
+<a name="554"></a>    frontRight.WheelJoint.bKSteeringLocked = false;
+<a name="555"></a>    frontRight.WheelJoint.KProportionalGap = SteerPropGap;
+<a name="556"></a>    frontRight.WheelJoint.KMaxSteerTorque = SteerTorque;
+<a name="557"></a>    frontRight.WheelJoint.KMaxSteerSpeed = SteerSpeed;
+<a name="558"></a>
+<a name="559"></a>    frontLeft.WheelJoint.KSuspHighLimit = SuspHighLimit;
+<a name="560"></a>    frontLeft.WheelJoint.KSuspLowLimit = SuspLowLimit;
+<a name="561"></a>    frontLeft.WheelJoint.KSuspStiffness = SuspStiffness;
+<a name="562"></a>    frontLeft.WheelJoint.KSuspDamping = SuspDamping;
+<a name="563"></a>
+<a name="564"></a>    frontRight.WheelJoint.KSuspHighLimit = SuspHighLimit;
+<a name="565"></a>    frontRight.WheelJoint.KSuspLowLimit = SuspLowLimit;
+<a name="566"></a>    frontRight.WheelJoint.KSuspStiffness = SuspStiffness;
+<a name="567"></a>    frontRight.WheelJoint.KSuspDamping = SuspDamping;
+<a name="568"></a>
+<a name="569"></a>    rearLeft.WheelJoint.KSuspHighLimit = SuspHighLimit;
+<a name="570"></a>    rearLeft.WheelJoint.KSuspLowLimit = SuspLowLimit;
+<a name="571"></a>    rearLeft.WheelJoint.KSuspStiffness = SuspStiffness;
+<a name="572"></a>    rearLeft.WheelJoint.KSuspDamping = SuspDamping;
+<a name="573"></a>
+<a name="574"></a>    rearRight.WheelJoint.KSuspHighLimit = SuspHighLimit;
+<a name="575"></a>    rearRight.WheelJoint.KSuspLowLimit = SuspLowLimit;
+<a name="576"></a>    rearRight.WheelJoint.KSuspStiffness = SuspStiffness;
+<a name="577"></a>    rearRight.WheelJoint.KSuspDamping = SuspDamping;
+<a name="578"></a>
+<a name="579"></a>	<span class="source_comment">// Sync params with Karma.
+</span><a name="580"></a>	frontLeft.WheelJoint.KUpdateConstraintParams();
+<a name="581"></a>	frontRight.WheelJoint.KUpdateConstraintParams();
+<a name="582"></a>	rearLeft.WheelJoint.KUpdateConstraintParams();
+<a name="583"></a>	rearRight.WheelJoint.KUpdateConstraintParams();
+<a name="584"></a>
+<a name="585"></a>    <span class="source_comment">// Mass
+</span><a name="586"></a>    KSetMass(ChassisMass);
+<a name="587"></a>    frontLeft.KSetMass(TireMass);
+<a name="588"></a>    frontRight.KSetMass(TireMass);
+<a name="589"></a>    rearLeft.KSetMass(TireMass);
+<a name="590"></a>    rearRight.KSetMass(TireMass);
+<a name="591"></a>
+<a name="592"></a>    <span class="source_comment">// Tire params handy tuning
+</span><a name="593"></a>    frontLeft.RollFriction = TireRollFriction;
+<a name="594"></a>    frontLeft.LateralFriction = TireLateralFriction;
+<a name="595"></a>    frontLeft.RollSlip = TireRollSlip;
+<a name="596"></a>    frontLeft.LateralSlip = TireLateralSlip;
+<a name="597"></a>    frontLeft.MinSlip = TireMinSlip;
+<a name="598"></a>    frontLeft.SlipRate = TireSlipRate;
+<a name="599"></a>    frontLeft.Softness = TireSoftness;
+<a name="600"></a>    frontLeft.Adhesion = TireAdhesion;
+<a name="601"></a>    frontLeft.Restitution = TireRestitution;
+<a name="602"></a>
+<a name="603"></a>    frontRight.RollFriction = TireRollFriction;
+<a name="604"></a>    frontRight.LateralFriction = TireLateralFriction;
+<a name="605"></a>    frontRight.RollSlip = TireRollSlip;
+<a name="606"></a>    frontRight.LateralSlip = TireLateralSlip;
+<a name="607"></a>    frontRight.MinSlip = TireMinSlip;
+<a name="608"></a>    frontRight.SlipRate = TireSlipRate;
+<a name="609"></a>    frontRight.Softness = TireSoftness;
+<a name="610"></a>    frontRight.Adhesion = TireAdhesion;
+<a name="611"></a>    frontRight.Restitution = TireRestitution;
+<a name="612"></a>
+<a name="613"></a>    rearLeft.RollFriction = TireRollFriction;
+<a name="614"></a>    rearLeft.LateralFriction = TireLateralFriction;
+<a name="615"></a>    rearLeft.RollSlip = TireRollSlip;
+<a name="616"></a>    rearLeft.LateralSlip = TireLateralSlip;
+<a name="617"></a>    rearLeft.MinSlip = TireMinSlip;
+<a name="618"></a>    rearLeft.SlipRate = TireSlipRate;
+<a name="619"></a>    rearLeft.Softness = TireSoftness;
+<a name="620"></a>    rearLeft.Adhesion = TireAdhesion;
+<a name="621"></a>    rearLeft.Restitution = TireRestitution;
+<a name="622"></a>
+<a name="623"></a>    rearRight.RollFriction = TireRollFriction;
+<a name="624"></a>    rearRight.LateralFriction = TireLateralFriction;
+<a name="625"></a>    rearRight.RollSlip = TireRollSlip;
+<a name="626"></a>    rearRight.LateralSlip = TireLateralSlip;
+<a name="627"></a>    rearRight.MinSlip = TireMinSlip;
+<a name="628"></a>    rearRight.SlipRate = TireSlipRate;
+<a name="629"></a>    rearRight.Softness = TireSoftness;
+<a name="630"></a>    rearRight.Adhesion = TireAdhesion;
+<a name="631"></a>    rearRight.Restitution = TireRestitution;
+<a name="632"></a>}
+<a name="633"></a>
+<a name="634"></a><span class="source_comment">// Possibly apply force to flip car over.
+</span><a name="635"></a>simulated event KApplyForce(out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Force, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Torque)
+<a name="636"></a>{
+<a name="637"></a>	local <span class="source_type">float</span> torqueScale;
+<a name="638"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> worldForward, worldUp, worldRight, torqueAxis;
+<a name="639"></a>
+<a name="640"></a>	if(FlipTimeLeft == <span class="source_int">0</span>)
+<a name="641"></a>		return;
+<a name="642"></a>
+<a name="643"></a>	worldForward = vect(-<span class="source_int">1</span>, <span class="source_int">0</span>, <span class="source_int">0</span>) &gt;&gt; Rotation;
+<a name="644"></a>	worldUp = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>) &gt;&gt; Rotation;
+<a name="645"></a>	worldRight = vect(<span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">0</span>) &gt;&gt; Rotation;
+<a name="646"></a>
+<a name="647"></a>	torqueAxis = Normal(worldUp Cross vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>));
+<a name="648"></a>
+<a name="649"></a>	<span class="source_comment">// Torque scaled by how far over we are. 
+</span><a name="650"></a>	<span class="source_comment">// This will be between 0 and PI - so convert to between 0 and 1.
+</span><a name="651"></a>	torqueScale = Acos(worldUp Dot vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>))/<span class="source_int">3.1416</span>;
+<a name="652"></a>
+<a name="653"></a>	Torque = FlipTorque * torqueScale * torqueAxis;
+<a name="654"></a>}
+<a name="655"></a>
+<a name="656"></a><span class="source_type">function</span> StartFlip(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> Pusher)
+<a name="657"></a>{
+<a name="658"></a>	<span class="source_comment">//local vector toPusher, worldUp;
+</span><a name="659"></a>
+<a name="660"></a>	<span class="source_comment">// if we are already flipping the car - dont do it again!
+</span><a name="661"></a>	if(FlipTimeLeft &gt; <span class="source_int">0</span>)
+<a name="662"></a>		return;
+<a name="663"></a>
+<a name="664"></a>	<span class="source_comment">// Dont let you push the car if you are going to be underneath it!
+</span><a name="665"></a>  	<span class="source_comment">//worldUp = vect(0, 0, 1) &gt;&gt; Rotation;
+</span><a name="666"></a>	<span class="source_comment">//toPusher = Pusher.Location - Location;
+</span><a name="667"></a>	<span class="source_comment">//if( (worldUp Dot toPusher) &lt; 0)
+</span><a name="668"></a>	<span class="source_comment">//	return;
+</span><a name="669"></a>
+<a name="670"></a>	FlipTimeLeft = FlipTime; <span class="source_comment">// Start the flip on the server
+</span><a name="671"></a>}
+<a name="672"></a>
+<a name="673"></a><span class="source_comment">// Tell it your current throttle, and it will give you an output torque
+</span><a name="674"></a><span class="source_comment">// This is currently like an electric motor
+</span><a name="675"></a><span class="source_type">function</span> <span class="source_type">float</span> <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>(<span class="source_type">float</span> Throttle)
+<a name="676"></a>{
+<a name="677"></a>    local <span class="source_type">float</span> torque;
+<a name="678"></a>    
+<a name="679"></a>	torque = Abs(Throttle) * Gear * InterpCurveEval(TorqueCurve, WheelSpinSpeed);
+<a name="680"></a>
+<a name="681"></a>	GraphData(<span class="source_string">"SpinSpeed"</span>, WheelSpinSpeed);
+<a name="682"></a>	GraphData(<span class="source_string">"Torque"</span>, torque);
+<a name="683"></a>
+<a name="684"></a>    return -<span class="source_int">1</span> * torque;
+<a name="685"></a>}
+<a name="686"></a>
+<a name="687"></a><span class="source_type">function</span> ProcessCarInput()
+<a name="688"></a>{
+<a name="689"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> worldForward, worldUp;
+<a name="690"></a>
+<a name="691"></a>	<span class="source_comment">//Log("PCI S:"$Steering$" T:"$Throttle);
+</span><a name="692"></a>
+<a name="693"></a>  	worldForward = vect(-<span class="source_int">1</span>, <span class="source_int">0</span>, <span class="source_int">0</span>) &gt;&gt; Rotation;
+<a name="694"></a>  	worldUp = vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">1</span>) &gt;&gt; Rotation;
+<a name="695"></a>  	  	
+<a name="696"></a>  	ForwardVel = Velocity Dot worldForward;
+<a name="697"></a>
+<a name="698"></a>	bIsInverted = worldUp.Z &lt; <span class="source_int">0.2</span>;
+<a name="699"></a>
+<a name="700"></a>	<span class="source_comment">// 'ForwardVel' isn't very helpful if we are inverted, so we just pretend its positive.
+</span><a name="701"></a>	if(bIsInverted)
+<a name="702"></a>		ForwardVel = <span class="source_int">2</span> * StopThreshold;
+<a name="703"></a>
+<a name="704"></a>	<span class="source_comment">//Log("F:"$ForwardVel$"IsI:"$bIsInverted);
+</span><a name="705"></a>
+<a name="706"></a>	if( Driver == None )
+<a name="707"></a>	{
+<a name="708"></a>		if(bAutoDrive == true)
+<a name="709"></a>		{
+<a name="710"></a>			Gear = <span class="source_int">1</span>;
+<a name="711"></a>			OutputBrake = false;
+<a name="712"></a>
+<a name="713"></a>			Throttle = <span class="source_int">0.4</span>;
+<a name="714"></a>			Steering = <span class="source_int">1</span>;
+<a name="715"></a>
+<a name="716"></a>			<span class="source_comment">//log("Thr:"$Throttle);
+</span><a name="717"></a>
+<a name="718"></a>			KWake();
+<a name="719"></a>		}
+<a name="720"></a>		else
+<a name="721"></a>		{
+<a name="722"></a>			Gear = <span class="source_int">0</span>;
+<a name="723"></a>			OutputBrake = true;
+<a name="724"></a>		}
+<a name="725"></a>	}
+<a name="726"></a>	else
+<a name="727"></a>	{
+<a name="728"></a>		if(Throttle &gt; <span class="source_int">0.01</span>) <span class="source_comment">// pressing forwards
+</span><a name="729"></a>		{
+<a name="730"></a>			if(ForwardVel &lt; -StopThreshold && Gear != <span class="source_int">1</span>) <span class="source_comment">// going backwards - so brake first
+</span><a name="731"></a>			{
+<a name="732"></a>				<span class="source_comment">//Log("F - Brake");
+</span><a name="733"></a>				Gear = <span class="source_int">0</span>;
+<a name="734"></a>				OutputBrake = true;
+<a name="735"></a>				IsDriving = false;
+<a name="736"></a>			}
+<a name="737"></a>			else <span class="source_comment">// stopped or going forwards, so drive
+</span><a name="738"></a>			{
+<a name="739"></a>				<span class="source_comment">//Log("F - Drive");
+</span><a name="740"></a>				Gear = <span class="source_int">1</span>;
+<a name="741"></a>				OutputBrake = false;
+<a name="742"></a>				IsDriving = true;
+<a name="743"></a>			}
+<a name="744"></a>		}
+<a name="745"></a>		else if(Throttle &lt; -<span class="source_int">0.01</span>) <span class="source_comment">// pressing backwards
+</span><a name="746"></a>		{
+<a name="747"></a>			<span class="source_comment">// We have to release the brakes and then press reverse again to go into reverse
+</span><a name="748"></a>			if(ForwardVel &lt; StopThreshold && IsDriving == false)
+<a name="749"></a>			{
+<a name="750"></a>				<span class="source_comment">//Log("B - Drive");
+</span><a name="751"></a>				Gear = -<span class="source_int">1</span>;
+<a name="752"></a>				OutputBrake = false;
+<a name="753"></a>				IsDriving = false;
+<a name="754"></a>			}
+<a name="755"></a>			else <span class="source_comment">// otherwise, we are going forwards, or still holding brake, so just brake
+</span><a name="756"></a>			{
+<a name="757"></a>				<span class="source_comment">//Log("B - Brake");
+</span><a name="758"></a>				Gear = <span class="source_int">0</span>;
+<a name="759"></a>				OutputBrake = true;
+<a name="760"></a>				IsDriving = true;
+<a name="761"></a>			}
+<a name="762"></a>		}
+<a name="763"></a>		else <span class="source_comment">// not pressing either
+</span><a name="764"></a>		{
+<a name="765"></a>			<span class="source_comment">// If stationary, stick brakes on
+</span><a name="766"></a>			if(Abs(ForwardVel) &lt; StopThreshold)
+<a name="767"></a>			{
+<a name="768"></a>				<span class="source_comment">//Log("B - Brake");
+</span><a name="769"></a>				Gear = <span class="source_int">0</span>;
+<a name="770"></a>				OutputBrake = true;
+<a name="771"></a>				IsDriving = false;
+<a name="772"></a>				OutputHandbrakeOn = false; <span class="source_comment">// force handbrake off if stopped.
+</span><a name="773"></a>			}
+<a name="774"></a>			else <span class="source_comment">// otherwise, coast
+</span><a name="775"></a>			{
+<a name="776"></a>				<span class="source_comment">//Log("Coast");
+</span><a name="777"></a>				Gear = <span class="source_int">0</span>;
+<a name="778"></a>				OutputBrake = false;
+<a name="779"></a>				IsDriving = false;
+<a name="780"></a>			}
+<a name="781"></a>		}
+<a name="782"></a>
+<a name="783"></a>		KWake(); <span class="source_comment">// currently, never let the car go to sleep whilst being driven.
+</span><a name="784"></a>	}
+<a name="785"></a>
+<a name="786"></a>	<span class="source_comment">// If we are going forwards, steering, and pressing the brake,
+</span><a name="787"></a>	<span class="source_comment">// enable extra-slippy handbrake.
+</span><a name="788"></a>	if((ForwardVel &gt; HandbrakeThresh || OutputHandbrakeOn == true) && Abs(Steering) &gt; <span class="source_int">0.01</span> && OutputBrake == true)
+<a name="789"></a>		OutputHandbrakeOn = true;
+<a name="790"></a>	else
+<a name="791"></a>		OutputHandbrakeOn = false;
+<a name="792"></a>
+<a name="793"></a>	<span class="source_comment">// Engine model
+</span><a name="794"></a>    OutputTorque = <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>(Throttle);
+<a name="795"></a>}
+<a name="796"></a>
+<a name="797"></a><span class="source_comment">// Car Simulation
+</span><a name="798"></a>simulated <span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="799"></a>{
+<a name="800"></a>	local <span class="source_type">float</span> tana, sFactor;
+<a name="801"></a>
+<a name="802"></a>	Super.<span class="source_type">Tick</span>(<span class="source_type">Delta</span>);
+<a name="803"></a>
+<a name="804"></a>    WheelSpinSpeed = (rearLeft.SpinSpeed + rearRight.SpinSpeed)/<span class="source_int">2</span>;
+<a name="805"></a>    <span class="source_comment">//log("WheelSpinSpeed:"$WheelSpinSpeed);
+</span><a name="806"></a>
+<a name="807"></a>	<span class="source_comment">// if we are in the process of flipping the car, keep it enabled!
+</span><a name="808"></a>	if( FlipTimeLeft &gt; <span class="source_int">0</span>  )
+<a name="809"></a>		KWake();
+<a name="810"></a>
+<a name="811"></a>    <span class="source_comment">// If the server, process input and pack updated car info into struct.
+</span><a name="812"></a>    if(Role == ROLE_Authority)
+<a name="813"></a>	{
+<a name="814"></a>		ProcessCarInput();
+<a name="815"></a>		PackState();
+<a name="816"></a>	}
+<a name="817"></a>
+<a name="818"></a>    <span class="source_comment">// Motor
+</span><a name="819"></a>
+<a name="820"></a>	<span class="source_comment">// FRONT
+</span><a name="821"></a>    frontLeft.WheelJoint.KMotorTorque = <span class="source_int">0.5</span> * OutputTorque * (<span class="source_int">1</span>-TorqueSplit);
+<a name="822"></a>    frontRight.WheelJoint.KMotorTorque = <span class="source_int">0.5</span> * OutputTorque * (<span class="source_int">1</span>-TorqueSplit);
+<a name="823"></a>
+<a name="824"></a>	<span class="source_comment">// REAR
+</span><a name="825"></a>    rearLeft.WheelJoint.KMotorTorque = <span class="source_int">0.5</span> * OutputTorque * TorqueSplit;
+<a name="826"></a>    rearRight.WheelJoint.KMotorTorque = <span class="source_int">0.5</span> * OutputTorque * TorqueSplit;
+<a name="827"></a>
+<a name="828"></a>    <span class="source_comment">// Braking
+</span><a name="829"></a>
+<a name="830"></a>	if(OutputBrake)
+<a name="831"></a>	{
+<a name="832"></a>		frontLeft.WheelJoint.KBraking = MaxBrakeTorque;
+<a name="833"></a>		frontRight.WheelJoint.KBraking = MaxBrakeTorque;
+<a name="834"></a>		rearLeft.WheelJoint.KBraking = MaxBrakeTorque;
+<a name="835"></a>		rearRight.WheelJoint.KBraking = MaxBrakeTorque;
+<a name="836"></a>	}
+<a name="837"></a>	else
+<a name="838"></a>	{
+<a name="839"></a>		frontLeft.WheelJoint.KBraking = <span class="source_int">0.0</span>;
+<a name="840"></a>		frontRight.WheelJoint.KBraking = <span class="source_int">0.0</span>;
+<a name="841"></a>		rearLeft.WheelJoint.KBraking = <span class="source_int">0.0</span>;
+<a name="842"></a>		rearRight.WheelJoint.KBraking = <span class="source_int">0.0</span>;
+<a name="843"></a>	}
+<a name="844"></a>
+<a name="845"></a>	<span class="source_comment">// Steering
+</span><a name="846"></a>
+<a name="847"></a>	tana = Tan(<span class="source_int">6.283</span>/<span class="source_int">65536</span> * Steering * MaxSteerAngle);
+<a name="848"></a>
+<a name="849"></a>    sFactor = <span class="source_int">0.5</span> * tana * (<span class="source_int">2</span> * WheelFrontAcross) / Abs(WheelFrontAlong - WheelRearAlong);
+<a name="850"></a>    frontLeft.WheelJoint.KSteerAngle = <span class="source_int">65536</span>/<span class="source_int">6.283</span> * Atan(tana, (<span class="source_int">1</span>-sFactor));
+<a name="851"></a>    frontRight.WheelJoint.KSteerAngle = <span class="source_int">65536</span>/<span class="source_int">6.283</span> * Atan(tana, (<span class="source_int">1</span>+sFactor));
+<a name="852"></a>
+<a name="853"></a>	<span class="source_comment">// Handbrake
+</span><a name="854"></a>
+<a name="855"></a>	if(OutputHandbrakeOn == true)
+<a name="856"></a>	{
+<a name="857"></a>		<span class="source_comment">//Log("HANDBRAKE!!");
+</span><a name="858"></a>		rearLeft.LateralFriction = TireLateralFriction + TireHandbrakeFriction;
+<a name="859"></a>		rearLeft.LateralSlip = TireLateralSlip + TireHandbrakeSlip;
+<a name="860"></a>
+<a name="861"></a>		rearRight.LateralFriction = TireLateralFriction + TireHandbrakeFriction;
+<a name="862"></a>		rearRight.LateralSlip = TireLateralSlip + TireHandbrakeSlip;
+<a name="863"></a>	}
+<a name="864"></a>	else
+<a name="865"></a>	{
+<a name="866"></a>		rearLeft.LateralFriction = TireLateralFriction;
+<a name="867"></a>		rearLeft.LateralSlip = TireLateralSlip;
+<a name="868"></a>
+<a name="869"></a>		rearRight.LateralFriction = TireLateralFriction;
+<a name="870"></a>		rearRight.LateralSlip = TireLateralSlip;
+<a name="871"></a>	}
+<a name="872"></a>
+<a name="873"></a>	<span class="source_comment">// Flipping
+</span><a name="874"></a>	if(FlipTimeLeft &gt; <span class="source_int">0</span>)
+<a name="875"></a>	{
+<a name="876"></a>		FlipTimeLeft -= <span class="source_type">Delta</span>;
+<a name="877"></a>		FlipTimeLeft = FMax(FlipTimeLeft, <span class="source_int">0.0</span>); <span class="source_comment">// Make sure it doesn't go negative
+</span><a name="878"></a>	}
+<a name="879"></a>
+<a name="880"></a>}
+<a name="881"></a>
+<a name="882"></a>
+<a name="883"></a>defaultproperties
+<a name="884"></a>{
+<a name="885"></a>    OutputBrake=<span class="source_int">0</span>
+<a name="886"></a>    Gear=<span class="source_int">1</span>
+<a name="887"></a>	bAutoDrive=false
+<a name="888"></a>
+<a name="889"></a>	WheelFrontAlong=-<span class="source_int">180</span>
+<a name="890"></a>	WheelFrontAcross=<span class="source_int">140</span>
+<a name="891"></a>	WheelRearAlong=<span class="source_int">160</span>
+<a name="892"></a>	WheelRearAcross=<span class="source_int">140</span>
+<a name="893"></a>	WheelVert=-<span class="source_int">0.5</span>
+<a name="894"></a>
+<a name="895"></a>	StopThreshold=<span class="source_int">100</span>
+<a name="896"></a>
+<a name="897"></a>    TorqueSplit=<span class="source_int">0.5</span>
+<a name="898"></a>    SteerPropGap=<span class="source_int">1000</span>
+<a name="899"></a>    SteerTorque=<span class="source_int">1000</span>
+<a name="900"></a>    SteerSpeed=<span class="source_int">15000</span>
+<a name="901"></a>
+<a name="902"></a>    TireMass=<span class="source_int">0.5</span>
+<a name="903"></a>    ChassisMass=<span class="source_int">4</span>
+<a name="904"></a>
+<a name="905"></a>	FlipTorque=<span class="source_int">350</span>
+<a name="906"></a>	FlipTime=<span class="source_int">3</span>
+<a name="907"></a>
+<a name="908"></a>    MaxSteerAngle=<span class="source_int">3900</span>
+<a name="909"></a>    MaxBrakeTorque=<span class="source_int">50</span>
+<a name="910"></a>
+<a name="911"></a>	TorqueCurve=(Points=((InVal=<span class="source_int">0</span>,OutVal=<span class="source_int">150</span>),(InVal=<span class="source_int">245756</span>,OutVal=<span class="source_int">150</span>),(InVal=<span class="source_int">491512</span>,OutVal=<span class="source_int">0</span>)))
+<a name="912"></a>
+<a name="913"></a>    TireRollFriction=<span class="source_int">1.0</span>
+<a name="914"></a>    TireLateralFriction=<span class="source_int">1.0</span>
+<a name="915"></a>    TireRollSlip=<span class="source_int">0.085</span>
+<a name="916"></a>    TireLateralSlip=<span class="source_int">0.06</span>
+<a name="917"></a>    TireMinSlip=<span class="source_int">0.001</span>
+<a name="918"></a>    TireSlipRate=<span class="source_int">0.0005</span>
+<a name="919"></a>    TireSoftness=<span class="source_int">0.0002</span>
+<a name="920"></a>    TireAdhesion=<span class="source_int">0</span>
+<a name="921"></a>    TireRestitution=<span class="source_int">0</span>
+<a name="922"></a>
+<a name="923"></a>	HandbrakeThresh=<span class="source_int">1000</span>
+<a name="924"></a>	TireHandbrakeSlip=<span class="source_int">0.06</span>
+<a name="925"></a>	TireHandbrakeFriction=-<span class="source_int">0.5</span>
+<a name="926"></a>
+<a name="927"></a>    SuspStiffness=<span class="source_int">50</span>
+<a name="928"></a>    SuspDamping=<span class="source_int">5</span>
+<a name="929"></a>    SuspHighLimit=<span class="source_int">1</span>
+<a name="930"></a>    SuspLowLimit=-<span class="source_int">1</span>
+<a name="931"></a>    SuspRef=<span class="source_int">0</span>
+<a name="932"></a>
+<a name="933"></a>	MaxNetUpdateInterval=<span class="source_int">0.4</span>
+<a name="934"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../vehicles/vehicles-overview.html">Package</a></td>
+	<td class="header"><a href="../vehicles/kcar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#KCar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_vehicles/hoverbike.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_vehicles/lynx.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:32.000 - Creation time: st 23.5.2018 00:10:44.875 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

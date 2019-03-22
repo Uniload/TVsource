@@ -1,0 +1,434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.MusicInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/musicinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MusicInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/multiplayerstart.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mutator.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/musicinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.MusicInfo</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/musicmanagerbase.html">MusicManagerBase</a></dd>
+<dt>Modifiers</dt><dd>placeable native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/musicmanagerbase.html">MusicManagerBase</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/musicinfo.html">MusicInfo</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CurrentMusicLength" name="CurrentMusicLength" title="go to the details">CurrentMusicLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/musicinfo.html#EMusicType">EMusicType</a></td><td width="66%"><a href="#_CurrentMusicType" name="CurrentMusicType" title="go to the details">CurrentMusicType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CurrentSongFadeTime" name="CurrentSongFadeTime" title="go to the details">CurrentSongFadeTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CurrentSongHandle" name="CurrentSongHandle" title="go to the details">CurrentSongHandle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CurrentSongTimer" name="CurrentSongTimer" title="go to the details">CurrentSongTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_TriggeredIntroMusic" name="TriggeredIntroMusic" title="go to the details">TriggeredIntroMusic</a></td></tr>
+<tr><th colspan="2" class="small">MusicInfo</th></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CombatMusic" name="CombatMusic" title="go to the details">CombatMusic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/musicinfo.html#DynamicMusicOptions">DynamicMusicOptions</a></td><td width="66%"><a href="#_CombatMusicOptions" name="CombatMusicOptions" title="go to the details">CombatMusicOptions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ExplorationMusic" name="ExplorationMusic" title="go to the details">ExplorationMusic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_IntroMusic" name="IntroMusic" title="go to the details">IntroMusic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_IntroMusicFadeOutTime" name="IntroMusicFadeOutTime" title="go to the details">IntroMusicFadeOutTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TensionMusic" name="TensionMusic" title="go to the details">TensionMusic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/musicinfo.html#DynamicMusicOptions">DynamicMusicOptions</a></td><td width="66%"><a href="#_TensionMusicOptions" name="TensionMusicOptions" title="go to the details">TensionMusicOptions</a></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EMusicType" name="EMusicType" title="go to the details">EMusicType</a><br /><span class="small">MS_NoMusic,
+MS_ExplorationMusic,
+MS_IntroMusic,
+MS_CombatMusic,
+MS_TensionMusic,
+</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/musicmanagerbase.html">MusicManagerBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/musicmanagerbase.html#EDynamicMusicType">EDynamicMusicType</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_DynamicMusicOptions" name="DynamicMusicOptions" title="go to the details">DynamicMusicOptions</a><br /><span class="small">FadeInTime, FadeOutTime, MinLifetime</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/info.html#KeyValuePair">KeyValuePair</a>, <a href="../engine/info.html#PlayerResponseLine">PlayerResponseLine</a>, <a href="../engine/info.html#ServerResponseLine">ServerResponseLine</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetMusicDuration-" name="GetMusicDuration" title="go to the details">GetMusicDuration</a> (string MusicName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_PlayingMusic-" name="PlayingMusic" title="go to the details">PlayingMusic</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessDynamicMusic-" name="ProcessDynamicMusic" title="go to the details">ProcessDynamicMusic</a> (<a href="../gameplay/musicinfo.html#EMusicType">EMusicType</a> MusicType, string MusicName, float FadeInTime, float FadeOutTime, float MinLifeTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RestartSavegameMusic-" name="RestartSavegameMusic" title="go to the details">RestartSavegameMusic</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ShouldProcessFadeOut-" name="ShouldProcessFadeOut" title="go to the details">ShouldProcessFadeOut</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartMusic-" name="StartMusic" title="go to the details">StartMusic</a> (string MusicName, float FadeTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartMusicType-" name="StartMusicType" title="go to the details">StartMusicType</a> (<a href="../gameplay/musicinfo.html#EMusicType">EMusicType</a> Music, float FadeTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopCurrentMusic-" name="StopCurrentMusic" title="go to the details">StopCurrentMusic</a> (float FadeTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TriggerDynamicMusic-" name="TriggerDynamicMusic" title="go to the details">TriggerDynamicMusic</a> (<a href="../engine/musicmanagerbase.html#EDynamicMusicType">EDynamicMusicType</a> Type))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TriggerIntroMusic-" name="TriggerIntroMusic" title="go to the details">TriggerIntroMusic</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TriggerScriptMusic-" name="TriggerScriptMusic" title="go to the details">TriggerScriptMusic</a> (string MusicName, float FadeTime))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/musicmanagerbase.html">MusicManagerBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/musicmanagerbase.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/musicmanagerbase.html#TriggerDynamicMusic">TriggerDynamicMusic</a>, <a href="../engine/musicmanagerbase.html#TriggerIntroMusic">TriggerIntroMusic</a>, <a href="../engine/musicmanagerbase.html#TriggerScriptMusic">TriggerScriptMusic</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/info.html#AcceptPlayInfoProperty">AcceptPlayInfoProperty</a>, <a href="../engine/info.html#FillPlayInfo">FillPlayInfo</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CurrentMusicLength" class="hidden"></a>CurrentMusicLength <a href="../Source_gameplay/musicinfo.html#38" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">float</span> CurrentMusicLength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentMusicType" class="hidden"></a>CurrentMusicType <a href="../Source_gameplay/musicinfo.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/musicinfo.html#EMusicType" class="source">EMusicType</a></span> CurrentMusicType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentSongFadeTime" class="hidden"></a>CurrentSongFadeTime <a href="../Source_gameplay/musicinfo.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> CurrentSongFadeTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentSongHandle" class="hidden"></a>CurrentSongHandle <a href="../Source_gameplay/musicinfo.html#39" class="small">Source code</a></h4>
+<div class="declaration">var transient <span class="source_type">int</span> CurrentSongHandle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentSongTimer" class="hidden"></a>CurrentSongTimer <a href="../Source_gameplay/musicinfo.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> CurrentSongTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TriggeredIntroMusic" class="hidden"></a>TriggeredIntroMusic <a href="../Source_gameplay/musicinfo.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> TriggeredIntroMusic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">MusicInfo</h3>
+<h4><a name="_CombatMusic" class="hidden"></a>CombatMusic <a href="../Source_gameplay/musicinfo.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">string</span> CombatMusic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CombatMusicOptions" class="hidden"></a>CombatMusicOptions <a href="../Source_gameplay/musicinfo.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type"><a href="../gameplay/musicinfo.html#DynamicMusicOptions" class="source">DynamicMusicOptions</a></span> CombatMusicOptions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExplorationMusic" class="hidden"></a>ExplorationMusic <a href="../Source_gameplay/musicinfo.html#6" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">string</span> ExplorationMusic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IntroMusic" class="hidden"></a>IntroMusic <a href="../Source_gameplay/musicinfo.html#5" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">string</span> IntroMusic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IntroMusicFadeOutTime" class="hidden"></a>IntroMusicFadeOutTime <a href="../Source_gameplay/musicinfo.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">float</span> IntroMusicFadeOutTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TensionMusic" class="hidden"></a>TensionMusic <a href="../Source_gameplay/musicinfo.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">string</span> TensionMusic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TensionMusicOptions" class="hidden"></a>TensionMusicOptions <a href="../Source_gameplay/musicinfo.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type"><a href="../gameplay/musicinfo.html#DynamicMusicOptions" class="source">DynamicMusicOptions</a></span> TensionMusicOptions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EMusicType" class="hidden"></a>EMusicType <a href="../Source_gameplay/musicinfo.html#10" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gameplay/musicinfo.html#EMusicType" class="source">EMusicType</a></span><br />
+{<blockquote>MS_NoMusic,
+MS_ExplorationMusic,
+MS_IntroMusic,
+MS_CombatMusic,
+MS_TensionMusic,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DynamicMusicOptions" class="hidden"></a>DynamicMusicOptions <a href="../Source_gameplay/musicinfo.html#19" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/musicinfo.html#DynamicMusicOptions" class="source">DynamicMusicOptions</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">float</span> FadeInTime;<br />
+var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">float</span> FadeOutTime;<br />
+var(<span class="source_type"><a href="../gameplay/musicinfo.html" class="source">MusicInfo</a></span>) <span class="source_type">float</span> MinLifetime;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_GetMusicDuration-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMusicDuration <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#170" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">float</span> GetMusicDuration ( <span class="source_type">string</span> MusicName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayingMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayingMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#120" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> PlayingMusic ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessDynamicMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessDynamicMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#102" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  ProcessDynamicMusic ( <span class="source_type"><a href="../gameplay/musicinfo.html#EMusicType" class="source">EMusicType</a></span> MusicType, <span class="source_type">string</span> MusicName, <span class="source_type">float</span> FadeInTime, <span class="source_type">float</span> FadeOutTime, <span class="source_type">float</span> MinLifeTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RestartSavegameMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RestartSavegameMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#125" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  RestartSavegameMusic ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldProcessFadeOut-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShouldProcessFadeOut <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#115" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> ShouldProcessFadeOut ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#150" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  StartMusic ( <span class="source_type">string</span> MusicName, <span class="source_type">float</span> FadeTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartMusicType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartMusicType <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#134" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  StartMusicType ( <span class="source_type"><a href="../gameplay/musicinfo.html#EMusicType" class="source">EMusicType</a></span> Music, <span class="source_type">float</span> FadeTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopCurrentMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopCurrentMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#172" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  StopCurrentMusic ( <span class="source_type">float</span> FadeTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#41" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TriggerDynamicMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TriggerDynamicMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#78" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  TriggerDynamicMusic ( <span class="source_type"><a href="../engine/musicmanagerbase.html#EDynamicMusicType" class="source">EDynamicMusicType</a></span> <span class="source_type">Type</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TriggerIntroMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TriggerIntroMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#68" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  TriggerIntroMusic ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TriggerScriptMusic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TriggerScriptMusic <span class="function_state"></span> <a href="../Source_gameplay/musicinfo.html#96" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  TriggerScriptMusic ( <span class="source_type">string</span> MusicName, <span class="source_type">float</span> FadeTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	CurrentMusicType	= MS_NoMusic
+	CurrentSongHandle	= <span class="source_int">0</span>
+	CurrentSongTimer	= <span class="source_int">0</span>
+	TriggeredIntroMusic = <span class="source_int">0</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/musicinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MusicInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/multiplayerstart.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mutator.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:33.136 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

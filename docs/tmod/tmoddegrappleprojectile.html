@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - tmod.tmodDegrappleProjectile</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tmod/tmod-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tmod/tmoddegrappleprojectile.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#tmodDegrappleProjectile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tmod/tmoddefaultbuggy.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tmod/tmoddeployedcatapult.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tmod/tmoddegrappleprojectile.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tmod/tmod-overview.html">tmod</a>.tmodDegrappleProjectile</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/grapplerprojectile.html">GrapplerProjectile</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/projectile.html">Projectile</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/grapplerprojectile.html">GrapplerProjectile</a>
+         |   
+         +-- <a href="../tmod/tmod-overview.html">tmod</a>.<a href="../tmod/tmoddegrappleprojectile.html">tmodDegrappleProjectile</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_burningDamagerPerSecond" name="burningDamagerPerSecond" title="go to the details">burningDamagerPerSecond</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Health" name="Health" title="go to the details">Health</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/projectile.html">Projectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/projectile.html#AccelerationMagtitude">AccelerationMagtitude</a>, <a href="../gameplay/projectile.html#bDeflectable">bDeflectable</a>, <a href="../gameplay/projectile.html#bounceCount">bounceCount</a>, <a href="../gameplay/projectile.html#bReceivedInitialVelocity">bReceivedInitialVelocity</a>, <a href="../gameplay/projectile.html#bReplicateInitialVelocity">bReplicateInitialVelocity</a>, <a href="../gameplay/projectile.html#bScaleProjectile">bScaleProjectile</a>, <a href="../gameplay/projectile.html#damageAmt">damageAmt</a>, <a href="../gameplay/projectile.html#damageTypeClass">damageTypeClass</a>, <a href="../gameplay/projectile.html#deathMessage">deathMessage</a>, <a href="../gameplay/projectile.html#InitialVelocity">InitialVelocity</a>, <a href="../gameplay/projectile.html#initialXDrawScale">initialXDrawScale</a>, <a href="../gameplay/projectile.html#knockback">knockback</a>, <a href="../gameplay/projectile.html#knockbackAliveScale">knockbackAliveScale</a>, <a href="../gameplay/projectile.html#MaxVelocity">MaxVelocity</a>, <a href="../gameplay/projectile.html#rookAttacker">rookAttacker</a>, <a href="../gameplay/projectile.html#SpawnTick">SpawnTick</a>, <a href="../gameplay/projectile.html#victim">victim</a>, <a href="../gameplay/projectile.html#xDrawScalePerSecond">xDrawScalePerSecond</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostTakeDamage-" name="PostTakeDamage" title="go to the details">PostTakeDamage</a> (float Damage, <a href="../engine/pawn.html">Pawn</a> EventInstigator, <a href="../core/object.html#Vector">vector</a> HitLocation, <a href="../core/object.html#Vector">vector</a> Momentum, class&lt;<a href="../engine/damagetype.html">DamageType</a>&gt; DamageType, optional float projectileFactor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProjectileTouch-" name="ProjectileTouch" title="go to the details">ProjectileTouch</a> (<a href="../engine/actor.html">Actor</a> Other, <a href="../core/object.html#Vector">vector</a> TouchLocation, <a href="../core/object.html#Vector">vector</a> TouchNormal)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_simulatedAttach-" name="simulatedAttach" title="go to the details">simulatedAttach</a> (<a href="../engine/actor.html">Actor</a> Other, <a href="../core/object.html#Vector">vector</a> TouchLocation))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/grapplerprojectile.html">GrapplerProjectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/grapplerprojectile.html#HitWall">HitWall</a>, <a href="../gameplay/grapplerprojectile.html#ProjectileHit">ProjectileHit</a>, <a href="../gameplay/grapplerprojectile.html#serverAttach">serverAttach</a>, <a href="../gameplay/grapplerprojectile.html#ShouldHit">ShouldHit</a>, <a href="../gameplay/grapplerprojectile.html#simulatedAttach">simulatedAttach</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/projectile.html">Projectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/projectile.html#bounce">bounce</a>, <a href="../gameplay/projectile.html#ClientDetectDeflection">ClientDetectDeflection</a>, <a href="../gameplay/projectile.html#construct">construct</a>, <a href="../gameplay/projectile.html#endLife">endLife</a>, <a href="../gameplay/projectile.html#HitWall">HitWall</a>, <a href="../gameplay/projectile.html#makeHarmless">makeHarmless</a>, <a href="../gameplay/projectile.html#PostBounce">PostBounce</a>, <a href="../gameplay/projectile.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/projectile.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/projectile.html#PrecacheProjectileRenderData">PrecacheProjectileRenderData</a>, <a href="../gameplay/projectile.html#ProjectileHit">ProjectileHit</a>, <a href="../gameplay/projectile.html#ProjectileTouch">ProjectileTouch</a>, <a href="../gameplay/projectile.html#projectileTouchProcessing">projectileTouchProcessing</a>, <a href="../gameplay/projectile.html#resolveImpactEffect">resolveImpactEffect</a>, <a href="../gameplay/projectile.html#ShouldDeflect">ShouldDeflect</a>, <a href="../gameplay/projectile.html#ShouldHit">ShouldHit</a>, <a href="../gameplay/projectile.html#Tick">Tick</a>, <a href="../gameplay/projectile.html#triggerHitEffect">triggerHitEffect</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_burningDamagerPerSecond" class="hidden"></a>burningDamagerPerSecond <a href="../Source_tmod/tmoddegrappleprojectile.html#2" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> burningDamagerPerSecond;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Health" class="hidden"></a>Health <a href="../Source_tmod/tmoddegrappleprojectile.html#2" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> Health;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_tmod/tmoddegrappleprojectile.html#3" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostTakeDamage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostTakeDamage <span class="function_state"></span> <a href="../Source_tmod/tmoddegrappleprojectile.html#4" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostTakeDamage ( <span class="source_type">float</span> Damage, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">EventInstigator</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitLocation</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Momentum, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>, optional <span class="source_type">float</span> projectileFactor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProjectileTouch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProjectileTouch <span class="function_state"></span> <a href="../Source_tmod/tmoddegrappleprojectile.html#9" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ProjectileTouch ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchLocation, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchNormal )</div>
+<blockquote class="comment">
+
+ Unregistered hit fix. From NRBgone.
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_simulatedAttach-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> simulatedAttach <span class="function_state"></span> <a href="../Source_tmod/tmoddegrappleprojectile.html#12" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  simulatedAttach ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchLocation) )</div>
+<blockquote class="comment">
+
+ Server crash fix. From franga_v1.
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     Health=<span class="source_int">30.000000</span>
+     burningDamagerPerSecond=<span class="source_int">55.000000</span>
+     bCanBeDamaged=True
+     bProjTarget=True
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tmod/tmod-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tmod/tmoddegrappleprojectile.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#tmodDegrappleProjectile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tmod/tmoddefaultbuggy.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tmod/tmoddeployedcatapult.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:35.515 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

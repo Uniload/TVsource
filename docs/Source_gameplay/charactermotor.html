@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.CharacterMotor</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/charactermotor.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#CharacterMotor">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/characterequippableanimator.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/characterstate.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/charactermotor.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/charactermotor.html">CharacterMotor</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/charactermotor.html" class="source">CharacterMotor</a></span> extends <span class="source_type"><a href="../gameplay/motor.html" class="source">Motor</a></span> implements <span class="source_type"><a href="../gameplay/ifiringmotor.html" class="source">IFiringMotor</a></span>
+<a name="2"></a>	native;
+<a name="3"></a>
+<a name="4"></a>import enum <span class="source_type"><a href="../gameplay/character.html#GroundMovementLevels" class="source">GroundMovementLevels</a></span> from <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>;
+<a name="5"></a>
+<a name="6"></a>var <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>			<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>;
+<a name="7"></a>var <span class="source_type">Name</span>				switchingToState;
+<a name="8"></a>var <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>				switchToWeapon;
+<a name="9"></a>var <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>				lastUsedWeapon;
+<a name="10"></a>var <span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span>			switchToDeployable;
+<a name="11"></a>var <span class="source_type">float</span>				unequipDuration;
+<a name="12"></a>var <span class="source_type">bool</span>				bFirePressed;
+<a name="13"></a>
+<a name="14"></a><span class="source_comment">// construct
+</span><a name="15"></a>overloaded simulated <span class="source_type">function</span> construct( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Owner</span>, optional optional <span class="source_type">name</span> Tag, 
+<a name="16"></a>										  optional <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Location, optional <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> Rotation)
+<a name="17"></a>{
+<a name="18"></a>	Super.construct(<span class="source_type">Owner</span>, Tag, Location, Rotation);
+<a name="19"></a>
+<a name="20"></a>	<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span> = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">Owner</span>);
+<a name="21"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span> == None)
+<a name="22"></a>	{
+<a name="23"></a>		LOG(<span class="source_string">"ERROR: CharacterMotor's owner is not a pawn"</span>);
+<a name="24"></a>	}
+<a name="25"></a>}
+<a name="26"></a>
+<a name="27"></a><span class="source_comment">// moveCharacter
+</span><a name="28"></a>native <span class="source_type">function</span> moveCharacter(optional <span class="source_type">float</span> forward, optional <span class="source_type">float</span> strafe, optional <span class="source_type">float</span> jump,
+<a name="29"></a>							  optional <span class="source_type">float</span> ski, optional <span class="source_type">float</span> thrust, optional <span class="source_type"><a href="../gameplay/character.html#GroundMovementLevels" class="source">GroundMovementLevels</a></span> groundMovementLevel);
+<a name="30"></a>
+<a name="31"></a><span class="source_comment">// setMoveRotation
+</span><a name="32"></a>native <span class="source_type">function</span> setMoveRotation(<span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type">r</span>);
+<a name="33"></a>
+<a name="34"></a><span class="source_comment">// setAIMoveRotation
+</span><a name="35"></a><span class="source_comment">// Temporary function for AI's which sets desiredRotation, not rotation directly
+</span><a name="36"></a><span class="source_comment">// As soon as Fusion handles ticked rotations this function becomes redundant
+</span><a name="37"></a>native <span class="source_type">function</span> setAIMoveRotation(<span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type">r</span>);
+<a name="38"></a>
+<a name="39"></a><span class="source_comment">// setViewRotation
+</span><a name="40"></a>native <span class="source_type">function</span> setViewRotation(<span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type">r</span>);
+<a name="41"></a>
+<a name="42"></a><span class="source_comment">// getMoveRotation
+</span><a name="43"></a>native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> getMoveRotation();
+<a name="44"></a>
+<a name="45"></a><span class="source_comment">// getMoveYawDelta
+</span><a name="46"></a>native <span class="source_type">function</span> <span class="source_type">int</span> getMoveYawDelta();
+<a name="47"></a>
+<a name="48"></a><span class="source_comment">// getViewRotation
+</span><a name="49"></a>native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> getViewRotation();
+<a name="50"></a>
+<a name="51"></a><span class="source_type">function</span> <span class="source_type">bool</span> aimAdjustViewRotation()
+<a name="52"></a>{
+<a name="53"></a>	return true;
+<a name="54"></a>}
+<a name="55"></a>
+<a name="56"></a><span class="source_comment">// fire
+</span><a name="57"></a>native <span class="source_type">function</span> fire(optional <span class="source_type">bool</span> fireOnce);
+<a name="58"></a>
+<a name="59"></a><span class="source_comment">// altFire
+</span><a name="60"></a>native <span class="source_type">function</span> altFire(optional <span class="source_type">bool</span> fireOnce);
+<a name="61"></a>
+<a name="62"></a><span class="source_comment">// releaseAltFire
+</span><a name="63"></a>native <span class="source_type">function</span> releaseAltFire();
+<a name="64"></a>
+<a name="65"></a><span class="source_comment">// releaseFire
+</span><a name="66"></a>native <span class="source_type">function</span> releaseFire();
+<a name="67"></a>
+<a name="68"></a><span class="source_type">function</span> <span class="source_type">bool</span> shouldFire(<span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> e)
+<a name="69"></a>{
+<a name="70"></a>	return bFirePressed && <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> == e;
+<a name="71"></a>}
+<a name="72"></a>
+<a name="73"></a><span class="source_type">function</span> setFirePressed(<span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> e, <span class="source_type">bool</span> pressed)
+<a name="74"></a>{
+<a name="75"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> == e)
+<a name="76"></a>		bFirePressed = pressed;
+<a name="77"></a>}
+<a name="78"></a>
+<a name="79"></a><span class="source_type">function</span> <span class="source_type">bool</span> canUnequip()
+<a name="80"></a>{
+<a name="81"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> != None)
+<a name="82"></a>		return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>.canUnequip();
+<a name="83"></a>	
+<a name="84"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span> != None)
+<a name="85"></a>		return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>.canUnequip();
+<a name="86"></a>
+<a name="87"></a>	return true;
+<a name="88"></a>}
+<a name="89"></a>
+<a name="90"></a><span class="source_comment">// setWeapon
+</span><a name="91"></a>event <span class="source_type">bool</span> setWeapon(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span> w)
+<a name="92"></a>{
+<a name="93"></a>	if (canUnequip() && (w == None || (w != <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> && w != switchToWeapon)))
+<a name="94"></a>	{
+<a name="95"></a>		lastUsedWeapon = w;
+<a name="96"></a>		switchToWeapon = w;
+<a name="97"></a>		switchingToState = <span class="source_name">'SwitchingToWeapon'</span>;
+<a name="98"></a>		GotoState(<span class="source_name">'SwitchingEquippables'</span>);
+<a name="99"></a>		return true;
+<a name="100"></a>	}
+<a name="101"></a>
+<a name="102"></a>	return false;
+<a name="103"></a>}
+<a name="104"></a>
+<a name="105"></a><span class="source_comment">// setDeployable
+</span><a name="106"></a>event <span class="source_type">bool</span> setDeployable(<span class="source_type"><a href="../gameplay/deployable.html" class="source">Deployable</a></span> <span class="source_type">d</span>)
+<a name="107"></a>{
+<a name="108"></a>	if (canUnequip())
+<a name="109"></a>	{
+<a name="110"></a>		lastUsedWeapon = <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>;
+<a name="111"></a>		switchToDeployable = <span class="source_type">d</span>;
+<a name="112"></a>		switchingToState = <span class="source_name">'SwitchingToDeployable'</span>;
+<a name="113"></a>		GotoState(<span class="source_name">'SwitchingEquippables'</span>);
+<a name="114"></a>		return true;
+<a name="115"></a>	}
+<a name="116"></a>
+<a name="117"></a>	return false;
+<a name="118"></a>}
+<a name="119"></a>
+<a name="120"></a>state SwitchingEquippables
+<a name="121"></a>{
+<a name="122"></a>begin:
+<a name="123"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span> != None)
+<a name="124"></a>	{
+<a name="125"></a>		unequipDuration = <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>.unequipDuration;
+<a name="126"></a>		<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>.unEquip();
+<a name="127"></a>		<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span> = None;
+<a name="128"></a>	}
+<a name="129"></a>
+<a name="130"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> != None)
+<a name="131"></a>	{
+<a name="132"></a>		unequipDuration = <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>.unequipDuration;
+<a name="133"></a>		<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>.unEquip();
+<a name="134"></a>		<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> = None;
+<a name="135"></a>	}
+<a name="136"></a>
+<a name="137"></a>	Sleep(unequipDuration);
+<a name="138"></a>
+<a name="139"></a>	GotoState(switchingToState);
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a>state SwitchingToWeapon
+<a name="143"></a>{
+<a name="144"></a>	<span class="source_type">function</span> BeginState()
+<a name="145"></a>	{
+<a name="146"></a>		if (switchToWeapon != None)
+<a name="147"></a>		{
+<a name="148"></a>			switchToWeapon.equip();
+<a name="149"></a>			<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> = switchToWeapon;
+<a name="150"></a>		}
+<a name="151"></a>	}
+<a name="152"></a>
+<a name="153"></a>begin:
+<a name="154"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> != None)
+<a name="155"></a>		Sleep(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>.equipDuration);
+<a name="156"></a>
+<a name="157"></a>	switchToWeapon = None;
+<a name="158"></a>}
+<a name="159"></a>
+<a name="160"></a>state SwitchingToDeployable
+<a name="161"></a>{
+<a name="162"></a>	<span class="source_type">function</span> BeginState()
+<a name="163"></a>	{
+<a name="164"></a>		if (switchToDeployable != None)
+<a name="165"></a>		{
+<a name="166"></a>			switchToDeployable.equip();
+<a name="167"></a>			<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span> = switchToDeployable;
+<a name="168"></a>		}
+<a name="169"></a>	}
+<a name="170"></a>
+<a name="171"></a>begin:
+<a name="172"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> != None)
+<a name="173"></a>		Sleep(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/deployable.html" class="source">deployable</a></span>.equipDuration);
+<a name="174"></a>
+<a name="175"></a>	switchToDeployable = None;
+<a name="176"></a>}
+<a name="177"></a>
+<a name="178"></a><span class="source_comment">// setZoomed
+</span><a name="179"></a>event setZoomed(<span class="source_type">bool</span> bZoomed)
+<a name="180"></a>{
+<a name="181"></a>	<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.setZoomed(bZoomed);
+<a name="182"></a>}
+<a name="183"></a>
+<a name="184"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> getProjectileSpawnLocation()
+<a name="185"></a>{
+<a name="186"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span> == None)
+<a name="187"></a>	{
+<a name="188"></a>		warn(<span class="source_string">"attempted to get projectile spawn location from character with no weapon"</span>);
+<a name="189"></a>		return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.location;
+<a name="190"></a>	}
+<a name="191"></a>
+<a name="192"></a>	return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>.calcProjectileSpawnLocation(getViewRotation());
+<a name="193"></a>}
+<a name="194"></a>
+<a name="195"></a><span class="source_type">function</span> useEnergy(<span class="source_type">float</span> <span class="source_type">amount</span>)
+<a name="196"></a>{
+<a name="197"></a>	<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.useEnergy(<span class="source_type">amount</span>);
+<a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a><span class="source_type">function</span> <span class="source_type">float</span> getEnergy()
+<a name="201"></a>{
+<a name="202"></a>	return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.energy;
+<a name="203"></a>}
+<a name="204"></a>
+<a name="205"></a><span class="source_type">function</span> onShotFiredNotification()
+<a name="206"></a>{
+<a name="207"></a>	<span class="source_comment">// ignore
+</span><a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> getFirstPersonEquippableLocation(<span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> subject)
+<a name="211"></a>{
+<a name="212"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> v;
+<a name="213"></a>	local <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type">r</span>;
+<a name="214"></a>	local <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">a</span>;
+<a name="215"></a>	
+<a name="216"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> characterPlayerController;
+<a name="217"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> localPlayerController;
+<a name="218"></a>	local <span class="source_type"><a href="../gameplay/democontroller.html" class="source">DemoController</a></span> <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span>;
+<a name="219"></a>
+<a name="220"></a>	local <span class="source_type">bool</span> bStoredBehindView;
+<a name="221"></a>
+<a name="222"></a>	if (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span> == None)
+<a name="223"></a>		return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.Location;
+<a name="224"></a>
+<a name="225"></a>	characterPlayerController = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="226"></a>	localPlayerController = <span class="source_type">Level</span>.GetLocalPlayerController();
+<a name="227"></a>    <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span> = <span class="source_type"><a href="../gameplay/democontroller.html" class="source">DemoController</a></span>(localPlayerController);	
+<a name="228"></a>	
+<a name="229"></a>	if ((characterPlayerController!=None && characterPlayerController==localPlayerController && <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span>==None) ||
+<a name="230"></a>        (<span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span>!=None && <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span>.<span class="source_type">ViewTarget</span>==<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>))
+<a name="231"></a>    {
+<a name="232"></a>	    <span class="source_comment">// players
+</span><a name="233"></a>
+<a name="234"></a>		<span class="source_comment">// Always calculate weapon location from first person
+</span><a name="235"></a>		bStoredBehindView = localPlayerController.bBehindView;
+<a name="236"></a>		localPlayerController.bBehindView = false;
+<a name="237"></a>
+<a name="238"></a>		localPlayerController.PlayerCalcView(<span class="source_type">a</span>, v, <span class="source_type">r</span>);
+<a name="239"></a>
+<a name="240"></a>		localPlayerController.bBehindView = bStoredBehindView;
+<a name="241"></a>
+<a name="242"></a>		v += subject.getFirstPersonOffset() &gt;&gt; <span class="source_type">r</span>;
+<a name="243"></a>		v -= (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.WalkBob * subject.firstPersonBobMultiplier);
+<a name="244"></a>	}
+<a name="245"></a>	else
+<a name="246"></a>	{
+<a name="247"></a>	    <span class="source_comment">// ais
+</span><a name="248"></a>	
+<a name="249"></a>		v = <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.Location + (subject.getFirstPersonOffset() &gt;&gt; <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.GetViewRotation()) + (<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.WalkBob * (<span class="source_int">1.0</span> - subject.firstPersonBobMultiplier));
+<a name="250"></a>		v.Z += <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.EyeHeight;
+<a name="251"></a>	}
+<a name="252"></a>
+<a name="253"></a>	return v;
+<a name="254"></a>}
+<a name="255"></a>
+<a name="256"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> getFirstPersonEquippableRotation(<span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> subject)
+<a name="257"></a>{
+<a name="258"></a>    local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> characterPlayerController;
+<a name="259"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> localPlayerController;
+<a name="260"></a>	local <span class="source_type"><a href="../gameplay/democontroller.html" class="source">DemoController</a></span> <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span>;
+<a name="261"></a>
+<a name="262"></a>	characterPlayerController = <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="263"></a>	localPlayerController = <span class="source_type">Level</span>.GetLocalPlayerController();
+<a name="264"></a>    <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span> = <span class="source_type"><a href="../gameplay/democontroller.html" class="source">DemoController</a></span>(localPlayerController);	
+<a name="265"></a>
+<a name="266"></a>	if (characterPlayerController == None && <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span> == None)
+<a name="267"></a>	{
+<a name="268"></a>		return Rot(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="269"></a>	}
+<a name="270"></a>
+<a name="271"></a>	if (<span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span>!=None && <span class="source_type"><a href="../gameplay/democontroller.html" class="source">demoController</a></span>.<span class="source_type">ViewTarget</span>==<span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>)
+<a name="272"></a>    	return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.Rotation;
+<a name="273"></a>    else
+<a name="274"></a>    	return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GetViewRotation();
+<a name="275"></a>}
+<a name="276"></a>
+<a name="277"></a>simulated <span class="source_type">function</span> getThirdPersonEquippableAttachment(<span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> subject, out <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> attachTo, out <span class="source_type">name</span> boneName)
+<a name="278"></a>{
+<a name="279"></a>	attachTo = <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>;
+<a name="280"></a>	boneName = subject.thirdPersonAttachmentBone;
+<a name="281"></a>}
+<a name="282"></a>
+<a name="283"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> getPhysicalAttachment()
+<a name="284"></a>{
+<a name="285"></a>	return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>;
+<a name="286"></a>}
+<a name="287"></a>
+<a name="288"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span> getWeapon()
+<a name="289"></a>{
+<a name="290"></a>	return <span class="source_type"><a href="../gameplay/character.html" class="source">character</a></span>.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>;
+<a name="291"></a>}
+<a name="292"></a>
+<a name="293"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> getEffectsBaseActor()
+<a name="294"></a>{
+<a name="295"></a>	return None;
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> customFiredEffectProcessing()
+<a name="299"></a>{
+<a name="300"></a>	return false;
+<a name="301"></a>}
+<a name="302"></a>
+<a name="303"></a>simulated <span class="source_type">function</span> doCustomFiredEffectProcessing()
+<a name="304"></a>{
+<a name="305"></a>	assert(false);
+<a name="306"></a>}
+<a name="307"></a>
+<a name="308"></a>simulated <span class="source_type">function</span> getAlternateAimAdjustStart(<span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">cameraRotation</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> newAimAdjustStart);</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/charactermotor.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#CharacterMotor">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/characterequippableanimator.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/characterstate.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:16.000 - Creation time: st 23.5.2018 00:10:42.746 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

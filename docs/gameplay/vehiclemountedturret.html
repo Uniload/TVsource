@@ -1,0 +1,760 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.VehicleMountedTurret</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/vehiclemountedturret.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#VehicleMountedTurret">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/vehiclemotor.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/vehiclespawnarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/vehiclemountedturret.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.VehicleMountedTurret</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/rook.html">Rook</a></dd>
+<dt>Modifiers</dt><dd>implements IFiringMotor dependsOn ( PlayerCharacterController ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/vehiclemountedturret.html">VehicleMountedTurret</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/assaultshipmountedturret.html">AssaultShipMountedTurret</a>, <a href="../gameplay/buggymountedturret.html">BuggyMountedTurret</a>, <a href="../gameplay/tankmountedturret.html">TankMountedTurret</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#DAMAGE_OVERKILL">DAMAGE_OVERKILL</a>, <a href="../gameplay/rook.html#MAX_USEABLE_POINTS">MAX_USEABLE_POINTS</a>, <a href="../gameplay/rook.html#N_PAST_POSITIONS">N_PAST_POSITIONS</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_cachedCameraLocation" name="cachedCameraLocation" title="go to the details">cachedCameraLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/vehicle.html#VehiclePositionType">Vehicle.VehiclePositionType</a></td><td width="66%"><a href="#_localPositionType" name="localPositionType" title="go to the details">localPositionType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_maximumAITurnRate" name="maximumAITurnRate" title="go to the details">maximumAITurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_maximumClientDisplayTurnRate" name="maximumClientDisplayTurnRate" title="go to the details">maximumClientDisplayTurnRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_maximumPitch" name="maximumPitch" title="go to the details">maximumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_minimumPitch" name="minimumPitch" title="go to the details">minimumPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/vehicle.html">vehicle</a></td><td width="66%"><a href="#_ownerVehicle" name="ownerVehicle" title="go to the details">ownerVehicle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_pitchPivotBone" name="pitchPivotBone" title="go to the details">pitchPivotBone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_pivotBone" name="pivotBone" title="go to the details">pivotBone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_positionIndex" name="positionIndex" title="go to the details">positionIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/vehicle.html#VehiclePositionType">Vehicle.VehiclePositionType</a></td><td width="66%"><a href="#_positionType" name="positionType" title="go to the details">positionType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_thirdPersonRotationType" name="thirdPersonRotationType" title="go to the details">thirdPersonRotationType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_turretBone" name="turretBone" title="go to the details">turretBone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_turretOffsetRotation" name="turretOffsetRotation" title="go to the details">turretOffsetRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_vehicleSpaceClientDisplayRotation" name="vehicleSpaceClientDisplayRotation" title="go to the details">vehicleSpaceClientDisplayRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_vehicleSpaceRotation" name="vehicleSpaceRotation" title="go to the details">vehicleSpaceRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_vehicleSpaceRotationAI" name="vehicleSpaceRotationAI" title="go to the details">vehicleSpaceRotationAI</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/weapon.html">Weapon</a></td><td width="66%"><a href="#_weapon" name="weapon" title="go to the details">weapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_worldSpaceNoRollRotation" name="worldSpaceNoRollRotation" title="go to the details">worldSpaceNoRollRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_yawConstrained" name="yawConstrained" title="go to the details">yawConstrained</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_yawPositiveDirection" name="yawPositiveDirection" title="go to the details">yawPositiveDirection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_yawRange" name="yawRange" title="go to the details">yawRange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_yawStart" name="yawStart" title="go to the details">yawStart</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#AI_LOD_ActivationDistance">AI_LOD_ActivationDistance</a>, <a href="../gameplay/rook.html#AI_LOD_DeactivationDistance">AI_LOD_DeactivationDistance</a>, <a href="../gameplay/rook.html#AI_LOD_deactivation_exemption_ticks">AI_LOD_deactivation_exemption_ticks</a>, <a href="../gameplay/rook.html#AI_LOD_LevelMP">AI_LOD_LevelMP</a>, <a href="../gameplay/rook.html#alertness">alertness</a>, <a href="../gameplay/rook.html#attacker">attacker</a>, <a href="../gameplay/rook.html#bAIThreat">bAIThreat</a>, <a href="../gameplay/rook.html#bAlwaysMarked">bAlwaysMarked</a>, <a href="../gameplay/rook.html#bCanBeSensed">bCanBeSensed</a>, <a href="../gameplay/rook.html#bCanRepair">bCanRepair</a>, <a href="../gameplay/rook.html#bDeferredAICleanup">bDeferredAICleanup</a>, <a href="../gameplay/rook.html#bIsDetectableByEnemies">bIsDetectableByEnemies</a>, <a href="../gameplay/rook.html#bShowJSDebug">bShowJSDebug</a>, <a href="../gameplay/rook.html#bShowLOADebug">bShowLOADebug</a>, <a href="../gameplay/rook.html#bShowNavigationDebug">bShowNavigationDebug</a>, <a href="../gameplay/rook.html#bShowSensingDebug">bShowSensingDebug</a>, <a href="../gameplay/rook.html#bShowSquadDebug">bShowSquadDebug</a>, <a href="../gameplay/rook.html#bShowTyrionCharacterDebug">bShowTyrionCharacterDebug</a>, <a href="../gameplay/rook.html#bShowTyrionHeadDebug">bShowTyrionHeadDebug</a>, <a href="../gameplay/rook.html#bShowTyrionMovementDebug">bShowTyrionMovementDebug</a>, <a href="../gameplay/rook.html#bShowTyrionWeaponDebug">bShowTyrionWeaponDebug</a>, <a href="../gameplay/rook.html#bUnobstructedLOF">bUnobstructedLOF</a>, <a href="../gameplay/rook.html#bUseAlternateOwnershipMaterial">bUseAlternateOwnershipMaterial</a>, <a href="../gameplay/rook.html#bUseAlternateSelfIllumMaterial">bUseAlternateSelfIllumMaterial</a>, <a href="../gameplay/rook.html#clientDamageComponentMask">clientDamageComponentMask</a>, <a href="../gameplay/rook.html#componentBreakThreshold">componentBreakThreshold</a>, <a href="../gameplay/rook.html#damageComponentMask">damageComponentMask</a>, <a href="../gameplay/rook.html#damageComponents">damageComponents</a>, <a href="../gameplay/rook.html#desiredLocation">desiredLocation</a>, <a href="../gameplay/rook.html#effectLogging">effectLogging</a>, <a href="../gameplay/rook.html#estLocation">estLocation</a>, <a href="../gameplay/rook.html#expectedImpactTime">expectedImpactTime</a>, <a href="../gameplay/rook.html#flameDamagePerSecond">flameDamagePerSecond</a>, <a href="../gameplay/rook.html#flameDamageReductionPerSecond">flameDamageReductionPerSecond</a>, <a href="../gameplay/rook.html#flameDamageType">flameDamageType</a>, <a href="../gameplay/rook.html#flameSource">flameSource</a>, <a href="../gameplay/rook.html#grapplerRetentionScale">grapplerRetentionScale</a>, <a href="../gameplay/rook.html#healthMaximum">healthMaximum</a>, <a href="../gameplay/rook.html#hearing">hearing</a>, <a href="../gameplay/rook.html#hudType">hudType</a>, <a href="../gameplay/rook.html#lastDetectedTime">lastDetectedTime</a>, <a href="../gameplay/rook.html#lastShotFiredTime">lastShotFiredTime</a>, <a href="../gameplay/rook.html#loaEndPoint">loaEndPoint</a>, <a href="../gameplay/rook.html#loaEndPoint2">loaEndPoint2</a>, <a href="../gameplay/rook.html#loaHit">loaHit</a>, <a href="../gameplay/rook.html#loaStartPoint">loaStartPoint</a>, <a href="../gameplay/rook.html#loaStartPoint2">loaStartPoint2</a>, <a href="../gameplay/rook.html#logAlertnessChanges">logAlertnessChanges</a>, <a href="../gameplay/rook.html#loopingEffects">loopingEffects</a>, <a href="../gameplay/rook.html#MaxShadowTraceDistance">MaxShadowTraceDistance</a>, <a href="../gameplay/rook.html#mountAI">mountAI</a>, <a href="../gameplay/rook.html#movementForce">movementForce</a>, <a href="../gameplay/rook.html#m_lastTeam">m_lastTeam</a>, <a href="../gameplay/rook.html#m_localTeam">m_localTeam</a>, <a href="../gameplay/rook.html#m_squad">m_squad</a>, <a href="../gameplay/rook.html#m_team">m_team</a>, <a href="../gameplay/rook.html#pastPositionsIndex">pastPositionsIndex</a>, <a href="../gameplay/rook.html#pastPositionsTimeAccu">pastPositionsTimeAccu</a>, <a href="../gameplay/rook.html#pastPositions[N_PAST_POSITIONS]">pastPositions[N_PAST_POSITIONS]</a>, <a href="../gameplay/rook.html#PeripheralVisionZAngle">PeripheralVisionZAngle</a>, <a href="../gameplay/rook.html#personalShield">personalShield</a>, <a href="../gameplay/rook.html#personalShieldClass">personalShieldClass</a>, <a href="../gameplay/rook.html#playerControllerState">playerControllerState</a>, <a href="../gameplay/rook.html#radarInfoClass">radarInfoClass</a>, <a href="../gameplay/rook.html#reactionDelay">reactionDelay</a>, <a href="../gameplay/rook.html#reactionDelayMP">reactionDelayMP</a>, <a href="../gameplay/rook.html#repairers">repairers</a>, <a href="../gameplay/rook.html#repDepLastRateAddition">repDepLastRateAddition</a>, <a href="../gameplay/rook.html#repDepRepairRate">repDepRepairRate</a>, <a href="../gameplay/rook.html#repPakLastRateAddition">repPakLastRateAddition</a>, <a href="../gameplay/rook.html#repPakRepairRate">repPakRepairRate</a>, <a href="../gameplay/rook.html#sensorUpdateFlag">sensorUpdateFlag</a>, <a href="../gameplay/rook.html#ShadowLightDistance">ShadowLightDistance</a>, <a href="../gameplay/rook.html#shotAngularDeviation">shotAngularDeviation</a>, <a href="../gameplay/rook.html#shotAngularDeviationMP">shotAngularDeviationMP</a>, <a href="../gameplay/rook.html#shotLeadAbility">shotLeadAbility</a>, <a href="../gameplay/rook.html#shotLeadAbilityMP">shotLeadAbilityMP</a>, <a href="../gameplay/rook.html#shotNotifier">shotNotifier</a>, <a href="../gameplay/rook.html#SightRadiusToPlayer">SightRadiusToPlayer</a>, <a href="../gameplay/rook.html#teamDamagePercentage">teamDamagePercentage</a>, <a href="../gameplay/rook.html#teamSelfIllumSkinName">teamSelfIllumSkinName</a>, <a href="../gameplay/rook.html#teamSpecificHavokCollisionFiltering">teamSpecificHavokCollisionFiltering</a>, <a href="../gameplay/rook.html#tickTime">tickTime</a>, <a href="../gameplay/rook.html#tickTimeOrg">tickTimeOrg</a>, <a href="../gameplay/rook.html#tickTimeUpdateRange">tickTimeUpdateRange</a>, <a href="../gameplay/rook.html#UseablePointsValid[MAX_USEABLE_POINTS]">UseablePointsValid[MAX_USEABLE_POINTS]</a>, <a href="../gameplay/rook.html#UseablePoints[MAX_USEABLE_POINTS]">UseablePoints[MAX_USEABLE_POINTS]</a>, <a href="../gameplay/rook.html#vehicleAI">vehicleAI</a>, <a href="../gameplay/rook.html#vision">vision</a>, <a href="../gameplay/rook.html#visionMemory">visionMemory</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/pawn.html#abilities">abilities</a>, <a href="../engine/pawn.html#AccelRate">AccelRate</a>, <a href="../engine/pawn.html#AirControl">AirControl</a>, <a href="../engine/pawn.html#AirSpeed">AirSpeed</a>, <a href="../engine/pawn.html#AIScriptTag">AIScriptTag</a>, <a href="../engine/pawn.html#AI_LOD_Level">AI_LOD_Level</a>, <a href="../engine/pawn.html#AI_LOD_LevelOrig">AI_LOD_LevelOrig</a>, <a href="../engine/pawn.html#Alertness">Alertness</a>, <a href="../engine/pawn.html#Anchor">Anchor</a>, <a href="../engine/pawn.html#AnimAction">AnimAction</a>, <a href="../engine/pawn.html#AppliedBob">AppliedBob</a>, <a href="../engine/pawn.html#AvgPhysicsTime">AvgPhysicsTime</a>, <a href="../engine/pawn.html#BackwardStrafeBias">BackwardStrafeBias</a>, <a href="../engine/pawn.html#bAdjacentZoneHearing">bAdjacentZoneHearing</a>, <a href="../engine/pawn.html#bAmbientCreature">bAmbientCreature</a>, <a href="../engine/pawn.html#BaseEyeHeight">BaseEyeHeight</a>, <a href="../engine/pawn.html#BaseMovementRate">BaseMovementRate</a>, <a href="../engine/pawn.html#bAvoidLedges">bAvoidLedges</a>, <a href="../engine/pawn.html#bCachedRelevant">bCachedRelevant</a>, <a href="../engine/pawn.html#bCanBeBaseForPawns">bCanBeBaseForPawns</a>, <a href="../engine/pawn.html#bCanClimbLadders">bCanClimbLadders</a>, <a href="../engine/pawn.html#bCanCrouch">bCanCrouch</a>, <a href="../engine/pawn.html#bCanDoubleJump">bCanDoubleJump</a>, <a href="../engine/pawn.html#bCanFly">bCanFly</a>, <a href="../engine/pawn.html#bCanJump">bCanJump</a>, <a href="../engine/pawn.html#bCanStrafe">bCanStrafe</a>, <a href="../engine/pawn.html#bCanSwim">bCanSwim</a>, <a href="../engine/pawn.html#bCanWalk">bCanWalk</a>, <a href="../engine/pawn.html#bCanWalkOffLedges">bCanWalkOffLedges</a>, <a href="../engine/pawn.html#bClientCollision">bClientCollision</a>, <a href="../engine/pawn.html#bCouldSeeLastTick">bCouldSeeLastTick</a>, <a href="../engine/pawn.html#bCountJumps">bCountJumps</a>, <a href="../engine/pawn.html#bCrawler">bCrawler</a>, <a href="../engine/pawn.html#bDirectHitWall">bDirectHitWall</a>, <a href="../engine/pawn.html#bDontPossess">bDontPossess</a>, <a href="../engine/pawn.html#bGroundNavigationObstruction">bGroundNavigationObstruction</a>, <a href="../engine/pawn.html#bHavokCharacterCollisionExtraRadius">bHavokCharacterCollisionExtraRadius</a>, <a href="../engine/pawn.html#bHavokCharacterCollisions">bHavokCharacterCollisions</a>, <a href="../engine/pawn.html#bHavokInitCalled">bHavokInitCalled</a>, <a href="../engine/pawn.html#bHideRegularHUD">bHideRegularHUD</a>, <a href="../engine/pawn.html#bIgnoreForces">bIgnoreForces</a>, <a href="../engine/pawn.html#bInitializeAnimation">bInitializeAnimation</a>, <a href="../engine/pawn.html#bInvulnerableBody">bInvulnerableBody</a>, <a href="../engine/pawn.html#bIsCrouched">bIsCrouched</a>, <a href="../engine/pawn.html#bIsFemale">bIsFemale</a>, <a href="../engine/pawn.html#bIsTyping">bIsTyping</a>, <a href="../engine/pawn.html#bIsWalking">bIsWalking</a>, <a href="../engine/pawn.html#bJumpCapable">bJumpCapable</a>, <a href="../engine/pawn.html#bJustLanded">bJustLanded</a>, <a href="../engine/pawn.html#BlendChangeTime">BlendChangeTime</a>, <a href="../engine/pawn.html#BloodEffect">BloodEffect</a>, <a href="../engine/pawn.html#bLOSHearing">bLOSHearing</a>, <a href="../engine/pawn.html#bMuffledHearing">bMuffledHearing</a>, <a href="../engine/pawn.html#bNoJumpAdjust">bNoJumpAdjust</a>, <a href="../engine/pawn.html#bNotifiedDeathListeners">bNotifiedDeathListeners</a>, <a href="../engine/pawn.html#bNoVelocityUpdate">bNoVelocityUpdate</a>, <a href="../engine/pawn.html#bNoWeaponFiring">bNoWeaponFiring</a>, <a href="../engine/pawn.html#Bob">Bob</a>, <a href="../engine/pawn.html#bobtime">bobtime</a>, <a href="../engine/pawn.html#bPhysicsAnimUpdate">bPhysicsAnimUpdate</a>, <a href="../engine/pawn.html#bPlayedDeath">bPlayedDeath</a>, <a href="../engine/pawn.html#BreathTime">BreathTime</a>, <a href="../engine/pawn.html#bReducedSpeed">bReducedSpeed</a>, <a href="../engine/pawn.html#bRollToDesired">bRollToDesired</a>, <a href="../engine/pawn.html#bSameZoneHearing">bSameZoneHearing</a>, <a href="../engine/pawn.html#bSendsDamagedMessages">bSendsDamagedMessages</a>, <a href="../engine/pawn.html#bSimGravityDisabled">bSimGravityDisabled</a>, <a href="../engine/pawn.html#bSimulateGravity">bSimulateGravity</a>, <a href="../engine/pawn.html#bSpecialCalcView">bSpecialCalcView</a>, <a href="../engine/pawn.html#bSpecialHUD">bSpecialHUD</a>, <a href="../engine/pawn.html#bSteadyFiring">bSteadyFiring</a>, <a href="../engine/pawn.html#bStopAtLedges">bStopAtLedges</a>, <a href="../engine/pawn.html#bThumped">bThumped</a>, <a href="../engine/pawn.html#bTryToUncrouch">bTryToUncrouch</a>, <a href="../engine/pawn.html#bUpAndOut">bUpAndOut</a>, <a href="../engine/pawn.html#bUpdateEyeHeight">bUpdateEyeHeight</a>, <a href="../engine/pawn.html#bUpdatingDisplay">bUpdatingDisplay</a>, <a href="../engine/pawn.html#bUseCompressedPosition">bUseCompressedPosition</a>, <a href="../engine/pawn.html#bWantsToCrouch">bWantsToCrouch</a>, <a href="../engine/pawn.html#bWarping">bWarping</a>, <a href="../engine/pawn.html#bWasCrouched">bWasCrouched</a>, <a href="../engine/pawn.html#bWasOnGround">bWasOnGround</a>, <a href="../engine/pawn.html#bWasWalking">bWasWalking</a>, <a href="../engine/pawn.html#bWeaponBob">bWeaponBob</a>, <a href="../engine/pawn.html#CharacterAI">CharacterAI</a>, <a href="../engine/pawn.html#ConstantAcceleration">ConstantAcceleration</a>, <a href="../engine/pawn.html#Controller">Controller</a>, <a href="../engine/pawn.html#ControllerClassName">ControllerClassName</a>, <a href="../engine/pawn.html#CrouchedPct">CrouchedPct</a>, <a href="../engine/pawn.html#CrouchHeight">CrouchHeight</a>, <a href="../engine/pawn.html#CrouchRadius">CrouchRadius</a>, <a href="../engine/pawn.html#DamageScaling">DamageScaling</a>, <a href="../engine/pawn.html#DesiredSpeed">DesiredSpeed</a>, <a href="../engine/pawn.html#DestinationOffset">DestinationOffset</a>, <a href="../engine/pawn.html#EyeHeight">EyeHeight</a>, <a href="../engine/pawn.html#Floor">Floor</a>, <a href="../engine/pawn.html#ForwardStrafeBias">ForwardStrafeBias</a>, <a href="../engine/pawn.html#goals">goals</a>, <a href="../engine/pawn.html#GroundSpeed">GroundSpeed</a>, <a href="../engine/pawn.html#HeadAI">HeadAI</a>, <a href="../engine/pawn.html#HeadScale">HeadScale</a>, <a href="../engine/pawn.html#HeadVolume">HeadVolume</a>, <a href="../engine/pawn.html#Health">Health</a>, <a href="../engine/pawn.html#HearingThreshold">HearingThreshold</a>, <a href="../engine/pawn.html#HitDamageType">HitDamageType</a>, <a href="../engine/pawn.html#JumpZ">JumpZ</a>, <a href="../engine/pawn.html#LadderSpeed">LadderSpeed</a>, <a href="../engine/pawn.html#LandBob">LandBob</a>, <a href="../engine/pawn.html#LandMovementState">LandMovementState</a>, <a href="../engine/pawn.html#LastAnchor">LastAnchor</a>, <a href="../engine/pawn.html#LastPainSound">LastPainSound</a>, <a href="../engine/pawn.html#LastPainTime">LastPainTime</a>, <a href="../engine/pawn.html#LastRealViewer">LastRealViewer</a>, <a href="../engine/pawn.html#LastStartSpot">LastStartSpot</a>, <a href="../engine/pawn.html#LastStartTime">LastStartTime</a>, <a href="../engine/pawn.html#LastValidAnchorTime">LastValidAnchorTime</a>, <a href="../engine/pawn.html#LastViewer">LastViewer</a>, <a href="../engine/pawn.html#logDLM">logDLM</a>, <a href="../engine/pawn.html#logNavigationSystem">logNavigationSystem</a>, <a href="../engine/pawn.html#logTyrion">logTyrion</a>, <a href="../engine/pawn.html#LowGoreBlood">LowGoreBlood</a>, <a href="../engine/pawn.html#MaxFallSpeed">MaxFallSpeed</a>, <a href="../engine/pawn.html#MeleeRange">MeleeRange</a>, <a href="../engine/pawn.html#MenuName">MenuName</a>, <a href="../engine/pawn.html#MovementAI">MovementAI</a>, <a href="../engine/pawn.html#MovementAnims[4]">MovementAnims[4]</a>, <a href="../engine/pawn.html#MovementBlendStartTime">MovementBlendStartTime</a>, <a href="../engine/pawn.html#movementSimProxyPending">movementSimProxyPending</a>, <a href="../engine/pawn.html#movementSimProxyPosition">movementSimProxyPosition</a>, <a href="../engine/pawn.html#movementSimProxyRotation">movementSimProxyRotation</a>, <a href="../engine/pawn.html#movementSimProxyVelocity">movementSimProxyVelocity</a>, <a href="../engine/pawn.html#NetRelevancyTime">NetRelevancyTime</a>, <a href="../engine/pawn.html#nextPawn">nextPawn</a>, <a href="../engine/pawn.html#noise1loudness">noise1loudness</a>, <a href="../engine/pawn.html#noise1other">noise1other</a>, <a href="../engine/pawn.html#noise1spot">noise1spot</a>, <a href="../engine/pawn.html#noise1time">noise1time</a>, <a href="../engine/pawn.html#noise2loudness">noise2loudness</a>, <a href="../engine/pawn.html#noise2other">noise2other</a>, <a href="../engine/pawn.html#noise2spot">noise2spot</a>, <a href="../engine/pawn.html#noise2time">noise2time</a>, <a href="../engine/pawn.html#OldAcceleration">OldAcceleration</a>, <a href="../engine/pawn.html#OldPhysics">OldPhysics</a>, <a href="../engine/pawn.html#OldRotYaw">OldRotYaw</a>, <a href="../engine/pawn.html#OldZ">OldZ</a>, <a href="../engine/pawn.html#OnLadder">OnLadder</a>, <a href="../engine/pawn.html#OwnerName">OwnerName</a>, <a href="../engine/pawn.html#PawnPosition">PawnPosition</a>, <a href="../engine/pawn.html#PeripheralVision">PeripheralVision</a>, <a href="../engine/pawn.html#PlayerReplicationInfo">PlayerReplicationInfo</a>, <a href="../engine/pawn.html#ReducedDamageType">ReducedDamageType</a>, <a href="../engine/pawn.html#SerpentineDist">SerpentineDist</a>, <a href="../engine/pawn.html#SerpentineTime">SerpentineTime</a>, <a href="../engine/pawn.html#Shadow">Shadow</a>, <a href="../engine/pawn.html#SightRadius">SightRadius</a>, <a href="../engine/pawn.html#SoundDampening">SoundDampening</a>, <a href="../engine/pawn.html#SpawnTime">SpawnTime</a>, <a href="../engine/pawn.html#SplashTime">SplashTime</a>, <a href="../engine/pawn.html#TakeHitLocation">TakeHitLocation</a>, <a href="../engine/pawn.html#TearOffMomentum">TearOffMomentum</a>, <a href="../engine/pawn.html#TurnLeftAnim">TurnLeftAnim</a>, <a href="../engine/pawn.html#TurnRightAnim">TurnRightAnim</a>, <a href="../engine/pawn.html#UncrouchTime">UncrouchTime</a>, <a href="../engine/pawn.html#UnderWaterTime">UnderWaterTime</a>, <a href="../engine/pawn.html#Visibility">Visibility</a>, <a href="../engine/pawn.html#VisionCounter">VisionCounter</a>, <a href="../engine/pawn.html#VisionUpdateRange">VisionUpdateRange</a>, <a href="../engine/pawn.html#WalkBob">WalkBob</a>, <a href="../engine/pawn.html#WalkingPct">WalkingPct</a>, <a href="../engine/pawn.html#WaterMovementState">WaterMovementState</a>, <a href="../engine/pawn.html#WaterSpeed">WaterSpeed</a>, <a href="../engine/pawn.html#WeaponAI">WeaponAI</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#AlertnessLevels">AlertnessLevels</a>, <a href="../gameplay/rook.html#EUseablePointValid">EUseablePointValid</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#DamageComponent">DamageComponent</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/pawn.html#HavokCharacterObjectInteractionEvent">HavokCharacterObjectInteractionEvent</a>, <a href="../engine/pawn.html#HavokCharacterObjectInteractionResult">HavokCharacterObjectInteractionResult</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_aimAdjustViewRotation-" name="aimAdjustViewRotation" title="go to the details">aimAdjustViewRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_altFire-" name="altFire" title="go to the details">altFire</a> (optional bool fireOnce))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canTargetPoint-" name="canTargetPoint" title="go to the details">canTargetPoint</a> (<a href="../core/object.html#Vector">Vector</a> targetLoc))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_clientOccupantEnter-" name="clientOccupantEnter" title="go to the details">clientOccupantEnter</a> (<a href="../engine/playercontroller.html">PlayerController</a> pc, <a href="../gameplay/character.html">Character</a> newDriver, int positionIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_customFiredEffectProcessing-" name="customFiredEffectProcessing" title="go to the details">customFiredEffectProcessing</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_destroyed-" name="destroyed" title="go to the details">destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayDebug-" name="DisplayDebug" title="go to the details">DisplayDebug</a> (<a href="../engine/canvas.html">Canvas</a> Canvas, out float YL, out float YPos))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_doCustomFiredEffectProcessing-" name="doCustomFiredEffectProcessing" title="go to the details">doCustomFiredEffectProcessing</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_EyePosition-" name="EyePosition" title="go to the details">EyePosition</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_faceRotation-" name="faceRotation" title="go to the details">faceRotation</a> (<a href="../core/object.html#Rotator">rotator</a> newRotation, float deltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_fire-" name="fire" title="go to the details">fire</a> (optional bool fireOnce))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/ifiringmotor.html">IFiringMotor</a>&nbsp;</td><td><a href="#_firingMotor-" name="firingMotor" title="go to the details">firingMotor</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_getAlternateAimAdjustStart-" name="getAlternateAimAdjustStart" title="go to the details">getAlternateAimAdjustStart</a> (<a href="../core/object.html#Rotator">rotator</a> cameraRotation, out <a href="../core/object.html#Vector">vector</a> newAimAdjustStart)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/character.html">Character</a>&nbsp;</td><td><a href="#_getControllingCharacter-" name="getControllingCharacter" title="go to the details">getControllingCharacter</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">Rotator</a>&nbsp;</td><td><a href="#_getDefaultOccupantRotation-" name="getDefaultOccupantRotation" title="go to the details">getDefaultOccupantRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/character.html">Character</a>&nbsp;</td><td><a href="#_getDriver-" name="getDriver" title="go to the details">getDriver</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/actor.html">Actor</a>&nbsp;</td><td><a href="#_getEffectsBaseActor-" name="getEffectsBaseActor" title="go to the details">getEffectsBaseActor</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_getEnergy-" name="getEnergy" title="go to the details">getEnergy</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_getFirstPersonEquippableLocation-" name="getFirstPersonEquippableLocation" title="go to the details">getFirstPersonEquippableLocation</a> (<a href="../gameplay/equippable.html">Equippable</a> subject))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_getFirstPersonEquippableRotation-" name="getFirstPersonEquippableRotation" title="go to the details">getFirstPersonEquippableRotation</a> (<a href="../gameplay/equippable.html">Equippable</a> subject))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>Name&nbsp;</td><td><a href="#_getKillerLabel-" name="getKillerLabel" title="go to the details">getKillerLabel</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_getOut-" name="getOut" title="go to the details">getOut</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/rook.html">Rook</a>&nbsp;</td><td><a href="#_getPhysicalAttachment-" name="getPhysicalAttachment" title="go to the details">getPhysicalAttachment</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_getProjectileSpawnLocation-" name="getProjectileSpawnLocation" title="go to the details">getProjectileSpawnLocation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_getThirdPersonEquippableAttachment-" name="getThirdPersonEquippableAttachment" title="go to the details">getThirdPersonEquippableAttachment</a> (<a href="../gameplay/equippable.html">Equippable</a> subject, out <a href="../gameplay/rook.html">Rook</a> attachTo, out name boneName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">Rotator</a>&nbsp;</td><td><a href="#_getViewRotation-" name="getViewRotation" title="go to the details">getViewRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/weapon.html">Weapon</a>&nbsp;</td><td><a href="#_getWeapon-" name="getWeapon" title="go to the details">getWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_initialise-" name="initialise" title="go to the details">initialise</a> (class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt; turretWeaponClass, name inTurretBone, float inMaximumPitch, float inMinimumPitch, bool inYawConstrained, float inYawStart, float inYawRange, bool inYawPositiveDirection, float inMaximumClientDisplayTurnRate, float inMaximumAITurnRate))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onShotFiredNotification-" name="onShotFiredNotification" title="go to the details">onShotFiredNotification</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_postNetBeginPlay-" name="postNetBeginPlay" title="go to the details">postNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_postNetReceive-" name="postNetReceive" title="go to the details">postNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_processMove-" name="processMove" title="go to the details">processMove</a> (<a href="../core/object.html#Rotator">rotator</a> worldSpaceNoRollRotation_, <a href="../core/object.html#Rotator">rotator</a> vehicleSpaceRotation_))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_releaseAltFire-" name="releaseAltFire" title="go to the details">releaseAltFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_releaseFire-" name="releaseFire" title="go to the details">releaseFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setFirePressed-" name="setFirePressed" title="go to the details">setFirePressed</a> (<a href="../gameplay/equippable.html">Equippable</a> e, bool pressed))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setPositionType-" name="setPositionType" title="go to the details">setPositionType</a> (<a href="../gameplay/vehicle.html#VehiclePositionType">Vehicle.VehiclePositionType</a> newPositionType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setViewRotation-" name="setViewRotation" title="go to the details">setViewRotation</a> (<a href="../core/object.html#Rotator">Rotator</a> r))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_shouldFire-" name="shouldFire" title="go to the details">shouldFire</a> (<a href="../gameplay/equippable.html">Equippable</a> e))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_specialCalcView-" name="specialCalcView" title="go to the details">specialCalcView</a> (out <a href="../engine/actor.html">actor</a> ViewActor, out <a href="../core/object.html#Vector">vector</a> CameraLocation, out rotator CameraRotation ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_turretCeaseFire-" name="turretCeaseFire" title="go to the details">turretCeaseFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_turretFire-" name="turretFire" title="go to the details">turretFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateParams-" name="updateParams" title="go to the details">updateParams</a> (float inMaximumPitch, float inMinimumPitch, float inYawStart, float inYawRange))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_useEnergy-" name="useEnergy" title="go to the details">useEnergy</a> (float amount))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/rook.html#activatePersonalShield">activatePersonalShield</a>, <a href="../gameplay/rook.html#addRepairFromDeployable">addRepairFromDeployable</a>, <a href="../gameplay/rook.html#addRepairFromPack">addRepairFromPack</a>, <a href="../gameplay/rook.html#ApplyDamage">ApplyDamage</a>, <a href="../gameplay/rook.html#averageVelocity">averageVelocity</a>, <a href="../gameplay/rook.html#breakDamageComponent">breakDamageComponent</a>, <a href="../gameplay/rook.html#canBeRepairedBy">canBeRepairedBy</a>, <a href="../gameplay/rook.html#canBeSensed">canBeSensed</a>, <a href="../gameplay/rook.html#CanBeUsedBy">CanBeUsedBy</a>, <a href="../gameplay/rook.html#ChunkUp">ChunkUp</a>, <a href="../gameplay/rook.html#cleanupAI">cleanupAI</a>, <a href="../gameplay/rook.html#cleanupDamageComponents">cleanupDamageComponents</a>, <a href="../gameplay/rook.html#CleanupSensing">CleanupSensing</a>, <a href="../gameplay/rook.html#clientUpdateDamageComponents">clientUpdateDamageComponents</a>, <a href="../gameplay/rook.html#createDamageComponent">createDamageComponent</a>, <a href="../gameplay/rook.html#CreateHearingNotifier">CreateHearingNotifier</a>, <a href="../gameplay/rook.html#CreateShotNotifier">CreateShotNotifier</a>, <a href="../gameplay/rook.html#CreateVisionNotifier">CreateVisionNotifier</a>, <a href="../gameplay/rook.html#damageComponentsOnDamage">damageComponentsOnDamage</a>, <a href="../gameplay/rook.html#damageComponentsOnIncreaseHealth">damageComponentsOnIncreaseHealth</a>, <a href="../gameplay/rook.html#damageComponentsPostTakeDamage">damageComponentsPostTakeDamage</a>, <a href="../gameplay/rook.html#deactivatePersonalShield">deactivatePersonalShield</a>, <a href="../gameplay/rook.html#Destroyed">Destroyed</a>, <a href="../gameplay/rook.html#Died">Died</a>, <a href="../gameplay/rook.html#displayActorLabel">displayActorLabel</a>, <a href="../gameplay/rook.html#displayEnemiesList">displayEnemiesList</a>, <a href="../gameplay/rook.html#displayTyrionDebugHeader">displayTyrionDebugHeader</a>, <a href="../gameplay/rook.html#displayWorldSpaceDebug">displayWorldSpaceDebug</a>, <a href="../gameplay/rook.html#DrawVisionCone">DrawVisionCone</a>, <a href="../gameplay/rook.html#EffectIsLooping">EffectIsLooping</a>, <a href="../gameplay/rook.html#enumSquadInfo">enumSquadInfo</a>, <a href="../gameplay/rook.html#enumTeamInfo">enumTeamInfo</a>, <a href="../gameplay/rook.html#firingMotor">firingMotor</a>, <a href="../gameplay/rook.html#generateAISpeechEvents">generateAISpeechEvents</a>, <a href="../gameplay/rook.html#getAlertnessLevel">getAlertnessLevel</a>, <a href="../gameplay/rook.html#getControllingCharacter">getControllingCharacter</a>, <a href="../gameplay/rook.html#getControllingCharacterTeam">getControllingCharacterTeam</a>, <a href="../gameplay/rook.html#GetDamageComponentThresholdRange">GetDamageComponentThresholdRange</a>, <a href="../gameplay/rook.html#getKillerLabel">getKillerLabel</a>, <a href="../gameplay/rook.html#GetObjectiveLocation">GetObjectiveLocation</a>, <a href="../gameplay/rook.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/rook.html#GetRadarInfoClass">GetRadarInfoClass</a>, <a href="../gameplay/rook.html#getTeamDamagePercentage">getTeamDamagePercentage</a>, <a href="../gameplay/rook.html#getTeamLabel">getTeamLabel</a>, <a href="../gameplay/rook.html#groundPredictedLocation">groundPredictedLocation</a>, <a href="../gameplay/rook.html#IncreaseHealth">IncreaseHealth</a>, <a href="../gameplay/rook.html#isFriendly">isFriendly</a>, <a href="../gameplay/rook.html#IsInVisionCone">IsInVisionCone</a>, <a href="../gameplay/rook.html#OnEffectInitialized">OnEffectInitialized</a>, <a href="../gameplay/rook.html#OnEffectStarted">OnEffectStarted</a>, <a href="../gameplay/rook.html#OnEffectStopped">OnEffectStopped</a>, <a href="../gameplay/rook.html#OnShotFired">OnShotFired</a>, <a href="../gameplay/rook.html#onTeamChange">onTeamChange</a>, <a href="../gameplay/rook.html#personalShieldActive">personalShieldActive</a>, <a href="../gameplay/rook.html#PlayEffect">PlayEffect</a>, <a href="../gameplay/rook.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/rook.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/rook.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/rook.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/rook.html#PreBeginPlay">PreBeginPlay</a>, <a href="../gameplay/rook.html#PrecacheDamageComponents">PrecacheDamageComponents</a>, <a href="../gameplay/rook.html#predictedLocation">predictedLocation</a>, <a href="../gameplay/rook.html#ProcessBurnDamage">ProcessBurnDamage</a>, <a href="../gameplay/rook.html#ProcessRepair">ProcessRepair</a>, <a href="../gameplay/rook.html#RegisterHearingNotification">RegisterHearingNotification</a>, <a href="../gameplay/rook.html#RegisterShotNotification">RegisterShotNotification</a>, <a href="../gameplay/rook.html#RegisterVisionNotification">RegisterVisionNotification</a>, <a href="../gameplay/rook.html#removeFlameDamage">removeFlameDamage</a>, <a href="../gameplay/rook.html#removeRepairFromDeployable">removeRepairFromDeployable</a>, <a href="../gameplay/rook.html#removeRepairFromPack">removeRepairFromPack</a>, <a href="../gameplay/rook.html#resetPersonalShield">resetPersonalShield</a>, <a href="../gameplay/rook.html#setAlertnessLevel">setAlertnessLevel</a>, <a href="../gameplay/rook.html#setLimitedTimeLODActivation">setLimitedTimeLODActivation</a>, <a href="../gameplay/rook.html#setSquad">setSquad</a>, <a href="../gameplay/rook.html#setTeam">setTeam</a>, <a href="../gameplay/rook.html#ShouldBeMarked">ShouldBeMarked</a>, <a href="../gameplay/rook.html#squad">squad</a>, <a href="../gameplay/rook.html#squadCleanupOnDeath">squadCleanupOnDeath</a>, <a href="../gameplay/rook.html#StartLoopingEffect">StartLoopingEffect</a>, <a href="../gameplay/rook.html#StopEffect">StopEffect</a>, <a href="../gameplay/rook.html#StopLoopingEffect">StopLoopingEffect</a>, <a href="../gameplay/rook.html#team">team</a>, <a href="../gameplay/rook.html#UnregisterHearingNotification">UnregisterHearingNotification</a>, <a href="../gameplay/rook.html#UnregisterShotNotification">UnregisterShotNotification</a>, <a href="../gameplay/rook.html#UnregisterVisionNotification">UnregisterVisionNotification</a>, <a href="../gameplay/rook.html#updateHavokCollisionFilter">updateHavokCollisionFilter</a>, <a href="../gameplay/rook.html#updatePastPositions">updatePastPositions</a>, <a href="../gameplay/rook.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/pawn.html#AddPawn">AddPawn</a>, <a href="../engine/pawn.html#AddVelocity">AddVelocity</a>, <a href="../engine/pawn.html#AdjustedStrength">AdjustedStrength</a>, <a href="../engine/pawn.html#AnimEnd">AnimEnd</a>, <a href="../engine/pawn.html#ApplyDamage">ApplyDamage</a>, <a href="../engine/pawn.html#BaseChange">BaseChange</a>, <a href="../engine/pawn.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="../engine/pawn.html#BeginState">BeginState</a>, <a href="../engine/pawn.html#BreathTimer">BreathTimer</a>, <a href="../engine/pawn.html#CanDoubleJump">CanDoubleJump</a>, <a href="../engine/pawn.html#CanGrabLadder">CanGrabLadder</a>, <a href="../engine/pawn.html#CannotJumpNow">CannotJumpNow</a>, <a href="../engine/pawn.html#CanSee">CanSee</a>, <a href="../engine/pawn.html#CanSplash">CanSplash</a>, <a href="../engine/pawn.html#CanThrowWeapon">CanThrowWeapon</a>, <a href="../engine/pawn.html#CanTrigger">CanTrigger</a>, <a href="../engine/pawn.html#ChangeAnimation">ChangeAnimation</a>, <a href="../engine/pawn.html#ChangedWeapon">ChangedWeapon</a>, <a href="../engine/pawn.html#checkAlive">checkAlive</a>, <a href="../engine/pawn.html#CheckBob">CheckBob</a>, <a href="../engine/pawn.html#checkDead">checkDead</a>, <a href="../engine/pawn.html#CheckWaterJump">CheckWaterJump</a>, <a href="../engine/pawn.html#ChunkUp">ChunkUp</a>, <a href="../engine/pawn.html#classConstruct">classConstruct</a>, <a href="../engine/pawn.html#ClientDying">ClientDying</a>, <a href="../engine/pawn.html#ClientMessage">ClientMessage</a>, <a href="../engine/pawn.html#ClientReStart">ClientReStart</a>, <a href="../engine/pawn.html#ClientSetLocation">ClientSetLocation</a>, <a href="../engine/pawn.html#ClientSetRotation">ClientSetRotation</a>, <a href="../engine/pawn.html#ClimbLadder">ClimbLadder</a>, <a href="../engine/pawn.html#CreateInventory">CreateInventory</a>, <a href="../engine/pawn.html#Destroyed">Destroyed</a>, <a href="../engine/pawn.html#Died">Died</a>, <a href="../engine/pawn.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/pawn.html#Dodge">Dodge</a>, <a href="../engine/pawn.html#DoDoubleJump">DoDoubleJump</a>, <a href="../engine/pawn.html#DoJump">DoJump</a>, <a href="../engine/pawn.html#DrawHUD">DrawHUD</a>, <a href="../engine/pawn.html#DropToGround">DropToGround</a>, <a href="../engine/pawn.html#EncroachedBy">EncroachedBy</a>, <a href="../engine/pawn.html#EncroachingOn">EncroachingOn</a>, <a href="../engine/pawn.html#EndClimbLadder">EndClimbLadder</a>, <a href="../engine/pawn.html#EndCrouch">EndCrouch</a>, <a href="../engine/pawn.html#EyePosition">EyePosition</a>, <a href="../engine/pawn.html#FaceRotation">FaceRotation</a>, <a href="../engine/pawn.html#Falling">Falling</a>, <a href="../engine/pawn.html#FinishedInterpolation">FinishedInterpolation</a>, <a href="../engine/pawn.html#ForceCrouch">ForceCrouch</a>, <a href="../engine/pawn.html#Gasp">Gasp</a>, <a href="../engine/pawn.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../engine/pawn.html#GetKillerController">GetKillerController</a>, <a href="../engine/pawn.html#GetViewDirection">GetViewDirection</a>, <a href="../engine/pawn.html#GetViewPoint">GetViewPoint</a>, <a href="../engine/pawn.html#GetViewRotation">GetViewRotation</a>, <a href="../engine/pawn.html#Gibbed">Gibbed</a>, <a href="../engine/pawn.html#gibbedBy">gibbedBy</a>, <a href="../engine/pawn.html#GiveWeapon">GiveWeapon</a>, <a href="../engine/pawn.html#groundPredictedLocation">groundPredictedLocation</a>, <a href="../engine/pawn.html#HavokCharacterCollision">HavokCharacterCollision</a>, <a href="../engine/pawn.html#HeadVolumeChange">HeadVolumeChange</a>, <a href="../engine/pawn.html#HitWall">HitWall</a>, <a href="../engine/pawn.html#IgnoresSeenPawnsOfType">IgnoresSeenPawnsOfType</a>, <a href="../engine/pawn.html#InCurrentCombo">InCurrentCombo</a>, <a href="../engine/pawn.html#InGodMode">InGodMode</a>, <a href="../engine/pawn.html#isAlive">isAlive</a>, <a href="../engine/pawn.html#IsFirstPerson">IsFirstPerson</a>, <a href="../engine/pawn.html#IsHumanControlled">IsHumanControlled</a>, <a href="../engine/pawn.html#IsInPain">IsInPain</a>, <a href="../engine/pawn.html#IsLocallyControlled">IsLocallyControlled</a>, <a href="../engine/pawn.html#IsPlayerPawn">IsPlayerPawn</a>, <a href="../engine/pawn.html#JumpOffPawn">JumpOffPawn</a>, <a href="../engine/pawn.html#JumpOutOfWater">JumpOutOfWater</a>, <a href="../engine/pawn.html#KilledBy">KilledBy</a>, <a href="../engine/pawn.html#Landed">Landed</a>, <a href="../engine/pawn.html#LandThump">LandThump</a>, <a href="../engine/pawn.html#LieStill">LieStill</a>, <a href="../engine/pawn.html#LineOfSightTo">LineOfSightTo</a>, <a href="../engine/pawn.html#ModifyVelocity">ModifyVelocity</a>, <a href="../engine/pawn.html#NextItem">NextItem</a>, <a href="../engine/pawn.html#NotifyKilled">NotifyKilled</a>, <a href="../engine/pawn.html#NotifyPawnDeathListeners">NotifyPawnDeathListeners</a>, <a href="../engine/pawn.html#PlayDying">PlayDying</a>, <a href="../engine/pawn.html#PlayDyingSound">PlayDyingSound</a>, <a href="../engine/pawn.html#PlayFalling">PlayFalling</a>, <a href="../engine/pawn.html#PlayFiring">PlayFiring</a>, <a href="../engine/pawn.html#PlayHit">PlayHit</a>, <a href="../engine/pawn.html#PlayJump">PlayJump</a>, <a href="../engine/pawn.html#PlayLanded">PlayLanded</a>, <a href="../engine/pawn.html#PlayLandingAnimation">PlayLandingAnimation</a>, <a href="../engine/pawn.html#PlayMoverHitSound">PlayMoverHitSound</a>, <a href="../engine/pawn.html#PlayMoving">PlayMoving</a>, <a href="../engine/pawn.html#PlayNextAnimation">PlayNextAnimation</a>, <a href="../engine/pawn.html#PlayTakeHit">PlayTakeHit</a>, <a href="../engine/pawn.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="../engine/pawn.html#PlayVictoryAnimation">PlayVictoryAnimation</a>, <a href="../engine/pawn.html#PlayWaiting">PlayWaiting</a>, <a href="../engine/pawn.html#PossessedBy">PossessedBy</a>, <a href="../engine/pawn.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/pawn.html#PostLoadGame">PostLoadGame</a>, <a href="../engine/pawn.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../engine/pawn.html#PostTakeDamage">PostTakeDamage</a>, <a href="../engine/pawn.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/pawn.html#predictedLocation">predictedLocation</a>, <a href="../engine/pawn.html#PressingAltFire">PressingAltFire</a>, <a href="../engine/pawn.html#PressingFire">PressingFire</a>, <a href="../engine/pawn.html#ReachedDestination">ReachedDestination</a>, <a href="../engine/pawn.html#ReceiveLocalizedMessage">ReceiveLocalizedMessage</a>, <a href="../engine/pawn.html#ReduceCylinder">ReduceCylinder</a>, <a href="../engine/pawn.html#rematchGoals">rematchGoals</a>, <a href="../engine/pawn.html#RemovePawn">RemovePawn</a>, <a href="../engine/pawn.html#Reset">Reset</a>, <a href="../engine/pawn.html#SetAnimAction">SetAnimAction</a>, <a href="../engine/pawn.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="../engine/pawn.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="../engine/pawn.html#SetHeadScale">SetHeadScale</a>, <a href="../engine/pawn.html#setLimitedTimeLODActivation">setLimitedTimeLODActivation</a>, <a href="../engine/pawn.html#SetMesh">SetMesh</a>, <a href="../engine/pawn.html#SetMovementPhysics">SetMovementPhysics</a>, <a href="../engine/pawn.html#SetViewRotation">SetViewRotation</a>, <a href="../engine/pawn.html#SetWalking">SetWalking</a>, <a href="../engine/pawn.html#ShootSpecial">ShootSpecial</a>, <a href="../engine/pawn.html#ShouldCrouch">ShouldCrouch</a>, <a href="../engine/pawn.html#SpecialCalcView">SpecialCalcView</a>, <a href="../engine/pawn.html#StartCrouch">StartCrouch</a>, <a href="../engine/pawn.html#StopPlayFiring">StopPlayFiring</a>, <a href="../engine/pawn.html#SwitchToLastWeapon">SwitchToLastWeapon</a>, <a href="../engine/pawn.html#TakeDrowningDamage">TakeDrowningDamage</a>, <a href="../engine/pawn.html#TakeFallingDamage">TakeFallingDamage</a>, <a href="../engine/pawn.html#Timer">Timer</a>, <a href="../engine/pawn.html#TossWeapon">TossWeapon</a>, <a href="../engine/pawn.html#TouchingWaterVolume">TouchingWaterVolume</a>, <a href="../engine/pawn.html#Trigger">Trigger</a>, <a href="../engine/pawn.html#UnPossessed">UnPossessed</a>, <a href="../engine/pawn.html#UpdateEyeHeight">UpdateEyeHeight</a>, <a href="../engine/pawn.html#UpdateRocketAcceleration">UpdateRocketAcceleration</a>, <a href="../engine/pawn.html#WasPlayerPawn">WasPlayerPawn</a>, <a href="../engine/pawn.html#WeaponBob">WeaponBob</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_cachedCameraLocation" class="hidden"></a>cachedCameraLocation <a href="../Source_gameplay/vehiclemountedturret.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> cachedCameraLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localPositionType" class="hidden"></a>localPositionType <a href="../Source_gameplay/vehiclemountedturret.html#26" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>.<span class="source_type"><a href="../gameplay/vehicle.html#VehiclePositionType" class="source">VehiclePositionType</a></span> localPositionType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maximumAITurnRate" class="hidden"></a>maximumAITurnRate <a href="../Source_gameplay/vehiclemountedturret.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> maximumAITurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maximumClientDisplayTurnRate" class="hidden"></a>maximumClientDisplayTurnRate <a href="../Source_gameplay/vehiclemountedturret.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> maximumClientDisplayTurnRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maximumPitch" class="hidden"></a>maximumPitch <a href="../Source_gameplay/vehiclemountedturret.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> maximumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_minimumPitch" class="hidden"></a>minimumPitch <a href="../Source_gameplay/vehiclemountedturret.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> minimumPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownerVehicle" class="hidden"></a>ownerVehicle <a href="../Source_gameplay/vehiclemountedturret.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span> ownerVehicle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pitchPivotBone" class="hidden"></a>pitchPivotBone <a href="../Source_gameplay/vehiclemountedturret.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> pitchPivotBone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pivotBone" class="hidden"></a>pivotBone <a href="../Source_gameplay/vehiclemountedturret.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> pivotBone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_positionIndex" class="hidden"></a>positionIndex <a href="../Source_gameplay/vehiclemountedturret.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> <span class="source_type">positionIndex</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_positionType" class="hidden"></a>positionType <a href="../Source_gameplay/vehiclemountedturret.html#25" class="small">Source code</a></h4>
+<div class="declaration">var protected <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>.<span class="source_type"><a href="../gameplay/vehicle.html#VehiclePositionType" class="source">VehiclePositionType</a></span> positionType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_thirdPersonRotationType" class="hidden"></a>thirdPersonRotationType <a href="../Source_gameplay/vehiclemountedturret.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> thirdPersonRotationType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretBone" class="hidden"></a>turretBone <a href="../Source_gameplay/vehiclemountedturret.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> turretBone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretOffsetRotation" class="hidden"></a>turretOffsetRotation <a href="../Source_gameplay/vehiclemountedturret.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> turretOffsetRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleSpaceClientDisplayRotation" class="hidden"></a>vehicleSpaceClientDisplayRotation <a href="../Source_gameplay/vehiclemountedturret.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> vehicleSpaceClientDisplayRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleSpaceRotation" class="hidden"></a>vehicleSpaceRotation <a href="../Source_gameplay/vehiclemountedturret.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> vehicleSpaceRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_vehicleSpaceRotationAI" class="hidden"></a>vehicleSpaceRotationAI <a href="../Source_gameplay/vehiclemountedturret.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> vehicleSpaceRotationAI;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_weapon" class="hidden"></a>weapon <a href="../Source_gameplay/vehiclemountedturret.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span> <span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_worldSpaceNoRollRotation" class="hidden"></a>worldSpaceNoRollRotation <a href="../Source_gameplay/vehiclemountedturret.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> worldSpaceNoRollRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_yawConstrained" class="hidden"></a>yawConstrained <a href="../Source_gameplay/vehiclemountedturret.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> yawConstrained;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_yawPositiveDirection" class="hidden"></a>yawPositiveDirection <a href="../Source_gameplay/vehiclemountedturret.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> yawPositiveDirection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_yawRange" class="hidden"></a>yawRange <a href="../Source_gameplay/vehiclemountedturret.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> yawRange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_yawStart" class="hidden"></a>yawStart <a href="../Source_gameplay/vehiclemountedturret.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> yawStart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_aimAdjustViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> aimAdjustViewRotation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#390" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> aimAdjustViewRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_altFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> altFire <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#314" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  altFire ( optional <span class="source_type">bool</span> fireOnce) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canTargetPoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canTargetPoint <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#406" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> canTargetPoint ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> targetLoc) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_clientOccupantEnter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> clientOccupantEnter <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#107" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  clientOccupantEnter ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc, <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> newDriver, <span class="source_type">int</span> <span class="source_type">positionIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_customFiredEffectProcessing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> customFiredEffectProcessing <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#423" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> customFiredEffectProcessing ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> destroyed <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#411" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayDebug <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#443" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  DisplayDebug ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, out <span class="source_type">float</span> YL, out <span class="source_type">float</span> YPos) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_doCustomFiredEffectProcessing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> doCustomFiredEffectProcessing <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#428" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  doCustomFiredEffectProcessing ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EyePosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EyePosition <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#288" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> EyePosition ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_faceRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> faceRotation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#102" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  faceRotation ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">newRotation</span>, <span class="source_type">float</span> <span class="source_type">deltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> fire <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#309" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  fire ( optional <span class="source_type">bool</span> fireOnce) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_firingMotor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> firingMotor <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#80" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/ifiringmotor.html" class="source">IFiringMotor</a></span> firingMotor ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getAlternateAimAdjustStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getAlternateAimAdjustStart <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#441" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  getAlternateAimAdjustStart ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">cameraRotation</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> newAimAdjustStart )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getControllingCharacter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getControllingCharacter <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#86" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> getControllingCharacter ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getDefaultOccupantRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getDefaultOccupantRotation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#354" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> getDefaultOccupantRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getDriver-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getDriver <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#94" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> getDriver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getEffectsBaseActor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getEffectsBaseActor <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#418" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> getEffectsBaseActor ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getEnergy-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getEnergy <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#233" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> getEnergy ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getFirstPersonEquippableLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getFirstPersonEquippableLocation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#373" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> getFirstPersonEquippableLocation ( <span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> subject) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getFirstPersonEquippableRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getFirstPersonEquippableRotation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#379" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> getFirstPersonEquippableRotation ( <span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> subject) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getKillerLabel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getKillerLabel <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#433" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">Name</span> getKillerLabel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getOut-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getOut <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#245" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  getOut ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getPhysicalAttachment-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getPhysicalAttachment <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#395" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> getPhysicalAttachment ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getProjectileSpawnLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getProjectileSpawnLocation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#338" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> getProjectileSpawnLocation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getThirdPersonEquippableAttachment-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getThirdPersonEquippableAttachment <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#384" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  getThirdPersonEquippableAttachment ( <span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> subject, out <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> attachTo, out <span class="source_type">name</span> boneName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getViewRotation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#359" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> getViewRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getWeapon <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#400" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span> getWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialise-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> initialise <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#164" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  initialise ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; turretWeaponClass, <span class="source_type">name</span> inTurretBone, <span class="source_type">float</span> inMaximumPitch, <span class="source_type">float</span> inMinimumPitch, <span class="source_type">bool</span> inYawConstrained,
+		<span class="source_type">float</span> inYawStart, <span class="source_type">float</span> inYawRange, <span class="source_type">bool</span> inYawPositiveDirection, <span class="source_type">float</span> inMaximumClientDisplayTurnRate, <span class="source_type">float</span> inMaximumAITurnRate) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onShotFiredNotification-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onShotFiredNotification <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#368" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onShotFiredNotification ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_postNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> postNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#118" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  postNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_postNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> postNetReceive <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#132" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  postNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_processMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> processMove <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#238" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  processMove ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> worldSpaceNoRollRotation_, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> vehicleSpaceRotation_) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_releaseAltFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> releaseAltFire <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#324" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  releaseAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_releaseFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> releaseFire <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#319" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  releaseFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setFirePressed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setFirePressed <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#334" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setFirePressed ( <span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> e, <span class="source_type">bool</span> pressed) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setPositionType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setPositionType <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#74" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  setPositionType ( <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>.<span class="source_type"><a href="../gameplay/vehicle.html#VehiclePositionType" class="source">VehiclePositionType</a></span> newPositionType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setViewRotation <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#344" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setViewRotation ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type">r</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_shouldFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> shouldFire <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#329" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> shouldFire ( <span class="source_type"><a href="../gameplay/equippable.html" class="source">Equippable</a></span> e) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_specialCalcView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> specialCalcView <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#257" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> specialCalcView ( out <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> ViewActor, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CameraLocation, out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">CameraRotation</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#197" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretCeaseFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> turretCeaseFire <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#301" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  turretCeaseFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_turretFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> turretFire <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#293" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  turretFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateParams-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateParams <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#153" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  updateParams ( <span class="source_type">float</span> inMaximumPitch, <span class="source_type">float</span> inMinimumPitch, <span class="source_type">float</span> inYawStart, <span class="source_type">float</span> inYawRange) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_useEnergy-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> useEnergy <span class="function_state"></span> <a href="../Source_gameplay/vehiclemountedturret.html#228" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  useEnergy ( <span class="source_type">float</span> <span class="source_type">amount</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DrawType = DT_None
+	RemoteRole = ROLE_SimulatedProxy
+	bHardAttach = true
+	bHidden = false
+	bCollideActors = false
+	bStatic = false
+	CollisionRadius = +<span class="source_int">0080.000000</span>
+	CollisionHeight = +<span class="source_int">0400.000000</span>
+	bCollideWhenPlacing = false
+	bOnlyAffectPawns = true
+	Physics = PHYS_None
+	bShouldBaseAtStartup = false
+	bNetInitialRotation = true
+	bSpecialCalcView = true
+	bBlockPlayers = false
+	bBlockActors = false
+	bCollideWorld = false
+	bRotateToDesired = false
+	bNetNotify = true
+	<span class="source_type">positionIndex</span> = -<span class="source_int">1</span>
+	bStasis = false
+
+	bAlwaysRelevant = false
+
+	bReplicateMovement = true
+
+	playerControllerState = <span class="source_string">"PlayerVehicleTurreting"</span>
+
+	AI_LOD_Level = AILOD_MINIMAL
+	peripheralVision = -<span class="source_int">1</span>				
+	peripheralVisionZAngle = <span class="source_int">3.14159</span>	
+
+	maximumClientDisplayTurnRate = <span class="source_int">8000</span>
+
+	maximumAITurnRate = <span class="source_int">12000</span>
+
+	bBlockHavok = false
+
+	bCanBeSensed = false
+
+	positionType = VP_NULL
+	localPositionType = VP_NULL
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/vehiclemountedturret.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#VehicleMountedTurret">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/vehiclemotor.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/vehiclespawnarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:38.965 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

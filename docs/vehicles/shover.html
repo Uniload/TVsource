@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Vehicles.SHover</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../vehicles/vehicles-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_vehicles/shover.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#SHover">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../vehicles/shelicopter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../vehicles/armadillo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#vehicles/shover.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../vehicles/vehicles-overview.html">Vehicles</a>.SHover</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/svehicle.html">SVehicle</a></dd>
+<dt>Modifiers</dt><dd>abstract native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/svehicle.html">SVehicle</a>
+         |   
+         +-- <a href="../vehicles/vehicles-overview.html">Vehicles</a>.<a href="../vehicles/shover.html">SHover</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../vehicles/hoverbike.html">HoverBike</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_BikeMPH" name="BikeMPH" title="go to the details">BikeMPH</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../vehicles/shover.html#HoverbikeState">HoverbikeState</a></td><td width="66%"><a href="#_BikeState" name="BikeState" title="go to the details">BikeState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNewBikeState" name="bNewBikeState" title="go to the details">bNewBikeState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#KRigidBodyState">KRigidBodyState</a></td><td width="66%"><a href="#_ChassisState" name="ChassisState" title="go to the details">ChassisState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_FrontThrustOffset" name="FrontThrustOffset" title="go to the details">FrontThrustOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">material</a></td><td width="66%"><a href="#_MPHMeterMaterial" name="MPHMeterMaterial" title="go to the details">MPHMeterMaterial</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_OutputThrust" name="OutputThrust" title="go to the details">OutputThrust</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_OutputTurn" name="OutputTurn" title="go to the details">OutputTurn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_RearThrustOffset" name="RearThrustOffset" title="go to the details">RearThrustOffset</a></td></tr>
+<tr><th colspan="2" class="small">SHover</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_BankDampFactor" name="BankDampFactor" title="go to the details">BankDampFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_BankTorqueFactor" name="BankTorqueFactor" title="go to the details">BankTorqueFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ForwardDampFactor" name="ForwardDampFactor" title="go to the details">ForwardDampFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HoverCheckDist" name="HoverCheckDist" title="go to the details">HoverCheckDist</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HoverPenScale" name="HoverPenScale" title="go to the details">HoverPenScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HoverSoftness" name="HoverSoftness" title="go to the details">HoverSoftness</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LateralDampFactor" name="LateralDampFactor" title="go to the details">LateralDampFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxSteerTorque" name="MaxSteerTorque" title="go to the details">MaxSteerTorque</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxThrust" name="MaxThrust" title="go to the details">MaxThrust</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MPHMeterPosX" name="MPHMeterPosX" title="go to the details">MPHMeterPosX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MPHMeterPosY" name="MPHMeterPosY" title="go to the details">MPHMeterPosY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MPHMeterScale" name="MPHMeterScale" title="go to the details">MPHMeterScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MPHMeterSizeY" name="MPHMeterSizeY" title="go to the details">MPHMeterSizeY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PitchDampFactor" name="PitchDampFactor" title="go to the details">PitchDampFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PitchTorqueFactor" name="PitchTorqueFactor" title="go to the details">PitchTorqueFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SteerDampFactor" name="SteerDampFactor" title="go to the details">SteerDampFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_StopThreshold" name="StopThreshold" title="go to the details">StopThreshold</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_UprightDamping" name="UprightDamping" title="go to the details">UprightDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_UprightStiffness" name="UprightStiffness" title="go to the details">UprightStiffness</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/pawn.html#abilities">abilities</a>, <a href="../engine/pawn.html#AccelRate">AccelRate</a>, <a href="../engine/pawn.html#AirControl">AirControl</a>, <a href="../engine/pawn.html#AirSpeed">AirSpeed</a>, <a href="../engine/pawn.html#AIScriptTag">AIScriptTag</a>, <a href="../engine/pawn.html#AI_LOD_Level">AI_LOD_Level</a>, <a href="../engine/pawn.html#AI_LOD_LevelOrig">AI_LOD_LevelOrig</a>, <a href="../engine/pawn.html#Alertness">Alertness</a>, <a href="../engine/pawn.html#Anchor">Anchor</a>, <a href="../engine/pawn.html#AnimAction">AnimAction</a>, <a href="../engine/pawn.html#AppliedBob">AppliedBob</a>, <a href="../engine/pawn.html#AvgPhysicsTime">AvgPhysicsTime</a>, <a href="../engine/pawn.html#BackwardStrafeBias">BackwardStrafeBias</a>, <a href="../engine/pawn.html#bAdjacentZoneHearing">bAdjacentZoneHearing</a>, <a href="../engine/pawn.html#bAmbientCreature">bAmbientCreature</a>, <a href="../engine/pawn.html#BaseEyeHeight">BaseEyeHeight</a>, <a href="../engine/pawn.html#BaseMovementRate">BaseMovementRate</a>, <a href="../engine/pawn.html#bAvoidLedges">bAvoidLedges</a>, <a href="../engine/pawn.html#bCachedRelevant">bCachedRelevant</a>, <a href="../engine/pawn.html#bCanBeBaseForPawns">bCanBeBaseForPawns</a>, <a href="../engine/pawn.html#bCanClimbLadders">bCanClimbLadders</a>, <a href="../engine/pawn.html#bCanCrouch">bCanCrouch</a>, <a href="../engine/pawn.html#bCanDoubleJump">bCanDoubleJump</a>, <a href="../engine/pawn.html#bCanFly">bCanFly</a>, <a href="../engine/pawn.html#bCanJump">bCanJump</a>, <a href="../engine/pawn.html#bCanStrafe">bCanStrafe</a>, <a href="../engine/pawn.html#bCanSwim">bCanSwim</a>, <a href="../engine/pawn.html#bCanWalk">bCanWalk</a>, <a href="../engine/pawn.html#bCanWalkOffLedges">bCanWalkOffLedges</a>, <a href="../engine/pawn.html#bClientCollision">bClientCollision</a>, <a href="../engine/pawn.html#bCouldSeeLastTick">bCouldSeeLastTick</a>, <a href="../engine/pawn.html#bCountJumps">bCountJumps</a>, <a href="../engine/pawn.html#bCrawler">bCrawler</a>, <a href="../engine/pawn.html#bDirectHitWall">bDirectHitWall</a>, <a href="../engine/pawn.html#bDontPossess">bDontPossess</a>, <a href="../engine/pawn.html#bGroundNavigationObstruction">bGroundNavigationObstruction</a>, <a href="../engine/pawn.html#bHavokCharacterCollisionExtraRadius">bHavokCharacterCollisionExtraRadius</a>, <a href="../engine/pawn.html#bHavokCharacterCollisions">bHavokCharacterCollisions</a>, <a href="../engine/pawn.html#bHavokInitCalled">bHavokInitCalled</a>, <a href="../engine/pawn.html#bHideRegularHUD">bHideRegularHUD</a>, <a href="../engine/pawn.html#bIgnoreForces">bIgnoreForces</a>, <a href="../engine/pawn.html#bInitializeAnimation">bInitializeAnimation</a>, <a href="../engine/pawn.html#bInvulnerableBody">bInvulnerableBody</a>, <a href="../engine/pawn.html#bIsCrouched">bIsCrouched</a>, <a href="../engine/pawn.html#bIsFemale">bIsFemale</a>, <a href="../engine/pawn.html#bIsTyping">bIsTyping</a>, <a href="../engine/pawn.html#bIsWalking">bIsWalking</a>, <a href="../engine/pawn.html#bJumpCapable">bJumpCapable</a>, <a href="../engine/pawn.html#bJustLanded">bJustLanded</a>, <a href="../engine/pawn.html#BlendChangeTime">BlendChangeTime</a>, <a href="../engine/pawn.html#BloodEffect">BloodEffect</a>, <a href="../engine/pawn.html#bLOSHearing">bLOSHearing</a>, <a href="../engine/pawn.html#bMuffledHearing">bMuffledHearing</a>, <a href="../engine/pawn.html#bNoJumpAdjust">bNoJumpAdjust</a>, <a href="../engine/pawn.html#bNotifiedDeathListeners">bNotifiedDeathListeners</a>, <a href="../engine/pawn.html#bNoVelocityUpdate">bNoVelocityUpdate</a>, <a href="../engine/pawn.html#bNoWeaponFiring">bNoWeaponFiring</a>, <a href="../engine/pawn.html#Bob">Bob</a>, <a href="../engine/pawn.html#bobtime">bobtime</a>, <a href="../engine/pawn.html#bPhysicsAnimUpdate">bPhysicsAnimUpdate</a>, <a href="../engine/pawn.html#bPlayedDeath">bPlayedDeath</a>, <a href="../engine/pawn.html#BreathTime">BreathTime</a>, <a href="../engine/pawn.html#bReducedSpeed">bReducedSpeed</a>, <a href="../engine/pawn.html#bRollToDesired">bRollToDesired</a>, <a href="../engine/pawn.html#bSameZoneHearing">bSameZoneHearing</a>, <a href="../engine/pawn.html#bSendsDamagedMessages">bSendsDamagedMessages</a>, <a href="../engine/pawn.html#bSimGravityDisabled">bSimGravityDisabled</a>, <a href="../engine/pawn.html#bSimulateGravity">bSimulateGravity</a>, <a href="../engine/pawn.html#bSpecialCalcView">bSpecialCalcView</a>, <a href="../engine/pawn.html#bSpecialHUD">bSpecialHUD</a>, <a href="../engine/pawn.html#bSteadyFiring">bSteadyFiring</a>, <a href="../engine/pawn.html#bStopAtLedges">bStopAtLedges</a>, <a href="../engine/pawn.html#bThumped">bThumped</a>, <a href="../engine/pawn.html#bTryToUncrouch">bTryToUncrouch</a>, <a href="../engine/pawn.html#bUpAndOut">bUpAndOut</a>, <a href="../engine/pawn.html#bUpdateEyeHeight">bUpdateEyeHeight</a>, <a href="../engine/pawn.html#bUpdatingDisplay">bUpdatingDisplay</a>, <a href="../engine/pawn.html#bUseCompressedPosition">bUseCompressedPosition</a>, <a href="../engine/pawn.html#bWantsToCrouch">bWantsToCrouch</a>, <a href="../engine/pawn.html#bWarping">bWarping</a>, <a href="../engine/pawn.html#bWasCrouched">bWasCrouched</a>, <a href="../engine/pawn.html#bWasOnGround">bWasOnGround</a>, <a href="../engine/pawn.html#bWasWalking">bWasWalking</a>, <a href="../engine/pawn.html#bWeaponBob">bWeaponBob</a>, <a href="../engine/pawn.html#CharacterAI">CharacterAI</a>, <a href="../engine/pawn.html#ConstantAcceleration">ConstantAcceleration</a>, <a href="../engine/pawn.html#Controller">Controller</a>, <a href="../engine/pawn.html#ControllerClassName">ControllerClassName</a>, <a href="../engine/pawn.html#CrouchedPct">CrouchedPct</a>, <a href="../engine/pawn.html#CrouchHeight">CrouchHeight</a>, <a href="../engine/pawn.html#CrouchRadius">CrouchRadius</a>, <a href="../engine/pawn.html#DamageScaling">DamageScaling</a>, <a href="../engine/pawn.html#DesiredSpeed">DesiredSpeed</a>, <a href="../engine/pawn.html#DestinationOffset">DestinationOffset</a>, <a href="../engine/pawn.html#EyeHeight">EyeHeight</a>, <a href="../engine/pawn.html#Floor">Floor</a>, <a href="../engine/pawn.html#ForwardStrafeBias">ForwardStrafeBias</a>, <a href="../engine/pawn.html#goals">goals</a>, <a href="../engine/pawn.html#GroundSpeed">GroundSpeed</a>, <a href="../engine/pawn.html#HeadAI">HeadAI</a>, <a href="../engine/pawn.html#HeadScale">HeadScale</a>, <a href="../engine/pawn.html#HeadVolume">HeadVolume</a>, <a href="../engine/pawn.html#Health">Health</a>, <a href="../engine/pawn.html#HearingThreshold">HearingThreshold</a>, <a href="../engine/pawn.html#HitDamageType">HitDamageType</a>, <a href="../engine/pawn.html#JumpZ">JumpZ</a>, <a href="../engine/pawn.html#LadderSpeed">LadderSpeed</a>, <a href="../engine/pawn.html#LandBob">LandBob</a>, <a href="../engine/pawn.html#LandMovementState">LandMovementState</a>, <a href="../engine/pawn.html#LastAnchor">LastAnchor</a>, <a href="../engine/pawn.html#LastPainSound">LastPainSound</a>, <a href="../engine/pawn.html#LastPainTime">LastPainTime</a>, <a href="../engine/pawn.html#LastRealViewer">LastRealViewer</a>, <a href="../engine/pawn.html#LastStartSpot">LastStartSpot</a>, <a href="../engine/pawn.html#LastStartTime">LastStartTime</a>, <a href="../engine/pawn.html#LastValidAnchorTime">LastValidAnchorTime</a>, <a href="../engine/pawn.html#LastViewer">LastViewer</a>, <a href="../engine/pawn.html#logDLM">logDLM</a>, <a href="../engine/pawn.html#logNavigationSystem">logNavigationSystem</a>, <a href="../engine/pawn.html#logTyrion">logTyrion</a>, <a href="../engine/pawn.html#LowGoreBlood">LowGoreBlood</a>, <a href="../engine/pawn.html#MaxFallSpeed">MaxFallSpeed</a>, <a href="../engine/pawn.html#MeleeRange">MeleeRange</a>, <a href="../engine/pawn.html#MenuName">MenuName</a>, <a href="../engine/pawn.html#MovementAI">MovementAI</a>, <a href="../engine/pawn.html#MovementAnims[4]">MovementAnims[4]</a>, <a href="../engine/pawn.html#MovementBlendStartTime">MovementBlendStartTime</a>, <a href="../engine/pawn.html#movementSimProxyPending">movementSimProxyPending</a>, <a href="../engine/pawn.html#movementSimProxyPosition">movementSimProxyPosition</a>, <a href="../engine/pawn.html#movementSimProxyRotation">movementSimProxyRotation</a>, <a href="../engine/pawn.html#movementSimProxyVelocity">movementSimProxyVelocity</a>, <a href="../engine/pawn.html#NetRelevancyTime">NetRelevancyTime</a>, <a href="../engine/pawn.html#nextPawn">nextPawn</a>, <a href="../engine/pawn.html#noise1loudness">noise1loudness</a>, <a href="../engine/pawn.html#noise1other">noise1other</a>, <a href="../engine/pawn.html#noise1spot">noise1spot</a>, <a href="../engine/pawn.html#noise1time">noise1time</a>, <a href="../engine/pawn.html#noise2loudness">noise2loudness</a>, <a href="../engine/pawn.html#noise2other">noise2other</a>, <a href="../engine/pawn.html#noise2spot">noise2spot</a>, <a href="../engine/pawn.html#noise2time">noise2time</a>, <a href="../engine/pawn.html#OldAcceleration">OldAcceleration</a>, <a href="../engine/pawn.html#OldPhysics">OldPhysics</a>, <a href="../engine/pawn.html#OldRotYaw">OldRotYaw</a>, <a href="../engine/pawn.html#OldZ">OldZ</a>, <a href="../engine/pawn.html#OnLadder">OnLadder</a>, <a href="../engine/pawn.html#OwnerName">OwnerName</a>, <a href="../engine/pawn.html#PawnPosition">PawnPosition</a>, <a href="../engine/pawn.html#PeripheralVision">PeripheralVision</a>, <a href="../engine/pawn.html#PlayerReplicationInfo">PlayerReplicationInfo</a>, <a href="../engine/pawn.html#ReducedDamageType">ReducedDamageType</a>, <a href="../engine/pawn.html#SerpentineDist">SerpentineDist</a>, <a href="../engine/pawn.html#SerpentineTime">SerpentineTime</a>, <a href="../engine/pawn.html#Shadow">Shadow</a>, <a href="../engine/pawn.html#SightRadius">SightRadius</a>, <a href="../engine/pawn.html#SoundDampening">SoundDampening</a>, <a href="../engine/pawn.html#SpawnTime">SpawnTime</a>, <a href="../engine/pawn.html#SplashTime">SplashTime</a>, <a href="../engine/pawn.html#TakeHitLocation">TakeHitLocation</a>, <a href="../engine/pawn.html#TearOffMomentum">TearOffMomentum</a>, <a href="../engine/pawn.html#TurnLeftAnim">TurnLeftAnim</a>, <a href="../engine/pawn.html#TurnRightAnim">TurnRightAnim</a>, <a href="../engine/pawn.html#UncrouchTime">UncrouchTime</a>, <a href="../engine/pawn.html#UnderWaterTime">UnderWaterTime</a>, <a href="../engine/pawn.html#Visibility">Visibility</a>, <a href="../engine/pawn.html#VisionCounter">VisionCounter</a>, <a href="../engine/pawn.html#VisionUpdateRange">VisionUpdateRange</a>, <a href="../engine/pawn.html#WalkBob">WalkBob</a>, <a href="../engine/pawn.html#WalkingPct">WalkingPct</a>, <a href="../engine/pawn.html#WaterMovementState">WaterMovementState</a>, <a href="../engine/pawn.html#WaterSpeed">WaterSpeed</a>, <a href="../engine/pawn.html#WeaponAI">WeaponAI</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_HoverbikeState" name="HoverbikeState" title="go to the details">HoverbikeState</a><br /><span class="small">ChassisPosition, ChassisQuaternion, ChassisLinVel, ChassisAngVel, ServerThrust, ServerTurn, bNewState</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/pawn.html#HavokCharacterObjectInteractionEvent">HavokCharacterObjectInteractionEvent</a>, <a href="../engine/pawn.html#HavokCharacterObjectInteractionResult">HavokCharacterObjectInteractionResult</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawHUD-" name="DrawHUD" title="go to the details">DrawHUD</a> (<a href="../engine/canvas.html">Canvas</a> Canvas))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_KUpdateState-" name="KUpdateState" title="go to the details">KUpdateState</a> (out <a href="../engine/actor.html#KRigidBodyState">KRigidBodyState</a> newState))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SVehicleUpdateParams-" name="SVehicleUpdateParams" title="go to the details">SVehicleUpdateParams</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/pawn.html#AddPawn">AddPawn</a>, <a href="../engine/pawn.html#AddVelocity">AddVelocity</a>, <a href="../engine/pawn.html#AdjustedStrength">AdjustedStrength</a>, <a href="../engine/pawn.html#AnimEnd">AnimEnd</a>, <a href="../engine/pawn.html#ApplyDamage">ApplyDamage</a>, <a href="../engine/pawn.html#BaseChange">BaseChange</a>, <a href="../engine/pawn.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="../engine/pawn.html#BeginState">BeginState</a>, <a href="../engine/pawn.html#BreathTimer">BreathTimer</a>, <a href="../engine/pawn.html#CanDoubleJump">CanDoubleJump</a>, <a href="../engine/pawn.html#CanGrabLadder">CanGrabLadder</a>, <a href="../engine/pawn.html#CannotJumpNow">CannotJumpNow</a>, <a href="../engine/pawn.html#CanSee">CanSee</a>, <a href="../engine/pawn.html#CanSplash">CanSplash</a>, <a href="../engine/pawn.html#CanThrowWeapon">CanThrowWeapon</a>, <a href="../engine/pawn.html#CanTrigger">CanTrigger</a>, <a href="../engine/pawn.html#ChangeAnimation">ChangeAnimation</a>, <a href="../engine/pawn.html#ChangedWeapon">ChangedWeapon</a>, <a href="../engine/pawn.html#checkAlive">checkAlive</a>, <a href="../engine/pawn.html#CheckBob">CheckBob</a>, <a href="../engine/pawn.html#checkDead">checkDead</a>, <a href="../engine/pawn.html#CheckWaterJump">CheckWaterJump</a>, <a href="../engine/pawn.html#ChunkUp">ChunkUp</a>, <a href="../engine/pawn.html#classConstruct">classConstruct</a>, <a href="../engine/pawn.html#ClientDying">ClientDying</a>, <a href="../engine/pawn.html#ClientMessage">ClientMessage</a>, <a href="../engine/pawn.html#ClientReStart">ClientReStart</a>, <a href="../engine/pawn.html#ClientSetLocation">ClientSetLocation</a>, <a href="../engine/pawn.html#ClientSetRotation">ClientSetRotation</a>, <a href="../engine/pawn.html#ClimbLadder">ClimbLadder</a>, <a href="../engine/pawn.html#CreateInventory">CreateInventory</a>, <a href="../engine/pawn.html#Destroyed">Destroyed</a>, <a href="../engine/pawn.html#Died">Died</a>, <a href="../engine/pawn.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/pawn.html#Dodge">Dodge</a>, <a href="../engine/pawn.html#DoDoubleJump">DoDoubleJump</a>, <a href="../engine/pawn.html#DoJump">DoJump</a>, <a href="../engine/pawn.html#DrawHUD">DrawHUD</a>, <a href="../engine/pawn.html#DropToGround">DropToGround</a>, <a href="../engine/pawn.html#EncroachedBy">EncroachedBy</a>, <a href="../engine/pawn.html#EncroachingOn">EncroachingOn</a>, <a href="../engine/pawn.html#EndClimbLadder">EndClimbLadder</a>, <a href="../engine/pawn.html#EndCrouch">EndCrouch</a>, <a href="../engine/pawn.html#EyePosition">EyePosition</a>, <a href="../engine/pawn.html#FaceRotation">FaceRotation</a>, <a href="../engine/pawn.html#Falling">Falling</a>, <a href="../engine/pawn.html#FinishedInterpolation">FinishedInterpolation</a>, <a href="../engine/pawn.html#ForceCrouch">ForceCrouch</a>, <a href="../engine/pawn.html#Gasp">Gasp</a>, <a href="../engine/pawn.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../engine/pawn.html#GetKillerController">GetKillerController</a>, <a href="../engine/pawn.html#GetViewDirection">GetViewDirection</a>, <a href="../engine/pawn.html#GetViewPoint">GetViewPoint</a>, <a href="../engine/pawn.html#GetViewRotation">GetViewRotation</a>, <a href="../engine/pawn.html#Gibbed">Gibbed</a>, <a href="../engine/pawn.html#gibbedBy">gibbedBy</a>, <a href="../engine/pawn.html#GiveWeapon">GiveWeapon</a>, <a href="../engine/pawn.html#groundPredictedLocation">groundPredictedLocation</a>, <a href="../engine/pawn.html#HavokCharacterCollision">HavokCharacterCollision</a>, <a href="../engine/pawn.html#HeadVolumeChange">HeadVolumeChange</a>, <a href="../engine/pawn.html#HitWall">HitWall</a>, <a href="../engine/pawn.html#IgnoresSeenPawnsOfType">IgnoresSeenPawnsOfType</a>, <a href="../engine/pawn.html#InCurrentCombo">InCurrentCombo</a>, <a href="../engine/pawn.html#InGodMode">InGodMode</a>, <a href="../engine/pawn.html#isAlive">isAlive</a>, <a href="../engine/pawn.html#IsFirstPerson">IsFirstPerson</a>, <a href="../engine/pawn.html#IsHumanControlled">IsHumanControlled</a>, <a href="../engine/pawn.html#IsInPain">IsInPain</a>, <a href="../engine/pawn.html#IsLocallyControlled">IsLocallyControlled</a>, <a href="../engine/pawn.html#IsPlayerPawn">IsPlayerPawn</a>, <a href="../engine/pawn.html#JumpOffPawn">JumpOffPawn</a>, <a href="../engine/pawn.html#JumpOutOfWater">JumpOutOfWater</a>, <a href="../engine/pawn.html#KilledBy">KilledBy</a>, <a href="../engine/pawn.html#Landed">Landed</a>, <a href="../engine/pawn.html#LandThump">LandThump</a>, <a href="../engine/pawn.html#LieStill">LieStill</a>, <a href="../engine/pawn.html#LineOfSightTo">LineOfSightTo</a>, <a href="../engine/pawn.html#ModifyVelocity">ModifyVelocity</a>, <a href="../engine/pawn.html#NextItem">NextItem</a>, <a href="../engine/pawn.html#NotifyKilled">NotifyKilled</a>, <a href="../engine/pawn.html#NotifyPawnDeathListeners">NotifyPawnDeathListeners</a>, <a href="../engine/pawn.html#PlayDying">PlayDying</a>, <a href="../engine/pawn.html#PlayDyingSound">PlayDyingSound</a>, <a href="../engine/pawn.html#PlayFalling">PlayFalling</a>, <a href="../engine/pawn.html#PlayFiring">PlayFiring</a>, <a href="../engine/pawn.html#PlayHit">PlayHit</a>, <a href="../engine/pawn.html#PlayJump">PlayJump</a>, <a href="../engine/pawn.html#PlayLanded">PlayLanded</a>, <a href="../engine/pawn.html#PlayLandingAnimation">PlayLandingAnimation</a>, <a href="../engine/pawn.html#PlayMoverHitSound">PlayMoverHitSound</a>, <a href="../engine/pawn.html#PlayMoving">PlayMoving</a>, <a href="../engine/pawn.html#PlayNextAnimation">PlayNextAnimation</a>, <a href="../engine/pawn.html#PlayTakeHit">PlayTakeHit</a>, <a href="../engine/pawn.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="../engine/pawn.html#PlayVictoryAnimation">PlayVictoryAnimation</a>, <a href="../engine/pawn.html#PlayWaiting">PlayWaiting</a>, <a href="../engine/pawn.html#PossessedBy">PossessedBy</a>, <a href="../engine/pawn.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/pawn.html#PostLoadGame">PostLoadGame</a>, <a href="../engine/pawn.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../engine/pawn.html#PostTakeDamage">PostTakeDamage</a>, <a href="../engine/pawn.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/pawn.html#predictedLocation">predictedLocation</a>, <a href="../engine/pawn.html#PressingAltFire">PressingAltFire</a>, <a href="../engine/pawn.html#PressingFire">PressingFire</a>, <a href="../engine/pawn.html#ReachedDestination">ReachedDestination</a>, <a href="../engine/pawn.html#ReceiveLocalizedMessage">ReceiveLocalizedMessage</a>, <a href="../engine/pawn.html#ReduceCylinder">ReduceCylinder</a>, <a href="../engine/pawn.html#rematchGoals">rematchGoals</a>, <a href="../engine/pawn.html#RemovePawn">RemovePawn</a>, <a href="../engine/pawn.html#Reset">Reset</a>, <a href="../engine/pawn.html#SetAnimAction">SetAnimAction</a>, <a href="../engine/pawn.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="../engine/pawn.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="../engine/pawn.html#SetHeadScale">SetHeadScale</a>, <a href="../engine/pawn.html#setLimitedTimeLODActivation">setLimitedTimeLODActivation</a>, <a href="../engine/pawn.html#SetMesh">SetMesh</a>, <a href="../engine/pawn.html#SetMovementPhysics">SetMovementPhysics</a>, <a href="../engine/pawn.html#SetViewRotation">SetViewRotation</a>, <a href="../engine/pawn.html#SetWalking">SetWalking</a>, <a href="../engine/pawn.html#ShootSpecial">ShootSpecial</a>, <a href="../engine/pawn.html#ShouldCrouch">ShouldCrouch</a>, <a href="../engine/pawn.html#SpecialCalcView">SpecialCalcView</a>, <a href="../engine/pawn.html#StartCrouch">StartCrouch</a>, <a href="../engine/pawn.html#StopPlayFiring">StopPlayFiring</a>, <a href="../engine/pawn.html#SwitchToLastWeapon">SwitchToLastWeapon</a>, <a href="../engine/pawn.html#TakeDrowningDamage">TakeDrowningDamage</a>, <a href="../engine/pawn.html#TakeFallingDamage">TakeFallingDamage</a>, <a href="../engine/pawn.html#Timer">Timer</a>, <a href="../engine/pawn.html#TossWeapon">TossWeapon</a>, <a href="../engine/pawn.html#TouchingWaterVolume">TouchingWaterVolume</a>, <a href="../engine/pawn.html#Trigger">Trigger</a>, <a href="../engine/pawn.html#UnPossessed">UnPossessed</a>, <a href="../engine/pawn.html#UpdateEyeHeight">UpdateEyeHeight</a>, <a href="../engine/pawn.html#UpdateRocketAcceleration">UpdateRocketAcceleration</a>, <a href="../engine/pawn.html#WasPlayerPawn">WasPlayerPawn</a>, <a href="../engine/pawn.html#WeaponBob">WeaponBob</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BikeMPH" class="hidden"></a>BikeMPH <a href="../Source_vehicles/shover.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> BikeMPH;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BikeState" class="hidden"></a>BikeState <a href="../Source_vehicles/shover.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../vehicles/shover.html#HoverbikeState" class="source">HoverbikeState</a></span> BikeState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNewBikeState" class="hidden"></a>bNewBikeState <a href="../Source_vehicles/shover.html#69" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNewBikeState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChassisState" class="hidden"></a>ChassisState <a href="../Source_vehicles/shover.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html#KRigidBodyState" class="source">KRigidBodyState</a></span> ChassisState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FrontThrustOffset" class="hidden"></a>FrontThrustOffset <a href="../Source_vehicles/shover.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> FrontThrustOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MPHMeterMaterial" class="hidden"></a>MPHMeterMaterial <a href="../Source_vehicles/shover.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">material</a></span> MPHMeterMaterial;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OutputThrust" class="hidden"></a>OutputThrust <a href="../Source_vehicles/shover.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> OutputThrust;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OutputTurn" class="hidden"></a>OutputTurn <a href="../Source_vehicles/shover.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> OutputTurn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RearThrustOffset" class="hidden"></a>RearThrustOffset <a href="../Source_vehicles/shover.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> RearThrustOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">SHover</h3>
+<h4><a name="_BankDampFactor" class="hidden"></a>BankDampFactor <a href="../Source_vehicles/shover.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> BankDampFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BankTorqueFactor" class="hidden"></a>BankTorqueFactor <a href="../Source_vehicles/shover.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> BankTorqueFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ForwardDampFactor" class="hidden"></a>ForwardDampFactor <a href="../Source_vehicles/shover.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> ForwardDampFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HoverCheckDist" class="hidden"></a>HoverCheckDist <a href="../Source_vehicles/shover.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> HoverCheckDist;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HoverPenScale" class="hidden"></a>HoverPenScale <a href="../Source_vehicles/shover.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> HoverPenScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HoverSoftness" class="hidden"></a>HoverSoftness <a href="../Source_vehicles/shover.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> HoverSoftness;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LateralDampFactor" class="hidden"></a>LateralDampFactor <a href="../Source_vehicles/shover.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> LateralDampFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxSteerTorque" class="hidden"></a>MaxSteerTorque <a href="../Source_vehicles/shover.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> MaxSteerTorque;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxThrust" class="hidden"></a>MaxThrust <a href="../Source_vehicles/shover.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> MaxThrust;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MPHMeterPosX" class="hidden"></a>MPHMeterPosX <a href="../Source_vehicles/shover.html#42" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> MPHMeterPosX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MPHMeterPosY" class="hidden"></a>MPHMeterPosY <a href="../Source_vehicles/shover.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> MPHMeterPosY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MPHMeterScale" class="hidden"></a>MPHMeterScale <a href="../Source_vehicles/shover.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> MPHMeterScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MPHMeterSizeY" class="hidden"></a>MPHMeterSizeY <a href="../Source_vehicles/shover.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> MPHMeterSizeY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PitchDampFactor" class="hidden"></a>PitchDampFactor <a href="../Source_vehicles/shover.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> PitchDampFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PitchTorqueFactor" class="hidden"></a>PitchTorqueFactor <a href="../Source_vehicles/shover.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> PitchTorqueFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SteerDampFactor" class="hidden"></a>SteerDampFactor <a href="../Source_vehicles/shover.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> SteerDampFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopThreshold" class="hidden"></a>StopThreshold <a href="../Source_vehicles/shover.html#38" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> StopThreshold;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UprightDamping" class="hidden"></a>UprightDamping <a href="../Source_vehicles/shover.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> UprightDamping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UprightStiffness" class="hidden"></a>UprightStiffness <a href="../Source_vehicles/shover.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../vehicles/shover.html" class="source">SHover</a></span>) <span class="source_type">float</span> UprightStiffness;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_HoverbikeState" class="hidden"></a>HoverbikeState <a href="../Source_vehicles/shover.html#54" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../vehicles/shover.html#HoverbikeState" class="source">HoverbikeState</a></span><br />
+{<blockquote>var <span class="source_type">int</span> bNewState;<br />
+var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span> ChassisAngVel;<br />
+var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span> ChassisLinVel;<br />
+var <span class="source_type"><a href="../engine/actor.html#KRBVec" class="source">KRBVec</a></span> ChassisPosition;<br />
+var <span class="source_type"><a href="../core/object.html#Quat" class="source">Quat</a></span> ChassisQuaternion;<br />
+var <span class="source_type">float</span> ServerThrust;<br />
+var <span class="source_type">float</span> ServerTurn;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Destroyed <span class="function_state"></span> <a href="../Source_vehicles/shover.html#114" class="small">Source code</a></h4>
+<div class="declaration">simulated event  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawHUD-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawHUD <span class="function_state"></span> <a href="../Source_vehicles/shover.html#145" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DrawHUD ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KUpdateState-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> KUpdateState <span class="function_state"></span> <a href="../Source_vehicles/shover.html#77" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> KUpdateState ( out <span class="source_type"><a href="../engine/actor.html#KRigidBodyState" class="source">KRigidBodyState</a></span> newState) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_vehicles/shover.html#90" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SVehicleUpdateParams-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SVehicleUpdateParams <span class="function_state"></span> <a href="../Source_vehicles/shover.html#126" class="small">Source code</a></h4>
+<div class="declaration">simulated event  SVehicleUpdateParams ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bSpecialHUD=true
+
+	MPHMeterMaterial=<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span><span class="source_name">'InterfaceContent.BorderBoxD'</span>
+	MPHMeterPosX=<span class="source_int">0.01</span>
+	MPHMeterPosY=<span class="source_int">0.9</span>
+	MPHMeterScale=<span class="source_int">70.0</span>
+	MPHMeterSizeY=<span class="source_int">0.05</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../vehicles/vehicles-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_vehicles/shover.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#SHover">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../vehicles/shelicopter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../vehicles/armadillo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:34.588 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

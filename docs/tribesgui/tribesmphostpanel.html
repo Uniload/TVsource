@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.TribesMPHostPanel</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesmphostpanel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesMPHostPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesmphintspanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribesmppanel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/tribesmphostpanel.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.TribesMPHostPanel</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tribesgui/tribesmppanel.html">TribesMPPanel</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/gui.html">GUI</a>
+   |   
+   +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guicomponent.html">GUIComponent</a>
+      |   
+      +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticomponent.html">GUIMultiComponent</a>
+         |   
+         +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guipanel.html">GUIPanel</a>
+            |   
+            +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a>
+               |   
+               +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesmppanel.html">TribesMPPanel</a>
+                  |   
+                  +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesmphostpanel.html">TribesMPHostPanel</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInitialized" name="bInitialized" title="go to the details">bInitialized</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_currentGameType" name="currentGameType" title="go to the details">currentGameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_currentMap" name="currentMap" title="go to the details">currentMap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;String&gt;</td><td width="66%"><a href="#_fileList" name="fileList" title="go to the details">fileList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;String&gt;</td><td width="66%"><a href="#_gameTypeDescriptions" name="gameTypeDescriptions" title="go to the details">gameTypeDescriptions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/canvas.html">Canvas</a></td><td width="66%"><a href="#_progressCanvas" name="progressCanvas" title="go to the details">progressCanvas</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/levelsummary.html">LevelSummary</a>&gt;</td><td width="66%"><a href="#_summaryList" name="summaryList" title="go to the details">summaryList</a></td></tr>
+<tr><th colspan="2" class="small">TribesGui</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_AdvancedButton" name="AdvancedButton" title="go to the details">AdvancedButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BadPassword" name="BadPassword" title="go to the details">BadPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicheckboxbutton.html">GUICheckboxButton</a></td><td width="66%"><a href="#_DedicatedButton" name="DedicatedButton" title="go to the details">DedicatedButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilabel.html">GUILabel</a></td><td width="66%"><a href="#_GameTypeDescriptionLabel" name="GameTypeDescriptionLabel" title="go to the details">GameTypeDescriptionLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilistbox.html">GUIListBox</a></td><td width="66%"><a href="#_GameTypeListBox" name="GameTypeListBox" title="go to the details">GameTypeListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilabel.html">GUILabel</a></td><td width="66%"><a href="#_MapDescriptionLabel" name="MapDescriptionLabel" title="go to the details">MapDescriptionLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilistbox.html">GUIListBox</a></td><td width="66%"><a href="#_MapListBox" name="MapListBox" title="go to the details">MapListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guieditbox.html">GUIEditBox</a></td><td width="66%"><a href="#_PasswordBox" name="PasswordBox" title="go to the details">PasswordBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiprogressbar.html">GUIProgressBar</a></td><td width="66%"><a href="#_progressBar" name="progressBar" title="go to the details">progressBar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guiimage.html">GUIImage</a></td><td width="66%"><a href="#_screenshotImage" name="screenshotImage" title="go to the details">screenshotImage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guieditbox.html">GUIEditBox</a></td><td width="66%"><a href="#_ServerNameBox" name="ServerNameBox" title="go to the details">ServerNameBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_StartServerButton" name="StartServerButton" title="go to the details">StartServerButton</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipanel.html#GC">GC</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GameTypeListOnChange-" name="GameTypeListOnChange" title="go to the details">GameTypeListOnChange</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_getSelectedGameInfoName-" name="getSelectedGameInfoName" title="go to the details">getSelectedGameInfoName</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitComponent-" name="InitComponent" title="go to the details">InitComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> MyOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnActivate-" name="InternalOnActivate" title="go to the details">InternalOnActivate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadGameTypes-" name="LoadGameTypes" title="go to the details">LoadGameTypes</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadLevelSummaries-" name="LoadLevelSummaries" title="go to the details">LoadLevelSummaries</a> (out array&lt;String&gt; levelFileList, out array<LevelSummary> levelSummaryList ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadMapList-" name="LoadMapList" title="go to the details">LoadMapList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MapListOnChange-" name="MapListOnChange" title="go to the details">MapListOnChange</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAdvancedClick-" name="OnAdvancedClick" title="go to the details">OnAdvancedClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnStartServerClick-" name="OnStartServerClick" title="go to the details">OnStartServerClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ProgressOnDraw-" name="ProgressOnDraw" title="go to the details">ProgressOnDraw</a> (<a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/tribesguipanel.html">TribesGUIPanel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/tribesguipanel.html#InitComponent">InitComponent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bInitialized" class="hidden"></a>bInitialized <a href="../Source_tribesgui/tribesmphostpanel.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bInitialized;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentGameType" class="hidden"></a>currentGameType <a href="../Source_tribesgui/tribesmphostpanel.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> currentGameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_currentMap" class="hidden"></a>currentMap <a href="../Source_tribesgui/tribesmphostpanel.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> currentMap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fileList" class="hidden"></a>fileList <a href="../Source_tribesgui/tribesmphostpanel.html#28" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">String</span>&gt; fileList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_gameTypeDescriptions" class="hidden"></a>gameTypeDescriptions <a href="../Source_tribesgui/tribesmphostpanel.html#29" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">String</span>&gt; gameTypeDescriptions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_progressCanvas" class="hidden"></a>progressCanvas <a href="../Source_tribesgui/tribesmphostpanel.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> progressCanvas;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_summaryList" class="hidden"></a>summaryList <a href="../Source_tribesgui/tribesmphostpanel.html#27" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>&gt; summaryList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">TribesGui</h3>
+<h4><a name="_AdvancedButton" class="hidden"></a>AdvancedButton <a href="../Source_tribesgui/tribesmphostpanel.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> AdvancedButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_BadPassword" class="hidden"></a>BadPassword <a href="../Source_tribesgui/tribesmphostpanel.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config localized <span class="source_type">string</span> BadPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DedicatedButton" class="hidden"></a>DedicatedButton <a href="../Source_tribesgui/tribesmphostpanel.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guicheckboxbutton.html" class="source">GUICheckboxButton</a></span> DedicatedButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameTypeDescriptionLabel" class="hidden"></a>GameTypeDescriptionLabel <a href="../Source_tribesgui/tribesmphostpanel.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span> GameTypeDescriptionLabel;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameTypeListBox" class="hidden"></a>GameTypeListBox <a href="../Source_tribesgui/tribesmphostpanel.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilistbox.html" class="source">GUIListBox</a></span> GameTypeListBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapDescriptionLabel" class="hidden"></a>MapDescriptionLabel <a href="../Source_tribesgui/tribesmphostpanel.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilabel.html" class="source">GUILabel</a></span> MapDescriptionLabel;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapListBox" class="hidden"></a>MapListBox <a href="../Source_tribesgui/tribesmphostpanel.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guilistbox.html" class="source">GUIListBox</a></span> MapListBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_PasswordBox" class="hidden"></a>PasswordBox <a href="../Source_tribesgui/tribesmphostpanel.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guieditbox.html" class="source">GUIEditBox</a></span> PasswordBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_progressBar" class="hidden"></a>progressBar <a href="../Source_tribesgui/tribesmphostpanel.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guiprogressbar.html" class="source">GUIProgressBar</a></span> progressBar;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_screenshotImage" class="hidden"></a>screenshotImage <a href="../Source_tribesgui/tribesmphostpanel.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guiimage.html" class="source">GUIImage</a></span> screenshotImage;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerNameBox" class="hidden"></a>ServerNameBox <a href="../Source_tribesgui/tribesmphostpanel.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guieditbox.html" class="source">GUIEditBox</a></span> ServerNameBox;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartServerButton" class="hidden"></a>StartServerButton <a href="../Source_tribesgui/tribesmphostpanel.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(TribesGui) private EditInline Config <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> StartServerButton;</div>
+<blockquote class="comment">
+A component of this page which has its behavior defined in the code for this page's class.
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_GameTypeListOnChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GameTypeListOnChange <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#257" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GameTypeListOnChange ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getSelectedGameInfoName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getSelectedGameInfoName <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#175" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> getSelectedGameInfoName ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitComponent <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#34" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnActivate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnActivate <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#270" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InternalOnActivate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadGameTypes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadGameTypes <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#141" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadGameTypes ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadLevelSummaries-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadLevelSummaries <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#52" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadLevelSummaries ( out array&lt;<span class="source_type">String</span>&gt; levelFileList, out array&lt;<span class="source_type"><a href="../engine/levelsummary.html" class="source">LevelSummary</a></span>&gt; <span class="source_type">levelSummaryList</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadMapList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadMapList <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#103" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadMapList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapListOnChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MapListOnChange <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#240" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MapListOnChange ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAdvancedClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAdvancedClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#235" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAdvancedClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnStartServerClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnStartServerClick <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#180" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnStartServerClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProgressOnDraw-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProgressOnDraw <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#46" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> ProgressOnDraw ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state"></span> <a href="../Source_tribesgui/tribesmphostpanel.html#288" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	OnActivate=InternalOnActivate
+	bInitialized=false
+	BadPassword=<span class="source_string">"The password contains invalid characters. You cannot use spaces or puncuation in the server password."</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/tribesmphostpanel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesMPHostPanel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/tribesmphintspanel.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/tribesmppanel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:36.637 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

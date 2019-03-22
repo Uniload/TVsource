@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - tmod.tmodPackEnergy</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tmod/tmod-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tmod/tmodpackenergy.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#tmodPackEnergy">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tmod/tmodmultiplayercharacter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tmod/tmodpackrepair.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tmod/tmodpackenergy.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tmod/tmod-overview.html">tmod</a>.tmodPackEnergy</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/energypack.html">EnergyPack</a></dd>
+<dt>Modifiers</dt><dd>config ( tribesmodSettings ) </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equipment.html">Equipment</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/pack.html">Pack</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/energypack.html">EnergyPack</a>
+            |   
+            +-- <a href="../tmod/tmod-overview.html">tmod</a>.<a href="../tmod/tmodpackenergy.html">tmodPackEnergy</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_charges" name="charges" title="go to the details">charges</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DEFAULTenergyBoost" name="DEFAULTenergyBoost" title="go to the details">DEFAULTenergyBoost</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DEFAULTenergyDuration" name="DEFAULTenergyDuration" title="go to the details">DEFAULTenergyDuration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TROCenergyBoost" name="TROCenergyBoost" title="go to the details">TROCenergyBoost</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TROCenergyDuration" name="TROCenergyDuration" title="go to the details">TROCenergyDuration</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/energypack.html">EnergyPack</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/energypack.html#boostImpulsePerSecond">boostImpulsePerSecond</a>, <a href="../gameplay/energypack.html#originalEnergyRechargeScale">originalEnergyRechargeScale</a>, <a href="../gameplay/energypack.html#rechargeScale">rechargeScale</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/pack.html">Pack</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/pack.html#activatingEffectName">activatingEffectName</a>, <a href="../gameplay/pack.html#activatingEffectStartedName">activatingEffectStartedName</a>, <a href="../gameplay/pack.html#activeEffectName">activeEffectName</a>, <a href="../gameplay/pack.html#activeEffectStartedName">activeEffectStartedName</a>, <a href="../gameplay/pack.html#alpha">alpha</a>, <a href="../gameplay/pack.html#bLocalActive">bLocalActive</a>, <a href="../gameplay/pack.html#cannnotBeUsedWhileTouchingInventoryStation">cannnotBeUsedWhileTouchingInventoryStation</a>, <a href="../gameplay/pack.html#chargedEffectName">chargedEffectName</a>, <a href="../gameplay/pack.html#deactivating">deactivating</a>, <a href="../gameplay/pack.html#deactivatingDuration">deactivatingDuration</a>, <a href="../gameplay/pack.html#deactivatingEffectName">deactivatingEffectName</a>, <a href="../gameplay/pack.html#deactivatingProgressedTime">deactivatingProgressedTime</a>, <a href="../gameplay/pack.html#durationSeconds">durationSeconds</a>, <a href="../gameplay/pack.html#heldBy">heldBy</a>, <a href="../gameplay/pack.html#localHeldBy">localHeldBy</a>, <a href="../gameplay/pack.html#localPackActivatedTrigger">localPackActivatedTrigger</a>, <a href="../gameplay/pack.html#localPackSetChargedTrigger">localPackSetChargedTrigger</a>, <a href="../gameplay/pack.html#packActivatedTrigger">packActivatedTrigger</a>, <a href="../gameplay/pack.html#packSetChargedTrigger">packSetChargedTrigger</a>, <a href="../gameplay/pack.html#passiveEffectName">passiveEffectName</a>, <a href="../gameplay/pack.html#progressedActivatingTime">progressedActivatingTime</a>, <a href="../gameplay/pack.html#progressedActiveTime">progressedActiveTime</a>, <a href="../gameplay/pack.html#progressedRechargingTime">progressedRechargingTime</a>, <a href="../gameplay/pack.html#rampUpTimeSeconds">rampUpTimeSeconds</a>, <a href="../gameplay/pack.html#rechargeTimeSeconds">rechargeTimeSeconds</a>, <a href="../gameplay/pack.html#rechargingAlpha">rechargingAlpha</a>, <a href="../gameplay/pack.html#thirdPersonMesh">thirdPersonMesh</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PreBeginPlay-" name="PreBeginPlay" title="go to the details">PreBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-Active" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state">Active</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/energypack.html">EnergyPack</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/energypack.html#applyPassiveEffect">applyPassiveEffect</a>, <a href="../gameplay/energypack.html#removePassiveEffect">removePassiveEffect</a>, <a href="../gameplay/energypack.html#tick">tick</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/pack.html">Pack</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/pack.html#activate">activate</a>, <a href="../gameplay/pack.html#applyPartialActiveEffect">applyPartialActiveEffect</a>, <a href="../gameplay/pack.html#applyPassiveEffect">applyPassiveEffect</a>, <a href="../gameplay/pack.html#beginState">beginState</a>, <a href="../gameplay/pack.html#canPickup">canPickup</a>, <a href="../gameplay/pack.html#doSwitch">doSwitch</a>, <a href="../gameplay/pack.html#effectTriggered">effectTriggered</a>, <a href="../gameplay/pack.html#effectUntriggered">effectUntriggered</a>, <a href="../gameplay/pack.html#endHeldByCharacter">endHeldByCharacter</a>, <a href="../gameplay/pack.html#endState">endState</a>, <a href="../gameplay/pack.html#finishActiveEffect">finishActiveEffect</a>, <a href="../gameplay/pack.html#GetOverlayMaterialForOwner">GetOverlayMaterialForOwner</a>, <a href="../gameplay/pack.html#isInRangeOfInventoryStation">isInRangeOfInventoryStation</a>, <a href="../gameplay/pack.html#needPrompt">needPrompt</a>, <a href="../gameplay/pack.html#OnEffectInitialized">OnEffectInitialized</a>, <a href="../gameplay/pack.html#OnEffectStarted">OnEffectStarted</a>, <a href="../gameplay/pack.html#OnEffectStopped">OnEffectStopped</a>, <a href="../gameplay/pack.html#onTakenFromSpawnPoint">onTakenFromSpawnPoint</a>, <a href="../gameplay/pack.html#pickup">pickup</a>, <a href="../gameplay/pack.html#playEffect">playEffect</a>, <a href="../gameplay/pack.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/pack.html#removePassiveEffect">removePassiveEffect</a>, <a href="../gameplay/pack.html#requestEquipmentDrop">requestEquipmentDrop</a>, <a href="../gameplay/pack.html#setCharged">setCharged</a>, <a href="../gameplay/pack.html#startActiveEffect">startActiveEffect</a>, <a href="../gameplay/pack.html#startApplyPartialActiveEffect">startApplyPartialActiveEffect</a>, <a href="../gameplay/pack.html#startHeldByCharacter">startHeldByCharacter</a>, <a href="../gameplay/pack.html#stopEffect">stopEffect</a>, <a href="../gameplay/pack.html#tick">tick</a>, <a href="../gameplay/pack.html#TravelPreAccept">TravelPreAccept</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Active <a href="../Source_tmod/tmodpackenergy.html#10" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Active <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_tick+Active">tick</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_charges" class="hidden"></a>charges <a href="../Source_tmod/tmodpackenergy.html#4" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type">int</span> charges;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DEFAULTenergyBoost" class="hidden"></a>DEFAULTenergyBoost <a href="../Source_tmod/tmodpackenergy.html#5" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">float</span> DEFAULTenergyBoost;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DEFAULTenergyDuration" class="hidden"></a>DEFAULTenergyDuration <a href="../Source_tmod/tmodpackenergy.html#5" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">float</span> DEFAULTenergyDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TROCenergyBoost" class="hidden"></a>TROCenergyBoost <a href="../Source_tmod/tmodpackenergy.html#5" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">float</span> TROCenergyBoost;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TROCenergyDuration" class="hidden"></a>TROCenergyDuration <a href="../Source_tmod/tmodpackenergy.html#5" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">float</span> TROCenergyDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_PreBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PreBeginPlay <span class="function_state"></span> <a href="../Source_tmod/tmodpackenergy.html#23" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PreBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state">Active</span> <a href="../Source_tmod/tmodpackenergy.html#10" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+    charges=<span class="source_int">3</span>
+    
+    TROCenergyBoost=<span class="source_int">750000.000000</span>
+    TROCenergyDuration=<span class="source_int">0.100000</span>
+    DEFAULTenergyBoost=<span class="source_int">75000.000000</span>
+    DEFAULTenergyDuration=<span class="source_int">1.000000</span>
+    
+    refireRateScale=<span class="source_int">2.000000</span>
+    passiveRefireRateScale=<span class="source_int">1.250000</span>
+    activeMaterial=<span class="source_type"><a href="../engine/shader.html" class="source">Shader</a></span><span class="source_name">'FX.BucklerShieldShadder'</span>
+    rechargeTimeSeconds=<span class="source_int">13.000000</span>
+    rampUpTimeSeconds=<span class="source_int">0.250000</span>
+    deactivatingDuration=<span class="source_int">0.250000</span>
+    durationSeconds=<span class="source_int">5.000000</span>
+    thirdPersonMesh=<span class="source_type">StaticMesh</span><span class="source_name">'packs.SpeedPack'</span>
+    localizedName=<span class="source_string">"SPEED PACK"</span>
+    infoString=<span class="source_string">"Passive effect increases the user's running speed.  Active effect decreases the reload time of equipped weapons."</span>
+    inventoryIcon=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'GUITribes.InvButtonSpeed'</span>
+    <span class="source_type"><a href="../tribesgui/hudicon.html" class="source">hudIcon</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'HUD.Tabs'</span>
+    hudIconCoords=(U=<span class="source_int">410.000000</span>,V=<span class="source_int">165.000000</span>)
+    hudRefireIcon=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'HUD.Tabs'</span>
+    hudRefireIconCoords=(U=<span class="source_int">410.000000</span>,V=<span class="source_int">114.000000</span>)
+    cannnotBeUsedWhileTouchingInventoryStation=True
+    <span class="source_type">StaticMesh</span>=<span class="source_type">StaticMesh</span><span class="source_name">'packs.SpeedPackdropped'</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tmod/tmod-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tmod/tmodpackenergy.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#tmodPackEnergy">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tmod/tmodmultiplayercharacter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tmod/tmodpackrepair.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:35.577 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

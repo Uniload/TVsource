@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - MojoActions.TsActionKeyframeInterpolate</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../mojoactions/mojoactions-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_mojoactions/tsactionkeyframeinterpolate.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TsActionKeyframeInterpolate">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../mojoactions/tsactionkarmaforce.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../mojoactions/tsactionlightcolour.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#mojoactions/tsactionkeyframeinterpolate.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.TsActionKeyframeInterpolate</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../mojoactions/tsactioninterpolatebase.html">TsActionInterpolateBase</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../mojocore/mojocore-overview.html">MojoCore</a>.<a href="../mojocore/tsmojoaction.html">TsMojoAction</a>
+   |   
+   +-- <a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.<a href="../mojoactions/tsaction.html">TsAction</a>
+      |   
+      +-- <a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.<a href="../mojoactions/tsactioninterpolatebase.html">TsActionInterpolateBase</a>
+         |   
+         +-- <a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.<a href="../mojoactions/tsactionkeyframeinterpolate.html">TsActionKeyframeInterpolate</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_cur_key" name="cur_key" title="go to the details">cur_key</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_cur_time" name="cur_time" title="go to the details">cur_time</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_dest_key_distance" name="dest_key_distance" title="go to the details">dest_key_distance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_spline" name="spline" title="go to the details">spline</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_src_key_distance" name="src_key_distance" title="go to the details">src_key_distance</a></td></tr>
+<tr><th colspan="2" class="small">Action</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_duration" name="duration" title="go to the details">duration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ease_in_time" name="ease_in_time" title="go to the details">ease_in_time</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ease_out_time" name="ease_out_time" title="go to the details">ease_out_time</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_snap_to_first_key" name="snap_to_first_key" title="go to the details">snap_to_first_key</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_use_linear_rotation" name="use_linear_rotation" title="go to the details">use_linear_rotation</a></td></tr>
+<tr><th colspan="2" class="small">keys</th></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../mojocore/tsmojoaction.html#MojoKeyframe">MojoKeyframe</a>&gt;</td><td width="66%"><a href="#_keys" name="keys" title="go to the details">keys</a></td></tr>
+<tr><th colspan="2" class="small">LookAt</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../mojocore/tsmojoaction.html#MojoActorRef">MojoActorRef</a></td><td width="66%"><a href="#_look_at_actor" name="look_at_actor" title="go to the details">look_at_actor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_look_at_ease_time" name="look_at_ease_time" title="go to the details">look_at_ease_time</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../mojocore/tsmojoaction.html#MojoKeyframe">MojoKeyframe</a></td><td width="66%"><a href="#_look_at_point" name="look_at_point" title="go to the details">look_at_point</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../mojoactions/tsactionkeyframeinterpolate.html#LookAtType">LookAtType</a></td><td width="66%"><a href="#_look_at_type" name="look_at_type" title="go to the details">look_at_type</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.<a href="../mojoactions/tsactioninterpolatebase.html">TsActionInterpolateBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../mojoactions/tsactioninterpolatebase.html#cur_keyframe">cur_keyframe</a>, <a href="../mojoactions/tsactioninterpolatebase.html#dest_position">dest_position</a>, <a href="../mojoactions/tsactioninterpolatebase.html#dest_tangent">dest_tangent</a>, <a href="../mojoactions/tsactioninterpolatebase.html#dqw">dqw</a>, <a href="../mojoactions/tsactioninterpolatebase.html#dqx">dqx</a>, <a href="../mojoactions/tsactioninterpolatebase.html#dqy">dqy</a>, <a href="../mojoactions/tsactioninterpolatebase.html#dqz">dqz</a>, <a href="../mojoactions/tsactioninterpolatebase.html#iqw">iqw</a>, <a href="../mojoactions/tsactioninterpolatebase.html#iqx">iqx</a>, <a href="../mojoactions/tsactioninterpolatebase.html#iqy">iqy</a>, <a href="../mojoactions/tsactioninterpolatebase.html#iqz">iqz</a>, <a href="../mojoactions/tsactioninterpolatebase.html#sqw">sqw</a>, <a href="../mojoactions/tsactioninterpolatebase.html#sqx">sqx</a>, <a href="../mojoactions/tsactioninterpolatebase.html#sqy">sqy</a>, <a href="../mojoactions/tsactioninterpolatebase.html#sqz">sqz</a>, <a href="../mojoactions/tsactioninterpolatebase.html#src_position">src_position</a>, <a href="../mojoactions/tsactioninterpolatebase.html#src_tangent">src_tangent</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.<a href="../mojoactions/tsaction.html">TsAction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../mojoactions/tsaction.html#bShowSubtitles">bShowSubtitles</a>, <a href="../mojoactions/tsaction.html#DisableInMojo">DisableInMojo</a>, <a href="../mojoactions/tsaction.html#DName">DName</a>, <a href="../mojoactions/tsaction.html#FastForwardSkip">FastForwardSkip</a>, <a href="../mojoactions/tsaction.html#Help">Help</a>, <a href="../mojoactions/tsaction.html#interpolator">interpolator</a>, <a href="../mojoactions/tsaction.html#interpTime">interpTime</a>, <a href="../mojoactions/tsaction.html#ModifiesLocation">ModifiesLocation</a>, <a href="../mojoactions/tsaction.html#Track">Track</a>, <a href="../mojoactions/tsaction.html#UsesDuration">UsesDuration</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_LookAtType" name="LookAtType" title="go to the details">LookAtType</a><br /><span class="small">LOOKAT_UseKeyframe,
+LOOKAT_Actor,
+LOOKAT_Point,
+</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CalculateConstants-" name="CalculateConstants" title="go to the details">CalculateConstants</a> (<a href="../core/object.html#Vector">vector</a> initial_pos, <a href="../core/object.html#Rotator">rotator</a> initial_rot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>float&nbsp;</td><td><a href="#_GetDuration-" name="GetDuration" title="go to the details">GetDuration</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnFinish-" name="OnFinish" title="go to the details">OnFinish</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_OnStart-" name="OnStart" title="go to the details">OnStart</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_OnTick-" name="OnTick" title="go to the details">OnTick</a> (float delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_SetDuration-" name="SetDuration" title="go to the details">SetDuration</a> (float _duration))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_UpdateCurrentKeyframePos-" name="UpdateCurrentKeyframePos" title="go to the details">UpdateCurrentKeyframePos</a> (float time)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.<a href="../mojoactions/tsactioninterpolatebase.html">TsActionInterpolateBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../mojoactions/tsactioninterpolatebase.html#ApplyCurrentKeyframePos">ApplyCurrentKeyframePos</a>, <a href="../mojoactions/tsactioninterpolatebase.html#FinishActorInterpolation">FinishActorInterpolation</a>, <a href="../mojoactions/tsactioninterpolatebase.html#StartActorInterpolation">StartActorInterpolation</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../mojoactions/mojoactions-overview.html">MojoActions</a>.<a href="../mojoactions/tsaction.html">TsAction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../mojoactions/tsaction.html#CanFastForwardSkip">CanFastForwardSkip</a>, <a href="../mojoactions/tsaction.html#CanSetDuration">CanSetDuration</a>, <a href="../mojoactions/tsaction.html#DisableActionInMojo">DisableActionInMojo</a>, <a href="../mojoactions/tsaction.html#Finish">Finish</a>, <a href="../mojoactions/tsaction.html#GetHelpString">GetHelpString</a>, <a href="../mojoactions/tsaction.html#GetLength">GetLength</a>, <a href="../mojoactions/tsaction.html#GetNameString">GetNameString</a>, <a href="../mojoactions/tsaction.html#GetSummaryString">GetSummaryString</a>, <a href="../mojoactions/tsaction.html#GetTrackString">GetTrackString</a>, <a href="../mojoactions/tsaction.html#Message">Message</a>, <a href="../mojoactions/tsaction.html#ModifiesActorLocation">ModifiesActorLocation</a>, <a href="../mojoactions/tsaction.html#OnFinish">OnFinish</a>, <a href="../mojoactions/tsaction.html#OnStart">OnStart</a>, <a href="../mojoactions/tsaction.html#OnTick">OnTick</a>, <a href="../mojoactions/tsaction.html#resetInterpolation">resetInterpolation</a>, <a href="../mojoactions/tsaction.html#ShouldShowSubtitles">ShouldShowSubtitles</a>, <a href="../mojoactions/tsaction.html#Start">Start</a>, <a href="../mojoactions/tsaction.html#Tick">Tick</a>, <a href="../mojoactions/tsaction.html#tickInterpolation">tickInterpolation</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_cur_key" class="hidden"></a>cur_key <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#28" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">int</span> cur_key;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cur_time" class="hidden"></a>cur_time <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> cur_time;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dest_key_distance" class="hidden"></a>dest_key_distance <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#30" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">float</span> dest_key_distance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_spline" class="hidden"></a>spline <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#31" class="small">Source code</a></h4>
+<div class="declaration">var const transient noexport <span class="source_type">int</span> spline;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_src_key_distance" class="hidden"></a>src_key_distance <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#29" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">float</span> src_key_distance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Action</h3>
+<h4><a name="_duration" class="hidden"></a>duration <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#4" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>) <span class="source_type">float</span> duration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ease_in_time" class="hidden"></a>ease_in_time <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#5" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>) <span class="source_type">float</span> ease_in_time;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ease_out_time" class="hidden"></a>ease_out_time <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#6" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>) <span class="source_type">float</span> ease_out_time;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_snap_to_first_key" class="hidden"></a>snap_to_first_key <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>) <span class="source_type">bool</span> snap_to_first_key;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_use_linear_rotation" class="hidden"></a>use_linear_rotation <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>) <span class="source_type">bool</span> use_linear_rotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">keys</h3>
+<h4><a name="_keys" class="hidden"></a>keys <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(keys) array&lt;<span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoKeyframe" class="source">MojoKeyframe</a></span>&gt; keys;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">LookAt</h3>
+<h4><a name="_look_at_actor" class="hidden"></a>look_at_actor <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(LookAt) <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoActorRef" class="source">MojoActorRef</a></span> look_at_actor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_look_at_ease_time" class="hidden"></a>look_at_ease_time <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(LookAt) <span class="source_type">float</span> look_at_ease_time;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_look_at_point" class="hidden"></a>look_at_point <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(LookAt) <span class="source_type"><a href="../mojocore/tsmojoaction.html#MojoKeyframe" class="source">MojoKeyframe</a></span> look_at_point;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_look_at_type" class="hidden"></a>look_at_type <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(LookAt) <span class="source_type"><a href="../mojoactions/tsactionkeyframeinterpolate.html#LookAtType" class="source">LookAtType</a></span> look_at_type;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_LookAtType" class="hidden"></a>LookAtType <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#12" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../mojoactions/tsactionkeyframeinterpolate.html#LookAtType" class="source">LookAtType</a></span><br />
+{<blockquote>LOOKAT_UseKeyframe,
+LOOKAT_Actor,
+LOOKAT_Point,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CalculateConstants-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CalculateConstants <span class="function_state"></span> <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#34" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  CalculateConstants ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> initial_pos, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> initial_rot )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDuration-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetDuration <span class="function_state"></span> <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#79" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">float</span> GetDuration ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnFinish-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnFinish <span class="function_state"></span> <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#68" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnFinish ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnStart <span class="function_state"></span> <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#37" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> OnStart ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnTick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnTick <span class="function_state"></span> <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#57" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> OnTick ( <span class="source_type">float</span> <span class="source_type">delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDuration-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetDuration <span class="function_state"></span> <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#73" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> SetDuration ( <span class="source_type">float</span> _duration) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateCurrentKeyframePos-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateCurrentKeyframePos <span class="function_state"></span> <a href="../Source_mojoactions/tsactionkeyframeinterpolate.html#35" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span> <span class="source_type">bool</span> UpdateCurrentKeyframePos ( <span class="source_type">float</span> <span class="source_type"><a href="../core/time.html" class="source">time</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DName				=<span class="source_string">"Path Interpolate"</span>
+	Track				=<span class="source_string">"Position"</span>
+	Help				=<span class="source_string">"Interpolate an object at constant velocity along a path"</span>
+	UsesDuration		=true
+
+	duration		= <span class="source_int">4.0f</span>;
+	ease_in_time	= <span class="source_int">0.0f</span>;
+	ease_out_time	= <span class="source_int">0.0f</span>;
+	snap_to_first_key = false;
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../mojoactions/mojoactions-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_mojoactions/tsactionkeyframeinterpolate.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TsActionKeyframeInterpolate">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../mojoactions/tsactionkarmaforce.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../mojoactions/tsactionlightcolour.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:37.473 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

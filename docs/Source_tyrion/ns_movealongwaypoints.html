@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Tyrion.NS_MoveAlongWaypoints</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ns_movealongwaypoints.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#NS_MoveAlongWaypoints">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ns_jetskimanager.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ns_movetolocation.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_tyrion/ns_movealongwaypoints.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ns_movealongwaypoints.html">NS_MoveAlongWaypoints</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=====================================================================
+</span><a name="2"></a><span class="source_comment">// NS_MoveAlongWaypoints
+</span><a name="3"></a><span class="source_comment">//
+</span><a name="4"></a><span class="source_comment">// Follow a series of waypoints, do local obstacle avoidance and
+</span><a name="5"></a><span class="source_comment">// short distance jetting/skiing
+</span><a name="6"></a><span class="source_comment">//=====================================================================
+</span><a name="7"></a>
+<a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../tyrion/ns_movealongwaypoints.html" class="source">NS_MoveAlongWaypoints</a></span> extends <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span>
+<a name="9"></a>	threaded
+<a name="10"></a>	dependsOn(<span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span>);
+<a name="11"></a>
+<a name="12"></a><span class="source_comment">//=====================================================================
+</span><a name="13"></a><span class="source_comment">// Constants
+</span><a name="14"></a>
+<a name="15"></a>const TERMINAL_DISTANCE_XY_JS = <span class="source_int">1000</span>;	<span class="source_comment">// distance from destination in XY for doLocalMove to succeed while jetting
+</span><a name="16"></a>const TERMINAL_DISTANCE_Z_JS = <span class="source_int">500</span>;		<span class="source_comment">// and for Z
+</span><a name="17"></a>const MAX_ANGLE_BETWEEN_PATH_SEGMENTS = <span class="source_int">0.349</span>;	<span class="source_comment">// (PI/180*20) max deviation between path segments to allow larger termination distances
+</span><a name="18"></a>
+<a name="19"></a>const MIN_HIGHSPEED_JETSKI_DIST = <span class="source_int">2000</span>;		<span class="source_comment">// minimum distance for which to use high speed jetpacking/skiing
+</span><a name="20"></a>const MIN_HEIGHT_ABOVE_OUTSIDE_PATHNODE = <span class="source_int">5000</span>;
+<a name="21"></a>const N_TERRAIN_SAMPLES = <span class="source_int">9</span>;			<span class="source_comment">// (was 30) number of terrain samples to find a good landing spot
+</span><a name="22"></a>
+<a name="23"></a><span class="source_comment">//=====================================================================
+</span><a name="24"></a><span class="source_comment">// Variables
+</span><a name="25"></a>
+<a name="26"></a>var <span class="source_type">int</span> <span class="source_type">routeSegmentI</span>;
+<a name="27"></a>
+<a name="28"></a>var <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#SkiCompetencyLevels" class="source">SkiCompetencyLevels</a></span> skiCompetency;
+<a name="29"></a>var <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#JetCompetencyLevels" class="source">JetCompetencyLevels</a></span> jetCompetency;
+<a name="30"></a>var <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#GroundMovementLevels" class="source">GroundMovementLevels</a></span> groundMovement;
+<a name="31"></a>var <span class="source_type">float</span> terminalDistanceXY;
+<a name="32"></a>var <span class="source_type">float</span> <span class="source_type">terminalDistanceZ</span>;
+<a name="33"></a>var <span class="source_type">float</span> energyUsage;
+<a name="34"></a>var <span class="source_type">float</span> terminalVelocity;
+<a name="35"></a>var <span class="source_type">float</span> terminalHeight;
+<a name="36"></a>
+<a name="37"></a>var <span class="source_type">int</span> routeCacheStartIndex;
+<a name="38"></a>var <span class="source_type">int</span> routeCacheEndIndex;
+<a name="39"></a>var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">target</span>;
+<a name="40"></a>
+<a name="41"></a>var <span class="source_type">float</span> dlmEnergyUsage;		<span class="source_comment">// energyUsage parameter for the next doLocalMove
+</span><a name="42"></a>var <span class="source_type">float</span> energyRequired;		<span class="source_comment">// energy needed for next doLocalMove
+</span><a name="43"></a>var <span class="source_type">float</span> initialEnergy;		<span class="source_comment">// debug: energy level before jetpack attempt
+</span><a name="44"></a>var <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> moveAction;
+<a name="45"></a>
+<a name="46"></a>var <span class="source_type"><a href="../gameplay/baseaicharacter.html" class="source">BaseAICharacter</a></span> <span class="source_type">ai</span>;
+<a name="47"></a>var <span class="source_type">float</span> nextTerminalDistanceXY;
+<a name="48"></a>var <span class="source_type">float</span> nextTerminalDistanceZ;
+<a name="49"></a>var <span class="source_type">bool</span> <span class="source_type">bJetpack</span>;				<span class="source_comment">// character can use jetpacking to traverse this path
+</span><a name="50"></a>var <span class="source_type">bool</span> bSkippedNodes;			<span class="source_comment">// nodes were skipped (implying that you *must* jetpack)
+</span><a name="51"></a>var array&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt; ignore;
+<a name="52"></a>
+<a name="53"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> landingSpot;			<span class="source_comment">// initial spot to jetpack to
+</span><a name="54"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> jetSkiDestination;	<span class="source_comment">// destination for high speed jetpacking/skiing
+</span><a name="55"></a>
+<a name="56"></a><span class="source_comment">//=====================================================================
+</span><a name="57"></a><span class="source_comment">// Functions
+</span><a name="58"></a>
+<a name="59"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="60"></a><span class="source_comment">// Every NS Action has a static startAction function which allocates the
+</span><a name="61"></a><span class="source_comment">// action, initialises it, and starts it running.
+</span><a name="62"></a><span class="source_comment">//
+</span><a name="63"></a><span class="source_comment">// target:        Actor being followed (can be None)
+</span><a name="64"></a><span class="source_comment">// skiCompetency: ski skill level during local move, none implies no skiing
+</span><a name="65"></a><span class="source_comment">// jetCompetency: jet skill level during local move, none implies no jetting
+</span><a name="66"></a><span class="source_comment">// groundMovement: type of ground based movement during local move, none implies only jetting and skiing
+</span><a name="67"></a><span class="source_comment">// energyUsage: min. amount of energy in pawn after action completes
+</span><a name="68"></a><span class="source_comment">// terminalVelocity: the speed you would like to be going when the action terminates
+</span><a name="69"></a><span class="source_comment">// terminalHeight: how high you'd like to be at destination
+</span><a name="70"></a><span class="source_comment">// terminalDistanceXY: distance from destination in XY for action to succeed
+</span><a name="71"></a><span class="source_comment">// terminalDistanceZ: distance from destination in Z for action to succeed
+</span><a name="72"></a>
+<a name="73"></a>static <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ns_movealongwaypoints.html" class="source">NS_MoveAlongWaypoints</a></span> startAction( <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span> <span class="source_type">c</span>, <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">parent</span>,
+<a name="74"></a>	<span class="source_type">int</span> routeCacheStartIndexIn, <span class="source_type">int</span> routeCacheEndIndexIn, optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">target</span>,
+<a name="75"></a>	optional <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#SkiCompetencyLevels" class="source">SkiCompetencyLevels</a></span> skiCompetency, optional <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#JetCompetencyLevels" class="source">JetCompetencyLevels</a></span> jetCompetency,
+<a name="76"></a>	optional <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#GroundMovementLevels" class="source">GroundMovementLevels</a></span> groundMovement,
+<a name="77"></a>	optional <span class="source_type">float</span> energyUsage, optional <span class="source_type">float</span> terminalVelocity, optional <span class="source_type">float</span> terminalHeight,
+<a name="78"></a>	optional <span class="source_type">float</span> terminalDistanceXY, optional <span class="source_type">float</span> <span class="source_type">terminalDistanceZ</span>)
+<a name="79"></a>{
+<a name="80"></a>	local <span class="source_type"><a href="../tyrion/ns_movealongwaypoints.html" class="source">NS_MoveAlongWaypoints</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>;
+<a name="81"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="82"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> lastLocation;
+<a name="83"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> thisLocation;
+<a name="84"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> thisSegment;
+<a name="85"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> nextSegment;
+<a name="86"></a>
+<a name="87"></a>	<span class="source_comment">// create new object
+</span><a name="88"></a>	<span class="source_comment">// (in the future, we may want to allow for actions that don't create a
+</span><a name="89"></a>	<span class="source_comment">// new action, and pay for that by having their child not be interruptable)
+</span><a name="90"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> = new(<span class="source_type">c</span>.<span class="source_type">level</span>.Outer) <span class="source_type">class</span><span class="source_name">'NS_MoveAlongWaypoints'</span>( <span class="source_type">c</span>, <span class="source_type">parent</span> );
+<a name="91"></a>
+<a name="92"></a>	<span class="source_comment">// set action parameters
+</span><a name="93"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.routeCacheStartIndex = routeCacheStartIndexIn;
+<a name="94"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.routeCacheEndIndex = routeCacheEndIndexIn;
+<a name="95"></a>
+<a name="96"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type">target</span> = <span class="source_type">target</span>;
+<a name="97"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.skiCompetency = skiCompetency;
+<a name="98"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.jetCompetency = jetCompetency;
+<a name="99"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.groundMovement = groundMovement;
+<a name="100"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.energyUsage = energyUsage;
+<a name="101"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.terminalVelocity = terminalVelocity;
+<a name="102"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.terminalHeight = terminalHeight;
+<a name="103"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.terminalDistanceXY = terminalDistanceXY;
+<a name="104"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type">terminalDistanceZ</span> = <span class="source_type">terminalDistanceZ</span>;
+<a name="105"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type">ai</span> = <span class="source_type"><a href="../gameplay/baseaicharacter.html" class="source">BaseAICharacter</a></span>(<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>);
+<a name="106"></a>
+<a name="107"></a>	<span class="source_comment">// Initialize variables in routeCache
+</span><a name="108"></a>	lastLocation = <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type">ai</span>.Location;
+<a name="109"></a>
+<a name="110"></a>	for ( <span class="source_type">i</span> = routeCacheStartIndexIn; <span class="source_type">i</span> &lt; routeCacheEndIndexIn; <span class="source_type">i</span>++ )
+<a name="111"></a>	{
+<a name="112"></a>		thisLocation = <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].location;
+<a name="113"></a>
+<a name="114"></a>		<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].energy = <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type">ai</span>.energyRequiredToJet( lastLocation, <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].location, <span class="source_int">0</span>, true);
+<a name="115"></a>
+<a name="116"></a>		if ( <span class="source_type">i</span> &lt; routeCacheEndIndexIn - <span class="source_int">1</span> )
+<a name="117"></a>		{
+<a name="118"></a>			thisSegment = thisLocation - lastLocation;
+<a name="119"></a>			thisSegment /= VSize( thisSegment );	<span class="source_comment">// normalize
+</span><a name="120"></a>			nextSegment = <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span> + <span class="source_int">1</span>].location - thisLocation;
+<a name="121"></a>			nextSegment /= VSize( nextSegment );	<span class="source_comment">// normalize
+</span><a name="122"></a>
+<a name="123"></a>			<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].<span class="source_type">angle</span> = (thisSegment Dot nextSegment);
+<a name="124"></a>			<span class="source_comment">//log( " angle " $ i $ ": " $ controller.routeCache[i].angle );
+</span><a name="125"></a>		}
+<a name="126"></a>
+<a name="127"></a>		lastLocation = thisLocation;
+<a name="128"></a>	}
+<a name="129"></a>
+<a name="130"></a>	<span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>.runAction();
+<a name="131"></a>	return <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span>;
+<a name="132"></a>}
+<a name="133"></a>
+<a name="134"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="135"></a><span class="source_comment">// Possibly skip nodes of there is a jetpack link coming up
+</span><a name="136"></a><span class="source_comment">//
+</span><a name="137"></a><span class="source_comment">// return value:    nodes were skipped?
+</span><a name="138"></a><span class="source_comment">// dlmEnergyUsage:  (output) minimum energy to save for upcoming jump
+</span><a name="139"></a><span class="source_comment">// routeSegmentI:   (output) new routeCacheIndex
+</span><a name="140"></a><span class="source_comment">//
+</span><a name="141"></a><span class="source_comment">// Note: The function assumes that the end points of jetpack links aren't points that the AI is required to
+</span><a name="142"></a><span class="source_comment">// touch. Conceivably, there might be good reasons within the pathfinder to break one long jetpack link into
+</span><a name="143"></a><span class="source_comment">// smaller segments. Although this function only skips links if LOS exists to the destination, it may be
+</span><a name="144"></a><span class="source_comment">// worth thinking about adding a flag to nodes indicating that the AI must actually get there.
+</span><a name="145"></a>
+<a name="146"></a>private final <span class="source_type">function</span> <span class="source_type">bool</span> skipNodes( out <span class="source_type">float</span> dlmEnergyUsage, out <span class="source_type">int</span> <span class="source_type">routeSegmentI</span> )
+<a name="147"></a>{
+<a name="148"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="149"></a>	local <span class="source_type">bool</span> bJetpackLinkFound;
+<a name="150"></a>	local <span class="source_type">bool</span> bSkippedNodes;
+<a name="151"></a>	local <span class="source_type">float</span> energyNeeded;
+<a name="152"></a>
+<a name="153"></a>	for ( <span class="source_type">i</span> = <span class="source_type">routeSegmentI</span> + <span class="source_int">1</span>; <span class="source_type">i</span> &lt;= routeCacheEndIndex; <span class="source_type">i</span>++ )
+<a name="154"></a>	{
+<a name="155"></a>		if ( !bJetpackLinkFound && <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> )
+<a name="156"></a>		{
+<a name="157"></a>			bJetpackLinkFound = true;
+<a name="158"></a>			dlmEnergyUsage = energyUsage + <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].energy;	<span class="source_comment">// save energy for upcoming jump
+</span><a name="159"></a>		}
+<a name="160"></a>
+<a name="161"></a>		<span class="source_comment">// Can I jetpack directly to this node from where I am now?
+</span><a name="162"></a>		if ( bJetpackLinkFound )
+<a name="163"></a>		{
+<a name="164"></a>			energyNeeded = <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.canJetToPoint( <span class="source_type">ai</span>, <span class="source_type">ai</span>.Location, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].location, <span class="source_type">ai</span>.energy - energyUsage );
+<a name="165"></a>			
+<a name="166"></a>			if ( energyNeeded &gt;= <span class="source_int">0</span> )
+<a name="167"></a>			{
+<a name="168"></a>				if ( <span class="source_type">ai</span>.bShowJSDebug )
+<a name="169"></a>					log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): Jumping directly to node"</span> @ <span class="source_type">i</span> @ <span class="source_string">"("</span> $ <span class="source_type">i</span> - <span class="source_type">routeSegmentI</span> @ <span class="source_string">"links ahead - requires"</span> @ energyNeeded @ <span class="source_string">"energy)"</span> );
+<a name="170"></a>
+<a name="171"></a>				<span class="source_type">routeSegmentI</span> = <span class="source_type">i</span>;
+<a name="172"></a>				dlmEnergyUsage = energyUsage;	<span class="source_comment">// since we're jumping directly, no need to save
+</span><a name="173"></a>				bSkippedNodes = true;
+<a name="174"></a>			}
+<a name="175"></a>		}
+<a name="176"></a>	}
+<a name="177"></a>
+<a name="178"></a>	return bSkippedNodes;
+<a name="179"></a>}
+<a name="180"></a>
+<a name="181"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="182"></a><span class="source_comment">// Is an element in the routeCache suitable for highspeed jetpacking/skiing?
+</span><a name="183"></a>
+<a name="184"></a>private final <span class="source_type">function</span> <span class="source_type">bool</span> bRoomToSki( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.<span class="source_type"><a href="../engine/controller.html#RouteCacheElement" class="source">RouteCacheElement</a></span> <span class="source_type">element</span> )
+<a name="185"></a>{
+<a name="186"></a>	return <span class="source_type">element</span>.height &gt; MIN_HEIGHT_ABOVE_OUTSIDE_PATHNODE;
+<a name="187"></a>}
+<a name="188"></a>
+<a name="189"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="190"></a><span class="source_comment">// is there space above me?
+</span><a name="191"></a><span class="source_comment">// (not used)
+</span><a name="192"></a>
+<a name="193"></a>private final <span class="source_type">function</span> <span class="source_type">bool</span> bHeadRoom( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">ai</span> )
+<a name="194"></a>{
+<a name="195"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> endPoint;
+<a name="196"></a>
+<a name="197"></a>	endPoint = <span class="source_type">ai</span>.Location;
+<a name="198"></a>	endPoint.Z += MIN_HEIGHT_ABOVE_OUTSIDE_PATHNODE;
+<a name="199"></a>
+<a name="200"></a>	return (<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.jetLookAhead( <span class="source_type">ai</span>.Location, endPoint ) == None);
+<a name="201"></a>}
+<a name="202"></a>
+<a name="203"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="204"></a><span class="source_comment">// Should this destination be reached by fast jetpacking/skiing?
+</span><a name="205"></a><span class="source_comment">//
+</span><a name="206"></a><span class="source_comment">// return value:      do long range jetpacking/skiing?
+</span><a name="207"></a><span class="source_comment">// landingSpot:       (output) initial landing spot (only defined when function return true)
+</span><a name="208"></a><span class="source_comment">// jetSkiDestination: (output) destination to jetpacki/ski to (only defined when function return true)
+</span><a name="209"></a><span class="source_comment">// routeSegmentI:     (input, output) old and new routeCacheIndex
+</span><a name="210"></a><span class="source_comment">//
+</span><a name="211"></a><span class="source_comment">// Note: - function assumes controller routeCache has been initialized
+</span><a name="212"></a>
+<a name="213"></a>private final <span class="source_type">function</span> <span class="source_type">bool</span> bDoLongRangeJetSki( out <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> landingSpot, out <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> jetSkiDestination, out <span class="source_type">int</span> <span class="source_type">routeSegmentI</span> )
+<a name="214"></a>{
+<a name="215"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="216"></a>	local <span class="source_type">bool</span> bNodesSkipped;
+<a name="217"></a>
+<a name="218"></a>	<span class="source_comment">//log( "checking for skiability..." );
+</span><a name="219"></a>
+<a name="220"></a>	if ( <span class="source_type">ai</span>.bLogEnergyUsage )
+<a name="221"></a>		return false;
+<a name="222"></a>
+<a name="223"></a>	<span class="source_type">i</span> = <span class="source_type">routeSegmentI</span>;
+<a name="224"></a>
+<a name="225"></a>	<span class="source_comment">//log( " 1. not too close... " @ i $ "/" $ controller.routeCache.length );
+</span><a name="226"></a>
+<a name="227"></a>	while ( <span class="source_type">i</span> &lt; <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache.length - <span class="source_int">1</span> &&
+<a name="228"></a>			bRoomToSki( <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>] ) &&
+<a name="229"></a>			bRoomToSki( <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>+<span class="source_int">1</span>]) )
+<a name="230"></a>	{
+<a name="231"></a>		++<span class="source_type">i</span>;
+<a name="232"></a>		bNodesSkipped = true;
+<a name="233"></a>	}
+<a name="234"></a>
+<a name="235"></a>	if ( bNodesSkipped )
+<a name="236"></a>	{
+<a name="237"></a>		<span class="source_comment">//log( " 2. room to ski..." );
+</span><a name="238"></a>		jetSkiDestination = <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">i</span>].location;
+<a name="239"></a>
+<a name="240"></a>		<span class="source_comment">// too close?
+</span><a name="241"></a>		if ( VDistSquared( jetSkiDestination, <span class="source_type">ai</span>.location ) &lt; MIN_HIGHSPEED_JETSKI_DIST * MIN_HIGHSPEED_JETSKI_DIST )
+<a name="242"></a>			return false;
+<a name="243"></a>
+<a name="244"></a>		landingSpot = <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.findLandingSpot( jetSkiDestination, <span class="source_type">ai</span>.energy - energyUsage, jetCompetency, N_TERRAIN_SAMPLES );
+<a name="245"></a>		if ( <span class="source_type">ai</span>.Location == landingSpot )
+<a name="246"></a>			return false;		<span class="source_comment">// no landing spot found
+</span><a name="247"></a>
+<a name="248"></a>		<span class="source_comment">//log( " 3. landing spot found..." );
+</span><a name="249"></a>		<span class="source_comment">//return false;	// comment in to disable long-range jetpacking/skiing
+</span><a name="250"></a>
+<a name="251"></a>		<span class="source_type">routeSegmentI</span> = <span class="source_type">i</span>;
+<a name="252"></a>		return true;
+<a name="253"></a>	}
+<a name="254"></a>	else
+<a name="255"></a>		return false;
+<a name="256"></a>}
+<a name="257"></a>
+<a name="258"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="259"></a>
+<a name="260"></a><span class="source_type">function</span> cleanup()
+<a name="261"></a>{
+<a name="262"></a>	super.cleanup();
+<a name="263"></a>
+<a name="264"></a>	if ( moveAction != None )
+<a name="265"></a>	{
+<a name="266"></a>		moveAction.Release();
+<a name="267"></a>		moveAction = None;
+<a name="268"></a>	}
+<a name="269"></a>}
+<a name="270"></a>
+<a name="271"></a><span class="source_comment">//=====================================================================
+</span><a name="272"></a><span class="source_comment">// States
+</span><a name="273"></a>
+<a name="274"></a>state Running
+<a name="275"></a>{
+<a name="276"></a>Begin:
+<a name="277"></a>	if (<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.logNavigationSystem)
+<a name="278"></a>		log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): started"</span> );
+<a name="279"></a>
+<a name="280"></a>	<span class="source_comment">// if terminal height corresponds to an airborne height the last route cache connection has to be jetpacked
+</span><a name="281"></a>	if ( terminalHeight &gt; <span class="source_int">0</span> )
+<a name="282"></a>		<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[routeCacheEndIndex].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> = true;
+<a name="283"></a>
+<a name="284"></a>	<span class="source_comment">// Process path links
+</span><a name="285"></a>	<span class="source_type">routeSegmentI</span> = routeCacheStartIndex;
+<a name="286"></a>	dlmEnergyUsage = energyUsage;
+<a name="287"></a>
+<a name="288"></a>	while ( <span class="source_type">routeSegmentI</span> &lt;= routeCacheEndIndex )
+<a name="289"></a>	{
+<a name="290"></a>		<span class="source_comment">// skip nodes if long range jetpacking/skiing possible
+</span><a name="291"></a>		if ( (jetCompetency == JC_DEFAULT && <span class="source_type">ai</span>.jetCompetency &gt; JC_NONE || jetCompetency &gt; JC_NONE ) &&
+<a name="292"></a>			(skiCompetency == SC_DEFAULT && <span class="source_type">ai</span>.skiCompetency &gt; SC_NONE || skiCompetency &gt; SC_NONE ) &&
+<a name="293"></a>			bDoLongRangeJetSki( landingSpot, jetSkiDestination, <span class="source_type">routeSegmentI</span> ) )
+<a name="294"></a>		{
+<a name="295"></a>			waitForAction( <span class="source_type">class</span><span class="source_name">'NS_JetSkiManager'</span>.static.startAction(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>, self, jetSkiDestination, landingSpot,
+<a name="296"></a>							<span class="source_type">target</span>, skiCompetency, jetCompetency, energyUsage,
+<a name="297"></a>							terminalVelocity, terminalHeight, terminalDistanceXY, <span class="source_type">terminalDistanceZ</span> ));
+<a name="298"></a>
+<a name="299"></a>			if ( <span class="source_type">errorCode</span> != ACT_SUCCESS )
+<a name="300"></a>				fail( ACT_IRREVERSIBLY_OFF_COURSE );	<span class="source_comment">// make MoveToLocation try again...
+</span><a name="301"></a>			else
+<a name="302"></a>			{
+<a name="303"></a>				if ( <span class="source_type">ai</span>.bShowJSDebug )
+<a name="304"></a>					log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): JetSkiManager succeeded"</span> );
+<a name="305"></a>
+<a name="306"></a>				<span class="source_type">routeSegmentI</span>++;						<span class="source_comment">// or go to next segment
+</span><a name="307"></a>				continue;
+<a name="308"></a>			}
+<a name="309"></a>		}
+<a name="310"></a>
+<a name="311"></a>		<span class="source_comment">// skip nodes if there is a jetpack link coming up
+</span><a name="312"></a>		if ( energyUsage &lt; <span class="source_type">ai</span>.energy &&
+<a name="313"></a>			((jetCompetency == JC_DEFAULT && <span class="source_type">ai</span>.jetCompetency &gt; JC_NONE) || jetCompetency &gt; JC_NONE) )
+<a name="314"></a>		{
+<a name="315"></a>			<span class="source_type">bJetpack</span> = true;
+<a name="316"></a>			bSkippedNodes = skipNodes( dlmEnergyUsage, <span class="source_type">routeSegmentI</span> );
+<a name="317"></a>			assert( <span class="source_type">routeSegmentI</span> &lt;= routeCacheEndIndex );
+<a name="318"></a>		}
+<a name="319"></a>
+<a name="320"></a>		<span class="source_comment">// energy sanity check (pawn might not be exactly at waypoint)
+</span><a name="321"></a>		if ( <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> )
+<a name="322"></a>			energyRequired = <span class="source_type">ai</span>.energyRequiredToJet( <span class="source_type">ai</span>.location, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.speedInDirection( <span class="source_type">ai</span>.Velocity, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location - <span class="source_type">ai</span>.location ), false );
+<a name="323"></a>		else
+<a name="324"></a>			energyRequired = <span class="source_int">0</span>;
+<a name="325"></a>		if ( energyRequired &gt; <span class="source_type">ai</span>.energyMaximum - energyUsage )
+<a name="326"></a>		{
+<a name="327"></a>			if ( <span class="source_type">ai</span>.bShowJSDebug || <span class="source_type">ai</span>.logNavigationSystem )
+<a name="328"></a>				log( <span class="source_type">name</span> @  <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): fail: can't possibly get"</span> @ energyRequired @ <span class="source_string">"energy"</span> );
+<a name="329"></a>			<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.stopMove();
+<a name="330"></a>			fail( ACT_INSUFFICIENT_ENERGY );	<span class="source_comment">// doesn't take into account that the AI could rest after the jump to get back to the required energy level
+</span><a name="331"></a>		}
+<a name="332"></a>		else if ( <span class="source_type">ai</span>.bLogEnergyUsage && <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> )
+<a name="333"></a>			log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): need"</span> @ energyRequired @ <span class="source_string">"energy - got"</span> @ <span class="source_type">ai</span>.energy - energyUsage );
+<a name="334"></a>
+<a name="335"></a>		<span class="source_comment">// wait if you don't have enough energy to get to the next waypoint
+</span><a name="336"></a>		while ( <span class="source_type">ai</span>.energy &lt; energyUsage + energyRequired )
+<a name="337"></a>		{
+<a name="338"></a>			if ( <span class="source_type">ai</span>.bShowJSDebug )
+<a name="339"></a>				log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): waiting for energy ("</span> $ <span class="source_type">ai</span>.energy @ <span class="source_string">"&lt;"</span> @ energyUsage + energyRequired $ <span class="source_string">")"</span> );
+<a name="340"></a>			<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.stopMove();
+<a name="341"></a>			Sleep(<span class="source_int">0.5</span>);
+<a name="342"></a>			if ( <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkDead( <span class="source_type">ai</span> ) )
+<a name="343"></a>				fail( ACT_ALL_RESOURCES_DIED );
+<a name="344"></a>		}
+<a name="345"></a>
+<a name="346"></a>		<span class="source_comment">// process intermediate nodes
+</span><a name="347"></a>
+<a name="348"></a>		if ( moveAction != None )
+<a name="349"></a>		{
+<a name="350"></a>			moveAction.Release();
+<a name="351"></a>			moveAction = None;
+<a name="352"></a>		}
+<a name="353"></a>
+<a name="354"></a>		<span class="source_comment">// treat energy barriers as normal
+</span><a name="355"></a>		if (<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].obstacle != None &&
+<a name="356"></a>				<span class="source_type"><a href="../gameplay/energybarrier.html" class="source">EnergyBarrier</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].obstacle) == None)
+<a name="357"></a>		{
+<a name="358"></a>			<span class="source_comment">// handle obstacle by calling obstacle specific action
+</span><a name="359"></a>
+<a name="360"></a>			<span class="source_comment">// ... door case
+</span><a name="361"></a>			if (<span class="source_type"><a href="../engine/door.html" class="source">Door</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].obstacle) != None)
+<a name="362"></a>			{
+<a name="363"></a>				if ((<span class="source_type">routeSegmentI</span> + <span class="source_int">1</span>) &lt; <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache.length)
+<a name="364"></a>					moveAction = <span class="source_type">class</span><span class="source_name">'NS_DoDoorMove'</span>.static.startAction(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>, self,
+<a name="365"></a>							<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span> - <span class="source_int">1</span>].location, <span class="source_type"><a href="../engine/door.html" class="source">Door</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[
+<a name="366"></a>							<span class="source_type">routeSegmentI</span>].obstacle), <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location,
+<a name="367"></a>							true, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span> + <span class="source_int">1</span>].location).myAddRef();
+<a name="368"></a>				else
+<a name="369"></a>					moveAction = <span class="source_type">class</span><span class="source_name">'NS_DoDoorMove'</span>.static.startAction(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>, self,
+<a name="370"></a>							<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span> - <span class="source_int">1</span>].location, <span class="source_type"><a href="../engine/door.html" class="source">Door</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[
+<a name="371"></a>							<span class="source_type">routeSegmentI</span>].obstacle), <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location,
+<a name="372"></a>							false, vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>)).myAddRef();
+<a name="373"></a>			}
+<a name="374"></a>			<span class="source_comment">// ... elevator case
+</span><a name="375"></a>			else if (<span class="source_type"><a href="../movement/elevatorvolume.html" class="source">ElevatorVolume</a></span>(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].obstacle) != None)
+<a name="376"></a>			{
+<a name="377"></a>				<span class="source_comment">// Terminal distance is currently a magic number. In future we may want to set this based
+</span><a name="378"></a>				<span class="source_comment">// on parameters.
+</span><a name="379"></a>				moveAction = <span class="source_type">class</span><span class="source_name">'NS_DoZeroGravityLocalMove'</span>.static.startAction(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>, self,
+<a name="380"></a>						<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location, <span class="source_type"><a href="../movement/elevatorvolume.html" class="source">ElevatorVolume</a></span>(
+<a name="381"></a>						<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].obstacle), <span class="source_int">150</span>, <span class="source_int">400</span>).myAddRef();
+<a name="382"></a>			}
+<a name="383"></a>			else
+<a name="384"></a>				warn(<span class="source_string">"unknown obstacle type"</span>);
+<a name="385"></a>		}
+<a name="386"></a>		else if ((<span class="source_type">routeSegmentI</span> + <span class="source_int">1</span>) &lt; <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache.length)
+<a name="387"></a>		{
+<a name="388"></a>			if ( <span class="source_type">ai</span>.logNavigationSystem )
+<a name="389"></a>				log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): move to"</span> @ <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location @ <span class="source_string">"started"</span> );
+<a name="390"></a>
+<a name="391"></a>			<span class="source_comment">// when jetpacking in approximately a straight line, make terminationDistances much larger
+</span><a name="392"></a>			if ( <span class="source_type">bJetpack</span> && <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].<span class="source_type">angle</span> &gt; cos(MAX_ANGLE_BETWEEN_PATH_SEGMENTS) )
+<a name="393"></a>			{
+<a name="394"></a>				<span class="source_comment">//log( "LARGE TERMINATION FOR NEXT DLM" );
+</span><a name="395"></a>				nextTerminalDistanceXY = TERMINAL_DISTANCE_XY_JS;
+<a name="396"></a>				nextTerminalDistanceZ = TERMINAL_DISTANCE_Z_JS;
+<a name="397"></a>			}
+<a name="398"></a>			else
+<a name="399"></a>			{
+<a name="400"></a>				nextTerminalDistanceXY = <span class="source_int">0</span>;
+<a name="401"></a>				nextTerminalDistanceZ = <span class="source_int">0</span>;
+<a name="402"></a>			}
+<a name="403"></a>
+<a name="404"></a>			moveAction = <span class="source_type">class</span><span class="source_name">'NS_DoLocalMove'</span>.static.startAction(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>, self,
+<a name="405"></a>					<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location, true, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span> + <span class="source_int">1</span>].location,
+<a name="406"></a>					skiCompetency, jetCompetency, groundMovement,
+<a name="407"></a>					dlmEnergyUsage, DONT_CARE, DONT_CARE, nextTerminalDistanceXY, nextTerminalDistanceZ,
+<a name="408"></a>					<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> || bSkippedNodes).myAddRef();
+<a name="409"></a>		}
+<a name="410"></a>		<span class="source_comment">// process final node
+</span><a name="411"></a>		else if (<span class="source_type">routeSegmentI</span> &lt; <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache.length)
+<a name="412"></a>		{
+<a name="413"></a>			if ( <span class="source_type">ai</span>.logNavigationSystem )
+<a name="414"></a>				log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): move to"</span> @ <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location @ <span class="source_string">"started"</span> );
+<a name="415"></a>
+<a name="416"></a>			moveAction = <span class="source_type">class</span><span class="source_name">'NS_DoLocalMove'</span>.static.startAction(<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>, self,
+<a name="417"></a>					<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].location, false, vect(<span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">0</span>),
+<a name="418"></a>					skiCompetency, jetCompetency, groundMovement,
+<a name="419"></a>					energyUsage, terminalVelocity, terminalHeight,
+<a name="420"></a>					terminalDistanceXY, <span class="source_type">terminalDistanceZ</span>,
+<a name="421"></a>					<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> || bSkippedNodes).myAddRef();
+<a name="422"></a>		}
+<a name="423"></a>
+<a name="424"></a>		initialEnergy = <span class="source_type">ai</span>.energy;
+<a name="425"></a>
+<a name="426"></a>		waitForAction( moveAction );
+<a name="427"></a>
+<a name="428"></a>		if ( <span class="source_type">ai</span>.bLogEnergyUsage )
+<a name="429"></a>			log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): used"</span> @ initialEnergy - <span class="source_type">ai</span>.energy @ <span class="source_string">"energy"</span> );
+<a name="430"></a>
+<a name="431"></a>		<span class="source_comment">// fail and propagate error if doLocalMove failed
+</span><a name="432"></a>		if (<span class="source_type">errorCode</span> != ACT_SUCCESS)
+<a name="433"></a>		{
+<a name="434"></a>			<span class="source_comment">// construct ignore list
+</span><a name="435"></a>			if (<span class="source_type">target</span> != None)
+<a name="436"></a>				ignore[<span class="source_int">0</span>] = <span class="source_type">target</span>;
+<a name="437"></a>
+<a name="438"></a>			<span class="source_comment">// child didn't have enough energy, goto previous waypoint
+</span><a name="439"></a>			if (<span class="source_type">errorCode</span> == ACT_INSUFFICIENT_ENERGY && <span class="source_type">routeSegmentI</span> &gt; routeCacheStartIndex &&
+<a name="440"></a>				<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.canPointBeReached( <span class="source_type">ai</span>.Location, <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.routeCache[<span class="source_type">routeSegmentI</span>].Location, <span class="source_type">ai</span>, ignore ))
+<a name="441"></a>			{
+<a name="442"></a>				if ( <span class="source_type">ai</span>.bShowJSDebug || <span class="source_type">ai</span>.logNavigationSystem )
+<a name="443"></a>					log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): insufficient energy, go to previous waypoint and try again"</span> );
+<a name="444"></a>		
+<a name="445"></a>				<span class="source_type">routeSegmentI</span>--;
+<a name="446"></a>				continue;
+<a name="447"></a>			}
+<a name="448"></a>
+<a name="449"></a>			if ( <span class="source_type">ai</span>.logNavigationSystem )
+<a name="450"></a>				log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): failure"</span> );
+<a name="451"></a>
+<a name="452"></a>			fail(<span class="source_type">errorCode</span>);
+<a name="453"></a>		}
+<a name="454"></a>
+<a name="455"></a>		<span class="source_type">routeSegmentI</span>++;
+<a name="456"></a>	}
+<a name="457"></a>
+<a name="458"></a>	if ( <span class="source_type">ai</span>.logNavigationSystem )
+<a name="459"></a>		log( <span class="source_type">name</span> @ <span class="source_string">"("</span> @ <span class="source_type">ai</span>.<span class="source_type">name</span> @ <span class="source_string">"): success"</span> );
+<a name="460"></a>
+<a name="461"></a>	succeed();
+<a name="462"></a>}
+<a name="463"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header"><a href="../tyrion/ns_movealongwaypoints.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#NS_MoveAlongWaypoints">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_tyrion/ns_jetskimanager.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_tyrion/ns_movetolocation.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:54:28.000 - Creation time: st 23.5.2018 00:10:46.187 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

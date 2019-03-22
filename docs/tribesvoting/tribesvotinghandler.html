@@ -1,0 +1,1137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesVoting.TribesVotingHandler</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesvoting/tribesvoting-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesvoting/tribesvotinghandler.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesVotingHandler">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesvoting/votingreplicationinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesvoting/votingreplicationinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesvoting/tribesvotinghandler.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesvoting/tribesvoting-overview.html">TribesVoting</a>.TribesVotingHandler</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/votinghandler.html">VotingHandler</a></dd>
+<dt>Modifiers</dt><dd>config </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/votinghandler.html">VotingHandler</a>
+         |   
+         +-- <a href="../tribesvoting/tribesvoting-overview.html">TribesVoting</a>.<a href="../tribesvoting/tribesvotinghandler.html">TribesVotingHandler</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/votinghandler.html#AdminVoteScore">AdminVoteScore</a>&gt;</td><td width="66%"><a href="#_AdminVoteCount" name="AdminVoteCount" title="go to the details">AdminVoteCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLevelSwitchPending" name="bLevelSwitchPending" title="go to the details">bLevelSwitchPending</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMidGameVote" name="bMidGameVote" title="go to the details">bMidGameVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameConfigPage" name="GameConfigPage" title="go to the details">GameConfigPage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/votinghandler.html#KickVoteScore">KickVoteScore</a>&gt;</td><td width="66%"><a href="#_KickVoteCount" name="KickVoteCount" title="go to the details">KickVoteCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgAdminMapChange" name="lmsgAdminMapChange" title="go to the details">lmsgAdminMapChange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgAdminVote" name="lmsgAdminVote" title="go to the details">lmsgAdminVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgAdminVoteAdmin" name="lmsgAdminVoteAdmin" title="go to the details">lmsgAdminVoteAdmin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgAnonymousAdminVote" name="lmsgAnonymousAdminVote" title="go to the details">lmsgAnonymousAdminVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgAnonymousKickVote" name="lmsgAnonymousKickVote" title="go to the details">lmsgAnonymousKickVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgGameConfigColumnTitle[6]" name="lmsgGameConfigColumnTitle[6]" title="go to the details">lmsgGameConfigColumnTitle[6]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgInvalidPassword" name="lmsgInvalidPassword" title="go to the details">lmsgInvalidPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgKickVote" name="lmsgKickVote" title="go to the details">lmsgKickVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgKickVoteAdmin" name="lmsgKickVoteAdmin" title="go to the details">lmsgKickVoteAdmin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgMapVotedFor" name="lmsgMapVotedFor" title="go to the details">lmsgMapVotedFor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgMapVotedForWithCount" name="lmsgMapVotedForWithCount" title="go to the details">lmsgMapVotedForWithCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgMapWon" name="lmsgMapWon" title="go to the details">lmsgMapWon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgMatchSetupPermission" name="lmsgMatchSetupPermission" title="go to the details">lmsgMatchSetupPermission</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgMidGameVote" name="lmsgMidGameVote" title="go to the details">lmsgMidGameVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgSpectatorsCantVote" name="lmsgSpectatorsCantVote" title="go to the details">lmsgSpectatorsCantVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgTeamDamageDisabled" name="lmsgTeamDamageDisabled" title="go to the details">lmsgTeamDamageDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgTeamDamageEnabled" name="lmsgTeamDamageEnabled" title="go to the details">lmsgTeamDamageEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgTeamDamageVote" name="lmsgTeamDamageVote" title="go to the details">lmsgTeamDamageVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgTournamentModeDisabled" name="lmsgTournamentModeDisabled" title="go to the details">lmsgTournamentModeDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgTournamentModeEnabled" name="lmsgTournamentModeEnabled" title="go to the details">lmsgTournamentModeEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_lmsgTournamentVote" name="lmsgTournamentVote" title="go to the details">lmsgTournamentVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MapCount" name="MapCount" title="go to the details">MapCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/votinghandler.html#MapVoteMapList">MapVoteMapList</a>&gt;</td><td width="66%"><a href="#_MapList" name="MapList" title="go to the details">MapList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapListConfigPage" name="MapListConfigPage" title="go to the details">MapListConfigPage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/votinghandler.html#MapVoteScore">MapVoteScore</a>&gt;</td><td width="66%"><a href="#_MapVoteCount" name="MapVoteCount" title="go to the details">MapVoteCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribesvoting/votingreplicationinfo.html">VotingReplicationInfo</a>&gt;</td><td width="66%"><a href="#_MVRI" name="MVRI" title="go to the details">MVRI</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PropDescription[24]" name="PropDescription[24]" title="go to the details">PropDescription[24]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PropsDisplayText[24]" name="PropsDisplayText[24]" title="go to the details">PropsDisplayText[24]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ScoreBoardTime" name="ScoreBoardTime" title="go to the details">ScoreBoardTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerTravelString" name="ServerTravelString" title="go to the details">ServerTravelString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ServerTravelTime" name="ServerTravelTime" title="go to the details">ServerTravelTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/votinghandler.html#TeamDamageVoteScore">TeamDamageVoteScore</a></td><td width="66%"><a href="#_TeamDamageVoteCount" name="TeamDamageVoteCount" title="go to the details">TeamDamageVoteCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TextMessage" name="TextMessage" title="go to the details">TextMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TimeLeft" name="TimeLeft" title="go to the details">TimeLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/votinghandler.html#TournamentVoteScore">TournamentVoteScore</a></td><td width="66%"><a href="#_TournamentVoteCount" name="TournamentVoteCount" title="go to the details">TournamentVoteCount</a></td></tr>
+<tr><th colspan="2" class="small">TribesVotingHandler</th></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/votinghandler.html#AccumulationData">AccumulationData</a>&gt;</td><td width="66%"><a href="#_AccInfo" name="AccInfo" title="go to the details">AccInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_AdminPercent" name="AdminPercent" title="go to the details">AdminPercent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAccumulationMode" name="bAccumulationMode" title="go to the details">bAccumulationMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAdminVote" name="bAdminVote" title="go to the details">bAdminVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAnonymousAdmining" name="bAnonymousAdmining" title="go to the details">bAnonymousAdmining</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAnonymousKicking" name="bAnonymousKicking" title="go to the details">bAnonymousKicking</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAutoOpen" name="bAutoOpen" title="go to the details">bAutoOpen</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDefaultToCurrentGameType" name="bDefaultToCurrentGameType" title="go to the details">bDefaultToCurrentGameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEliminationMode" name="bEliminationMode" title="go to the details">bEliminationMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bKickVote" name="bKickVote" title="go to the details">bKickVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMapVote" name="bMapVote" title="go to the details">bMapVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMatchSetup" name="bMatchSetup" title="go to the details">bMatchSetup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bScoreMode" name="bScoreMode" title="go to the details">bScoreMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTeamDamageVote" name="bTeamDamageVote" title="go to the details">bTeamDamageVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTournamentVote" name="bTournamentVote" title="go to the details">bTournamentVote</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CurrentGameConfig" name="CurrentGameConfig" title="go to the details">CurrentGameConfig</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_DefaultGameConfig" name="DefaultGameConfig" title="go to the details">DefaultGameConfig</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/votinghandler.html#MapVoteGameConfig">MapVoteGameConfig</a>&gt;</td><td width="66%"><a href="#_GameConfig" name="GameConfig" title="go to the details">GameConfig</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_KickPercent" name="KickPercent" title="go to the details">KickPercent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapVoteHistoryType" name="MapVoteHistoryType" title="go to the details">MapVoteHistoryType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MidGameVotePercent" name="MidGameVotePercent" title="go to the details">MidGameVotePercent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MinMapCount" name="MinMapCount" title="go to the details">MinMapCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RepeatLimit" name="RepeatLimit" title="go to the details">RepeatLimit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ScoreBoardDelay" name="ScoreBoardDelay" title="go to the details">ScoreBoardDelay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ServerNumber" name="ServerNumber" title="go to the details">ServerNumber</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TeamDamagePercent" name="TeamDamagePercent" title="go to the details">TeamDamagePercent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TournamentPercent" name="TournamentPercent" title="go to the details">TournamentPercent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_VoteTimeLimit" name="VoteTimeLimit" title="go to the details">VoteTimeLimit</a></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/votinghandler.html">VotingHandler</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/votinghandler.html#AccumulationData">AccumulationData</a>, <a href="../engine/votinghandler.html#AdminVoteScore">AdminVoteScore</a>, <a href="../engine/votinghandler.html#KickVoteScore">KickVoteScore</a>, <a href="../engine/votinghandler.html#MapHistoryInfo">MapHistoryInfo</a>, <a href="../engine/votinghandler.html#MapVoteGameConfig">MapVoteGameConfig</a>, <a href="../engine/votinghandler.html#MapVoteGameConfigLite">MapVoteGameConfigLite</a>, <a href="../engine/votinghandler.html#MapVoteMapList">MapVoteMapList</a>, <a href="../engine/votinghandler.html#MapVoteScore">MapVoteScore</a>, <a href="../engine/votinghandler.html#TeamDamageVoteScore">TeamDamageVoteScore</a>, <a href="../engine/votinghandler.html#TournamentVoteScore">TournamentVoteScore</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/info.html#KeyValuePair">KeyValuePair</a>, <a href="../engine/info.html#PlayerResponseLine">PlayerResponseLine</a>, <a href="../engine/info.html#ServerResponseLine">ServerResponseLine</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_AcceptPlayInfoProperty-" name="AcceptPlayInfoProperty" title="go to the details">AcceptPlayInfoProperty</a> (string PropertyName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_AddConfigArrayItem-" name="AddConfigArrayItem" title="go to the details">AddConfigArrayItem</a> (string ConfigArrayName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddVoteReplicationInfo-" name="AddVoteReplicationInfo" title="go to the details">AddVoteReplicationInfo</a> (<a href="../engine/playercontroller.html">PlayerController</a> Player))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AdminPlayer-" name="AdminPlayer" title="go to the details">AdminPlayer</a> (int PlayerIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CloseAllVoteWindows-" name="CloseAllVoteWindows" title="go to the details">CloseAllVoteWindows</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DeleteConfigArrayItem-" name="DeleteConfigArrayItem" title="go to the details">DeleteConfigArrayItem</a> (string ConfigArrayName, int RowIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FillPlayInfo-" name="FillPlayInfo" title="go to the details">FillPlayInfo</a> (<a href="../engine/playinfo.html">PlayInfo</a> PlayInfo))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetAccVote-" name="GetAccVote" title="go to the details">GetAccVote</a> (<a href="../engine/playercontroller.html">PlayerController</a> Player))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetConfigArrayColumnTitle-" name="GetConfigArrayColumnTitle" title="go to the details">GetConfigArrayColumnTitle</a> (string ConfigArrayName, int ColumnIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetConfigArrayData-" name="GetConfigArrayData" title="go to the details">GetConfigArrayData</a> (string ConfigArrayName, int RowIndex, int ColumnIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetConfigArrayItemCount-" name="GetConfigArrayItemCount" title="go to the details">GetConfigArrayItemCount</a> (string ConfigArrayName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetDefaultMap-" name="GetDefaultMap" title="go to the details">GetDefaultMap</a> (out int mapidx, out int gameidx))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetDescriptionText-" name="GetDescriptionText" title="go to the details">GetDescriptionText</a> (string PropName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/votinghandler.html#MapVoteGameConfigLite">MapVoteGameConfigLite</a>&nbsp;</td><td><a href="#_GetGameConfig-" name="GetGameConfig" title="go to the details">GetGameConfig</a> (int p_GameConfigIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/votinghandler.html#MapVoteMapList">MapVoteMapList</a>&nbsp;</td><td><a href="#_GetMapList-" name="GetMapList" title="go to the details">GetMapList</a> (int p_MapIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetMVRIIndex-" name="GetMVRIIndex" title="go to the details">GetMVRIIndex</a> (<a href="../engine/playercontroller.html">PlayerController</a> Player))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetPlayerScore-" name="GetPlayerScore" title="go to the details">GetPlayerScore</a> (<a href="../engine/playercontroller.html">PlayerController</a> Player))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetServerDetails-" name="GetServerDetails" title="go to the details">GetServerDetails</a> (out GameInfo.ServerResponseLine ServerState ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_HandleRestartGame-" name="HandleRestartGame" title="go to the details">HandleRestartGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KickPlayer-" name="KickPlayer" title="go to the details">KickPlayer</a> (int PlayerIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadGameTypesInternal-" name="LoadGameTypesInternal" title="go to the details">LoadGameTypesInternal</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadMapList-" name="LoadMapList" title="go to the details">LoadMapList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadMapListInternal-" name="LoadMapListInternal" title="go to the details">LoadMapListInternal</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_MatchSetupLogin-" name="MatchSetupLogin" title="go to the details">MatchSetupLogin</a> (string UserID, string Password, <a href="../engine/actor.html">Actor</a> Requestor, out int SecLevel))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MatchSetupLogout-" name="MatchSetupLogout" title="go to the details">MatchSetupLogout</a> (<a href="../engine/actor.html">Actor</a> Requestor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OpenAllVoteWindows-" name="OpenAllVoteWindows" title="go to the details">OpenAllVoteWindows</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayerExit-" name="PlayerExit" title="go to the details">PlayerExit</a> (<a href="../engine/controller.html">Controller</a> Exiting))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayerJoin-" name="PlayerJoin" title="go to the details">PlayerJoin</a> (<a href="../engine/playercontroller.html">PlayerController</a> Player))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PropagateValue-" name="PropagateValue" title="go to the details">PropagateValue</a> (<a href="../tribesvoting/votingreplicationinfo.html">VotingReplicationInfo</a> Sender, string Type, string SettingName, string NewValue ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReloadAll-" name="ReloadAll" title="go to the details">ReloadAll</a> (optional bool bParam ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReloadMatchConfig-" name="ReloadMatchConfig" title="go to the details">ReloadMatchConfig</a> (bool bRefreshMaps, bool bRefreshMuts, optional PlayerController Caller ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveAccVotes-" name="SaveAccVotes" title="go to the details">SaveAccVotes</a> (int WinningMapIndex, int WinningGameIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_SetupGameMap-" name="SetupGameMap" title="go to the details">SetupGameMap</a> (<a href="../engine/votinghandler.html#MapVoteMapList">MapVoteMapList</a> MapInfo, int GameIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SubmitAdminVote-" name="SubmitAdminVote" title="go to the details">SubmitAdminVote</a> (int PlayerID, <a href="../engine/actor.html">Actor</a> Voter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SubmitKickVote-" name="SubmitKickVote" title="go to the details">SubmitKickVote</a> (int PlayerID, <a href="../engine/actor.html">Actor</a> Voter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SubmitMapVote-" name="SubmitMapVote" title="go to the details">SubmitMapVote</a> (int MapIndex, int GameIndex, <a href="../engine/actor.html">Actor</a> Voter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SubmitTeamDamageVote-" name="SubmitTeamDamageVote" title="go to the details">SubmitTeamDamageVote</a> (bool vote, <a href="../engine/actor.html">Actor</a> Voter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SubmitTournamentVote-" name="SubmitTournamentVote" title="go to the details">SubmitTournamentVote</a> (bool vote, <a href="../engine/actor.html">Actor</a> Voter))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TallyAdminVotes-" name="TallyAdminVotes" title="go to the details">TallyAdminVotes</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TallyKickVotes-" name="TallyKickVotes" title="go to the details">TallyKickVotes</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TallyMapVotes-" name="TallyMapVotes" title="go to the details">TallyMapVotes</a> (bool bForceMapSwitch))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TallyTeamDamageVotes-" name="TallyTeamDamageVotes" title="go to the details">TallyTeamDamageVotes</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TallyTournamentVotes-" name="TallyTournamentVotes" title="go to the details">TallyTournamentVotes</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_timer-" name="timer" title="go to the details">timer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateAdminVoteCount-" name="UpdateAdminVoteCount" title="go to the details">UpdateAdminVoteCount</a> (int PlayerID, int VoteCountDelta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateConfigArrayItem-" name="UpdateConfigArrayItem" title="go to the details">UpdateConfigArrayItem</a> (string ConfigArrayName, int RowIndex, int ColumnIndex, string NewValue))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateKickVoteCount-" name="UpdateKickVoteCount" title="go to the details">UpdateKickVoteCount</a> (int PlayerID, int VoteCountDelta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateTeamDamageVoteCount-" name="UpdateTeamDamageVoteCount" title="go to the details">UpdateTeamDamageVoteCount</a> (int yesVoteDelta, int noVoteDelta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateTournamentVoteCount-" name="UpdateTournamentVoteCount" title="go to the details">UpdateTournamentVoteCount</a> (int yesVoteDelta, int noVoteDelta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateVoteCount-" name="UpdateVoteCount" title="go to the details">UpdateVoteCount</a> (int MapIndex, int GameIndex, int VoteCount))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/votinghandler.html">VotingHandler</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/votinghandler.html#AddConfigArrayItem">AddConfigArrayItem</a>, <a href="../engine/votinghandler.html#DeleteConfigArrayItem">DeleteConfigArrayItem</a>, <a href="../engine/votinghandler.html#FillPlayInfo">FillPlayInfo</a>, <a href="../engine/votinghandler.html#GetConfigArrayColumnTitle">GetConfigArrayColumnTitle</a>, <a href="../engine/votinghandler.html#GetConfigArrayData">GetConfigArrayData</a>, <a href="../engine/votinghandler.html#GetConfigArrayItemCount">GetConfigArrayItemCount</a>, <a href="../engine/votinghandler.html#GetServerDetails">GetServerDetails</a>, <a href="../engine/votinghandler.html#HandleRestartGame">HandleRestartGame</a>, <a href="../engine/votinghandler.html#PlayerExit">PlayerExit</a>, <a href="../engine/votinghandler.html#PlayerJoin">PlayerJoin</a>, <a href="../engine/votinghandler.html#ReloadAll">ReloadAll</a>, <a href="../engine/votinghandler.html#UpdateConfigArrayItem">UpdateConfigArrayItem</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/info.html">Info</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/info.html#AcceptPlayInfoProperty">AcceptPlayInfoProperty</a>, <a href="../engine/info.html#FillPlayInfo">FillPlayInfo</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AdminVoteCount" class="hidden"></a>AdminVoteCount <a href="../Source_tribesvoting/tribesvotinghandler.html#11" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/votinghandler.html#AdminVoteScore" class="source">AdminVoteScore</a></span>&gt; AdminVoteCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLevelSwitchPending" class="hidden"></a>bLevelSwitchPending <a href="../Source_tribesvoting/tribesvotinghandler.html#6" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLevelSwitchPending;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMidGameVote" class="hidden"></a>bMidGameVote <a href="../Source_tribesvoting/tribesvotinghandler.html#7" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bMidGameVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameConfigPage" class="hidden"></a>GameConfigPage <a href="../Source_tribesvoting/tribesvotinghandler.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> GameConfigPage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KickVoteCount" class="hidden"></a>KickVoteCount <a href="../Source_tribesvoting/tribesvotinghandler.html#10" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/votinghandler.html#KickVoteScore" class="source">KickVoteScore</a></span>&gt; KickVoteCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgAdminMapChange" class="hidden"></a>lmsgAdminMapChange <a href="../Source_tribesvoting/tribesvotinghandler.html#83" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgAdminMapChange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgAdminVote" class="hidden"></a>lmsgAdminVote <a href="../Source_tribesvoting/tribesvotinghandler.html#67" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgAdminVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgAdminVoteAdmin" class="hidden"></a>lmsgAdminVoteAdmin <a href="../Source_tribesvoting/tribesvotinghandler.html#69" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgAdminVoteAdmin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgAnonymousAdminVote" class="hidden"></a>lmsgAnonymousAdminVote <a href="../Source_tribesvoting/tribesvotinghandler.html#68" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgAnonymousAdminVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgAnonymousKickVote" class="hidden"></a>lmsgAnonymousKickVote <a href="../Source_tribesvoting/tribesvotinghandler.html#65" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgAnonymousKickVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgGameConfigColumnTitle[6]" class="hidden"></a>lmsgGameConfigColumnTitle[6] <a href="../Source_tribesvoting/tribesvotinghandler.html#84" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgGameConfigColumnTitle[<span class="source_int">6</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgInvalidPassword" class="hidden"></a>lmsgInvalidPassword <a href="../Source_tribesvoting/tribesvotinghandler.html#62" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgInvalidPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgKickVote" class="hidden"></a>lmsgKickVote <a href="../Source_tribesvoting/tribesvotinghandler.html#64" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgKickVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgKickVoteAdmin" class="hidden"></a>lmsgKickVoteAdmin <a href="../Source_tribesvoting/tribesvotinghandler.html#66" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgKickVoteAdmin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgMapVotedFor" class="hidden"></a>lmsgMapVotedFor <a href="../Source_tribesvoting/tribesvotinghandler.html#75" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgMapVotedFor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgMapVotedForWithCount" class="hidden"></a>lmsgMapVotedForWithCount <a href="../Source_tribesvoting/tribesvotinghandler.html#76" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgMapVotedForWithCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgMapWon" class="hidden"></a>lmsgMapWon <a href="../Source_tribesvoting/tribesvotinghandler.html#72" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgMapWon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgMatchSetupPermission" class="hidden"></a>lmsgMatchSetupPermission <a href="../Source_tribesvoting/tribesvotinghandler.html#63" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgMatchSetupPermission;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgMidGameVote" class="hidden"></a>lmsgMidGameVote <a href="../Source_tribesvoting/tribesvotinghandler.html#73" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgMidGameVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgSpectatorsCantVote" class="hidden"></a>lmsgSpectatorsCantVote <a href="../Source_tribesvoting/tribesvotinghandler.html#74" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgSpectatorsCantVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgTeamDamageDisabled" class="hidden"></a>lmsgTeamDamageDisabled <a href="../Source_tribesvoting/tribesvotinghandler.html#80" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgTeamDamageDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgTeamDamageEnabled" class="hidden"></a>lmsgTeamDamageEnabled <a href="../Source_tribesvoting/tribesvotinghandler.html#79" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgTeamDamageEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgTeamDamageVote" class="hidden"></a>lmsgTeamDamageVote <a href="../Source_tribesvoting/tribesvotinghandler.html#70" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgTeamDamageVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgTournamentModeDisabled" class="hidden"></a>lmsgTournamentModeDisabled <a href="../Source_tribesvoting/tribesvotinghandler.html#78" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgTournamentModeDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgTournamentModeEnabled" class="hidden"></a>lmsgTournamentModeEnabled <a href="../Source_tribesvoting/tribesvotinghandler.html#77" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgTournamentModeEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lmsgTournamentVote" class="hidden"></a>lmsgTournamentVote <a href="../Source_tribesvoting/tribesvotinghandler.html#71" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> lmsgTournamentVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapCount" class="hidden"></a>MapCount <a href="../Source_tribesvoting/tribesvotinghandler.html#5" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> MapCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapList" class="hidden"></a>MapList <a href="../Source_tribesvoting/tribesvotinghandler.html#18" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/votinghandler.html#MapVoteMapList" class="source">MapVoteMapList</a></span>&gt; <span class="source_type"><a href="../gameplay/maplist.html" class="source">MapList</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapListConfigPage" class="hidden"></a>MapListConfigPage <a href="../Source_tribesvoting/tribesvotinghandler.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> MapListConfigPage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapVoteCount" class="hidden"></a>MapVoteCount <a href="../Source_tribesvoting/tribesvotinghandler.html#9" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/votinghandler.html#MapVoteScore" class="source">MapVoteScore</a></span>&gt; MapVoteCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MVRI" class="hidden"></a>MVRI <a href="../Source_tribesvoting/tribesvotinghandler.html#4" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../tribesvoting/votingreplicationinfo.html" class="source">VotingReplicationInfo</a></span>&gt; MVRI;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PropDescription[24]" class="hidden"></a>PropDescription[24] <a href="../Source_tribesvoting/tribesvotinghandler.html#82" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> PropDescription[<span class="source_int">24</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PropsDisplayText[24]" class="hidden"></a>PropsDisplayText[24] <a href="../Source_tribesvoting/tribesvotinghandler.html#81" class="small">Source code</a></h4>
+<div class="declaration">var localized <span class="source_type">string</span> PropsDisplayText[<span class="source_int">24</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ScoreBoardTime" class="hidden"></a>ScoreBoardTime <a href="../Source_tribesvoting/tribesvotinghandler.html#8" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ScoreBoardTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerTravelString" class="hidden"></a>ServerTravelString <a href="../Source_tribesvoting/tribesvotinghandler.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> ServerTravelString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerTravelTime" class="hidden"></a>ServerTravelTime <a href="../Source_tribesvoting/tribesvotinghandler.html#8" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ServerTravelTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamDamageVoteCount" class="hidden"></a>TeamDamageVoteCount <a href="../Source_tribesvoting/tribesvotinghandler.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/votinghandler.html#TeamDamageVoteScore" class="source">TeamDamageVoteScore</a></span> TeamDamageVoteCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TextMessage" class="hidden"></a>TextMessage <a href="../Source_tribesvoting/tribesvotinghandler.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> TextMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TimeLeft" class="hidden"></a>TimeLeft <a href="../Source_tribesvoting/tribesvotinghandler.html#8" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> TimeLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TournamentVoteCount" class="hidden"></a>TournamentVoteCount <a href="../Source_tribesvoting/tribesvotinghandler.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/votinghandler.html#TournamentVoteScore" class="source">TournamentVoteScore</a></span> TournamentVoteCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">TribesVotingHandler</h3>
+<h4><a name="_AccInfo" class="hidden"></a>AccInfo <a href="../Source_tribesvoting/tribesvotinghandler.html#49" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config array&lt;<span class="source_type"><a href="../engine/votinghandler.html#AccumulationData" class="source">AccumulationData</a></span>&gt; AccInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AdminPercent" class="hidden"></a>AdminPercent <a href="../Source_tribesvoting/tribesvotinghandler.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> AdminPercent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAccumulationMode" class="hidden"></a>bAccumulationMode <a href="../Source_tribesvoting/tribesvotinghandler.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bAccumulationMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAdminVote" class="hidden"></a>bAdminVote <a href="../Source_tribesvoting/tribesvotinghandler.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bAdminVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAnonymousAdmining" class="hidden"></a>bAnonymousAdmining <a href="../Source_tribesvoting/tribesvotinghandler.html#48" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bAnonymousAdmining;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAnonymousKicking" class="hidden"></a>bAnonymousKicking <a href="../Source_tribesvoting/tribesvotinghandler.html#47" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bAnonymousKicking;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bAutoOpen" class="hidden"></a>bAutoOpen <a href="../Source_tribesvoting/tribesvotinghandler.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bAutoOpen;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDefaultToCurrentGameType" class="hidden"></a>bDefaultToCurrentGameType <a href="../Source_tribesvoting/tribesvotinghandler.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bDefaultToCurrentGameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bEliminationMode" class="hidden"></a>bEliminationMode <a href="../Source_tribesvoting/tribesvotinghandler.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bEliminationMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bKickVote" class="hidden"></a>bKickVote <a href="../Source_tribesvoting/tribesvotinghandler.html#38" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bKickVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMapVote" class="hidden"></a>bMapVote <a href="../Source_tribesvoting/tribesvotinghandler.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bMapVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMatchSetup" class="hidden"></a>bMatchSetup <a href="../Source_tribesvoting/tribesvotinghandler.html#42" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bMatchSetup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bScoreMode" class="hidden"></a>bScoreMode <a href="../Source_tribesvoting/tribesvotinghandler.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bScoreMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTeamDamageVote" class="hidden"></a>bTeamDamageVote <a href="../Source_tribesvoting/tribesvotinghandler.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bTeamDamageVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTournamentVote" class="hidden"></a>bTournamentVote <a href="../Source_tribesvoting/tribesvotinghandler.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">bool</span> bTournamentVote;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentGameConfig" class="hidden"></a>CurrentGameConfig <a href="../Source_tribesvoting/tribesvotinghandler.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> CurrentGameConfig;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultGameConfig" class="hidden"></a>DefaultGameConfig <a href="../Source_tribesvoting/tribesvotinghandler.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> DefaultGameConfig;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameConfig" class="hidden"></a>GameConfig <a href="../Source_tribesvoting/tribesvotinghandler.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config array&lt;<span class="source_type"><a href="../engine/votinghandler.html#MapVoteGameConfig" class="source">MapVoteGameConfig</a></span>&gt; GameConfig;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KickPercent" class="hidden"></a>KickPercent <a href="../Source_tribesvoting/tribesvotinghandler.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> KickPercent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapVoteHistoryType" class="hidden"></a>MapVoteHistoryType <a href="../Source_tribesvoting/tribesvotinghandler.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">string</span> MapVoteHistoryType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MidGameVotePercent" class="hidden"></a>MidGameVotePercent <a href="../Source_tribesvoting/tribesvotinghandler.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> MidGameVotePercent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MinMapCount" class="hidden"></a>MinMapCount <a href="../Source_tribesvoting/tribesvotinghandler.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> MinMapCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RepeatLimit" class="hidden"></a>RepeatLimit <a href="../Source_tribesvoting/tribesvotinghandler.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> RepeatLimit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ScoreBoardDelay" class="hidden"></a>ScoreBoardDelay <a href="../Source_tribesvoting/tribesvotinghandler.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> ScoreBoardDelay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerNumber" class="hidden"></a>ServerNumber <a href="../Source_tribesvoting/tribesvotinghandler.html#50" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> ServerNumber;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TeamDamagePercent" class="hidden"></a>TeamDamagePercent <a href="../Source_tribesvoting/tribesvotinghandler.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> TeamDamagePercent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TournamentPercent" class="hidden"></a>TournamentPercent <a href="../Source_tribesvoting/tribesvotinghandler.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> TournamentPercent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VoteTimeLimit" class="hidden"></a>VoteTimeLimit <a href="../Source_tribesvoting/tribesvotinghandler.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesvoting/tribesvotinghandler.html" class="source">TribesVotingHandler</a></span>) config <span class="source_type">int</span> VoteTimeLimit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AcceptPlayInfoProperty-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> AcceptPlayInfoProperty <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2062" class="small">Source code</a></h4>
+<div class="declaration">static event <span class="source_type">bool</span> AcceptPlayInfoProperty ( <span class="source_type">string</span> PropertyName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddConfigArrayItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddConfigArrayItem <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2202" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> AddConfigArrayItem ( <span class="source_type">string</span> ConfigArrayName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddVoteReplicationInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddVoteReplicationInfo <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#292" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AddVoteReplicationInfo ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AdminPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AdminPlayer <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1723" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/accesscontrol.html#AdminPlayer" class="source">AdminPlayer</a></span> ( <span class="source_type">int</span> PlayerIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CloseAllVoteWindows-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CloseAllVoteWindows <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#982" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CloseAllVoteWindows ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeleteConfigArrayItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DeleteConfigArrayItem <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2186" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DeleteConfigArrayItem ( <span class="source_type">string</span> ConfigArrayName, <span class="source_type">int</span> RowIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillPlayInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FillPlayInfo <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2027" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span>  FillPlayInfo ( <span class="source_type"><a href="../engine/playinfo.html" class="source">PlayInfo</a></span> <span class="source_type"><a href="../engine/playinfo.html" class="source">PlayInfo</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetAccVote-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetAccVote <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1124" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetAccVote ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetConfigArrayColumnTitle-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetConfigArrayColumnTitle <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2171" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> GetConfigArrayColumnTitle ( <span class="source_type">string</span> ConfigArrayName, <span class="source_type">int</span> ColumnIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetConfigArrayData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetConfigArrayData <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2138" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> GetConfigArrayData ( <span class="source_type">string</span> ConfigArrayName, <span class="source_type">int</span> RowIndex, <span class="source_type">int</span> ColumnIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetConfigArrayItemCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetConfigArrayItemCount <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2259" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetConfigArrayItemCount ( <span class="source_type">string</span> ConfigArrayName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDefaultMap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDefaultMap <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1234" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GetDefaultMap ( out <span class="source_type">int</span> mapidx, out <span class="source_type">int</span> gameidx) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDescriptionText-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetDescriptionText <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2106" class="small">Source code</a></h4>
+<div class="declaration">static event <span class="source_type">string</span> GetDescriptionText ( <span class="source_type">string</span> PropName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameConfig-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGameConfig <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1098" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../engine/votinghandler.html#MapVoteGameConfigLite" class="source">MapVoteGameConfigLite</a></span> GetGameConfig ( <span class="source_type">int</span> p_GameConfigIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMapList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMapList <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1093" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../engine/votinghandler.html#MapVoteMapList" class="source">MapVoteMapList</a></span> GetMapList ( <span class="source_type">int</span> p_MapIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMVRIIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMVRIIndex <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#508" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetMVRIIndex ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerScore-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerScore <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1109" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> GetPlayerScore ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetServerDetails-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetServerDetails <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2322" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  GetServerDetails ( out <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>.<span class="source_type"><a href="../engine/info.html#ServerResponseLine" class="source">ServerResponseLine</a></span> <span class="source_type">ServerState</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HandleRestartGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HandleRestartGame <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1055" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> HandleRestartGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KickPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KickPlayer <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1519" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  KickPlayer ( <span class="source_type">int</span> PlayerIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadGameTypesInternal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadGameTypesInternal <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#355" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  LoadGameTypesInternal ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadMapList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadMapList <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#395" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadMapList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadMapListInternal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadMapListInternal <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#321" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  LoadMapListInternal ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MatchSetupLogin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MatchSetupLogin <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1973" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> MatchSetupLogin ( <span class="source_type">string</span> UserID, <span class="source_type">string</span> <span class="source_type">Password</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Requestor, out <span class="source_type">int</span> SecLevel) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MatchSetupLogout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MatchSetupLogout <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2019" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  MatchSetupLogout ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Requestor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OpenAllVoteWindows-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OpenAllVoteWindows <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#998" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OpenAllVoteWindows ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerExit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayerExit <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#178" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PlayerExit ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Exiting</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerJoin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayerJoin <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#165" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PlayerJoin ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#89" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PropagateValue-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PropagateValue <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2278" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PropagateValue ( <span class="source_type"><a href="../tribesvoting/votingreplicationinfo.html" class="source">VotingReplicationInfo</a></span> <span class="source_type">Sender</span>, <span class="source_type">string</span> <span class="source_type">Type</span>, <span class="source_type">string</span> SettingName, <span class="source_type">string</span> <span class="source_type">NewValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReloadAll-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReloadAll <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2272" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ReloadAll ( optional <span class="source_type">bool</span> <span class="source_type">bParam</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReloadMatchConfig-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReloadMatchConfig <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2293" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ReloadMatchConfig ( <span class="source_type">bool</span> bRefreshMaps, <span class="source_type">bool</span> bRefreshMuts, optional <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">Caller</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveAccVotes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveAccVotes <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1151" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SaveAccVotes ( <span class="source_type">int</span> WinningMapIndex, <span class="source_type">int</span> WinningGameIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetupGameMap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetupGameMap <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1014" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> SetupGameMap ( <span class="source_type"><a href="../engine/votinghandler.html#MapVoteMapList" class="source">MapVoteMapList</a></span> MapInfo, <span class="source_type">int</span> GameIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SubmitAdminVote-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SubmitAdminVote <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1550" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SubmitAdminVote ( <span class="source_type">int</span> <span class="source_type">PlayerID</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Voter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SubmitKickVote-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SubmitKickVote <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1341" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SubmitKickVote ( <span class="source_type">int</span> <span class="source_type">PlayerID</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Voter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SubmitMapVote-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SubmitMapVote <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#518" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SubmitMapVote ( <span class="source_type">int</span> MapIndex, <span class="source_type">int</span> GameIndex, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Voter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SubmitTeamDamageVote-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SubmitTeamDamageVote <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1758" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SubmitTeamDamageVote ( <span class="source_type">bool</span> vote, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Voter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SubmitTournamentVote-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SubmitTournamentVote <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1866" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SubmitTournamentVote ( <span class="source_type">bool</span> vote, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Voter) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TallyAdminVotes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TallyAdminVotes <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1669" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TallyAdminVotes ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TallyKickVotes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TallyKickVotes <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1463" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TallyKickVotes ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TallyMapVotes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TallyMapVotes <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#721" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TallyMapVotes ( <span class="source_type">bool</span> bForceMapSwitch) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TallyTeamDamageVotes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TallyTeamDamageVotes <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1841" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TallyTeamDamageVotes ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TallyTournamentVotes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TallyTournamentVotes <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1949" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  TallyTournamentVotes ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_timer-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> timer <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#920" class="small">Source code</a></h4>
+<div class="declaration"> event  <span class="source_type"><a href="../engine/timer.html" class="source">timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateAdminVoteCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateAdminVoteCount <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1628" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateAdminVoteCount ( <span class="source_type">int</span> <span class="source_type">PlayerID</span>, <span class="source_type">int</span> VoteCountDelta) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateConfigArrayItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateConfigArrayItem <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#2222" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateConfigArrayItem ( <span class="source_type">string</span> ConfigArrayName, <span class="source_type">int</span> RowIndex, <span class="source_type">int</span> ColumnIndex, <span class="source_type">string</span> <span class="source_type">NewValue</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateKickVoteCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateKickVoteCount <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1422" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateKickVoteCount ( <span class="source_type">int</span> <span class="source_type">PlayerID</span>, <span class="source_type">int</span> VoteCountDelta) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateTeamDamageVoteCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateTeamDamageVoteCount <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1821" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateTeamDamageVoteCount ( <span class="source_type">int</span> yesVoteDelta, <span class="source_type">int</span> noVoteDelta) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateTournamentVoteCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateTournamentVoteCount <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#1929" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateTournamentVoteCount ( <span class="source_type">int</span> yesVoteDelta, <span class="source_type">int</span> noVoteDelta) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateVoteCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateVoteCount <span class="function_state"></span> <a href="../Source_tribesvoting/tribesvotinghandler.html#675" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  UpdateVoteCount ( <span class="source_type">int</span> MapIndex, <span class="source_type">int</span> GameIndex, <span class="source_type">int</span> VoteCount) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	VoteTimeLimit=<span class="source_int">60</span>
+	ScoreBoardDelay=<span class="source_int">5</span>
+	bAutoOpen=False
+	MinMapCount=<span class="source_int">2</span>
+	MapVoteHistoryType=<span class="source_string">"TribesVoting.MapVoteHistory_INI"</span>
+	RepeatLimit=<span class="source_int">4</span>
+	bScoreMode=False
+	bAccumulationMode=False
+	bEliminationMode=False
+	DefaultGameConfig=<span class="source_int">0</span>
+	bDefaultToCurrentGameType=True
+
+	bMapVote=True
+	bKickVote=True
+	bMatchSetup=True
+    bAdminVote=True
+    bTeamDamageVote=True
+    bTournamentVote=true
+	
+	bAnonymousKicking=True
+	bAnonymousAdmining=True
+
+	MidGameVotePercent=<span class="source_int">51</span>
+	KickPercent=<span class="source_int">51</span>
+	AdminPercent=<span class="source_int">51</span>
+    TeamDamagePercent=<span class="source_int">51</span>
+    TournamentPercent=<span class="source_int">51</span>
+
+	ServerNumber=<span class="source_int">1</span>
+
+	PropsDisplayText(<span class="source_int">0</span>)=<span class="source_string">"Enable Map Voting"</span>
+    PropsDisplayText(<span class="source_int">1</span>)=<span class="source_string">"Auto Open GUI"</span>
+    PropsDisplayText(<span class="source_int">2</span>)=<span class="source_string">"ScoreBoard Delay"</span>
+    PropsDisplayText(<span class="source_int">3</span>)=<span class="source_string">"Score Mode"</span>
+    PropsDisplayText(<span class="source_int">4</span>)=<span class="source_string">"Accumulation Mode"</span>
+    PropsDisplayText(<span class="source_int">5</span>)=<span class="source_string">"Elimination Mode"</span>
+    PropsDisplayText(<span class="source_int">6</span>)=<span class="source_string">"Minimum Maps"</span>
+    PropsDisplayText(<span class="source_int">7</span>)=<span class="source_string">"Repeat Limit"</span>
+    PropsDisplayText(<span class="source_int">8</span>)=<span class="source_string">"Voting Time Limit"</span>
+    PropsDisplayText(<span class="source_int">9</span>)=<span class="source_string">"Mid-Game Vote Percent"</span>
+    PropsDisplayText(<span class="source_int">10</span>)=<span class="source_string">"Default Current GameType"</span>
+    PropsDisplayText(<span class="source_int">11</span>)=<span class="source_string">"Enable Kick Voting"</span>
+    PropsDisplayText(<span class="source_int">12</span>)=<span class="source_string">"Kick Vote Percent"</span>
+    PropsDisplayText(<span class="source_int">13</span>)=<span class="source_string">"Anonymous Kick Voting"</span>
+    PropsDisplayText(<span class="source_int">14</span>)=<span class="source_string">"Enable Admin Voting"</span>
+    PropsDisplayText(<span class="source_int">15</span>)=<span class="source_string">"Admin Vote Percent"</span>
+    PropsDisplayText(<span class="source_int">16</span>)=<span class="source_string">"Anonymous Admin Voting"</span>
+    PropsDisplayText(<span class="source_int">17</span>)=<span class="source_string">"Enable Team Damage Voting"</span>
+    PropsDisplayText(<span class="source_int">18</span>)=<span class="source_string">"Team Damage Vote Percent"</span>
+    PropsDisplayText(<span class="source_int">19</span>)=<span class="source_string">"Enable Tournament Voting"</span>
+    PropsDisplayText(<span class="source_int">20</span>)=<span class="source_string">"Tournament Vote Percent"</span>
+    PropsDisplayText(<span class="source_int">21</span>)=<span class="source_string">"Allow Match Setup"</span>
+    PropsDisplayText(<span class="source_int">22</span>)=<span class="source_string">"Game Configuration"</span>
+    PropsDisplayText(<span class="source_int">23</span>)=<span class="source_string">"Map List Configuration"</span>
+
+	PropDescription(<span class="source_int">0</span>)=<span class="source_string">"If enabled players can vote for maps."</span>
+    PropDescription(<span class="source_int">1</span>)=<span class="source_string">"If enabled the Map voting interface will automatically open at the end of each game."</span>
+    PropDescription(<span class="source_int">2</span>)=<span class="source_string">"Sets the number of seconds to delay after the end of each game before opening the voting interface."</span>
+    PropDescription(<span class="source_int">3</span>)=<span class="source_string">"If enabled, each player gets his or her score worth of votes."</span>
+    PropDescription(<span class="source_int">4</span>)=<span class="source_string">"If enabled, each player will accumulate votes each game until they win."</span>
+    PropDescription(<span class="source_int">5</span>)=<span class="source_string">"If enabled, available maps are disabled as they are played until there are X maps left."</span>
+    PropDescription(<span class="source_int">6</span>)=<span class="source_string">"The number of enabled maps that remain in the map list (in Elimination mode) before the map list is reset."</span>
+    PropDescription(<span class="source_int">7</span>)=<span class="source_string">"Number of previously played maps that should not be votable."</span>
+    PropDescription(<span class="source_int">8</span>)=<span class="source_string">"Limits how much time (in seconds) to allow for voting."</span>
+    PropDescription(<span class="source_int">9</span>)=<span class="source_string">"Percentage of players that must vote to trigger a Mid-Game vote."</span>
+    PropDescription(<span class="source_int">10</span>)=<span class="source_string">"If enabled, and there are no players on the server then the server will stay on the current game type."</span>
+    PropDescription(<span class="source_int">11</span>)=<span class="source_string">"If enable players can vote to kick other players."</span>
+    PropDescription(<span class="source_int">12</span>)=<span class="source_string">"The percentage of players that must vote against an individual player to have them kicked from the server."</span>
+    PropDescription(<span class="source_int">13</span>)=<span class="source_string">"If enabled players can place Kick votes without anyone knowing who placed the vote."</span>
+    PropDescription(<span class="source_int">14</span>)=<span class="source_string">"If enable players can vote to Admin other players."</span>
+    PropDescription(<span class="source_int">15</span>)=<span class="source_string">"The percentage of players that must vote against an individual player to have them Admined from the server."</span>
+    PropDescription(<span class="source_int">16</span>)=<span class="source_string">"If enabled players can place Admin votes without anyone knowing who placed the vote."</span>
+    PropDescription(<span class="source_int">17</span>)=<span class="source_string">"If enable players can vote for team damage."</span>
+    PropDescription(<span class="source_int">18</span>)=<span class="source_string">"The percentage of players that must vote for/against team damage to have it enabled or disabled."</span>
+    PropDescription(<span class="source_int">19</span>)=<span class="source_string">"If enable players can vote for tournament mode."</span>
+    PropDescription(<span class="source_int">20</span>)=<span class="source_string">"The percentage of players that must vote for/against tournament mode to have it enabled or disabled."</span>
+	PropDescription(<span class="source_int">21</span>)=<span class="source_string">"Enables match setup on the server - valid admin username & password is required in order to use this feature"</span>
+    PropDescription(<span class="source_int">22</span>)=<span class="source_string">"Opens the map voting game configuration screen"</span>
+    PropDescription(<span class="source_int">23</span>)=<span class="source_string">"Opens the map voting list configuration screen"</span>
+
+	lmsgAdminMapChange=<span class="source_string">"Admin has forced map switch to %mapname%"</span>
+	lmsgMapVotedForWithCount=<span class="source_string">"%playername% has placed %votecount% votes for %mapname%"</span>
+	lmsgMapVotedFor=<span class="source_string">"%playername% has voted for %mapname%"</span>
+	lmsgMapWon=<span class="source_string">"%mapname% has won !"</span>
+	lmsgMidGameVote=<span class="source_string">"Mid-Game Map Voting has been initiated !!!!"</span>
+	lmsgSpectatorsCantVote=<span class="source_string">"Sorry, Spectators can not vote."</span>
+	lmsgInvalidPassword=<span class="source_string">"The password entered is invalid !"</span>
+	lmsgMatchSetupPermission=<span class="source_string">"Sorry, you do not have permission to use Match Setup !"</span>
+	lmsgKickVote=<span class="source_string">"%playername1% placed a kick vote against %playername2%"</span>
+	lmsgAnonymousKickVote=<span class="source_string">"A kick vote has been placed against %playername%"</span>
+	lmsgKickVoteAdmin=<span class="source_string">"%playername% attempted to submit a kick vote against the server administrator !"</span>
+	lmsgAdminVote=<span class="source_string">"%playername1% placed an admin vote for %playername2%"</span>
+	lmsgAnonymousAdminVote=<span class="source_string">"An admin vote has been placed for %playername%"</span>
+	lmsgAdminVoteAdmin=<span class="source_string">"%playername% submitted an admin vote for an existing administrator"</span>
+	lmsgTeamDamageVote=<span class="source_string">"%playername% placed a vote %type% team damage"</span>
+	lmsgTournamentVote=<span class="source_string">"%playername% placed a vote %type% tournament mode"</span>
+	lmsgTournamentModeEnabled=<span class="source_string">"Tournament mode has been enabled by vote"</span>
+	lmsgTournamentModeDisabled=<span class="source_string">"Tournament mode has been disabled by vote"</span>
+	lmsgTeamDamageEnabled=<span class="source_string">"Team damage has been enabled by vote"</span>
+	lmsgTeamDamageDisabled=<span class="source_string">"Team damage has been disabled by vote"</span>
+	lmsgGameConfigColumnTitle[<span class="source_int">0</span>]=<span class="source_string">"GameType"</span>
+	lmsgGameConfigColumnTitle[<span class="source_int">1</span>]=<span class="source_string">"MapPrefixes"</span>
+	lmsgGameConfigColumnTitle[<span class="source_int">2</span>]=<span class="source_string">"Abbreviation"</span>
+	lmsgGameConfigColumnTitle[<span class="source_int">3</span>]=<span class="source_string">"Name"</span>
+	lmsgGameConfigColumnTitle[<span class="source_int">4</span>]=<span class="source_string">"Mutators"</span>
+	lmsgGameConfigColumnTitle[<span class="source_int">5</span>]=<span class="source_string">"Options"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesvoting/tribesvoting-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesvoting/tribesvotinghandler.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#TribesVotingHandler">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesvoting/votingreplicationinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesvoting/votingreplicationinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:37.205 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

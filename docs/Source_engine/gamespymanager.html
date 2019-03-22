@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Engine.GameSpyManager</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/gamespymanager.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#GameSpyManager">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/gamerules.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/gamestats.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/gamespymanager.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/gamespymanager.html">GameSpyManager</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/gamespymanager.html" class="source">GameSpyManager</a></span> extends Core.<span class="source_type"><a href="../core/object.html" class="source">Object</a></span>
+<a name="2"></a>	native;
+<a name="3"></a>
+<a name="4"></a>enum <span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span>
+<a name="5"></a>{
+<a name="6"></a>	GSR_VALID_PROFILE,
+<a name="7"></a>	GSR_USER_CONNECTED,
+<a name="8"></a>	GSR_REGISTERED_UNIQUE_NICK,
+<a name="9"></a>	GSR_UNIQUE_NICK_TAKEN,
+<a name="10"></a>	GSR_BAD_EMAIL,
+<a name="11"></a>	GSR_BAD_PASSWORD,
+<a name="12"></a>	GSR_BAD_NICK,
+<a name="13"></a>	GSR_TIMED_OUT,
+<a name="14"></a>	GSR_GENERAL_FAILURE
+<a name="15"></a>};
+<a name="16"></a>
+<a name="17"></a>enum <span class="source_type"><a href="../engine/gamespymanager.html#ETeamAffiliationResult" class="source">ETeamAffiliationResult</a></span>
+<a name="18"></a>{
+<a name="19"></a>	TAR_PLAYER_AFFILIATED,
+<a name="20"></a>	TAR_TEAM_ID_MISMATCH,
+<a name="21"></a>	TAR_OLD_JOIN_TIME
+<a name="22"></a>};
+<a name="23"></a>
+<a name="24"></a>var <span class="source_type"><a href="../engine/gameengine.html" class="source">GameEngine</a></span>	<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>;
+<a name="25"></a>
+<a name="26"></a>var const <span class="source_type">bool</span>	bAvailable;
+<a name="27"></a>var const <span class="source_type">bool</span>	bFailedAvailabilityCheck;
+<a name="28"></a>
+<a name="29"></a>var const <span class="source_type">bool</span>	bInitAsServer;
+<a name="30"></a>var const <span class="source_type">bool</span>	bInitAsClient;
+<a name="31"></a>
+<a name="32"></a>var const <span class="source_type">bool</span>	bInitialised;
+<a name="33"></a>var const <span class="source_type">bool</span>	bFailedInitialisation;
+<a name="34"></a>
+<a name="35"></a>var const <span class="source_type">bool</span>	bTrackingStats;				<span class="source_comment">// If true try to initialise the stat tracker
+</span><a name="36"></a>var const <span class="source_type">bool</span>	bStatsInitalised;
+<a name="37"></a>
+<a name="38"></a>var const <span class="source_type">bool</span>	bUsingPresence;				<span class="source_comment">// If true try to initialise the presence sdk
+</span><a name="39"></a>var const <span class="source_type">bool</span>	bPresenceInitalised;
+<a name="40"></a>
+<a name="41"></a>var const <span class="source_type">bool</span>	bServerUpdateFinished;		<span class="source_comment">// Used during GetNextServer
+</span><a name="42"></a>var const <span class="source_type">int</span>	currentServerIndex;			<span class="source_comment">// Used during GetNextServer
+</span><a name="43"></a>
+<a name="44"></a>var Array&lt;<span class="source_type">byte</span>&gt; ServerKeyIds;
+<a name="45"></a>var Array&lt;<span class="source_type">String</span>&gt; ServerKeyNames;
+<a name="46"></a>
+<a name="47"></a>var Array&lt;<span class="source_type">byte</span>&gt; PlayerKeyIds;
+<a name="48"></a>var Array&lt;<span class="source_type">String</span>&gt; PlayerKeyNames;
+<a name="49"></a>
+<a name="50"></a>var Array&lt;<span class="source_type">byte</span>&gt; TeamKeyIds;
+<a name="51"></a>var Array&lt;<span class="source_type">String</span>&gt; TeamKeyNames;
+<a name="52"></a>
+<a name="53"></a>var Array&lt;<span class="source_type">byte</span>&gt; CustomServerKeyIds;
+<a name="54"></a>var Array&lt;<span class="source_type">String</span>&gt; CustomServerKeyNames;
+<a name="55"></a>
+<a name="56"></a>var Array&lt;<span class="source_type">byte</span>&gt; CustomPlayerKeyIds;
+<a name="57"></a>var Array&lt;<span class="source_type">String</span>&gt; CustomPlayerKeyNames;
+<a name="58"></a>
+<a name="59"></a>var Array&lt;<span class="source_type">byte</span>&gt; CustomTeamKeyIds;
+<a name="60"></a>var Array&lt;<span class="source_type">String</span>&gt; CustomTeamKeyNames;
+<a name="61"></a>
+<a name="62"></a><span class="source_comment">// The key ids for the values that will be initially retrieved during a server update
+</span><a name="63"></a>var Array&lt;<span class="source_type">byte</span>&gt; InitialKeyIds;
+<a name="64"></a>
+<a name="65"></a>var private globalconfig <span class="source_type">string</span> ProductVersionID;			<span class="source_comment">// for auto-patching, build number is used if this is empty
+</span><a name="66"></a>var private globalconfig localized <span class="source_type">string</span> ProductRegionID;	<span class="source_comment">// for auto-patching
+</span><a name="67"></a>var globalconfig <span class="source_type">string</span> BaseFilePlanetPatchURL;
+<a name="68"></a>
+<a name="69"></a><span class="source_comment">// This function initialises GameSpy as a client
+</span><a name="70"></a><span class="source_comment">// Note: This function only tells GameSpy to initialise it may take longer and wont be initialised after returning from this function
+</span><a name="71"></a><span class="source_comment">// The GameSpyInitialised event will be called once GameSpy has finished initalising.
+</span><a name="72"></a><span class="source_comment">// There is no need for a script side function to init as a server as this is done automatically in native code when a server starts
+</span><a name="73"></a>final native <span class="source_type">function</span> InitGameSpyClient();
+<a name="74"></a>
+<a name="75"></a><span class="source_comment">// This event is called once GameSpy as initialised
+</span><a name="76"></a>event GameSpyInitialised();
+<a name="77"></a>
+<a name="78"></a>event OnLevelChange()
+<a name="79"></a>{
+<a name="80"></a>	SendGameSpyGameModeChange();
+<a name="81"></a>}
+<a name="82"></a>
+<a name="83"></a>event InitGameSpyData();
+<a name="84"></a>final native <span class="source_type">function</span> <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> GetLevelInfo();
+<a name="85"></a>
+<a name="86"></a>final native <span class="source_type">function</span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> GetPlayerObject();
+<a name="87"></a>
+<a name="88"></a>final native <span class="source_type">function</span> SendGameSpyGameModeChange();
+<a name="89"></a>
+<a name="90"></a><span class="source_comment">// This function starts an update of the server list
+</span><a name="91"></a>final native <span class="source_type">function</span> UpdateServerList(optional <span class="source_type">String</span> filter);
+<a name="92"></a>
+<a name="93"></a><span class="source_comment">// This function starts an update of the server list for the LAN
+</span><a name="94"></a>final native <span class="source_type">function</span> LANUpdateServerList();
+<a name="95"></a>
+<a name="96"></a><span class="source_comment">// This function clears the internal server list
+</span><a name="97"></a>final native <span class="source_type">function</span> ClearServerList();
+<a name="98"></a>
+<a name="99"></a><span class="source_comment">// This function updates a server based on ip and port
+</span><a name="100"></a>final native <span class="source_type">function</span> UpdateServerByIP(<span class="source_type">String</span> ipAddress, <span class="source_type">int</span> serverGamePort);
+<a name="101"></a>
+<a name="102"></a><span class="source_comment">// This function starts an update for a specific server in the list to update server specific data (player/team data)
+</span><a name="103"></a><span class="source_comment">// serverId is the server id received in UpdatedServerData during a server list update
+</span><a name="104"></a><span class="source_comment">// if refresh is true then the update will be done even if the server data is already available
+</span><a name="105"></a>final native <span class="source_type">function</span> UpdateServer(<span class="source_type">int</span> serverId, <span class="source_type">bool</span> Refresh);
+<a name="106"></a>
+<a name="107"></a><span class="source_comment">// This function will cancel a previously started update of the server list
+</span><a name="108"></a>final native <span class="source_type">function</span> CancelUpdate();
+<a name="109"></a>
+<a name="110"></a><span class="source_comment">// This function returns the ip address for the given serverId
+</span><a name="111"></a>final native <span class="source_type">function</span> <span class="source_type">String</span> GetServerIpAddress(<span class="source_type">int</span> serverId);
+<a name="112"></a>
+<a name="113"></a><span class="source_comment">// This function returns the port for the given serverId
+</span><a name="114"></a>final native <span class="source_type">function</span> <span class="source_type">String</span> GetServerPort(<span class="source_type">int</span> serverId);
+<a name="115"></a>
+<a name="116"></a><span class="source_comment">// This function returns the number of servers, including servers that haven't been updated yet
+</span><a name="117"></a>final native <span class="source_type">function</span> <span class="source_type">int</span> GetNumPotentialServers();
+<a name="118"></a>
+<a name="119"></a><span class="source_comment">// This function can be used to iterate over all the servers currently in the list
+</span><a name="120"></a><span class="source_comment">// Returns true if there is still more data, but the data may not have arrived yet
+</span><a name="121"></a><span class="source_comment">// If the data has not arrived yet serverId will be zero
+</span><a name="122"></a>final native <span class="source_type">function</span> <span class="source_type">bool</span> GetNextServer(out <span class="source_type">int</span> serverId, out <span class="source_type">String</span> ipAddress, out Array&lt;<span class="source_type">String</span>&gt; serverData);
+<a name="123"></a>
+<a name="124"></a><span class="source_comment">// Call this function when a new game starts to tell the stat tracking server
+</span><a name="125"></a>final native <span class="source_type">function</span> StatsNewGameStarted();
+<a name="126"></a>
+<a name="127"></a><span class="source_comment">// Call this function to verify that a connected player has a profile id and stat response string
+</span><a name="128"></a>final native <span class="source_type">function</span> <span class="source_type">bool</span> StatsHasPIDAndResponse(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc);
+<a name="129"></a>
+<a name="130"></a><span class="source_comment">// Call this function to get the profile id for the given player controller
+</span><a name="131"></a>final native <span class="source_type">function</span> <span class="source_type">String</span> StatsGetPID(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc);
+<a name="132"></a>
+<a name="133"></a><span class="source_comment">// Call this function to get the stat response string for the given player controller
+</span><a name="134"></a>final native <span class="source_type">function</span> <span class="source_type">String</span> StatsGetStatResponse(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc);
+<a name="135"></a>
+<a name="136"></a><span class="source_comment">// Call this function to add a new player to the stat tracking server
+</span><a name="137"></a>final native <span class="source_type">function</span> StatsNewPlayer(<span class="source_type">int</span> <span class="source_type">playerId</span>, <span class="source_type">string</span> <span class="source_type">playerName</span>);
+<a name="138"></a>
+<a name="139"></a><span class="source_comment">// Call this function to add a new team to the stat tracking server
+</span><a name="140"></a>final native <span class="source_type">function</span> StatsNewTeam(<span class="source_type">int</span> TeamID, <span class="source_type">string</span> TeamName);
+<a name="141"></a>
+<a name="142"></a><span class="source_comment">// Call this function to remove a player from the stat tracking server
+</span><a name="143"></a>final native <span class="source_type">function</span> StatsRemovePlayer(<span class="source_type">int</span> <span class="source_type">playerId</span>);
+<a name="144"></a>
+<a name="145"></a><span class="source_comment">// Call this function to remove a team from the stat tracking server
+</span><a name="146"></a>final native <span class="source_type">function</span> StatsRemoveTeam(<span class="source_type">int</span> TeamID);
+<a name="147"></a>
+<a name="148"></a><span class="source_comment">// Set the value of a server related stat
+</span><a name="149"></a>final native <span class="source_type">function</span> SetServerStat(coerce <span class="source_type">string</span> statName, coerce <span class="source_type">string</span> statValue);
+<a name="150"></a>
+<a name="151"></a><span class="source_comment">// Set the value of a player specific stat
+</span><a name="152"></a>final native <span class="source_type">function</span> SetPlayerStat(coerce <span class="source_type">string</span> statName, coerce <span class="source_type">string</span> statValue, <span class="source_type">int</span> <span class="source_type">playerId</span>);
+<a name="153"></a>
+<a name="154"></a><span class="source_comment">// Set the value of a team specific stat
+</span><a name="155"></a>final native <span class="source_type">function</span> SetTeamStat(coerce <span class="source_type">string</span> statName, coerce <span class="source_type">string</span> statValue, <span class="source_type">int</span> TeamID);
+<a name="156"></a>
+<a name="157"></a><span class="source_comment">// Call this function to send a snapshot of the game stats to the stat server. Set finalSnapshot to true if the game has ended (default false)
+</span><a name="158"></a>final native <span class="source_type">function</span> SendStatSnapshot(optional <span class="source_type">bool</span> finalSnapshot);
+<a name="159"></a>
+<a name="160"></a><span class="source_comment">// Call this function to create a new user account
+</span><a name="161"></a>final native <span class="source_type">function</span> CreateUserAccount(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> Email, <span class="source_type">string</span> <span class="source_type">Password</span>);
+<a name="162"></a>
+<a name="163"></a><span class="source_comment">// Call this function to check with GameSpy that the given account details are valid
+</span><a name="164"></a>final native <span class="source_type">function</span> CheckUserAccount(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> Email, <span class="source_type">string</span> <span class="source_type">Password</span>);
+<a name="165"></a>
+<a name="166"></a><span class="source_comment">// Call this function to connect to the GameSpy server with the given account details
+</span><a name="167"></a>final native <span class="source_type">function</span> ConnectUserAccount(<span class="source_type">string</span> <span class="source_type">Nick</span>, <span class="source_type">string</span> Email, <span class="source_type">string</span> <span class="source_type">Password</span>);
+<a name="168"></a>
+<a name="169"></a>event UserConnectionResult(<span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span>, <span class="source_type">int</span> profileId, <span class="source_type">string</span> UniqueNick);
+<a name="170"></a>
+<a name="171"></a><span class="source_comment">// Call this function to disconnect the currently connected user account
+</span><a name="172"></a>final native <span class="source_type">function</span> DisconnectUserAccount();
+<a name="173"></a>
+<a name="174"></a><span class="source_comment">// Call this function to register a unique nick for the currently connected profile
+</span><a name="175"></a>final native <span class="source_type">function</span> RegisterUniqueNick(<span class="source_type">string</span> UniqueNick);
+<a name="176"></a>
+<a name="177"></a>event UniqueNickRegistrationResult(<span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span>);
+<a name="178"></a>
+<a name="179"></a><span class="source_comment">// Call this function to authenticate a profile before trying to write private data
+</span><a name="180"></a>final native <span class="source_type">function</span> AuthenticateProfile(<span class="source_type">int</span> profileId, <span class="source_type">string</span> <span class="source_type">Password</span>);
+<a name="181"></a>
+<a name="182"></a>event AuthenticatedProfileResult(<span class="source_type">int</span> profileId, <span class="source_type">int</span> authenticated, <span class="source_type">string</span> <span class="source_type">error</span>);
+<a name="183"></a>
+<a name="184"></a><span class="source_comment">// Call this function to get the teamId for a teamTag
+</span><a name="185"></a>final native <span class="source_type">function</span> FindTeam(<span class="source_type">string</span> teamTag);
+<a name="186"></a>
+<a name="187"></a>event FindTeamResult(<span class="source_type">int</span> teamId);
+<a name="188"></a>
+<a name="189"></a><span class="source_comment">// Call this function to set private read/write data for a profile
+</span><a name="190"></a>final native <span class="source_type">function</span> SetDataPrivateRW(<span class="source_type">int</span> profileId, <span class="source_type">string</span> PrivateData);
+<a name="191"></a>
+<a name="192"></a>event SetDataPrivateRWResult(<span class="source_type">int</span> success);
+<a name="193"></a>
+<a name="194"></a><span class="source_comment">// Call this function to send a get request to the given URL
+</span><a name="195"></a>final native <span class="source_type">function</span> HTTPGetRequest(<span class="source_type">String</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, <span class="source_type">bool</span> bBlock);
+<a name="196"></a>
+<a name="197"></a>event HTTPGetRequestResult(<span class="source_type">bool</span> succeeded, <span class="source_type">String</span> ResponseData);
+<a name="198"></a>
+<a name="199"></a>final native <span class="source_type">function</span> SetTeamAffiliation(<span class="source_type">int</span> profileId, <span class="source_type">int</span> teamId, <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">pri</span>);
+<a name="200"></a>
+<a name="201"></a>event SetTeamAffiliationResult(<span class="source_type"><a href="../engine/gamespymanager.html#ETeamAffiliationResult" class="source">ETeamAffiliationResult</a></span> <span class="source_type">result</span>, <span class="source_type">String</span> TeamTag, <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">pri</span>);
+<a name="202"></a>
+<a name="203"></a><span class="source_comment">// This function is called each time a servers data is updated
+</span><a name="204"></a>event UpdatedServerData(<span class="source_type">int</span> serverId, <span class="source_type">String</span> ipAddress, <span class="source_type">int</span> Ping, <span class="source_type">bool</span> bLAN, Array&lt;<span class="source_type">String</span>&gt; serverData, Array&lt;<span class="source_type">String</span>&gt; playerData, Array&lt;<span class="source_type">String</span>&gt; teamData);
+<a name="205"></a>
+<a name="206"></a><span class="source_comment">// This function is called after an update of the server list completes
+</span><a name="207"></a>event UpdateComplete(<span class="source_type">bool</span> bLAN);
+<a name="208"></a>
+<a name="209"></a><span class="source_comment">// This function is called on the server to get the data for a particular server key
+</span><a name="210"></a>event <span class="source_type">string</span> GetValueForKey(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">key</a></span>);
+<a name="211"></a>
+<a name="212"></a><span class="source_comment">// This function is called on the server to get the data for a particular player key
+</span><a name="213"></a>event <span class="source_type">string</span> GetValueForPlayerKey(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">key</a></span>, <span class="source_type">int</span> <span class="source_type">index</span>);
+<a name="214"></a>
+<a name="215"></a><span class="source_comment">// This function is called on the server to get the data for a particular team key
+</span><a name="216"></a>event <span class="source_type">string</span> GetValueForTeamKey(<span class="source_type">int</span> <span class="source_type"><a href="../gameplay/key.html" class="source">key</a></span>, <span class="source_type">int</span> <span class="source_type">index</span>);
+<a name="217"></a>
+<a name="218"></a>event <span class="source_type">int</span> GetNumTeams()
+<a name="219"></a>{
+<a name="220"></a>	return <span class="source_int">0</span>;
+<a name="221"></a>}
+<a name="222"></a>
+<a name="223"></a><span class="source_comment">// Client side function to get the user's GameSpy profile id
+</span><a name="224"></a>event <span class="source_type">String</span> GetGameSpyProfileId();
+<a name="225"></a>
+<a name="226"></a>event <span class="source_type">String</span> GetGameSpyPassword();
+<a name="227"></a>
+<a name="228"></a>event EmailAlreadyTaken();
+<a name="229"></a>event ProfileCreateResult(<span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span>, <span class="source_type">int</span> profileId);
+<a name="230"></a>event ProfileCheckResult(<span class="source_type"><a href="../engine/gamespymanager.html#EGameSpyResult" class="source">EGameSpyResult</a></span> <span class="source_type">result</span>, <span class="source_type">int</span> profileId);
+<a name="231"></a>
+<a name="232"></a>private event <span class="source_type">string</span> GetProductVersionID()
+<a name="233"></a>{
+<a name="234"></a>	if (ProductVersionID == <span class="source_string">""</span>)
+<a name="235"></a>		return GetBuildNumber();
+<a name="236"></a>	else
+<a name="237"></a>		return ProductVersionID;
+<a name="238"></a>}
+<a name="239"></a>
+<a name="240"></a>private event <span class="source_type">string</span> GetProductRegionID()
+<a name="241"></a>{
+<a name="242"></a>	return ProductRegionID;
+<a name="243"></a>}
+<a name="244"></a>
+<a name="245"></a>private event <span class="source_type">string</span> GetPatchDownloadURL(<span class="source_type">int</span> FilePlanetID)
+<a name="246"></a>{
+<a name="247"></a>	return BaseFilePlanetPatchURL $ <span class="source_type">string</span>(FilePlanetID);
+<a name="248"></a>}
+<a name="249"></a>
+<a name="250"></a><span class="source_comment">// Check if a patch is required. Calls OnQueryPatchResult with the result of the query.
+</span><a name="251"></a>native <span class="source_type">function</span> QueryPatch();
+<a name="252"></a>
+<a name="253"></a>private event QueryPatchCompleted(<span class="source_type">bool</span> bNeeded, <span class="source_type">bool</span> bMandatory, <span class="source_type">string</span> versionName, <span class="source_type">int</span> fileplanetID, <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>)
+<a name="254"></a>{
+<a name="255"></a>	if (fileplanetID &gt; <span class="source_int">0</span>)
+<a name="256"></a>	{
+<a name="257"></a>		OnQueryPatchResult(bNeeded, bMandatory, versionName, GetPatchDownloadURL(fileplanetID));
+<a name="258"></a>	}
+<a name="259"></a>	else
+<a name="260"></a>	{
+<a name="261"></a>		OnQueryPatchResult(bNeeded, bMandatory, versionName, <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>);
+<a name="262"></a>	}
+<a name="263"></a>}
+<a name="264"></a>
+<a name="265"></a>delegate OnQueryPatchResult(<span class="source_type">bool</span> bNeeded, <span class="source_type">bool</span> bMandatory, <span class="source_type">string</span> versionName, <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>);
+<a name="266"></a>
+<a name="267"></a>
+<a name="268"></a>defaultproperties
+<a name="269"></a>{
+<a name="270"></a>	BaseFilePlanetPatchURL=<span class="source_string">"http://www.fileplanet.com/index.asp?file="</span>
+<a name="271"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/gamespymanager.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#GameSpyManager">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/gamerules.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/gamestats.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:01:22.000 - Creation time: st 23.5.2018 00:10:43.527 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

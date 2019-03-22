@@ -1,0 +1,529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Tyrion.AI_Goal</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_goal.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Goal">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_gloraxattack.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_goalspecificsensoraction.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tyrion/ai_goal.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.AI_Goal</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/tyrion_goalbase.html">Tyrion_GoalBase</a></dd>
+<dt>Modifiers</dt><dd>implements ISensorNotification native abstract dependsOn ( AI_Resource ) </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/tyrion_goalbase.html">Tyrion_GoalBase</a>
+      |   
+      +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ai_goal.html">AI_Goal</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tyrion/ai_charactergoal.html">AI_CharacterGoal</a>, <a href="../tyrion/ai_drivergoal.html">AI_DriverGoal</a>, <a href="../tyrion/ai_gunnergoal.html">AI_GunnerGoal</a>, <a href="../tyrion/ai_headgoal.html">AI_HeadGoal</a>, <a href="../tyrion/ai_movementgoal.html">AI_MovementGoal</a>, <a href="../tyrion/ai_squadgoal.html">AI_SquadGoal</a>, <a href="../tyrion/ai_vehiclegoal.html">AI_VehicleGoal</a>, <a href="../tyrion/ai_weapongoal.html">AI_WeaponGoal</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_action.html">AI_Action</a></td><td width="66%"><a href="#_achievingAction" name="achievingAction" title="go to the details">achievingAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_sensorwithbounds.html">AI_SensorWithBounds</a></td><td width="66%"><a href="#_activationSentinel" name="activationSentinel" title="go to the details">activationSentinel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDeleted" name="bDeleted" title="go to the details">bDeleted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGoalAchieved" name="bGoalAchieved" title="go to the details">bGoalAchieved</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGoalConsidered" name="bGoalConsidered" title="go to the details">bGoalConsidered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGoalFailed" name="bGoalFailed" title="go to the details">bGoalFailed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInactive" name="bInactive" title="go to the details">bInactive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPermanent" name="bPermanent" title="go to the details">bPermanent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTerminateIfStolen" name="bTerminateIfStolen" title="go to the details">bTerminateIfStolen</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bWakeUpPoster" name="bWakeUpPoster" title="go to the details">bWakeUpPoster</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_sensorwithbounds.html">AI_SensorWithBounds</a></td><td width="66%"><a href="#_deactivationSentinel" name="deactivationSentinel" title="go to the details">deactivationSentinel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ignoreCounter" name="ignoreCounter" title="go to the details">ignoreCounter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_matchedN" name="matchedN" title="go to the details">matchedN</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../tyrion/igoalnotification.html">IGoalNotification</a>&gt;</td><td width="66%"><a href="#_notificationRecipients" name="notificationRecipients" title="go to the details">notificationRecipients</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_action.html">AI_Action</a></td><td width="66%"><a href="#_parentAction" name="parentAction" title="go to the details">parentAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_resource.html">AI_Resource</a></td><td width="66%"><a href="#_resource" name="resource" title="go to the details">resource</a></td></tr>
+<tr><th colspan="2" class="small">AI_Goal</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRemoveGoalOfSameType" name="bRemoveGoalOfSameType" title="go to the details">bRemoveGoalOfSameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTryOnlyOnce" name="bTryOnlyOnce" title="go to the details">bTryOnlyOnce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_goalName" name="goalName" title="go to the details">goalName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Priority" name="Priority" title="go to the details">Priority</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/refcount.html#LatentStackLocations">LatentStackLocations</a>, <a href="../core/refcount.html#m_RefCount">m_RefCount</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_activate-" name="activate" title="go to the details">activate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_addNotificationRecipient-" name="addNotificationRecipient" title="go to the details">addNotificationRecipient</a> (IGoalNotification notificationRecipient ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_beingAchieved-" name="beingAchieved" title="go to the details">beingAchieved</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_changePriority-" name="changePriority" title="go to the details">changePriority</a> (int newPriority ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_cleanup-" name="cleanup" title="go to the details">cleanup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_construct-" name="construct" title="go to the details">construct</a> (AI_Resource r ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_deactivate-" name="deactivate" title="go to the details">deactivate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_goal.html">AI_Goal</a>&nbsp;</td><td><a href="#_findGoalByName-" name="findGoalByName" title="go to the details">findGoalByName</a> (<a href="../engine/actor.html">Actor</a> a, String gName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_goal.html">AI_Goal</a>&nbsp;</td><td><a href="#_findGoalInCharacterByName-" name="findGoalInCharacterByName" title="go to the details">findGoalInCharacterByName</a> (<a href="../gameplay/character.html">Character</a> c, String gName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_goal.html">AI_Goal</a>&nbsp;</td><td><a href="#_findGoalInSquadByName-" name="findGoalInSquadByName" title="go to the details">findGoalInSquadByName</a> (<a href="../aicommon/squadinfo.html">SquadInfo</a> si, String gName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_goal.html">AI_Goal</a>&nbsp;</td><td><a href="#_findGoalInTurretByName-" name="findGoalInTurretByName" title="go to the details">findGoalInTurretByName</a> (<a href="../gameplay/turret.html">Turret</a> turret, String gName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_goal.html">AI_Goal</a>&nbsp;</td><td><a href="#_findGoalInVehicleByName-" name="findGoalInVehicleByName" title="go to the details">findGoalInVehicleByName</a> (<a href="../gameplay/vehicle.html">Vehicle</a> vehicle, String gName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_resource.html">AI_Resource</a>&nbsp;</td><td><a href="#_getResource-" name="getResource" title="go to the details">getResource</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_handleGoalFailure-" name="handleGoalFailure" title="go to the details">handleGoalFailure</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_handleGoalSuccess-" name="handleGoalSuccess" title="go to the details">handleGoalSuccess</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_hasCompleted-" name="hasCompleted" title="go to the details">hasCompleted</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_init-" name="init" title="go to the details">init</a> (AI_Resource r ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_markGoalAsAchieved-" name="markGoalAsAchieved" title="go to the details">markGoalAsAchieved</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_markGoalAsFailed-" name="markGoalAsFailed" title="go to the details">markGoalAsFailed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_goal.html">AI_Goal</a>&nbsp;</td><td><a href="#_myAddRef-" name="myAddRef" title="go to the details">myAddRef</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_notifyCompletion-" name="notifyCompletion" title="go to the details">notifyCompletion</a> (bool bAchieved ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onSensorMessage-" name="onSensorMessage" title="go to the details">onSensorMessage</a> (<a href="../tyrion/ai_sensor.html">AI_Sensor</a> sensor, <a href="../tyrion/ai_sensordata.html">AI_SensorData</a> value, Object userData ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ai_goal.html">AI_Goal</a>&nbsp;</td><td><a href="#_postGoal-" name="postGoal" title="go to the details">postGoal</a> (AI_Action parent ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>int&nbsp;</td><td><a href="#_priorityFn-" name="priorityFn" title="go to the details">priorityFn</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setUpDeactivationSentinel-" name="setUpDeactivationSentinel" title="go to the details">setUpDeactivationSentinel</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_unPostGoal-" name="unPostGoal" title="go to the details">unPostGoal</a> (AI_Action parent ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_wasAchieved-" name="wasAchieved" title="go to the details">wasAchieved</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_wasConsidered-" name="wasConsidered" title="go to the details">wasConsidered</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_wasNotAchieved-" name="wasNotAchieved" title="go to the details">wasNotAchieved</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/tyrion_goalbase.html">Tyrion_GoalBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/tyrion_goalbase.html#findResource">findResource</a>, <a href="../engine/tyrion_goalbase.html#getResourceClass">getResourceClass</a>, <a href="../engine/tyrion_goalbase.html#goalDebuggingString">goalDebuggingString</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/refcount.html#AddRef">AddRef</a>, <a href="../core/refcount.html#Release">Release</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_achievingAction" class="hidden"></a>achievingAction <a href="../Source_tyrion/ai_goal.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> achievingAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_activationSentinel" class="hidden"></a>activationSentinel <a href="../Source_tyrion/ai_goal.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_sensorwithbounds.html" class="source">AI_SensorWithBounds</a></span> activationSentinel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bDeleted" class="hidden"></a>bDeleted <a href="../Source_tyrion/ai_goal.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDeleted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bGoalAchieved" class="hidden"></a>bGoalAchieved <a href="../Source_tyrion/ai_goal.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bGoalAchieved;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bGoalConsidered" class="hidden"></a>bGoalConsidered <a href="../Source_tyrion/ai_goal.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bGoalConsidered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bGoalFailed" class="hidden"></a>bGoalFailed <a href="../Source_tyrion/ai_goal.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bGoalFailed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bInactive" class="hidden"></a>bInactive <a href="../Source_tyrion/ai_goal.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bInactive;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPermanent" class="hidden"></a>bPermanent <a href="../Source_tyrion/ai_goal.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bPermanent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTerminateIfStolen" class="hidden"></a>bTerminateIfStolen <a href="../Source_tyrion/ai_goal.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bTerminateIfStolen;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bWakeUpPoster" class="hidden"></a>bWakeUpPoster <a href="../Source_tyrion/ai_goal.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bWakeUpPoster;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deactivationSentinel" class="hidden"></a>deactivationSentinel <a href="../Source_tyrion/ai_goal.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_sensorwithbounds.html" class="source">AI_SensorWithBounds</a></span> deactivationSentinel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ignoreCounter" class="hidden"></a>ignoreCounter <a href="../Source_tyrion/ai_goal.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ignoreCounter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_matchedN" class="hidden"></a>matchedN <a href="../Source_tyrion/ai_goal.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> matchedN;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_notificationRecipients" class="hidden"></a>notificationRecipients <a href="../Source_tyrion/ai_goal.html#41" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../tyrion/igoalnotification.html" class="source">IGoalNotification</a></span>&gt; notificationRecipients;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_parentAction" class="hidden"></a>parentAction <a href="../Source_tyrion/ai_goal.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> parentAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_resource" class="hidden"></a>resource <a href="../Source_tyrion/ai_goal.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_resource.html" class="source">AI_Resource</a></span> <span class="source_type">resource</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">AI_Goal</h3>
+<h4><a name="_bRemoveGoalOfSameType" class="hidden"></a>bRemoveGoalOfSameType <a href="../Source_tyrion/ai_goal.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>) <span class="source_type">bool</span> bRemoveGoalOfSameType;</div>
+<blockquote class="comment">
+remove an existing goal of the same type before adding this one
+</blockquote>
+<hr class="small" />
+<h4><a name="_bTryOnlyOnce" class="hidden"></a>bTryOnlyOnce <a href="../Source_tyrion/ai_goal.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>) <span class="source_type">bool</span> <span class="source_type">bTryOnlyOnce</span>;</div>
+<blockquote class="comment">
+when true, don't try to achieve goal more than once (i.e. remove if it fails)
+</blockquote>
+<hr class="small" />
+<h4><a name="_goalName" class="hidden"></a>goalName <a href="../Source_tyrion/ai_goal.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>) <span class="source_type">String</span> goalName;</div>
+<blockquote class="comment">
+reference to this goal for script actions
+</blockquote>
+<hr class="small" />
+<h4><a name="_Priority" class="hidden"></a>Priority <a href="../Source_tyrion/ai_goal.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span>) <span class="source_type">int</span> Priority;</div>
+<blockquote class="comment">
+in the range [0, 100]; higher number means higher priority
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_activate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> activate <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#449" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  activate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_addNotificationRecipient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addNotificationRecipient <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#477" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  addNotificationRecipient ( <span class="source_type"><a href="../tyrion/igoalnotification.html" class="source">IGoalNotification</a></span> <span class="source_type">notificationRecipient</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_beingAchieved-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> beingAchieved <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#235" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> beingAchieved ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_changePriority-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> changePriority <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#183" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  changePriority ( <span class="source_type">int</span> <span class="source_type">newPriority</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cleanup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> cleanup <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#85" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  cleanup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_construct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> construct <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#76" class="small">Source code</a></h4>
+<div class="declaration">overloaded <span class="source_type">function</span>  construct ( <span class="source_type"><a href="../tyrion/ai_resource.html" class="source">AI_Resource</a></span> <span class="source_type">r</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_deactivate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> deactivate <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#418" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  deactivate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_findGoalByName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> findGoalByName <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#243" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> findGoalByName ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> a, <span class="source_type">String</span> <span class="source_type">gName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_findGoalInCharacterByName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> findGoalInCharacterByName <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#270" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> findGoalInCharacterByName ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> c, <span class="source_type">String</span> <span class="source_type">gName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_findGoalInSquadByName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> findGoalInSquadByName <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#289" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> findGoalInSquadByName ( <span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span> si, <span class="source_type">String</span> <span class="source_type">gName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_findGoalInTurretByName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> findGoalInTurretByName <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#314" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> findGoalInTurretByName ( <span class="source_type"><a href="../gameplay/turret.html" class="source">Turret</a></span> <span class="source_type"><a href="../gameplay/turret.html" class="source">turret</a></span>, <span class="source_type">String</span> <span class="source_type">gName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_findGoalInVehicleByName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> findGoalInVehicleByName <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#297" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> findGoalInVehicleByName ( <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span> <span class="source_type"><a href="../gameplay/vehicle.html" class="source">vehicle</a></span>, <span class="source_type">String</span> <span class="source_type">gName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getResource-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getResource <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#62" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_resource.html" class="source">AI_Resource</a></span> getResource ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_handleGoalFailure-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> handleGoalFailure <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#378" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  handleGoalFailure ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_handleGoalSuccess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> handleGoalSuccess <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#333" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  handleGoalSuccess ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hasCompleted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> hasCompleted <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#200" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> hasCompleted ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_init-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> init <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#92" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  init ( <span class="source_type"><a href="../tyrion/ai_resource.html" class="source">AI_Resource</a></span> <span class="source_type">r</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_markGoalAsAchieved-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> markGoalAsAchieved <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#323" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  markGoalAsAchieved ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_markGoalAsFailed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> markGoalAsFailed <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#368" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  markGoalAsFailed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_myAddRef-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> myAddRef <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#110" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> myAddRef ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_notifyCompletion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> notifyCompletion <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#487" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  notifyCompletion ( <span class="source_type">bool</span> <span class="source_type">bAchieved</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onSensorMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onSensorMessage <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#50" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onSensorMessage ( <span class="source_type"><a href="../tyrion/ai_sensor.html" class="source">AI_Sensor</a></span> sensor, <span class="source_type"><a href="../tyrion/ai_sensordata.html" class="source">AI_SensorData</a></span> value, <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">userData</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_postGoal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> postGoal <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#129" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ai_goal.html" class="source">AI_Goal</a></span> postGoal ( <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">parent</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_priorityFn-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> priorityFn <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#119" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">int</span> priorityFn ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setUpDeactivationSentinel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setUpDeactivationSentinel <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#472" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setUpDeactivationSentinel (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_unPostGoal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> unPostGoal <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#166" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  unPostGoal ( <span class="source_type"><a href="../tyrion/ai_action.html" class="source">AI_Action</a></span> <span class="source_type">parent</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_wasAchieved-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> wasAchieved <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#209" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> wasAchieved ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_wasConsidered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> wasConsidered <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#227" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> wasConsidered ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_wasNotAchieved-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> wasNotAchieved <span class="function_state"></span> <a href="../Source_tyrion/ai_goal.html#218" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> wasNotAchieved ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	priority = <span class="source_int">50</span>
+	goalName = <span class="source_string">"&lt;unnamed goal&gt;"</span>
+	bWakeUpPoster = false
+	bRemoveGoalOfSameType = false
+	<span class="source_type">bTryOnlyOnce</span> = false
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ai_goal.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#AI_Goal">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ai_gloraxattack.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ai_goalspecificsensoraction.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:26.900 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

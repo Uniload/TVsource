@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.CloakPack</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/cloakpack.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#CloakPack">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/clientsidecharacter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/combatrole.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/cloakpack.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.CloakPack</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/pack.html">Pack</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equipment.html">Equipment</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/pack.html">Pack</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/cloakpack.html">CloakPack</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tmod/tmodanticloak.html">tmodanticloak</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_jammingPeriodSeconds" name="jammingPeriodSeconds" title="go to the details">jammingPeriodSeconds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_jammingRadius" name="jammingRadius" title="go to the details">jammingRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_jammingSwitch" name="jammingSwitch" title="go to the details">jammingSwitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_localJammingSwitch" name="localJammingSwitch" title="go to the details">localJammingSwitch</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/pack.html">Pack</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/pack.html#activatingEffectName">activatingEffectName</a>, <a href="../gameplay/pack.html#activatingEffectStartedName">activatingEffectStartedName</a>, <a href="../gameplay/pack.html#activeEffectName">activeEffectName</a>, <a href="../gameplay/pack.html#activeEffectStartedName">activeEffectStartedName</a>, <a href="../gameplay/pack.html#alpha">alpha</a>, <a href="../gameplay/pack.html#bLocalActive">bLocalActive</a>, <a href="../gameplay/pack.html#cannnotBeUsedWhileTouchingInventoryStation">cannnotBeUsedWhileTouchingInventoryStation</a>, <a href="../gameplay/pack.html#chargedEffectName">chargedEffectName</a>, <a href="../gameplay/pack.html#deactivating">deactivating</a>, <a href="../gameplay/pack.html#deactivatingDuration">deactivatingDuration</a>, <a href="../gameplay/pack.html#deactivatingEffectName">deactivatingEffectName</a>, <a href="../gameplay/pack.html#deactivatingProgressedTime">deactivatingProgressedTime</a>, <a href="../gameplay/pack.html#durationSeconds">durationSeconds</a>, <a href="../gameplay/pack.html#heldBy">heldBy</a>, <a href="../gameplay/pack.html#localHeldBy">localHeldBy</a>, <a href="../gameplay/pack.html#localPackActivatedTrigger">localPackActivatedTrigger</a>, <a href="../gameplay/pack.html#localPackSetChargedTrigger">localPackSetChargedTrigger</a>, <a href="../gameplay/pack.html#packActivatedTrigger">packActivatedTrigger</a>, <a href="../gameplay/pack.html#packSetChargedTrigger">packSetChargedTrigger</a>, <a href="../gameplay/pack.html#passiveEffectName">passiveEffectName</a>, <a href="../gameplay/pack.html#progressedActivatingTime">progressedActivatingTime</a>, <a href="../gameplay/pack.html#progressedActiveTime">progressedActiveTime</a>, <a href="../gameplay/pack.html#progressedRechargingTime">progressedRechargingTime</a>, <a href="../gameplay/pack.html#rampUpTimeSeconds">rampUpTimeSeconds</a>, <a href="../gameplay/pack.html#rechargeTimeSeconds">rechargeTimeSeconds</a>, <a href="../gameplay/pack.html#rechargingAlpha">rechargingAlpha</a>, <a href="../gameplay/pack.html#thirdPersonMesh">thirdPersonMesh</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equipment.html">Equipment</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/equipment.html#attentionFXDuration">attentionFXDuration</a>, <a href="../gameplay/equipment.html#attentionFXMaterial">attentionFXMaterial</a>, <a href="../gameplay/equipment.html#attentionFXSpacing">attentionFXSpacing</a>, <a href="../gameplay/equipment.html#attentionLeft">attentionLeft</a>, <a href="../gameplay/equipment.html#awaitingPickupPhysics">awaitingPickupPhysics</a>, <a href="../gameplay/equipment.html#bCanDrop">bCanDrop</a>, <a href="../gameplay/equipment.html#bCanPickup">bCanPickup</a>, <a href="../gameplay/equipment.html#bDropped">bDropped</a>, <a href="../gameplay/equipment.html#bHeld">bHeld</a>, <a href="../gameplay/equipment.html#bPlayPickupSound">bPlayPickupSound</a>, <a href="../gameplay/equipment.html#droppedElasticity">droppedElasticity</a>, <a href="../gameplay/equipment.html#dropVelocity">dropVelocity</a>, <a href="../gameplay/equipment.html#heldStartState">heldStartState</a>, <a href="../gameplay/equipment.html#hudIcon">hudIcon</a>, <a href="../gameplay/equipment.html#hudIconCoords">hudIconCoords</a>, <a href="../gameplay/equipment.html#hudRefireIcon">hudRefireIcon</a>, <a href="../gameplay/equipment.html#hudRefireIconCoords">hudRefireIconCoords</a>, <a href="../gameplay/equipment.html#infoString">infoString</a>, <a href="../gameplay/equipment.html#inventoryIcon">inventoryIcon</a>, <a href="../gameplay/equipment.html#localizedName">localizedName</a>, <a href="../gameplay/equipment.html#next">next</a>, <a href="../gameplay/equipment.html#nextAttentionTime">nextAttentionTime</a>, <a href="../gameplay/equipment.html#pickupProxy">pickupProxy</a>, <a href="../gameplay/equipment.html#pickupRadius">pickupRadius</a>, <a href="../gameplay/equipment.html#prev">prev</a>, <a href="../gameplay/equipment.html#prompt">prompt</a>, <a href="../gameplay/equipment.html#sensorUpdateFlag">sensorUpdateFlag</a>, <a href="../gameplay/equipment.html#spawnPoint">spawnPoint</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_applyPartialActiveEffect-" name="applyPartialActiveEffect" title="go to the details">applyPartialActiveEffect</a> (float alpha, <a href="../gameplay/character.html">Character</a> characterOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_finishActiveEffect-" name="finishActiveEffect" title="go to the details">finishActiveEffect</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetReceive-" name="PostNetReceive" title="go to the details">PostNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_startApplyPartialActiveEffect-" name="startApplyPartialActiveEffect" title="go to the details">startApplyPartialActiveEffect</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-Activating" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state">Activating</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_tick-Active" name="tick" title="go to the details">tick</a> (float deltaSeconds))<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_timer-Activating" name="timer" title="go to the details">timer</a> ()))<br /><span class="function_state">Activating</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_timer-Active" name="timer" title="go to the details">timer</a> ()))<br /><span class="function_state">Active</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/pack.html">Pack</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/pack.html#activate">activate</a>, <a href="../gameplay/pack.html#applyPartialActiveEffect">applyPartialActiveEffect</a>, <a href="../gameplay/pack.html#applyPassiveEffect">applyPassiveEffect</a>, <a href="../gameplay/pack.html#beginState">beginState</a>, <a href="../gameplay/pack.html#canPickup">canPickup</a>, <a href="../gameplay/pack.html#doSwitch">doSwitch</a>, <a href="../gameplay/pack.html#effectTriggered">effectTriggered</a>, <a href="../gameplay/pack.html#effectUntriggered">effectUntriggered</a>, <a href="../gameplay/pack.html#endHeldByCharacter">endHeldByCharacter</a>, <a href="../gameplay/pack.html#endState">endState</a>, <a href="../gameplay/pack.html#finishActiveEffect">finishActiveEffect</a>, <a href="../gameplay/pack.html#GetOverlayMaterialForOwner">GetOverlayMaterialForOwner</a>, <a href="../gameplay/pack.html#isInRangeOfInventoryStation">isInRangeOfInventoryStation</a>, <a href="../gameplay/pack.html#needPrompt">needPrompt</a>, <a href="../gameplay/pack.html#OnEffectInitialized">OnEffectInitialized</a>, <a href="../gameplay/pack.html#OnEffectStarted">OnEffectStarted</a>, <a href="../gameplay/pack.html#OnEffectStopped">OnEffectStopped</a>, <a href="../gameplay/pack.html#onTakenFromSpawnPoint">onTakenFromSpawnPoint</a>, <a href="../gameplay/pack.html#pickup">pickup</a>, <a href="../gameplay/pack.html#playEffect">playEffect</a>, <a href="../gameplay/pack.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/pack.html#removePassiveEffect">removePassiveEffect</a>, <a href="../gameplay/pack.html#requestEquipmentDrop">requestEquipmentDrop</a>, <a href="../gameplay/pack.html#setCharged">setCharged</a>, <a href="../gameplay/pack.html#startActiveEffect">startActiveEffect</a>, <a href="../gameplay/pack.html#startApplyPartialActiveEffect">startApplyPartialActiveEffect</a>, <a href="../gameplay/pack.html#startHeldByCharacter">startHeldByCharacter</a>, <a href="../gameplay/pack.html#stopEffect">stopEffect</a>, <a href="../gameplay/pack.html#tick">tick</a>, <a href="../gameplay/pack.html#TravelPreAccept">TravelPreAccept</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equipment.html">Equipment</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/equipment.html#allowPrompt">allowPrompt</a>, <a href="../gameplay/equipment.html#Attach">Attach</a>, <a href="../gameplay/equipment.html#BeginState">BeginState</a>, <a href="../gameplay/equipment.html#canExpire">canExpire</a>, <a href="../gameplay/equipment.html#canPickup">canPickup</a>, <a href="../gameplay/equipment.html#Destroyed">Destroyed</a>, <a href="../gameplay/equipment.html#doSwitch">doSwitch</a>, <a href="../gameplay/equipment.html#drop">drop</a>, <a href="../gameplay/equipment.html#endHeldByCharacter">endHeldByCharacter</a>, <a href="../gameplay/equipment.html#EndState">EndState</a>, <a href="../gameplay/equipment.html#equipmentGone">equipmentGone</a>, <a href="../gameplay/equipment.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/equipment.html#gotoHeldState">gotoHeldState</a>, <a href="../gameplay/equipment.html#HitWall">HitWall</a>, <a href="../gameplay/equipment.html#isInNoDropRangeOfInventoryStation">isInNoDropRangeOfInventoryStation</a>, <a href="../gameplay/equipment.html#needPrompt">needPrompt</a>, <a href="../gameplay/equipment.html#onMessage">onMessage</a>, <a href="../gameplay/equipment.html#onPickup">onPickup</a>, <a href="../gameplay/equipment.html#onTakenFromSpawnPoint">onTakenFromSpawnPoint</a>, <a href="../gameplay/equipment.html#pickup">pickup</a>, <a href="../gameplay/equipment.html#PickupProxyTouch">PickupProxyTouch</a>, <a href="../gameplay/equipment.html#PickupProxyUntouch">PickupProxyUntouch</a>, <a href="../gameplay/equipment.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/equipment.html#removeDroppedEquipment">removeDroppedEquipment</a>, <a href="../gameplay/equipment.html#requestEquipmentDrop">requestEquipmentDrop</a>, <a href="../gameplay/equipment.html#setDropLocation">setDropLocation</a>, <a href="../gameplay/equipment.html#setDropVelocity">setDropVelocity</a>, <a href="../gameplay/equipment.html#setMovementReplication">setMovementReplication</a>, <a href="../gameplay/equipment.html#setup">setup</a>, <a href="../gameplay/equipment.html#setupDropped">setupDropped</a>, <a href="../gameplay/equipment.html#startHeldByCharacter">startHeldByCharacter</a>, <a href="../gameplay/equipment.html#Tick">Tick</a>, <a href="../gameplay/equipment.html#Timer">Timer</a>, <a href="../gameplay/equipment.html#TravelPreAccept">TravelPreAccept</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Activating <a href="../Source_gameplay/cloakpack.html#46" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Activating <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_tick+Activating">tick</a>, <a href="#_timer+Activating">timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Active <a href="../Source_gameplay/cloakpack.html#81" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Active <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_tick+Active">tick</a>, <a href="#_timer+Active">timer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_jammingPeriodSeconds" class="hidden"></a>jammingPeriodSeconds <a href="../Source_gameplay/cloakpack.html#3" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> jammingPeriodSeconds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_jammingRadius" class="hidden"></a>jammingRadius <a href="../Source_gameplay/cloakpack.html#4" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> jammingRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_jammingSwitch" class="hidden"></a>jammingSwitch <a href="../Source_gameplay/cloakpack.html#6" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> jammingSwitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localJammingSwitch" class="hidden"></a>localJammingSwitch <a href="../Source_gameplay/cloakpack.html#7" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> localJammingSwitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_applyPartialActiveEffect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> applyPartialActiveEffect <span class="function_state"></span> <a href="../Source_gameplay/cloakpack.html#34" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  applyPartialActiveEffect ( <span class="source_type">float</span> alpha, <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> characterOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_finishActiveEffect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> finishActiveEffect <span class="function_state"></span> <a href="../Source_gameplay/cloakpack.html#39" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  finishActiveEffect ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetReceive <span class="function_state"></span> <a href="../Source_gameplay/cloakpack.html#15" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_startApplyPartialActiveEffect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> startApplyPartialActiveEffect <span class="function_state"></span> <a href="../Source_gameplay/cloakpack.html#29" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  startApplyPartialActiveEffect ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-Activating" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state">Activating</span> <a href="../Source_gameplay/cloakpack.html#48" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tick-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> tick <span class="function_state">Active</span> <a href="../Source_gameplay/cloakpack.html#83" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">tick</span> ( <span class="source_type">float</span> deltaSeconds) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_timer-Activating" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> timer <span class="function_state">Activating</span> <a href="../Source_gameplay/cloakpack.html#61" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/timer.html" class="source">timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_timer-Active" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> timer <span class="function_state">Active</span> <a href="../Source_gameplay/cloakpack.html#95" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type"><a href="../engine/timer.html" class="source">timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	thirdPersonMesh = <span class="source_type">StaticMesh</span><span class="source_name">'Packs.CloakPack'</span>
+	<span class="source_type">StaticMesh</span> = <span class="source_type">StaticMesh</span><span class="source_name">'Packs.CloakPackdropped'</span>
+
+	jammingPeriodSeconds = <span class="source_int">0.2</span>
+	jammingRadius = <span class="source_int">1600</span>
+
+	localJammingSwitch = false
+	jammingSwitch = false
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/cloakpack.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#CloakPack">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/clientsidecharacter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/combatrole.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:28.977 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

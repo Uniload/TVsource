@@ -1,0 +1,1606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.Rook</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/rook.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Rook">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/rocketpodprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/rounddata.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/rook.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074<br />01075<br />01076<br />01077<br />01078<br />01079<br />01080<br />
+01081<br />01082<br />01083<br />01084<br />01085<br />01086<br />01087<br />01088<br />01089<br />01090<br />01091<br />01092<br />01093<br />01094<br />01095<br />01096<br />01097<br />01098<br />01099<br />01100<br />
+01101<br />01102<br />01103<br />01104<br />01105<br />01106<br />01107<br />01108<br />01109<br />01110<br />01111<br />01112<br />01113<br />01114<br />01115<br />01116<br />01117<br />01118<br />01119<br />01120<br />
+01121<br />01122<br />01123<br />01124<br />01125<br />01126<br />01127<br />01128<br />01129<br />01130<br />01131<br />01132<br />01133<br />01134<br />01135<br />01136<br />01137<br />01138<br />01139<br />01140<br />
+01141<br />01142<br />01143<br />01144<br />01145<br />01146<br />01147<br />01148<br />01149<br />01150<br />01151<br />01152<br />01153<br />01154<br />01155<br />01156<br />01157<br />01158<br />01159<br />01160<br />
+01161<br />01162<br />01163<br />01164<br />01165<br />01166<br />01167<br />01168<br />01169<br />01170<br />01171<br />01172<br />01173<br />01174<br />01175<br />01176<br />01177<br />01178<br />01179<br />01180<br />
+01181<br />01182<br />01183<br />01184<br />01185<br />01186<br />01187<br />01188<br />01189<br />01190<br />01191<br />01192<br />01193<br />01194<br />01195<br />01196<br />01197<br />01198<br />01199<br />01200<br />
+01201<br />01202<br />01203<br />01204<br />01205<br />01206<br />01207<br />01208<br />01209<br />01210<br />01211<br />01212<br />01213<br />01214<br />01215<br />01216<br />01217<br />01218<br />01219<br />01220<br />
+01221<br />01222<br />01223<br />01224<br />01225<br />01226<br />01227<br />01228<br />01229<br />01230<br />01231<br />01232<br />01233<br />01234<br />01235<br />01236<br />01237<br />01238<br />01239<br />01240<br />
+01241<br />01242<br />01243<br />01244<br />01245<br />01246<br />01247<br />01248<br />01249<br />01250<br />01251<br />01252<br />01253<br />01254<br />01255<br />01256<br />01257<br />01258<br />01259<br />01260<br />
+01261<br />01262<br />01263<br />01264<br />01265<br />01266<br />01267<br />01268<br />01269<br />01270<br />01271<br />01272<br />01273<br />01274<br />01275<br />01276<br />01277<br />01278<br />01279<br />01280<br />
+01281<br />01282<br />01283<br />01284<br />01285<br />01286<br />01287<br />01288<br />01289<br />01290<br />01291<br />01292<br />01293<br />01294<br />01295<br />01296<br />01297<br />01298<br />01299<br />01300<br />
+01301<br />01302<br />01303<br />01304<br />01305<br />01306<br />01307<br />01308<br />01309<br />01310<br />01311<br />01312<br />01313<br />01314<br />01315<br />01316<br />01317<br />01318<br />01319<br />01320<br />
+01321<br />01322<br />01323<br />01324<br />01325<br />01326<br />01327<br />01328<br />01329<br />01330<br />01331<br />01332<br />01333<br />01334<br />01335<br />01336<br />01337<br />01338<br />01339<br />01340<br />
+01341<br />01342<br />01343<br />01344<br />01345<br />01346<br />01347<br />01348<br />01349<br />01350<br />01351<br />01352<br />01353<br />01354<br />01355<br />01356<br />01357<br />01358<br />01359<br />01360<br />
+01361<br />01362<br />01363<br />01364<br />01365<br />01366<br />01367<br />01368<br />01369<br />01370<br />01371<br />01372<br />01373<br />01374<br />01375<br />01376<br />01377<br />01378<br />01379<br />01380<br />
+01381<br />01382<br />01383<br />01384<br />01385<br />01386<br />01387<br />01388<br />01389<br />01390<br />01391<br />01392<br />01393<br />01394<br />01395<br />01396<br />01397<br />01398<br />01399<br />01400<br />
+01401<br />01402<br />01403<br />01404<br />01405<br />01406<br />01407<br />01408<br />01409<br />01410<br />01411<br />01412<br />01413<br />01414<br />01415<br />01416<br />01417<br />01418<br />01419<br />01420<br />
+01421<br />01422<br />01423<br />01424<br />01425<br />01426<br />01427<br />01428<br />01429<br />01430<br />01431<br />01432<br />01433<br />01434<br />01435<br />01436<br />01437<br />01438<br />01439<br />01440<br />
+01441<br />01442<br />01443<br />01444<br />01445<br />01446<br />01447<br />01448<br />01449<br />01450<br />01451<br />01452<br />01453<br />01454<br />01455<br />01456<br />01457<br />01458<br />01459<br />01460<br />
+01461<br />01462<br />01463<br />01464<br />01465<br />01466<br />01467<br />01468<br />01469<br />01470<br />01471<br />01472<br />01473<br />01474<br />01475</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=====================================================================
+</span><a name="2"></a><span class="source_comment">// Rook
+</span><a name="3"></a><span class="source_comment">//=====================================================================
+</span><a name="4"></a>
+<a name="5"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> implements <span class="source_type"><a href="../engine/ieffectobserver.html" class="source">IEffectObserver</a></span>
+<a name="6"></a>	native
+<a name="7"></a>	dependsOn(<span class="source_type"><a href="../gameplay/singleplayergameinfo.html" class="source">SingleplayerGameInfo</a></span>);
+<a name="8"></a>
+<a name="9"></a><span class="source_comment">//=====================================================================
+</span><a name="10"></a><span class="source_comment">// Constants
+</span><a name="11"></a>
+<a name="12"></a>enum <span class="source_type"><a href="../gameplay/rook.html#AlertnessLevels" class="source">AlertnessLevels</a></span>
+<a name="13"></a>{
+<a name="14"></a>	ALERTNESS_Neutral,      <span class="source_comment">// gun lowered
+</span><a name="15"></a>	ALERTNESS_Alert,        <span class="source_comment">// gun halfway
+</span><a name="16"></a>	ALERTNESS_Combat,       <span class="source_comment">// gun aimed
+</span><a name="17"></a>};
+<a name="18"></a>
+<a name="19"></a>const DAMAGE_OVERKILL = -<span class="source_int">50.0f</span>;	<span class="source_comment">// health value that justifies an "overkill" speech event 
+</span><a name="20"></a>const N_PAST_POSITIONS = <span class="source_int">4</span>;	<span class="source_comment">// number of past positions stored in the pastPositions array (manually keep in snych with ARook.cpp version!)
+</span><a name="21"></a>
+<a name="22"></a><span class="source_comment">//=====================================================================
+</span><a name="23"></a><span class="source_comment">// Variables
+</span><a name="24"></a>
+<a name="25"></a><span class="source_comment">// health (default value is default.health)
+</span><a name="26"></a>var <span class="source_type">float</span> healthMaximum;
+<a name="27"></a>
+<a name="28"></a>var <span class="source_type">string</span> hudType;
+<a name="29"></a>
+<a name="30"></a><span class="source_comment">// if true, players can repair this object
+</span><a name="31"></a>var <span class="source_type">bool</span> bCanRepair;
+<a name="32"></a>
+<a name="33"></a><span class="source_comment">// the object's team
+</span><a name="34"></a>var()	protected
+<a name="35"></a>		editdisplay(displayActorLabel)
+<a name="36"></a>		editcombotype(enumTeamInfo)
+<a name="37"></a>		<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> m_team							<span class="source_string">"The team that the object belongs to. Note: Base Devices assume the team of the BaseInfo to which they belong"</span>;
+<a name="38"></a>
+<a name="39"></a>var private <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> m_localTeam;
+<a name="40"></a>
+<a name="41"></a><span class="source_comment">// the object's squad
+</span><a name="42"></a>var()	private
+<a name="43"></a>		editdisplay(displayActorLabel)
+<a name="44"></a>		editcombotype(enumSquadInfo)
+<a name="45"></a>		<span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span> m_squad;
+<a name="46"></a>
+<a name="47"></a><span class="source_comment">// Variables relating to common sensing code
+</span><a name="48"></a>var <span class="source_type"><a href="../gameplay/tribesvisionnotifier.html" class="source">TribesVisionNotifier</a></span> vision;						<span class="source_comment">// Our Vision Notifier
+</span><a name="49"></a>var <span class="source_type"><a href="../aicommon/hearingnotifier.html" class="source">HearingNotifier</a></span> hearing;							<span class="source_comment">// Our Hearing Notifier
+</span><a name="50"></a>var <span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">ShotNotifier</a></span> <span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span>;							<span class="source_comment">// Our Shot Notifier
+</span><a name="51"></a>
+<a name="52"></a><span class="source_comment">// vision
+</span><a name="53"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> PeripheralVisionZAngle <span class="source_string">"limits of peripheral vision in Z (radians)"</span>;
+<a name="54"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> SightRadiusToPlayer <span class="source_string">"maximum distance at which player characters can be seen"</span>;
+<a name="55"></a>
+<a name="56"></a><span class="source_comment">// AI Variables
+</span><a name="57"></a>var(<span class="source_type">AI</span>) <span class="source_type"><a href="../engine/tyrion_resourcebase.html" class="source">Tyrion_ResourceBase</a></span>.<span class="source_type"><a href="../engine/tyrion_resourcebase.html#AI_LOD_Levels" class="source">AI_LOD_Levels</a></span> AI_LOD_LevelMP <span class="source_string">"AI Level of detail for MP games"</span>;
+<a name="58"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> AI_LOD_ActivationDistance <span class="source_string">"Distance at which AI's go into AILOD_NORMAL state"</span>;
+<a name="59"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> AI_LOD_DeactivationDistance <span class="source_string">"Distance at which AI's leave AILOD_NORMAL state"</span>;
+<a name="60"></a>var(<span class="source_type">AI</span>) <span class="source_type">bool</span> bAIThreat <span class="source_string">"Is this a rook AI's should shoot at if it's an enemy?"</span>;
+<a name="61"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> shotAngularDeviation <span class="source_string">"Max angular deviation from ideal line of fire in degrees"</span>;
+<a name="62"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> shotAngularDeviationMP <span class="source_string">"Max angular deviation from ideal line of fire in degrees (MP games)"</span>;
+<a name="63"></a>var(<span class="source_type">AI</span>) <span class="source_type"><a href="../core/object.html#Range" class="source">Range</a></span> shotLeadAbility <span class="source_string">"Range from which the multiplier for the shot leading aiming component is chosen; (1,1) is totally accurate leading, numbers less than 1 undershoot, greater than 1 overshoot"</span>;
+<a name="64"></a>var(<span class="source_type">AI</span>) <span class="source_type"><a href="../core/object.html#Range" class="source">Range</a></span> shotLeadAbilityMP <span class="source_string">"Range from which the multiplier for the shot leading aiming component is chosen; (1,1) is totally accurate leading, numbers less than 1 undershoot, greater than 1 overshoot (MP games)"</span>;
+<a name="65"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> reactionDelay <span class="source_string">"Time between spotting a new enemy and actually shooting at it"</span>; 
+<a name="66"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> reactionDelayMP <span class="source_string">"Time between spotting a new enemy and actually shooting at it (MP games)"</span>; 
+<a name="67"></a>var(<span class="source_type">AI</span>) <span class="source_type">float</span> visionMemory <span class="source_string">"how long (in seconds) after losing a target does the AI still know where it is?"</span>;
+<a name="68"></a>var <span class="source_type"><a href="../gameplay/rook.html#AlertnessLevels" class="source">AlertnessLevels</a></span> alertness;				<span class="source_comment">// Alertness level
+</span><a name="69"></a>var <span class="source_type">int</span> AI_LOD_deactivation_exemption_ticks;<span class="source_comment">// when set, lets AI's stay in AILOD_NORMAL without a deactivation check
+</span><a name="70"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> pastPositions[N_PAST_POSITIONS];	<span class="source_comment">// past positions of the rook stored to compute average velocity
+</span><a name="71"></a>var <span class="source_type">int</span> pastPositionsIndex;					<span class="source_comment">// index of next position value in pastPositions
+</span><a name="72"></a>var <span class="source_type">float</span> pastPositionsTimeAccu;			<span class="source_comment">// deltaTime accumulator for pastPositions update
+</span><a name="73"></a>var <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">attacker</span>;							<span class="source_comment">// entity who is attacking this rook
+</span><a name="74"></a>var <span class="source_type">float</span> expectedImpactTime;				<span class="source_comment">// time at which a projectile from "attacker" should have hit by
+</span><a name="75"></a>var <span class="source_type">float</span> lastShotFiredTime;				<span class="source_comment">// last time this AI fired a shot
+</span><a name="76"></a>var <span class="source_type">bool</span> bUnobstructedLOF;					<span class="source_comment">// does this rook have line of fire to its target?
+</span><a name="77"></a>var <span class="source_type">bool</span> bDeferredAICleanup;				<span class="source_comment">// true when state code is being run on AI's
+</span><a name="78"></a>
+<a name="79"></a>var <span class="source_type">float</span> tickTime;				<span class="source_comment">// when tickTime &lt; 0, we tick the AI
+</span><a name="80"></a>var <span class="source_type">float</span> tickTimeOrg;			<span class="source_comment">// last generated tickTime value
+</span><a name="81"></a>var <span class="source_type"><a href="../core/object.html#Range" class="source">Range</a></span> tickTimeUpdateRange;  <span class="source_comment">// min and max time that will be used to make a random tickTime
+</span><a name="82"></a>
+<a name="83"></a>var <span class="source_type"><a href="../engine/tyrion_resourcebase.html" class="source">Tyrion_ResourceBase</a></span> vehicleAI;	<span class="source_comment">// AI for the vehicle/turret as a whole
+</span><a name="84"></a>var <span class="source_type"><a href="../engine/tyrion_resourcebase.html" class="source">Tyrion_ResourceBase</a></span> mountAI;	<span class="source_comment">// AI for gunner positions / drivers
+</span><a name="85"></a>
+<a name="86"></a><span class="source_comment">// AI debug stuff
+</span><a name="87"></a>var <span class="source_type">bool</span> bShowLOADebug;		<span class="source_comment">// switch on local obstacle avoidance debugging
+</span><a name="88"></a>var <span class="source_type">bool</span> bShowSensingDebug;	<span class="source_comment">// switch on sensing debug
+</span><a name="89"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> loaStartPoint;	<span class="source_comment">// the point the lookAhead function is looking ahead from
+</span><a name="90"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> loaEndPoint;		<span class="source_comment">// and to
+</span><a name="91"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> loaStartPoint2;	<span class="source_comment">// and for the ramp/stairs segment...
+</span><a name="92"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> loaEndPoint2;
+<a name="93"></a>var <span class="source_type">bool</span> loaHit;			<span class="source_comment">// true when lookAhead found an obstacle
+</span><a name="94"></a>
+<a name="95"></a><span class="source_comment">// Boston's action/goal display
+</span><a name="96"></a>var <span class="source_type">bool</span> bShowTyrionCharacterDebug;	<span class="source_comment">// also activates vehicle/turret AI display
+</span><a name="97"></a>var <span class="source_type">bool</span> bShowTyrionMovementDebug;
+<a name="98"></a>var <span class="source_type">bool</span> bShowTyrionWeaponDebug;
+<a name="99"></a>var <span class="source_type">bool</span> bShowTyrionHeadDebug;
+<a name="100"></a>var <span class="source_type">bool</span> bShowNavigationDebug;
+<a name="101"></a>
+<a name="102"></a><span class="source_comment">// Jetpacking/skiing debug stuff
+</span><a name="103"></a>var <span class="source_type">bool</span> bShowJSDebug;		<span class="source_comment">// switch on jetting/skiing debugging
+</span><a name="104"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> estLocation;
+<a name="105"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> movementForce;
+<a name="106"></a>
+<a name="107"></a><span class="source_comment">// Squad/Formation debug stuff
+</span><a name="108"></a>var <span class="source_type">bool</span> bShowSquadDebug;	<span class="source_comment">// switch on squad/formation debugging
+</span><a name="109"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> desiredLocation;	<span class="source_comment">// where rook is trying to go
+</span><a name="110"></a>
+<a name="111"></a><span class="source_comment">// alertness system debug
+</span><a name="112"></a>var <span class="source_type">bool</span> logAlertnessChanges;
+<a name="113"></a>
+<a name="114"></a><span class="source_comment">// shadow stuff
+</span><a name="115"></a>var (Shadow) <span class="source_type">float</span> ShadowLightDistance;
+<a name="116"></a>var (Shadow) <span class="source_type">float</span> MaxShadowTraceDistance;
+<a name="117"></a>
+<a name="118"></a><span class="source_comment">// used by the sensor system
+</span><a name="119"></a>var() <span class="source_type">bool</span> bCanBeSensed;
+<a name="120"></a>var() <span class="source_type">bool</span> bIsDetectableByEnemies;
+<a name="121"></a>var <span class="source_type">bool</span> sensorUpdateFlag;
+<a name="122"></a>var <span class="source_type">float</span> lastDetectedTime;
+<a name="123"></a>
+<a name="124"></a><span class="source_comment">// Set if this item should be always marked, even if it cannot be sensed
+</span><a name="125"></a>var() <span class="source_type">bool</span> bAlwaysMarked;
+<a name="126"></a>
+<a name="127"></a><span class="source_comment">// used to establish whether to mark this class or not:
+</span><a name="128"></a>var(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt; radarInfoClass;
+<a name="129"></a>
+<a name="130"></a><span class="source_comment">// used for stat tracking
+</span><a name="131"></a>var array&lt;<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>&gt; repairers;
+<a name="132"></a>
+<a name="133"></a><span class="source_comment">// Damage Component system
+</span><a name="134"></a>struct native <span class="source_type"><a href="../gameplay/rook.html#DamageComponent" class="source">DamageComponent</a></span>
+<a name="135"></a>{
+<a name="136"></a>	var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>&gt;	objectType	<span class="source_string">"Class type of the dynamic object attached at this location"</span>;
+<a name="137"></a>	var() <span class="source_type">name</span>					attachmentPoint				<span class="source_string">"Bone or socket to attach object to. If None will attach to pivot"</span>;
+<a name="138"></a>	var <span class="source_type"><a href="../physics/dynamicobject.html" class="source">DynamicObject</a></span>			objectInstance;
+<a name="139"></a>};
+<a name="140"></a>var() array&lt;<span class="source_type"><a href="../gameplay/rook.html#DamageComponent" class="source">DamageComponent</a></span>&gt; damageComponents;
+<a name="141"></a>var <span class="source_type">byte</span>	clientDamageComponentMask;
+<a name="142"></a>var <span class="source_type">byte</span>	damageComponentMask;	<span class="source_comment">// this mask (and its client side dirty component) state which panels have been destroyed
+</span><a name="143"></a>var <span class="source_type">float</span>	componentBreakThreshold;
+<a name="144"></a>
+<a name="145"></a><span class="source_comment">// The PlayerCharacterController sets its state to this variable when possessing this Rook
+</span><a name="146"></a>var <span class="source_type">Name</span>	playerControllerState;
+<a name="147"></a>
+<a name="148"></a><span class="source_comment">// Ownership badge
+</span><a name="149"></a>var() <span class="source_type">bool</span>	bUseAlternateOwnershipMaterial;
+<a name="150"></a><span class="source_comment">// Alternate Ownership Self-Illumination flag
+</span><a name="151"></a>var() <span class="source_type">bool</span>	bUseAlternateSelfIllumMaterial;
+<a name="152"></a>var <span class="source_type">Name</span>	teamSelfIllumSkinName;
+<a name="153"></a>
+<a name="154"></a>
+<a name="155"></a><span class="source_comment">// Fire damage
+</span><a name="156"></a>var <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>				flameSource;
+<a name="157"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt;	flameDamageType;
+<a name="158"></a>var <span class="source_type">float</span>				flameDamagePerSecond;
+<a name="159"></a>var <span class="source_type">float</span>				flameDamageReductionPerSecond;
+<a name="160"></a>
+<a name="161"></a><span class="source_comment">// Regenerating personalShields
+</span><a name="162"></a>var () <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/shield.html" class="source">Shield</a></span>&gt; personalShieldClass				<span class="source_string">"Class of regenerating Shield to use, or None to disable personal shields.  For Characters this should be set in the Armor class, not here."</span>;
+<a name="163"></a>var <span class="source_type"><a href="../gameplay/shield.html" class="source">Shield</a></span> personalShield;
+<a name="164"></a>
+<a name="165"></a><span class="source_comment">// Damage restrictions
+</span><a name="166"></a>var () <span class="source_type">float</span>	teamDamagePercentage					<span class="source_string">"Members of this Rook's team can only reduce its health to this percentage of health.  Overrides any setting in TeamInfo."</span>;
+<a name="167"></a>
+<a name="168"></a><span class="source_comment">// effects system
+</span><a name="169"></a>var <span class="source_type">bool</span> effectLogging;                                 <span class="source_comment">// true if effect logging is enabled   
+</span><a name="170"></a>var Array&lt;<span class="source_type">String</span>&gt; loopingEffects;                       <span class="source_comment">// currently looping effects
+</span><a name="171"></a>
+<a name="172"></a><span class="source_comment">// Grappler
+</span><a name="173"></a>var (<span class="source_type"><a href="../gameplay/grappler.html" class="source">Grappler</a></span>) <span class="source_type">float</span> grapplerRetentionScale                   <span class="source_string">"Scales breaking force for grapple attached to this object"</span>;
+<a name="174"></a>
+<a name="175"></a><span class="source_comment">// Repair variables
+</span><a name="176"></a>var <span class="source_type">float</span> repDepLastRateAddition;
+<a name="177"></a>var <span class="source_type">float</span> repDepRepairRate;
+<a name="178"></a>var <span class="source_type">float</span> repPakLastRateAddition;
+<a name="179"></a>var <span class="source_type">float</span> repPakRepairRate;
+<a name="180"></a>
+<a name="181"></a><span class="source_comment">// this array of useable points is replicated to the client
+</span><a name="182"></a>const MAX_USEABLE_POINTS = <span class="source_int">10</span>;
+<a name="183"></a>enum <span class="source_type"><a href="../gameplay/rook.html#EUseablePointValid" class="source">EUseablePointValid</a></span>
+<a name="184"></a>{
+<a name="185"></a>	UP_Unused,
+<a name="186"></a>	UP_NotValid,
+<a name="187"></a>	UP_Valid
+<a name="188"></a>};
+<a name="189"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> UseablePoints[MAX_USEABLE_POINTS];
+<a name="190"></a>var <span class="source_type"><a href="../gameplay/rook.html#EUseablePointValid" class="source">EUseablePointValid</a></span> UseablePointsValid[MAX_USEABLE_POINTS];
+<a name="191"></a>
+<a name="192"></a><span class="source_comment">// Havok team specific collision filtering
+</span><a name="193"></a>var  <span class="source_type">bool</span> teamSpecificHavokCollisionFiltering;
+<a name="194"></a>
+<a name="195"></a><span class="source_comment">// used to detect team changes
+</span><a name="196"></a>var private <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> m_lastTeam;
+<a name="197"></a>
+<a name="198"></a>replication
+<a name="199"></a>{
+<a name="200"></a>	reliable if (ROLE == ROLE_Authority)
+<a name="201"></a>		healthMaximum, m_team, UseablePoints, UseablePointsValid;
+<a name="202"></a>
+<a name="203"></a>	reliable if ((ROLE == ROLE_Authority && !bNetOwner) || bDemoRecording)
+<a name="204"></a>        alertness;
+<a name="205"></a>
+<a name="206"></a>	reliable if (ROLE == ROLE_Authority && personalShieldClass != None)
+<a name="207"></a>		personalShield;
+<a name="208"></a>
+<a name="209"></a>	reliable if (ROLE == ROLE_Authority && damageComponents.Length != <span class="source_int">0</span>)
+<a name="210"></a>		damageComponentMask;
+<a name="211"></a>}
+<a name="212"></a>
+<a name="213"></a><span class="source_comment">//=====================================================================
+</span><a name="214"></a><span class="source_comment">// Functions
+</span><a name="215"></a>
+<a name="216"></a><span class="source_type">function</span> ApplyDamage(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> instigatedBy, <span class="source_type">float</span> Damage, optional <span class="source_type">Name</span> teamLabel)
+<a name="217"></a>{
+<a name="218"></a>	local <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">r</span>;
+<a name="219"></a>
+<a name="220"></a>	<span class="source_type">r</span> = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(instigatedBy);
+<a name="221"></a>	if (<span class="source_type">r</span> != None && <span class="source_type">r</span>.m_team != None)
+<a name="222"></a>		teamLabel = <span class="source_type">r</span>.m_team.Label;
+<a name="223"></a>
+<a name="224"></a>	super.ApplyDamage(instigatedBy, Damage, teamLabel);
+<a name="225"></a>}
+<a name="226"></a>
+<a name="227"></a>static simulated <span class="source_type">function</span> PrecacheDamageComponents(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">Level</span>, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>&gt; RookClass)
+<a name="228"></a>{
+<a name="229"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="230"></a>
+<a name="231"></a>	<span class="source_comment">// recurse through children
+</span><a name="232"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;RookClass.default.damageComponents.Length; <span class="source_type">i</span>++)
+<a name="233"></a>	{
+<a name="234"></a>		if (RookClass.default.damageComponents[<span class="source_type">i</span>].objectType != None)
+<a name="235"></a>			<span class="source_type">class</span><span class="source_name">'DynamicObject'</span>.Static.PrecacheDynamicObjectRenderData(<span class="source_type">Level</span>, RookClass.default.damageComponents[<span class="source_type">i</span>].objectType);
+<a name="236"></a>	}
+<a name="237"></a>}
+<a name="238"></a>
+<a name="239"></a>simulated <span class="source_type">function</span> UpdatePrecacheRenderData()
+<a name="240"></a>{
+<a name="241"></a>	Super.UpdatePrecacheRenderData();
+<a name="242"></a>	PrecacheDamageComponents(<span class="source_type">Level</span>, <span class="source_type">Class</span>);
+<a name="243"></a>}
+<a name="244"></a>
+<a name="245"></a>
+<a name="246"></a><span class="source_comment">//
+</span><a name="247"></a><span class="source_comment">// Updates Havok collision data. Should be called when team changes.
+</span><a name="248"></a><span class="source_comment">//
+</span><a name="249"></a>simulated native <span class="source_type">function</span> updateHavokCollisionFilter();
+<a name="250"></a>
+<a name="251"></a><span class="source_comment">//
+</span><a name="252"></a><span class="source_comment">// Special function for returning the location of this actor
+</span><a name="253"></a><span class="source_comment">// if it is associated with an objective. This is mostly for the
+</span><a name="254"></a><span class="source_comment">// MPCarryables, because they have the problem of being attached
+</span><a name="255"></a><span class="source_comment">// to a charater & then having their location set to 0,0,0
+</span><a name="256"></a><span class="source_comment">//
+</span><a name="257"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> GetObjectiveLocation()
+<a name="258"></a>{
+<a name="259"></a>	return Location;
+<a name="260"></a>}
+<a name="261"></a>
+<a name="262"></a><span class="source_comment">//
+</span><a name="263"></a><span class="source_comment">// For the useable points / prompts. Returns true if the
+</span><a name="264"></a><span class="source_comment">// character can use this rook. There is an array of useable
+</span><a name="265"></a><span class="source_comment">// points which is updated from server-&gt;client. Each time the
+</span><a name="266"></a><span class="source_comment">// player targets a rook, this method is called to see if the
+</span><a name="267"></a><span class="source_comment">// object is useable by them.
+</span><a name="268"></a><span class="source_comment">//
+</span><a name="269"></a><span class="source_comment">// In summary, the points are filtered on the server in case
+</span><a name="270"></a><span class="source_comment">// a particular point is unavilable (eg: someone is already using 
+</span><a name="271"></a><span class="source_comment">// an inventory station access), and the object is filtered
+</span><a name="272"></a><span class="source_comment">// on the client in case there is some character specific reason
+</span><a name="273"></a><span class="source_comment">// as to why the object cannot be accessed (eg: being on the 
+</span><a name="274"></a><span class="source_comment">// opposing team).
+</span><a name="275"></a><span class="source_comment">//
+</span><a name="276"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> CanBeUsedBy(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> CharacterUser)
+<a name="277"></a>{
+<a name="278"></a>	return IsFriendly(CharacterUser);
+<a name="279"></a>}
+<a name="280"></a>
+<a name="281"></a><span class="source_type">function</span> <span class="source_type">bool</span> canBeSensed()
+<a name="282"></a>{
+<a name="283"></a>	return bCanBeSensed;
+<a name="284"></a>}
+<a name="285"></a>
+<a name="286"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/ifiringmotor.html" class="source">IFiringMotor</a></span> firingMotor()
+<a name="287"></a>{
+<a name="288"></a>	return None;
+<a name="289"></a>}
+<a name="290"></a>
+<a name="291"></a><span class="source_comment">// Returns the character (if it exists) that is controlling this rook (i.e. turret or vehicle)
+</span><a name="292"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> getControllingCharacter()
+<a name="293"></a>{
+<a name="294"></a>	return None;
+<a name="295"></a>}
+<a name="296"></a>
+<a name="297"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> getControllingCharacterTeam()
+<a name="298"></a>{
+<a name="299"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> controllingCharacter;
+<a name="300"></a>
+<a name="301"></a>	controllingCharacter = getControllingCharacter();
+<a name="302"></a>
+<a name="303"></a>	if ( controllingCharacter != None )
+<a name="304"></a>		return controllingCharacter.team();
+<a name="305"></a>	else
+<a name="306"></a>		return team();
+<a name="307"></a>}
+<a name="308"></a>
+<a name="309"></a><span class="source_comment">// Repair functions ------------------------------------------------------------------------
+</span><a name="310"></a>simulated <span class="source_type">function</span> addRepairFromDeployable(<span class="source_type">float</span> repairRate, <span class="source_type">float</span> accumulationScale)
+<a name="311"></a>{
+<a name="312"></a>	if (<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>(<span class="source_type">Level</span>.Game) != None)
+<a name="313"></a>		repairRate = <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>(<span class="source_type">Level</span>.Game).modifyRepairRate(self, repairRate);
+<a name="314"></a>
+<a name="315"></a>	if (repDepLastRateAddition == <span class="source_int">0.0</span>)
+<a name="316"></a>	{
+<a name="317"></a>		repDepRepairRate = repairRate;
+<a name="318"></a>		repDepLastRateAddition = repairRate;
+<a name="319"></a>	}
+<a name="320"></a>	else
+<a name="321"></a>	{
+<a name="322"></a>		repDepLastRateAddition *= accumulationScale;
+<a name="323"></a>		repDepRepairRate += repDepLastRateAddition;
+<a name="324"></a>	}
+<a name="325"></a>}
+<a name="326"></a>
+<a name="327"></a>simulated <span class="source_type">function</span> removeRepairFromDeployable(<span class="source_type">float</span> accumulationScale)
+<a name="328"></a>{
+<a name="329"></a>	repDepRepairRate -= repDepLastRateAddition;
+<a name="330"></a>	if (accumulationScale != <span class="source_int">0</span>)
+<a name="331"></a>		repDepLastRateAddition /= accumulationScale;
+<a name="332"></a>}
+<a name="333"></a>
+<a name="334"></a>simulated <span class="source_type">function</span> addRepairFromPack(<span class="source_type">float</span> repairRate, <span class="source_type">float</span> accumulationScale, <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> repairer)
+<a name="335"></a>{
+<a name="336"></a>	<span class="source_comment">//log("Old = "$repairRate);
+</span><a name="337"></a>	if (<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>(<span class="source_type">Level</span>.Game) != None)
+<a name="338"></a>		repairRate = <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>(<span class="source_type">Level</span>.Game).modifyRepairRate(self, repairRate);
+<a name="339"></a>	<span class="source_comment">//log("New = "$repairRate);
+</span><a name="340"></a>
+<a name="341"></a>	<span class="source_comment">// Remember who is repairing for stat tracking purposes
+</span><a name="342"></a>	repairers[repairers.Length] = repairer;
+<a name="343"></a>
+<a name="344"></a>	if (repPakLastRateAddition == <span class="source_int">0.0</span>)
+<a name="345"></a>	{
+<a name="346"></a>		repPakRepairRate = repairRate;
+<a name="347"></a>		repPakLastRateAddition = repairRate;
+<a name="348"></a>	}
+<a name="349"></a>	else
+<a name="350"></a>	{
+<a name="351"></a>		repPakLastRateAddition *= accumulationScale;
+<a name="352"></a>		repPakRepairRate += repPakLastRateAddition;
+<a name="353"></a>	}
+<a name="354"></a>}
+<a name="355"></a>
+<a name="356"></a>simulated <span class="source_type">function</span> removeRepairFromPack(<span class="source_type">float</span> accumulationScale, <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> repairer)
+<a name="357"></a>{
+<a name="358"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="359"></a>
+<a name="360"></a>	repPakRepairRate -= repPakLastRateAddition;
+<a name="361"></a>	repPakLastRateAddition /= accumulationScale;
+<a name="362"></a>
+<a name="363"></a>	<span class="source_comment">// Stop remembering this repairer for stat tracking purposes
+</span><a name="364"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;repairers.Length; <span class="source_type">i</span>++)
+<a name="365"></a>	{
+<a name="366"></a>		if (repairers[<span class="source_type">i</span>] == repairer)
+<a name="367"></a>		{
+<a name="368"></a>			repairers.Remove(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="369"></a>			return;
+<a name="370"></a>		}
+<a name="371"></a>	}
+<a name="372"></a>}
+<a name="373"></a>
+<a name="374"></a>simulated event ProcessRepair(<span class="source_type">float</span> <span class="source_type">delta</span>)
+<a name="375"></a>{
+<a name="376"></a>	if (!isAlive())
+<a name="377"></a>		return;
+<a name="378"></a>
+<a name="379"></a>	IncreaseHealth((repPakRepairRate + repDepRepairRate) * <span class="source_type">delta</span>);
+<a name="380"></a>}
+<a name="381"></a><span class="source_comment">// End repair functions --------------------------------------------------------------------
+</span><a name="382"></a>
+<a name="383"></a>simulated event ProcessBurnDamage(<span class="source_type">float</span> <span class="source_type">delta</span>)
+<a name="384"></a>{
+<a name="385"></a>	if (flameDamagePerSecond &gt; <span class="source_int">0.0</span>)
+<a name="386"></a>	{
+<a name="387"></a>		if (<span class="source_type"><a href="../engine/physicsvolume.html" class="source">PhysicsVolume</a></span>.bWaterVolume)
+<a name="388"></a>		{
+<a name="389"></a>			removeFlameDamage();
+<a name="390"></a>			TriggerEffectEvent(<span class="source_name">'Extinguished'</span>);
+<a name="391"></a>		}
+<a name="392"></a>		else
+<a name="393"></a>		{
+<a name="394"></a>			if (Role == ROLE_Authority)
+<a name="395"></a>				TakeDamage(flameDamagePerSecond * <span class="source_type">delta</span>, flameSource, vect(<span class="source_int">0.0</span>, <span class="source_int">0.0</span>, <span class="source_int">0.0</span>), vect(<span class="source_int">0.0</span>, <span class="source_int">0.0</span>, <span class="source_int">0.0</span>), flameDamageType);
+<a name="396"></a>
+<a name="397"></a>			if (flameDamageReductionPerSecond &gt; <span class="source_int">0.0</span>)
+<a name="398"></a>				flameDamagePerSecond -= flameDamageReductionPerSecond * <span class="source_type">delta</span>;
+<a name="399"></a>
+<a name="400"></a>			if (flameDamagePerSecond &lt;= <span class="source_int">0.0</span>)
+<a name="401"></a>				removeFlameDamage();
+<a name="402"></a>		}
+<a name="403"></a>	}
+<a name="404"></a>}
+<a name="405"></a>
+<a name="406"></a>simulated <span class="source_type">function</span> removeFlameDamage()
+<a name="407"></a>{
+<a name="408"></a>	flameDamagePerSecond = <span class="source_int">0.0</span>;
+<a name="409"></a>	UntriggerEffectEvent(<span class="source_name">'Burning'</span>);
+<a name="410"></a>}
+<a name="411"></a>
+<a name="412"></a><span class="source_type">function</span> displayWorldSpaceDebug(<span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span> displayHUD);
+<a name="413"></a>
+<a name="414"></a>simulated <span class="source_type">function</span> Destroyed()
+<a name="415"></a>{
+<a name="416"></a>	UntriggerEffectEvent(<span class="source_name">'Burning'</span>);
+<a name="417"></a>
+<a name="418"></a>	if (m_squad != None)
+<a name="419"></a>		m_squad.memberDestroyed(self);
+<a name="420"></a>
+<a name="421"></a>	if (personalShield != None)
+<a name="422"></a>		personalShield.Destroy();
+<a name="423"></a>
+<a name="424"></a>	cleanupAI();	<span class="source_comment">// (requires vision pointer to still be around)
+</span><a name="425"></a>	cleanupSensing();
+<a name="426"></a>	
+<a name="427"></a>	cleanupDamageComponents();
+<a name="428"></a>
+<a name="429"></a>	super.Destroyed();
+<a name="430"></a>}
+<a name="431"></a>
+<a name="432"></a>event PreBeginPlay()
+<a name="433"></a>{
+<a name="434"></a>	<span class="source_comment">// it is assumed that healthMaximum has neither been used or set prior to this point
+</span><a name="435"></a>	healthMaximum = default.health;
+<a name="436"></a>
+<a name="437"></a>	super.PreBeginPlay();
+<a name="438"></a>}
+<a name="439"></a>
+<a name="440"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="441"></a><span class="source_comment">// Called at start of gameplay.
+</span><a name="442"></a>
+<a name="443"></a>simulated event PostBeginPlay()
+<a name="444"></a>{
+<a name="445"></a> 	local <span class="source_type">int</span> <span class="source_type">i</span>, damageComponentCount;
+<a name="446"></a>	
+<a name="447"></a>	Super.PostBeginPlay();
+<a name="448"></a>
+<a name="449"></a>	if ( (<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> == None) && ControllerClassName == <span class="source_string">"Tyrion.AI_Controller"</span> )
+<a name="450"></a>	{
+<a name="451"></a>		<span class="source_comment">// create dummy AI controller for the rook -
+</span><a name="452"></a>		<span class="source_comment">// so Unreal is happy and there's a place to store replicated data
+</span><a name="453"></a>		<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> = spawn(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>&gt;( DynamicLoadObject( ControllerClassName, <span class="source_type">class</span><span class="source_name">'Class'</span>)));
+<a name="454"></a>	}
+<a name="455"></a>
+<a name="456"></a>	if ( <span class="source_type">Level</span>.NetMode != NM_Client && <span class="source_type">Level</span>.Game.IsA( <span class="source_name">'MultiPlayerGameInfo'</span> ) )
+<a name="457"></a>	{
+<a name="458"></a>		AI_LOD_Level = AI_LOD_LevelMP;
+<a name="459"></a>		shotAngularDeviation = shotAngularDeviationMP;
+<a name="460"></a>		shotLeadAbility = shotLeadAbilityMP;
+<a name="461"></a>		reactionDelay = reactionDelayMP;
+<a name="462"></a>	}
+<a name="463"></a>	AI_LOD_LevelOrig = AI_LOD_Level;
+<a name="464"></a>
+<a name="465"></a>	CreateShotNotifier();	<span class="source_comment">// a shot notifier is created for all rooks because AI's are interested in players' shots
+</span><a name="466"></a>
+<a name="467"></a>	if ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> != None )
+<a name="468"></a>		<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.Possess( self );
+<a name="469"></a>
+<a name="470"></a>	<span class="source_comment">// add this rook to his squad
+</span><a name="471"></a>	if ( squad() != None )
+<a name="472"></a>	{
+<a name="473"></a>		if ( logTyrion )
+<a name="474"></a>			log( self @ <span class="source_string">"added to squad"</span> @ squad() );
+<a name="475"></a>		setSquad( squad() );
+<a name="476"></a>	}
+<a name="477"></a>
+<a name="478"></a>	<span class="source_comment">// fill in the damage component mask
+</span><a name="479"></a>	damageComponentCount = <span class="source_int">0</span>;
+<a name="480"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span> &lt; damageComponents.length; ++<span class="source_type">i</span>)
+<a name="481"></a>	{
+<a name="482"></a>		if (damageComponents[<span class="source_type">i</span>].objectType != None)
+<a name="483"></a>		{
+<a name="484"></a>			damageComponentMask = damageComponentMask | (<span class="source_int">1</span> &lt;&lt; <span class="source_type">i</span>);
+<a name="485"></a>			++damageComponentCount;
+<a name="486"></a>		}
+<a name="487"></a>	}
+<a name="488"></a>	componentBreakThreshold = GetDamageComponentThresholdRange() / (damageComponentCount + <span class="source_int">1</span>);
+<a name="489"></a>
+<a name="490"></a>	resetPersonalShield();
+<a name="491"></a>
+<a name="492"></a><span class="source_comment">/*
+<a name="493"></a>	if ( label == 'aitestplatformer01' || label == 'aicustomesther1' )
+<a name="494"></a>	{
+<a name="495"></a>		logTyrion = true;
+<a name="496"></a>		//logNavigationSystem = true;
+<a name="497"></a>		bShowTyrionCharacterDebug = true;
+<a name="498"></a>		bShowTyrionMovementDebug = true;
+<a name="499"></a>		bShowTyrionWeaponDebug = true;
+<a name="500"></a>		bShowTyrionHeadDebug = true;
+<a name="501"></a>		bShowSensingDebug = true;
+<a name="502"></a>		bShowJSDebug = true;
+<a name="503"></a>		//logDLM = true;
+<a name="504"></a>		if ( squad() != None )
+<a name="505"></a>			squad().logTyrion = true;
+<a name="506"></a>	}
+<a name="507"></a>*/</span>
+<a name="508"></a>}
+<a name="509"></a>
+<a name="510"></a>simulated <span class="source_type">function</span> <span class="source_type">float</span> GetDamageComponentThresholdRange()
+<a name="511"></a>{
+<a name="512"></a>	return healthMaximum;
+<a name="513"></a>}
+<a name="514"></a>
+<a name="515"></a>simulated event PostNetBeginPlay()
+<a name="516"></a>{
+<a name="517"></a>	Super.PostNetBeginPlay();
+<a name="518"></a>
+<a name="519"></a>	if (bActorShadows && <span class="source_type">Level</span>.NetMode != NM_DedicatedServer)
+<a name="520"></a>	{
+<a name="521"></a>		Shadow = Spawn(<span class="source_type">class</span><span class="source_name">'ShadowProjector'</span>,self,<span class="source_name">''</span>,Location);
+<a name="522"></a>		Shadow.ShadowActor = self;
+<a name="523"></a>        Shadow.bBlobShadow = false;
+<a name="524"></a>		Shadow.LightDirection = Normal(vect(<span class="source_int">1</span>,<span class="source_int">1</span>,<span class="source_int">5</span>));
+<a name="525"></a>		Shadow.LightDistance = ShadowLightDistance;
+<a name="526"></a>		Shadow.MaxTraceDistance = MaxShadowTraceDistance;
+<a name="527"></a>		Shadow.RootMotion = true;
+<a name="528"></a>		Shadow.CullDistance = <span class="source_int">8000</span>;
+<a name="529"></a>		Shadow.Resolution = <span class="source_int">256</span>;
+<a name="530"></a>		Shadow.InitShadow();
+<a name="531"></a>	}
+<a name="532"></a>
+<a name="533"></a>	if (damageComponents.length != <span class="source_int">0</span>)
+<a name="534"></a>	{
+<a name="535"></a>		clientDamageComponentMask = damageComponentMask;
+<a name="536"></a>		clientUpdateDamageComponents();
+<a name="537"></a>
+<a name="538"></a>		<span class="source_comment">// we need to snooop on net receive if we are using damage components
+</span><a name="539"></a>		bNetNotify = true;
+<a name="540"></a>	}
+<a name="541"></a>
+<a name="542"></a>	<span class="source_comment">// if we have a radar info which displays icons ina  viewport, then turn on 
+</span><a name="543"></a>	<span class="source_comment">// the post render callback. Make sure that we dont turn it off, though
+</span><a name="544"></a>	if (GetRadarInfoClass() != None)
+<a name="545"></a>		bNeedPostRenderCallback = bNeedPostRenderCallback || <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt;(GetRadarInfoClass()).default.bDisplayViewport;
+<a name="546"></a>}
+<a name="547"></a>
+<a name="548"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> ShouldBeMarked(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pcc)
+<a name="549"></a>{
+<a name="550"></a>	<span class="source_comment">// if the radar info says no, then don't.
+</span><a name="551"></a>	if (! (GetRadarInfoClass() != None && <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/radarinfo.html" class="source">RadarInfo</a></span>&gt;(GetRadarInfoClass()).default.bDisplayViewport))
+<a name="552"></a>		return false;
+<a name="553"></a>
+<a name="554"></a>	<span class="source_comment">// always marked, so return true
+</span><a name="555"></a>	if(bAlwaysMarked)
+<a name="556"></a>		return true;
+<a name="557"></a>
+<a name="558"></a>	<span class="source_comment">// add the rook to the list of markers to be marked on the HUD
+</span><a name="559"></a>	if(bCanBeSensed && IsAlive() && (IsA(<span class="source_name">'MPCarryable'</span>) || pcc.IsFriendly(self) || <span class="source_comment">// friendlies and carryables are always rendered
+</span><a name="560"></a>		(! pcc.IsFriendly(self) && pcc.GetControllerTeam() != None && pcc.GetControllerTeam().bSensorGridFunctional)))	<span class="source_comment">// enemy players are rendered only if the sensor grid is up
+</span><a name="561"></a>			return true;
+<a name="562"></a>
+<a name="563"></a>	return false;
+<a name="564"></a>}
+<a name="565"></a>
+<a name="566"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="567"></a><span class="source_comment">// Damage Component functions
+</span><a name="568"></a>simulated <span class="source_type">function</span> clientUpdateDamageComponents()
+<a name="569"></a>{
+<a name="570"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="571"></a>	<span class="source_comment">//local DynamicObject component;
+</span><a name="572"></a>
+<a name="573"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span> &lt; damageComponents.length && <span class="source_type">i</span> &lt; <span class="source_int">8</span>; ++<span class="source_type">i</span>)
+<a name="574"></a>	{
+<a name="575"></a>		if (damageComponents[<span class="source_type">i</span>].objectType != None)
+<a name="576"></a>		{
+<a name="577"></a>			<span class="source_comment">// unspawned components that need to be spawned
+</span><a name="578"></a>			if (damageComponents[<span class="source_type">i</span>].objectInstance == None && (damageComponentMask & (<span class="source_int">1</span>&lt;&lt;<span class="source_type">i</span>))!=<span class="source_int">0</span> )
+<a name="579"></a>				createDamageComponent(<span class="source_type">i</span>, false);
+<a name="580"></a>
+<a name="581"></a>			<span class="source_comment">// removed components need to be broken
+</span><a name="582"></a>			if (damageComponents[<span class="source_type">i</span>].objectInstance != None && (damageComponentMask & (<span class="source_int">1</span>&lt;&lt;<span class="source_type">i</span>))==<span class="source_int">0</span> )
+<a name="583"></a>				breakDamageComponent(<span class="source_type">i</span>, <span class="source_int">0</span>, vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>));
+<a name="584"></a>		}
+<a name="585"></a>	}
+<a name="586"></a>}
+<a name="587"></a>
+<a name="588"></a>simulated <span class="source_type">function</span> cleanupDamageComponents()
+<a name="589"></a>{
+<a name="590"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="591"></a>
+<a name="592"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span> &lt; damageComponents.length && <span class="source_type">i</span> &lt; <span class="source_int">8</span>; ++<span class="source_type">i</span>)
+<a name="593"></a>	{
+<a name="594"></a>		if (damageComponents[<span class="source_type">i</span>].objectInstance != None)
+<a name="595"></a>			damageComponents[<span class="source_type">i</span>].objectInstance.Destroy();
+<a name="596"></a>	}
+<a name="597"></a>}
+<a name="598"></a>
+<a name="599"></a><span class="source_comment">// client/server side functions
+</span><a name="600"></a>simulated native final <span class="source_type">function</span> breakDamageComponent(<span class="source_type">int</span> <span class="source_type">index</span>, <span class="source_type">float</span> damage, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> momentum);
+<a name="601"></a>simulated native final <span class="source_type">function</span> createDamageComponent(<span class="source_type">int</span> <span class="source_type">index</span>, <span class="source_type">bool</span> fadeIn);
+<a name="602"></a>
+<a name="603"></a><span class="source_comment">// server side only functions
+</span><a name="604"></a><span class="source_type">function</span> damageComponentsPostTakeDamage(<span class="source_type">float</span> damage, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">hitLocation</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> momentum, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, optional <span class="source_type">float</span> projectileFactor)
+<a name="605"></a>{
+<a name="606"></a>	<span class="source_comment">// we may not neccesarily process this call
+</span><a name="607"></a>	if (<span class="source_type">Level</span>.NetMode != NM_Client && damageComponentMask != <span class="source_int">0</span> && damage &gt; <span class="source_int">0</span>)
+<a name="608"></a>		damageComponentsOnDamage(damage, <span class="source_type">HitLocation</span>, Momentum, <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>);
+<a name="609"></a>}
+<a name="610"></a>
+<a name="611"></a>native final <span class="source_type">function</span> damageComponentsOnDamage(<span class="source_type">float</span> damage, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">hitLocation</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> momentum, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>);
+<a name="612"></a>native final <span class="source_type">function</span> damageComponentsOnIncreaseHealth(<span class="source_type">float</span> quantity);
+<a name="613"></a>
+<a name="614"></a>simulated event onTeamChange()
+<a name="615"></a>{
+<a name="616"></a>	updateHavokCollisionFilter();
+<a name="617"></a>}
+<a name="618"></a>
+<a name="619"></a><span class="source_comment">// need to snoop on damage so that we can drop damage components
+</span><a name="620"></a><span class="source_type">function</span> PostTakeDamage(<span class="source_type">float</span> Damage, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">EventInstigator</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitLocation</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Momentum, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>, optional <span class="source_type">float</span> projectileFactor)
+<a name="621"></a>{
+<a name="622"></a>	local <span class="source_type">float</span> actualDamage, maxPercentageHealth;
+<a name="623"></a>	local <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">attackerRook</span>;
+<a name="624"></a>	local <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span> attackerVehicleTurret;
+<a name="625"></a>	local <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> originalAttackerRook;
+<a name="626"></a>	
+<a name="627"></a>	actualDamage = Damage;
+<a name="628"></a>
+<a name="629"></a>	<span class="source_comment">// If personalShields are active, take damage from them instead
+</span><a name="630"></a>	if (personalShieldActive())
+<a name="631"></a>		actualDamage = personalShield.applyDamage(Damage, health);
+<a name="632"></a>
+<a name="633"></a>	<span class="source_type">attackerRook</span> = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(<span class="source_type">EventInstigator</span>);
+<a name="634"></a>	originalAttackerRook = <span class="source_type">attackerRook</span>;
+<a name="635"></a>
+<a name="636"></a>	<span class="source_comment">// handle vehicle case
+</span><a name="637"></a>	if (<span class="source_type">attackerRook</span> != None && <span class="source_type">attackerRook</span>.isA(<span class="source_name">'Vehicle'</span>))
+<a name="638"></a>		<span class="source_type">attackerRook</span> = <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">attackerRook</span>).positions[<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">attackerRook</span>).driverIndex].occupant;
+<a name="639"></a>
+<a name="640"></a>	<span class="source_comment">// handle vehicle mounted turret case
+</span><a name="641"></a>	if (<span class="source_type">attackerRook</span> != None && <span class="source_type">attackerRook</span>.isA(<span class="source_name">'VehicleMountedTurret'</span>))
+<a name="642"></a>	{
+<a name="643"></a>		attackerVehicleTurret = <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>(<span class="source_type">attackerRook</span>);
+<a name="644"></a>		if (attackerVehicleTurret.<span class="source_type">positionIndex</span> &gt;= <span class="source_int">0</span> && attackerVehicleTurret.ownerVehicle != None)
+<a name="645"></a>			<span class="source_type">attackerRook</span> = attackerVehicleTurret.ownerVehicle.positions[attackerVehicleTurret.<span class="source_type">positionIndex</span>].occupant;
+<a name="646"></a>	}
+<a name="647"></a>		
+<a name="648"></a>	<span class="source_comment">// Restrict team damage if applicable
+</span><a name="649"></a>	if(<span class="source_type">attackerRook</span> != None && <span class="source_type">attackerRook</span>.team() != None && <span class="source_type">attackerRook</span>.team().isFriendlyRook(self))
+<a name="650"></a>	{
+<a name="651"></a>		maxPercentageHealth = getTeamDamagePercentage();
+<a name="652"></a>
+<a name="653"></a>		if (maxPercentageHealth &gt; <span class="source_int">0.0</span>)
+<a name="654"></a>		{
+<a name="655"></a>			<span class="source_comment">// Modify actual damage taken to only apply enough damage to bring the Rook's health down to maxPercentageHealth
+</span><a name="656"></a>			if ((health - actualDamage) / healthMaximum &lt; maxPercentageHealth)
+<a name="657"></a>			{
+<a name="658"></a>				actualDamage = health - healthMaximum * maxPercentageHealth;
+<a name="659"></a>				if (actualDamage &lt; <span class="source_int">0</span>)
+<a name="660"></a>					actualDamage = <span class="source_int">0</span>;
+<a name="661"></a>			}
+<a name="662"></a>		}		
+<a name="663"></a>	}
+<a name="664"></a>
+<a name="665"></a>	Super.PostTakeDamage(actualDamage, <span class="source_type">EventInstigator</span>, <span class="source_type">HitLocation</span>, Momentum, <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>, projectileFactor);
+<a name="666"></a>
+<a name="667"></a>	<span class="source_comment">// Hit feedback for character objects
+</span><a name="668"></a>	if(<span class="source_type">EventInstigator</span> != None && Health &gt; <span class="source_int">0</span> && bCanBeDamaged)
+<a name="669"></a>	{
+<a name="670"></a>		if(<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">EventInstigator</span>) != None)
+<a name="671"></a>			<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(<span class="source_type">EventInstigator</span>).OnHitObject(self);
+<a name="672"></a>		else if(<span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>(<span class="source_type">EventInstigator</span>) != None && <span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>(<span class="source_type">EventInstigator</span>).GetDriver() != None)
+<a name="673"></a>			<span class="source_type"><a href="../gameplay/vehiclemountedturret.html" class="source">VehicleMountedTurret</a></span>(<span class="source_type">EventInstigator</span>).GetDriver().OnHitObject(self);
+<a name="674"></a>		else if(<span class="source_type"><a href="../gameplay/turret.html" class="source">Turret</a></span>(<span class="source_type">EventInstigator</span>) != None && <span class="source_type"><a href="../gameplay/turret.html" class="source">Turret</a></span>(<span class="source_type">EventInstigator</span>).driver != None)
+<a name="675"></a>			<span class="source_type"><a href="../gameplay/turret.html" class="source">Turret</a></span>(<span class="source_type">EventInstigator</span>).driver.OnHitObject(self);
+<a name="676"></a>		else if(<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">EventInstigator</span>) != None && <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">EventInstigator</span>).GetDriver() != None)
+<a name="677"></a>			<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">EventInstigator</span>).GetDriver().OnHitObject(self);
+<a name="678"></a>	}
+<a name="679"></a>
+<a name="680"></a>	damageComponentsPostTakeDamage(actualDamage, <span class="source_type">HitLocation</span>, Momentum, <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>, projectileFactor);
+<a name="681"></a>
+<a name="682"></a>	generateAISpeechEvents(originalAttackerRook);
+<a name="683"></a>}
+<a name="684"></a>
+<a name="685"></a><span class="source_type">function</span> generateAISpeechEvents( <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">attackerRook</span> )
+<a name="686"></a>{
+<a name="687"></a>	local <span class="source_type"><a href="../gameplay/baseaicharacter.html" class="source">BaseAICharacter</a></span> controllingCharacter;
+<a name="688"></a>
+<a name="689"></a>	<span class="source_comment">//log( "@@@" @ attackerRook.name @ "hit" @ name );
+</span><a name="690"></a>
+<a name="691"></a>	<span class="source_comment">// Speech events when an AI hits something
+</span><a name="692"></a>	if ( static.checkAlive(<span class="source_type">attackerRook</span>) && <span class="source_type">attackerRook</span> != self && !isFriendly( <span class="source_type">attackerRook</span> ) )
+<a name="693"></a>	{
+<a name="694"></a>		controllingCharacter = <span class="source_type"><a href="../gameplay/baseaicharacter.html" class="source">BaseAICharacter</a></span>(<span class="source_type">attackerRook</span>.getControllingCharacter());
+<a name="695"></a>
+<a name="696"></a>		if ( controllingCharacter != None && controllingCharacter.bTaunt )
+<a name="697"></a>		{
+<a name="698"></a>			if ( health &gt; <span class="source_int">0</span> )
+<a name="699"></a>			{
+<a name="700"></a>				if ( controllingCharacter.scaleByWeaponRefireRate() )
+<a name="701"></a>					<span class="source_type">level</span>.<span class="source_type"><a href="../engine/speechmanager.html" class="source">speechManager</a></span>.PlayDynamicSpeech( controllingCharacter, <span class="source_name">'Hit'</span>, controllingCharacter );
+<a name="702"></a>			}
+<a name="703"></a>			else
+<a name="704"></a>			{
+<a name="705"></a>				if ( health &gt; DAMAGE_OVERKILL )
+<a name="706"></a>					<span class="source_type">level</span>.<span class="source_type"><a href="../engine/speechmanager.html" class="source">speechManager</a></span>.PlayDynamicSpeech( controllingCharacter, <span class="source_name">'Kill'</span>, None, self );
+<a name="707"></a>				else
+<a name="708"></a>					<span class="source_type">level</span>.<span class="source_type"><a href="../engine/speechmanager.html" class="source">speechManager</a></span>.PlayDynamicSpeech( controllingCharacter, <span class="source_name">'Kill'</span>, None, self, <span class="source_string">"OverKill"</span> );
+<a name="709"></a>				if ( FRand() &lt; controllingCharacter.tauntAnimFrequency )
+<a name="710"></a>					controllingCharacter.playTauntAnim();
+<a name="711"></a>			}
+<a name="712"></a>		}
+<a name="713"></a>
+<a name="714"></a>		<span class="source_comment">// if hit, cancel pending miss speech event
+</span><a name="715"></a>		if ( <span class="source_type">attackerRook</span> == <span class="source_type">attacker</span> )
+<a name="716"></a>			<span class="source_type">attacker</span> = None;
+<a name="717"></a>	}
+<a name="718"></a>}
+<a name="719"></a>
+<a name="720"></a>simulated <span class="source_type">function</span> PostNetReceive()
+<a name="721"></a>{
+<a name="722"></a>	super.PostNetReceive();
+<a name="723"></a>
+<a name="724"></a>	<span class="source_comment">// check mask to see if any damage components have been added or removed
+</span><a name="725"></a>	if (<span class="source_type">Level</span>.NetMode == NM_Client && damageComponents.length != <span class="source_int">0</span> && clientDamageComponentMask != damageComponentMask)
+<a name="726"></a>	{
+<a name="727"></a>		clientUpdateDamageComponents();
+<a name="728"></a>		clientDamageComponentMask = damageComponentMask;
+<a name="729"></a>	}
+<a name="730"></a>
+<a name="731"></a>	<span class="source_comment">// check if team has changed
+</span><a name="732"></a>	if (m_localTeam != m_team)
+<a name="733"></a>	{
+<a name="734"></a>		onTeamChange();
+<a name="735"></a>		m_localTeam = m_team;
+<a name="736"></a>	}
+<a name="737"></a>}
+<a name="738"></a>
+<a name="739"></a>simulated event <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> GetOverlayMaterial(<span class="source_type">int</span> <span class="source_type">Index</span>)
+<a name="740"></a>{
+<a name="741"></a>	<span class="source_comment">// our shield can put an overlay on us
+</span><a name="742"></a>	if (personalShield != None && personalShield.bActive)
+<a name="743"></a>		return personalShield.GetEffectMaterial();
+<a name="744"></a>}
+<a name="745"></a>
+<a name="746"></a>
+<a name="747"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="748"></a><span class="source_comment">// Health functions
+</span><a name="749"></a>final <span class="source_type">function</span> IncreaseHealth(<span class="source_type">float</span> quantity)
+<a name="750"></a>{
+<a name="751"></a>	health += quantity;
+<a name="752"></a>
+<a name="753"></a>	if (health &gt; healthMaximum)
+<a name="754"></a>		health = healthMaximum;
+<a name="755"></a>
+<a name="756"></a>	<span class="source_comment">// update damage components
+</span><a name="757"></a>	if (<span class="source_type">Level</span>.NetMode != NM_Client && damageComponents.length != <span class="source_int">0</span>)
+<a name="758"></a>		damageComponentsOnIncreaseHealth(quantity);
+<a name="759"></a>}
+<a name="760"></a>
+<a name="761"></a><span class="source_comment">// Overridden in subclasses
+</span><a name="762"></a><span class="source_type">function</span> <span class="source_type">float</span> getTeamDamagePercentage()
+<a name="763"></a>{
+<a name="764"></a>	return teamDamagePercentage;
+<a name="765"></a>}
+<a name="766"></a>
+<a name="767"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="768"></a><span class="source_comment">// personalShield functions
+</span><a name="769"></a><span class="source_type">function</span> <span class="source_type">bool</span> personalShieldActive()
+<a name="770"></a>{
+<a name="771"></a>	if (personalShield == None)
+<a name="772"></a>		return false;
+<a name="773"></a>
+<a name="774"></a>	return personalShield.bActive && personalShield.health &gt; <span class="source_int">0</span>;
+<a name="775"></a>}
+<a name="776"></a>
+<a name="777"></a><span class="source_type">function</span> activatePersonalShield()
+<a name="778"></a>{
+<a name="779"></a>	if (personalShield != None)
+<a name="780"></a>		personalShield.activate();
+<a name="781"></a>}
+<a name="782"></a>
+<a name="783"></a><span class="source_type">function</span> deactivatePersonalShield()
+<a name="784"></a>{
+<a name="785"></a>	if (personalShield != None)
+<a name="786"></a>		personalShield.deactivate();
+<a name="787"></a>}
+<a name="788"></a>
+<a name="789"></a><span class="source_type">function</span> resetPersonalShield()
+<a name="790"></a>{
+<a name="791"></a>	if (personalShield != None)
+<a name="792"></a>		personalShield.destroy();
+<a name="793"></a>
+<a name="794"></a>	if (personalShieldClass != None)
+<a name="795"></a>		personalShield = spawn(personalShieldClass);
+<a name="796"></a>}
+<a name="797"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="798"></a>
+<a name="799"></a>protected <span class="source_type">function</span> CreateVisionNotifier()
+<a name="800"></a>{
+<a name="801"></a>    vision = new <span class="source_type">class</span><span class="source_name">'TribesVisionNotifier'</span>;
+<a name="802"></a>    assert(vision != None);
+<a name="803"></a>
+<a name="804"></a>	vision.addRef();
+<a name="805"></a>    vision.InitializeVisionNotifier(self);
+<a name="806"></a>
+<a name="807"></a>	<span class="source_comment">//log( "VISION NOTIFIER CREATED FOR" @ name );
+</span><a name="808"></a>}
+<a name="809"></a>
+<a name="810"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="811"></a>
+<a name="812"></a>protected <span class="source_type">function</span> CreateHearingNotifier()
+<a name="813"></a>{
+<a name="814"></a>	hearing = new <span class="source_type">class</span><span class="source_name">'HearingNotifier'</span>;
+<a name="815"></a>	assert(hearing != None);
+<a name="816"></a>	
+<a name="817"></a>	hearing.addRef();
+<a name="818"></a>	hearing.InitializeHearingNotifier(self);
+<a name="819"></a>}
+<a name="820"></a>
+<a name="821"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="822"></a>
+<a name="823"></a>protected <span class="source_type">function</span> CreateShotNotifier()
+<a name="824"></a>{
+<a name="825"></a>    <span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span> = new <span class="source_type">class</span><span class="source_name">'ShotNotifier'</span>;
+<a name="826"></a>    assert(<span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span> != None);
+<a name="827"></a>
+<a name="828"></a>    <span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span>.InitializeShotNotifier(self);
+<a name="829"></a>}
+<a name="830"></a>
+<a name="831"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="832"></a><span class="source_comment">// Low-Level Vision Implementation
+</span><a name="833"></a>
+<a name="834"></a><span class="source_comment">// Register to be notified when we see / no longer see a Pawn
+</span><a name="835"></a><span class="source_type">function</span> RegisterVisionNotification(<span class="source_type"><a href="../aicommon/ivisionnotification.html" class="source">IVisionNotification</a></span> Registrant)
+<a name="836"></a>{
+<a name="837"></a>    vision.RegisterVisionNotification(Registrant);
+<a name="838"></a>}
+<a name="839"></a>
+<a name="840"></a><span class="source_type">function</span> UnregisterVisionNotification(<span class="source_type"><a href="../aicommon/ivisionnotification.html" class="source">IVisionNotification</a></span> Registrant)
+<a name="841"></a>{
+<a name="842"></a>	if ( vision != None )
+<a name="843"></a>		vision.UnregisterVisionNotification(Registrant);
+<a name="844"></a>}
+<a name="845"></a>
+<a name="846"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="847"></a><span class="source_comment">// Low-Level Hearing Implementation
+</span><a name="848"></a>
+<a name="849"></a><span class="source_comment">// Register to be notified when we see / no longer see a Pawn
+</span><a name="850"></a><span class="source_type">function</span> RegisterHearingNotification(<span class="source_type"><a href="../aicommon/ihearingnotification.html" class="source">IHearingNotification</a></span> Registrant)
+<a name="851"></a>{
+<a name="852"></a>    hearing.RegisterHearingNotification(Registrant);
+<a name="853"></a>}
+<a name="854"></a>
+<a name="855"></a><span class="source_type">function</span> UnregisterHearingNotification(<span class="source_type"><a href="../aicommon/ihearingnotification.html" class="source">IHearingNotification</a></span> Registrant)
+<a name="856"></a>{
+<a name="857"></a>	if ( hearing != None )
+<a name="858"></a>	    hearing.UnregisterHearingNotification(Registrant);
+<a name="859"></a>}
+<a name="860"></a>
+<a name="861"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="862"></a><span class="source_comment">// Low-Level Shot Notification Implementation
+</span><a name="863"></a>
+<a name="864"></a><span class="source_comment">// Register to be notified when we fire a shot
+</span><a name="865"></a><span class="source_type">function</span> RegisterShotNotification(<span class="source_type"><a href="../aicommon/ishotnotification.html" class="source">IShotNotification</a></span> Registrant)
+<a name="866"></a>{
+<a name="867"></a>	<span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span>.RegisterShotNotification(Registrant);
+<a name="868"></a>}
+<a name="869"></a>
+<a name="870"></a><span class="source_type">function</span> UnregisterShotNotification(<span class="source_type"><a href="../aicommon/ishotnotification.html" class="source">IShotNotification</a></span> Registrant)
+<a name="871"></a>{
+<a name="872"></a>	<span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span>.UnregisterShotNotification(Registrant);
+<a name="873"></a>}
+<a name="874"></a>
+<a name="875"></a>event OnShotFired( <span class="source_type"><a href="../gameplay/projectile.html" class="source">Projectile</a></span> <span class="source_type"><a href="../gameplay/projectile.html" class="source">projectile</a></span> )
+<a name="876"></a>{
+<a name="877"></a>    <span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span>.OnShotFired( <span class="source_type"><a href="../gameplay/projectile.html" class="source">projectile</a></span> );
+<a name="878"></a>}
+<a name="879"></a>
+<a name="880"></a><span class="source_type">function</span> Died(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitLocation</span>)
+<a name="881"></a>{
+<a name="882"></a>	Super.Died( Killer, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type">HitLocation</span> );
+<a name="883"></a>
+<a name="884"></a>	cleanupAI();
+<a name="885"></a>	
+<a name="886"></a>	if (Killer!=None)
+<a name="887"></a>	    squadCleanupOnDeath( Killer.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type">HitLocation</span> );
+<a name="888"></a>	else
+<a name="889"></a>	    squadCleanupOnDeath( None, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type">HitLocation</span> );
+<a name="890"></a>}
+<a name="891"></a>
+<a name="892"></a><span class="source_comment">// returns true if cleanup should be deferred
+</span><a name="893"></a>event <span class="source_type">bool</span> cleanupAI()
+<a name="894"></a>{
+<a name="895"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="896"></a>
+<a name="897"></a>	if ( bDeferredAICleanup )
+<a name="898"></a>		return true;
+<a name="899"></a>
+<a name="900"></a>	<span class="source_type">level</span>.AI_Setup.shutDownVision( self );	<span class="source_comment">// (handles updating enemy lists of squad mates)
+</span><a name="901"></a>
+<a name="902"></a>	<span class="source_comment">// make sure the outer of any classes is no longer pointing to this (soon to be destroyed) actor
+</span><a name="903"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; abilities.length; ++<span class="source_type">i</span> )
+<a name="904"></a>	{
+<a name="905"></a>		<span class="source_type">level</span>.AI_Setup.makeSafeOuter( self, abilities[<span class="source_type">i</span>] );
+<a name="906"></a>	}
+<a name="907"></a>
+<a name="908"></a>	<span class="source_comment">// make sure the outer of any classes is no longer pointing to this (soon to be destroyed) actor
+</span><a name="909"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; goals.length; ++<span class="source_type">i</span> )
+<a name="910"></a>	{
+<a name="911"></a>		<span class="source_type">level</span>.AI_Setup.makeSafeOuter( self, goals[<span class="source_type">i</span>] );
+<a name="912"></a>	}
+<a name="913"></a>
+<a name="914"></a>	return false;
+<a name="915"></a>}
+<a name="916"></a>
+<a name="917"></a><span class="source_type">function</span> squadCleanupOnDeath( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> InstigatedBy, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitLocation</span> )
+<a name="918"></a>{
+<a name="919"></a>	if ( m_squad != None )
+<a name="920"></a>	{
+<a name="921"></a>		m_squad.memberDied( self, InstigatedBy, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type">HitLocation</span> );	<span class="source_comment">// let squad know a member died
+</span><a name="922"></a>	}
+<a name="923"></a>}
+<a name="924"></a>
+<a name="925"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="926"></a>
+<a name="927"></a>private <span class="source_type">function</span> CleanupSensing()
+<a name="928"></a>{
+<a name="929"></a>    if (Vision != None)
+<a name="930"></a>    {
+<a name="931"></a>        Vision.CleanupVisionNotifier();
+<a name="932"></a>        Vision.Release();
+<a name="933"></a>        Vision = None;
+<a name="934"></a>    }
+<a name="935"></a> 
+<a name="936"></a>    if (Hearing != None)
+<a name="937"></a>    {
+<a name="938"></a>        Hearing.Release();
+<a name="939"></a>        Hearing = None;
+<a name="940"></a>    }
+<a name="941"></a>
+<a name="942"></a>	if (<span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span> != None)
+<a name="943"></a>	{
+<a name="944"></a>		<span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span>.Delete();
+<a name="945"></a>		<span class="source_type"><a href="../aicommon/shotnotifier.html" class="source">shotNotifier</a></span> = None;
+<a name="946"></a>	}
+<a name="947"></a>}
+<a name="948"></a>
+<a name="949"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="950"></a><span class="source_comment">// enumTeamInfo
+</span><a name="951"></a><span class="source_comment">// List all team info objects in the editor
+</span><a name="952"></a><span class="source_type">function</span> enumTeamInfo(<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> l, out Array&lt;<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span>&gt; <span class="source_type">s</span>)
+<a name="953"></a>{
+<a name="954"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>;
+<a name="955"></a>
+<a name="956"></a>	ForEach l.AllActors(<span class="source_type">class</span><span class="source_name">'TeamInfo'</span>, <span class="source_type">t</span>)
+<a name="957"></a>	{
+<a name="958"></a>		<span class="source_type">s</span>[<span class="source_type">s</span>.Length] = <span class="source_type">t</span>;
+<a name="959"></a>	}
+<a name="960"></a>}
+<a name="961"></a>
+<a name="962"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="963"></a><span class="source_comment">// List all SquadInfo objects in the editor
+</span><a name="964"></a>
+<a name="965"></a><span class="source_type">function</span> enumSquadInfo(<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> l, out Array&lt;<span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span>&gt; <span class="source_type">s</span>)
+<a name="966"></a>{
+<a name="967"></a>	local <span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span> <span class="source_type">t</span>;
+<a name="968"></a>
+<a name="969"></a>	ForEach l.AllActors(<span class="source_type">class</span><span class="source_name">'SquadInfo'</span>, <span class="source_type">t</span>)
+<a name="970"></a>	{
+<a name="971"></a>		<span class="source_type">s</span>[<span class="source_type">s</span>.Length] = <span class="source_type">t</span>;
+<a name="972"></a>	}
+<a name="973"></a>}
+<a name="974"></a>
+<a name="975"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="976"></a><span class="source_comment">// displayActorLabel
+</span><a name="977"></a><span class="source_comment">// Display an actor reference's label in the editor
+</span><a name="978"></a><span class="source_type">function</span> <span class="source_type">string</span> displayActorLabel(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">t</span>)
+<a name="979"></a>{
+<a name="980"></a>	return <span class="source_type">string</span>(<span class="source_type">t</span>.label);
+<a name="981"></a>}
+<a name="982"></a>
+<a name="983"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="984"></a><span class="source_comment">// team
+</span><a name="985"></a><span class="source_comment">// Get the Rook's team object
+</span><a name="986"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> team()
+<a name="987"></a>{
+<a name="988"></a>	return m_team;
+<a name="989"></a>}
+<a name="990"></a>
+<a name="991"></a>simulated <span class="source_type">function</span> <span class="source_type">Name</span> getTeamLabel()
+<a name="992"></a>{
+<a name="993"></a>	if (team() != None)
+<a name="994"></a>		return team().label;
+<a name="995"></a>
+<a name="996"></a>	return <span class="source_name">''</span>;
+<a name="997"></a>}
+<a name="998"></a>
+<a name="999"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1000"></a><span class="source_comment">// setTeam
+</span><a name="1001"></a><span class="source_comment">// Sets the Rook's team object
+</span><a name="1002"></a><span class="source_type">function</span> setTeam(<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type"><a href="../engine/info.html" class="source">info</a></span>)
+<a name="1003"></a>{
+<a name="1004"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> oldTeam;
+<a name="1005"></a>
+<a name="1006"></a>	oldTeam = m_team;
+<a name="1007"></a>
+<a name="1008"></a>	m_team = <span class="source_type"><a href="../engine/info.html" class="source">info</a></span>;
+<a name="1009"></a>
+<a name="1010"></a>	if (oldTeam != <span class="source_type"><a href="../engine/info.html" class="source">info</a></span>)
+<a name="1011"></a>	{
+<a name="1012"></a>		onTeamChange();
+<a name="1013"></a>		<span class="source_type">level</span>.notifyListenersTeamChanged( self );
+<a name="1014"></a>	}
+<a name="1015"></a>}
+<a name="1016"></a>
+<a name="1017"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1018"></a><span class="source_comment">// isFriendly
+</span><a name="1019"></a><span class="source_comment">// returns true if this rook is friendly to the given rook
+</span><a name="1020"></a><span class="source_comment">// team values of "None" are defined to be friendly to everyone else
+</span><a name="1021"></a><span class="source_comment">// if rook is a vehicle, takes team of occupant into account (use team version of isFriendly if you don't want this)
+</span><a name="1022"></a>simulated event <span class="source_type">bool</span> isFriendly(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> otherGuy)
+<a name="1023"></a>{
+<a name="1024"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> tiThisGuy;
+<a name="1025"></a>	local <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> tiOtherGuy;
+<a name="1026"></a>
+<a name="1027"></a>	if (otherGuy == None)
+<a name="1028"></a>		return true;
+<a name="1029"></a>
+<a name="1030"></a>	tiThisGuy = getControllingCharacterTeam();
+<a name="1031"></a>	tiOtherGuy = otherGuy.getControllingCharacterTeam();
+<a name="1032"></a>
+<a name="1033"></a>	if (tiThisGuy == None || tiOtherGuy == None)
+<a name="1034"></a>		return true;
+<a name="1035"></a>
+<a name="1036"></a>	return tiThisGuy.isFriendly( tiOtherGuy );
+<a name="1037"></a>}
+<a name="1038"></a>
+<a name="1039"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1040"></a><span class="source_comment">// isRepairFriendly
+</span><a name="1041"></a><span class="source_comment">// returns true if this rook is friendly to the given rook with respect to repairing
+</span><a name="1042"></a><span class="source_comment">// team values of "None" are defined to be friendly to everyone else
+</span><a name="1043"></a>
+<a name="1044"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> canBeRepairedBy(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> otherGuy)
+<a name="1045"></a>{
+<a name="1046"></a>	return isFriendly(otherGuy);
+<a name="1047"></a>}
+<a name="1048"></a>
+<a name="1049"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1050"></a><span class="source_comment">// Get the Rook's squad object
+</span><a name="1051"></a>
+<a name="1052"></a><span class="source_type">function</span> <span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span> squad()
+<a name="1053"></a>{
+<a name="1054"></a>	return m_squad;
+<a name="1055"></a>}
+<a name="1056"></a>
+<a name="1057"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1058"></a><span class="source_comment">// Sets the Rook's squad object
+</span><a name="1059"></a>
+<a name="1060"></a><span class="source_type">function</span> setSquad(<span class="source_type"><a href="../aicommon/squadinfo.html" class="source">SquadInfo</a></span> squad)
+<a name="1061"></a>{
+<a name="1062"></a>	<span class="source_comment">// TODO: remove from squad if already in one
+</span><a name="1063"></a>
+<a name="1064"></a>	m_squad = squad;
+<a name="1065"></a>
+<a name="1066"></a>	if (squad != None)
+<a name="1067"></a>		squad.addToSquad( self );
+<a name="1068"></a>}
+<a name="1069"></a>
+<a name="1070"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1071"></a><span class="source_comment">// getAlertnessLevel
+</span><a name="1072"></a>
+<a name="1073"></a><span class="source_type">function</span> <span class="source_type"><a href="../gameplay/rook.html#AlertnessLevels" class="source">AlertnessLevels</a></span> getAlertnessLevel()
+<a name="1074"></a>{
+<a name="1075"></a>	return alertness;
+<a name="1076"></a>}
+<a name="1077"></a>
+<a name="1078"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1079"></a><span class="source_comment">// setAlertnessLevel
+</span><a name="1080"></a><span class="source_comment">// Sets the Rook's alertness level
+</span><a name="1081"></a><span class="source_comment">// note: you should always set the alertness through this function
+</span><a name="1082"></a><span class="source_comment">// because child classes (character) override this method and perform
+</span><a name="1083"></a><span class="source_comment">// additional functionality to keep animations in sync with the alert level!
+</span><a name="1084"></a><span class="source_type">function</span> setAlertnessLevel(<span class="source_type"><a href="../gameplay/rook.html#AlertnessLevels" class="source">AlertnessLevels</a></span> alertness)
+<a name="1085"></a>{
+<a name="1086"></a>	self.alertness = alertness;
+<a name="1087"></a>}
+<a name="1088"></a>
+<a name="1089"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1090"></a><span class="source_comment">// sets AI to AILOD_NORMAL - deactivation checks suspended for specified number of ticks
+</span><a name="1091"></a>
+<a name="1092"></a>event setLimitedTimeLODActivation( <span class="source_type">int</span> <span class="source_type">ticksToKeepActivated</span> )
+<a name="1093"></a>{
+<a name="1094"></a>	if ( AI_LOD_Level &gt; AILOD_NONE && AI_LOD_Level &lt; AILOD_NORMAL )
+<a name="1095"></a>	{
+<a name="1096"></a>		<span class="source_type">level</span>.AI_Setup.setAILOD( self, AILOD_NORMAL );
+<a name="1097"></a>		AI_LOD_deactivation_exemption_ticks = <span class="source_type">ticksToKeepActivated</span>;
+<a name="1098"></a>	}
+<a name="1099"></a>}
+<a name="1100"></a>
+<a name="1101"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1102"></a><span class="source_comment">// check whether to put a new position value into pastPositions array
+</span><a name="1103"></a>
+<a name="1104"></a>native <span class="source_type">function</span> updatePastPositions( <span class="source_type">float</span> deltaSeconds );
+<a name="1105"></a>
+<a name="1106"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1107"></a><span class="source_comment">// Returns the rook's average velocity over the last
+</span><a name="1108"></a><span class="source_comment">// N_PAST_POSITIONS * PAST_POSITION_UPDATE_INTERVAL seconds
+</span><a name="1109"></a>
+<a name="1110"></a>native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> averageVelocity();
+<a name="1111"></a>
+<a name="1112"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1113"></a><span class="source_comment">// Estimate where character will be in t seconds
+</span><a name="1114"></a>
+<a name="1115"></a>native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> predictedLocation( <span class="source_type">float</span> <span class="source_type">t</span> );
+<a name="1116"></a>
+<a name="1117"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1118"></a><span class="source_comment">// Estimate where character will be in t seconds (while on the ground)
+</span><a name="1119"></a>
+<a name="1120"></a>native <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> groundPredictedLocation( <span class="source_type">float</span> <span class="source_type">t</span> );
+<a name="1121"></a>
+<a name="1122"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1123"></a><span class="source_comment">// Vision debug
+</span><a name="1124"></a>
+<a name="1125"></a><span class="source_type">function</span> DrawVisionCone(<span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span> DrawTarget)
+<a name="1126"></a>{
+<a name="1127"></a>	local <span class="source_type">float</span> fDistance, fConeRadius, fRadians, fI, fPeripheralVisionAngle;
+<a name="1128"></a>	local array&lt;<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>&gt; VisionConePoints;
+<a name="1129"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1130"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> ViewLocation, ViewDirection, X, <span class="source_type">Y</span>, Z;
+<a name="1131"></a>	local <span class="source_type"><a href="../core/object.html#Coords" class="source">Coords</a></span> ViewCoords;
+<a name="1132"></a>	local <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> CurrentColor;
+<a name="1133"></a>
+<a name="1134"></a>	fPeripheralVisionAngle = Acos(PeripheralVision);
+<a name="1135"></a>
+<a name="1136"></a>	fDistance = Square(SightRadius) * cos(fPeripheralVisionAngle * <span class="source_int">0.5</span>);
+<a name="1137"></a>	fConeRadius = tan(fPeripheralVisionAngle * <span class="source_int">0.5</span>) * fDistance;
+<a name="1138"></a>
+<a name="1139"></a>	ViewDirection   = GetViewDirection();
+<a name="1140"></a>	ViewDirection.Z = <span class="source_int">0.0</span>;
+<a name="1141"></a>
+<a name="1142"></a>	GetAxes(<span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>(ViewDirection), X, <span class="source_type">Y</span>, Z);
+<a name="1143"></a>
+<a name="1144"></a>	ViewLocation    = GetViewPoint();
+<a name="1145"></a>
+<a name="1146"></a>	ViewCoords.Origin = ViewLocation;
+<a name="1147"></a>	ViewCoords.XAxis  = X;
+<a name="1148"></a>	ViewCoords.YAxis  = <span class="source_type">Y</span>;
+<a name="1149"></a>	ViewCoords.ZAxis  = Z;
+<a name="1150"></a>
+<a name="1151"></a>    <span class="source_comment">// @TODO:  Add in Color based on something
+</span><a name="1152"></a>    CurrentColor = <span class="source_type">class</span><span class="source_name">'Canvas'</span>.Static.MakeColor(<span class="source_int">200</span>,<span class="source_int">155</span>,<span class="source_int">0</span>);
+<a name="1153"></a>
+<a name="1154"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_int">8</span>; ++<span class="source_type">i</span>)
+<a name="1155"></a>	{
+<a name="1156"></a>		fI       = <span class="source_type">i</span>;
+<a name="1157"></a>		fRadians = (fI * Pi * <span class="source_int">2.0</span>) / <span class="source_int">8</span>;
+<a name="1158"></a>
+<a name="1159"></a>		VisionConePoints[<span class="source_type">i</span>]   = vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>);
+<a name="1160"></a>		VisionConePoints[<span class="source_type">i</span>].X = fDistance;
+<a name="1161"></a>		VisionConePoints[<span class="source_type">i</span>].<span class="source_type">Y</span> = cos(fRadians) * fConeRadius;
+<a name="1162"></a>		VisionConePoints[<span class="source_type">i</span>].Z = sin(fRadians) * fConeRadius;
+<a name="1163"></a>
+<a name="1164"></a><span class="source_comment">//		log(self@"fRadians: "@fRadians@" i: "@i@" fI: "@fI@" VisionConePoints: "@VisionConePoints[i].X@" "@VisionConePoints[i].Y@" "@VisionConePoints[i].Z);
+</span><a name="1165"></a>
+<a name="1166"></a>		VisionConePoints[<span class="source_type">i</span>] = VisionConePoints[<span class="source_type">i</span>] &gt;&gt; <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>(GetViewDirection());
+<a name="1167"></a><span class="source_comment">//		log("VisionConePoints: "@VisionConePoints[i].X@" "@VisionConePoints[i].Y@" "@VisionConePoints[i].Z);
+</span><a name="1168"></a>
+<a name="1169"></a>		DrawTarget.Draw3DLine(ViewLocation, VisionConePoints[<span class="source_type">i</span>], CurrentColor);
+<a name="1170"></a>	}
+<a name="1171"></a>}
+<a name="1172"></a>
+<a name="1173"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1174"></a>
+<a name="1175"></a><span class="source_type">function</span> displayTyrionDebugHeader()
+<a name="1176"></a>{
+<a name="1177"></a>	AddDebugMessage( Label @ <span class="source_string">"(LOD:"</span> $ AI_LOD_Level $ <span class="source_string">")"</span>, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.static.MakeColor(<span class="source_int">0</span>,<span class="source_int">200</span>,<span class="source_int">0</span>) );
+<a name="1178"></a>}
+<a name="1179"></a>
+<a name="1180"></a><span class="source_type">function</span> displayEnemiesList()
+<a name="1181"></a>{
+<a name="1182"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1183"></a>	local <span class="source_type">string</span> displayString;
+<a name="1184"></a>	local array&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt; enemyList;
+<a name="1185"></a>
+<a name="1186"></a>	if ( vision == None )
+<a name="1187"></a>		return;
+<a name="1188"></a>
+<a name="1189"></a>	<span class="source_comment">// enemies in seenlist
+</span><a name="1190"></a>	enemyList = vision.getEnemyList();
+<a name="1191"></a>
+<a name="1192"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; enemyList.length; ++<span class="source_type">i</span> )
+<a name="1193"></a>	{
+<a name="1194"></a>		displayString $= enemyList[<span class="source_type">i</span>].label $ <span class="source_string">" "</span>;
+<a name="1195"></a>	}
+<a name="1196"></a>
+<a name="1197"></a>	AddDebugMessage( displayString, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.static.MakeColor(<span class="source_int">255</span>,<span class="source_int">0</span>,<span class="source_int">0</span>) );
+<a name="1198"></a>
+<a name="1199"></a>	<span class="source_comment">// todo: enemies in squadSeenList
+</span><a name="1200"></a>
+<a name="1201"></a>	<span class="source_comment">// enemy sensor list
+</span><a name="1202"></a>	displayString = <span class="source_string">""</span>;
+<a name="1203"></a>
+<a name="1204"></a>	enemyList = <span class="source_type">level</span>.AI_Setup.getEnemyListFromSensor( self );
+<a name="1205"></a>
+<a name="1206"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; enemyList.length; ++<span class="source_type">i</span> )
+<a name="1207"></a>	{
+<a name="1208"></a>		displayString $= enemyList[<span class="source_type">i</span>].label $ <span class="source_string">" "</span>;
+<a name="1209"></a>	}
+<a name="1210"></a>
+<a name="1211"></a>	AddDebugMessage( displayString, <span class="source_type">class</span><span class="source_name">'Canvas'</span>.static.MakeColor(<span class="source_int">200</span>,<span class="source_int">0</span>,<span class="source_int">0</span>) );
+<a name="1212"></a>}
+<a name="1213"></a>
+<a name="1214"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1215"></a><span class="source_comment">// script version of native function
+</span><a name="1216"></a><span class="source_comment">// (used in AI debugging)
+</span><a name="1217"></a>
+<a name="1218"></a>native <span class="source_type">function</span> <span class="source_type">bool</span> IsInVisionCone( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>, <span class="source_type">float</span> SightRadius );
+<a name="1219"></a>
+<a name="1220"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1221"></a><span class="source_comment">// wrapper function for playing effects
+</span><a name="1222"></a>
+<a name="1223"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> PlayEffect(<span class="source_type">String</span> effect, optional <span class="source_type">String</span> tag, optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">other</span>, optional <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>, optional <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> location, optional <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>)
+<a name="1224"></a>{
+<a name="1225"></a>    if (effectLogging)
+<a name="1226"></a>    {
+<a name="1227"></a>        if (tag==<span class="source_string">""</span>)
+<a name="1228"></a>            log(<span class="source_string">"play effect: "</span>$effect);
+<a name="1229"></a>        else
+<a name="1230"></a>            log(<span class="source_string">"play effect: "</span>$effect$<span class="source_string">" ("</span>$tag$<span class="source_string">")"</span>);
+<a name="1231"></a>    }
+<a name="1232"></a>    
+<a name="1233"></a>	return TriggerEffectEvent(<span class="source_type">Name</span>(effect), <span class="source_type">other</span>, <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>, location, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>, false, false, none, <span class="source_type">Name</span>(tag)); <span class="source_comment">//self, Name(tag));
+</span><a name="1234"></a>}
+<a name="1235"></a>
+<a name="1236"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> StopEffect(<span class="source_type">String</span> effect)
+<a name="1237"></a>{
+<a name="1238"></a>    if (effectLogging)
+<a name="1239"></a>        log(<span class="source_string">"stop effect: "</span>$effect);
+<a name="1240"></a>    
+<a name="1241"></a>	UnTriggerEffectEvent(<span class="source_type">Name</span>(effect));
+<a name="1242"></a>	
+<a name="1243"></a>	return true;            <span class="source_comment">// how to detect if effect was actually stopped?
+</span><a name="1244"></a>}
+<a name="1245"></a>
+<a name="1246"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> StartLoopingEffect(<span class="source_type">String</span> effect, optional <span class="source_type">String</span> tag, optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">other</span>, optional <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>, optional <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> location, optional <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>)
+<a name="1247"></a>{
+<a name="1248"></a>	if (PlayEffect(effect$<span class="source_string">"Loop"</span>, tag, <span class="source_type">other</span>, <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>, location, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>))
+<a name="1249"></a>    {
+<a name="1250"></a>    	PlayEffect(effect$<span class="source_string">"Start"</span>, tag, <span class="source_type">other</span>, <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>, location, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>);
+<a name="1251"></a>
+<a name="1252"></a>        loopingEffects[loopingEffects.length] = effect;
+<a name="1253"></a>        
+<a name="1254"></a>        if (effectLogging)
+<a name="1255"></a>            log(<span class="source_string">"started looping effect: "</span>$effect$<span class="source_string">"["</span>$loopingEffects.length-<span class="source_int">1</span>$<span class="source_string">"]"</span>);
+<a name="1256"></a>
+<a name="1257"></a>    	return true;
+<a name="1258"></a>    }
+<a name="1259"></a>    
+<a name="1260"></a>    return false;
+<a name="1261"></a>}
+<a name="1262"></a>
+<a name="1263"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> EffectIsLooping(<span class="source_type">String</span> effect)
+<a name="1264"></a>{
+<a name="1265"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="1266"></a>
+<a name="1267"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;loopingEffects.length; <span class="source_type">i</span>++)
+<a name="1268"></a>    {
+<a name="1269"></a>        if (loopingEffects[<span class="source_type">i</span>]~=effect)
+<a name="1270"></a>            return true;
+<a name="1271"></a>    }
+<a name="1272"></a>    
+<a name="1273"></a>    return false;
+<a name="1274"></a>}
+<a name="1275"></a>
+<a name="1276"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> StopLoopingEffect(<span class="source_type">String</span> effect)
+<a name="1277"></a>{
+<a name="1278"></a>    <span class="source_comment">// exit if effect is not in looping sounds array
+</span><a name="1279"></a>
+<a name="1280"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>, <span class="source_type">index</span>;
+<a name="1281"></a>    
+<a name="1282"></a>    if (EffectIsLooping(effect))
+<a name="1283"></a>    {
+<a name="1284"></a>	    StopEffect(effect$<span class="source_string">"Loop"</span>);
+<a name="1285"></a>	    PlayEffect(effect$<span class="source_string">"Stop"</span>);
+<a name="1286"></a>	    
+<a name="1287"></a>	    if (effectLogging)
+<a name="1288"></a>	        log(<span class="source_string">"stopping loop: "</span>$effect);
+<a name="1289"></a>	    
+<a name="1290"></a>	    <span class="source_comment">// remove from looping effects array
+</span><a name="1291"></a>	    
+<a name="1292"></a>        <span class="source_type">index</span> = -<span class="source_int">1</span>;
+<a name="1293"></a>
+<a name="1294"></a>        for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;loopingEffects.length; <span class="source_type">i</span>++)
+<a name="1295"></a>        {
+<a name="1296"></a>            if (loopingEffects[<span class="source_type">i</span>]~=effect)
+<a name="1297"></a>            {
+<a name="1298"></a>                <span class="source_type">index</span> = <span class="source_type">i</span>;
+<a name="1299"></a>                break; 
+<a name="1300"></a>            }
+<a name="1301"></a>        }
+<a name="1302"></a>        
+<a name="1303"></a>        if (<span class="source_type">index</span>&gt;=<span class="source_int">0</span>)
+<a name="1304"></a>            loopingEffects.remove(<span class="source_type">index</span>, <span class="source_int">1</span>);
+<a name="1305"></a>        
+<a name="1306"></a>	    return true;
+<a name="1307"></a>	}
+<a name="1308"></a>	else
+<a name="1309"></a>	{   
+<a name="1310"></a>	    if (effectLogging)
+<a name="1311"></a>	        log(effect$<span class="source_string">" was not looping. no need to stop it"</span>);
+<a name="1312"></a>	
+<a name="1313"></a>    	return false;
+<a name="1314"></a>    }
+<a name="1315"></a>}
+<a name="1316"></a>
+<a name="1317"></a><span class="source_comment">// callbacks
+</span><a name="1318"></a>
+<a name="1319"></a><span class="source_type">function</span> OnEffectInitialized(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> effect)
+<a name="1320"></a>{
+<a name="1321"></a>    <span class="source_comment">//log("effect initialized: "$effect);
+</span><a name="1322"></a>}
+<a name="1323"></a>
+<a name="1324"></a><span class="source_type">function</span> OnEffectStarted(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> effect)
+<a name="1325"></a>{
+<a name="1326"></a>    <span class="source_comment">/*
+<a name="1327"></a>    local int i, index;
+<a name="1328"></a>    local IGSoundEffectsSubsystem.SoundInstance sound;
+<a name="1329"></a>    
+<a name="1330"></a>    sound = IGSoundEffectsSubsystem.SoundInstance(effect);
+<a name="1331"></a>    
+<a name="1332"></a>    if (sound==None || sound.isEndPredictable)
+<a name="1333"></a>        return;
+<a name="1334"></a>        
+<a name="1335"></a>    index = loopingSounds.length;
+<a name="1336"></a>
+<a name="1337"></a>    loopingSounds[index] = sound.SchemaName;
+<a name="1338"></a>
+<a name="1339"></a>    log("looping sound started: "$sound.SchemaName$" ["$index$"]");
+<a name="1340"></a>    
+<a name="1341"></a>    log("************************");
+<a name="1342"></a>    for (i=0; i&lt;loopingSounds.length; i++)
+<a name="1343"></a>        log(i$": "$loopingSounds[i]);
+<a name="1344"></a>    log("************************");
+<a name="1345"></a>    */</span>
+<a name="1346"></a>}
+<a name="1347"></a>
+<a name="1348"></a><span class="source_type">function</span> OnEffectStopped(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> effect, <span class="source_type">bool</span> completed)
+<a name="1349"></a>{
+<a name="1350"></a>    <span class="source_comment">/*
+<a name="1351"></a>    local int i, index;
+<a name="1352"></a>    local IGSoundEffectsSubsystem.SoundInstance sound;
+<a name="1353"></a>    
+<a name="1354"></a>    sound = IGSoundEffectsSubsystem.SoundInstance(effect);
+<a name="1355"></a>                       
+<a name="1356"></a>    if (sound==None || sound.isEndPredictable)
+<a name="1357"></a>        return;
+<a name="1358"></a>        
+<a name="1359"></a>    index = -1;
+<a name="1360"></a>
+<a name="1361"></a>    for (i=0; i&lt;loopingSounds.length; i++)
+<a name="1362"></a>    {
+<a name="1363"></a>        if (loopingSounds[i]==sound.SchemaName)
+<a name="1364"></a>        {
+<a name="1365"></a>            index = i;
+<a name="1366"></a>            break; 
+<a name="1367"></a>        }
+<a name="1368"></a>    }
+<a name="1369"></a>    
+<a name="1370"></a>    if (index&gt;=0)
+<a name="1371"></a>    {
+<a name="1372"></a>        log("looping sound stopped: "$sound.SchemaName$" ["$index$"]");
+<a name="1373"></a>        loopingSounds.remove(index, 1);
+<a name="1374"></a>    }
+<a name="1375"></a>    else
+<a name="1376"></a>        log("stopped sound not in looping sounds array: "$sound.SchemaName);
+<a name="1377"></a>    
+<a name="1378"></a>    log("************************");
+<a name="1379"></a>    for (i=0; i&lt;loopingSounds.length; i++)
+<a name="1380"></a>        log(i$": "$loopingSounds[i]);
+<a name="1381"></a>    log("************************");
+<a name="1382"></a>    */</span>
+<a name="1383"></a>}
+<a name="1384"></a>
+<a name="1385"></a><span class="source_comment">//---------------------------------------------------------------------
+</span><a name="1386"></a><span class="source_comment">// ChunkUp
+</span><a name="1387"></a>simulated <span class="source_type">function</span> ChunkUp( <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> HitRotation, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type">D</span> ) 
+<a name="1388"></a>{
+<a name="1389"></a>}
+<a name="1390"></a>
+<a name="1391"></a><span class="source_comment">//
+</span><a name="1392"></a><span class="source_comment">// This is the main version of GetRadarInfoClass, because most items to be 
+</span><a name="1393"></a><span class="source_comment">// displayed on the radar will be of type rook
+</span><a name="1394"></a><span class="source_comment">//
+</span><a name="1395"></a>simulated <span class="source_type">function</span> <span class="source_type">class</span> GetRadarInfoClass()
+<a name="1396"></a>{
+<a name="1397"></a>	return radarInfoClass;
+<a name="1398"></a>}
+<a name="1399"></a>
+<a name="1400"></a><span class="source_comment">//
+</span><a name="1401"></a><span class="source_comment">// Returns the label of the killer corrsponding to this Rook.
+</span><a name="1402"></a><span class="source_comment">//
+</span><a name="1403"></a>simulated <span class="source_type">function</span> <span class="source_type">Name</span> getKillerLabel()
+<a name="1404"></a>{
+<a name="1405"></a>	return label;
+<a name="1406"></a>}
+<a name="1407"></a>
+<a name="1408"></a><span class="source_comment">//=====================================================================
+</span><a name="1409"></a>
+<a name="1410"></a>defaultproperties
+<a name="1411"></a>{
+<a name="1412"></a>	bNetInitialRotation			= true
+<a name="1413"></a>	bCanBeBaseForPawns			= true
+<a name="1414"></a>	bIgnoreForces				= true
+<a name="1415"></a>	
+<a name="1416"></a>	bBlockHavok					= true
+<a name="1417"></a>
+<a name="1418"></a>	<span class="source_comment">// No longer any need for LandMovementState
+</span><a name="1419"></a>	LandMovementState			= <span class="source_string">""</span>
+<a name="1420"></a>
+<a name="1421"></a>	bCanBeSensed				= true
+<a name="1422"></a>	bIsDetectableByEnemies		= true
+<a name="1423"></a>
+<a name="1424"></a>	bCanRepair					= false
+<a name="1425"></a>	DrawType					= DT_Mesh
+<a name="1426"></a><span class="source_comment">//	hudType						= "legacy_Gameplay.LegacyHUD"
+</span><a name="1427"></a><span class="source_comment">//	hudType						= "TribesGUI.TribesHUD"
+</span><a name="1428"></a>
+<a name="1429"></a>	bShowTyrionCharacterDebug	= false
+<a name="1430"></a>	bShowTyrionMovementDebug	= false
+<a name="1431"></a>	bShowTyrionWeaponDebug		= false
+<a name="1432"></a>	bShowNavigationDebug		= false
+<a name="1433"></a>	logNavigationSystem			= false
+<a name="1434"></a>	logTyrion					= false
+<a name="1435"></a>	logDLM						= false
+<a name="1436"></a>	logAlertnessChanges			= false
+<a name="1437"></a>	bShowLOADebug				= false
+<a name="1438"></a>	bShowJSDebug				= false
+<a name="1439"></a>	bAcceptsProjectors			= false
+<a name="1440"></a>
+<a name="1441"></a>	AI_LOD_Level				= AILOD_NONE
+<a name="1442"></a>	AI_LOD_LevelMP				= AILOD_NONE
+<a name="1443"></a>	AI_LOD_ActivationDistance	= <span class="source_int">6000</span>
+<a name="1444"></a>	AI_LOD_DeactivationDistance = <span class="source_int">8000</span>
+<a name="1445"></a>	bAIThreat					= true
+<a name="1446"></a>	shotAngularDeviation		= <span class="source_int">0</span>
+<a name="1447"></a>	shotAngularDeviationMP		= <span class="source_int">0</span>
+<a name="1448"></a>	shotLeadAbility				= (Min=<span class="source_int">1</span>,Max=<span class="source_int">1</span>)
+<a name="1449"></a>	shotLeadAbilityMP			= (Min=<span class="source_int">1</span>,Max=<span class="source_int">1</span>)
+<a name="1450"></a>	reactionDelay				= <span class="source_int">0</span>
+<a name="1451"></a>	reactionDelayMP				= <span class="source_int">0</span>
+<a name="1452"></a>	tickTimeUpdateRange			= (Min=<span class="source_int">0.095</span>,Max=<span class="source_int">0.105</span>)
+<a name="1453"></a>	bUnobstructedLOF			= true
+<a name="1454"></a>
+<a name="1455"></a>	<span class="source_comment">// default vision values for vehicles and vehicleMountedTurrets
+</span><a name="1456"></a>	peripheralVision			= <span class="source_int">0.1</span>				<span class="source_comment">// nearly 180 degrees
+</span><a name="1457"></a>	peripheralVisionZAngle		= <span class="source_int">0.7854</span>			<span class="source_comment">// 45 degrees up/down
+</span><a name="1458"></a>	SightRadius					= <span class="source_int">10000.0</span>
+<a name="1459"></a>	SightRadiusToPlayer			= <span class="source_int">12000.0</span>
+<a name="1460"></a>	VisionUpdateRange			= (Min=<span class="source_int">0.4</span>,Max=<span class="source_int">0.6</span>)
+<a name="1461"></a>	visionMemory				= <span class="source_int">15.0</span>
+<a name="1462"></a>
+<a name="1463"></a>	alertness					= ALERTNESS_Neutral
+<a name="1464"></a>
+<a name="1465"></a>	radarInfoClass				= <span class="source_type">class</span><span class="source_name">'Gameplay.RadarInfo'</span>
+<a name="1466"></a>
+<a name="1467"></a>	ShadowLightDistance			= <span class="source_int">1200</span>
+<a name="1468"></a>	MaxShadowTraceDistance		= <span class="source_int">600</span>
+<a name="1469"></a>
+<a name="1470"></a>	teamDamagePercentage		= <span class="source_int">0.0</span>
+<a name="1471"></a>	teamSelfIllumSkinName		= <span class="source_string">"BaseLumNeutralPanner"</span>
+<a name="1472"></a>
+<a name="1473"></a>	grapplerRetentionScale      = <span class="source_int">1.0</span>
+<a name="1474"></a>	bAlwaysMarked				= false
+<a name="1475"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/rook.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Rook">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/rocketpodprojectile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/rounddata.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: èt 9.9.2004 16:25:32.000 - Creation time: st 23.5.2018 00:10:46.801 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

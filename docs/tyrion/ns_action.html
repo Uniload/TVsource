@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Tyrion.NS_Action</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ns_action.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#NS_Action">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/nearmisscollisionvolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ns_dodoormove.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tyrion/ns_action.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.NS_Action</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tyrion/actionbase.html">ActionBase</a></dd>
+<dt>Modifiers</dt><dd>native abstract threaded </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/tyrion_actionbase.html">Tyrion_ActionBase</a>
+      |   
+      +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a>
+         |   
+         +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ns_action.html">NS_Action</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../tyrion/aircraftdolocalmove.html">AircraftDoLocalMove</a>, <a href="../tyrion/aircraftmovealongwaypoints.html">AircraftMoveAlongWaypoints</a>, <a href="../tyrion/aircraftmovetolocation.html">AircraftMoveToLocation</a>, <a href="../tyrion/cardolocalmove.html">CarDoLocalMove</a>, <a href="../tyrion/carmovealongwaypoints.html">CarMoveAlongWaypoints</a>, <a href="../tyrion/carmovetolocation.html">CarMoveToLocation</a>, <a href="../tyrion/ns_dodoormove.html">NS_DoDoorMove</a>, <a href="../tyrion/ns_doelevatormove.html">NS_DoElevatorMove</a>, <a href="../tyrion/ns_dolocalmove.html">NS_DoLocalMove</a>, <a href="../tyrion/ns_dozerogravitylocalmove.html">NS_DoZeroGravityLocalMove</a>, <a href="../tyrion/ns_follow.html">NS_Follow</a>, <a href="../tyrion/ns_jetskimanager.html">NS_JetSkiManager</a>, <a href="../tyrion/ns_movealongwaypoints.html">NS_MoveAlongWaypoints</a>, <a href="../tyrion/ns_movetolocation.html">NS_MoveToLocation</a>, <a href="../tyrion/ns_turn.html">NS_Turn</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#DONT_CARE">DONT_CARE</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bWakeUpParent" name="bWakeUpParent" title="go to the details">bWakeUpParent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ns_action.html">NS_Action</a></td><td width="66%"><a href="#_childAction" name="childAction" title="go to the details">childAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ai_controller.html">AI_Controller</a></td><td width="66%"><a href="#_controller" name="controller" title="go to the details">controller</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/actionbase.html#ACT_ErrorCodes">ACT_ErrorCodes</a></td><td width="66%"><a href="#_errorCode" name="errorCode" title="go to the details">errorCode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/actionbase.html">ActionBase</a></td><td width="66%"><a href="#_parentAction" name="parentAction" title="go to the details">parentAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_tickTime" name="tickTime" title="go to the details">tickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_tickTimeOrg" name="tickTimeOrg" title="go to the details">tickTimeOrg</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#bCompleted">bCompleted</a>, <a href="../tyrion/actionbase.html#bDeleted">bDeleted</a>, <a href="../tyrion/actionbase.html#bIdle">bIdle</a>, <a href="../tyrion/actionbase.html#bSensorAction">bSensorAction</a>, <a href="../tyrion/actionbase.html#bWasTicked">bWasTicked</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#ACT_ErrorCodes">ACT_ErrorCodes</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_actionFailedCB-" name="actionFailedCB" title="go to the details">actionFailedCB</a> (<a href="../tyrion/ns_action.html">NS_Action</a> child, ACT_ErrorCodes _errorCode ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_actionSucceededCB-" name="actionSucceededCB" title="go to the details">actionSucceededCB</a> (NS_Action child ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_checkForUniqueness-" name="checkForUniqueness" title="go to the details">checkForUniqueness</a> (<a href="../tyrion/ai_controller.html">AI_Controller</a> c, NS_Action <a href="../scripting/action.html">action</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_construct-" name="construct" title="go to the details">construct</a> (<a href="../tyrion/ai_controller.html">AI_Controller</a> c, ActionBase parent ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_fail-" name="fail" title="go to the details">fail</a> (ACT_ErrorCodes errorCode ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ns_action.html">NS_Action</a>&nbsp;</td><td><a href="#_getChildReference-" name="getChildReference" title="go to the details">getChildReference</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_instantFail-" name="instantFail" title="go to the details">instantFail</a> (<a href="../tyrion/actionbase.html#ACT_ErrorCodes">ACT_ErrorCodes</a> errorCode, optional bool bRemoveGoal ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_interruptAction-" name="interruptAction" title="go to the details">interruptAction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ns_action.html">NS_Action</a>&nbsp;</td><td><a href="#_myAddRef-" name="myAddRef" title="go to the details">myAddRef</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_pauseAction-" name="pauseAction" title="go to the details">pauseAction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_removeAction-" name="removeAction" title="go to the details">removeAction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_removeChildReference-" name="removeChildReference" title="go to the details">removeChildReference</a> (NS_Action child ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_runAction-" name="runAction" title="go to the details">runAction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setChildReference-" name="setChildReference" title="go to the details">setChildReference</a> (NS_Action child ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_succeed-" name="succeed" title="go to the details">succeed</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#actionFailedCB">actionFailedCB</a>, <a href="../tyrion/actionbase.html#actionSucceededCB">actionSucceededCB</a>, <a href="../tyrion/actionbase.html#cleanup">cleanup</a>, <a href="../tyrion/actionbase.html#closestPointOnALine">closestPointOnALine</a>, <a href="../tyrion/actionbase.html#getChildReference">getChildReference</a>, <a href="../tyrion/actionbase.html#hasCompleted">hasCompleted</a>, <a href="../tyrion/actionbase.html#instantFail">instantFail</a>, <a href="../tyrion/actionbase.html#interruptActionIf">interruptActionIf</a>, <a href="../tyrion/actionbase.html#isIdle">isIdle</a>, <a href="../tyrion/actionbase.html#isRunning">isRunning</a>, <a href="../tyrion/actionbase.html#minDistBetweenTrajectories">minDistBetweenTrajectories</a>, <a href="../tyrion/actionbase.html#pause">pause</a>, <a href="../tyrion/actionbase.html#pauseAction">pauseAction</a>, <a href="../tyrion/actionbase.html#pawnDied">pawnDied</a>, <a href="../tyrion/actionbase.html#removeAction">removeAction</a>, <a href="../tyrion/actionbase.html#removeChildReference">removeChildReference</a>, <a href="../tyrion/actionbase.html#removeGoal">removeGoal</a>, <a href="../tyrion/actionbase.html#rotateZ">rotateZ</a>, <a href="../tyrion/actionbase.html#runAction">runAction</a>, <a href="../tyrion/actionbase.html#setChildReference">setChildReference</a>, <a href="../tyrion/actionbase.html#sleepForever">sleepForever</a>, <a href="../tyrion/actionbase.html#waitForAction">waitForAction</a>, <a href="../tyrion/actionbase.html#wasTicked">wasTicked</a>, <a href="../tyrion/actionbase.html#yield">yield</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/tyrion_actionbase.html">Tyrion_ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/tyrion_actionbase.html#actionDebuggingString">actionDebuggingString</a>, <a href="../engine/tyrion_actionbase.html#findResource">findResource</a>, <a href="../engine/tyrion_actionbase.html#getResourceClass">getResourceClass</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Running <a href="../Source_tyrion/ns_action.html#296" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Running <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bWakeUpParent" class="hidden"></a>bWakeUpParent <a href="../Source_tyrion/ns_action.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bWakeUpParent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_childAction" class="hidden"></a>childAction <a href="../Source_tyrion/ns_action.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> childAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_controller" class="hidden"></a>controller <a href="../Source_tyrion/ns_action.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span> <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_errorCode" class="hidden"></a>errorCode <a href="../Source_tyrion/ns_action.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">errorCode</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_parentAction" class="hidden"></a>parentAction <a href="../Source_tyrion/ns_action.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/actionbase.html" class="source">ActionBase</a></span> <span class="source_type">parentAction</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tickTime" class="hidden"></a>tickTime <a href="../Source_tyrion/ns_action.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> tickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tickTimeOrg" class="hidden"></a>tickTimeOrg <a href="../Source_tyrion/ns_action.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> tickTimeOrg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_actionFailedCB-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> actionFailedCB <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#284" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  actionFailedCB ( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span>, <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">_errorCode</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_actionSucceededCB-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> actionSucceededCB <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#276" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  actionSucceededCB ( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_checkForUniqueness-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> checkForUniqueness <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#54" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> checkForUniqueness ( <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span> <span class="source_type">c</span>, <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">action</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_construct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> construct <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#35" class="small">Source code</a></h4>
+<div class="declaration">overloaded <span class="source_type">function</span>  construct ( <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span> <span class="source_type">c</span>, <span class="source_type"><a href="../tyrion/actionbase.html" class="source">ActionBase</a></span> <span class="source_type">parent</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fail-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> fail <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#110" class="small">Source code</a></h4>
+<div class="declaration">latent <span class="source_type">function</span>  fail ( <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">errorCode</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getChildReference-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getChildReference <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#267" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> getChildReference ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_instantFail-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> instantFail <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#97" class="small">Source code</a></h4>
+<div class="declaration"> event  instantFail ( <span class="source_type"><a href="../tyrion/actionbase.html#ACT_ErrorCodes" class="source">ACT_ErrorCodes</a></span> <span class="source_type">errorCode</span>, optional <span class="source_type">bool</span> <span class="source_type">bRemoveGoal</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_interruptAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> interruptAction <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#130" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  interruptAction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_myAddRef-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> myAddRef <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#119" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> myAddRef ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pauseAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> pauseAction <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#230" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  pauseAction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_removeAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> removeAction <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#139" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  removeAction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_removeChildReference-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> removeChildReference <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#258" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  removeChildReference ( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_runAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> runAction <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#193" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  runAction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setChildReference-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setChildReference <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#250" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  setChildReference ( <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_succeed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> succeed <span class="function_state"></span> <a href="../Source_tyrion/ns_action.html#81" class="small">Source code</a></h4>
+<div class="declaration">latent <span class="source_type">function</span>  succeed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bWakeUpParent = false
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ns_action.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#NS_Action">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/nearmisscollisionvolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ns_dodoormove.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:33.278 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

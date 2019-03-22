@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - GUI.GUIMultiColumnListBox</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gui/guimulticolumnlistbox.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GUIMultiColumnListBox">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gui/guimulticolumnlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gui/guimulticomponent.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gui/guimulticolumnlistbox.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gui/gui-overview.html">GUI</a>.GUIMultiColumnListBox</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gui/guilistboxbase.html">GUIListBoxBase</a></dd>
+<dt>Modifiers</dt><dd>HideCategories ( Menu , Object ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/gui.html">GUI</a>
+   |   
+   +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guicomponent.html">GUIComponent</a>
+      |   
+      +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticomponent.html">GUIMultiComponent</a>
+         |   
+         +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilistboxbase.html">GUIListBoxBase</a>
+            |   
+            +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticolumnlistbox.html">GUIMultiColumnListBox</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><th colspan="2" class="small">DEBUG</th></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ColumnBorder" name="ColumnBorder" title="go to the details">ColumnBorder</a></td></tr>
+<tr><th colspan="2" class="small">MultiColumnListBox</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guibutton.html">GUIButton</a></td><td width="66%"><a href="#_ActiveButton" name="ActiveButton" title="go to the details">ActiveButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ActiveIndex" name="ActiveIndex" title="go to the details">ActiveIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gui/gui.html#GUIListElem">GUIListElem</a>&gt;</td><td width="66%"><a href="#_ActiveRow" name="ActiveRow" title="go to the details">ActiveRow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ActiveRowIndex" name="ActiveRowIndex" title="go to the details">ActiveRowIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bResizable" name="bResizable" title="go to the details">bResizable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DragSpacing" name="DragSpacing" title="go to the details">DragSpacing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastClickedIndex" name="LastClickedIndex" title="go to the details">LastClickedIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;String&gt;</td><td width="66%"><a href="#_ListNames" name="ListNames" title="go to the details">ListNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gui/guimulticolumnlist.html">GUIMultiColumnList</a>&gt;</td><td width="66%"><a href="#_MultiColumnList" name="MultiColumnList" title="go to the details">MultiColumnList</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilistboxbase.html">GUIListBoxBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guilistboxbase.html#bReadOnly">bReadOnly</a>, <a href="../gui/guilistboxbase.html#bVisibleWhenEmpty">bVisibleWhenEmpty</a>, <a href="../gui/guilistboxbase.html#MyActiveList">MyActiveList</a>, <a href="../gui/guilistboxbase.html#MyScrollBar">MyScrollBar</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticomponent.html">GUIMultiComponent</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guimulticomponent.html#Components">Components</a>, <a href="../gui/guimulticomponent.html#Controls">Controls</a>, <a href="../gui/guimulticomponent.html#ControlSpecs">ControlSpecs</a>, <a href="../gui/guimulticomponent.html#PropagateActivity">PropagateActivity</a>, <a href="../gui/guimulticomponent.html#PropagateState">PropagateState</a>, <a href="../gui/guimulticomponent.html#PropagateVisibility">PropagateVisibility</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddNewRowElement-" name="AddNewRowElement" title="go to the details">AddNewRowElement</a> (string ColumnHeader, optional <a href="../core/object.html">Object</a> obj, optional string Str, optional int intData, optional bool bData ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddRowElement-" name="AddRowElement" title="go to the details">AddRowElement</a> (GUIListElem theElem ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Clear-" name="Clear" title="go to the details">Clear</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClearRow-" name="ClearRow" title="go to the details">ClearRow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gui/guimulticolumnlist.html">GUIMultiColumnList</a>&nbsp;</td><td><a href="#_FindColumn-" name="FindColumn" title="go to the details">FindColumn</a> (string theName, optional bool bExact ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gui/guilist.html">GUIList</a>&nbsp;</td><td><a href="#_GetColumn-" name="GetColumn" title="go to the details">GetColumn</a> (string Header ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitColumn-" name="InitColumn" title="go to the details">InitColumn</a> (string ListName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitComponent-" name="InitComponent" title="go to the details">InitComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> MyOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnAdjustTop-" name="InternalOnAdjustTop" title="go to the details">InternalOnAdjustTop</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnChange-" name="InternalOnChange" title="go to the details">InternalOnChange</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InternalOnClick-" name="InternalOnClick" title="go to the details">InternalOnClick</a> (<a href="../gui/guicomponent.html">GUIComponent</a> Sender))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnConstruct-" name="OnConstruct" title="go to the details">OnConstruct</a> (<a href="../gui/guicontroller.html">GUIController</a> MyController))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_PopulateRow-" name="PopulateRow" title="go to the details">PopulateRow</a> (optional string DontReplaceHeader ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReorderItems-" name="ReorderItems" title="go to the details">ReorderItems</a> (int indices)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetActiveColumn-" name="SetActiveColumn" title="go to the details">SetActiveColumn</a> (string theName, optional bool bExact ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_SetIndex-" name="SetIndex" title="go to the details">SetIndex</a> (int ind ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Sort-" name="Sort" title="go to the details">Sort</a> (optional string byColumn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SwapMCLBIndices-" name="SwapMCLBIndices" title="go to the details">SwapMCLBIndices</a> (int indexA, int indexB ))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilistboxbase.html">GUIListBoxBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guilistboxbase.html#Clear">Clear</a>, <a href="../gui/guilistboxbase.html#InitBaseList">InitBaseList</a>, <a href="../gui/guilistboxbase.html#InitComponent">InitComponent</a>, <a href="../gui/guilistboxbase.html#Num">Num</a>, <a href="../gui/guilistboxbase.html#OnConstruct">OnConstruct</a>, <a href="../gui/guilistboxbase.html#SetActiveList">SetActiveList</a>, <a href="../gui/guilistboxbase.html#SetHint">SetHint</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guimulticomponent.html">GUIMultiComponent</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guimulticomponent.html#Activate">Activate</a>, <a href="../gui/guimulticomponent.html#AddComponent">AddComponent</a>, <a href="../gui/guimulticomponent.html#AppendComponent">AppendComponent</a>, <a href="../gui/guimulticomponent.html#BringBackward">BringBackward</a>, <a href="../gui/guimulticomponent.html#BringForward">BringForward</a>, <a href="../gui/guimulticomponent.html#BringToBack">BringToBack</a>, <a href="../gui/guimulticomponent.html#BringToFront">BringToFront</a>, <a href="../gui/guimulticomponent.html#CreateControl">CreateControl</a>, <a href="../gui/guimulticomponent.html#DeActivate">DeActivate</a>, <a href="../gui/guimulticomponent.html#DisableComponent">DisableComponent</a>, <a href="../gui/guimulticomponent.html#EnableComponent">EnableComponent</a>, <a href="../gui/guimulticomponent.html#FindCenterPoint">FindCenterPoint</a>, <a href="../gui/guimulticomponent.html#FindComponent">FindComponent</a>, <a href="../gui/guimulticomponent.html#FindComponentIndex">FindComponentIndex</a>, <a href="../gui/guimulticomponent.html#FindControlIndex">FindControlIndex</a>, <a href="../gui/guimulticomponent.html#FindDist">FindDist</a>, <a href="../gui/guimulticomponent.html#Free">Free</a>, <a href="../gui/guimulticomponent.html#Hide">Hide</a>, <a href="../gui/guimulticomponent.html#InitComponent">InitComponent</a>, <a href="../gui/guimulticomponent.html#InitializeControls">InitializeControls</a>, <a href="../gui/guimulticomponent.html#InsertComponent">InsertComponent</a>, <a href="../gui/guimulticomponent.html#InternalBringBackward">InternalBringBackward</a>, <a href="../gui/guimulticomponent.html#InternalBringForward">InternalBringForward</a>, <a href="../gui/guimulticomponent.html#LogControls">LogControls</a>, <a href="../gui/guimulticomponent.html#MapControls">MapControls</a>, <a href="../gui/guimulticomponent.html#OnConstruct">OnConstruct</a>, <a href="../gui/guimulticomponent.html#RemapComponents">RemapComponents</a>, <a href="../gui/guimulticomponent.html#RemoveComponent">RemoveComponent</a>, <a href="../gui/guimulticomponent.html#RemoveControl">RemoveControl</a>, <a href="../gui/guimulticomponent.html#ReorderComponents">ReorderComponents</a>, <a href="../gui/guimulticomponent.html#ReweightComponents">ReweightComponents</a>, <a href="../gui/guimulticomponent.html#SaveLayout">SaveLayout</a>, <a href="../gui/guimulticomponent.html#SetRadioGroup">SetRadioGroup</a>, <a href="../gui/guimulticomponent.html#Show">Show</a>, <a href="../gui/guimulticomponent.html#SwapControlIndicies">SwapControlIndicies</a>, <a href="../gui/guimulticomponent.html#TabControl">TabControl</a>, <a href="../gui/guimulticomponent.html#TestControls">TestControls</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h3 class="vartag">DEBUG</h3>
+<h4><a name="_ColumnBorder" class="hidden"></a>ColumnBorder <a href="../Source_gui/guimulticolumnlistbox.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(DEBUG) editconst <span class="source_type">int</span> ColumnBorder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">MultiColumnListBox</h3>
+<h4><a name="_ActiveButton" class="hidden"></a>ActiveButton <a href="../Source_gui/guimulticolumnlistbox.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) Editinline EditConst private <span class="source_type"><a href="../gui/guibutton.html" class="source">GUIButton</a></span> ActiveButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ActiveIndex" class="hidden"></a>ActiveIndex <a href="../Source_gui/guimulticolumnlistbox.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) config <span class="source_type">int</span> ActiveIndex;</div>
+<blockquote class="comment">
+Index of the active column
+</blockquote>
+<hr class="small" />
+<h4><a name="_ActiveRow" class="hidden"></a>ActiveRow <a href="../Source_gui/guimulticolumnlistbox.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) Editinline EditConst private array&lt;<span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span>&gt; ActiveRow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ActiveRowIndex" class="hidden"></a>ActiveRowIndex <a href="../Source_gui/guimulticolumnlistbox.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) editconst <span class="source_type">int</span> ActiveRowIndex;</div>
+<blockquote class="comment">
+Index of the active row
+</blockquote>
+<hr class="small" />
+<h4><a name="_bResizable" class="hidden"></a>bResizable <a href="../Source_gui/guimulticolumnlistbox.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) config <span class="source_type">bool</span> bResizable;</div>
+<blockquote class="comment">
+If true, MultiColumnList box columns are resizable.
+</blockquote>
+<hr class="small" />
+<h4><a name="_DragSpacing" class="hidden"></a>DragSpacing <a href="../Source_gui/guimulticolumnlistbox.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) config <span class="source_type">float</span> DragSpacing;</div>
+<blockquote class="comment">
+Number of pixels of leeway allowed for column resizing
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastClickedIndex" class="hidden"></a>LastClickedIndex <a href="../Source_gui/guimulticolumnlistbox.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) config <span class="source_type">int</span> LastClickedIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ListNames" class="hidden"></a>ListNames <a href="../Source_gui/guimulticolumnlistbox.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) config array&lt;<span class="source_type">String</span>&gt; ListNames;</div>
+<blockquote class="comment">
+Name of the lists to polulate this MCLB
+</blockquote>
+<hr class="small" />
+<h4><a name="_MultiColumnList" class="hidden"></a>MultiColumnList <a href="../Source_gui/guimulticolumnlistbox.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(MultiColumnListBox) Editinline EditConst array&lt;<span class="source_type"><a href="../gui/guimulticolumnlist.html" class="source">GUIMultiColumnList</a></span>&gt; MultiColumnList;</div>
+<blockquote class="comment">
+The Array of lists of data
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddNewRowElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddNewRowElement <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#194" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AddNewRowElement ( <span class="source_type">string</span> ColumnHeader, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> obj, optional <span class="source_type">string</span> Str, optional <span class="source_type">int</span> intData, optional <span class="source_type">bool</span> <span class="source_type">bData</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddRowElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddRowElement <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#199" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  AddRowElement ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">theElem</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Clear-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Clear <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#126" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Clear ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClearRow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClearRow <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#213" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ClearRow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindColumn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindColumn <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#112" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gui/guimulticolumnlist.html" class="source">GUIMultiColumnList</a></span> FindColumn ( <span class="source_type">string</span> theName, optional <span class="source_type">bool</span> <span class="source_type">bExact</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetColumn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetColumn <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#100" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span> GetColumn ( <span class="source_type">string</span> <span class="source_type">Header</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitColumn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitColumn <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#62" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  InitColumn ( <span class="source_type">string</span> <span class="source_type">ListName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitComponent <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#48" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnAdjustTop-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnAdjustTop <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#178" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  InternalOnAdjustTop ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnChange <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#157" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  InternalOnChange ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternalOnClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InternalOnClick <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#137" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  InternalOnClick ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> Sender) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnConstruct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnConstruct <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#35" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnConstruct ( <span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span> MyController) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PopulateRow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PopulateRow <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#219" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> PopulateRow ( optional <span class="source_type">string</span> <span class="source_type">DontReplaceHeader</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReorderItems-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReorderItems <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#33" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  ReorderItems ( <span class="source_type">int</span> indices )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetActiveColumn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetActiveColumn <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#88" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetActiveColumn ( <span class="source_type">string</span> theName, optional <span class="source_type">bool</span> <span class="source_type">bExact</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetIndex <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#290" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> SetIndex ( <span class="source_type">int</span> <span class="source_type">ind</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Sort-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Sort <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#264" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Sort ( optional <span class="source_type">string</span> byColumn) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwapMCLBIndices-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SwapMCLBIndices <span class="function_state"></span> <a href="../Source_gui/guimulticolumnlistbox.html#253" class="small">Source code</a></h4>
+<div class="declaration">private <span class="source_type">function</span>  SwapMCLBIndices ( <span class="source_type">int</span> indexA, <span class="source_type">int</span> <span class="source_type">indexB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bVisibleWhenEmpty=True
+    ActiveRowIndex=-<span class="source_int">1</span>
+	bResizable=True
+	DragSpacing=<span class="source_int">5</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gui/guimulticolumnlistbox.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GUIMultiColumnListBox">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gui/guimulticolumnlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gui/guimulticomponent.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:30.343 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

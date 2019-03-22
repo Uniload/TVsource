@@ -1,0 +1,986 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.Weapon</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/weapon.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Weapon">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/vehiclespawnpoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/worldtexscaler.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/weapon.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.Weapon</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/equippable.html">Equippable</a></dd>
+<dt>Modifiers</dt><dd>config ( Weapons ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equipment.html">Equipment</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equippable.html">Equippable</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/weapon.html">Weapon</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/assaultshipweapon.html">AssaultShipWeapon</a>, <a href="../gameplay/blaster.html">Blaster</a>, <a href="../gameplay/buckler.html">Buckler</a>, <a href="../gameplay/burner.html">Burner</a>, <a href="../gameplay/chaingun.html">Chaingun</a>, <a href="../gameplay/chargeupweapon.html">ChargeUpWeapon</a>, <a href="../gameplay/energyblade.html">EnergyBlade</a>, <a href="../gameplay/gloraxmeleeweapon.html">GloraxMeleeWeapon</a>, <a href="../gameplay/gloraxweapon.html">GloraxWeapon</a>, <a href="../gameplay/grappler.html">Grappler</a>, <a href="../gameplay/grenadelauncher.html">GrenadeLauncher</a>, <a href="../gameplay/mortar.html">Mortar</a>, <a href="../gameplay/podweapon.html">PodWeapon</a>, <a href="../gameplay/rocketpod.html">RocketPod</a>, <a href="../gameplay/sniperrifle.html">SniperRifle</a>, <a href="../gameplay/spinfusor.html">Spinfusor</a>, <a href="../gameplay/tankweapon.html">TankWeapon</a>, <a href="../tmod/tmodweaponpointer.html">tmodWeaponPointer</a>, <a href="../gameplay/turretweapon.html">TurretWeapon</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AIAccelerationModifier" name="AIAccelerationModifier" title="go to the details">AIAccelerationModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/aimfunctions.html">AimFunctions</a>&gt;</td><td width="66%"><a href="#_aimClass" name="aimClass" title="go to the details">aimClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">Rotator</a></td><td width="66%"><a href="#_AIspread" name="AIspread" title="go to the details">AIspread</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBeingSwitched" name="bBeingSwitched" title="go to the details">bBeingSwitched</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFiredWeapon" name="bFiredWeapon" title="go to the details">bFiredWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGenerateMissSpeechEvents" name="bGenerateMissSpeechEvents" title="go to the details">bGenerateMissSpeechEvents</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_fireAnimation" name="fireAnimation" title="go to the details">fireAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_fireOnce" name="fireOnce" title="go to the details">fireOnce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_lastFireTime" name="lastFireTime" title="go to the details">lastFireTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_localAmmoCount" name="localAmmoCount" title="go to the details">localAmmoCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_localPickupDelay" name="localPickupDelay" title="go to the details">localPickupDelay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_noAmmo" name="noAmmo" title="go to the details">noAmmo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_pickupDelay" name="pickupDelay" title="go to the details">pickupDelay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_projectileSpawnOffset" name="projectileSpawnOffset" title="go to the details">projectileSpawnOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_speedPackScale" name="speedPackScale" title="go to the details">speedPackScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_startEquippingTime" name="startEquippingTime" title="go to the details">startEquippingTime</a></td></tr>
+<tr><th colspan="2" class="small">Weapon</th></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ammoCount" name="ammoCount" title="go to the details">ammoCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ammoUsage" name="ammoUsage" title="go to the details">ammoUsage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMelee" name="bMelee" title="go to the details">bMelee</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNeedIdleFX" name="bNeedIdleFX" title="go to the details">bNeedIdleFX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../engine/material.html">Material</a>&gt;</td><td width="66%"><a href="#_emptyMaterials" name="emptyMaterials" title="go to the details">emptyMaterials</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_fireAnimSubString" name="fireAnimSubString" title="go to the details">fireAnimSubString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_hudReticule" name="hudReticule" title="go to the details">hudReticule</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hudReticuleCenterX" name="hudReticuleCenterX" title="go to the details">hudReticuleCenterX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hudReticuleCenterY" name="hudReticuleCenterY" title="go to the details">hudReticuleCenterY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hudReticuleHeight" name="hudReticuleHeight" title="go to the details">hudReticuleHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hudReticuleWidth" name="hudReticuleWidth" title="go to the details">hudReticuleWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/projectile.html">Projectile</a>&gt;</td><td width="66%"><a href="#_projectileClass" name="projectileClass" title="go to the details">projectileClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_projectileInheritedVelFactor" name="projectileInheritedVelFactor" title="go to the details">projectileInheritedVelFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_projectileSpawnBone" name="projectileSpawnBone" title="go to the details">projectileSpawnBone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_projectileVelocity" name="projectileVelocity" title="go to the details">projectileVelocity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_roundsPerSecond" name="roundsPerSecond" title="go to the details">roundsPerSecond</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equippable.html">Equippable</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/equippable.html#animClass">animClass</a>, <a href="../gameplay/equippable.html#animPrefix">animPrefix</a>, <a href="../gameplay/equippable.html#attemptedAttach">attemptedAttach</a>, <a href="../gameplay/equippable.html#automaticallyHold">automaticallyHold</a>, <a href="../gameplay/equippable.html#bFirstPersonUseTrace">bFirstPersonUseTrace</a>, <a href="../gameplay/equippable.html#bIsFirstPerson">bIsFirstPerson</a>, <a href="../gameplay/equippable.html#bMeshChangeOK">bMeshChangeOK</a>, <a href="../gameplay/equippable.html#bPlayedCharacterEquipAnim">bPlayedCharacterEquipAnim</a>, <a href="../gameplay/equippable.html#demoFireCount">demoFireCount</a>, <a href="../gameplay/equippable.html#equipDuration">equipDuration</a>, <a href="../gameplay/equippable.html#equipDurationCounter">equipDurationCounter</a>, <a href="../gameplay/equippable.html#equippablePos">equippablePos</a>, <a href="../gameplay/equippable.html#equipped">equipped</a>, <a href="../gameplay/equippable.html#equippedArmAnim">equippedArmAnim</a>, <a href="../gameplay/equippable.html#fireCount">fireCount</a>, <a href="../gameplay/equippable.html#fireState">fireState</a>, <a href="../gameplay/equippable.html#firstPersonAltMesh">firstPersonAltMesh</a>, <a href="../gameplay/equippable.html#firstPersonAltOffset">firstPersonAltOffset</a>, <a href="../gameplay/equippable.html#firstPersonAltTraceExtent">firstPersonAltTraceExtent</a>, <a href="../gameplay/equippable.html#firstPersonAltTraceLength">firstPersonAltTraceLength</a>, <a href="../gameplay/equippable.html#firstPersonBobMultiplier">firstPersonBobMultiplier</a>, <a href="../gameplay/equippable.html#firstPersonInterpCurrent">firstPersonInterpCurrent</a>, <a href="../gameplay/equippable.html#firstPersonInterpStep">firstPersonInterpStep</a>, <a href="../gameplay/equippable.html#firstPersonInterpTarget">firstPersonInterpTarget</a>, <a href="../gameplay/equippable.html#firstPersonMesh">firstPersonMesh</a>, <a href="../gameplay/equippable.html#firstPersonOffset">firstPersonOffset</a>, <a href="../gameplay/equippable.html#firstPersonTraceExtent">firstPersonTraceExtent</a>, <a href="../gameplay/equippable.html#firstPersonTraceLength">firstPersonTraceLength</a>, <a href="../gameplay/equippable.html#localDemoFireCount">localDemoFireCount</a>, <a href="../gameplay/equippable.html#localFireCount">localFireCount</a>, <a href="../gameplay/equippable.html#releaseFireState">releaseFireState</a>, <a href="../gameplay/equippable.html#rookMotor">rookMotor</a>, <a href="../gameplay/equippable.html#rookOwner">rookOwner</a>, <a href="../gameplay/equippable.html#startEquippingTime">startEquippingTime</a>, <a href="../gameplay/equippable.html#thirdPersonAltMesh">thirdPersonAltMesh</a>, <a href="../gameplay/equippable.html#thirdPersonAltStaticMesh">thirdPersonAltStaticMesh</a>, <a href="../gameplay/equippable.html#thirdPersonAttachmentBone">thirdPersonAttachmentBone</a>, <a href="../gameplay/equippable.html#thirdPersonAttachmentOffset">thirdPersonAttachmentOffset</a>, <a href="../gameplay/equippable.html#thirdPersonMesh">thirdPersonMesh</a>, <a href="../gameplay/equippable.html#thirdPersonStaticMesh">thirdPersonStaticMesh</a>, <a href="../gameplay/equippable.html#unequipDuration">unequipDuration</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equipment.html">Equipment</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/equipment.html#attentionFXDuration">attentionFXDuration</a>, <a href="../gameplay/equipment.html#attentionFXMaterial">attentionFXMaterial</a>, <a href="../gameplay/equipment.html#attentionFXSpacing">attentionFXSpacing</a>, <a href="../gameplay/equipment.html#attentionLeft">attentionLeft</a>, <a href="../gameplay/equipment.html#awaitingPickupPhysics">awaitingPickupPhysics</a>, <a href="../gameplay/equipment.html#bCanDrop">bCanDrop</a>, <a href="../gameplay/equipment.html#bCanPickup">bCanPickup</a>, <a href="../gameplay/equipment.html#bDropped">bDropped</a>, <a href="../gameplay/equipment.html#bHeld">bHeld</a>, <a href="../gameplay/equipment.html#bPlayPickupSound">bPlayPickupSound</a>, <a href="../gameplay/equipment.html#droppedElasticity">droppedElasticity</a>, <a href="../gameplay/equipment.html#dropVelocity">dropVelocity</a>, <a href="../gameplay/equipment.html#heldStartState">heldStartState</a>, <a href="../gameplay/equipment.html#hudIcon">hudIcon</a>, <a href="../gameplay/equipment.html#hudIconCoords">hudIconCoords</a>, <a href="../gameplay/equipment.html#hudRefireIcon">hudRefireIcon</a>, <a href="../gameplay/equipment.html#hudRefireIconCoords">hudRefireIconCoords</a>, <a href="../gameplay/equipment.html#infoString">infoString</a>, <a href="../gameplay/equipment.html#inventoryIcon">inventoryIcon</a>, <a href="../gameplay/equipment.html#localizedName">localizedName</a>, <a href="../gameplay/equipment.html#next">next</a>, <a href="../gameplay/equipment.html#nextAttentionTime">nextAttentionTime</a>, <a href="../gameplay/equipment.html#pickupProxy">pickupProxy</a>, <a href="../gameplay/equipment.html#pickupRadius">pickupRadius</a>, <a href="../gameplay/equipment.html#prev">prev</a>, <a href="../gameplay/equipment.html#prompt">prompt</a>, <a href="../gameplay/equipment.html#sensorUpdateFlag">sensorUpdateFlag</a>, <a href="../gameplay/equipment.html#spawnPoint">spawnPoint</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_addSpeedPackScale-" name="addSpeedPackScale" title="go to the details">addSpeedPackScale</a> (float scale))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/actor.html">Actor</a>&nbsp;</td><td><a href="#_AIAimTrace-" name="AIAimTrace" title="go to the details">AIAimTrace</a> (out <a href="../core/object.html#Vector">Vector</a> hitLocation, out <a href="../core/object.html#Vector">Vector</a> hitNormal, <a href="../core/object.html#Vector">Vector</a> traceStart, <a href="../core/object.html#Vector">Vector</a> traceEnd)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_aimTrace-" name="aimTrace" title="go to the details">aimTrace</a> (out <a href="../core/object.html#Vector">Vector</a> hitLocation, <a href="../core/object.html#Vector">Vector</a> traceStart, <a href="../core/object.html#Vector">Vector</a> traceDirection)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_allowPrompt-" name="allowPrompt" title="go to the details">allowPrompt</a> (<a href="../gameplay/character.html">Character</a> potentialOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_altFire-" name="altFire" title="go to the details">altFire</a> (optional bool _fireOnce))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_applyPickupDelay-" name="applyPickupDelay" title="go to the details">applyPickupDelay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_attemptFire-FirePressed" name="attemptFire" title="go to the details">attemptFire</a> ()))<br /><span class="function_state">FirePressed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Dropped" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Dropped</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-FirePressed" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">FirePressed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-FireReleased" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">FireReleased</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Held" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Held</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Idle" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Idle</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_calcProjectileSpawnLocation-" name="calcProjectileSpawnLocation" title="go to the details">calcProjectileSpawnLocation</a> (<a href="../core/object.html#Rotator">Rotator</a> fireRot))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canExpire-" name="canExpire" title="go to the details">canExpire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canFire-" name="canFire" title="go to the details">canFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_canPickup-" name="canPickup" title="go to the details">canPickup</a> (<a href="../gameplay/character.html">Character</a> potentialOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_doSwitch-" name="doSwitch" title="go to the details">doSwitch</a> (<a href="../gameplay/character.html">Character</a> newOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_drawDebug-" name="drawDebug" title="go to the details">drawDebug</a> (<a href="../engine/hud.html">HUD</a> debugHUD)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_droppedByCharacter-" name="droppedByCharacter" title="go to the details">droppedByCharacter</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Idle" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Idle</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_extractFirstPersonMeshData-" name="extractFirstPersonMeshData" title="go to the details">extractFirstPersonMeshData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_fire-" name="fire" title="go to the details">fire</a> (optional bool _fireOnce))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_firedEffectProcessing-" name="firedEffectProcessing" title="go to the details">firedEffectProcessing</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FireEmpty-Empty" name="FireEmpty" title="go to the details">FireEmpty</a> ()))<br /><span class="function_state">Empty</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_fireRatePassed-" name="fireRatePassed" title="go to the details">fireRatePassed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FireWeapon-" name="FireWeapon" title="go to the details">FireWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_getAimAdjustedViewRotation-" name="getAimAdjustedViewRotation" title="go to the details">getAimAdjustedViewRotation</a> (<a href="../engine/playercontroller.html">PlayerController</a> pc, <a href="../core/object.html#Vector">Vector</a> fireLoc))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">Rotator</a>&nbsp;</td><td><a href="#_getAimRotation-" name="getAimRotation" title="go to the details">getAimRotation</a> (<a href="../core/object.html#Vector">Vector</a> fireLoc))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_getMaxAmmo-" name="getMaxAmmo" title="go to the details">getMaxAmmo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_getPredictedProjectileGravity-" name="getPredictedProjectileGravity" title="go to the details">getPredictedProjectileGravity</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_GetProjectileSpreadScale-" name="GetProjectileSpreadScale" title="go to the details">GetProjectileSpreadScale</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_handleReleaseFire-Empty" name="handleReleaseFire" title="go to the details">handleReleaseFire</a> ()))<br /><span class="function_state">Empty</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_hasAmmo-" name="hasAmmo" title="go to the details">hasAmmo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_heldByCharacter-" name="heldByCharacter" title="go to the details">heldByCharacter</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_increaseAmmo-" name="increaseAmmo" title="go to the details">increaseAmmo</a> (int quantity))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_initialiseVelocity-" name="initialiseVelocity" title="go to the details">initialiseVelocity</a> (<a href="../gameplay/projectile.html">Projectile</a> p, <a href="../core/object.html#Vector">Vector</a> InitialVelocity))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/projectile.html">Projectile</a>&nbsp;</td><td><a href="#_makeProjectile-" name="makeProjectile" title="go to the details">makeProjectile</a> (<a href="../core/object.html#Rotator">Rotator</a> fireRot, <a href="../core/object.html#Vector">Vector</a> fireLoc))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_needPrompt-" name="needPrompt" title="go to the details">needPrompt</a> (<a href="../gameplay/character.html">Character</a> potentialOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onThirdPersonFireCount-" name="onThirdPersonFireCount" title="go to the details">onThirdPersonFireCount</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_pickup-" name="pickup" title="go to the details">pickup</a> (<a href="../gameplay/character.html">Character</a> newOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_playCharacterFireAnim-" name="playCharacterFireAnim" title="go to the details">playCharacterFireAnim</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_playEquipAnim-" name="playEquipAnim" title="go to the details">playEquipAnim</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_playIdleAnim-" name="playIdleAnim" title="go to the details">playIdleAnim</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_playPostFireAnim-" name="playPostFireAnim" title="go to the details">playPostFireAnim</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_playUnequipAnim-" name="playUnequipAnim" title="go to the details">playUnequipAnim</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetReceive-" name="PostNetReceive" title="go to the details">PostNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PrecacheWeaponRenderData-" name="PrecacheWeaponRenderData" title="go to the details">PrecacheWeaponRenderData</a> (<a href="../engine/levelinfo.html">LevelInfo</a> Level, class&lt;<a href="../gameplay/weapon.html">Weapon</a>&gt; WeaponClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_releaseAltFire-" name="releaseAltFire" title="go to the details">releaseAltFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_removeSpeedPackScale-" name="removeSpeedPackScale" title="go to the details">removeSpeedPackScale</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_requestEquipmentDrop-" name="requestEquipmentDrop" title="go to the details">requestEquipmentDrop</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setHasAmmoSkins-" name="setHasAmmoSkins" title="go to the details">setHasAmmoSkins</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setOutOfAmmo-" name="setOutOfAmmo" title="go to the details">setOutOfAmmo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setupFirstPerson-" name="setupFirstPerson" title="go to the details">setupFirstPerson</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-Empty" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state">Empty</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-FirePressed" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state">FirePressed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TickFirePressed-FirePressed" name="TickFirePressed" title="go to the details">TickFirePressed</a> ()))<br /><span class="function_state">FirePressed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_TriggerWeaponEffect-" name="TriggerWeaponEffect" title="go to the details">TriggerWeaponEffect</a> (name EffectEvent))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdatePrecacheRenderData-" name="UpdatePrecacheRenderData" title="go to the details">UpdatePrecacheRenderData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_useAmmo-" name="useAmmo" title="go to the details">useAmmo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_willHurtFriendly-" name="willHurtFriendly" title="go to the details">willHurtFriendly</a> (<a href="../core/object.html#Vector">Vector</a> hitLocation, float timeToHit, bool bDoObstacleCheck ))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equippable.html">Equippable</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/equippable.html#armsFirstPersonStatus">armsFirstPersonStatus</a>, <a href="../gameplay/equippable.html#attachWeaponHack">attachWeaponHack</a>, <a href="../gameplay/equippable.html#BeginState">BeginState</a>, <a href="../gameplay/equippable.html#calculateInterpolation">calculateInterpolation</a>, <a href="../gameplay/equippable.html#canUnequip">canUnequip</a>, <a href="../gameplay/equippable.html#checkFireCount">checkFireCount</a>, <a href="../gameplay/equippable.html#drawDebug">drawDebug</a>, <a href="../gameplay/equippable.html#EndState">EndState</a>, <a href="../gameplay/equippable.html#equip">equip</a>, <a href="../gameplay/equippable.html#fire">fire</a>, <a href="../gameplay/equippable.html#firstPersonStatus">firstPersonStatus</a>, <a href="../gameplay/equippable.html#getFirstPersonOffset">getFirstPersonOffset</a>, <a href="../gameplay/equippable.html#handleFire">handleFire</a>, <a href="../gameplay/equippable.html#handleReleaseFire">handleReleaseFire</a>, <a href="../gameplay/equippable.html#initialiseRookMotor">initialiseRookMotor</a>, <a href="../gameplay/equippable.html#keepArms">keepArms</a>, <a href="../gameplay/equippable.html#moveWeapon">moveWeapon</a>, <a href="../gameplay/equippable.html#onMessage">onMessage</a>, <a href="../gameplay/equippable.html#onThirdPersonFireCount">onThirdPersonFireCount</a>, <a href="../gameplay/equippable.html#pickup">pickup</a>, <a href="../gameplay/equippable.html#playEquipAnim">playEquipAnim</a>, <a href="../gameplay/equippable.html#playIdleAnim">playIdleAnim</a>, <a href="../gameplay/equippable.html#playUnequipAnim">playUnequipAnim</a>, <a href="../gameplay/equippable.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/equippable.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../gameplay/equippable.html#PrecacheEquippableRenderData">PrecacheEquippableRenderData</a>, <a href="../gameplay/equippable.html#releaseFire">releaseFire</a>, <a href="../gameplay/equippable.html#selectMesh">selectMesh</a>, <a href="../gameplay/equippable.html#sendServerRequestFire">sendServerRequestFire</a>, <a href="../gameplay/equippable.html#sendServerRequestReleaseFire">sendServerRequestReleaseFire</a>, <a href="../gameplay/equippable.html#setDroppedMesh">setDroppedMesh</a>, <a href="../gameplay/equippable.html#setFirstPersonOffset">setFirstPersonOffset</a>, <a href="../gameplay/equippable.html#setMovementReplication">setMovementReplication</a>, <a href="../gameplay/equippable.html#setupFirstPerson">setupFirstPerson</a>, <a href="../gameplay/equippable.html#setupThirdPerson">setupThirdPerson</a>, <a href="../gameplay/equippable.html#shouldHide">shouldHide</a>, <a href="../gameplay/equippable.html#shouldPlayEquipAnim">shouldPlayEquipAnim</a>, <a href="../gameplay/equippable.html#Tick">Tick</a>, <a href="../gameplay/equippable.html#unEquip">unEquip</a>, <a href="../gameplay/equippable.html#UpdatePrecacheRenderData">UpdatePrecacheRenderData</a>, <a href="../gameplay/equippable.html#useAlternateMesh">useAlternateMesh</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/equipment.html">Equipment</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/equipment.html#allowPrompt">allowPrompt</a>, <a href="../gameplay/equipment.html#Attach">Attach</a>, <a href="../gameplay/equipment.html#BeginState">BeginState</a>, <a href="../gameplay/equipment.html#canExpire">canExpire</a>, <a href="../gameplay/equipment.html#canPickup">canPickup</a>, <a href="../gameplay/equipment.html#Destroyed">Destroyed</a>, <a href="../gameplay/equipment.html#doSwitch">doSwitch</a>, <a href="../gameplay/equipment.html#drop">drop</a>, <a href="../gameplay/equipment.html#endHeldByCharacter">endHeldByCharacter</a>, <a href="../gameplay/equipment.html#EndState">EndState</a>, <a href="../gameplay/equipment.html#equipmentGone">equipmentGone</a>, <a href="../gameplay/equipment.html#GetOverlayMaterial">GetOverlayMaterial</a>, <a href="../gameplay/equipment.html#gotoHeldState">gotoHeldState</a>, <a href="../gameplay/equipment.html#HitWall">HitWall</a>, <a href="../gameplay/equipment.html#isInNoDropRangeOfInventoryStation">isInNoDropRangeOfInventoryStation</a>, <a href="../gameplay/equipment.html#needPrompt">needPrompt</a>, <a href="../gameplay/equipment.html#onMessage">onMessage</a>, <a href="../gameplay/equipment.html#onPickup">onPickup</a>, <a href="../gameplay/equipment.html#onTakenFromSpawnPoint">onTakenFromSpawnPoint</a>, <a href="../gameplay/equipment.html#pickup">pickup</a>, <a href="../gameplay/equipment.html#PickupProxyTouch">PickupProxyTouch</a>, <a href="../gameplay/equipment.html#PickupProxyUntouch">PickupProxyUntouch</a>, <a href="../gameplay/equipment.html#PostNetReceive">PostNetReceive</a>, <a href="../gameplay/equipment.html#removeDroppedEquipment">removeDroppedEquipment</a>, <a href="../gameplay/equipment.html#requestEquipmentDrop">requestEquipmentDrop</a>, <a href="../gameplay/equipment.html#setDropLocation">setDropLocation</a>, <a href="../gameplay/equipment.html#setDropVelocity">setDropVelocity</a>, <a href="../gameplay/equipment.html#setMovementReplication">setMovementReplication</a>, <a href="../gameplay/equipment.html#setup">setup</a>, <a href="../gameplay/equipment.html#setupDropped">setupDropped</a>, <a href="../gameplay/equipment.html#startHeldByCharacter">startHeldByCharacter</a>, <a href="../gameplay/equipment.html#Tick">Tick</a>, <a href="../gameplay/equipment.html#Timer">Timer</a>, <a href="../gameplay/equipment.html#TravelPreAccept">TravelPreAccept</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Dropped <a href="../Source_gameplay/weapon.html#739" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Dropped <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Dropped">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Empty <a href="../Source_gameplay/weapon.html#662" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Empty <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_FireEmpty+Empty">FireEmpty</a>, <a href="#_handleReleaseFire+Empty">handleReleaseFire</a>, <a href="#_Tick+Empty">Tick</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FirePressed <a href="../Source_gameplay/weapon.html#620" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> FirePressed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_attemptFire+FirePressed">attemptFire</a>, <a href="#_BeginState+FirePressed">BeginState</a>, <a href="#_Tick+FirePressed">Tick</a>, <a href="#_TickFirePressed+FirePressed">TickFirePressed</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FireReleased <a href="../Source_gameplay/weapon.html#709" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> FireReleased <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+FireReleased">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Held <a href="../Source_gameplay/weapon.html#723" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Held <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Held">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Idle <a href="../Source_gameplay/weapon.html#458" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Idle <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Idle">BeginState</a>, <a href="#_EndState+Idle">EndState</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AIAccelerationModifier" class="hidden"></a>AIAccelerationModifier <a href="../Source_gameplay/weapon.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> AIAccelerationModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_aimClass" class="hidden"></a>aimClass <a href="../Source_gameplay/weapon.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/aimfunctions.html" class="source">AimFunctions</a></span>&gt; aimClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AIspread" class="hidden"></a>AIspread <a href="../Source_gameplay/weapon.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> AIspread;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bBeingSwitched" class="hidden"></a>bBeingSwitched <a href="../Source_gameplay/weapon.html#55" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type">bool</span> bBeingSwitched;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFiredWeapon" class="hidden"></a>bFiredWeapon <a href="../Source_gameplay/weapon.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bFiredWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bGenerateMissSpeechEvents" class="hidden"></a>bGenerateMissSpeechEvents <a href="../Source_gameplay/weapon.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bGenerateMissSpeechEvents;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fireAnimation" class="hidden"></a>fireAnimation <a href="../Source_gameplay/weapon.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> fireAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fireOnce" class="hidden"></a>fireOnce <a href="../Source_gameplay/weapon.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> fireOnce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastFireTime" class="hidden"></a>lastFireTime <a href="../Source_gameplay/weapon.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> lastFireTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localAmmoCount" class="hidden"></a>localAmmoCount <a href="../Source_gameplay/weapon.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> localAmmoCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_localPickupDelay" class="hidden"></a>localPickupDelay <a href="../Source_gameplay/weapon.html#53" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type">bool</span> localPickupDelay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_noAmmo" class="hidden"></a>noAmmo <a href="../Source_gameplay/weapon.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> noAmmo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pickupDelay" class="hidden"></a>pickupDelay <a href="../Source_gameplay/weapon.html#52" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type">bool</span> pickupDelay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_projectileSpawnOffset" class="hidden"></a>projectileSpawnOffset <a href="../Source_gameplay/weapon.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> projectileSpawnOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_speedPackScale" class="hidden"></a>speedPackScale <a href="../Source_gameplay/weapon.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> speedPackScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_startEquippingTime" class="hidden"></a>startEquippingTime <a href="../Source_gameplay/weapon.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> startEquippingTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Weapon</h3>
+<h4><a name="_ammoCount" class="hidden"></a>ammoCount <a href="../Source_gameplay/weapon.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) travel <span class="source_type">int</span> ammoCount;</div>
+<blockquote class="comment">
+Weapon's remaining ammo
+</blockquote>
+<hr class="small" />
+<h4><a name="_ammoUsage" class="hidden"></a>ammoUsage <a href="../Source_gameplay/weapon.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">int</span> ammoUsage;</div>
+<blockquote class="comment">
+Amount of ammo used per shot
+</blockquote>
+<hr class="small" />
+<h4><a name="_bMelee" class="hidden"></a>bMelee <a href="../Source_gameplay/weapon.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">bool</span> bMelee;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNeedIdleFX" class="hidden"></a>bNeedIdleFX <a href="../Source_gameplay/weapon.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">bool</span> bNeedIdleFX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_emptyMaterials" class="hidden"></a>emptyMaterials <a href="../Source_gameplay/weapon.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) editinlineuse Array&lt;<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>&gt; emptyMaterials;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fireAnimSubString" class="hidden"></a>fireAnimSubString <a href="../Source_gameplay/weapon.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">string</span> fireAnimSubString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hudReticule" class="hidden"></a>hudReticule <a href="../Source_gameplay/weapon.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) config <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> <span class="source_type"><a href="../tribesgui/hudreticule.html" class="source">hudReticule</a></span>;</div>
+<blockquote class="comment">
+Targetting reticule for this weapon
+</blockquote>
+<hr class="small" />
+<h4><a name="_hudReticuleCenterX" class="hidden"></a>hudReticuleCenterX <a href="../Source_gameplay/weapon.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) config <span class="source_type">float</span> hudReticuleCenterX;</div>
+<blockquote class="comment">
+X co-ord on the texture of the hud center
+</blockquote>
+<hr class="small" />
+<h4><a name="_hudReticuleCenterY" class="hidden"></a>hudReticuleCenterY <a href="../Source_gameplay/weapon.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) config <span class="source_type">float</span> hudReticuleCenterY;</div>
+<blockquote class="comment">
+Y co-ord on the texture of the hud center
+</blockquote>
+<hr class="small" />
+<h4><a name="_hudReticuleHeight" class="hidden"></a>hudReticuleHeight <a href="../Source_gameplay/weapon.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) config <span class="source_type">float</span> hudReticuleHeight;</div>
+<blockquote class="comment">
+Height of the HUD Reticule
+</blockquote>
+<hr class="small" />
+<h4><a name="_hudReticuleWidth" class="hidden"></a>hudReticuleWidth <a href="../Source_gameplay/weapon.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) config <span class="source_type">float</span> hudReticuleWidth;</div>
+<blockquote class="comment">
+Width of the HUD texture
+</blockquote>
+<hr class="small" />
+<h4><a name="_projectileClass" class="hidden"></a>projectileClass <a href="../Source_gameplay/weapon.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/projectile.html" class="source">Projectile</a></span>&gt; <span class="source_type">projectileClass</span>;</div>
+<blockquote class="comment">
+Type of projectile fired by the weapon
+</blockquote>
+<hr class="small" />
+<h4><a name="_projectileInheritedVelFactor" class="hidden"></a>projectileInheritedVelFactor <a href="../Source_gameplay/weapon.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">float</span> projectileInheritedVelFactor;</div>
+<blockquote class="comment">
+Proportion of velocity inherited from player when projectile is fired
+</blockquote>
+<hr class="small" />
+<h4><a name="_projectileSpawnBone" class="hidden"></a>projectileSpawnBone <a href="../Source_gameplay/weapon.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">name</span> projectileSpawnBone;</div>
+<blockquote class="comment">
+The bone that the projectile will be spawned at
+</blockquote>
+<hr class="small" />
+<h4><a name="_projectileVelocity" class="hidden"></a>projectileVelocity <a href="../Source_gameplay/weapon.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">float</span> projectileVelocity;</div>
+<blockquote class="comment">
+Speed of the projectile when it is fired
+</blockquote>
+<hr class="small" />
+<h4><a name="_roundsPerSecond" class="hidden"></a>roundsPerSecond <a href="../Source_gameplay/weapon.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>) <span class="source_type">float</span> roundsPerSecond;</div>
+<blockquote class="comment">
+Fire rate in rounds per second
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_addSpeedPackScale-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addSpeedPackScale <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#364" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  addSpeedPackScale ( <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">scale</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AIAimTrace-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AIAimTrace <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#492" class="small">Source code</a></h4>
+<div class="declaration">final native final <span class="source_type">function</span> <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> AIAimTrace ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">hitLocation</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> hitNormal, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> traceStart, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> traceEnd )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_aimTrace-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> aimTrace <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#491" class="small">Source code</a></h4>
+<div class="declaration">final native final <span class="source_type">function</span>  aimTrace ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">hitLocation</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> traceStart, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> traceDirection )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_allowPrompt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> allowPrompt <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#326" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> allowPrompt ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> potentialOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_altFire-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> altFire <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#395" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> altFire ( optional <span class="source_type">bool</span> _fireOnce) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_applyPickupDelay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> applyPickupDelay <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#127" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  applyPickupDelay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_attemptFire-FirePressed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> attemptFire <span class="function_state">FirePressed</span> <a href="../Source_gameplay/weapon.html#652" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  attemptFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Dropped" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Dropped</span> <a href="../Source_gameplay/weapon.html#741" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-FirePressed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">FirePressed</span> <a href="../Source_gameplay/weapon.html#622" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-FireReleased" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">FireReleased</span> <a href="../Source_gameplay/weapon.html#711" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Held" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Held</span> <a href="../Source_gameplay/weapon.html#725" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Idle" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Idle</span> <a href="../Source_gameplay/weapon.html#460" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_calcProjectileSpawnLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> calcProjectileSpawnLocation <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#405" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> calcProjectileSpawnLocation ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> fireRot) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canExpire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canExpire <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#198" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> canExpire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canFire <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#293" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> canFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_canPickup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> canPickup <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#298" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> canPickup ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> potentialOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Destroyed <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#79" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_doSwitch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> doSwitch <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#203" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  doSwitch ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> newOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_drawDebug-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> drawDebug <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#790" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  drawDebug ( <span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span> debugHUD )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_droppedByCharacter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> droppedByCharacter <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#733" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  droppedByCharacter ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Idle" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Idle</span> <a href="../Source_gameplay/weapon.html#468" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_extractFirstPersonMeshData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> extractFirstPersonMeshData <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#110" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  extractFirstPersonMeshData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fire-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> fire <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#388" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> fire ( optional <span class="source_type">bool</span> _fireOnce) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_firedEffectProcessing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> firedEffectProcessing <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#568" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  firedEffectProcessing ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FireEmpty-Empty" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FireEmpty <span class="function_state">Empty</span> <a href="../Source_gameplay/weapon.html#670" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  FireEmpty ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_fireRatePassed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> fireRatePassed <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#359" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> fireRatePassed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FireWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FireWeapon <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#543" class="small">Source code</a></h4>
+<div class="declaration">simulated protected <span class="source_type">function</span>  FireWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getAimAdjustedViewRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getAimAdjustedViewRotation <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#508" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> getAimAdjustedViewRotation ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> pc, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> fireLoc) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getAimRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getAimRotation <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#494" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> getAimRotation ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> fireLoc) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getMaxAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getMaxAmmo <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#258" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> getMaxAmmo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getPredictedProjectileGravity-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getPredictedProjectileGravity <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#792" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">float</span> getPredictedProjectileGravity ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetProjectileSpreadScale-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetProjectileSpreadScale <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#785" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">float</span> GetProjectileSpreadScale ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_handleReleaseFire-Empty" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> handleReleaseFire <span class="function_state">Empty</span> <a href="../Source_gameplay/weapon.html#664" class="small">Source code</a></h4>
+<div class="declaration">simulated protected <span class="source_type">function</span> <span class="source_type">bool</span> handleReleaseFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hasAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> hasAmmo <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#287" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> hasAmmo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_heldByCharacter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> heldByCharacter <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#717" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  heldByCharacter ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_increaseAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> increaseAmmo <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#225" class="small">Source code</a></h4>
+<div class="declaration">final <span class="source_type">function</span> <span class="source_type">int</span> increaseAmmo ( <span class="source_type">int</span> quantity) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initialiseVelocity-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> initialiseVelocity <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#410" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  initialiseVelocity ( <span class="source_type"><a href="../gameplay/projectile.html" class="source">Projectile</a></span> <span class="source_type">p</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> InitialVelocity) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_makeProjectile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> makeProjectile <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#418" class="small">Source code</a></h4>
+<div class="declaration">protected <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/projectile.html" class="source">Projectile</a></span> makeProjectile ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> fireRot, <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> fireLoc) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_needPrompt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> needPrompt <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#320" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> needPrompt ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> potentialOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onThirdPersonFireCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onThirdPersonFireCount <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#377" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  onThirdPersonFireCount ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_pickup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> pickup <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#331" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  pickup ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> newOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playCharacterFireAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> playCharacterFireAnim <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#528" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  playCharacterFireAnim ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playEquipAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> playEquipAnim <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#755" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  playEquipAnim ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playIdleAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> playIdleAnim <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#475" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  playIdleAnim ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playPostFireAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> playPostFireAnim <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#605" class="small">Source code</a></h4>
+<div class="declaration">simulated protected <span class="source_type">function</span>  playPostFireAnim ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playUnequipAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> playUnequipAnim <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#770" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  playUnequipAnim ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#87" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetReceive <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#133" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrecacheWeaponRenderData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PrecacheWeaponRenderData <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#843" class="small">Source code</a></h4>
+<div class="declaration">static simulated <span class="source_type">function</span>  PrecacheWeaponRenderData ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">Level</span>, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/weapon.html" class="source">Weapon</a></span>&gt; <span class="source_type">WeaponClass</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_releaseAltFire-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> releaseAltFire <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#400" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> releaseAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_removeSpeedPackScale-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> removeSpeedPackScale <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#370" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  removeSpeedPackScale ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_requestEquipmentDrop-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> requestEquipmentDrop <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#172" class="small">Source code</a></h4>
+<div class="declaration">protected <span class="source_type">function</span>  requestEquipmentDrop ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setHasAmmoSkins-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setHasAmmoSkins <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#275" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  setHasAmmoSkins ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setOutOfAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setOutOfAmmo <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#280" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  setOutOfAmmo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setupFirstPerson-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setupFirstPerson <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#120" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  setupFirstPerson ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-Empty" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state">Empty</span> <a href="../Source_gameplay/weapon.html#683" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-FirePressed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state">FirePressed</span> <a href="../Source_gameplay/weapon.html#627" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  <span class="source_type">Tick</span> ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TickFirePressed-FirePressed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TickFirePressed <span class="function_state">FirePressed</span> <a href="../Source_gameplay/weapon.html#637" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  TickFirePressed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TriggerWeaponEffect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TriggerWeaponEffect <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#66" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">bool</span> TriggerWeaponEffect ( <span class="source_type">name</span> EffectEvent) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdatePrecacheRenderData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdatePrecacheRenderData <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#858" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  UpdatePrecacheRenderData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_useAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> useAmmo <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#264" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  useAmmo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_willHurtFriendly-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> willHurtFriendly <span class="function_state"></span> <a href="../Source_gameplay/weapon.html#805" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> willHurtFriendly ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">hitLocation</span>, <span class="source_type">float</span> <span class="source_type">timeToHit</span>, <span class="source_type">bool</span> <span class="source_type">bDoObstacleCheck</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bNetNotify = true
+
+	bNoRepMesh = true	
+
+	bCanDrop = true
+
+	triggeredBy = <span class="source_string">"all"</span>
+
+	AIAccelerationModifier = <span class="source_int">1.0</span>
+
+	roundsPerSecond = <span class="source_int">0.5</span>
+	ammoCount = <span class="source_int">20</span>
+	ammoUsage = <span class="source_int">1</span>
+
+	localAmmoCount = <span class="source_int">99999999</span>
+
+	speedPackScale = <span class="source_int">1.0</span>
+
+	<span class="source_type">projectileClass</span> = <span class="source_type">class</span><span class="source_name">'Projectile'</span>
+	projectileSpawnBone = Muzzle
+	projectileVelocity = <span class="source_int">2500</span>
+
+	<span class="source_type"><a href="../tribesgui/hudreticule.html" class="source">hudReticule</a></span>			= <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span><span class="source_name">'HUD.ReticuleDirect'</span>
+	hudReticuleWidth	= <span class="source_int">128</span>
+	hudReticuleHeight	= <span class="source_int">128</span>
+	hudReticuleCenterX	= <span class="source_int">64</span>
+	hudReticuleCenterY	= <span class="source_int">64</span>
+
+	fireAnimation		= Fire
+
+	bGenerateMissSpeechEvents = true
+
+	prompt				= <span class="source_string">"Press '%1' to swap your %2 for a %3."</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/weapon.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Weapon">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/vehiclespawnpoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/worldtexscaler.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:39.138 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

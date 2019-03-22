@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.Door</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/door.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Door">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/deployedturretsentryweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/doorsensor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/door.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/door.html">Door</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// An actual door object that opens and closes
+</span><a name="2"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/door.html" class="source">Door</a></span> extends <span class="source_type"><a href="../engine/mover.html" class="source">Mover</a></span> implements <span class="source_type"><a href="../engine/pathfindingobstacle.html" class="source">PathfindingObstacle</a></span>;
+<a name="3"></a>
+<a name="4"></a>var()	editdisplay(displayActorLabel)
+<a name="5"></a>		editcombotype(enumBaseInfo)
+<a name="6"></a>		<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span>	ownerBase				<span class="source_string">"baseInfo that this door belongs to"</span>;
+<a name="7"></a>var()	<span class="source_type">bool</span>		bLocked					<span class="source_string">"Whether the door is able to be opened or not"</span>;
+<a name="8"></a>var()	<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>	lockedMaterial			<span class="source_string">"The mesh's standard material defines the material displayed when the door is unlocked; use this variable to set the material displayed when the door is locked"</span>;
+<a name="9"></a>var()	<span class="source_type">int</span>			lockedMaterialIndex		<span class="source_string">"The index of the material to change on the door when it is locked (typically 0)"</span>;
+<a name="10"></a>
+<a name="11"></a>var <span class="source_type">bool</span>		bOldLocked;
+<a name="12"></a>var <span class="source_type">bool</span>		bBumped;
+<a name="13"></a>var <span class="source_type">bool</span>		bCanClose;
+<a name="14"></a>var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>	unlockedMaterial;
+<a name="15"></a>var <span class="source_type">bool</span>		bWasPowered;
+<a name="16"></a>var <span class="source_type">bool</span>		bPowered;
+<a name="17"></a>var <span class="source_type">bool</span>		bUsesPower;
+<a name="18"></a>var <span class="source_type"><a href="../gameplay/doorsensor.html" class="source">DoorSensor</a></span>	<span class="source_type"><a href="../gameplay/doorsensor.html" class="source">doorSensor</a></span>;
+<a name="19"></a>
+<a name="20"></a>replication
+<a name="21"></a>{
+<a name="22"></a>	reliable if (Role == ROLE_Authority)
+<a name="23"></a>		bLocked;
+<a name="24"></a>}
+<a name="25"></a>
+<a name="26"></a><span class="source_comment">// enumBaseInfo
+</span><a name="27"></a><span class="source_type">function</span> enumBaseInfo(<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> l, Array&lt;<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span>&gt; <span class="source_type">a</span>)
+<a name="28"></a>{
+<a name="29"></a>	local <span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span> <span class="source_type">b</span>;
+<a name="30"></a>
+<a name="31"></a>	ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'BaseInfo'</span>, <span class="source_type">b</span>)
+<a name="32"></a>	{
+<a name="33"></a>		<span class="source_type">a</span>[<span class="source_type">a</span>.length] = <span class="source_type">b</span>;
+<a name="34"></a>	}
+<a name="35"></a>}
+<a name="36"></a>
+<a name="37"></a><span class="source_comment">// displayActorLabel
+</span><a name="38"></a><span class="source_type">function</span> <span class="source_type">string</span> displayActorLabel(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">t</span>)
+<a name="39"></a>{
+<a name="40"></a>	return <span class="source_type">string</span>(<span class="source_type">t</span>.label);
+<a name="41"></a>}
+<a name="42"></a>
+<a name="43"></a><span class="source_comment">// PostBeginPlay
+</span><a name="44"></a><span class="source_type">function</span> PostBeginPlay()
+<a name="45"></a>{
+<a name="46"></a>	Super.PostBeginPlay();
+<a name="47"></a>
+<a name="48"></a>	<span class="source_comment">// construct sensor if required
+</span><a name="49"></a>	if (initialState == <span class="source_name">'SensorControlled'</span>)
+<a name="50"></a>	{
+<a name="51"></a>		<span class="source_type"><a href="../gameplay/doorsensor.html" class="source">doorSensor</a></span> = spawn(<span class="source_type">class</span><span class="source_name">'DoorSensor'</span>);
+<a name="52"></a>		<span class="source_type"><a href="../gameplay/doorsensor.html" class="source">doorSensor</a></span>.init(self);
+<a name="53"></a>	}
+<a name="54"></a>
+<a name="55"></a>	prevKeyNum = KeyNum;
+<a name="56"></a>	bOldLocked = bLocked;
+<a name="57"></a>	bCanClose = true;
+<a name="58"></a>
+<a name="59"></a>	unlockedMaterial = GetCurrentMaterial(lockedMaterialIndex);
+<a name="60"></a>	onLockedChange(bLocked);
+<a name="61"></a>}
+<a name="62"></a>
+<a name="63"></a><span class="source_comment">// isPowered
+</span><a name="64"></a><span class="source_comment">//
+</span><a name="65"></a><span class="source_comment">// If the door does not have a base defined, then it
+</span><a name="66"></a><span class="source_comment">// is always powered, otherwise power depends on the base
+</span><a name="67"></a><span class="source_type">function</span> <span class="source_type">bool</span> isPowered()
+<a name="68"></a>{
+<a name="69"></a>	if (!bUsesPower) 
+<a name="70"></a>		return true;
+<a name="71"></a>
+<a name="72"></a>	if(ownerBase == None)
+<a name="73"></a>		return true;
+<a name="74"></a>
+<a name="75"></a>	if(ownerBase.isPowered())
+<a name="76"></a>		return true;
+<a name="77"></a>
+<a name="78"></a>	return false;
+<a name="79"></a>}
+<a name="80"></a>
+<a name="81"></a><span class="source_comment">// Tick
+</span><a name="82"></a><span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="83"></a>{
+<a name="84"></a>	<span class="source_comment">// change the material if the locked/unlocked state changes
+</span><a name="85"></a>	if (bOldLocked != bLocked)
+<a name="86"></a>	{
+<a name="87"></a>		onLockedChange(bLocked);
+<a name="88"></a>		bOldLocked = bLocked;
+<a name="89"></a>	}
+<a name="90"></a>
+<a name="91"></a>	bPowered = isPowered();
+<a name="92"></a>	if(bPowered != bWasPowered && <span class="source_type"><a href="../gameplay/doorsensor.html" class="source">doorSensor</a></span> != None)
+<a name="93"></a>	{
+<a name="94"></a>		if(bPowered && ! bClosed && touching.Length &lt;= <span class="source_int">0</span>)
+<a name="95"></a>		{
+<a name="96"></a>			bCanClose = true;
+<a name="97"></a>			<span class="source_type"><a href="../gameplay/doorsensor.html" class="source">doorSensor</a></span>.SetTimer(StayOpenTime, false);
+<a name="98"></a>		}
+<a name="99"></a>	}
+<a name="100"></a>	bWasPowered = bPowered;
+<a name="101"></a>}
+<a name="102"></a>
+<a name="103"></a><span class="source_comment">// DoOpen
+</span><a name="104"></a><span class="source_type">function</span> DoOpen()
+<a name="105"></a>{
+<a name="106"></a>	if (!bLocked)
+<a name="107"></a>		Super.DoOpen();
+<a name="108"></a>}
+<a name="109"></a>
+<a name="110"></a><span class="source_comment">// onLockedChange
+</span><a name="111"></a><span class="source_type">function</span> onLockedChange(<span class="source_type">bool</span> bVal)
+<a name="112"></a>{
+<a name="113"></a>	if (bVal)
+<a name="114"></a>	{
+<a name="115"></a>		if (lockedMaterial != None)
+<a name="116"></a>			Skins[lockedMaterialIndex] = lockedMaterial;
+<a name="117"></a>	}
+<a name="118"></a>	else
+<a name="119"></a>	{
+<a name="120"></a>		if (unlockedMaterial != None)
+<a name="121"></a>			Skins[lockedMaterialIndex] = unlockedMaterial;
+<a name="122"></a>	}
+<a name="123"></a>}
+<a name="124"></a>
+<a name="125"></a><span class="source_comment">// SensorControlled
+</span><a name="126"></a><span class="source_comment">//
+</span><a name="127"></a><span class="source_comment">// The original default state was BumpOpenTimed. This state was added to have a way of explicitily 
+</span><a name="128"></a><span class="source_comment">// specifying a sensor controlled door. The rationale for deriving from BumpOpenTimed is that it was the
+</span><a name="129"></a><span class="source_comment">// default state prior to adding this one.
+</span><a name="130"></a>state SensorControlled extends BumpOpenTimed
+<a name="131"></a>{
+<a name="132"></a>	<span class="source_comment">// dont disable the trigger, we want the door 
+</span><a name="133"></a>	<span class="source_comment">// to open if it is in the closing state
+</span><a name="134"></a>	<span class="source_type">function</span> DisableTrigger();
+<a name="135"></a>
+<a name="136"></a>	<span class="source_comment">// Pulled straight from BumpOpenTimed, and modified to 
+</span><a name="137"></a>	<span class="source_comment">// go to the SensorControlled state rather than BumpOpenTimed
+</span><a name="138"></a>	<span class="source_type">function</span> Bump( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span> )
+<a name="139"></a>	{
+<a name="140"></a>		if (!bOpening && !bDelaying)
+<a name="141"></a>		{
+<a name="142"></a>			if ( (BumpType != BT_AnyBump) && (<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Other</span>) == None) )
+<a name="143"></a>				return;
+<a name="144"></a>			if ( (BumpType == BT_PlayerBump) && !<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Other</span>).IsPlayerPawn() )
+<a name="145"></a>				return;
+<a name="146"></a>			if ( (BumpType == BT_PawnBump) && (<span class="source_type">Other</span>.Mass &lt; <span class="source_int">10</span>) )
+<a name="147"></a>				return;
+<a name="148"></a>			Global.Bump( <span class="source_type">Other</span> );
+<a name="149"></a>			SavedTrigger = None;
+<a name="150"></a>			Instigator = <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Other</span>);
+<a name="151"></a>			<span class="source_comment">// DLB Controller clean pass: removed AI logic Instigator.Controller.WaitForMover(self);
+</span><a name="152"></a>			GotoState( <span class="source_name">'SensorControlled'</span>, <span class="source_name">'Open'</span> );
+<a name="153"></a>		}
+<a name="154"></a>	}
+<a name="155"></a>}
+<a name="156"></a>
+<a name="157"></a><span class="source_type">function</span> <span class="source_type">bool</span> canBePassed(<span class="source_type">name</span> teamName)
+<a name="158"></a>{
+<a name="159"></a>	if(! isPowered())
+<a name="160"></a>	{
+<a name="161"></a>		if(bClosed)
+<a name="162"></a>			return false;
+<a name="163"></a>		else
+<a name="164"></a>			return true;
+<a name="165"></a>	}
+<a name="166"></a>
+<a name="167"></a>	<span class="source_comment">// if this is a trigger controlled door it can only be passed if opened
+</span><a name="168"></a>	if ((InitialState == <span class="source_name">'TriggerToggle'</span>) || (InitialState == <span class="source_name">'TriggerControl'</span>))
+<a name="169"></a>		return !bClosed;
+<a name="170"></a>
+<a name="171"></a>	<span class="source_comment">// if this is a sensor controlled door it can only be passed if unlocked
+</span><a name="172"></a>	if (InitialState == <span class="source_name">'SensorControlled'</span>)
+<a name="173"></a>		return !bLocked;
+<a name="174"></a>
+<a name="175"></a>	warn(<span class="source_string">"door type not handled"</span>);
+<a name="176"></a>
+<a name="177"></a>	return true;
+<a name="178"></a>}
+<a name="179"></a>
+<a name="180"></a>defaultproperties
+<a name="181"></a>{
+<a name="182"></a>	MoverEncroachType		= ME_IgnoreWhenEncroach
+<a name="183"></a>	InitialState			= SensorControlled
+<a name="184"></a>
+<a name="185"></a>	bProjTarget	= true
+<a name="186"></a>	bUsesPower	= false
+<a name="187"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/door.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Door">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/deployedturretsentryweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/doorsensor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:16.000 - Creation time: st 23.5.2018 00:10:43.148 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

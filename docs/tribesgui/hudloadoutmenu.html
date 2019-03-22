@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.HUDLoadoutMenu</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/hudloadoutmenu.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HUDLoadoutMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/hudlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/hudloadoutmenuitem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/hudloadoutmenu.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.HUDLoadoutMenu</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tribesgui/hudcontainer.html">HUDContainer</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a>
+   |   
+   +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a>
+      |   
+      +-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudloadoutmenu.html">HUDLoadoutMenu</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudloadoutmenu.html">HUDLoadoutMenu</a></td><td width="66%"><a href="#_activeChildMenu" name="activeChildMenu" title="go to the details">activeChildMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_animatePosX" name="animatePosX" title="go to the details">animatePosX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_animatePosY" name="animatePosY" title="go to the details">animatePosY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_animateProgress" name="animateProgress" title="go to the details">animateProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_animateStartTime" name="animateStartTime" title="go to the details">animateStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/loadoutmenu.html">LoadoutMenu</a></td><td width="66%"><a href="#_menu" name="menu" title="go to the details">menu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudloadoutmenu.html#EOpeningState">EOpeningState</a></td><td width="66%"><a href="#_menuState" name="menuState" title="go to the details">menuState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/hudloadoutmenu.html">HUDLoadoutMenu</a></td><td width="66%"><a href="#_parentMenu" name="parentMenu" title="go to the details">parentMenu</a></td></tr>
+<tr><th colspan="2" class="small">HUDLoadoutMenu</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_animateTime" name="animateTime" title="go to the details">animateTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GutterX" name="GutterX" title="go to the details">GutterX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_GutterY" name="GutterY" title="go to the details">GutterY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numColumns" name="numColumns" title="go to the details">numColumns</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numRows" name="numRows" title="go to the details">numRows</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudcontainer.html#children">children</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#alpha">alpha</a>, <a href="../tribesgui/hudelement.html#aspectRatio">aspectRatio</a>, <a href="../tribesgui/hudelement.html#backgroundTexture">backgroundTexture</a>, <a href="../tribesgui/hudelement.html#BaseScript">BaseScript</a>, <a href="../tribesgui/hudelement.html#bFlashing">bFlashing</a>, <a href="../tribesgui/hudelement.html#bIsLayingOut">bIsLayingOut</a>, <a href="../tribesgui/hudelement.html#bNeedsLayout">bNeedsLayout</a>, <a href="../tribesgui/hudelement.html#borderBottom">borderBottom</a>, <a href="../tribesgui/hudelement.html#borderLeft">borderLeft</a>, <a href="../tribesgui/hudelement.html#borderRight">borderRight</a>, <a href="../tribesgui/hudelement.html#borderTop">borderTop</a>, <a href="../tribesgui/hudelement.html#bRelativePositioning">bRelativePositioning</a>, <a href="../tribesgui/hudelement.html#bRenderedOnce">bRenderedOnce</a>, <a href="../tribesgui/hudelement.html#bUseResFonts">bUseResFonts</a>, <a href="../tribesgui/hudelement.html#bVisible">bVisible</a>, <a href="../tribesgui/hudelement.html#defaultDrawColor">defaultDrawColor</a>, <a href="../tribesgui/hudelement.html#FlashAlphaMax">FlashAlphaMax</a>, <a href="../tribesgui/hudelement.html#FlashAlphaMin">FlashAlphaMin</a>, <a href="../tribesgui/hudelement.html#FlashDuration">FlashDuration</a>, <a href="../tribesgui/hudelement.html#FlashPeriod">FlashPeriod</a>, <a href="../tribesgui/hudelement.html#FlashStartTime">FlashStartTime</a>, <a href="../tribesgui/hudelement.html#FlashSwitchTime">FlashSwitchTime</a>, <a href="../tribesgui/hudelement.html#foregroundTexture">foregroundTexture</a>, <a href="../tribesgui/hudelement.html#Height">Height</a>, <a href="../tribesgui/hudelement.html#HelpFont">HelpFont</a>, <a href="../tribesgui/hudelement.html#HelpFontName">HelpFontName</a>, <a href="../tribesgui/hudelement.html#HelpLabel">HelpLabel</a>, <a href="../tribesgui/hudelement.html#horizontalAlignment">horizontalAlignment</a>, <a href="../tribesgui/hudelement.html#horizontalFill">horizontalFill</a>, <a href="../tribesgui/hudelement.html#iniOverride">iniOverride</a>, <a href="../tribesgui/hudelement.html#initialHeight">initialHeight</a>, <a href="../tribesgui/hudelement.html#initialPosX">initialPosX</a>, <a href="../tribesgui/hudelement.html#initialPosY">initialPosY</a>, <a href="../tribesgui/hudelement.html#initialWidth">initialWidth</a>, <a href="../tribesgui/hudelement.html#insetX">insetX</a>, <a href="../tribesgui/hudelement.html#insetY">insetY</a>, <a href="../tribesgui/hudelement.html#LocalData">LocalData</a>, <a href="../tribesgui/hudelement.html#nextSibling">nextSibling</a>, <a href="../tribesgui/hudelement.html#offsetX">offsetX</a>, <a href="../tribesgui/hudelement.html#offsetY">offsetY</a>, <a href="../tribesgui/hudelement.html#ParentElement">ParentElement</a>, <a href="../tribesgui/hudelement.html#posX">posX</a>, <a href="../tribesgui/hudelement.html#posY">posY</a>, <a href="../tribesgui/hudelement.html#previousSibling">previousSibling</a>, <a href="../tribesgui/hudelement.html#RelativeHeight">RelativeHeight</a>, <a href="../tribesgui/hudelement.html#RelativePosX">RelativePosX</a>, <a href="../tribesgui/hudelement.html#RelativePosY">RelativePosY</a>, <a href="../tribesgui/hudelement.html#RelativeWidth">RelativeWidth</a>, <a href="../tribesgui/hudelement.html#resFontNames">resFontNames</a>, <a href="../tribesgui/hudelement.html#resFonts">resFonts</a>, <a href="../tribesgui/hudelement.html#screenHeight">screenHeight</a>, <a href="../tribesgui/hudelement.html#screenWidth">screenWidth</a>, <a href="../tribesgui/hudelement.html#TargetAlpha">TargetAlpha</a>, <a href="../tribesgui/hudelement.html#textColor">textColor</a>, <a href="../tribesgui/hudelement.html#textFont">textFont</a>, <a href="../tribesgui/hudelement.html#textFontName">textFontName</a>, <a href="../tribesgui/hudelement.html#timeSeconds">timeSeconds</a>, <a href="../tribesgui/hudelement.html#verticalAlignment">verticalAlignment</a>, <a href="../tribesgui/hudelement.html#verticalFill">verticalFill</a>, <a href="../tribesgui/hudelement.html#Width">Width</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EOpeningState" name="EOpeningState" title="go to the details">EOpeningState</a><br /><span class="small">STATE_Opening,
+STATE_Open,
+STATE_Closing,
+STATE_Closed</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#EHorizontalAlignment">EHorizontalAlignment</a>, <a href="../tribesgui/hudelement.html#EHorizontalFill">EHorizontalFill</a>, <a href="../tribesgui/hudelement.html#ELayoutDirection">ELayoutDirection</a>, <a href="../tribesgui/hudelement.html#EVerticalAlignment">EVerticalAlignment</a>, <a href="../tribesgui/hudelement.html#EVerticalFill">EVerticalFill</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#HUDMaterial">HUDMaterial</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CancelAll-" name="CancelAll" title="go to the details">CancelAll</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CloseMenu-" name="CloseMenu" title="go to the details">CloseMenu</a> (optional <a href="../tribesgui/hudloadoutmenuitem.html">HUDLoadoutMenuItem</a> trigger))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoLayout-" name="DoLayout" title="go to the details">DoLayout</a> (<a href="../engine/canvas.html">Canvas</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tribesgui/hudloadoutmenu.html">HUDLoadoutMenu</a>&nbsp;</td><td><a href="#_GetRootMenu-" name="GetRootMenu" title="go to the details">GetRootMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitMenu-" name="InitMenu" title="go to the details">InitMenu</a> (<a href="../tribesgui/loadoutmenu.html">LoadoutMenu</a> menuObject, <a href="../tribesgui/hudloadoutmenu.html">HUDLoadoutMenu</a> parent, <a href="../tribesgui/hudcontainer.html">HUDContainer</a> parentContainer))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyEvent-" name="KeyEvent" title="go to the details">KeyEvent</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> Key, <a href="../engine/interactions.html#EInputAction">EInputAction</a> Action, FLOAT Delta, HUDAction Response ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OpenMenu-" name="OpenMenu" title="go to the details">OpenMenu</a> (optional <a href="../tribesgui/hudloadoutmenuitem.html">HUDLoadoutMenuItem</a> trigger))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshData-" name="RefreshData" title="go to the details">RefreshData</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudcontainer.html">HUDContainer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudcontainer.html#AddClonedElement">AddClonedElement</a>, <a href="../tribesgui/hudcontainer.html#AddElement">AddElement</a>, <a href="../tribesgui/hudcontainer.html#AddExistingElement">AddExistingElement</a>, <a href="../tribesgui/hudcontainer.html#ElementAdded">ElementAdded</a>, <a href="../tribesgui/hudcontainer.html#ElementRemoved">ElementRemoved</a>, <a href="../tribesgui/hudcontainer.html#ForceNeedsLayout">ForceNeedsLayout</a>, <a href="../tribesgui/hudcontainer.html#HasElement">HasElement</a>, <a href="../tribesgui/hudcontainer.html#InitElementHeirachy">InitElementHeirachy</a>, <a href="../tribesgui/hudcontainer.html#RemoveAll">RemoveAll</a>, <a href="../tribesgui/hudcontainer.html#RemoveElementAt">RemoveElementAt</a>, <a href="../tribesgui/hudcontainer.html#SetAlpha">SetAlpha</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/hudelement.html">HUDElement</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tribesgui/hudelement.html#Construct">Construct</a>, <a href="../tribesgui/hudelement.html#CreateClonedElement">CreateClonedElement</a>, <a href="../tribesgui/hudelement.html#CreateHUDElement">CreateHUDElement</a>, <a href="../tribesgui/hudelement.html#DoLayout">DoLayout</a>, <a href="../tribesgui/hudelement.html#EncodeColor">EncodeColor</a>, <a href="../tribesgui/hudelement.html#EncodePlayerName">EncodePlayerName</a>, <a href="../tribesgui/hudelement.html#FlashElement">FlashElement</a>, <a href="../tribesgui/hudelement.html#ForceNeedsLayout">ForceNeedsLayout</a>, <a href="../tribesgui/hudelement.html#GetAlpha">GetAlpha</a>, <a href="../tribesgui/hudelement.html#GetHeight">GetHeight</a>, <a href="../tribesgui/hudelement.html#GetMaximumRelativeX">GetMaximumRelativeX</a>, <a href="../tribesgui/hudelement.html#GetMaximumRelativeY">GetMaximumRelativeY</a>, <a href="../tribesgui/hudelement.html#GetMaximumX">GetMaximumX</a>, <a href="../tribesgui/hudelement.html#GetMaximumY">GetMaximumY</a>, <a href="../tribesgui/hudelement.html#GetScreenPos">GetScreenPos</a>, <a href="../tribesgui/hudelement.html#GetWidth">GetWidth</a>, <a href="../tribesgui/hudelement.html#GetX">GetX</a>, <a href="../tribesgui/hudelement.html#GetY">GetY</a>, <a href="../tribesgui/hudelement.html#InitElement">InitElement</a>, <a href="../tribesgui/hudelement.html#InitElementHeirachy">InitElementHeirachy</a>, <a href="../tribesgui/hudelement.html#InternalHeight">InternalHeight</a>, <a href="../tribesgui/hudelement.html#InternalLeft">InternalLeft</a>, <a href="../tribesgui/hudelement.html#InternalTop">InternalTop</a>, <a href="../tribesgui/hudelement.html#InternalWidth">InternalWidth</a>, <a href="../tribesgui/hudelement.html#KeyEvent">KeyEvent</a>, <a href="../tribesgui/hudelement.html#KeyType">KeyType</a>, <a href="../tribesgui/hudelement.html#Layout">Layout</a>, <a href="../tribesgui/hudelement.html#LoadConfig">LoadConfig</a>, <a href="../tribesgui/hudelement.html#LoadFont">LoadFont</a>, <a href="../tribesgui/hudelement.html#LoadFonts">LoadFonts</a>, <a href="../tribesgui/hudelement.html#MakeHUDMaterial">MakeHUDMaterial</a>, <a href="../tribesgui/hudelement.html#MaterialHeight">MaterialHeight</a>, <a href="../tribesgui/hudelement.html#MaterialWidth">MaterialWidth</a>, <a href="../tribesgui/hudelement.html#NativeRenderElement">NativeRenderElement</a>, <a href="../tribesgui/hudelement.html#OnMouseClicked">OnMouseClicked</a>, <a href="../tribesgui/hudelement.html#OnMouseDoubleClicked">OnMouseDoubleClicked</a>, <a href="../tribesgui/hudelement.html#OnMouseEntered">OnMouseEntered</a>, <a href="../tribesgui/hudelement.html#OnMouseExited">OnMouseExited</a>, <a href="../tribesgui/hudelement.html#PointInElement">PointInElement</a>, <a href="../tribesgui/hudelement.html#PointInRegion">PointInRegion</a>, <a href="../tribesgui/hudelement.html#Render">Render</a>, <a href="../tribesgui/hudelement.html#RenderElement">RenderElement</a>, <a href="../tribesgui/hudelement.html#RenderHUDMaterial">RenderHUDMaterial</a>, <a href="../tribesgui/hudelement.html#ResetFont">ResetFont</a>, <a href="../tribesgui/hudelement.html#ResetHUDMaterial">ResetHUDMaterial</a>, <a href="../tribesgui/hudelement.html#ResizeForWidth">ResizeForWidth</a>, <a href="../tribesgui/hudelement.html#RootHUDScript">RootHUDScript</a>, <a href="../tribesgui/hudelement.html#SetAlpha">SetAlpha</a>, <a href="../tribesgui/hudelement.html#SetColor">SetColor</a>, <a href="../tribesgui/hudelement.html#SetHeight">SetHeight</a>, <a href="../tribesgui/hudelement.html#SetNeedsLayout">SetNeedsLayout</a>, <a href="../tribesgui/hudelement.html#SetWidth">SetWidth</a>, <a href="../tribesgui/hudelement.html#SetX">SetX</a>, <a href="../tribesgui/hudelement.html#SetY">SetY</a>, <a href="../tribesgui/hudelement.html#StaticCreateHUDElement">StaticCreateHUDElement</a>, <a href="../tribesgui/hudelement.html#UpdateData">UpdateData</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_activeChildMenu" class="hidden"></a>activeChildMenu <a href="../Source_tribesgui/hudloadoutmenu.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span> activeChildMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_animatePosX" class="hidden"></a>animatePosX <a href="../Source_tribesgui/hudloadoutmenu.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> animatePosX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_animatePosY" class="hidden"></a>animatePosY <a href="../Source_tribesgui/hudloadoutmenu.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> animatePosY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_animateProgress" class="hidden"></a>animateProgress <a href="../Source_tribesgui/hudloadoutmenu.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> animateProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_animateStartTime" class="hidden"></a>animateStartTime <a href="../Source_tribesgui/hudloadoutmenu.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> animateStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_menu" class="hidden"></a>menu <a href="../Source_tribesgui/hudloadoutmenu.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/loadoutmenu.html" class="source">LoadoutMenu</a></span> menu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_menuState" class="hidden"></a>menuState <a href="../Source_tribesgui/hudloadoutmenu.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudloadoutmenu.html#EOpeningState" class="source">EOpeningState</a></span> menuState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_parentMenu" class="hidden"></a>parentMenu <a href="../Source_tribesgui/hudloadoutmenu.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span> parentMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HUDLoadoutMenu</h3>
+<h4><a name="_animateTime" class="hidden"></a>animateTime <a href="../Source_tribesgui/hudloadoutmenu.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span>) config <span class="source_type">float</span> animateTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GutterX" class="hidden"></a>GutterX <a href="../Source_tribesgui/hudloadoutmenu.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span>) config <span class="source_type">float</span> GutterX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GutterY" class="hidden"></a>GutterY <a href="../Source_tribesgui/hudloadoutmenu.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span>) config <span class="source_type">float</span> GutterY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_numColumns" class="hidden"></a>numColumns <a href="../Source_tribesgui/hudloadoutmenu.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span>) config <span class="source_type">int</span> numColumns;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_numRows" class="hidden"></a>numRows <a href="../Source_tribesgui/hudloadoutmenu.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span>) config <span class="source_type">int</span> numRows;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EOpeningState" class="hidden"></a>EOpeningState <a href="../Source_tribesgui/hudloadoutmenu.html#6" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../tribesgui/hudloadoutmenu.html#EOpeningState" class="source">EOpeningState</a></span><br />
+{<blockquote>STATE_Opening,
+STATE_Open,
+STATE_Closing,
+STATE_Closed</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CancelAll-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CancelAll <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#190" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CancelAll ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CloseMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CloseMenu <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#77" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  CloseMenu ( optional <span class="source_type"><a href="../tribesgui/hudloadoutmenuitem.html" class="source">HUDLoadoutMenuItem</a></span> <span class="source_type"><a href="../engine/trigger.html" class="source">trigger</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoLayout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoLayout <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#96" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  DoLayout ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRootMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRootMenu <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#182" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span> GetRootMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitMenu <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#31" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitMenu ( <span class="source_type"><a href="../tribesgui/loadoutmenu.html" class="source">LoadoutMenu</a></span> menuObject, <span class="source_type"><a href="../tribesgui/hudloadoutmenu.html" class="source">HUDLoadoutMenu</a></span> <span class="source_type">parent</span>, <span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span> parentContainer) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyEvent <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#201" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> KeyEvent ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type"><a href="../gameplay/key.html" class="source">Key</a></span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type"><a href="../scripting/action.html" class="source">Action</a></span>, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span>, <span class="source_type"><a href="../tribesgui/hudaction.html" class="source">HUDAction</a></span> <span class="source_type">Response</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OpenMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OpenMenu <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#55" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OpenMenu ( optional <span class="source_type"><a href="../tribesgui/hudloadoutmenuitem.html" class="source">HUDLoadoutMenuItem</a></span> <span class="source_type"><a href="../engine/trigger.html" class="source">trigger</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshData <span class="function_state"></span> <a href="../Source_tribesgui/hudloadoutmenu.html#47" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RefreshData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	animateTime=<span class="source_int">0.7</span>
+	bVisible = false
+	GutterX = <span class="source_int">10</span>
+	GutterY = <span class="source_int">10</span>
+
+	numRows = <span class="source_int">3</span>
+	numColumns = <span class="source_int">3</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/hudloadoutmenu.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HUDLoadoutMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/hudlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/hudloadoutmenuitem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:31.002 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

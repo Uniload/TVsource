@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.RocketPodProjectile</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/rocketpodprojectile.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#RocketPodProjectile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/rocketpod.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/rook.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/rocketpodprojectile.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rocketpodprojectile.html">RocketPodProjectile</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/rocketpodprojectile.html" class="source">RocketPodProjectile</a></span> extends <span class="source_type"><a href="../gameplay/explosiveprojectile.html" class="source">ExplosiveProjectile</a></span>;
+<a name="2"></a>
+<a name="3"></a>var		<span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>	xAxis, yAxis, zAxis;	<span class="source_comment">// The player's view axes
+</span><a name="4"></a>
+<a name="5"></a>struct <span class="source_type"><a href="../gameplay/rocketpodprojectile.html#InitVec" class="source">InitVec</a></span>
+<a name="6"></a>{
+<a name="7"></a>	var <span class="source_type">float</span> X, <span class="source_type">Y</span>, Z;
+<a name="8"></a>};
+<a name="9"></a>
+<a name="10"></a>var		<span class="source_type"><a href="../gameplay/rocketpodprojectile.html#InitVec" class="source">InitVec</a></span>	initialZAxis;
+<a name="11"></a>
+<a name="12"></a>var		<span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>	rotationVec;			<span class="source_comment">// The vector towards which the projectile velocity needs to be rotated
+</span><a name="13"></a>var		<span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>	prevRotationVec;
+<a name="14"></a>
+<a name="15"></a>var		<span class="source_type">float</span>	<span class="source_type">offset</span>;					<span class="source_comment">// The offset from the players view vector
+</span><a name="16"></a>var		<span class="source_type">float</span>	offsetVecAngle;			<span class="source_comment">// The angle of the offset vector (the offset vector is the z axis of the players view
+</span><a name="17"></a>var()	<span class="source_type">float</span>	spiralRate				<span class="source_string">"The rate, in degrees, at which the projectiles rotate around each other"</span>; <span class="source_comment">// Converted to radians at run time
+</span><a name="18"></a>
+<a name="19"></a>var		<span class="source_type">bool</span>	armed;					<span class="source_comment">// Set to true after the armingPeriod has expired
+</span><a name="20"></a>var()	<span class="source_type">float</span>	armingPeriod			<span class="source_string">"The period after which the projectile will become armed"</span>;
+<a name="21"></a>
+<a name="22"></a>var()	<span class="source_type">float</span>	spreadRadius			<span class="source_string">"The radius to which the projectile will spread out to after launch"</span>;
+<a name="23"></a>var()	<span class="source_type">float</span>	spreadPeriod			<span class="source_string">"The amount of time it will take the projectile the reach the spreadRadius"</span>;
+<a name="24"></a>
+<a name="25"></a>var()	<span class="source_type">float</span>	convergeRadius			<span class="source_string">"The radius to which the projectile will converge in to after spreadRadius is reached"</span>;
+<a name="26"></a>var()	<span class="source_type">float</span>	convergePeriod			<span class="source_string">"The amount of time it will take the projectile the reach the convergeRadius"</span>;
+<a name="27"></a>
+<a name="28"></a>var()	<span class="source_type">float</span>	postSpreadVelocity		<span class="source_string">"The velocity the projectile will accelerate to after reaching the spreadRadius"</span>;
+<a name="29"></a>var()	<span class="source_type">float</span>	postSpreadAcceleration	<span class="source_string">"The rate at which the projectile will accelerate to postSpreadVelocity"</span>;
+<a name="30"></a>
+<a name="31"></a>var()	<span class="source_type">float</span>	maxAnglePerSecond		<span class="source_string">"Rate of turn in degrees"</span>; <span class="source_comment">// Converted to radians at run time
+</span><a name="32"></a>var()	<span class="source_type">float</span>	rotationModifier		<span class="source_string">"Modifier applied to the angle before rotation"</span>;
+<a name="33"></a>
+<a name="34"></a>var		<span class="source_type">float</span>	timeCounter;
+<a name="35"></a>
+<a name="36"></a>replication
+<a name="37"></a>{
+<a name="38"></a>	reliable if (Role == ROLE_Authority)
+<a name="39"></a>		rotationVec, initialZAxis;
+<a name="40"></a>}
+<a name="41"></a>
+<a name="42"></a>simulated <span class="source_type">function</span> PostBeginPlay()
+<a name="43"></a>{
+<a name="44"></a>	super.PostBeginPlay();
+<a name="45"></a>	SetTimer(armingPeriod, false);
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span>()
+<a name="49"></a>{
+<a name="50"></a>	armed = true;
+<a name="51"></a>}
+<a name="52"></a>
+<a name="53"></a>simulated <span class="source_type">function</span> endLife(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> HitActor, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchLocation, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> TouchNormal)
+<a name="54"></a>{
+<a name="55"></a>	if (armed)
+<a name="56"></a>	{
+<a name="57"></a>		Super.endLife(HitActor, TouchLocation, TouchNormal);
+<a name="58"></a>	}
+<a name="59"></a>	else
+<a name="60"></a>	{
+<a name="61"></a>		if (!bEndedLife)
+<a name="62"></a>			TriggerEffectEvent(<span class="source_name">'Dud'</span>, None, None, TouchLocation, <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span>(TouchNormal));
+<a name="63"></a>
+<a name="64"></a>		bEndedLife = true;
+<a name="65"></a>
+<a name="66"></a>		Destroy();
+<a name="67"></a>	}
+<a name="68"></a>}
+<a name="69"></a>
+<a name="70"></a>simulated <span class="source_type">function</span> Destroyed()
+<a name="71"></a>{
+<a name="72"></a>	UntriggerEffectEvent(<span class="source_name">'Jet'</span>);
+<a name="73"></a>	super.Destroyed();
+<a name="74"></a>}
+<a name="75"></a>
+<a name="76"></a>auto state Spread
+<a name="77"></a>{
+<a name="78"></a>	simulated <span class="source_type">function</span> BeginState()
+<a name="79"></a>	{
+<a name="80"></a>		maxAnglePerSecond = (maxAnglePerSecond / <span class="source_int">180.0</span>) * Pi; <span class="source_comment">// convert angle from degress to radians
+</span><a name="81"></a>		spiralRate = (spiralRate / <span class="source_int">180.0</span>) * Pi; <span class="source_comment">// convert angle from degress to radians
+</span><a name="82"></a>		timeCounter = <span class="source_int">0.0</span>;
+<a name="83"></a>	}
+<a name="84"></a>
+<a name="85"></a>	simulated <span class="source_type">function</span> spreadAlongAxis(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="86"></a>	{
+<a name="87"></a>		zAxis.X = initialZAxis.X;
+<a name="88"></a>		zAxis.<span class="source_type">Y</span> = initialZAxis.<span class="source_type">Y</span>;
+<a name="89"></a>		zAxis.Z = initialZAxis.Z;
+<a name="90"></a>
+<a name="91"></a>		Move(zAxis * (<span class="source_type">Delta</span> / spreadPeriod) * spreadRadius);
+<a name="92"></a>	}
+<a name="93"></a>
+<a name="94"></a>	simulated <span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="95"></a>	{
+<a name="96"></a>		if (timeCounter &lt; spreadPeriod)
+<a name="97"></a>		{
+<a name="98"></a>			spreadAlongAxis(<span class="source_type">Delta</span>);
+<a name="99"></a>			timeCounter += <span class="source_type">Delta</span>;
+<a name="100"></a>		}
+<a name="101"></a>		else
+<a name="102"></a>		{
+<a name="103"></a>			<span class="source_type">offset</span> = spreadRadius;
+<a name="104"></a>			GotoState(<span class="source_name">'Converge'</span>);
+<a name="105"></a>		}
+<a name="106"></a>	}
+<a name="107"></a>}
+<a name="108"></a>
+<a name="109"></a>state Converge
+<a name="110"></a>{
+<a name="111"></a>	simulated <span class="source_type">function</span> BeginState()
+<a name="112"></a>	{
+<a name="113"></a>		TriggerEffectEvent(<span class="source_name">'Jet'</span>);
+<a name="114"></a>		timeCounter = <span class="source_int">0.0</span>;
+<a name="115"></a>	}
+<a name="116"></a>
+<a name="117"></a>	simulated <span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="118"></a>	{
+<a name="119"></a>		accelerateProjectile(<span class="source_type">Delta</span>);
+<a name="120"></a>		controlProjectile(<span class="source_type">Delta</span>);
+<a name="121"></a>
+<a name="122"></a>		if (<span class="source_type">Level</span>.NetMode != NM_Client)
+<a name="123"></a>			<span class="source_type">offset</span> -= (<span class="source_type">Delta</span> / convergePeriod) * convergeRadius;
+<a name="124"></a>
+<a name="125"></a>		timeCounter += <span class="source_type">Delta</span>;
+<a name="126"></a>
+<a name="127"></a>		if (timeCounter &gt; convergePeriod)
+<a name="128"></a>		{
+<a name="129"></a>			<span class="source_comment">// If we haven't hit terminal velocity yet continue accelerating
+</span><a name="130"></a>			if (VSize(Velocity) &lt; postSpreadVelocity)
+<a name="131"></a>				GotoState(<span class="source_name">'Accelerate'</span>);
+<a name="132"></a>			else
+<a name="133"></a>				GotoState(<span class="source_name">'Control'</span>);
+<a name="134"></a>		}
+<a name="135"></a>	}
+<a name="136"></a>}
+<a name="137"></a>
+<a name="138"></a>simulated <span class="source_type">function</span> accelerateProjectile(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="139"></a>{
+<a name="140"></a>	Velocity += Normal(Velocity) * (postSpreadAcceleration * <span class="source_type">Delta</span>);
+<a name="141"></a>}
+<a name="142"></a>
+<a name="143"></a>state Accelerate
+<a name="144"></a>{
+<a name="145"></a>	simulated <span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="146"></a>	{
+<a name="147"></a>		accelerateProjectile(<span class="source_type">Delta</span>);
+<a name="148"></a>		controlProjectile(<span class="source_type">Delta</span>);
+<a name="149"></a>
+<a name="150"></a>		if (VSize(Velocity) &gt; postSpreadVelocity)
+<a name="151"></a>			GotoState(<span class="source_name">'Control'</span>);
+<a name="152"></a>	}
+<a name="153"></a>}
+<a name="154"></a>
+<a name="155"></a>simulated <span class="source_type">function</span> controlProjectile(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="156"></a>{
+<a name="157"></a>	local <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> firer;
+<a name="158"></a>	local <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> projectileVec;		<span class="source_comment">// Vector from the players location to the projectiles location
+</span><a name="159"></a>	local <span class="source_type">float</span> <span class="source_type">angle</span>;
+<a name="160"></a>
+<a name="161"></a>	if (<span class="source_type">Level</span>.NetMode != NM_Client)
+<a name="162"></a>	{
+<a name="163"></a>		if (Instigator == None)
+<a name="164"></a>			return;
+<a name="165"></a>
+<a name="166"></a>		firer = <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>(Instigator);
+<a name="167"></a>
+<a name="168"></a>		if (<span class="source_type"><a href="../gameplay/rocketpod.html" class="source">RocketPod</a></span>(firer.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>) == None)
+<a name="169"></a>			return;
+<a name="170"></a>
+<a name="171"></a>		GetAxes(firer.<span class="source_type"><a href="../gameplay/motor.html" class="source">motor</a></span>.getViewRotation(), xAxis, yAxis, zAxis);
+<a name="172"></a>
+<a name="173"></a>		projectileVec = Location - firer.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>.rookMotor.getFirstPersonEquippableLocation(firer.<span class="source_type"><a href="../gameplay/weapon.html" class="source">weapon</a></span>);
+<a name="174"></a>
+<a name="175"></a>		offsetVecAngle += spiralRate * <span class="source_type">Delta</span>;
+<a name="176"></a>		
+<a name="177"></a>		if (offsetVecAngle &gt; <span class="source_int">2</span> * Pi)
+<a name="178"></a>			offsetVecAngle -= <span class="source_int">2</span> * Pi;
+<a name="179"></a>
+<a name="180"></a>		<span class="source_comment">// The projectileVec is projected onto the xAxis and extended by the magnitude of the projectile velocity.
+</span><a name="181"></a>		<span class="source_comment">// Then we add the offset vector (which is calculated with those quat operations and scaled by the offset value).
+</span><a name="182"></a>		<span class="source_comment">// Then we subtract the projectileVec from the value to get a vector from the projectiles location to its ideal location.
+</span><a name="183"></a>		rotationVec = ((((projectileVec Dot xAxis) + VSize(Velocity)) * xAxis) +
+<a name="184"></a>			QuatRotateVector(QuatFromAxisAndAngle(xAxis, offsetVecAngle), zAxis) * <span class="source_type">offset</span>) - projectileVec;
+<a name="185"></a>	}
+<a name="186"></a>
+<a name="187"></a>	<span class="source_type">angle</span> = ACos(FClamp(Normal(Velocity) Dot Normal(rotationVec), -<span class="source_int">1.0</span>, <span class="source_int">1.0</span>));
+<a name="188"></a>
+<a name="189"></a>	if (<span class="source_type">angle</span> &gt; maxAnglePerSecond)
+<a name="190"></a>		<span class="source_type">angle</span> = maxAnglePerSecond;
+<a name="191"></a>
+<a name="192"></a>	Velocity = QuatRotateVector(QuatFromAxisAndAngle(Velocity Cross rotationVec, <span class="source_type">angle</span> * <span class="source_type">Delta</span> * rotationModifier), Velocity);
+<a name="193"></a>
+<a name="194"></a>	prevRotationVec = rotationVec;
+<a name="195"></a>
+<a name="196"></a>	SetRotation(<span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span>(Velocity));
+<a name="197"></a>}
+<a name="198"></a>
+<a name="199"></a>state Control
+<a name="200"></a>{
+<a name="201"></a>	simulated <span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="202"></a>	{
+<a name="203"></a>		controlProjectile(<span class="source_type">Delta</span>);
+<a name="204"></a>	}
+<a name="205"></a>}
+<a name="206"></a>
+<a name="207"></a>defaultproperties
+<a name="208"></a>{
+<a name="209"></a>	bDeflectable = false
+<a name="210"></a>
+<a name="211"></a>	bNetNotify = true
+<a name="212"></a>	bNetTemporary = false
+<a name="213"></a>
+<a name="214"></a>	damageAmt = <span class="source_int">0</span>
+<a name="215"></a>	radiusDamageAmt = <span class="source_int">15</span>
+<a name="216"></a>	radiusDamageSize = <span class="source_int">50</span>
+<a name="217"></a>	radiusDamageMomentum = <span class="source_int">10000</span>
+<a name="218"></a>
+<a name="219"></a>	spiralRate = <span class="source_int">120.0</span>
+<a name="220"></a>
+<a name="221"></a>	armed = false
+<a name="222"></a>	armingPeriod = <span class="source_int">0.5</span>
+<a name="223"></a>	
+<a name="224"></a>	spreadRadius = <span class="source_int">75.0</span>
+<a name="225"></a>	spreadPeriod = <span class="source_int">0.5</span>
+<a name="226"></a>	convergeRadius = <span class="source_int">25.0</span>
+<a name="227"></a>	convergePeriod = <span class="source_int">1.5</span>
+<a name="228"></a>
+<a name="229"></a>	postSpreadVelocity = <span class="source_int">2000</span>
+<a name="230"></a>	postSpreadAcceleration = <span class="source_int">500</span>
+<a name="231"></a>
+<a name="232"></a>	maxAnglePerSecond = <span class="source_int">90.0</span>
+<a name="233"></a>	rotationModifier = <span class="source_int">1.0</span>
+<a name="234"></a>
+<a name="235"></a>	<span class="source_type">StaticMesh</span> = <span class="source_type">StaticMesh</span><span class="source_name">'Weapons.Rocket'</span>
+<a name="236"></a>	DrawScale3D = (X=<span class="source_int">0.5</span>,<span class="source_type">Y</span>=<span class="source_int">0.5</span>,Z=<span class="source_int">0.5</span>)	
+<a name="237"></a>	deathMessage = <span class="source_name">'%s copped it off %s\'s RocketPod'</span>
+<a name="238"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/rocketpodprojectile.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#RocketPodProjectile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/rocketpod.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/rook.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 15:53:20.000 - Creation time: st 23.5.2018 00:10:46.788 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

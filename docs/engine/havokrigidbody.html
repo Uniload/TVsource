@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Engine.HavokRigidBody</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/havokrigidbody.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HavokRigidBody">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/havokprismaticconstraint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/havokskeletalsystem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/havokrigidbody.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">Engine</a>.HavokRigidBody</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/havokobject.html">HavokObject</a></dd>
+<dt>Modifiers</dt><dd>editinlinenew native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/havokobject.html">HavokObject</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/havokrigidbody.html">HavokRigidBody</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gameplay/vehiclehavokdata.html">VehicleHavokData</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_HavokCollisionLayer_All" name="HavokCollisionLayer_All" title="go to the details">HavokCollisionLayer_All</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+<tr><td width="40%"><a href="#_HavokCollisionLayer_Debris" name="HavokCollisionLayer_Debris" title="go to the details">HavokCollisionLayer_Debris</a></td><td width="10%">=</td><td width="50%">7</td></tr>
+<tr><td width="40%"><a href="#_HavokCollisionLayer_Dynamic" name="HavokCollisionLayer_Dynamic" title="go to the details">HavokCollisionLayer_Dynamic</a></td><td width="10%">=</td><td width="50%">2</td></tr>
+<tr><td width="40%"><a href="#_HavokCollisionLayer_Keyframed" name="HavokCollisionLayer_Keyframed" title="go to the details">HavokCollisionLayer_Keyframed</a></td><td width="10%">=</td><td width="50%">5</td></tr>
+<tr><td width="40%"><a href="#_HavokCollisionLayer_Static" name="HavokCollisionLayer_Static" title="go to the details">HavokCollisionLayer_Static</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_hkEntityPtr" name="hkEntityPtr" title="go to the details">hkEntityPtr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_hkUprightConstraintPtr" name="hkUprightConstraintPtr" title="go to the details">hkUprightConstraintPtr</a></td></tr>
+<tr><th colspan="2" class="small">HavokRigidBody</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bClientOnly" name="bClientOnly" title="go to the details">bClientOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHighDetailOnly" name="bHighDetailOnly" title="go to the details">bHighDetailOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_hkActive" name="hkActive" title="go to the details">hkActive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hkAngularDamping" name="hkAngularDamping" title="go to the details">hkAngularDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_hkAngularVel" name="hkAngularVel" title="go to the details">hkAngularVel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_hkCollisionLayer" name="hkCollisionLayer" title="go to the details">hkCollisionLayer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_hkCollisionSubpartID" name="hkCollisionSubpartID" title="go to the details">hkCollisionSubpartID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_hkCollisionSubpartIgnoreID" name="hkCollisionSubpartIgnoreID" title="go to the details">hkCollisionSubpartIgnoreID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_hkCollisionSystemGroup" name="hkCollisionSystemGroup" title="go to the details">hkCollisionSystemGroup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/havokrigidbody.html#EOrientationConstraint">EOrientationConstraint</a></td><td width="66%"><a href="#_hkForceUpright" name="hkForceUpright" title="go to the details">hkForceUpright</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hkForceUprightDamping" name="hkForceUprightDamping" title="go to the details">hkForceUprightDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hkForceUprightStrength" name="hkForceUprightStrength" title="go to the details">hkForceUprightStrength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hkFriction" name="hkFriction" title="go to the details">hkFriction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_hkKeyframed" name="hkKeyframed" title="go to the details">hkKeyframed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hkLinearDamping" name="hkLinearDamping" title="go to the details">hkLinearDamping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_hkLinearVel" name="hkLinearVel" title="go to the details">hkLinearVel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hkMass" name="hkMass" title="go to the details">hkMass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_hkRestitution" name="hkRestitution" title="go to the details">hkRestitution</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_hkStabilizedInertia" name="hkStabilizedInertia" title="go to the details">hkStabilizedInertia</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/havokobject.html">HavokObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/havokobject.html#hkInitCalled">hkInitCalled</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EOrientationConstraint" name="EOrientationConstraint" title="go to the details">EOrientationConstraint</a><br /><span class="small">HKOC_Free,
+HKOC_ConstrainX,
+HKOC_ConstrainY,
+HKOC_ConstrainZ,
+HKOC_ConstrainXYZ,
+</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_HavokCollisionLayer_All" class="hidden"></a>HavokCollisionLayer_All <a href="../Source_engine/havokrigidbody.html#91" class="small">Source code</a></h4>
+<div class="declaration">const HavokCollisionLayer_All = <span class="source_int">0</span>;</div>
+<blockquote class="comment">
+//   LAYER_STATIC = 1, (default for landscape), does not collide with its own group or static
+//   LAYER_DYNAMIC = 2, (default for free moving rigid bodies), 
+//	  LAYER_KEYFRAME = 5, (default for keyframed (Movers etc) and the Player Pawn), does not collide with its own group or static
+//	  LAYER_FAST_DEBRIS = 7, nothing in it by default, does not collide with its own group.
+// 
+// See LevelInfo.HavokSetCollisionLayerEnabled(int layerA, int layerB, bool enabled, bool updateWorldInfo)
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokCollisionLayer_Debris" class="hidden"></a>HavokCollisionLayer_Debris <a href="../Source_engine/havokrigidbody.html#95" class="small">Source code</a></h4>
+<div class="declaration">const HavokCollisionLayer_Debris = <span class="source_int">7</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokCollisionLayer_Dynamic" class="hidden"></a>HavokCollisionLayer_Dynamic <a href="../Source_engine/havokrigidbody.html#93" class="small">Source code</a></h4>
+<div class="declaration">const HavokCollisionLayer_Dynamic = <span class="source_int">2</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokCollisionLayer_Keyframed" class="hidden"></a>HavokCollisionLayer_Keyframed <a href="../Source_engine/havokrigidbody.html#94" class="small">Source code</a></h4>
+<div class="declaration">const HavokCollisionLayer_Keyframed = <span class="source_int">5</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HavokCollisionLayer_Static" class="hidden"></a>HavokCollisionLayer_Static <a href="../Source_engine/havokrigidbody.html#92" class="small">Source code</a></h4>
+<div class="declaration">const HavokCollisionLayer_Static = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_hkEntityPtr" class="hidden"></a>hkEntityPtr <a href="../Source_engine/havokrigidbody.html#12" class="small">Source code</a></h4>
+<div class="declaration">var const transient <span class="source_type">int</span> hkEntityPtr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkUprightConstraintPtr" class="hidden"></a>hkUprightConstraintPtr <a href="../Source_engine/havokrigidbody.html#13" class="small">Source code</a></h4>
+<div class="declaration">var const transient <span class="source_type">int</span> hkUprightConstraintPtr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">HavokRigidBody</h3>
+<h4><a name="_bClientOnly" class="hidden"></a>bClientOnly <a href="../Source_engine/havokrigidbody.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">bool</span> bClientOnly;</div>
+<blockquote class="comment">
+If true, the object's physics will be disabled when running on a server (i.e., it will only be physical on clients)
+</blockquote>
+<hr class="small" />
+<h4><a name="_bHighDetailOnly" class="hidden"></a>bHighDetailOnly <a href="../Source_engine/havokrigidbody.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">bool</span> bHighDetailOnly;</div>
+<blockquote class="comment">
+If true, the object will have physics disabled if the level's physics setting is less than PDL_High, or if running on a dedicated server.
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkActive" class="hidden"></a>hkActive <a href="../Source_engine/havokrigidbody.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">bool</span> hkActive;</div>
+<blockquote class="comment">
+If true, the object will be 'physical' as soon as the level starts (e.g., it will fall to the ground, etc). If false, it will be inactive until it is activated (i.e., it will float in space something collides with it, etc.)
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkAngularDamping" class="hidden"></a>hkAngularDamping <a href="../Source_engine/havokrigidbody.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">float</span> hkAngularDamping;</div>
+<blockquote class="comment">
+Controls how much damping is applied to angular velocity. Values are usually very small, and 0 means 'no damping'
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkAngularVel" class="hidden"></a>hkAngularVel <a href="../Source_engine/havokrigidbody.html#49" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> hkAngularVel;</div>
+<blockquote class="comment">
+The initial angular velocity of the object.\r\n\r\nWARNING: this value must be in Unreal units, not radians/second (1 radian = 10430.2192 Unreal angular units).
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkCollisionLayer" class="hidden"></a>hkCollisionLayer <a href="../Source_engine/havokrigidbody.html#98" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">int</span> hkCollisionLayer;</div>
+<blockquote class="comment">
+The collision layer in which this object resides. Supported values are:\r\n\r\n0 = no filtering, collides with everything\r\n\r\n1 = does not collide with its own group or static (default for static objects and landscape)\r\n\r\n2 = collides with everything (default for free moving rigid bodies)\r\n\r\n5 = does not collide with its own group or static objects (default for keyframed (Movers etc) and the Player Pawn),\r\n\r\n7 = does not collide with its own group (nothing in it by default, intended for fast debris).
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkCollisionSubpartID" class="hidden"></a>hkCollisionSubpartID <a href="../Source_engine/havokrigidbody.html#104" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">int</span> hkCollisionSubpartID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkCollisionSubpartIgnoreID" class="hidden"></a>hkCollisionSubpartIgnoreID <a href="../Source_engine/havokrigidbody.html#107" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">int</span> hkCollisionSubpartIgnoreID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkCollisionSystemGroup" class="hidden"></a>hkCollisionSystemGroup <a href="../Source_engine/havokrigidbody.html#101" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">int</span> hkCollisionSystemGroup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkForceUpright" class="hidden"></a>hkForceUpright <a href="../Source_engine/havokrigidbody.html#112" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type"><a href="../engine/havokrigidbody.html#EOrientationConstraint" class="source">EOrientationConstraint</a></span> hkForceUpright;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkForceUprightDamping" class="hidden"></a>hkForceUprightDamping <a href="../Source_engine/havokrigidbody.html#125" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">float</span> hkForceUprightDamping;</div>
+<blockquote class="comment">
+Governs how quickly the oscillation along the vertical axis settles down. Low values create springy behavior, while high values will reduce any oscillations very quickly with the size of the oscillations getting much smaller each time. Values can range from 0 to 1
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkForceUprightStrength" class="hidden"></a>hkForceUprightStrength <a href="../Source_engine/havokrigidbody.html#122" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">float</span> hkForceUprightStrength;</div>
+<blockquote class="comment">
+Governs how quickly an object bounces back when tilted away from its upright axis. Higher values mean that the object recovers more quickly. Values can range from 0 to 1
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkFriction" class="hidden"></a>hkFriction <a href="../Source_engine/havokrigidbody.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">float</span> hkFriction;</div>
+<blockquote class="comment">
+Controls how sticky the object is. Minimum value is 0 and maximum is 1
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkKeyframed" class="hidden"></a>hkKeyframed <a href="../Source_engine/havokrigidbody.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">bool</span> hkKeyframed;</div>
+<blockquote class="comment">
+Only set this to true for objects that should block other physics objects but whose movement is controlled by Unreal instead of physical forces. For example, this should be true for Movers.\r\n\r\nWARNING: this flag is ignored if hkMass is 0!
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkLinearDamping" class="hidden"></a>hkLinearDamping <a href="../Source_engine/havokrigidbody.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">float</span> hkLinearDamping;</div>
+<blockquote class="comment">
+Controls how much damping is applied to linear velocity. Values are usually very small, and 0 means 'no damping'
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkLinearVel" class="hidden"></a>hkLinearVel <a href="../Source_engine/havokrigidbody.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> hkLinearVel;</div>
+<blockquote class="comment">
+The initial linear velocity of the object.\r\n\r\nWARNING: this value must be in Unreal units, not meters/second (1 meter = 50 Unreal distance units).
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkMass" class="hidden"></a>hkMass <a href="../Source_engine/havokrigidbody.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">float</span> hkMass;</div>
+<blockquote class="comment">
+The mass of the object.\r\n\r\nWARNING: If mass is set to 0 then the object will be fixed in place, and the hkKeyframed setting will be ignored!
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkRestitution" class="hidden"></a>hkRestitution <a href="../Source_engine/havokrigidbody.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">float</span> hkRestitution;</div>
+<blockquote class="comment">
+Controls how bouncy the object is. Minimum value is 0 and maximum is 1
+</blockquote>
+<hr class="small" />
+<h4><a name="_hkStabilizedInertia" class="hidden"></a>hkStabilizedInertia <a href="../Source_engine/havokrigidbody.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/havokrigidbody.html" class="source">HavokRigidBody</a></span>) <span class="source_type">bool</span> hkStabilizedInertia;</div>
+<blockquote class="comment">
+Set this flag to help stabilize the physics of unstable configurations, such as long thin objects. For normal configurations is should be left at the default value of false.
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EOrientationConstraint" class="hidden"></a>EOrientationConstraint <a href="../Source_engine/havokrigidbody.html#112" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/havokrigidbody.html#EOrientationConstraint" class="source">EOrientationConstraint</a></span><br />
+{<blockquote>HKOC_Free,
+HKOC_ConstrainX,
+HKOC_ConstrainY,
+HKOC_ConstrainZ,
+HKOC_ConstrainXYZ,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bHighDetailOnly=false
+	bClientOnly=false
+    hkMass=<span class="source_int">10</span>
+    hkStabilizedInertia=false
+    hkFriction=<span class="source_int">0.8</span>
+    hkRestitution=<span class="source_int">0.3</span>
+    hkLinearDamping=<span class="source_int">0</span>
+	hkAngularDamping=<span class="source_int">0.05</span>
+    hkActive=true
+	hkKeyframed=false
+	hkForceUpright=HKOC_Free
+	hkForceUprightStrength = <span class="source_int">0.3</span>
+	hkForceUprightDamping = <span class="source_int">0.9</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/havokrigidbody.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#HavokRigidBody">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/havokprismaticconstraint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/havokskeletalsystem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:30.682 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - GUI.GUIList</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gui/guilist.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GUIList">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gui/guilightcontainer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gui/guilistbase.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gui/guilist.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gui/gui-overview.html">GUI</a>.GUIList</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gui/guivertlist.html">GUIVertList</a></dd>
+<dt>Modifiers</dt><dd>HideCategories ( Menu , Object ) Native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/gui.html">GUI</a>
+   |   
+   +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guicomponent.html">GUIComponent</a>
+      |   
+      +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilistbase.html">GUIListBase</a>
+         |   
+         +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guivertlist.html">GUIVertList</a>
+            |   
+            +-- <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilist.html">GUIList</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../gui/guiscrolltext.html">GUIScrollText</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><th colspan="2" class="small">GUIList</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bListIsDirty" name="bListIsDirty" title="go to the details">bListIsDirty</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNativeSort" name="bNativeSort" title="go to the details">bNativeSort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNeverSort" name="bNeverSort" title="go to the details">bNeverSort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSortForward" name="bSortForward" title="go to the details">bSortForward</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/gui.html#eListElemDisplay">eListElemDisplay</a></td><td width="66%"><a href="#_DisplayItem" name="DisplayItem" title="go to the details">DisplayItem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../gui/gui.html#GUIListElem">GUIListElem</a>&gt;</td><td width="66%"><a href="#_Elements" name="Elements" title="go to the details">Elements</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/gui.html#eTextAlign">eTextAlign</a></td><td width="66%"><a href="#_TextAlign" name="TextAlign" title="go to the details">TextAlign</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guilist.html#eSortType">eSortType</a></td><td width="66%"><a href="#_TypeOfSort" name="TypeOfSort" title="go to the details">TypeOfSort</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilistbase.html">GUIListBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guilistbase.html#bHotTrack">bHotTrack</a>, <a href="../gui/guilistbase.html#bReadOnly">bReadOnly</a>, <a href="../gui/guilistbase.html#bVisibleWhenEmpty">bVisibleWhenEmpty</a>, <a href="../gui/guilistbase.html#Index">Index</a>, <a href="../gui/guilistbase.html#ItemCount">ItemCount</a>, <a href="../gui/guilistbase.html#ItemHeight">ItemHeight</a>, <a href="../gui/guilistbase.html#ItemsPerPage">ItemsPerPage</a>, <a href="../gui/guilistbase.html#ItemWidth">ItemWidth</a>, <a href="../gui/guilistbase.html#MyScrollBar">MyScrollBar</a>, <a href="../gui/guilistbase.html#SelectedBKColor">SelectedBKColor</a>, <a href="../gui/guilistbase.html#SelectedImage">SelectedImage</a>, <a href="../gui/guilistbase.html#Top">Top</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eSortType" name="eSortType" title="go to the details">eSortType</a><br /><span class="small">SORT_AlphaItem,
+SORT_AlphaExtra,
+SORT_Numeric,
+SORT_Bool,
+SORT_IP,
+</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Delegates Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_delegate.gif" alt="delegate" title="delegate"></td><td>bool&nbsp;</td><td><a href="#_CompareItem+" name="CompareItem" title="go to the details">CompareItem</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, <a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemB))</td></tr>
+<tr><td nowrap="nowrap"><img src="../img_delegate.gif" alt="delegate" title="delegate"></td><td>bool&nbsp;</td><td><a href="#_ElementsEqual+" name="ElementsEqual" title="go to the details">ElementsEqual</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, <a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemB))</td></tr>
+<tr><td nowrap="nowrap"><img src="../img_delegate.gif" alt="delegate" title="delegate"></td><td>&nbsp;</td><td><a href="#_ReorderByIndices+" name="ReorderByIndices" title="go to the details">ReorderByIndices</a> (int indices))</td></tr>
+<tr><td nowrap="nowrap"><img src="../img_delegate.gif" alt="delegate" title="delegate"></td><td>&nbsp;</td><td><a href="#_SwapIndices+" name="SwapIndices" title="go to the details">SwapIndices</a> (int indexA, int indexB ))</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Delegates from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilistbase.html">GUIListBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guilistbase.html#OnAdjustTop">OnAdjustTop</a>, <a href="../gui/guilistbase.html#OnDrawItem">OnDrawItem</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Add-" name="Add" title="go to the details">Add</a> (string NewItem, optional <a href="../core/object.html">Object</a> obj, optional string Str, optional int intData, optional bool bData, optional bool bDontReplace, optional bool bDontReAlign ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_AddElement-" name="AddElement" title="go to the details">AddElement</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> theElem, optional bool bDontReplace, optional bool bDontReAlign ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_AlphabeticalCompare-" name="AlphabeticalCompare" title="go to the details">AlphabeticalCompare</a> (string ElemA, string ElemB ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_AlphabeticalCompareExtra-" name="AlphabeticalCompareExtra" title="go to the details">AlphabeticalCompareExtra</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, GUIListElem ElemB ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_AlphabeticalCompareItem-" name="AlphabeticalCompareItem" title="go to the details">AlphabeticalCompareItem</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, GUIListElem ElemB ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_BooleanCompare-" name="BooleanCompare" title="go to the details">BooleanCompare</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, GUIListElem ElemB ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Clear-" name="Clear" title="go to the details">Clear</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_EqualsBool-" name="EqualsBool" title="go to the details">EqualsBool</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, <a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemB))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_EqualsExtra-" name="EqualsExtra" title="go to the details">EqualsExtra</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, <a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemB))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_EqualsInt-" name="EqualsInt" title="go to the details">EqualsInt</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, <a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemB))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_EqualsItem-" name="EqualsItem" title="go to the details">EqualsItem</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, <a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemB))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_EqualsObject-" name="EqualsObject" title="go to the details">EqualsObject</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, <a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemB))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_find-" name="find" title="go to the details">find</a> (string Text, optional bool bExact, optional bool bDontSetIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_FindElement-" name="FindElement" title="go to the details">FindElement</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> theElem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_FindExtra-" name="FindExtra" title="go to the details">FindExtra</a> (string ExtraText, optional bool bExact, optional bool bDontSetIndex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_FindIndex-" name="FindIndex" title="go to the details">FindIndex</a> (string Test, optional bool bExact, optional bool bExtra, optional <a href="../core/object.html">Object</a> TestObject))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_Get-" name="Get" title="go to the details">Get</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gui/gui.html#GUIListElem">GUIListElem</a>&nbsp;</td><td><a href="#_GetAtIndex-" name="GetAtIndex" title="go to the details">GetAtIndex</a> (int i))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gui/gui.html#GUIListElem">GUIListElem</a>&nbsp;</td><td><a href="#_GetElement-" name="GetElement" title="go to the details">GetElement</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetExtra-" name="GetExtra" title="go to the details">GetExtra</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetExtraAtIndex-" name="GetExtraAtIndex" title="go to the details">GetExtraAtIndex</a> (int i))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_GetExtraBoolData-" name="GetExtraBoolData" title="go to the details">GetExtraBoolData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetExtraIntAtIndex-" name="GetExtraIntAtIndex" title="go to the details">GetExtraIntAtIndex</a> (int i))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetExtraIntData-" name="GetExtraIntData" title="go to the details">GetExtraIntData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetItemAtIndex-" name="GetItemAtIndex" title="go to the details">GetItemAtIndex</a> (int i))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">object</a>&nbsp;</td><td><a href="#_GetObject-" name="GetObject" title="go to the details">GetObject</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">object</a>&nbsp;</td><td><a href="#_GetObjectAtIndex-" name="GetObjectAtIndex" title="go to the details">GetObjectAtIndex</a> (int i))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitComponent-" name="InitComponent" title="go to the details">InitComponent</a> (<a href="../gui/guicomponent.html">GUIComponent</a> MyOwner))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Insert-" name="Insert" title="go to the details">Insert</a> (int index, string NewItem, optional <a href="../core/object.html">Object</a> obj, optional string Str, optional int intData, optional bool bData ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_InsertElement-" name="InsertElement" title="go to the details">InsertElement</a> (int NewIndex, optional <a href="../gui/gui.html#GUIListElem">GUIListElem</a> theElem, optional bool bInsertSorted, optional bool bDontReAlign ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IPCompare-" name="IPCompare" title="go to the details">IPCompare</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, GUIListElem ElemB ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadFrom-" name="LoadFrom" title="go to the details">LoadFrom</a> (<a href="../gui/guilist.html">GUIList</a> Source, optional bool bClearFirst))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_NumericCompare-" name="NumericCompare" title="go to the details">NumericCompare</a> (<a href="../gui/gui.html#GUIListElem">GUIListElem</a> ElemA, GUIListElem ElemB ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_qSort-" name="qSort" title="go to the details">qSort</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Remove-" name="Remove" title="go to the details">Remove</a> (int i, optional int Count))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveItem-" name="RemoveItem" title="go to the details">RemoveItem</a> (string Item))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReorderItems-" name="ReorderItems" title="go to the details">ReorderItems</a> (int indices)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Replace-" name="Replace" title="go to the details">Replace</a> (int index, string NewItem, optional <a href="../core/object.html">Object</a> obj, optional string Str, optional int intData, optional bool bData))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReplaceElement-" name="ReplaceElement" title="go to the details">ReplaceElement</a> (int index, GUIListElem theElem ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReverseList-" name="ReverseList" title="go to the details">ReverseList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_SelectedText-" name="SelectedText" title="go to the details">SelectedText</a> (int offsetIndex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetExtraAtIndex-" name="SetExtraAtIndex" title="go to the details">SetExtraAtIndex</a> (int i, string NewExtra))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetExtraIntAtIndex-" name="SetExtraIntAtIndex" title="go to the details">SetExtraIntAtIndex</a> (int i, int NewExtra))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetItemAtIndex-" name="SetItemAtIndex" title="go to the details">SetItemAtIndex</a> (int i, string NewItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Sort-" name="Sort" title="go to the details">Sort</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Swap-" name="Swap" title="go to the details">Swap</a> (int IndexA, int IndexB, optional bool bIsSorting))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guivertlist.html">GUIVertList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guivertlist.html#Click">Click</a>, <a href="../gui/guivertlist.html#Down">Down</a>, <a href="../gui/guivertlist.html#End">End</a>, <a href="../gui/guivertlist.html#Home">Home</a>, <a href="../gui/guivertlist.html#InitComponent">InitComponent</a>, <a href="../gui/guivertlist.html#InternalOnKeyEvent">InternalOnKeyEvent</a>, <a href="../gui/guivertlist.html#InternalOnKeyType">InternalOnKeyType</a>, <a href="../gui/guivertlist.html#InternalOnXControllerEvent">InternalOnXControllerEvent</a>, <a href="../gui/guivertlist.html#PgDn">PgDn</a>, <a href="../gui/guivertlist.html#PgUp">PgUp</a>, <a href="../gui/guivertlist.html#Up">Up</a>, <a href="../gui/guivertlist.html#WheelDown">WheelDown</a>, <a href="../gui/guivertlist.html#WheelUp">WheelUp</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guilistbase.html">GUIListBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gui/guilistbase.html#Clear">Clear</a>, <a href="../gui/guilistbase.html#InitComponent">InitComponent</a>, <a href="../gui/guilistbase.html#MakeVisible">MakeVisible</a>, <a href="../gui/guilistbase.html#SetIndex">SetIndex</a>, <a href="../gui/guilistbase.html#SetTopItem">SetTopItem</a>, <a href="../gui/guilistbase.html#Sort">Sort</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h3 class="vartag">GUIList</h3>
+<h4><a name="_bListIsDirty" class="hidden"></a>bListIsDirty <a href="../Source_gui/guilist.html#38" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) EditConst <span class="source_type">bool</span> bListIsDirty;</div>
+<blockquote class="comment">
+If true, the list may be unsorted
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNativeSort" class="hidden"></a>bNativeSort <a href="../Source_gui/guilist.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) <span class="source_type">bool</span> bNativeSort;</div>
+<blockquote class="comment">
+If true, a native qSort will be used (which breaks CompareItem delegates)
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNeverSort" class="hidden"></a>bNeverSort <a href="../Source_gui/guilist.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) config <span class="source_type">bool</span> bNeverSort;</div>
+<blockquote class="comment">
+If true, the list should never be sorted
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSortForward" class="hidden"></a>bSortForward <a href="../Source_gui/guilist.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) EditConst <span class="source_type">bool</span> bSortForward;</div>
+<blockquote class="comment">
+If true, will sort forward, else will sort backwards
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayItem" class="hidden"></a>DisplayItem <a href="../Source_gui/guilist.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) config <span class="source_type"><a href="../gui/gui.html#eListElemDisplay" class="source">eListElemDisplay</a></span> DisplayItem;</div>
+<blockquote class="comment">
+Determines which element member will be shown in this list
+</blockquote>
+<hr class="small" />
+<h4><a name="_Elements" class="hidden"></a>Elements <a href="../Source_gui/guilist.html#44" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) editinline editconst array&lt;<span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span>&gt; Elements;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TextAlign" class="hidden"></a>TextAlign <a href="../Source_gui/guilist.html#42" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) config <span class="source_type"><a href="../gui/gui.html#eTextAlign" class="source">eTextAlign</a></span> TextAlign;</div>
+<blockquote class="comment">
+How is text Aligned in the control
+</blockquote>
+<hr class="small" />
+<h4><a name="_TypeOfSort" class="hidden"></a>TypeOfSort <a href="../Source_gui/guilist.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span>) config <span class="source_type"><a href="../gui/guilist.html#eSortType" class="source">eSortType</a></span> TypeOfSort;</div>
+<blockquote class="comment">
+Determines what type of sort to use for this list
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eSortType" class="hidden"></a>eSortType <a href="../Source_gui/guilist.html#25" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../gui/guilist.html#eSortType" class="source">eSortType</a></span><br />
+{<blockquote>SORT_AlphaItem,
+SORT_AlphaExtra,
+SORT_Numeric,
+SORT_Bool,
+SORT_IP,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Delegates Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CompareItem+" class="hidden"></a><img src="../img_delegate.gif" alt="" title="delegate"> CompareItem <a href="../Source_gui/guilist.html#47" class="small">Source code</a></h4>
+<div class="declaration"> delegate <span class="source_type">bool</span> CompareItem ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ElementsEqual+" class="hidden"></a><img src="../img_delegate.gif" alt="" title="delegate"> ElementsEqual <a href="../Source_gui/guilist.html#52" class="small">Source code</a></h4>
+<div class="declaration"> delegate <span class="source_type">bool</span> ElementsEqual ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReorderByIndices+" class="hidden"></a><img src="../img_delegate.gif" alt="" title="delegate"> ReorderByIndices <a href="../Source_gui/guilist.html#62" class="small">Source code</a></h4>
+<div class="declaration"> delegate  ReorderByIndices ( <span class="source_type">int</span> indices) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwapIndices+" class="hidden"></a><img src="../img_delegate.gif" alt="" title="delegate"> SwapIndices <a href="../Source_gui/guilist.html#57" class="small">Source code</a></h4>
+<div class="declaration"> delegate  SwapIndices ( <span class="source_type">int</span> indexA, <span class="source_type">int</span> <span class="source_type">indexB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Add-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Add <span class="function_state"></span> <a href="../Source_gui/guilist.html#279" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type">Add</span> ( <span class="source_type">string</span> <span class="source_type">NewItem</span>, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> obj, optional <span class="source_type">string</span> Str, optional <span class="source_type">int</span> intData, optional <span class="source_type">bool</span> <span class="source_type">bData</span>, optional <span class="source_type">bool</span> bDontReplace, optional <span class="source_type">bool</span> <span class="source_type">bDontReAlign</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddElement <span class="function_state"></span> <a href="../Source_gui/guilist.html#284" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> AddElement ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">theElem</span>, optional <span class="source_type">bool</span> bDontReplace, optional <span class="source_type">bool</span> <span class="source_type">bDontReAlign</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AlphabeticalCompare-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AlphabeticalCompare <span class="function_state"></span> <a href="../Source_gui/guilist.html#191" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> AlphabeticalCompare ( <span class="source_type">string</span> ElemA, <span class="source_type">string</span> <span class="source_type">ElemB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AlphabeticalCompareExtra-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AlphabeticalCompareExtra <span class="function_state"></span> <a href="../Source_gui/guilist.html#201" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> AlphabeticalCompareExtra ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AlphabeticalCompareItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AlphabeticalCompareItem <span class="function_state"></span> <a href="../Source_gui/guilist.html#196" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> AlphabeticalCompareItem ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BooleanCompare-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BooleanCompare <span class="function_state"></span> <a href="../Source_gui/guilist.html#211" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> BooleanCompare ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Clear-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Clear <span class="function_state"></span> <a href="../Source_gui/guilist.html#498" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Clear ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EqualsBool-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EqualsBool <span class="function_state"></span> <a href="../Source_gui/guilist.html#242" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> EqualsBool ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EqualsExtra-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EqualsExtra <span class="function_state"></span> <a href="../Source_gui/guilist.html#232" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> EqualsExtra ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EqualsInt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EqualsInt <span class="function_state"></span> <a href="../Source_gui/guilist.html#237" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> EqualsInt ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EqualsItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EqualsItem <span class="function_state"></span> <a href="../Source_gui/guilist.html#222" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> EqualsItem ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EqualsObject-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EqualsObject <span class="function_state"></span> <a href="../Source_gui/guilist.html#227" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> EqualsObject ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_find-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> find <span class="function_state"></span> <a href="../Source_gui/guilist.html#557" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> find ( <span class="source_type">string</span> Text, optional <span class="source_type">bool</span> <span class="source_type">bExact</span>, optional <span class="source_type">bool</span> <span class="source_type">bDontSetIndex</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindElement <span class="function_state"></span> <a href="../Source_gui/guilist.html#546" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> FindElement ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">theElem</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindExtra-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindExtra <span class="function_state"></span> <a href="../Source_gui/guilist.html#587" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> FindExtra ( <span class="source_type">string</span> ExtraText, optional <span class="source_type">bool</span> <span class="source_type">bExact</span>, optional <span class="source_type">bool</span> <span class="source_type">bDontSetIndex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#614" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> FindIndex ( <span class="source_type">string</span> Test, optional <span class="source_type">bool</span> <span class="source_type">bExact</span>, optional <span class="source_type">bool</span> bExtra, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> TestObject) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Get-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Get <span class="function_state"></span> <a href="../Source_gui/guilist.html#506" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> Get ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#431" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> GetAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetElement <span class="function_state"></span> <a href="../Source_gui/guilist.html#439" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> GetElement ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExtra-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExtra <span class="function_state"></span> <a href="../Source_gui/guilist.html#522" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> GetExtra ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExtraAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExtraAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#399" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> GetExtraAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExtraBoolData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExtraBoolData <span class="function_state"></span> <a href="../Source_gui/guilist.html#538" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> GetExtraBoolData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExtraIntAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExtraIntAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#415" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetExtraIntAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExtraIntData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExtraIntData <span class="function_state"></span> <a href="../Source_gui/guilist.html#530" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> GetExtraIntData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetItemAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetItemAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#375" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> GetItemAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetObject-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetObject <span class="function_state"></span> <a href="../Source_gui/guilist.html#514" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html" class="source">object</a></span> GetObject ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetObjectAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetObjectAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#391" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html" class="source">object</a></span> GetObjectAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitComponent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitComponent <span class="function_state"></span> <a href="../Source_gui/guilist.html#148" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  InitComponent ( <span class="source_type"><a href="../gui/guicomponent.html" class="source">GUIComponent</a></span> MyOwner) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Insert-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Insert <span class="function_state"></span> <a href="../Source_gui/guilist.html#356" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Insert ( <span class="source_type">int</span> index, <span class="source_type">string</span> <span class="source_type">NewItem</span>, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> obj, optional <span class="source_type">string</span> Str, optional <span class="source_type">int</span> intData, optional <span class="source_type">bool</span> <span class="source_type">bData</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InsertElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InsertElement <span class="function_state"></span> <a href="../Source_gui/guilist.html#313" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> InsertElement ( <span class="source_type">int</span> NewIndex, optional <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">theElem</span>, optional <span class="source_type">bool</span> bInsertSorted, optional <span class="source_type">bool</span> <span class="source_type">bDontReAlign</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IPCompare-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IPCompare <span class="function_state"></span> <a href="../Source_gui/guilist.html#216" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> IPCompare ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadFrom-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadFrom <span class="function_state"></span> <a href="../Source_gui/guilist.html#447" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  LoadFrom ( <span class="source_type"><a href="../gui/guilist.html" class="source">GUIList</a></span> Source, optional <span class="source_type">bool</span> bClearFirst) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumericCompare-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NumericCompare <span class="function_state"></span> <a href="../Source_gui/guilist.html#206" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> NumericCompare ( <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> ElemA, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">ElemB</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_qSort-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> qSort <span class="function_state"></span> <a href="../Source_gui/guilist.html#67" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  qSort (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Remove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Remove <span class="function_state"></span> <a href="../Source_gui/guilist.html#460" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Remove ( <span class="source_type">int</span> <span class="source_type">i</span>, optional <span class="source_type">int</span> Count) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveItem <span class="function_state"></span> <a href="../Source_gui/guilist.html#476" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  RemoveItem ( <span class="source_type">string</span> <span class="source_type">Item</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReorderItems-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReorderItems <span class="function_state"></span> <a href="../Source_gui/guilist.html#68" class="small">Source code</a></h4>
+<div class="declaration">final native <span class="source_type">function</span>  ReorderItems ( <span class="source_type">int</span> indices )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Replace-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Replace <span class="function_state"></span> <a href="../Source_gui/guilist.html#342" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Replace ( <span class="source_type">int</span> index, <span class="source_type">string</span> <span class="source_type">NewItem</span>, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> obj, optional <span class="source_type">string</span> Str, optional <span class="source_type">int</span> intData, optional <span class="source_type">bool</span> <span class="source_type">bData</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReplaceElement-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReplaceElement <span class="function_state"></span> <a href="../Source_gui/guilist.html#347" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ReplaceElement ( <span class="source_type">int</span> index, <span class="source_type"><a href="../gui/gui.html#GUIListElem" class="source">GUIListElem</a></span> <span class="source_type">theElem</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReverseList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReverseList <span class="function_state"></span> <a href="../Source_gui/guilist.html#128" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  ReverseList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectedText-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SelectedText <span class="function_state"></span> <a href="../Source_gui/guilist.html#250" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> SelectedText ( <span class="source_type">int</span> <span class="source_type">offsetIndex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetExtraAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetExtraAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#407" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetExtraAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>, <span class="source_type">string</span> NewExtra) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetExtraIntAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetExtraIntAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#423" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetExtraIntAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>, <span class="source_type">int</span> NewExtra) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetItemAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetItemAtIndex <span class="function_state"></span> <a href="../Source_gui/guilist.html#383" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SetItemAtIndex ( <span class="source_type">int</span> <span class="source_type">i</span>, <span class="source_type">string</span> <span class="source_type">NewItem</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Sort-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Sort <span class="function_state"></span> <a href="../Source_gui/guilist.html#73" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  Sort ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Swap-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Swap <span class="function_state"></span> <a href="../Source_gui/guilist.html#361" class="small">Source code</a></h4>
+<div class="declaration"> event  Swap ( <span class="source_type">int</span> IndexA, <span class="source_type">int</span> <span class="source_type">IndexB</span>, optional <span class="source_type">bool</span> bIsSorting) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bSortForward=True
+	bListIsDirty=false
+	bNeverSort=false
+	TypeOfSort=SORT_AlphaItem
+	bNativeSort=true
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gui/guilist.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GUIList">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gui/guilightcontainer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gui/guilistbase.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:30.291 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

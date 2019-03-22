@@ -1,0 +1,599 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - TribesGUI.PlayerProfile</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/playerprofile.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#PlayerProfile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/messageinventoryuiweaponselected.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/playerradarinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tribesgui/playerprofile.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.PlayerProfile</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>native transient EditInlineNew dependsOn ( CustomPlayerLoadout ) </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../tribesgui/tribesgui-overview.html">TribesGUI</a>.<a href="../tribesgui/playerprofile.html">PlayerProfile</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a>, <a href="../core/object.html#RF_Unnamed">RF_Unnamed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a></td><td width="66%"><a href="#_activeLoadout" name="activeLoadout" title="go to the details">activeLoadout</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_affiliatedTeamId" name="affiliatedTeamId" title="go to the details">affiliatedTeamId</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_configFilePath" name="configFilePath" title="go to the details">configFilePath</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gui/guicontroller.html">GUIController</a></td><td width="66%"><a href="#_controller" name="controller" title="go to the details">controller</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a>&gt;</td><td width="66%"><a href="#_loadouts" name="loadouts" title="go to the details">loadouts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_statTrackingID" name="statTrackingID" title="go to the details">statTrackingID</a></td></tr>
+<tr><th colspan="2" class="small">Profile</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tribesgui/playerprofile.html#LoadoutSlot">LoadoutSlot</a></td><td width="66%"><a href="#_activeLoadoutSlot" name="activeLoadoutSlot" title="go to the details">activeLoadoutSlot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_affiliatedTeamName" name="affiliatedTeamName" title="go to the details">affiliatedTeamName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_affiliatedTeamPassword" name="affiliatedTeamPassword" title="go to the details">affiliatedTeamPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_affiliatedTeamTag" name="affiliatedTeamTag" title="go to the details">affiliatedTeamTag</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsFemale" name="bIsFemale" title="go to the details">bIsFemale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bReadOnly" name="bReadOnly" title="go to the details">bReadOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSaveStatTrackingPassword" name="bSaveStatTrackingPassword" title="go to the details">bSaveStatTrackingPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSaveTeamPassword" name="bSaveTeamPassword" title="go to the details">bSaveTeamPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShownMPHelp" name="bShownMPHelp" title="go to the details">bShownMPHelp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStoreLogins" name="bStoreLogins" title="go to the details">bStoreLogins</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;String&gt;</td><td width="66%"><a href="#_buddyList" name="buddyList" title="go to the details">buddyList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseStatTracking" name="bUseStatTracking" title="go to the details">bUseStatTracking</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseTeamAffiliation" name="bUseTeamAffiliation" title="go to the details">bUseTeamAffiliation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../tribesgui/playerprofile.html#LoadoutSlot">LoadoutSlot</a>&gt;</td><td width="66%"><a href="#_loadoutSlots" name="loadoutSlots" title="go to the details">loadoutSlots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribesgui/playerprofile.html#AutoLoginInfo">AutoLoginInfo</a>&gt;</td><td width="66%"><a href="#_LoginHistory" name="LoginHistory" title="go to the details">LoginHistory</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ownedTeamName" name="ownedTeamName" title="go to the details">ownedTeamName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ownedTeamTag" name="ownedTeamTag" title="go to the details">ownedTeamTag</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_playerName" name="playerName" title="go to the details">playerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../tribesgui/playerprofile.html#ServerFavorite">ServerFavorite</a>&gt;</td><td width="66%"><a href="#_serverFavorites" name="serverFavorites" title="go to the details">serverFavorites</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_skinName" name="skinName" title="go to the details">skinName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_statTrackingEmail" name="statTrackingEmail" title="go to the details">statTrackingEmail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_statTrackingNick" name="statTrackingNick" title="go to the details">statTrackingNick</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_statTrackingPassword" name="statTrackingPassword" title="go to the details">statTrackingPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_voiceSet" name="voiceSet" title="go to the details">voiceSet</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#EAxis">EAxis</a>, <a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_AutoLoginInfo" name="AutoLoginInfo" title="go to the details">AutoLoginInfo</a><br /><span class="small">IP, Port, Username, Password, bAutologin</span></td></tr>
+<tr><td><a href="#_LoadoutSlot" name="LoadoutSlot" title="go to the details">LoadoutSlot</a><br /><span class="small">loadoutName, combatRoleClassName, packClassName, grenadeClassName, weaponClassNameList, occupied, skinPreferences</span></td></tr>
+<tr><td><a href="#_ServerFavorite" name="ServerFavorite" title="go to the details">ServerFavorite</a><br /><span class="small">IP, Port</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#GameSpyServerData">GameSpyServerData</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#IntegerRange">IntegerRange</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#MatCoords">MatCoords</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Quat">Quat</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddLoadout-" name="AddLoadout" title="go to the details">AddLoadout</a> (out <a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a> loadout, int slot))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_FindCredentials-" name="FindCredentials" title="go to the details">FindCredentials</a> (coerce string IP, coerce string Port ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a>&nbsp;</td><td><a href="#_GetActiveLoadout-" name="GetActiveLoadout" title="go to the details">GetActiveLoadout</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a>&nbsp;</td><td><a href="#_GetLoadout-" name="GetLoadout" title="go to the details">GetLoadout</a> (int slotIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a>&nbsp;</td><td><a href="#_GetLoadoutAutoCreate-" name="GetLoadoutAutoCreate" title="go to the details">GetLoadoutAutoCreate</a> (int slot))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>String&nbsp;</td><td><a href="#_GetURLOptions-" name="GetURLOptions" title="go to the details">GetURLOptions</a> (optional string originalURL))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_hasServerFavorite-" name="hasServerFavorite" title="go to the details">hasServerFavorite</a> (string IP, string Port))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadoutFromSlot-" name="LoadoutFromSlot" title="go to the details">LoadoutFromSlot</a> (<a href="../tribesgui/playerprofile.html#LoadoutSlot">LoadoutSlot</a> slot, out <a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a> loadout))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadProfileData-" name="LoadProfileData" title="go to the details">LoadProfileData</a> (String profileName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_needStatTrackingUserInput-" name="needStatTrackingUserInput" title="go to the details">needStatTrackingUserInput</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_needTeamAffiliationUserInput-" name="needTeamAffiliationUserInput" title="go to the details">needTeamAffiliationUserInput</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveCredentials-" name="SaveCredentials" title="go to the details">SaveCredentials</a> (string Username, string Password, string IP, string Port, bool bAutoLogin))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetActiveLoadout-" name="SetActiveLoadout" title="go to the details">SetActiveLoadout</a> (<a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a> loadout))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SlotFromLoadout-" name="SlotFromLoadout" title="go to the details">SlotFromLoadout</a> (<a href="../gameplay/customplayerloadout.html">CustomPlayerLoadout</a> loadout, out <a href="../tribesgui/playerprofile.html#LoadoutSlot">LoadoutSlot</a> newSlot))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Store-" name="Store" title="go to the details">Store</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_toggleServerFavorite-" name="toggleServerFavorite" title="go to the details">toggleServerFavorite</a> (string IP, string Port))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#$=">$=</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#@=">@=</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#AllClasses">AllClasses</a>, <a href="../core/object.html#AllEditableProperties">AllEditableProperties</a>, <a href="../core/object.html#Allocate">Allocate</a>, <a href="../core/object.html#AllProperties">AllProperties</a>, <a href="../core/object.html#AppSeconds">AppSeconds</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#AssertWithDescription">AssertWithDescription</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#CanSLog">CanSLog</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassConstruct">ClassConstruct</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#CommonBase">CommonBase</a>, <a href="../core/object.html#Construct">Construct</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#DecodeFromURL">DecodeFromURL</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Div">Div</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicFindObject">DynamicFindObject</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EncodeForURL">EncodeForURL</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Eval">Eval</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FlushConfig">FlushConfig</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetBuildNumber">GetBuildNumber</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetMinCompatibleBuildNumber">GetMinCompatibleBuildNumber</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetSuperClass">GetSuperClass</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#Hash">Hash</a>, <a href="../core/object.html#HasUnicode">HasUnicode</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#InterpCurveGetInputDomain">InterpCurveGetInputDomain</a>, <a href="../core/object.html#InterpCurveGetOutputRange">InterpCurveGetOutputRange</a>, <a href="../core/object.html#Inverse">Inverse</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#IsNearlyZero">IsNearlyZero</a>, <a href="../core/object.html#IsUTracing">IsUTracing</a>, <a href="../core/object.html#IsValidForURL">IsValidForURL</a>, <a href="../core/object.html#IsZero">IsZero</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Locs">Locs</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogGuardStack">LogGuardStack</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#NullReferences">NullReferences</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#QuatFindBetween">QuatFindBetween</a>, <a href="../core/object.html#QuatFromAxisAndAngle">QuatFromAxisAndAngle</a>, <a href="../core/object.html#QuatFromRotator">QuatFromRotator</a>, <a href="../core/object.html#QuatInvert">QuatInvert</a>, <a href="../core/object.html#QuatProduct">QuatProduct</a>, <a href="../core/object.html#QuatRotateVector">QuatRotateVector</a>, <a href="../core/object.html#QuatToRotator">QuatToRotator</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#Repl">Repl</a>, <a href="../core/object.html#replaceStr">replaceStr</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetUTracing">SetUTracing</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Sleep">Sleep</a>, <a href="../core/object.html#SLog">SLog</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Split">Split</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#StrCmp">StrCmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#VDist">VDist</a>, <a href="../core/object.html#VDistSquared">VDistSquared</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#VSize2D">VSize2D</a>, <a href="../core/object.html#VSizeSquared">VSizeSquared</a>, <a href="../core/object.html#VSizeSquared2D">VSizeSquared2D</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_activeLoadout" class="hidden"></a>activeLoadout <a href="../Source_tribesgui/playerprofile.html#75" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> activeLoadout;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_affiliatedTeamId" class="hidden"></a>affiliatedTeamId <a href="../Source_tribesgui/playerprofile.html#66" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">int</span> affiliatedTeamId;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_configFilePath" class="hidden"></a>configFilePath <a href="../Source_tribesgui/playerprofile.html#78" class="small">Source code</a></h4>
+<div class="declaration">var private <span class="source_type">String</span> configFilePath;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_controller" class="hidden"></a>controller <a href="../Source_tribesgui/playerprofile.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gui/guicontroller.html" class="source">GUIController</a></span> <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_loadouts" class="hidden"></a>loadouts <a href="../Source_tribesgui/playerprofile.html#74" class="small">Source code</a></h4>
+<div class="declaration">var private Array&lt;<span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span>&gt; loadouts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_statTrackingID" class="hidden"></a>statTrackingID <a href="../Source_tribesgui/playerprofile.html#62" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">int</span> statTrackingID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Profile</h3>
+<h4><a name="_activeLoadoutSlot" class="hidden"></a>activeLoadoutSlot <a href="../Source_tribesgui/playerprofile.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type"><a href="../tribesgui/playerprofile.html#LoadoutSlot" class="source">LoadoutSlot</a></span> activeLoadoutSlot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_affiliatedTeamName" class="hidden"></a>affiliatedTeamName <a href="../Source_tribesgui/playerprofile.html#68" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> affiliatedTeamName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_affiliatedTeamPassword" class="hidden"></a>affiliatedTeamPassword <a href="../Source_tribesgui/playerprofile.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> affiliatedTeamPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_affiliatedTeamTag" class="hidden"></a>affiliatedTeamTag <a href="../Source_tribesgui/playerprofile.html#67" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> affiliatedTeamTag;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bIsFemale" class="hidden"></a>bIsFemale <a href="../Source_tribesgui/playerprofile.html#46" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bIsFemale;</div>
+<blockquote class="comment">
+Whether the player is female
+</blockquote>
+<hr class="small" />
+<h4><a name="_bReadOnly" class="hidden"></a>bReadOnly <a href="../Source_tribesgui/playerprofile.html#54" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bReadOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSaveStatTrackingPassword" class="hidden"></a>bSaveStatTrackingPassword <a href="../Source_tribesgui/playerprofile.html#58" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bSaveStatTrackingPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bSaveTeamPassword" class="hidden"></a>bSaveTeamPassword <a href="../Source_tribesgui/playerprofile.html#65" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bSaveTeamPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShownMPHelp" class="hidden"></a>bShownMPHelp <a href="../Source_tribesgui/playerprofile.html#55" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bShownMPHelp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bStoreLogins" class="hidden"></a>bStoreLogins <a href="../Source_tribesgui/playerprofile.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bStoreLogins;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_buddyList" class="hidden"></a>buddyList <a href="../Source_tribesgui/playerprofile.html#52" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config Array&lt;<span class="source_type">String</span>&gt; buddyList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseStatTracking" class="hidden"></a>bUseStatTracking <a href="../Source_tribesgui/playerprofile.html#57" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bUseStatTracking;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUseTeamAffiliation" class="hidden"></a>bUseTeamAffiliation <a href="../Source_tribesgui/playerprofile.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">bool</span> bUseTeamAffiliation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_loadoutSlots" class="hidden"></a>loadoutSlots <a href="../Source_tribesgui/playerprofile.html#50" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config Array&lt;<span class="source_type"><a href="../tribesgui/playerprofile.html#LoadoutSlot" class="source">LoadoutSlot</a></span>&gt; loadoutSlots;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoginHistory" class="hidden"></a>LoginHistory <a href="../Source_tribesgui/playerprofile.html#35" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config array&lt;<span class="source_type"><a href="../tribesgui/playerprofile.html#AutoLoginInfo" class="source">AutoLoginInfo</a></span>&gt; LoginHistory;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownedTeamName" class="hidden"></a>ownedTeamName <a href="../Source_tribesgui/playerprofile.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> ownedTeamName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ownedTeamTag" class="hidden"></a>ownedTeamTag <a href="../Source_tribesgui/playerprofile.html#71" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> ownedTeamTag;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_playerName" class="hidden"></a>playerName <a href="../Source_tribesgui/playerprofile.html#45" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">String</span> playerName;</div>
+<blockquote class="comment">
+Name of the Player
+</blockquote>
+<hr class="small" />
+<h4><a name="_serverFavorites" class="hidden"></a>serverFavorites <a href="../Source_tribesgui/playerprofile.html#43" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config array&lt;<span class="source_type"><a href="../tribesgui/playerprofile.html#ServerFavorite" class="source">ServerFavorite</a></span>&gt; serverFavorites;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_skinName" class="hidden"></a>skinName <a href="../Source_tribesgui/playerprofile.html#48" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">String</span> skinName;</div>
+<blockquote class="comment">
+Player skin
+</blockquote>
+<hr class="small" />
+<h4><a name="_statTrackingEmail" class="hidden"></a>statTrackingEmail <a href="../Source_tribesgui/playerprofile.html#60" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> statTrackingEmail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_statTrackingNick" class="hidden"></a>statTrackingNick <a href="../Source_tribesgui/playerprofile.html#59" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> statTrackingNick;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_statTrackingPassword" class="hidden"></a>statTrackingPassword <a href="../Source_tribesgui/playerprofile.html#61" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">string</span> statTrackingPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_voiceSet" class="hidden"></a>voiceSet <a href="../Source_tribesgui/playerprofile.html#47" class="small">Source code</a></h4>
+<div class="declaration">var(Profile) config <span class="source_type">String</span> voiceSet;</div>
+<blockquote class="comment">
+Voice set the player uses
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AutoLoginInfo" class="hidden"></a>AutoLoginInfo <a href="../Source_tribesgui/playerprofile.html#25" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../tribesgui/playerprofile.html#AutoLoginInfo" class="source">AutoLoginInfo</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">bool</span> bAutologin;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">string</span> IP;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">string</span> <span class="source_type">Password</span>;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">string</span> <span class="source_type">Port</span>;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">string</span> Username;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadoutSlot" class="hidden"></a>LoadoutSlot <a href="../Source_tribesgui/playerprofile.html#14" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../tribesgui/playerprofile.html#LoadoutSlot" class="source">LoadoutSlot</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">String</span> combatRoleClassName;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">String</span> grenadeClassName;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">String</span> loadoutName;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">bool</span> occupied;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">String</span> packClassName;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config Array&lt;<span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span>.<span class="source_type"><a href="../gameplay/customplayerloadout.html#SkinPreferenceMapping" class="source">SkinPreferenceMapping</a></span>&gt; skinPreferences;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config Array&lt;<span class="source_type">String</span>&gt; weaponClassNameList;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerFavorite" class="hidden"></a>ServerFavorite <a href="../Source_tribesgui/playerprofile.html#37" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../tribesgui/playerprofile.html#ServerFavorite" class="source">ServerFavorite</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">string</span> IP;<br />
+var(<span class="source_type"><a href="../tribesgui/playerprofile.html" class="source">PlayerProfile</a></span>) config <span class="source_type">string</span> <span class="source_type">Port</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddLoadout <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#134" class="small">Source code</a></h4>
+<div class="declaration">simulated private <span class="source_type">function</span>  AddLoadout ( out <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> <span class="source_type"><a href="../gameplay/loadout.html" class="source">loadout</a></span>, <span class="source_type">int</span> slot) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindCredentials-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindCredentials <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#280" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> FindCredentials ( coerce <span class="source_type">string</span> IP, coerce <span class="source_type">string</span> <span class="source_type">Port</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetActiveLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetActiveLoadout <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#150" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> GetActiveLoadout ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLoadout <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#176" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> GetLoadout ( <span class="source_type">int</span> slotIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLoadoutAutoCreate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLoadoutAutoCreate <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#114" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> GetLoadoutAutoCreate ( <span class="source_type">int</span> slot) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetURLOptions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetURLOptions <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#193" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span> <span class="source_type">String</span> GetURLOptions ( optional <span class="source_type">string</span> originalURL) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_hasServerFavorite-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> hasServerFavorite <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#348" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> hasServerFavorite ( <span class="source_type">string</span> IP, <span class="source_type">string</span> <span class="source_type">Port</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadoutFromSlot-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadoutFromSlot <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#246" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  LoadoutFromSlot ( <span class="source_type"><a href="../tribesgui/playerprofile.html#LoadoutSlot" class="source">LoadoutSlot</a></span> slot, out <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> <span class="source_type"><a href="../gameplay/loadout.html" class="source">loadout</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadProfileData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadProfileData <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#88" class="small">Source code</a></h4>
+<div class="declaration">native <span class="source_type">function</span>  LoadProfileData ( <span class="source_type">String</span> profileName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_needStatTrackingUserInput-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> needStatTrackingUserInput <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#268" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> needStatTrackingUserInput ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_needTeamAffiliationUserInput-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> needTeamAffiliationUserInput <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#274" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> needTeamAffiliationUserInput ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveCredentials-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveCredentials <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#296" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  SaveCredentials ( <span class="source_type">string</span> Username, <span class="source_type">string</span> <span class="source_type">Password</span>, <span class="source_type">string</span> IP, <span class="source_type">string</span> <span class="source_type">Port</span>, <span class="source_type">bool</span> bAutoLogin) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetActiveLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetActiveLoadout <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#162" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  SetActiveLoadout ( <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> <span class="source_type"><a href="../gameplay/loadout.html" class="source">loadout</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SlotFromLoadout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SlotFromLoadout <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#214" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  SlotFromLoadout ( <span class="source_type"><a href="../gameplay/customplayerloadout.html" class="source">CustomPlayerLoadout</a></span> <span class="source_type"><a href="../gameplay/loadout.html" class="source">loadout</a></span>, out <span class="source_type"><a href="../tribesgui/playerprofile.html#LoadoutSlot" class="source">LoadoutSlot</a></span> newSlot) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Store-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Store <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#90" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  Store ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_toggleServerFavorite-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> toggleServerFavorite <span class="function_state"></span> <a href="../Source_tribesgui/playerprofile.html#327" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  toggleServerFavorite ( <span class="source_type">string</span> IP, <span class="source_type">string</span> <span class="source_type">Port</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	playerName	= <span class="source_string">"Player"</span>
+	bIsFemale	= false
+	bUseStatTracking = false
+	bSaveStatTrackingPassword = true
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tribesgui/tribesgui-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tribesgui/playerprofile.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#PlayerProfile">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tribesgui/messageinventoryuiweaponselected.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tribesgui/playerradarinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:33.822 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Tyrion.NS_Follow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ns_follow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#NS_Follow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ns_dozerogravitylocalmove.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ns_jetskimanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#tyrion/ns_follow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../tyrion/tyrion-overview.html">Tyrion</a>.NS_Follow</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../tyrion/ns_action.html">NS_Action</a></dd>
+<dt>Modifiers</dt><dd>implements IBooleanActionCondition threaded dependson ( NS_MoveToLocation ) </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">Core</a>.<a href="../core/refcount.html">RefCount</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/tyrion_actionbase.html">Tyrion_ActionBase</a>
+      |   
+      +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a>
+         |   
+         +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ns_action.html">NS_Action</a>
+            |   
+            +-- <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ns_follow.html">NS_Follow</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_DEFAULT_HEIGHT_ABOVE_GROUND" name="DEFAULT_HEIGHT_ABOVE_GROUND" title="go to the details">DEFAULT_HEIGHT_ABOVE_GROUND</a></td><td width="10%">=</td><td width="50%">1000.0f</td></tr>
+<tr><td width="40%"><a href="#_LOOKAHEAD_DISTANCE" name="LOOKAHEAD_DISTANCE" title="go to the details">LOOKAHEAD_DISTANCE</a></td><td width="10%">=</td><td width="50%">250</td></tr>
+<tr><td width="40%"><a href="#_MAX_UPDATE_TICKS" name="MAX_UPDATE_TICKS" title="go to the details">MAX_UPDATE_TICKS</a></td><td width="10%">=</td><td width="50%">200</td></tr>
+<tr><td width="40%"><a href="#_MIN_PREDICTION_SPEED" name="MIN_PREDICTION_SPEED" title="go to the details">MIN_PREDICTION_SPEED</a></td><td width="10%">=</td><td width="50%">5.0f</td></tr>
+<tr><td width="40%"><a href="#_MIN_UPDATE_TICKS" name="MIN_UPDATE_TICKS" title="go to the details">MIN_UPDATE_TICKS</a></td><td width="10%">=</td><td width="50%">20</td></tr>
+<tr><td width="40%"><a href="#_PROXIMITY_HYSTERESIS_FACTOR" name="PROXIMITY_HYSTERESIS_FACTOR" title="go to the details">PROXIMITY_HYSTERESIS_FACTOR</a></td><td width="10%">=</td><td width="50%">1.2f</td></tr>
+<tr><td width="40%"><a href="#_PROXIMITY_HYSTERESIS_MAX" name="PROXIMITY_HYSTERESIS_MAX" title="go to the details">PROXIMITY_HYSTERESIS_MAX</a></td><td width="10%">=</td><td width="50%">500.0f</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#DONT_CARE">DONT_CARE</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDoLOSCheck" name="bDoLOSCheck" title="go to the details">bDoLOSCheck</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPredictedLocation" name="bPredictedLocation" title="go to the details">bPredictedLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_desiredSpeed" name="desiredSpeed" title="go to the details">desiredSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_destination" name="destination" title="go to the details">destination</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_distance" name="distance" title="go to the details">distance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_energyUsage" name="energyUsage" title="go to the details">energyUsage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ifollowfunction.html">IFollowFunction</a></td><td width="66%"><a href="#_followFunction" name="followFunction" title="go to the details">followFunction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Character.GroundMovementLevels</td><td width="66%"><a href="#_groundMovement" name="groundMovement" title="go to the details">groundMovement</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_height" name="height" title="go to the details">height</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../engine/actor.html">Actor</a>&gt;</td><td width="66%"><a href="#_ignore" name="ignore" title="go to the details">ignore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_offset" name="offset" title="go to the details">offset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_positionIndex" name="positionIndex" title="go to the details">positionIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_proximity" name="proximity" title="go to the details">proximity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_target" name="target" title="go to the details">target</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/rook.html">Rook</a></td><td width="66%"><a href="#_targetRook" name="targetRook" title="go to the details">targetRook</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../tyrion/ns_movetolocation.html#TerminalConditions">NS_MoveToLocation.TerminalConditions</a></td><td width="66%"><a href="#_terminalConditions" name="terminalConditions" title="go to the details">terminalConditions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_terminalHeight" name="terminalHeight" title="go to the details">terminalHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_terminalVelocity" name="terminalVelocity" title="go to the details">terminalVelocity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_tickCounter" name="tickCounter" title="go to the details">tickCounter</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ns_action.html">NS_Action</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ns_action.html#bWakeUpParent">bWakeUpParent</a>, <a href="../tyrion/ns_action.html#childAction">childAction</a>, <a href="../tyrion/ns_action.html#controller">controller</a>, <a href="../tyrion/ns_action.html#errorCode">errorCode</a>, <a href="../tyrion/ns_action.html#parentAction">parentAction</a>, <a href="../tyrion/ns_action.html#tickTime">tickTime</a>, <a href="../tyrion/ns_action.html#tickTimeOrg">tickTimeOrg</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#bCompleted">bCompleted</a>, <a href="../tyrion/actionbase.html#bDeleted">bDeleted</a>, <a href="../tyrion/actionbase.html#bIdle">bIdle</a>, <a href="../tyrion/actionbase.html#bSensorAction">bSensorAction</a>, <a href="../tyrion/actionbase.html#bWasTicked">bWasTicked</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#ACT_ErrorCodes">ACT_ErrorCodes</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_actionDebuggingString-" name="actionDebuggingString" title="go to the details">actionDebuggingString</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_actionTest-" name="actionTest" title="go to the details">actionTest</a> (<a href="../tyrion/actionbase.html">ActionBase</a> parent, NS_Action child ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_bLOSCheck-" name="bLOSCheck" title="go to the details">bLOSCheck</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_cleanup-" name="cleanup" title="go to the details">cleanup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_computeDestinationAndDistance-" name="computeDestinationAndDistance" title="go to the details">computeDestinationAndDistance</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_maxWaitingDistance-" name="maxWaitingDistance" title="go to the details">maxWaitingDistance</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_predictedLocation-" name="predictedLocation" title="go to the details">predictedLocation</a> (Vector destination ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_proximityFunction-" name="proximityFunction" title="go to the details">proximityFunction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../tyrion/ns_follow.html">NS_Follow</a>&nbsp;</td><td><a href="#_startAction-" name="startAction" title="go to the details">startAction</a> (<a href="../tyrion/ai_controller.html">AI_Controller</a> c, <a href="../tyrion/actionbase.html">ActionBase</a> parent, <a href="../engine/actor.html">Actor</a> target, float proximity, optional <a href="../tyrion/ifollowfunction.html">IFollowFunction</a> followFunction, optional int positionIndex, optional float energyUsage, optional float terminalVelocity, optional float terminalHeight, optional float desiredSpeed ))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/ns_action.html">NS_Action</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/ns_action.html#actionFailedCB">actionFailedCB</a>, <a href="../tyrion/ns_action.html#actionSucceededCB">actionSucceededCB</a>, <a href="../tyrion/ns_action.html#checkForUniqueness">checkForUniqueness</a>, <a href="../tyrion/ns_action.html#construct">construct</a>, <a href="../tyrion/ns_action.html#fail">fail</a>, <a href="../tyrion/ns_action.html#getChildReference">getChildReference</a>, <a href="../tyrion/ns_action.html#instantFail">instantFail</a>, <a href="../tyrion/ns_action.html#interruptAction">interruptAction</a>, <a href="../tyrion/ns_action.html#myAddRef">myAddRef</a>, <a href="../tyrion/ns_action.html#pauseAction">pauseAction</a>, <a href="../tyrion/ns_action.html#removeAction">removeAction</a>, <a href="../tyrion/ns_action.html#removeChildReference">removeChildReference</a>, <a href="../tyrion/ns_action.html#runAction">runAction</a>, <a href="../tyrion/ns_action.html#setChildReference">setChildReference</a>, <a href="../tyrion/ns_action.html#succeed">succeed</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../tyrion/tyrion-overview.html">Tyrion</a>.<a href="../tyrion/actionbase.html">ActionBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../tyrion/actionbase.html#actionFailedCB">actionFailedCB</a>, <a href="../tyrion/actionbase.html#actionSucceededCB">actionSucceededCB</a>, <a href="../tyrion/actionbase.html#cleanup">cleanup</a>, <a href="../tyrion/actionbase.html#closestPointOnALine">closestPointOnALine</a>, <a href="../tyrion/actionbase.html#getChildReference">getChildReference</a>, <a href="../tyrion/actionbase.html#hasCompleted">hasCompleted</a>, <a href="../tyrion/actionbase.html#instantFail">instantFail</a>, <a href="../tyrion/actionbase.html#interruptActionIf">interruptActionIf</a>, <a href="../tyrion/actionbase.html#isIdle">isIdle</a>, <a href="../tyrion/actionbase.html#isRunning">isRunning</a>, <a href="../tyrion/actionbase.html#minDistBetweenTrajectories">minDistBetweenTrajectories</a>, <a href="../tyrion/actionbase.html#pause">pause</a>, <a href="../tyrion/actionbase.html#pauseAction">pauseAction</a>, <a href="../tyrion/actionbase.html#pawnDied">pawnDied</a>, <a href="../tyrion/actionbase.html#removeAction">removeAction</a>, <a href="../tyrion/actionbase.html#removeChildReference">removeChildReference</a>, <a href="../tyrion/actionbase.html#removeGoal">removeGoal</a>, <a href="../tyrion/actionbase.html#rotateZ">rotateZ</a>, <a href="../tyrion/actionbase.html#runAction">runAction</a>, <a href="../tyrion/actionbase.html#setChildReference">setChildReference</a>, <a href="../tyrion/actionbase.html#sleepForever">sleepForever</a>, <a href="../tyrion/actionbase.html#waitForAction">waitForAction</a>, <a href="../tyrion/actionbase.html#wasTicked">wasTicked</a>, <a href="../tyrion/actionbase.html#yield">yield</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Running <a href="../Source_tyrion/ns_follow.html#242" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Running <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DEFAULT_HEIGHT_ABOVE_GROUND" class="hidden"></a>DEFAULT_HEIGHT_ABOVE_GROUND <a href="../Source_tyrion/ns_follow.html#24" class="small">Source code</a></h4>
+<div class="declaration">const DEFAULT_HEIGHT_ABOVE_GROUND = <span class="source_int">1000.0f</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LOOKAHEAD_DISTANCE" class="hidden"></a>LOOKAHEAD_DISTANCE <a href="../Source_tyrion/ns_follow.html#23" class="small">Source code</a></h4>
+<div class="declaration">const LOOKAHEAD_DISTANCE = <span class="source_int">250</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MAX_UPDATE_TICKS" class="hidden"></a>MAX_UPDATE_TICKS <a href="../Source_tyrion/ns_follow.html#19" class="small">Source code</a></h4>
+<div class="declaration">const MAX_UPDATE_TICKS = <span class="source_int">200</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MIN_PREDICTION_SPEED" class="hidden"></a>MIN_PREDICTION_SPEED <a href="../Source_tyrion/ns_follow.html#18" class="small">Source code</a></h4>
+<div class="declaration">const MIN_PREDICTION_SPEED = <span class="source_int">5.0f</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MIN_UPDATE_TICKS" class="hidden"></a>MIN_UPDATE_TICKS <a href="../Source_tyrion/ns_follow.html#20" class="small">Source code</a></h4>
+<div class="declaration">const MIN_UPDATE_TICKS = <span class="source_int">20</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PROXIMITY_HYSTERESIS_FACTOR" class="hidden"></a>PROXIMITY_HYSTERESIS_FACTOR <a href="../Source_tyrion/ns_follow.html#21" class="small">Source code</a></h4>
+<div class="declaration">const PROXIMITY_HYSTERESIS_FACTOR = <span class="source_int">1.2f</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PROXIMITY_HYSTERESIS_MAX" class="hidden"></a>PROXIMITY_HYSTERESIS_MAX <a href="../Source_tyrion/ns_follow.html#22" class="small">Source code</a></h4>
+<div class="declaration">const PROXIMITY_HYSTERESIS_MAX = <span class="source_int">500.0f</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bDoLOSCheck" class="hidden"></a>bDoLOSCheck <a href="../Source_tyrion/ns_follow.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bDoLOSCheck;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPredictedLocation" class="hidden"></a>bPredictedLocation <a href="../Source_tyrion/ns_follow.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bPredictedLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_desiredSpeed" class="hidden"></a>desiredSpeed <a href="../Source_tyrion/ns_follow.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> <span class="source_type">desiredSpeed</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_destination" class="hidden"></a>destination <a href="../Source_tyrion/ns_follow.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">destination</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_distance" class="hidden"></a>distance <a href="../Source_tyrion/ns_follow.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> distance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_energyUsage" class="hidden"></a>energyUsage <a href="../Source_tyrion/ns_follow.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> energyUsage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_followFunction" class="hidden"></a>followFunction <a href="../Source_tyrion/ns_follow.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ifollowfunction.html" class="source">IFollowFunction</a></span> followFunction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_groundMovement" class="hidden"></a>groundMovement <a href="../Source_tyrion/ns_follow.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.<span class="source_type"><a href="../gameplay/character.html#GroundMovementLevels" class="source">GroundMovementLevels</a></span> groundMovement;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_height" class="hidden"></a>height <a href="../Source_tyrion/ns_follow.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> height;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ignore" class="hidden"></a>ignore <a href="../Source_tyrion/ns_follow.html#50" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>&gt; ignore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_offset" class="hidden"></a>offset <a href="../Source_tyrion/ns_follow.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">offset</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_positionIndex" class="hidden"></a>positionIndex <a href="../Source_tyrion/ns_follow.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> <span class="source_type">positionIndex</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_proximity" class="hidden"></a>proximity <a href="../Source_tyrion/ns_follow.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> proximity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_target" class="hidden"></a>target <a href="../Source_tyrion/ns_follow.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">target</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_targetRook" class="hidden"></a>targetRook <a href="../Source_tyrion/ns_follow.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> targetRook;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_terminalConditions" class="hidden"></a>terminalConditions <a href="../Source_tyrion/ns_follow.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../tyrion/ns_movetolocation.html" class="source">NS_MoveToLocation</a></span>.TerminalConditions terminalConditions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_terminalHeight" class="hidden"></a>terminalHeight <a href="../Source_tyrion/ns_follow.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> terminalHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_terminalVelocity" class="hidden"></a>terminalVelocity <a href="../Source_tyrion/ns_follow.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> terminalVelocity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_tickCounter" class="hidden"></a>tickCounter <a href="../Source_tyrion/ns_follow.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> tickCounter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_actionDebuggingString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> actionDebuggingString <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#222" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">string</span> actionDebuggingString ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_actionTest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> actionTest <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#90" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type">bool</span> actionTest ( <span class="source_type"><a href="../tyrion/actionbase.html" class="source">ActionBase</a></span> <span class="source_type">parent</span>, <span class="source_type"><a href="../tyrion/ns_action.html" class="source">NS_Action</a></span> <span class="source_type">child</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLOSCheck-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> bLOSCheck <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#132" class="small">Source code</a></h4>
+<div class="declaration">private final <span class="source_type">function</span> <span class="source_type">bool</span> bLOSCheck ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_cleanup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> cleanup <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#232" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  cleanup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_computeDestinationAndDistance-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> computeDestinationAndDistance <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#176" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  computeDestinationAndDistance ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_maxWaitingDistance-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> maxWaitingDistance <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#164" class="small">Source code</a></h4>
+<div class="declaration">private final <span class="source_type">function</span> <span class="source_type">float</span> maxWaitingDistance ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_predictedLocation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> predictedLocation <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#140" class="small">Source code</a></h4>
+<div class="declaration">private final <span class="source_type">function</span> <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> predictedLocation ( <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">destination</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_proximityFunction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> proximityFunction <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#153" class="small">Source code</a></h4>
+<div class="declaration">private final <span class="source_type">function</span> <span class="source_type">float</span> proximityFunction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_startAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> startAction <span class="function_state"></span> <a href="../Source_tyrion/ns_follow.html#59" class="small">Source code</a></h4>
+<div class="declaration">static <span class="source_type">function</span> <span class="source_type"><a href="../tyrion/ns_follow.html" class="source">NS_Follow</a></span> startAction ( <span class="source_type"><a href="../tyrion/ai_controller.html" class="source">AI_Controller</a></span> <span class="source_type">c</span>, <span class="source_type"><a href="../tyrion/actionbase.html" class="source">ActionBase</a></span> <span class="source_type">parent</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">target</span>, <span class="source_type">float</span> proximity,
+									  optional <span class="source_type"><a href="../tyrion/ifollowfunction.html" class="source">IFollowFunction</a></span> followFunction, optional <span class="source_type">int</span> <span class="source_type">positionIndex</span>,
+									  optional <span class="source_type">float</span> energyUsage, optional <span class="source_type">float</span> terminalVelocity, optional <span class="source_type">float</span> terminalHeight,
+									  optional <span class="source_type">float</span> <span class="source_type">desiredSpeed</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	bPredictedLocation = true
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../tyrion/tyrion-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_tyrion/ns_follow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#NS_Follow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../tyrion/ns_dozerogravitylocalmove.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../tyrion/ns_jetskimanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:33.320 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

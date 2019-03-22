@@ -1,0 +1,742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.TeamInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/teaminfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TeamInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/tankweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/test2loadout.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/teaminfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/teaminfo.html">TeamInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> extends <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/info.html" class="source">Info</a></span>
+<a name="2"></a>	placeable
+<a name="3"></a>	native;
+<a name="4"></a>
+<a name="5"></a>const MAX_RESPAWN_VEHICLES_DEFINE = <span class="source_int">10</span>;
+<a name="6"></a>
+<a name="7"></a>struct native <span class="source_type"><a href="../gameplay/teaminfo.html#RoleData" class="source">RoleData</a></span>
+<a name="8"></a>{
+<a name="9"></a>	var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt;	role							<span class="source_string">"The role that this data applies to"</span>;
+<a name="10"></a>	var() <span class="source_type">Mesh</span>				<span class="source_type">mesh</span>							<span class="source_string">"The mesh used for characters with this role when playing for this team"</span>;
+<a name="11"></a>	var() <span class="source_type">Mesh</span>				femaleMesh						<span class="source_string">"The mesh used for female characters with this role when playing for this team"</span>;
+<a name="12"></a>	var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span>&gt;	<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>							<span class="source_string">"The jetpack used for characters with this role when playing for this team"</span>;
+<a name="13"></a>	var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span>&gt;	femaleJetpack					<span class="source_string">"The jetpack mesh used for female characters with this role when playing for this team"</span>;
+<a name="14"></a>	var() <span class="source_type">Mesh</span>				armsMesh						<span class="source_string">"The arms used for the characters with this role when playing for this team"</span>;
+<a name="15"></a>	var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>			armorIcon						<span class="source_string">"The Icon representation for this combat roles armor"</span>;
+<a name="16"></a>};
+<a name="17"></a>
+<a name="18"></a>var() Array&lt;<span class="source_type"><a href="../gameplay/teaminfo.html#RoleData" class="source">RoleData</a></span>&gt;				combatRoleData;
+<a name="19"></a>var() localized <span class="source_type">string</span>				localizedName;
+<a name="20"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>						ownershipMaterial			<span class="source_string">"The material used for the ownership badge on Base Devices owned by this team"</span>;
+<a name="21"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>						baseDeviceIllumMaterial		<span class="source_string">"The material used for self-illumination on Base Devices owned by this team"</span>;
+<a name="22"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>						altOwnershipMaterial		<span class="source_string">"An alternate material used for the ownership badge on Base Devices owned by this team; if specified, overrides ownershipMaterial"</span>;
+<a name="23"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>						altBaseDeviceIllumMaterial	<span class="source_string">"An alternate material used for self-illumination on Base Devices owned by this team; if specified, overrides baseDeviceIllumMaterial"</span>;
+<a name="24"></a>var() <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span>							territoryTendrilColor		<span class="source_string">"Color of this team's terriory capture tendril"</span>;
+<a name="25"></a>
+<a name="26"></a>var <span class="source_type">float</span>							objectivesUpdateRate;
+<a name="27"></a>var <span class="source_type"><a href="../gameplay/objectiveslist.html" class="source">ObjectivesList</a></span>					objectives;				<span class="source_comment">// Team objectives
+</span><a name="28"></a>var <span class="source_type">int</span>								score;
+<a name="29"></a>var <span class="source_type">bool</span>							bWonLastRound;
+<a name="30"></a>
+<a name="31"></a>var const <span class="source_type">int</span>						MAX_BASES;
+<a name="32"></a>var	array&lt;<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span>&gt;					bases;					<span class="source_comment">// Bases available for this team
+</span><a name="33"></a>
+<a name="34"></a><span class="source_comment">// Parallel arrays
+</span><a name="35"></a>var	<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span>						respawnBases[<span class="source_int">10</span>];			<span class="source_comment">// bases which are available for respawn
+</span><a name="36"></a>var <span class="source_type">string</span>							respawnBaseNames[<span class="source_int">10</span>];		<span class="source_comment">// names of the respawn bases
+</span><a name="37"></a>var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>							respawnBaseLocations[<span class="source_int">10</span>];	<span class="source_comment">// locations of the respawn bases
+</span><a name="38"></a>
+<a name="39"></a><span class="source_comment">// 10 has been choosen - should be maximum number of respawn point vehicles available in any level
+</span><a name="40"></a>var const <span class="source_type">int</span>						MAX_RESPAWN_VEHICLES;
+<a name="41"></a>var <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>							respawnVehicles[MAX_RESPAWN_VEHICLES_DEFINE];
+<a name="42"></a>
+<a name="43"></a><span class="source_comment">//var private SensorTower teamSensor;
+</span><a name="44"></a>var private Array&lt;<span class="source_type"><a href="../gameplay/sensortower.html" class="source">SensorTower</a></span>&gt; sensorGrid;
+<a name="45"></a>var(SensorSystem) <span class="source_type">float</span> sensorGridRate;
+<a name="46"></a>var private <span class="source_type">float</span> lastUpdateTime;
+<a name="47"></a>var private Array&lt;<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>&gt; detectedEnemies;
+<a name="48"></a>var private Array&lt;<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>&gt; detectedFriendlies;
+<a name="49"></a>var <span class="source_type">bool</span> bSensorGridFunctional;
+<a name="50"></a>
+<a name="51"></a>var <span class="source_type">int</span> numPlayerStarts;
+<a name="52"></a>
+<a name="53"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> buggySkin;
+<a name="54"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> podSkin;
+<a name="55"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> tankSkin;
+<a name="56"></a>var() <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> assaultShipSkin;
+<a name="57"></a>
+<a name="58"></a>var() <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> onlyDamagedByTeam			<span class="source_string">"Only the specified team will be able to damage members of this team."</span>;
+<a name="59"></a>
+<a name="60"></a>var <span class="source_type">bool</span> bNoMoreCarryables;
+<a name="61"></a>
+<a name="62"></a>var() <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> TeamColor;
+<a name="63"></a>var() <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> TeamHighlightColor;
+<a name="64"></a>var() <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> RelativeFriendlyTeamColor;
+<a name="65"></a>var() <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> RelativeFriendlyHighlightColor;
+<a name="66"></a>var() <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> RelativeEnemyTeamColor;
+<a name="67"></a>var() <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> RelativeEnemyHighlightColor;
+<a name="68"></a>
+<a name="69"></a>var <span class="source_type">int</span> TeamIndex;
+<a name="70"></a>
+<a name="71"></a>replication
+<a name="72"></a>{
+<a name="73"></a>	reliable if (ROLE == ROLE_Authority)
+<a name="74"></a>		objectives, score, ownershipMaterial, sensorGridRate, bWonLastRound, 
+<a name="75"></a>		respawnVehicles, respawnBases, <span class="source_comment">/*respawnBaseNames, respawnBaseLocations,*/</span>
+<a name="76"></a>		bNoMoreCarryables, bSensorGridFunctional, TeamIndex;
+<a name="77"></a>}
+<a name="78"></a>
+<a name="79"></a>
+<a name="80"></a><span class="source_comment">// PostBeginPlay
+</span><a name="81"></a><span class="source_type">function</span> PostBeginPlay()
+<a name="82"></a>{
+<a name="83"></a>	Super.PostBeginPlay();
+<a name="84"></a>
+<a name="85"></a>	<span class="source_comment">// init objectives
+</span><a name="86"></a>	objectives = spawn(<span class="source_type">class</span><span class="source_name">'ObjectivesList'</span>);
+<a name="87"></a>
+<a name="88"></a>	if (ownershipMaterial == None)
+<a name="89"></a>		ownershipMaterial = <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>(DynamicLoadObject(<span class="source_string">"BaseObjects.OwnershipScreen"</span>, <span class="source_type">class</span><span class="source_name">'Shader'</span>));
+<a name="90"></a>}
+<a name="91"></a>
+<a name="92"></a><span class="source_type">function</span> evaluatePlayerStarts()
+<a name="93"></a>{
+<a name="94"></a>	local <span class="source_type"><a href="../engine/playerstart.html" class="source">PlayerStart</a></span> <span class="source_type">p</span>;
+<a name="95"></a>
+<a name="96"></a>	<span class="source_comment">// Figure out how many playerStarts are left for this team after any filtering has taken place
+</span><a name="97"></a>	ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'PlayerStart'</span>, <span class="source_type">p</span>)
+<a name="98"></a>	{
+<a name="99"></a>		if (<span class="source_type">p</span>.team == self || (<span class="source_type">p</span>.<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">baseInfo</a></span> != None && <span class="source_type">p</span>.<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">baseInfo</a></span>.team == self))
+<a name="100"></a>			numPlayerStarts++;
+<a name="101"></a>	}
+<a name="102"></a>}
+<a name="103"></a>
+<a name="104"></a>simulated <span class="source_type">function</span> <span class="source_type">String</span> GetHumanReadableName()
+<a name="105"></a>{
+<a name="106"></a>	return localizedName;
+<a name="107"></a>}
+<a name="108"></a>
+<a name="109"></a><span class="source_comment">// isFriendly
+</span><a name="110"></a><span class="source_comment">// returns true if the given team is friendly to this team
+</span><a name="111"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> isFriendly(<span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>)
+<a name="112"></a>{
+<a name="113"></a>	return <span class="source_type">t</span> == self || <span class="source_type">t</span> == None;
+<a name="114"></a>}
+<a name="115"></a>
+<a name="116"></a><span class="source_comment">// getMeshForRole
+</span><a name="117"></a><span class="source_comment">// returns the mesh that a character on this team should use for the given role
+</span><a name="118"></a>simulated <span class="source_type">function</span> <span class="source_type">Mesh</span> getMeshForRole(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; <span class="source_type">c</span>, <span class="source_type">bool</span> bIsFemale)
+<a name="119"></a>{
+<a name="120"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="121"></a>
+<a name="122"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; combatRoleData.Length; <span class="source_type">i</span>++)
+<a name="123"></a>	{
+<a name="124"></a>		if (combatRoleData[<span class="source_type">i</span>].role == <span class="source_type">c</span>)
+<a name="125"></a>		{
+<a name="126"></a>			if (bIsFemale)
+<a name="127"></a>				return combatRoleData[<span class="source_type">i</span>].femaleMesh;
+<a name="128"></a>			else
+<a name="129"></a>				return combatRoleData[<span class="source_type">i</span>].<span class="source_type">mesh</span>;
+<a name="130"></a>		}
+<a name="131"></a>	}
+<a name="132"></a>}
+<a name="133"></a>
+<a name="134"></a><span class="source_comment">// getJetpackMeshForRole
+</span><a name="135"></a><span class="source_comment">// returns the jetpack mesh that a character of this team should use for the given role
+</span><a name="136"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../gameplay/jetpack.html" class="source">Jetpack</a></span> getJetpackForRole(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> ownerActor, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; <span class="source_type">c</span>, <span class="source_type">bool</span> bIsFemale)
+<a name="137"></a>{
+<a name="138"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="139"></a>
+<a name="140"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; combatRoleData.Length; <span class="source_type">i</span>++)
+<a name="141"></a>	{
+<a name="142"></a>		if (combatRoleData[<span class="source_type">i</span>].role == <span class="source_type">c</span>)
+<a name="143"></a>		{
+<a name="144"></a>			if (bIsFemale)
+<a name="145"></a>			{
+<a name="146"></a>				if (combatRoleData[<span class="source_type">i</span>].femaleJetpack != None)
+<a name="147"></a>					return Spawn(combatRoleData[<span class="source_type">i</span>].femaleJetpack, ownerActor);
+<a name="148"></a>				else
+<a name="149"></a>					return None;
+<a name="150"></a>			}
+<a name="151"></a>			else
+<a name="152"></a>			{
+<a name="153"></a>				if (combatRoleData[<span class="source_type">i</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> != None)
+<a name="154"></a>					return Spawn(combatRoleData[<span class="source_type">i</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>, ownerActor);
+<a name="155"></a>				else
+<a name="156"></a>					return None;
+<a name="157"></a>			}
+<a name="158"></a>		}
+<a name="159"></a>	}
+<a name="160"></a>}
+<a name="161"></a>
+<a name="162"></a><span class="source_comment">// getArmsMeshForRole
+</span><a name="163"></a><span class="source_comment">// returns the arms mesh that a character of this team should use for the given role
+</span><a name="164"></a>simulated <span class="source_type">function</span> <span class="source_type">Mesh</span> getArmsMeshForRole(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; <span class="source_type">c</span>)
+<a name="165"></a>{
+<a name="166"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="167"></a>
+<a name="168"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; combatRoleData.Length; <span class="source_type">i</span>++)
+<a name="169"></a>		if (combatRoleData[<span class="source_type">i</span>].role == <span class="source_type">c</span>)
+<a name="170"></a>			return combatRoleData[<span class="source_type">i</span>].armsMesh;
+<a name="171"></a>}
+<a name="172"></a>
+<a name="173"></a><span class="source_comment">// GetArmorIconForRole
+</span><a name="174"></a><span class="source_comment">// Returns the armor icon which this team should use for the given role
+</span><a name="175"></a>simulated <span class="source_type">function</span> <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> GetArmorIconForRole(<span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/combatrole.html" class="source">CombatRole</a></span>&gt; <span class="source_type">c</span>)
+<a name="176"></a>{
+<a name="177"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="178"></a>
+<a name="179"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; combatRoleData.Length; <span class="source_type">i</span>++)
+<a name="180"></a>		if (combatRoleData[<span class="source_type">i</span>].role == <span class="source_type">c</span>)
+<a name="181"></a>			return combatRoleData[<span class="source_type">i</span>].armorIcon;
+<a name="182"></a>}
+<a name="183"></a>
+<a name="184"></a><span class="source_type">function</span> <span class="source_type">Tick</span>(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="185"></a>{
+<a name="186"></a>	<span class="source_comment">// Level.IsEntry doesnt always work for some reason. 
+</span><a name="187"></a>	<span class="source_comment">// Have to check the outer name
+</span><a name="188"></a>	if(<span class="source_type">Level</span>.Outer.<span class="source_type">Name</span> == <span class="source_name">'Entry'</span>)
+<a name="189"></a>		return;
+<a name="190"></a>
+<a name="191"></a>	objectives.updateObjectives(objectivesUpdateRate, self);
+<a name="192"></a>	tickSensors();
+<a name="193"></a>}
+<a name="194"></a>
+<a name="195"></a><span class="source_comment">// -------------------------------------------------------------------------------------
+</span><a name="196"></a><span class="source_comment">// Sensor System
+</span><a name="197"></a><span class="source_comment">// -------------------------------------------------------------------------------------
+</span><a name="198"></a>
+<a name="199"></a><span class="source_type">function</span> addTeamSensor(<span class="source_type"><a href="../gameplay/sensortower.html" class="source">SensorTower</a></span> newTeamSensor)
+<a name="200"></a>{
+<a name="201"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="202"></a>
+<a name="203"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; sensorGrid.Length; ++<span class="source_type">i</span>)
+<a name="204"></a>		if (sensorGrid[<span class="source_type">i</span>] == newTeamSensor)
+<a name="205"></a>			return;
+<a name="206"></a>
+<a name="207"></a>	sensorGrid[sensorGrid.Length] = newTeamSensor;
+<a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a><span class="source_type">function</span> removeTeamSensorSensorTower(<span class="source_type"><a href="../gameplay/sensortower.html" class="source">SensorTower</a></span> oldTeamSensor)
+<a name="211"></a>{
+<a name="212"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="213"></a>
+<a name="214"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; sensorGrid.Length; ++<span class="source_type">i</span>)
+<a name="215"></a>	{
+<a name="216"></a>		if (sensorGrid[<span class="source_type">i</span>] == oldTeamSensor)
+<a name="217"></a>		{
+<a name="218"></a>			sensorGrid.Remove(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="219"></a>			return;
+<a name="220"></a>		}
+<a name="221"></a>	}
+<a name="222"></a>}
+<a name="223"></a>
+<a name="224"></a><span class="source_type">function</span> <span class="source_type">bool</span> sensorGridFunctional()
+<a name="225"></a>{
+<a name="226"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="227"></a>
+<a name="228"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; sensorGrid.Length; ++<span class="source_type">i</span>)
+<a name="229"></a>		if (sensorGrid[<span class="source_type">i</span>].isFunctional())
+<a name="230"></a>		{
+<a name="231"></a>			bSensorGridFunctional = true;
+<a name="232"></a>			return true;
+<a name="233"></a>		}
+<a name="234"></a>
+<a name="235"></a>	bSensorGridFunctional = false;
+<a name="236"></a>	return false;
+<a name="237"></a>}
+<a name="238"></a>
+<a name="239"></a><span class="source_comment">//function setTeamSensor(SensorTower newTeamSensor)
+</span><a name="240"></a><span class="source_comment">//{
+</span><a name="241"></a><span class="source_comment">//	teamSensor = newTeamSensor;
+</span><a name="242"></a><span class="source_comment">//}
+</span><a name="243"></a>
+<a name="244"></a><span class="source_comment">// start point for all sensor ticking. we can optimise sensor code by making it native as neccesary in here
+</span><a name="245"></a>native <span class="source_type">function</span> tickSensors();
+<a name="246"></a>
+<a name="247"></a><span class="source_type">function</span> <span class="source_type">bool</span> sensorIsFriendlyRook(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">r</span>)
+<a name="248"></a>{
+<a name="249"></a>	<span class="source_comment">// use last occupant team if vehicle
+</span><a name="250"></a>	if (<span class="source_type">r</span>.isA(<span class="source_name">'Vehicle'</span>) && <span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">r</span>).lastOccupantTeam != None)
+<a name="251"></a>		return isFriendly(<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span>(<span class="source_type">r</span>).lastOccupantTeam);
+<a name="252"></a>
+<a name="253"></a>	return isFriendlyRook(<span class="source_type">r</span>);
+<a name="254"></a>}
+<a name="255"></a>
+<a name="256"></a>
+<a name="257"></a><span class="source_type">function</span> <span class="source_type">bool</span> isFriendlyRook(<span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> <span class="source_type">r</span>) <span class="source_comment">// Handles vehicles (i.e. an enemy vehicle with a friendly driver is a friend)
+</span><a name="258"></a>{
+<a name="259"></a>	if (<span class="source_type">r</span>.getControllingCharacter() != None)
+<a name="260"></a>		return isFriendly(<span class="source_type">r</span>.getControllingCharacter().team());
+<a name="261"></a>	else
+<a name="262"></a>		return isFriendly(<span class="source_type">r</span>.team());
+<a name="263"></a>}
+<a name="264"></a>
+<a name="265"></a>event updateSensors()
+<a name="266"></a>{
+<a name="267"></a>	local <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span> currRook;
+<a name="268"></a>	local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">c</span>;
+<a name="269"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pcc;
+<a name="270"></a>
+<a name="271"></a>	currRook = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(<span class="source_type">Level</span>.pawnList);
+<a name="272"></a>
+<a name="273"></a>	detectedEnemies.Length = <span class="source_int">0</span>;
+<a name="274"></a>	detectedFriendlies.Length = <span class="source_int">0</span>;
+<a name="275"></a>
+<a name="276"></a>	while (currRook != None)
+<a name="277"></a>	{
+<a name="278"></a>		if (currRook.canBeSensed() && currRook.isAlive())
+<a name="279"></a>		{
+<a name="280"></a>			if (sensorIsFriendlyRook(currRook))
+<a name="281"></a>			{
+<a name="282"></a>				detectedFriendlies[detectedFriendlies.Length] = currRook;
+<a name="283"></a>			}
+<a name="284"></a>			else if (sensorGridFunctional() && currRook.bIsDetectableByEnemies)
+<a name="285"></a>			{
+<a name="286"></a>				detectedEnemies[detectedEnemies.Length] = currRook;
+<a name="287"></a>			}
+<a name="288"></a>		}
+<a name="289"></a>
+<a name="290"></a>		currRook = <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(currRook.nextPawn);
+<a name="291"></a>	}
+<a name="292"></a>
+<a name="293"></a>	<span class="source_comment">// Update the sensor info for each player member of the team
+</span><a name="294"></a>	for (<span class="source_type">c</span> = <span class="source_type">Level</span>.ControllerList; <span class="source_type">c</span> != None; <span class="source_type">c</span> = <span class="source_type">c</span>.nextController)
+<a name="295"></a>	{
+<a name="296"></a>		pcc = <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>(<span class="source_type">c</span>);
+<a name="297"></a>
+<a name="298"></a>		if (pcc != None && pcc.<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> != None && isFriendly(pcc.<span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span>.team()))
+<a name="299"></a>			updateTeamMemberSensorInfo(pcc);
+<a name="300"></a>	}
+<a name="301"></a>}
+<a name="302"></a>
+<a name="303"></a><span class="source_type">function</span> updateTeamMemberSensorInfo(<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pcc)
+<a name="304"></a>{
+<a name="305"></a>	local <span class="source_type"><a href="../gameplay/sensorlistnode.html" class="source">SensorListNode</a></span> sln;
+<a name="306"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="307"></a>
+<a name="308"></a>	sln = pcc.detectedEnemyList;
+<a name="309"></a>
+<a name="310"></a>	<span class="source_comment">// Update the currently sensed enemies
+</span><a name="311"></a>	while (sln != None)
+<a name="312"></a>	{
+<a name="313"></a>		if (pcc.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> == sln.sensedRook || <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkDead(sln.sensedRook))
+<a name="314"></a>		{
+<a name="315"></a>			pcc.removeDetectedEnemy(sln);
+<a name="316"></a>		}
+<a name="317"></a>		else
+<a name="318"></a>		{
+<a name="319"></a>			for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; detectedEnemies.length; ++<span class="source_type">i</span>)
+<a name="320"></a>			{
+<a name="321"></a>				if (detectedEnemies[<span class="source_type">i</span>] == sln.sensedRook)
+<a name="322"></a>				{
+<a name="323"></a>					sln.update();
+<a name="324"></a>					break;
+<a name="325"></a>				}
+<a name="326"></a>			}
+<a name="327"></a>
+<a name="328"></a>			<span class="source_comment">// If the rook is no longer being detected remove it from the list
+</span><a name="329"></a>			if (<span class="source_type">i</span> == detectedEnemies.length)
+<a name="330"></a>				pcc.removeDetectedEnemy(sln);
+<a name="331"></a>		}
+<a name="332"></a>
+<a name="333"></a>		sln = sln.next;
+<a name="334"></a>	}
+<a name="335"></a>
+<a name="336"></a>	<span class="source_comment">// Add any newly detected enemies to the characters detectedEnemyList
+</span><a name="337"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; detectedEnemies.length; ++<span class="source_type">i</span>)
+<a name="338"></a>	{
+<a name="339"></a>		<span class="source_comment">// If this rook hasn't been updated yet
+</span><a name="340"></a>		if (!detectedEnemies[<span class="source_type">i</span>].sensorUpdateFlag)
+<a name="341"></a>			pcc.addDetectedEnemy(detectedEnemies[<span class="source_type">i</span>]);
+<a name="342"></a>
+<a name="343"></a>		detectedEnemies[<span class="source_type">i</span>].sensorUpdateFlag = false;
+<a name="344"></a>	}
+<a name="345"></a>
+<a name="346"></a>	sln = pcc.detectedFriendlyList;
+<a name="347"></a>
+<a name="348"></a>	<span class="source_comment">// Update the currently sensed friendlies
+</span><a name="349"></a>	while (sln != None)
+<a name="350"></a>	{
+<a name="351"></a>		if (pcc.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> == sln.sensedRook || <span class="source_type">class</span><span class="source_name">'Pawn'</span>.static.checkDead(sln.sensedRook))
+<a name="352"></a>		{
+<a name="353"></a>			pcc.removeDetectedFriendly(sln);
+<a name="354"></a>		}
+<a name="355"></a>		else
+<a name="356"></a>		{
+<a name="357"></a>			for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; detectedFriendlies.length; ++<span class="source_type">i</span>)
+<a name="358"></a>			{
+<a name="359"></a>				if (detectedFriendlies[<span class="source_type">i</span>] == sln.sensedRook)
+<a name="360"></a>				{
+<a name="361"></a>					sln.update();
+<a name="362"></a>					break;
+<a name="363"></a>				}
+<a name="364"></a>			}
+<a name="365"></a>
+<a name="366"></a>			<span class="source_comment">// If the rook is no longer being detected remove it from the list
+</span><a name="367"></a>			if (<span class="source_type">i</span> == detectedFriendlies.length)
+<a name="368"></a>				pcc.removeDetectedFriendly(sln);
+<a name="369"></a>		}
+<a name="370"></a>
+<a name="371"></a>		sln = sln.next;
+<a name="372"></a>	}
+<a name="373"></a>
+<a name="374"></a>	<span class="source_comment">// Add any newly detected friendlies to the characters detectedFriendlyList
+</span><a name="375"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; detectedFriendlies.length; ++<span class="source_type">i</span>)
+<a name="376"></a>	{
+<a name="377"></a>		<span class="source_comment">// If this rook hasn't been updated yet
+</span><a name="378"></a>		if (!detectedFriendlies[<span class="source_type">i</span>].sensorUpdateFlag)
+<a name="379"></a>			pcc.addDetectedFriendly(detectedFriendlies[<span class="source_type">i</span>]);
+<a name="380"></a>
+<a name="381"></a>		detectedFriendlies[<span class="source_type">i</span>].sensorUpdateFlag = false;
+<a name="382"></a>	}
+<a name="383"></a>}
+<a name="384"></a>
+<a name="385"></a><span class="source_comment">// -------------------------------------------------------------------------------------
+</span><a name="386"></a><span class="source_comment">// End Sensor System
+</span><a name="387"></a><span class="source_comment">// -------------------------------------------------------------------------------------
+</span><a name="388"></a>
+<a name="389"></a><span class="source_comment">// -----------------------------------
+</span><a name="390"></a><span class="source_comment">// Vehicle Respawn
+</span><a name="391"></a><span class="source_comment">//
+</span><a name="392"></a>
+<a name="393"></a><span class="source_type">function</span> addVehicleRespawn(<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span> respawnVehicle)
+<a name="394"></a>{
+<a name="395"></a>	local <span class="source_type">int</span> <span class="source_type">index</span>;
+<a name="396"></a>
+<a name="397"></a>	<span class="source_comment">// verify not already there
+</span><a name="398"></a>	for (<span class="source_type">index</span> = <span class="source_int">0</span>; <span class="source_type">index</span> &lt; MAX_RESPAWN_VEHICLES; ++<span class="source_type">index</span>)
+<a name="399"></a>	{
+<a name="400"></a>		if (respawnVehicles[<span class="source_type">index</span>] == respawnVehicle)
+<a name="401"></a>		{
+<a name="402"></a>			warn(<span class="source_string">"attempted to add"</span> @ respawnVehicle @ <span class="source_string">"to respawn vehicle list but it is already there"</span>);
+<a name="403"></a>			return;
+<a name="404"></a>		}
+<a name="405"></a>	}
+<a name="406"></a>
+<a name="407"></a>	<span class="source_comment">// add it
+</span><a name="408"></a>	for (<span class="source_type">index</span> = <span class="source_int">0</span>; <span class="source_type">index</span> &lt; MAX_RESPAWN_VEHICLES; ++<span class="source_type">index</span>)
+<a name="409"></a>	{
+<a name="410"></a>		if (respawnVehicles[<span class="source_type">index</span>] == None)
+<a name="411"></a>		{
+<a name="412"></a>			respawnVehicles[<span class="source_type">index</span>] = respawnVehicle;
+<a name="413"></a>			break;
+<a name="414"></a>		}
+<a name="415"></a>	}
+<a name="416"></a>	if (<span class="source_type">index</span> == MAX_RESPAWN_VEHICLES)
+<a name="417"></a>		warn(<span class="source_string">"exceeded size of respawn vehicle array"</span>);
+<a name="418"></a>
+<a name="419"></a>	Log(<span class="source_string">"added vehicle respawn"</span> @ respawnVehicle @ <span class="source_string">"to"</span> @ self);
+<a name="420"></a>}
+<a name="421"></a>
+<a name="422"></a><span class="source_comment">// Can be called even if respawnVehicle has already been removed.
+</span><a name="423"></a><span class="source_type">function</span> removeVehicleRespawn(<span class="source_type"><a href="../gameplay/vehicle.html" class="source">Vehicle</a></span> respawnVehicle)
+<a name="424"></a>{
+<a name="425"></a>	local <span class="source_type">int</span> <span class="source_type">index</span>;
+<a name="426"></a>
+<a name="427"></a>	<span class="source_comment">// find the vehicle and remove it
+</span><a name="428"></a>	for (<span class="source_type">index</span> = <span class="source_int">0</span>; <span class="source_type">index</span> &lt; MAX_RESPAWN_VEHICLES; <span class="source_type">index</span>++)
+<a name="429"></a>	{
+<a name="430"></a>		if (respawnVehicles[<span class="source_type">index</span>] == respawnVehicle)
+<a name="431"></a>		{
+<a name="432"></a>			respawnVehicles[<span class="source_type">index</span>] = None;
+<a name="433"></a>			break;
+<a name="434"></a>		}
+<a name="435"></a>	}
+<a name="436"></a>}
+<a name="437"></a>
+<a name="438"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> validVehicleRespawnIndex(<span class="source_type">int</span> <span class="source_type">index</span>)
+<a name="439"></a>{
+<a name="440"></a>	return respawnVehicles[<span class="source_type">index</span>] != None && respawnVehicles[<span class="source_type">index</span>].canCharacterRespawnAt();
+<a name="441"></a>}
+<a name="442"></a>
+<a name="443"></a>simulated <span class="source_type">function</span> <span class="source_type">int</span> getNumVehicleRespawns()
+<a name="444"></a>{
+<a name="445"></a>	local <span class="source_type">int</span> <span class="source_type">index</span>;
+<a name="446"></a>	local <span class="source_type">int</span> <span class="source_type">result</span>;
+<a name="447"></a>
+<a name="448"></a>	for (<span class="source_type">index</span> = <span class="source_int">0</span>; <span class="source_type">index</span> &lt; MAX_RESPAWN_VEHICLES; <span class="source_type">index</span>++)
+<a name="449"></a>		if (respawnVehicles[<span class="source_type">index</span>] != None)
+<a name="450"></a>			++<span class="source_type">result</span>;
+<a name="451"></a>
+<a name="452"></a>	return <span class="source_type">result</span>;
+<a name="453"></a>}
+<a name="454"></a>
+<a name="455"></a><span class="source_comment">// 
+</span><a name="456"></a><span class="source_comment">// End Vehicle Respawn
+</span><a name="457"></a><span class="source_comment">// -----------------------------------
+</span><a name="458"></a>
+<a name="459"></a><span class="source_comment">// -----------------------------------
+</span><a name="460"></a><span class="source_comment">// Bases
+</span><a name="461"></a><span class="source_comment">//
+</span><a name="462"></a>
+<a name="463"></a><span class="source_type">function</span> addBase(<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span> base)
+<a name="464"></a>{
+<a name="465"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="466"></a>
+<a name="467"></a>	<span class="source_comment">// check first, to see if we have the base
+</span><a name="468"></a>	for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; bases.Length; ++<span class="source_type">i</span>)
+<a name="469"></a>	{
+<a name="470"></a>		if(bases[<span class="source_type">i</span>] == base)
+<a name="471"></a>			return;
+<a name="472"></a>	}
+<a name="473"></a>
+<a name="474"></a>	<span class="source_comment">// dont already have the base, add it
+</span><a name="475"></a>	bases[bases.Length] = base;
+<a name="476"></a>	Log(<span class="source_string">"Added base "</span>$base);
+<a name="477"></a>
+<a name="478"></a>	<span class="source_comment">// update the respawn bases & names array
+</span><a name="479"></a>	if(base.bValidRespawnBase && base.<span class="source_type"><a href="../gameplay/spawnarray.html" class="source">spawnArray</a></span> != None)
+<a name="480"></a>	{
+<a name="481"></a>		for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; MAX_BASES; ++<span class="source_type">i</span>)
+<a name="482"></a>		{
+<a name="483"></a>			if (respawnBases[<span class="source_type">i</span>] == None)
+<a name="484"></a>			{
+<a name="485"></a>				Log(<span class="source_string">"Added respawn base "</span>$base$ <span class="source_string">" at index "</span>$<span class="source_type">i</span>);
+<a name="486"></a>				respawnBases[<span class="source_type">i</span>] = base;
+<a name="487"></a>				respawnBaseNames[<span class="source_type">i</span>] = <span class="source_type">string</span>(respawnBases[<span class="source_type">i</span>].label);
+<a name="488"></a>				respawnBaseLocations[<span class="source_type">i</span>] = respawnBases[<span class="source_type">i</span>].<span class="source_type"><a href="../gameplay/spawnarray.html" class="source">spawnArray</a></span>.Location;
+<a name="489"></a>				break;
+<a name="490"></a>			}
+<a name="491"></a>		}
+<a name="492"></a>	}
+<a name="493"></a>}
+<a name="494"></a>
+<a name="495"></a><span class="source_type">function</span> removeBase(<span class="source_type"><a href="../gameplay/baseinfo.html" class="source">BaseInfo</a></span> base)
+<a name="496"></a>{
+<a name="497"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="498"></a>
+<a name="499"></a>	<span class="source_comment">// find the base and remove it, and allow multiple removes
+</span><a name="500"></a>	for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; bases.Length; <span class="source_type">i</span>++)
+<a name="501"></a>	{
+<a name="502"></a>		if(bases[<span class="source_type">i</span>] == base)
+<a name="503"></a>			bases.Remove(<span class="source_type">i</span>, <span class="source_int">1</span>);
+<a name="504"></a>	}
+<a name="505"></a>
+<a name="506"></a>	<span class="source_comment">// update the base names array
+</span><a name="507"></a>	if(base.bValidRespawnBase)
+<a name="508"></a>	{
+<a name="509"></a>		for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; MAX_BASES; ++<span class="source_type">i</span>)
+<a name="510"></a>		{
+<a name="511"></a>			if(respawnBases[<span class="source_type">i</span>] == base)
+<a name="512"></a>			{
+<a name="513"></a>				respawnBases[<span class="source_type">i</span>] = None;
+<a name="514"></a>				respawnBaseNames[<span class="source_type">i</span>] = <span class="source_string">""</span>;
+<a name="515"></a>				respawnBaseLocations[<span class="source_type">i</span>] = Vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>);
+<a name="516"></a>				break;
+<a name="517"></a>			}
+<a name="518"></a>		}
+<a name="519"></a>	}
+<a name="520"></a>}
+<a name="521"></a>
+<a name="522"></a>simulated <span class="source_type">function</span> <span class="source_type">bool</span> validRespawnBaseIndex(<span class="source_type">int</span> <span class="source_type">index</span>)
+<a name="523"></a>{
+<a name="524"></a>	return respawnBases[<span class="source_type">index</span>] != None;
+<a name="525"></a>}
+<a name="526"></a>
+<a name="527"></a>simulated <span class="source_type">function</span> <span class="source_type">int</span> getNumRespawnBases()
+<a name="528"></a>{
+<a name="529"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>, numBases;
+<a name="530"></a>
+<a name="531"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;MAX_BASES; <span class="source_type">i</span>++)
+<a name="532"></a>	{
+<a name="533"></a>		if (respawnBases[<span class="source_type">i</span>] != None)
+<a name="534"></a>			numBases++;
+<a name="535"></a>	}
+<a name="536"></a>
+<a name="537"></a>	return numBases;
+<a name="538"></a>}
+<a name="539"></a>
+<a name="540"></a><span class="source_comment">// End Bases
+</span><a name="541"></a><span class="source_comment">// -----------------------------------
+</span><a name="542"></a>
+<a name="543"></a><span class="source_type">function</span> <span class="source_type">int</span> numPlayers()
+<a name="544"></a>{
+<a name="545"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="546"></a>	local <span class="source_type">int</span> numPlayers;
+<a name="547"></a>	local <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span> tri;
+<a name="548"></a>
+<a name="549"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;<span class="source_type">Level</span>.Game.<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.PRIArray.Length; <span class="source_type">i</span>++)
+<a name="550"></a>	{
+<a name="551"></a>		tri = <span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>(<span class="source_type">Level</span>.Game.<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.PRIArray[<span class="source_type">i</span>]);
+<a name="552"></a>
+<a name="553"></a>		if (tri != None && tri.team == self)
+<a name="554"></a>			numPlayers++;
+<a name="555"></a>	}
+<a name="556"></a>
+<a name="557"></a>	return numPlayers;
+<a name="558"></a>}
+<a name="559"></a>
+<a name="560"></a><span class="source_type">function</span> <span class="source_type">int</span> numActivePlayers()
+<a name="561"></a>{
+<a name="562"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pc;
+<a name="563"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="564"></a>
+<a name="565"></a>	ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, pc)
+<a name="566"></a>	{
+<a name="567"></a>		if (pc.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None && self == <span class="source_type"><a href="../gameplay/rook.html" class="source">Rook</a></span>(pc.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>).team())
+<a name="568"></a>			<span class="source_type">i</span>++;
+<a name="569"></a>	}
+<a name="570"></a>
+<a name="571"></a>	return <span class="source_type">i</span>;
+<a name="572"></a>}
+<a name="573"></a>
+<a name="574"></a><span class="source_type">function</span> <span class="source_type">int</span> numTotalLives()
+<a name="575"></a>{
+<a name="576"></a>	local <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pc;
+<a name="577"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="578"></a>
+<a name="579"></a>	ForEach <span class="source_type">Level</span>.AllControllers(<span class="source_type">class</span><span class="source_name">'PlayerCharacterController'</span>, pc)
+<a name="580"></a>	{
+<a name="581"></a>		if (<span class="source_type"><a href="../gameplay/tribesreplicationinfo.html" class="source">TribesReplicationInfo</a></span>(pc.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>).team == self)
+<a name="582"></a>		{
+<a name="583"></a>			<span class="source_comment">// If respawnsLeft is &lt; 0, then just return -1 to indicate that respawn
+</span><a name="584"></a>			<span class="source_comment">// restrictions are disabled
+</span><a name="585"></a>			if (pc.livesLeft &lt; <span class="source_int">0</span>)
+<a name="586"></a>				return -<span class="source_int">1</span>;
+<a name="587"></a>
+<a name="588"></a>			<span class="source_type">i</span> += pc.livesLeft;
+<a name="589"></a>		}
+<a name="590"></a>	}
+<a name="591"></a>
+<a name="592"></a>	return <span class="source_type">i</span>;
+<a name="593"></a>}
+<a name="594"></a>
+<a name="595"></a><span class="source_comment">// PRECACHING
+</span><a name="596"></a>simulated <span class="source_type">function</span> UpdatePrecacheRenderData()
+<a name="597"></a>{
+<a name="598"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="599"></a>	Super.UpdatePrecacheRenderData();
+<a name="600"></a>	
+<a name="601"></a>	<span class="source_comment">// precache all team mesh data
+</span><a name="602"></a>	<span class="source_comment">// NOTE: Only precache coree team meshes in MP matches
+</span><a name="603"></a>	if (<span class="source_type">Level</span>.NetMode != NM_Standalone)
+<a name="604"></a>	{
+<a name="605"></a>		for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span> &lt; combatRoleData.Length; ++<span class="source_type">i</span>)
+<a name="606"></a>		{
+<a name="607"></a>			<span class="source_type">Level</span>.AddPrecacheMesh(combatRoleData[<span class="source_type">i</span>].<span class="source_type">mesh</span>);
+<a name="608"></a>			<span class="source_type">Level</span>.AddPrecacheMesh(combatRoleData[<span class="source_type">i</span>].femaleMesh);
+<a name="609"></a>			<span class="source_type">Level</span>.AddPrecacheMesh(combatRoleData[<span class="source_type">i</span>].armsMesh);
+<a name="610"></a>			<span class="source_type">Level</span>.AddPrecacheMaterial(combatRoleData[<span class="source_type">i</span>].armorIcon);
+<a name="611"></a>			if (combatRoleData[<span class="source_type">i</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span> != None)
+<a name="612"></a>				<span class="source_type">Level</span>.AddPrecacheStaticMesh(combatRoleData[<span class="source_type">i</span>].<span class="source_type"><a href="../gameplay/jetpack.html" class="source">jetpack</a></span>.default.<span class="source_type">StaticMesh</span>);
+<a name="613"></a>			if (combatRoleData[<span class="source_type">i</span>].femaleJetpack != None)
+<a name="614"></a>				<span class="source_type">Level</span>.AddPrecacheStaticMesh(combatRoleData[<span class="source_type">i</span>].femaleJetpack.default.<span class="source_type">StaticMesh</span>);
+<a name="615"></a>		}
+<a name="616"></a>
+<a name="617"></a>		<span class="source_comment">// precache vehicle skins
+</span><a name="618"></a>		<span class="source_type">Level</span>.AddPrecacheMaterial(buggySkin);
+<a name="619"></a>		<span class="source_type">Level</span>.AddPrecacheMaterial(podSkin);
+<a name="620"></a>		<span class="source_type">Level</span>.AddPrecacheMaterial(tankSkin);
+<a name="621"></a>		<span class="source_type">Level</span>.AddPrecacheMaterial(assaultShipSkin);
+<a name="622"></a>	}
+<a name="623"></a>
+<a name="624"></a>	<span class="source_comment">// precache ownership stuff
+</span><a name="625"></a>	<span class="source_type">Level</span>.AddPrecacheMaterial(ownershipMaterial);
+<a name="626"></a>	<span class="source_type">Level</span>.AddPrecacheMaterial(baseDeviceIllumMaterial);
+<a name="627"></a>	<span class="source_type">Level</span>.AddPrecacheMaterial(altOwnershipMaterial);
+<a name="628"></a>	<span class="source_type">Level</span>.AddPrecacheMaterial(altBaseDeviceIllumMaterial);
+<a name="629"></a>}
+<a name="630"></a>
+<a name="631"></a>defaultproperties
+<a name="632"></a>{
+<a name="633"></a>	objectivesUpdateRate = <span class="source_int">0.5</span>
+<a name="634"></a>	sensorGridRate	= <span class="source_int">0.5</span>
+<a name="635"></a>
+<a name="636"></a>	RemoteRole		= ROLE_SimulatedProxy
+<a name="637"></a>	bAlwaysRelevant = true
+<a name="638"></a>	bReplicateLabel = true
+<a name="639"></a>	bHiddenEd		= true
+<a name="640"></a>
+<a name="641"></a>	MAX_BASES		= <span class="source_int">10</span>
+<a name="642"></a>
+<a name="643"></a>	MAX_RESPAWN_VEHICLES = <span class="source_int">10</span>
+<a name="644"></a>
+<a name="645"></a>	TeamColor			= (<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="646"></a>	TeamHighlightColor	= (<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">0</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="647"></a>	relativeFriendlyTeamColor=(<span class="source_type">R</span>=<span class="source_int">20</span>,G=<span class="source_int">220</span>,<span class="source_type">B</span>=<span class="source_int">20</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="648"></a>	relativeFriendlyHighlightColor=(<span class="source_type">R</span>=<span class="source_int">0</span>,<span class="source_type">B</span>=<span class="source_int">0</span>,G=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="649"></a>	relativeEnemyTeamColor=(<span class="source_type">R</span>=<span class="source_int">220</span>,G=<span class="source_int">20</span>,<span class="source_type">B</span>=<span class="source_int">20</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="650"></a>	relativeEnemyHighlightColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">0</span>,<span class="source_type">B</span>=<span class="source_int">0</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="651"></a>	territoryTendrilColor = (<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="652"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/teaminfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#TeamInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/tankweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/test2loadout.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: èt 9.9.2004 16:25:32.000 - Creation time: st 23.5.2018 00:10:47.537 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

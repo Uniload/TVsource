@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: GUI.GUIStyles</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header"><a href="../gui/guistyles.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#GUIStyles">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gui/guisplitter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gui/guitabcontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gui/guistyles.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gui/gui-overview.html">GUI</a>.<a href="../gui/guistyles.html">GUIStyles</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// ====================================================================
+</span><a name="2"></a><span class="source_comment">//  Class:  GUI.GUIStyles
+</span><a name="3"></a><span class="source_comment">//
+</span><a name="4"></a><span class="source_comment">//	The GUIStyle is an object that is used to describe common visible
+</span><a name="5"></a><span class="source_comment">//  components of the interface.
+</span><a name="6"></a><span class="source_comment">//
+</span><a name="7"></a><span class="source_comment">//  Written by Joe Wilcox
+</span><a name="8"></a><span class="source_comment">//  (c) 2002, Epic Games, Inc.  All Rights Reserved
+</span><a name="9"></a><span class="source_comment">// ====================================================================
+</span><a name="10"></a><span class="source_comment">/*=============================================================================
+<a name="11"></a>	In Game GUI Editor System V1.0
+<a name="12"></a>	2003 - Irrational Games, LLC.
+<a name="13"></a>	* Dan Kaplan
+<a name="14"></a>=============================================================================*/</span>
+<a name="15"></a><span class="source_macro">#if !IG_GUI_LAYOUT
+</span><a name="16"></a><span class="source_macro">#error This code requires IG_GUI_LAYOUT to be defined due to extensive revisions of the origional code. [DKaplan]
+</span><a name="17"></a><span class="source_macro">#endif
+</span><a name="18"></a><span class="source_comment">/*===========================================================================*/</span>
+<a name="19"></a>
+<a name="20"></a><span class="source_type">class</span> <span class="source_type"><a href="../gui/guistyles.html" class="source">GUIStyles</a></span> extends <span class="source_type"><a href="../gui/gui.html" class="source">GUI</a></span>
+<a name="21"></a>    PerObjectConfig
+<a name="22"></a>    Config(GuiBase)
+<a name="23"></a>	Native;
+<a name="24"></a>
+<a name="25"></a>cpptext
+<a name="26"></a>{
+<a name="27"></a>		void Draw(UCanvas* <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type">BYTE</span> MenuState, <span class="source_type">FLOAT</span> Left, <span class="source_type">FLOAT</span> <span class="source_type">Top</span>, <span class="source_type">FLOAT</span> Width, <span class="source_type">FLOAT</span> Height);
+<a name="28"></a>		void TextSize(UCanvas* <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type">BYTE</span> MenuState, const TCHAR* <span class="source_type">Test</span>, <span class="source_type">INT</span>& XL, <span class="source_type">INT</span>& YL, <span class="source_type">BYTE</span> TextStyle = <span class="source_int">0</span>);
+<a name="29"></a>
+<a name="30"></a>        void UGUIStyles::DrawText(UCanvas* <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type">BYTE</span> MenuState, <span class="source_type">FLOAT</span> Left, <span class="source_type">FLOAT</span> <span class="source_type">Top</span>, <span class="source_type">FLOAT</span> Width, <span class="source_type">FLOAT</span> Height, <span class="source_type">BYTE</span> Just, const TArray&lt;FString&gt; &Lines, UBOOL bParseCodes = false, <span class="source_type">INT</span> NumOffsetLines = <span class="source_int">0</span>, UBOOL bDontCenterVertically = false);
+<a name="31"></a>        void UGUIStyles::DrawText(UCanvas* <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type">BYTE</span> MenuState, <span class="source_type">FLOAT</span> Left, <span class="source_type">FLOAT</span> <span class="source_type">Top</span>, <span class="source_type">FLOAT</span> Width, <span class="source_type">FLOAT</span> Height, <span class="source_type">BYTE</span> Just, const TCHAR* <span class="source_type">Text</span>, UBOOL bParseCodes = false, UBOOL bMultiline = false, TCHAR seperator = <span class="source_name">'\n'</span>, <span class="source_type">INT</span> NumOffsetLines = <span class="source_int">0</span>, UBOOL bDontCenterVertically = false);
+<a name="32"></a>        void UGUIStyles::WrapTextToArray(UCanvas* <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type">FLOAT</span> Width, const TCHAR* <span class="source_type">Text</span>, TArray&lt;FString&gt; *OutArray, UBOOL bParseCodes = false, TCHAR seperator = <span class="source_name">'\n'</span>, <span class="source_type">BYTE</span> MenuState = <span class="source_int">0</span> );
+<a name="33"></a>
+<a name="34"></a>        virtual void Modify(); <span class="source_comment">//callback from the object browser
+</span><a name="35"></a>}
+<a name="36"></a>
+<a name="37"></a>struct <span class="source_type"><a href="../gui/guistyles.html#sBorderOffset" class="source">sBorderOffset</a></span>
+<a name="38"></a>{
+<a name="39"></a>    var() config <span class="source_type">float</span> LeftOffset <span class="source_string">"The offset from the left of the component"</span>;
+<a name="40"></a>    var() config <span class="source_type">float</span> RightOffset <span class="source_string">"The offset from the right of the component"</span>;
+<a name="41"></a>    var() config <span class="source_type">float</span> TopOffset <span class="source_string">"The offset from the top of the component"</span>;
+<a name="42"></a>    var() config <span class="source_type">float</span> BottomOffset <span class="source_string">"The offset from the bottom of the component"</span>;
+<a name="43"></a>};
+<a name="44"></a>
+<a name="45"></a>var()	config              <span class="source_type">string</span>				KeyName     <span class="source_string">"This is the name of the style used for lookup"</span>;
+<a name="46"></a>var()   config editinline	array&lt;<span class="source_type"><a href="../gui/gui.html#EMenuRenderStyle" class="source">EMenuRenderStyle</a></span>&gt;	RStyles  <span class="source_string">"The render styles for each state"</span>;
+<a name="47"></a>var()	config editinline   array&lt;<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>&gt;			Images   <span class="source_string">"This array holds 1 material for each state (Blurry, Watched, Focused, Pressed, Disabled)"</span>;
+<a name="48"></a>var()	config editinline	array&lt;<span class="source_type"><a href="../gui/gui.html#eImgStyle" class="source">eImgStyle</a></span>&gt;			ImgStyle <span class="source_string">"How should each image for each state be drawn"</span>;
+<a name="49"></a>var()	config editinline	array&lt;<span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span>&gt;				FontColors <span class="source_string">"This array holds 1 font color for each state"</span>;
+<a name="50"></a>var()	config editinline	array&lt;<span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span>&gt;				ImgColors <span class="source_string">"This array holds 1 image color for each state"</span>;
+<a name="51"></a>var()	config editinline	array&lt;<span class="source_type"><a href="../gui/guistyles.html#sBorderOffset" class="source">sBorderOffset</a></span>&gt;		BorderOffsets <span class="source_string">"How thick is the border (offset in pixels at 1600x1200)"</span>;
+<a name="52"></a>var()	config editinline	array&lt;<span class="source_type">string</span>&gt;				FontNames <span class="source_string">"Holds the names of the 5 fonts to use"</span>;
+<a name="53"></a>var()	EditConst editinline array&lt;<span class="source_type"><a href="../gui/guifont.html" class="source">GUIFont</a></span>&gt;			Fonts <span class="source_string">"Holds the fonts for each state"</span>;
+<a name="54"></a>var()	config editinline	array&lt;<span class="source_type">string</span>&gt;				BoldFontNames <span class="source_string">"Holds the names of the 5 bold fonts to use"</span>;
+<a name="55"></a>var()	EditConst editinline array&lt;<span class="source_type"><a href="../gui/guifont.html" class="source">GUIFont</a></span>&gt;			BoldFonts <span class="source_string">"Holds the bold fonts for each state"</span>;
+<a name="56"></a>var()	config editinline	array&lt;<span class="source_type">string</span>&gt;				ItalicFontNames <span class="source_string">"Holds the names of the 5 italic fonts to use"</span>;
+<a name="57"></a>var()	EditConst editinline array&lt;<span class="source_type"><a href="../gui/guifont.html" class="source">GUIFont</a></span>&gt;			ItalicFonts <span class="source_string">"Holds the italic fonts for each state"</span>;
+<a name="58"></a>var()	config editinline	array&lt;<span class="source_type">string</span>&gt;				BoldItalicFontNames <span class="source_string">"Holds the names of the 5 underline fonts to use"</span>;
+<a name="59"></a>var()	EditConst editinline array&lt;<span class="source_type"><a href="../gui/guifont.html" class="source">GUIFont</a></span>&gt;			BoldItalicFonts <span class="source_string">"Holds the underline fonts for each state"</span>;
+<a name="60"></a>var()   config <span class="source_type">int</span> UnderlineWeight <span class="source_string">"Number of pixels in height to be used for underlining"</span>;
+<a name="61"></a>
+<a name="62"></a>var()   config <span class="source_type">Name</span>     EffectCategory <span class="source_string">"The effect category GUIComponents of this style belong to; used for GUI effect events"</span>;
+<a name="63"></a>
+<a name="64"></a>
+<a name="65"></a><span class="source_comment">// Set by Controller
+</span><a name="66"></a>var <span class="source_type">bool</span>                    bExternalMultilining;       <span class="source_comment">// when true, will not clear state after doing a draw text
+</span><a name="67"></a>var <span class="source_type">bool</span>                    bLastBold;
+<a name="68"></a>var <span class="source_type">bool</span>                    bLastItalics;
+<a name="69"></a>var <span class="source_type">bool</span>                    bLastUnderlined;
+<a name="70"></a>var <span class="source_type">Font</span>                    LastFont;
+<a name="71"></a>var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span>                   LastColor;
+<a name="72"></a>
+<a name="73"></a><span class="source_comment">// the OnDraw delegate Can be used to draw.  Return true to skip the default draw method
+</span><a name="74"></a>
+<a name="75"></a>delegate <span class="source_type">bool</span> OnDraw(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span> MenuState, <span class="source_type">float</span> left, <span class="source_type">float</span> <span class="source_type">top</span>, <span class="source_type">float</span> width, <span class="source_type">float</span> height);
+<a name="76"></a>delegate <span class="source_type">bool</span> OnDrawText(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span> MenuState, <span class="source_type">float</span> left, <span class="source_type">float</span> <span class="source_type">top</span>, <span class="source_type">float</span> width, <span class="source_type">float</span> height, <span class="source_type"><a href="../gui/gui.html#eTextAlign" class="source">eTextAlign</a></span> <span class="source_type">Align</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, optional <span class="source_type">bool</span> bParseCodes, optional <span class="source_type">bool</span> bMultiline);
+<a name="77"></a>
+<a name="78"></a>native <span class="source_type">function</span> Draw(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span> MenuState, <span class="source_type">float</span> left, <span class="source_type">float</span> <span class="source_type">top</span>, <span class="source_type">float</span> width, <span class="source_type">float</span> height);
+<a name="79"></a>native <span class="source_type">function</span> DrawText(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, <span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span> MenuState, <span class="source_type">float</span> left, <span class="source_type">float</span> <span class="source_type">top</span>, <span class="source_type">float</span> width, <span class="source_type">float</span> height, <span class="source_type"><a href="../gui/gui.html#eTextAlign" class="source">eTextAlign</a></span> <span class="source_type">Align</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, optional <span class="source_type">bool</span> bParseCodes, optional <span class="source_type">bool</span> bMultiline);
+<a name="80"></a>
+<a name="81"></a>event Initialize()
+<a name="82"></a>{
+<a name="83"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="84"></a>
+<a name="85"></a>	<span class="source_comment">// Preset all the data if needed
+</span><a name="86"></a>
+<a name="87"></a>	for (<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;<span class="source_int">5</span>;<span class="source_type">i</span>++)
+<a name="88"></a>	{
+<a name="89"></a>		Fonts[<span class="source_type">i</span>] = <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GetMenuFont(FontNames[<span class="source_type">i</span>]);
+<a name="90"></a>		AssertWithDescription( Fonts[<span class="source_type">i</span>] != None, <span class="source_string">"Invalid GUIFont specified for menu state "</span>$GetEnum(<span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span>,<span class="source_type">i</span>)$<span class="source_string">" in GUIStyle "</span>$self.<span class="source_type">Name</span>$<span class="source_string">".  Please specify a valid GUIFont key name in the Content\\System\\*GuiBase.ini file for this GUIStyle."</span>);
+<a name="91"></a>
+<a name="92"></a>		BoldFonts[<span class="source_type">i</span>] = <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GetMenuFont(BoldFontNames[<span class="source_type">i</span>]);
+<a name="93"></a>        if( BoldFonts[<span class="source_type">i</span>] == None )		
+<a name="94"></a>        {
+<a name="95"></a>            log(<span class="source_string">"Could not load the Bold GUIFont specified for menu state "</span>$GetEnum(<span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span>,<span class="source_type">i</span>)$<span class="source_string">" in GUIStyle "</span>$self.<span class="source_type">Name</span>$<span class="source_string">".  Reverting to the Normal GUIFont for this GUIStyle & MenuState ("</span>$Fonts[<span class="source_type">i</span>]$<span class="source_string">")."</span>);
+<a name="96"></a>            BoldFonts[<span class="source_type">i</span>] = Fonts[<span class="source_type">i</span>];
+<a name="97"></a>        }
+<a name="98"></a>
+<a name="99"></a>		ItalicFonts[<span class="source_type">i</span>] = <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GetMenuFont(ItalicFontNames[<span class="source_type">i</span>]);
+<a name="100"></a>        if( ItalicFonts[<span class="source_type">i</span>] == None )		
+<a name="101"></a>        {
+<a name="102"></a>            log(<span class="source_string">"Could not load the Italic GUIFont specified for menu state "</span>$GetEnum(<span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span>,<span class="source_type">i</span>)$<span class="source_string">" in GUIStyle "</span>$self.<span class="source_type">Name</span>$<span class="source_string">".  Reverting to the Normal GUIFont for this GUIStyle & MenuState ("</span>$Fonts[<span class="source_type">i</span>]$<span class="source_string">")."</span>);
+<a name="103"></a>            ItalicFonts[<span class="source_type">i</span>] = Fonts[<span class="source_type">i</span>];
+<a name="104"></a>        }
+<a name="105"></a>
+<a name="106"></a>		BoldItalicFonts[<span class="source_type">i</span>] = <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GetMenuFont(BoldItalicFontNames[<span class="source_type">i</span>]);
+<a name="107"></a>        if( BoldItalicFonts[<span class="source_type">i</span>] == None )		
+<a name="108"></a>        {
+<a name="109"></a>            log(<span class="source_string">"Could not load the BoldItalic GUIFont specified for menu state "</span>$GetEnum(<span class="source_type"><a href="../gui/gui.html#eMenuState" class="source">eMenuState</a></span>,<span class="source_type">i</span>)$<span class="source_string">" in GUIStyle "</span>$self.<span class="source_type">Name</span>$<span class="source_string">".  Reverting to the Normal GUIFont for this GUIStyle & MenuState ("</span>$Fonts[<span class="source_type">i</span>]$<span class="source_string">")."</span>);
+<a name="110"></a>            BoldItalicFonts[<span class="source_type">i</span>] = Fonts[<span class="source_type">i</span>];
+<a name="111"></a>        }
+<a name="112"></a>	}
+<a name="113"></a>}
+<a name="114"></a>
+<a name="115"></a>defaultproperties
+<a name="116"></a>{
+<a name="117"></a>	RStyles(<span class="source_int">0</span>)=MSTY_Normal;
+<a name="118"></a>	RStyles(<span class="source_int">1</span>)=MSTY_Normal;
+<a name="119"></a>	RStyles(<span class="source_int">2</span>)=MSTY_Normal;
+<a name="120"></a>	RStyles(<span class="source_int">3</span>)=MSTY_Normal;
+<a name="121"></a>	RStyles(<span class="source_int">4</span>)=MSTY_Normal;
+<a name="122"></a>
+<a name="123"></a>	ImgStyle(<span class="source_int">0</span>)=ISTY_Scaled
+<a name="124"></a>	ImgStyle(<span class="source_int">1</span>)=ISTY_Scaled
+<a name="125"></a>	ImgStyle(<span class="source_int">2</span>)=ISTY_Scaled
+<a name="126"></a>	ImgStyle(<span class="source_int">3</span>)=ISTY_Scaled
+<a name="127"></a>	ImgStyle(<span class="source_int">4</span>)=ISTY_Scaled
+<a name="128"></a>
+<a name="129"></a>	Images(<span class="source_int">0</span>)=None
+<a name="130"></a>	Images(<span class="source_int">1</span>)=None
+<a name="131"></a>	Images(<span class="source_int">2</span>)=None
+<a name="132"></a>	Images(<span class="source_int">3</span>)=None
+<a name="133"></a>	Images(<span class="source_int">4</span>)=None
+<a name="134"></a>
+<a name="135"></a>	ImgColors(<span class="source_int">0</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="136"></a>	ImgColors(<span class="source_int">1</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="137"></a>	ImgColors(<span class="source_int">2</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="138"></a>	ImgColors(<span class="source_int">3</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="139"></a>	ImgColors(<span class="source_int">4</span>)=(<span class="source_type">R</span>=<span class="source_int">128</span>,G=<span class="source_int">128</span>,<span class="source_type">B</span>=<span class="source_int">128</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="140"></a>
+<a name="141"></a>	FontColors(<span class="source_int">0</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="142"></a>	FontColors(<span class="source_int">1</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="143"></a>	FontColors(<span class="source_int">2</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="144"></a>	FontColors(<span class="source_int">3</span>)=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">255</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="145"></a>	FontColors(<span class="source_int">4</span>)=(<span class="source_type">R</span>=<span class="source_int">128</span>,G=<span class="source_int">128</span>,<span class="source_type">B</span>=<span class="source_int">128</span>,<span class="source_type">A</span>=<span class="source_int">255</span>)
+<a name="146"></a>
+<a name="147"></a>	FontNames(<span class="source_int">0</span>)=<span class="source_string">"MenuFont"</span>
+<a name="148"></a>	FontNames(<span class="source_int">1</span>)=<span class="source_string">"MenuFont"</span>
+<a name="149"></a>	FontNames(<span class="source_int">2</span>)=<span class="source_string">"MenuFont"</span>
+<a name="150"></a>	FontNames(<span class="source_int">3</span>)=<span class="source_string">"MenuFont"</span>
+<a name="151"></a>	FontNames(<span class="source_int">4</span>)=<span class="source_string">"MenuFont"</span>
+<a name="152"></a>
+<a name="153"></a>	BoldFontNames(<span class="source_int">0</span>)=<span class="source_string">"MenuFont"</span>
+<a name="154"></a>	BoldFontNames(<span class="source_int">1</span>)=<span class="source_string">"MenuFont"</span>
+<a name="155"></a>	BoldFontNames(<span class="source_int">2</span>)=<span class="source_string">"MenuFont"</span>
+<a name="156"></a>	BoldFontNames(<span class="source_int">3</span>)=<span class="source_string">"MenuFont"</span>
+<a name="157"></a>	BoldFontNames(<span class="source_int">4</span>)=<span class="source_string">"MenuFont"</span>
+<a name="158"></a>
+<a name="159"></a>	ItalicFontNames(<span class="source_int">0</span>)=<span class="source_string">"MenuFont"</span>
+<a name="160"></a>	ItalicFontNames(<span class="source_int">1</span>)=<span class="source_string">"MenuFont"</span>
+<a name="161"></a>	ItalicFontNames(<span class="source_int">2</span>)=<span class="source_string">"MenuFont"</span>
+<a name="162"></a>	ItalicFontNames(<span class="source_int">3</span>)=<span class="source_string">"MenuFont"</span>
+<a name="163"></a>	ItalicFontNames(<span class="source_int">4</span>)=<span class="source_string">"MenuFont"</span>
+<a name="164"></a>
+<a name="165"></a>	BoldItalicFontNames(<span class="source_int">0</span>)=<span class="source_string">"MenuFont"</span>
+<a name="166"></a>	BoldItalicFontNames(<span class="source_int">1</span>)=<span class="source_string">"MenuFont"</span>
+<a name="167"></a>	BoldItalicFontNames(<span class="source_int">2</span>)=<span class="source_string">"MenuFont"</span>
+<a name="168"></a>	BoldItalicFontNames(<span class="source_int">3</span>)=<span class="source_string">"MenuFont"</span>
+<a name="169"></a>	BoldItalicFontNames(<span class="source_int">4</span>)=<span class="source_string">"MenuFont"</span>
+<a name="170"></a>
+<a name="171"></a>	BorderOffsets(<span class="source_int">0</span>)=(LeftOffset=<span class="source_int">15.0</span>,RightOffset=-<span class="source_int">15.0</span>,TopOffset=<span class="source_int">0.0</span>,BottomOffset=<span class="source_int">0.0</span>)
+<a name="172"></a>	BorderOffsets(<span class="source_int">1</span>)=(LeftOffset=<span class="source_int">15.0</span>,RightOffset=-<span class="source_int">15.0</span>,TopOffset=<span class="source_int">0.0</span>,BottomOffset=<span class="source_int">0.0</span>)
+<a name="173"></a>	BorderOffsets(<span class="source_int">2</span>)=(LeftOffset=<span class="source_int">15.0</span>,RightOffset=-<span class="source_int">15.0</span>,TopOffset=<span class="source_int">0.0</span>,BottomOffset=<span class="source_int">0.0</span>)
+<a name="174"></a>	BorderOffsets(<span class="source_int">3</span>)=(LeftOffset=<span class="source_int">15.0</span>,RightOffset=-<span class="source_int">15.0</span>,TopOffset=<span class="source_int">0.0</span>,BottomOffset=<span class="source_int">0.0</span>)
+<a name="175"></a>	BorderOffsets(<span class="source_int">4</span>)=(LeftOffset=<span class="source_int">15.0</span>,RightOffset=-<span class="source_int">15.0</span>,TopOffset=<span class="source_int">0.0</span>,BottomOffset=<span class="source_int">0.0</span>)
+<a name="176"></a>
+<a name="177"></a>    UnderlineWeight=<span class="source_int">2</span>
+<a name="178"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gui/gui-overview.html">Package</a></td>
+	<td class="header"><a href="../gui/guistyles.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#GUIStyles">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gui/guisplitter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gui/guitabcontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: ne 5.9.2004 16:02:10.000 - Creation time: st 23.5.2018 00:10:43.944 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Gameplay.MPCheckpoint</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/mpcheckpoint.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MPCheckpoint">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/mpcarryablethrower.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mpcheckpointmessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#gameplay/mpcheckpoint.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.MPCheckpoint</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../gameplay/mparea.html">MPArea</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">Core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">Engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/rook.html">Rook</a>
+         |   
+         +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a>
+            |   
+            +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a>
+               |   
+               +-- <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpcheckpoint.html">MPCheckpoint</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a>&gt;</td><td width="66%"><a href="#_awaitingClientsList" name="awaitingClientsList" title="go to the details">awaitingClientsList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocalPassedEffect" name="bLocalPassedEffect" title="go to the details">bLocalPassedEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPassedEffect" name="bPassedEffect" title="go to the details">bPassedEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../gameplay/mpcheckpoint.html">MPCheckpoint</a></td><td width="66%"><a href="#_nextCheckpoint" name="nextCheckpoint" title="go to the details">nextCheckpoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../gameplay/mpcheckpoint.html#ClientCheckpointData">ClientCheckpointData</a>&gt;</td><td width="66%"><a href="#_passedClientsList" name="passedClientsList" title="go to the details">passedClientsList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_startingTime" name="startingTime" title="go to the details">startingTime</a></td></tr>
+<tr><th colspan="2" class="small">EffectEvents</th></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_failedEffectEvent" name="failedEffectEvent" title="go to the details">failedEffectEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_passedEffectEvent" name="passedEffectEvent" title="go to the details">passedEffectEvent</a></td></tr>
+<tr><th colspan="2" class="small">LocalMessage</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/localmessage.html">Engine.LocalMessage</a>&gt;</td><td width="66%"><a href="#_CheckpointMessageClass" name="CheckpointMessageClass" title="go to the details">CheckpointMessageClass</a></td></tr>
+<tr><th colspan="2" class="small">MPCheckpoint</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDontResetAfterPass" name="bDontResetAfterPass" title="go to the details">bDontResetAfterPass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFinishingPoint" name="bFinishingPoint" title="go to the details">bFinishingPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStartingPoint" name="bStartingPoint" title="go to the details">bStartingPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUsePersonalObjectives" name="bUsePersonalObjectives" title="go to the details">bUsePersonalObjectives</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_nextCheckpointLabel" name="nextCheckpointLabel" title="go to the details">nextCheckpointLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numLapsToFinish" name="numLapsToFinish" title="go to the details">numLapsToFinish</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Name</td><td width="66%"><a href="#_passAnimation" name="passAnimation" title="go to the details">passAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_teamPointsPerLap" name="teamPointsPerLap" title="go to the details">teamPointsPerLap</a></td></tr>
+<tr><th colspan="2" class="small">Objectives</th></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_selfCheckpointObjectiveDesc" name="selfCheckpointObjectiveDesc" title="go to the details">selfCheckpointObjectiveDesc</a></td></tr>
+<tr><th colspan="2" class="small">Stats</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/stat.html">Stat</a>&gt;</td><td width="66%"><a href="#_checkpointPassedStat" name="checkpointPassedStat" title="go to the details">checkpointPassedStat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/stat.html">Stat</a>&gt;</td><td width="66%"><a href="#_lapFinishedStat" name="lapFinishedStat" title="go to the details">lapFinishedStat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../gameplay/stat.html">Stat</a>&gt;</td><td width="66%"><a href="#_raceFinishedStat" name="raceFinishedStat" title="go to the details">raceFinishedStat</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mparea.html#areaOffset">areaOffset</a>, <a href="../gameplay/mparea.html#areaTrigger">areaTrigger</a>, <a href="../gameplay/mparea.html#areaTriggerClass">areaTriggerClass</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mpactor.html#attackRadius">attackRadius</a>, <a href="../gameplay/mpactor.html#attackStat">attackStat</a>, <a href="../gameplay/mpactor.html#bAllowSpectators">bAllowSpectators</a>, <a href="../gameplay/mpactor.html#defendRadius">defendRadius</a>, <a href="../gameplay/mpactor.html#defendStat">defendStat</a>, <a href="../gameplay/mpactor.html#idleAnim">idleAnim</a>, <a href="../gameplay/mpactor.html#localizedName">localizedName</a>, <a href="../gameplay/mpactor.html#primaryEnemyObjectiveDesc">primaryEnemyObjectiveDesc</a>, <a href="../gameplay/mpactor.html#primaryFriendlyObjectiveDesc">primaryFriendlyObjectiveDesc</a>, <a href="../gameplay/mpactor.html#primaryNeutralObjectiveDesc">primaryNeutralObjectiveDesc</a>, <a href="../gameplay/mpactor.html#secondaryMessageClass">secondaryMessageClass</a>, <a href="../gameplay/mpactor.html#spectatorList">spectatorList</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_ClientCheckpointData" name="ClientCheckpointData" title="go to the details">ClientCheckpointData</a><br /><span class="small">client, lap, lastTimePassed</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_addAwaitingClient-" name="addAwaitingClient" title="go to the details">addAwaitingClient</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_addPassedClient-" name="addPassedClient" title="go to the details">addPassedClient</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_advanceCheckpoint-" name="advanceCheckpoint" title="go to the details">advanceCheckpoint</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_enumCheckpoints-" name="enumCheckpoints" title="go to the details">enumCheckpoints</a> (<a href="../engine/levelinfo.html">Engine.LevelInfo</a> l, out Array&lt;Name&gt; a))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_failCheckpoint-" name="failCheckpoint" title="go to the details">failCheckpoint</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_getClientCheckpointDataIndex-" name="getClientCheckpointDataIndex" title="go to the details">getClientCheckpointDataIndex</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_getClientRank-" name="getClientRank" title="go to the details">getClientRank</a> (<a href="../gameplay/mpcheckpoint.html#ClientCheckpointData">ClientCheckpointData</a> p))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isAwaitingClient-" name="isAwaitingClient" title="go to the details">isAwaitingClient</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_lastLapPassed-" name="lastLapPassed" title="go to the details">lastLapPassed</a> (<a href="../gameplay/mpcheckpoint.html#ClientCheckpointData">ClientCheckpointData</a> p))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaEntered-" name="OnAreaEntered" title="go to the details">OnAreaEntered</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OnAreaExited-" name="OnAreaExited" title="go to the details">OnAreaExited</a> (<a href="../gameplay/character.html">Character</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_onMessage-" name="onMessage" title="go to the details">onMessage</a> (<a href="../engine/message.html">Message</a> msg))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_passCheckpoint-" name="passCheckpoint" title="go to the details">passCheckpoint</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> c, <a href="../gameplay/teaminfo.html">TeamInfo</a> t))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetReceive-" name="PostNetReceive" title="go to the details">PostNetReceive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_removeAwaitingClient-" name="removeAwaitingClient" title="go to the details">removeAwaitingClient</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> c))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_reset-" name="reset" title="go to the details">reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_restartPlayer-" name="restartPlayer" title="go to the details">restartPlayer</a> (<a href="../gameplay/playercharactercontroller.html">PlayerCharacterController</a> pcc))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_updateCheckpointEffects-" name="updateCheckpointEffects" title="go to the details">updateCheckpointEffects</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mparea.html">MPArea</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mparea.html#cleanup">cleanup</a>, <a href="../gameplay/mparea.html#OnAreaEntered">OnAreaEntered</a>, <a href="../gameplay/mparea.html#OnAreaEnteredByActor">OnAreaEnteredByActor</a>, <a href="../gameplay/mparea.html#OnAreaExited">OnAreaExited</a>, <a href="../gameplay/mparea.html#OnAreaExitedByActor">OnAreaExitedByActor</a>, <a href="../gameplay/mparea.html#OnAreaTick">OnAreaTick</a>, <a href="../gameplay/mparea.html#PostBeginPlay">PostBeginPlay</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/mpactor.html">MPActor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../gameplay/mpactor.html#addDefaultObjectives">addDefaultObjectives</a>, <a href="../gameplay/mpactor.html#addEnemyObjective">addEnemyObjective</a>, <a href="../gameplay/mpactor.html#addFriendlyObjective">addFriendlyObjective</a>, <a href="../gameplay/mpactor.html#addNeutralObjective">addNeutralObjective</a>, <a href="../gameplay/mpactor.html#addSpectator">addSpectator</a>, <a href="../gameplay/mpactor.html#awardStat">awardStat</a>, <a href="../gameplay/mpactor.html#cleanup">cleanup</a>, <a href="../gameplay/mpactor.html#contractLattice">contractLattice</a>, <a href="../gameplay/mpactor.html#evaluateObjectiveState">evaluateObjectiveState</a>, <a href="../gameplay/mpactor.html#expandLattice">expandLattice</a>, <a href="../gameplay/mpactor.html#GetHumanReadableName">GetHumanReadableName</a>, <a href="../gameplay/mpactor.html#getNearest">getNearest</a>, <a href="../gameplay/mpactor.html#getPersonalObjectiveName">getPersonalObjectiveName</a>, <a href="../gameplay/mpactor.html#getUniqueObjectiveName">getUniqueObjectiveName</a>, <a href="../gameplay/mpactor.html#getViewTarget">getViewTarget</a>, <a href="../gameplay/mpactor.html#incrementStatAttempt">incrementStatAttempt</a>, <a href="../gameplay/mpactor.html#onAvailableToLattice">onAvailableToLattice</a>, <a href="../gameplay/mpactor.html#onPlayerKilled">onPlayerKilled</a>, <a href="../gameplay/mpactor.html#onUnavailableToLattice">onUnavailableToLattice</a>, <a href="../gameplay/mpactor.html#PostBeginPlay">PostBeginPlay</a>, <a href="../gameplay/mpactor.html#PostTakeDamage">PostTakeDamage</a>, <a href="../gameplay/mpactor.html#registerStats">registerStats</a>, <a href="../gameplay/mpactor.html#removeDefaultObjectives">removeDefaultObjectives</a>, <a href="../gameplay/mpactor.html#removePersonalObjective">removePersonalObjective</a>, <a href="../gameplay/mpactor.html#removeSpectator">removeSpectator</a>, <a href="../gameplay/mpactor.html#resetSpectatorViewTarget">resetSpectatorViewTarget</a>, <a href="../gameplay/mpactor.html#scoreIndividual">scoreIndividual</a>, <a href="../gameplay/mpactor.html#scoreTeam">scoreTeam</a>, <a href="../gameplay/mpactor.html#setObjectiveState">setObjectiveState</a>, <a href="../gameplay/mpactor.html#setObjectiveTally">setObjectiveTally</a>, <a href="../gameplay/mpactor.html#setPersonalObjective">setPersonalObjective</a>, <a href="../gameplay/mpactor.html#setSpectatorViewTarget">setSpectatorViewTarget</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_awaitingClientsList" class="hidden"></a>awaitingClientsList <a href="../Source_gameplay/mpcheckpoint.html#20" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span>&gt; awaitingClientsList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bLocalPassedEffect" class="hidden"></a>bLocalPassedEffect <a href="../Source_gameplay/mpcheckpoint.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bLocalPassedEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bPassedEffect" class="hidden"></a>bPassedEffect <a href="../Source_gameplay/mpcheckpoint.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bPassedEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_nextCheckpoint" class="hidden"></a>nextCheckpoint <a href="../Source_gameplay/mpcheckpoint.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span> nextCheckpoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_passedClientsList" class="hidden"></a>passedClientsList <a href="../Source_gameplay/mpcheckpoint.html#42" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../gameplay/mpcheckpoint.html#ClientCheckpointData" class="source">ClientCheckpointData</a></span>&gt; passedClientsList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_startingTime" class="hidden"></a>startingTime <a href="../Source_gameplay/mpcheckpoint.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> startingTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">EffectEvents</h3>
+<h4><a name="_failedEffectEvent" class="hidden"></a>failedEffectEvent <a href="../Source_gameplay/mpcheckpoint.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> failedEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once on the checkpoint when failed
+</blockquote>
+<hr class="small" />
+<h4><a name="_passedEffectEvent" class="hidden"></a>passedEffectEvent <a href="../Source_gameplay/mpcheckpoint.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(EffectEvents) <span class="source_type">Name</span> passedEffectEvent;</div>
+<blockquote class="comment">
+The name of an effect event that plays once on the checkpoint when passed
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">LocalMessage</h3>
+<h4><a name="_CheckpointMessageClass" class="hidden"></a>CheckpointMessageClass <a href="../Source_gameplay/mpcheckpoint.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>&gt; CheckpointMessageClass;</div>
+<blockquote class="comment">
+The class used for displaying messages and playing effects related to carryables.
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">MPCheckpoint</h3>
+<h4><a name="_bDontResetAfterPass" class="hidden"></a>bDontResetAfterPass <a href="../Source_gameplay/mpcheckpoint.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) <span class="source_type">bool</span> bDontResetAfterPass;</div>
+<blockquote class="comment">
+If true, the checkpoint won't reset itself after you pass it, so its effects will stay active
+</blockquote>
+<hr class="small" />
+<h4><a name="_bFinishingPoint" class="hidden"></a>bFinishingPoint <a href="../Source_gameplay/mpcheckpoint.html#6" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) <span class="source_type">bool</span> bFinishingPoint;</div>
+<blockquote class="comment">
+Is this checkpoint the end of a lap?
+</blockquote>
+<hr class="small" />
+<h4><a name="_bStartingPoint" class="hidden"></a>bStartingPoint <a href="../Source_gameplay/mpcheckpoint.html#5" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) <span class="source_type">bool</span> bStartingPoint;</div>
+<blockquote class="comment">
+Is this checkpoint the start of a lap?
+</blockquote>
+<hr class="small" />
+<h4><a name="_bUsePersonalObjectives" class="hidden"></a>bUsePersonalObjectives <a href="../Source_gameplay/mpcheckpoint.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) <span class="source_type">bool</span> bUsePersonalObjectives;</div>
+<blockquote class="comment">
+If true, the player will automatically receive a personal objective for each checkpoint
+</blockquote>
+<hr class="small" />
+<h4><a name="_nextCheckpointLabel" class="hidden"></a>nextCheckpointLabel <a href="../Source_gameplay/mpcheckpoint.html#3" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) editcombotype ( enumCheckpoints ) <span class="source_type">Name</span> nextCheckpointLabel;</div>
+<blockquote class="comment">
+The next checkpoint
+</blockquote>
+<hr class="small" />
+<h4><a name="_numLapsToFinish" class="hidden"></a>numLapsToFinish <a href="../Source_gameplay/mpcheckpoint.html#7" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) <span class="source_type">int</span> numLapsToFinish;</div>
+<blockquote class="comment">
+If bFinishingLine is true, specify the number of laps here
+</blockquote>
+<hr class="small" />
+<h4><a name="_passAnimation" class="hidden"></a>passAnimation <a href="../Source_gameplay/mpcheckpoint.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) <span class="source_type">Name</span> passAnimation;</div>
+<blockquote class="comment">
+The name of the animation to play when this checkpoint gets passed
+</blockquote>
+<hr class="small" />
+<h4><a name="_teamPointsPerLap" class="hidden"></a>teamPointsPerLap <a href="../Source_gameplay/mpcheckpoint.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../gameplay/mpcheckpoint.html" class="source">MPCheckpoint</a></span>) <span class="source_type">int</span> teamPointsPerLap;</div>
+<blockquote class="comment">
+Number of points awarded to your team for each lap passed
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Objectives</h3>
+<h4><a name="_selfCheckpointObjectiveDesc" class="hidden"></a>selfCheckpointObjectiveDesc <a href="../Source_gameplay/mpcheckpoint.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(Objectives) localized <span class="source_type">string</span> selfCheckpointObjectiveDesc;</div>
+<blockquote class="comment">
+A description that will show up as a personal objective for your next checkpoint.
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Stats</h3>
+<h4><a name="_checkpointPassedStat" class="hidden"></a>checkpointPassedStat <a href="../Source_gameplay/mpcheckpoint.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(Stats) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/stat.html" class="source">Stat</a></span>&gt; checkpointPassedStat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lapFinishedStat" class="hidden"></a>lapFinishedStat <a href="../Source_gameplay/mpcheckpoint.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(Stats) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/stat.html" class="source">Stat</a></span>&gt; lapFinishedStat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_raceFinishedStat" class="hidden"></a>raceFinishedStat <a href="../Source_gameplay/mpcheckpoint.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(Stats) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../gameplay/stat.html" class="source">Stat</a></span>&gt; raceFinishedStat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ClientCheckpointData" class="hidden"></a>ClientCheckpointData <a href="../Source_gameplay/mpcheckpoint.html#35" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../gameplay/mpcheckpoint.html#ClientCheckpointData" class="source">ClientCheckpointData</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">client</span>;<br />
+var <span class="source_type">int</span> lap;<br />
+var <span class="source_type">float</span> lastTimePassed;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_addAwaitingClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addAwaitingClient <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#257" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  addAwaitingClient ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_addPassedClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> addPassedClient <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#277" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> addPassedClient ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_advanceCheckpoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> advanceCheckpoint <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#218" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  advanceCheckpoint ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_enumCheckpoints-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> enumCheckpoints <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#346" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  enumCheckpoints ( <span class="source_type"><a href="../engine/engine.html" class="source">Engine</a></span>.<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> l, out Array&lt;<span class="source_type">Name</span>&gt; a) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_failCheckpoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> failCheckpoint <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#163" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  failCheckpoint ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getClientCheckpointDataIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getClientCheckpointDataIndex <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#263" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> getClientCheckpointDataIndex ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getClientRank-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getClientRank <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#298" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">int</span> getClientRank ( <span class="source_type"><a href="../gameplay/mpcheckpoint.html#ClientCheckpointData" class="source">ClientCheckpointData</a></span> <span class="source_type">p</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isAwaitingClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isAwaitingClient <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#233" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span> <span class="source_type">bool</span> isAwaitingClient ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_lastLapPassed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> lastLapPassed <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#287" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  lastLapPassed ( <span class="source_type"><a href="../gameplay/mpcheckpoint.html#ClientCheckpointData" class="source">ClientCheckpointData</a></span> <span class="source_type">p</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaEntered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaEntered <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#128" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaEntered ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnAreaExited-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnAreaExited <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#140" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  OnAreaExited ( <span class="source_type"><a href="../gameplay/character.html" class="source">Character</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_onMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> onMessage <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#108" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  onMessage ( <span class="source_type"><a href="../engine/message.html" class="source">Message</a></span> msg) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_passCheckpoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> passCheckpoint <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#170" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  passCheckpoint ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>, <span class="source_type"><a href="../gameplay/teaminfo.html" class="source">TeamInfo</a></span> <span class="source_type">t</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#51" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetReceive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetReceive <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#71" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  PostNetReceive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_removeAwaitingClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> removeAwaitingClient <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#246" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  removeAwaitingClient ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> <span class="source_type">c</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_reset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> reset <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#323" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  <span class="source_type">reset</span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_restartPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> restartPlayer <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#340" class="small">Source code</a></h4>
+<div class="declaration"> <span class="source_type">function</span>  restartPlayer ( <span class="source_type"><a href="../gameplay/playercharactercontroller.html" class="source">PlayerCharacterController</a></span> pcc) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Timer <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#101" class="small">Source code</a></h4>
+<div class="declaration">simulated event  <span class="source_type"><a href="../engine/timer.html" class="source">Timer</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateCheckpointEffects-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateCheckpointEffects <span class="function_state"></span> <a href="../Source_gameplay/mpcheckpoint.html#78" class="small">Source code</a></h4>
+<div class="declaration">simulated <span class="source_type">function</span>  updateCheckpointEffects ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+	DrawType				= DT_Mesh
+	<span class="source_type">Mesh</span>					= <span class="source_type">Mesh</span><span class="source_name">'MPGameObjects.MPCheckpoint'</span>
+	bCollideActors			= true
+	bCollideWorld			= true
+	bMovable				= false
+	
+	bNetNotify				= true
+	NetUpdateFrequency		= <span class="source_int">2</span>
+
+	selfCheckpointObjectiveDesc	= <span class="source_string">"Proceed to the next Checkpoint."</span>
+	CheckpointMessageClass	= <span class="source_type">class</span><span class="source_name">'MPCheckpointMessages'</span>
+	passedEffectEvent		= Passed
+	failedEffectEvent		= Failed
+	passAnimation			= Activate
+	teamPointsPerLap		= <span class="source_int">1</span>
+}</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_gameplay/mpcheckpoint.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#MPCheckpoint">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../gameplay/mpcarryablethrower.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../gameplay/mpcheckpointmessages.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: st 23.5.2018 00:10:32.920 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: FireMods.FireFlagHud</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../firemods/firemods-overview.html">Package</a></td>
+	<td class="header"><a href="../firemods/fireflaghud.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#FireFlagHud">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_firemods/chatadmin.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_firemods/randommap.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_firemods/fireflaghud.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../firemods/firemods-overview.html">FireMods</a>.<a href="../firemods/fireflaghud.html">FireFlagHud</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../firemods/fireflaghud.html" class="source">FireFlagHud</a></span> extends TribesGUI.<span class="source_type"><a href="../tribesgui/hudcontainer.html" class="source">HUDContainer</a></span>;
+<a name="2"></a>
+<a name="3"></a>var <span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> currentData;
+<a name="4"></a>               
+<a name="5"></a>var() config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> EnemyMarkerMaterial;
+<a name="6"></a>var() config <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> FriendlyMarkerMaterial;
+<a name="7"></a>var() config <span class="source_type">float</span> MaxDistance;
+<a name="8"></a>var() config <span class="source_type">float</span> <span class="source_type">Size</span>;
+<a name="9"></a>
+<a name="10"></a><span class="source_type">function</span> InitElement()
+<a name="11"></a>{
+<a name="12"></a>	super.InitElement();
+<a name="13"></a>}
+<a name="14"></a>
+<a name="15"></a><span class="source_type">function</span> UpdateData(<span class="source_type"><a href="../gameplay/clientsidecharacter.html" class="source">ClientSideCharacter</a></span> <span class="source_type">c</span>)
+<a name="16"></a>{
+<a name="17"></a>    super.UpdateData(<span class="source_type">c</span>);
+<a name="18"></a>	
+<a name="19"></a>	currentData = <span class="source_type">c</span>;                          
+<a name="20"></a>}
+<a name="21"></a>
+<a name="22"></a><span class="source_type">function</span> RenderElement(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">c</span>)
+<a name="23"></a>{
+<a name="24"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="25"></a>	local <span class="source_type"><a href="../tribesgui/hudelement.html#HUDMaterial" class="source">HUDMaterial</a></span> <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>;
+<a name="26"></a>	local <span class="source_type">float</span> distance;
+<a name="27"></a>	local <span class="source_type">float</span> workingSize;
+<a name="28"></a>
+<a name="29"></a>	super.RenderElement(<span class="source_type">c</span>);
+<a name="30"></a>	
+<a name="31"></a>	for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; currentData.ObjectiveActorData.Length; <span class="source_type">i</span>++)
+<a name="32"></a>	{
+<a name="33"></a>		if(InStr(currentData.ObjectiveData[<span class="source_type">i</span>].description, <span class="source_string">"flag"</span>) == -<span class="source_int">1</span> && InStr(currentData.ObjectiveData[<span class="source_type">i</span>].description, <span class="source_string">"ball"</span>) == -<span class="source_int">1</span>)
+<a name="34"></a>		{
+<a name="35"></a>			continue;
+<a name="36"></a>		}
+<a name="37"></a>		
+<a name="38"></a>		if(currentData.ObjectiveActorData[<span class="source_type">i</span>].IsFriendly) {
+<a name="39"></a>			<span class="source_type"><a href="../engine/material.html" class="source">material</a></span> = FriendlyMarkerMaterial;
+<a name="40"></a>		} else {
+<a name="41"></a>			<span class="source_type"><a href="../engine/material.html" class="source">material</a></span> = EnemyMarkerMaterial;
+<a name="42"></a>		}
+<a name="43"></a>		
+<a name="44"></a>		distance = currentData.ObjectiveActorData[<span class="source_type">i</span>].Distance;
+<a name="45"></a>		
+<a name="46"></a>		if(distance &gt; MaxDistance)
+<a name="47"></a>			distance = MaxDistance;
+<a name="48"></a>
+<a name="49"></a>		workingSize = <span class="source_type">Size</span> - (distance / MaxDistance) * <span class="source_int">35.0</span>;
+<a name="50"></a>
+<a name="51"></a>		<span class="source_type">c</span>.CurX = currentData.ObjectiveActorData[<span class="source_type">i</span>].ScreenX - workingSize / <span class="source_int">2</span>;
+<a name="52"></a>		<span class="source_type">c</span>.CurY = currentData.ObjectiveActorData[<span class="source_type">i</span>].ScreenY - workingSize / <span class="source_int">2</span>;
+<a name="53"></a>		RenderHUDMaterial(<span class="source_type">c</span>, <span class="source_type"><a href="../engine/material.html" class="source">material</a></span>, workingSize, workingSize);
+<a name="54"></a>	}
+<a name="55"></a>}
+<a name="56"></a>
+<a name="57"></a>defaultproperties
+<a name="58"></a>{
+<a name="59"></a>	MaxDistance = <span class="source_int">20000</span>
+<a name="60"></a>	<span class="source_type">Size</span> = <span class="source_int">50</span>
+<a name="61"></a>	EnemyMarkerMaterial=(<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'HUD.UseCorners'</span>,drawColor=(<span class="source_type">R</span>=<span class="source_int">255</span>,G=<span class="source_int">20</span>,<span class="source_type">B</span>=<span class="source_int">20</span>,<span class="source_type">A</span>=<span class="source_int">170</span>),style=<span class="source_int">1</span>,bStretched=true)
+<a name="62"></a>	FriendlyMarkerMaterial=(<span class="source_type"><a href="../engine/material.html" class="source">Material</a></span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'HUD.UseCorners'</span>,drawColor=(<span class="source_type">R</span>=<span class="source_int">20</span>,G=<span class="source_int">255</span>,<span class="source_type">B</span>=<span class="source_int">20</span>,<span class="source_type">A</span>=<span class="source_int">170</span>),style=<span class="source_int">1</span>,bStretched=true)
+<a name="63"></a>
+<a name="64"></a>	resFontNames(<span class="source_int">0</span>)=<span class="source_string">"DefaultSmallFont"</span>
+<a name="65"></a>	resFontNames(<span class="source_int">1</span>)=<span class="source_string">"Tahoma8"</span>
+<a name="66"></a>	resFontNames(<span class="source_int">2</span>)=<span class="source_string">"Tahoma8"</span>
+<a name="67"></a>	resFontNames(<span class="source_int">3</span>)=<span class="source_string">"Tahoma10"</span>
+<a name="68"></a>	resFontNames(<span class="source_int">4</span>)=<span class="source_string">"Tahoma12"</span>
+<a name="69"></a>	resFontNames(<span class="source_int">5</span>)=<span class="source_string">"Tahoma12"</span>
+<a name="70"></a>	resFonts(<span class="source_int">0</span>)=<span class="source_type">Font</span><span class="source_name">'Engine_res.Res_DefaultFont'</span>
+<a name="71"></a>	resFonts(<span class="source_int">1</span>)=<span class="source_type">Font</span><span class="source_name">'TribesFonts.Tahoma8'</span>
+<a name="72"></a>	resFonts(<span class="source_int">2</span>)=<span class="source_type">Font</span><span class="source_name">'TribesFonts.Tahoma8'</span>
+<a name="73"></a>	resFonts(<span class="source_int">3</span>)=<span class="source_type">Font</span><span class="source_name">'TribesFonts.Tahoma10'</span>
+<a name="74"></a>	resFonts(<span class="source_int">4</span>)=<span class="source_type">Font</span><span class="source_name">'TribesFonts.Tahoma12'</span>
+<a name="75"></a>	resFonts(<span class="source_int">5</span>)=<span class="source_type">Font</span><span class="source_name">'TribesFonts.Tahoma12'</span>
+<a name="76"></a>}</pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../firemods/firemods-overview.html">Package</a></td>
+	<td class="header"><a href="../firemods/fireflaghud.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#FireFlagHud">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_firemods/chatadmin.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_firemods/randommap.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: èt 27.4.2017 21:45:00.000 - Creation time: st 23.5.2018 00:10:43.413 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>
